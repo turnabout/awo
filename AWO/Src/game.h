@@ -1,3 +1,4 @@
+#pragma once
 #include <SDL.h>
 
 /**
@@ -5,7 +6,7 @@
  */
 typedef struct Game
 {
-    SDL_Window*   win;
+    SDL_Window* win;
     SDL_Renderer* rend;
-    SDL_Texture*  ss;
+    SDL_Texture* ss;
 } Game;

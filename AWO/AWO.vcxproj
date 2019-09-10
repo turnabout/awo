@@ -19,8 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Game\init.c" />
+    <ClCompile Include="Src\init.c" />
     <ClCompile Include="Src\main.c" />
+    <ClCompile Include="Src\Visuals\units.c" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png" />
@@ -31,7 +32,8 @@
   <ItemGroup>
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\game.h" />
-    <ClInclude Include="Src\Game\init.h" />
+    <ClInclude Include="Src\init.h" />
+    <ClInclude Include="Src\Visuals\visuals.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

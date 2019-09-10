@@ -18,7 +18,10 @@
     <ClCompile Include="src\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\init.c">
+    <ClCompile Include="Src\init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\units.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,13 +36,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Game\init.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\conf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\init.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\visuals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

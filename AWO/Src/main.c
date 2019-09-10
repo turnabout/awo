@@ -4,7 +4,8 @@
 
 #include "conf.h"
 #include "game.h"
-#include "Game/init.h"
+#include "init.h"
+#include "Visuals/visuals.h"
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
@@ -19,8 +20,25 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    SDL_Delay(2000);
-    printf("Hello world\n");
+    SDL_Texture* testTex = create_units_texture(&game);
+
+    // Draw test
+    SDL_SetRenderDrawBlendMode(game.rend, SDL_BLENDMODE_BLEND);
+    SDL_SetTextureBlendMode(testTex, SDL_BLENDMODE_BLEND);
+
+    SDL_RenderClear(game.rend);
+
+    SDL_Rect dst;
+
+    dst.x = 0;
+    dst.y = 0;
+    dst.w = 293;
+    dst.h = 275;
+
+    SDL_RenderCopy(game.rend, testTex, NULL, &dst);
+    SDL_RenderPresent(game.rend);
+
+    SDL_Delay(3000);
 
     // Exit
     exit_game(&game);

@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <string.h>
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include "../conf.h"
-#include "../game.h"
+#include "conf.h"
+#include "game.h"
 
 int init_game(Game* game)
 {
@@ -40,7 +41,7 @@ int init_game(Game* game)
         return ERR;
     }
 
-    // Initialize sprite sheet
+    // Initialize sprite sheet surface
     SDL_Surface* surface = IMG_Load("Resources/spritesheet.png");
 
     if (surface == NULL) {
@@ -48,8 +49,16 @@ int init_game(Game* game)
         return ERR;
     }
 
-    game->ss = SDL_CreateTextureFromSurface(game->rend, surface);
+    SDL_Surface* formattedSurface = SDL_ConvertSurfaceFormat(
+        surface, 
+        SDL_PIXELFORMAT_RGBA8888, 
+        0
+    );
+
+    game->ss = SDL_CreateTextureFromSurface(game->rend, formattedSurface);
+
     SDL_FreeSurface(surface);
+    SDL_FreeSurface(formattedSurface);
 
     if (game->ss == NULL) {
         printf("Error creating sprite sheet texture: %s\n", IMG_GetError());
