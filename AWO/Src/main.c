@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 
 #include "conf.h"
+#include "game.h"
 #include "Game/init.h"
 
 #ifdef __EMSCRIPTEN__
@@ -11,21 +12,17 @@
 
 int main(int argc, char** argv)
 {
-    // Initialize game
-    SDL_Window*   window;
-    SDL_Renderer* rend;
-    SDL_Surface*  ss;
-
-    if (init_game(&window, &rend, &ss) == ERR) {
+    // Initialize
+    Game game;
+    if (init_game(&game) == ERR) {
+        exit_game(&game);
         return 1;
     }
 
+    SDL_Delay(2000);
     printf("Hello world\n");
 
-    SDL_Delay(2000);
-
-    // Exit game
-    exit_game(&window, &rend, &ss);
-
+    // Exit
+    exit_game(&game);
     return 0;
 }

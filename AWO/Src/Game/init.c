@@ -3,8 +3,9 @@
 #include <SDL_image.h>
 
 #include "../conf.h"
+#include "../game.h"
 
-int init_game(SDL_Window** window, SDL_Renderer** renderer, SDL_Surface** ss)
+int init_game(Game* game)
 {
     // Initialize SDL
     if (SDL_Init(SDL_INIT_FLAGS) != 0) {
@@ -13,7 +14,7 @@ int init_game(SDL_Window** window, SDL_Renderer** renderer, SDL_Surface** ss)
     }
 
     // Initialize window
-    *window = SDL_CreateWindow(
+    game->win = SDL_CreateWindow(
         GAME_TITLE,              // Window title
         SDL_WINDOWPOS_CENTERED,  // Initial x pos
         SDL_WINDOWPOS_CENTERED,  // Initial y pos
@@ -22,46 +23,54 @@ int init_game(SDL_Window** window, SDL_Renderer** renderer, SDL_Surface** ss)
         SDL_WINDOW_FLAGS         // Flags
     );
 
-    if (*window == NULL) {
+    if (game->win == NULL) {
         printf("Could not create window: %s\n", SDL_GetError());
         return ERR;
     }
 
     // Initialize renderer
-    *renderer = SDL_CreateRenderer(
-        *window, // Window where rendering is displayed
-        -1,      // Index of rendering driver to initialize
+    game->rend = SDL_CreateRenderer(
+        game->win, // Window where rendering is displayed
+        -1,         // Index of rendering driver to initialize
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC // Flags
     );
 
-    if (*renderer == NULL) {
+    if (game->rend == NULL) {
         printf("Could not create renderer: %s\n", SDL_GetError());
         return ERR;
     }
 
     // Initialize sprite sheet
-    *ss = IMG_Load("Resources/spritesheet.png");
+    SDL_Surface* surface = IMG_Load("Resources/spritesheet.png");
 
-    if (*ss == NULL) {
+    if (surface == NULL) {
         printf("Error loading sprite sheet surface: %s\n", IMG_GetError());
+        return ERR;
+    }
+
+    game->ss = SDL_CreateTextureFromSurface(game->rend, surface);
+    SDL_FreeSurface(surface);
+
+    if (game->ss == NULL) {
+        printf("Error creating sprite sheet texture: %s\n", IMG_GetError());
         return ERR;
     }
 
     return OK;
 }
 
-void exit_game(SDL_Window** window, SDL_Renderer** renderer, SDL_Surface** ss)
+void exit_game(Game* game)
 {
-    if (*window != NULL) {
-        SDL_DestroyWindow(*window);
+    if (game->win != NULL) {
+        SDL_DestroyWindow(game->win);
     }
 
-    if (*renderer != NULL) {
-        SDL_DestroyRenderer(*renderer);
+    if (game->rend != NULL) {
+        SDL_DestroyRenderer(game->rend);
     }
 
-    if (*ss != NULL) {
-        SDL_FreeSurface(*ss);
+    if (game->ss != NULL) {
+        SDL_DestroyTexture(game->ss);
     }
 
     SDL_Quit();

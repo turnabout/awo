@@ -30,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h" />
+    <ClInclude Include="Src\game.h" />
     <ClInclude Include="Src\Game\init.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
