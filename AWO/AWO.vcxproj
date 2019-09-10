@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Game\init.c" />
-    <ClCompile Include="src\main.c" />
+    <ClCompile Include="Src\main.c" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png" />
