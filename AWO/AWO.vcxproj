@@ -20,7 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\init.c" />
+    <ClCompile Include="Src\cJSON\cJSON.c" />
+    <ClCompile Include="Src\Visuals\JSON.c" />
     <ClCompile Include="Src\main.c" />
+    <ClCompile Include="Src\Utils\utils.c" />
     <ClCompile Include="Src\Visuals\units.c" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +36,9 @@
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\game.h" />
     <ClInclude Include="Src\init.h" />
+    <ClInclude Include="Src\cJSON\cJSON.h" />
+    <ClInclude Include="Src\Visuals\JSON.h" />
+    <ClInclude Include="Src\Utils\utils.h" />
     <ClInclude Include="Src\Visuals\visuals.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

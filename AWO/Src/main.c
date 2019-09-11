@@ -6,10 +6,13 @@
 #include "game.h"
 #include "init.h"
 #include "Visuals/visuals.h"
+#include "Visuals/JSON.h"
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #endif
+
+void test_json();
 
 int main(int argc, char** argv)
 {
@@ -19,6 +22,8 @@ int main(int argc, char** argv)
         exit_game(&game);
         return 1;
     }
+
+    test_json();
 
     SDL_Texture* testTex = create_units_texture(&game);
 
@@ -43,4 +48,10 @@ int main(int argc, char** argv)
     // Exit
     exit_game(&game);
     return 0;
+}
+
+void test_json()
+{
+    load_visuals_JSON();
+    test_JSON();
 }

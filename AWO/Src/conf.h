@@ -15,7 +15,6 @@
 // SDL initialization flags
 #define SDL_INIT_FLAGS SDL_INIT_VIDEO | SDL_INIT_TIMER
 
-
 // Return values on success/failure
-#define ERR 1
+#define ERR -1
 #define OK  0
