@@ -66,5 +66,11 @@
     <ClInclude Include="Src\cJSON\cJSON.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Visuals\units.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

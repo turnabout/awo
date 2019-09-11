@@ -8,6 +8,8 @@
 #include "Visuals/visuals.h"
 #include "Visuals/JSON.h"
 
+#include "Visuals/units.h"
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #endif

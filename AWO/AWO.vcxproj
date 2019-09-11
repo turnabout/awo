@@ -37,8 +37,10 @@
     <ClInclude Include="Src\game.h" />
     <ClInclude Include="Src\init.h" />
     <ClInclude Include="Src\cJSON\cJSON.h" />
+    <ClInclude Include="Src\macros.h" />
     <ClInclude Include="Src\Visuals\JSON.h" />
     <ClInclude Include="Src\Utils\utils.h" />
+    <ClInclude Include="Src\Visuals\units.h" />
     <ClInclude Include="Src\Visuals\visuals.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -100,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
