@@ -24,9 +24,6 @@
     <ClCompile Include="Src\Utils\utils.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\cJSON\cJSON.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Visuals\Load\JSON.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -37,6 +34,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Visuals\Load\load_structure.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Load\cJSON\cJSON.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -63,9 +63,6 @@
     <ClInclude Include="Src\Utils\utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\cJSON\cJSON.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\units.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -79,6 +76,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Utils\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\visuals_structure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Load\load_units.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Load\cJSON\cJSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Load\load_structure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

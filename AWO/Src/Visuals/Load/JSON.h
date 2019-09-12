@@ -1,5 +1,5 @@
 #pragma once
-#include "../../cJSON/cJSON.h"
+#include "cJSON/cJSON.h"
 
 /**
  *  \brief Loads the game's visuals JSON file contents into a cJSON struct.

@@ -1,10 +1,10 @@
 #include <string.h>
 
-#include "../../cJSON/cJSON.h"
+#include "cJSON/cJSON.h"
 #include "../../Utils/utils.h"
 #include "../../conf.h"
 
-int load_visuals_JSON(cJSON **visuals_JSON)
+int load_visuals_JSON(const cJSON **visuals_JSON)
 {
     // Get file contents & size
     char *f_contents;
