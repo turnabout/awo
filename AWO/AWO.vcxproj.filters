@@ -21,16 +21,22 @@
     <ClCompile Include="Src\init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\units.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Utils\utils.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\JSON.c">
+    <ClCompile Include="Src\cJSON\cJSON.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\cJSON\cJSON.c">
+    <ClCompile Include="Src\Visuals\Load\JSON.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Load\load_units.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Process\units.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Load\load_structure.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,13 +60,7 @@
     <ClInclude Include="Src\init.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\visuals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Utils\utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\JSON.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\cJSON\cJSON.h">
@@ -69,7 +69,16 @@
     <ClInclude Include="Src\Visuals\units.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\macros.h">
+    <ClInclude Include="Src\Visuals\Load\JSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\process.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\load.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utils\macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

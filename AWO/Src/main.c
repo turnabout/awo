@@ -5,10 +5,9 @@
 #include "conf.h"
 #include "game.h"
 #include "init.h"
-#include "Visuals/visuals.h"
-#include "Visuals/JSON.h"
 
-#include "Visuals/units.h"
+#include "Visuals/process.h"
+#include "Visuals/load.h"
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
@@ -54,6 +53,5 @@ int main(int argc, char** argv)
 
 void test_json()
 {
-    load_visuals_JSON();
-    test_JSON();
+    load_visuals_data_structure();
 }
