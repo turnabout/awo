@@ -3,15 +3,6 @@
 #include "Data/Units/units_enums.h"
 
 /**
- * \brief Represents an animation and its frames.
- */
-typedef struct Animation
-{
-    int count;
-    SDL_Rect* frames;
-} Animation;
-
-/**
  * \brief Represents a unit's variation and its animations.
  */
 typedef struct Src_Unit_Type
@@ -21,12 +12,13 @@ typedef struct Src_Unit_Type
 } Src_Unit_Type;
 
 /**
- * \brief Represents all visual data used by units.
+ * \brief Represents an animation and its frames.
  */
-typedef struct Units_Data
+typedef struct Animation
 {
-    Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
-} Units_Data;
+    int count;
+    SDL_Rect* frames;
+} Animation;
 
 /**
  *  \brief Gets a Unit's Animation source data.
@@ -42,5 +34,19 @@ typedef struct Units_Data
  *  \sa access_unit_src_animation()
  */
 Animation* access_unit_src_animation(enum unit_type type, enum unit_var var, enum unit_anim anim);
+
+/**
+ *  \brief Gets a Unit's Animation destination data.
+ *
+ *  \param type The Unit Type.
+ *
+ *  \param anim The Unit Animation.
+ *
+ *  \return Returns the Animation for the given Unit/Animation.
+ *
+ *  \sa access_unit_dst_animation()
+ */
+Animation* access_unit_dst_animation(enum unit_type type, enum unit_anim anim);
+
 
 void print_anim_contents(Animation* anim);

@@ -60,3 +60,7 @@ static const char* unit_anim_str[] = {FOREACH_UNIT_ANIM(GENERATE_STRING)};
 #define UNIT_ANIM_FIRST Idle
 #define UNIT_ANIM_LAST Down
 #define UNIT_ANIM_AMOUNT UNIT_ANIM_LAST + 1
+
+#define UNIT_ANIM_FULL_FIRST Idle
+#define UNIT_ANIM_FULL_LAST Left
+#define UNIT_ANIM_FULL_AMOUNT UNIT_ANIM_FULL_LAST + 1
