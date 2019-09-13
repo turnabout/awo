@@ -12,9 +12,18 @@ typedef struct Animation
 } Animation;
 
 /**
+ * \brief Represents a unit's variation and its animations.
+ */
+typedef struct Src_Unit_Type
+{
+    int count;         // How many unit Variations are contained within this unit type
+    Animation*** vars; // Variations/Animations/Frames contained within this unit type
+} Src_Unit_Type;
+
+/**
  * \brief Represents all visual data used by units.
  */
 typedef struct Units_Data
 {
-    Animation* src[UNIT_TYPE_AMOUNT][UNIT_VAR_AMOUNT][UNIT_ANIM_AMOUNT];
+    Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
 } Units_Data;

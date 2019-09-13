@@ -24,13 +24,14 @@ int load_visuals_data_structure(void)
 
 Animation* get_anim(const cJSON* anim_json)
 {
-    int count = cJSON_GetArraySize(anim_json);
     Animation* anim = malloc(sizeof(Animation));
-    cJSON* frame_json = NULL;
 
+    anim->count = cJSON_GetArraySize(anim_json);
     SDL_Rect* frames = (SDL_Rect*)malloc(
-        sizeof(SDL_Rect) * count
+        sizeof(SDL_Rect) * anim->count
     );
+
+    cJSON* frame_json = NULL;
 
     // Gather data from every frame and populate the allocated frames
     cJSON_ArrayForEach(frame_json, anim_json)
@@ -43,9 +44,7 @@ Animation* get_anim(const cJSON* anim_json)
         frames++;
     }
 
-    anim->frames = frames - count;
-    anim->count = count;
-
+    anim->frames = frames - anim->count;
     return anim;
 }
 

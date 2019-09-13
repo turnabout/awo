@@ -16,7 +16,7 @@ Animation* get_anim(const cJSON* anim_json);
 /**
  *  \brief Prints the contents of an animation.
  *
- *  \param game Pointer to the animation instance.
+ *  \param anim Pointer to the animation instance.
  *
  *  \sa print_anim_contents()
  */

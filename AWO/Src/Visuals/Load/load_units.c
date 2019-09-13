@@ -8,18 +8,21 @@
 
 #pragma warning( disable : 6011 )
 
-// Process animation's source data
-void process_src(Units_Data* units_data, const cJSON* src_json);
+// Get all units' visual source data
+void get_units_src(Units_Data* units_data, const cJSON* src_json);
+
+// Get a Unit type's visual source data
+Src_Unit_Type* get_unit_type_src(const cJSON* unit_type_json);
 
 void load_units_visual_data_structure(const cJSON* units_visuals_JSON)
 {
     Units_Data units_data;
-    process_src(&units_data, cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "src"));
+    get_units_src(&units_data, cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "src"));
 
-    print_anim_contents(units_data.src[Infantry][OS][Idle]);
+    print_anim_contents(units_data.src[Infantry]->vars[BM][Idle]);
 }
 
-void process_src(Units_Data* units_data, const cJSON* src_json)
+void get_units_src(Units_Data* units_data, const cJSON* src_json)
 {
     // Loop types
     const cJSON* unit_type_json = NULL;
@@ -27,25 +30,46 @@ void process_src(Units_Data* units_data, const cJSON* src_json)
 
     cJSON_ArrayForEach(unit_type_json, src_json)
     {
-        // Loop variations
-        const cJSON* unit_var_json = NULL;
-        enum unit_var current_var = UNIT_VAR_FIRST;
-
-        cJSON_ArrayForEach(unit_var_json, unit_type_json)
-        {
-            // Loop animations
-            const cJSON* unit_anim_json = NULL;
-            enum unit_anim current_anim = UNIT_ANIM_FIRST;
-
-            cJSON_ArrayForEach(unit_anim_json, unit_var_json)
-            {
-                // Store every animation
-                units_data->src[current_type][current_var][current_anim++] = get_anim(unit_anim_json);
-            }
-
-            current_var++;
-        }
-
-        current_type++;
+        units_data->src[current_type++] = get_unit_type_src(unit_type_json);
     }
+}
+
+Src_Unit_Type* get_unit_type_src(const cJSON* unit_type_json)
+{
+    Src_Unit_Type* type;        // The Unit Type struct returned
+    Animation*** vars;          // All Variations' data
+    const cJSON* unit_var_json; // cJSON data for current Variation
+
+    // Initialize Unit Type memory and count
+    type = malloc(sizeof(Src_Unit_Type));
+    type->count = cJSON_GetArraySize(unit_type_json);
+
+    // Initialize Variations' memory
+    vars = malloc(sizeof(Animation**) * type->count);
+
+    // Loop Variations cJSON
+    cJSON_ArrayForEach(unit_var_json, unit_type_json)
+    {
+        const cJSON* unit_anim_json; // cJSON data for current Animation
+        Animation** anims;           // All Animations data for this Variation
+
+        // Initialize Animations' memory
+        anims = malloc(sizeof(Animation*) * UNIT_ANIM_AMOUNT); 
+
+        // Loop Animations cJSON
+        cJSON_ArrayForEach(unit_anim_json, unit_var_json)
+        {
+            *(anims++) = get_anim(unit_anim_json); // Set next animation
+        };
+
+        // Reset anims pointer to the first variation, then record
+        anims -= UNIT_ANIM_AMOUNT;
+
+        *(vars++) = anims;
+    }
+
+    vars -= type->count;
+    type->vars = vars;
+
+    return type;
 }
