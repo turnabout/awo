@@ -8,15 +8,6 @@
 
 #pragma warning( disable : 6011 )
 
-/**
- * \brief Represents all visual data used by units.
- */
-typedef struct Units_Data
-{
-    Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
-    Animation* dst[UNIT_TYPE_AMOUNT][UNIT_ANIM_FULL_AMOUNT];
-} Units_Data;
-
 static Units_Data* units_data;
 
 // Get all units' visual destination data
@@ -31,8 +22,20 @@ Src_Unit_Type* init_unit_src(const cJSON* unit_type_json);
 void init_units_visual_data_structure(const cJSON* units_visuals_JSON)
 {
     units_data = malloc(sizeof(Units_Data));
+
+    // Add src/dst data
     init_units_src(cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "src"));
     init_units_dst(cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dst"));
+
+    // Add sprite sheet metadata
+    units_data->src_x      = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcX")->valueint;
+    units_data->src_y      = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcY")->valueint;
+    units_data->src_width  = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcWidth")->valueint;
+    units_data->src_height = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcHeight")->valueint;
+    units_data->dst_width  = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dstWidth")->valueint;
+    units_data->dst_height = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dstHeight")->valueint;
+
+    // Add other data (TODO)
 }
 
 void init_units_src(const cJSON* src_json)
@@ -114,4 +117,9 @@ Animation* access_unit_src_animation(enum unit_type type, enum unit_var var, enu
 Animation* access_unit_dst_animation(enum unit_type type, enum unit_anim anim)
 {
     return units_data->dst[type][anim];
+}
+
+Units_Data* access_units_data()
+{
+    return units_data;
 }
