@@ -1,28 +1,28 @@
 #include <SDL.h>
 #include <stdio.h>
 
-#include "cJSON/cJSON.h"
-#include "load_structure.h"
-#include "../visuals_structure.h"
-#include "../units.h"
+#include "units_enums.h"
+#include "../JSON/JSON_access.h"
+#include "../data_init_internal.h"
+#include "../../data_access.h"
 
 #pragma warning( disable : 6011 )
 
+static Units_Data* units_data;
+
 // Get all units' visual source data
-void get_units_src(Units_Data* units_data, const cJSON* src_json);
+void init_units_src(const cJSON* src_json);
 
 // Get a Unit type's visual source data
-Src_Unit_Type* get_unit_type_src(const cJSON* unit_type_json);
+Src_Unit_Type* init_unit_src(const cJSON* unit_type_json);
 
-void load_units_visual_data_structure(const cJSON* units_visuals_JSON)
+void init_units_visual_data_structure(const cJSON* units_visuals_JSON)
 {
-    Units_Data units_data;
-    get_units_src(&units_data, cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "src"));
-
-    print_anim_contents(units_data.src[Infantry]->vars[BM][Idle]);
+    units_data = malloc(sizeof(Units_Data));
+    init_units_src(cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "src"));
 }
 
-void get_units_src(Units_Data* units_data, const cJSON* src_json)
+void init_units_src(const cJSON* src_json)
 {
     // Loop types
     const cJSON* unit_type_json = NULL;
@@ -30,11 +30,11 @@ void get_units_src(Units_Data* units_data, const cJSON* src_json)
 
     cJSON_ArrayForEach(unit_type_json, src_json)
     {
-        units_data->src[current_type++] = get_unit_type_src(unit_type_json);
+        units_data->src[current_type++] = init_unit_src(unit_type_json);
     }
 }
 
-Src_Unit_Type* get_unit_type_src(const cJSON* unit_type_json)
+Src_Unit_Type* init_unit_src(const cJSON* unit_type_json)
 {
     Src_Unit_Type* type;        // The Unit Type struct returned
     Animation*** vars;          // All Variations' data
@@ -59,7 +59,7 @@ Src_Unit_Type* get_unit_type_src(const cJSON* unit_type_json)
         // Loop Animations cJSON
         cJSON_ArrayForEach(unit_anim_json, unit_var_json)
         {
-            *(anims++) = get_anim(unit_anim_json); // Set next animation
+            *(anims++) = get_JSON_anim(unit_anim_json); // Set next animation
         };
 
         // Reset anims pointer to the first variation, then record
@@ -72,4 +72,9 @@ Src_Unit_Type* get_unit_type_src(const cJSON* unit_type_json)
     type->vars = vars;
 
     return type;
+}
+
+Animation* access_unit_src_animation(enum unit_type type, enum unit_var var, enum unit_anim anim)
+{
+    return units_data->src[type]->vars[var][anim];
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include "units.h"
+#include "Data/Units/units_enums.h"
 
 /**
  * \brief Represents an animation and its frames.
@@ -27,3 +27,20 @@ typedef struct Units_Data
 {
     Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
 } Units_Data;
+
+/**
+ *  \brief Gets a Unit's Animation source data.
+ *
+ *  \param type The Unit Type.
+ *
+ *  \param var The Unit Variation.
+ *
+ *  \param anim The Unit Animation.
+ *
+ *  \return Returns the Animation for the given Unit/Variation/Animation.
+ *
+ *  \sa access_unit_src_animation()
+ */
+Animation* access_unit_src_animation(enum unit_type type, enum unit_var var, enum unit_anim anim);
+
+void print_anim_contents(Animation* anim);

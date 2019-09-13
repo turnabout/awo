@@ -7,7 +7,8 @@
 #include "init.h"
 
 #include "Visuals/process.h"
-#include "Visuals/load.h"
+#include "Visuals/data_init.h"
+#include "Visuals/data_access.h"
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
@@ -53,5 +54,8 @@ int main(int argc, char** argv)
 
 void test_json()
 {
-    load_visuals_data_structure();
+    init_visuals_data_structure();
+
+    Animation* test = access_unit_src_animation(Infantry, OS, Idle);
+    print_anim_contents(test);
 }

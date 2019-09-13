@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-#include "JSON.h"
-#include "load_units.h"
-#include "../visuals_structure.h"
+#include "JSON/JSON.h"
+#include "Units/units_data.h"
+#include "../data_access.h"
 #include "../../conf.h"
 
 #pragma warning( disable : 6011 )
 
-int load_visuals_data_structure(void)
+int init_visuals_data_structure(void)
 {
     // Load visuals JSON contents into cJSON struct
     const cJSON* visuals_JSON;
@@ -17,12 +17,12 @@ int load_visuals_data_structure(void)
     }
 
     // Load cJSON into the visuals data structure
-    load_units_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units"));
+    init_units_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units"));
 
     return OK;
 }
 
-Animation* get_anim(const cJSON* anim_json)
+Animation* get_JSON_anim(const cJSON* anim_json)
 {
     Animation* anim = malloc(sizeof(Animation));
 

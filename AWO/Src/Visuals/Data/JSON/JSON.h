@@ -1,5 +1,5 @@
 #pragma once
-#include "cJSON/cJSON.h"
+#include "cJSON.h"
 
 /**
  *  \brief Loads the game's visuals JSON file contents into a cJSON struct.
@@ -10,6 +10,4 @@
  *
  *  \sa load_visuals_JSON()
  */
-int load_visuals_JSON(cJSON **visuals_JSON);
-
-void test_JSON(cJSON **visuals_JSON);
+int load_visuals_JSON(const cJSON **visuals_JSON);

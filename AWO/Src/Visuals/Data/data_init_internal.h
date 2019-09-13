@@ -1,6 +1,6 @@
 #pragma once
-#include "../visuals_structure.h"
-#include "cJSON/cJSON.h"
+#include "../data_access.h"
+#include "JSON/cJSON.h"
 
 /**
  *  \brief Populates and gets an Animation struct from a cJSON animation array.
@@ -11,7 +11,7 @@
  *
  *  \sa init_game()
  */
-Animation* get_anim(const cJSON* anim_json);
+Animation* get_JSON_anim(const cJSON* anim_json);
 
 /**
  *  \brief Prints the contents of an animation.

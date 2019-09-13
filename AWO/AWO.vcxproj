@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\init.c" />
-    <ClCompile Include="Src\Visuals\Load\cJSON\cJSON.c" />
-    <ClCompile Include="Src\Visuals\Load\load_structure.c" />
-    <ClCompile Include="Src\Visuals\Load\load_units.c" />
-    <ClCompile Include="Src\Visuals\Load\JSON.c" />
+    <ClCompile Include="Src\Visuals\Data\JSON\cJSON.c" />
+    <ClCompile Include="Src\Visuals\Data\data_init.c" />
+    <ClCompile Include="Src\Visuals\Data\Units\units_data.c" />
+    <ClCompile Include="Src\Visuals\Data\JSON\JSON_access.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utils\utils.c" />
     <ClCompile Include="Src\Visuals\Process\units.c" />
@@ -38,16 +38,16 @@
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\game.h" />
     <ClInclude Include="Src\init.h" />
-    <ClInclude Include="Src\Visuals\Load\cJSON\cJSON.h" />
+    <ClInclude Include="Src\Visuals\data_access.h" />
+    <ClInclude Include="Src\Visuals\Data\JSON\cJSON.h" />
     <ClInclude Include="Src\Utils\macros.h" />
-    <ClInclude Include="Src\Visuals\load.h" />
-    <ClInclude Include="Src\Visuals\Load\JSON.h" />
+    <ClInclude Include="Src\Visuals\Data\data_init_internal.h" />
+    <ClInclude Include="Src\Visuals\Data\JSON\JSON_access.h" />
     <ClInclude Include="Src\Utils\utils.h" />
-    <ClInclude Include="Src\Visuals\Load\load_structure.h" />
-    <ClInclude Include="Src\Visuals\Load\load_units.h" />
-    <ClInclude Include="Src\Visuals\units.h" />
+    <ClInclude Include="Src\Visuals\data_init.h" />
+    <ClInclude Include="Src\Visuals\Data\Units\units_data.h" />
+    <ClInclude Include="Src\Visuals\Data\Units\units_enums.h" />
     <ClInclude Include="Src\Visuals\process.h" />
-    <ClInclude Include="Src\Visuals\visuals_structure.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

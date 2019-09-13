@@ -1,7 +1,3 @@
-/**
- * Visuals processing for all types of entities.
- */
-
 #pragma once
 #include <SDL.h>
 #include "../game.h"

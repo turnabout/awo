@@ -24,19 +24,19 @@
     <ClCompile Include="Src\Utils\utils.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\Load\JSON.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Visuals\Load\load_units.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Visuals\Process\units.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\Load\load_structure.c">
+    <ClCompile Include="Src\Visuals\Data\JSON\cJSON.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\Load\cJSON\cJSON.c">
+    <ClCompile Include="Src\Visuals\Data\Units\units_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\data_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\JSON\JSON_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -63,31 +63,31 @@
     <ClInclude Include="Src\Utils\utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\units.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Load\JSON.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\process.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\load.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Utils\macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\visuals_structure.h">
+    <ClInclude Include="Src\Visuals\data_init.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\Load\load_units.h">
+    <ClInclude Include="Src\Visuals\data_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\Load\cJSON\cJSON.h">
+    <ClInclude Include="Src\Visuals\Data\JSON\cJSON.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\Load\load_structure.h">
+    <ClInclude Include="Src\Visuals\Data\Units\units_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Units\units_enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\data_init_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\JSON\JSON_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
