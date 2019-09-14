@@ -32,7 +32,7 @@ int init_game(Game* game)
     // Initialize renderer
     game->rend = SDL_CreateRenderer(
         game->win, // Window where rendering is displayed
-        -1,         // Index of rendering driver to initialize
+        -1,        // Index of rendering driver to initialize
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC // Flags
     );
 

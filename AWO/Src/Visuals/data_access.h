@@ -1,5 +1,7 @@
 #pragma once
 #include <SDL.h>
+
+#include "Data/Palettes/palette_tree.h"
 #include "Data/Units/units_enums.h"
 
 /**
@@ -21,6 +23,15 @@ typedef struct Src_Unit_Type
 } Src_Unit_Type;
 
 /**
+ * \brief Represents a palette for a unit variation.
+ */
+typedef struct Unit_Palette
+{
+    int flip;
+    Palette_Node* palette;
+} Unit_Palette;
+
+/**
  * \brief Represents all visual data used by units.
  */
 typedef struct Units_Data
@@ -33,6 +44,8 @@ typedef struct Units_Data
     int src_height;
     int dst_width;
     int dst_height;
+    Palette_Node* base_palette;
+    Unit_Palette* unit_palettes;
 } Units_Data;
 
 /**

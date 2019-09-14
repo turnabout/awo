@@ -1,11 +1,14 @@
+#include <SDL.h>
 #include <stdio.h>
 
 #include "JSON/JSON.h"
 #include "Units/units_data.h"
+
 #include "../data_access.h"
 #include "../../conf.h"
 
 #pragma warning( disable : 6011 )
+
 
 int init_visuals_data_structure(void)
 {

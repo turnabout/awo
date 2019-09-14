@@ -56,9 +56,8 @@ void test_json()
 {
     init_visuals_data_structure();
 
-    Units_Data* a = access_units_data();
-
-    printf("%d\n", a->src_width);
+    // Units_Data* a = access_units_data();
+    // printf("%d\n", a->src_width);
 
     // Animation* test = access_unit_src_animation(Infantry, OS, Idle);
     // print_anim_contents(test);

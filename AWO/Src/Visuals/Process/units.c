@@ -67,6 +67,7 @@ SDL_Texture* create_units_texture(Game* game)
     // printf("%X\n", color_key_from >> 24);
     // printf("%X\n", color_key_to >> 24);
 
+    /*
     for (int i = 0; i < pixel_count; i++) {
 
         Uint32 pixel = pixels[i];
@@ -74,9 +75,10 @@ SDL_Texture* create_units_texture(Game* game)
         if (pixels[i] == color_key_from) {
             pixels[i] = color_key_to;
         }
-    }
+    }*/
 
     SDL_UnlockTexture(streaming_texture);
+    SDL_FreeFormat(mapping_format);
 
     // Reset to default render target & clean up temp texture
     SDL_SetRenderTarget(game->rend, NULL);

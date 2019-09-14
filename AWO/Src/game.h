@@ -8,5 +8,6 @@ typedef struct Game
 {
     SDL_Window* win;
     SDL_Renderer* rend;
+    SDL_Surface* surface;
     SDL_Texture* ss;
 } Game;
