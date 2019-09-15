@@ -1,7 +1,7 @@
 #include <SDL.h>
 #include <stdio.h>
 
-#include "JSON/JSON.h"
+#include "JSON/JSON_access.h"
 #include "Units/units_data.h"
 
 #include "../data_access.h"
