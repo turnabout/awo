@@ -1,5 +1,5 @@
 #include <SDL.h>
-#include "../../game.h"
+#include "game.h"
 
 SDL_Texture* create_units_texture(Game* game)
 {

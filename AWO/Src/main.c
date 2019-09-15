@@ -6,7 +6,7 @@
 #include "game.h"
 #include "init.h"
 
-#include "Visuals/process.h"
+#include "Visuals/processing.h"
 #include "Visuals/data_init.h"
 #include "Visuals/data_access.h"
 

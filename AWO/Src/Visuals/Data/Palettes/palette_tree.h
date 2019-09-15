@@ -1,6 +1,7 @@
 #pragma once
 #include <stdarg.h>
 #include <SDL.h>
+
 #include "../JSON/cJSON.h"
 
 /**

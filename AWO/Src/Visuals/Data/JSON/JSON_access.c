@@ -1,8 +1,8 @@
 #include <string.h>
 
+#include "Utils/utils.h"
+#include "conf.h"
 #include "cJSON.h"
-#include "../../../Utils/utils.h"
-#include "../../../conf.h"
 
 int load_visuals_JSON(const cJSON **visuals_JSON)
 {

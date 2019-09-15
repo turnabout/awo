@@ -1,11 +1,11 @@
 #include <SDL.h>
 #include <stdio.h>
 
+#include "conf.h"
+
 #include "JSON/JSON_access.h"
 #include "Units/units_data.h"
-
 #include "../data_access.h"
-#include "../../conf.h"
 
 #pragma warning( disable : 6011 )
 

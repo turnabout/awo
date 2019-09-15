@@ -28,7 +28,7 @@
     <ClCompile Include="Src\Visuals\Data\JSON\JSON_access.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utils\utils.c" />
-    <ClCompile Include="Src\Visuals\Process\units.c" />
+    <ClCompile Include="Src\Visuals\Processing\units_processing.c" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png" />
@@ -51,7 +51,7 @@
     <ClInclude Include="Src\Visuals\data_init.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_enums.h" />
-    <ClInclude Include="Src\Visuals\process.h" />
+    <ClInclude Include="Src\Visuals\processing.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -111,7 +111,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Src;F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>

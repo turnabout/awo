@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include "../game.h"
+#include "game.h"
 
 /**
  *  \brief Creates and returns a texture for a units' army.

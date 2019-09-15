@@ -24,9 +24,6 @@
     <ClCompile Include="Src\Utils\utils.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\Process\units.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Visuals\Data\JSON\cJSON.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,6 +40,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Visuals\Data\Palettes\palette_tree.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Processing\units_processing.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -67,9 +67,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Utils\utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\process.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Utils\macros.h">
@@ -100,6 +97,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Palettes\palette_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\processing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
