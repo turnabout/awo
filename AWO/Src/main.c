@@ -1,37 +1,26 @@
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 #include <stdio.h>
 #include <SDL.h>
-#include <SDL_image.h>
 
 #include "conf.h"
 #include "game.h"
 #include "init.h"
 
 #include "Visuals/processing.h"
-#include "Visuals/data_init.h"
-#include "Visuals/data_access.h"
-
-#ifdef __EMSCRIPTEN__
-#include <emscripten.h>
-#endif
-
-void test_json();
 
 int main(int argc, char** argv)
 {
-    // Initialize
     Game game;
     if (init_game(&game) == ERR) {
         exit_game(&game);
         return 1;
     }
 
-    test_json();
-
-    SDL_Texture* testTex = create_units_texture(&game);
-
-    // Draw test
-    SDL_SetRenderDrawBlendMode(game.rend, SDL_BLENDMODE_BLEND);
-    SDL_SetTextureBlendMode(testTex, SDL_BLENDMODE_BLEND);
+    // Draw test using unit texture
+    SDL_Texture* units_OS = create_units_texture(&game, OS, OS);
 
     SDL_RenderClear(game.rend);
 
@@ -42,7 +31,7 @@ int main(int argc, char** argv)
     dst.w = 293;
     dst.h = 275;
 
-    SDL_RenderCopy(game.rend, testTex, NULL, &dst);
+    SDL_RenderCopy(game.rend, units_OS, NULL, &dst);
     SDL_RenderPresent(game.rend);
 
     SDL_Delay(3000);
@@ -50,15 +39,4 @@ int main(int argc, char** argv)
     // Exit
     exit_game(&game);
     return 0;
-}
-
-void test_json()
-{
-    init_visuals_data_structure();
-
-    // Units_Data* a = access_units_data();
-    // printf("%d\n", a->src_width);
-
-    // Animation* test = access_unit_src_animation(Infantry, OS, Idle);
-    // print_anim_contents(test);
 }

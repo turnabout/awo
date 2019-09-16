@@ -4118,7 +4118,7 @@
 				]
 			]
 		],
-		"srcX": 0,
+		"srcX": 336,
 		"srcY": 0,
 		"srcWidth": 292,
 		"srcHeight": 278,
@@ -5241,7 +5241,7 @@
 						}
 					]
 				},
-				"cData": {
+				"scData": {
 					"subClockType": 1,
 					"defaultAnimIndexes": 0,
 					"varAnimIndexes": {}
@@ -5562,7 +5562,7 @@
 						}
 					]
 				},
-				"cData": {
+				"scData": {
 					"subClockType": 0,
 					"defaultAnimIndexes": 0,
 					"varAnimIndexes": {
@@ -5592,7 +5592,7 @@
 						}
 					]
 				},
-				"cData": {
+				"scData": {
 					"subClockType": 0,
 					"defaultAnimIndexes": 0,
 					"varAnimIndexes": {}
@@ -6225,7 +6225,7 @@
 						}
 					]
 				},
-				"cData": {
+				"scData": {
 					"subClockType": 0,
 					"defaultAnimIndexes": 0,
 					"varAnimIndexes": {
@@ -6480,7 +6480,7 @@
 				}
 			}
 		],
-		"srcX": 336,
+		"srcX": 0,
 		"srcY": 0,
 		"srcWidth": 336,
 		"srcHeight": 312,

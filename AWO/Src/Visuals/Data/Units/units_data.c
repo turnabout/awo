@@ -15,6 +15,7 @@ Unit_Palette* init_unit_palettes(const cJSON* base_palette_json, const cJSON* un
 
 void init_units_visual_data_structure(const cJSON* units_visuals_JSON)
 {
+    SS_Meta_Data* ss_meta_data = malloc(sizeof(SS_Meta_Data));
     units_data = malloc(sizeof(Units_Data));
 
     // Add src/dst data
@@ -22,12 +23,14 @@ void init_units_visual_data_structure(const cJSON* units_visuals_JSON)
     init_units_dst(cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dst"));
 
     // Add sprite sheet metadata
-    units_data->src_x      = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcX")->valueint;
-    units_data->src_y      = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcY")->valueint;
-    units_data->src_width  = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcWidth")->valueint;
-    units_data->src_height = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcHeight")->valueint;
-    units_data->dst_width  = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dstWidth")->valueint;
-    units_data->dst_height = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dstHeight")->valueint;
+    ss_meta_data->src_x = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcX")->valueint;
+    ss_meta_data->src_y = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcY")->valueint;
+    ss_meta_data->src_width = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcWidth")->valueint;
+    ss_meta_data->src_height = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "srcHeight")->valueint;
+    ss_meta_data->dst_width = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dstWidth")->valueint;
+    ss_meta_data->dst_height = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "dstHeight")->valueint;
+
+    units_data->ss_meta_data = ss_meta_data;
 
     // Add palettes data
     units_data->base_palette = generate_palette_tree(
@@ -62,12 +65,12 @@ Src_Unit_Type* init_unit_src(const cJSON* unit_type_json)
     Animation*** vars;          // All Variations' data
     const cJSON* unit_var_json; // cJSON data for current Variation
 
-    // Initialize Unit Type memory and count
+    // Initialize Unit Type memory and vars_count
     type = malloc(sizeof(Src_Unit_Type));
-    type->count = cJSON_GetArraySize(unit_type_json);
+    type->vars_count = cJSON_GetArraySize(unit_type_json);
 
     // Initialize Variations' memory
-    vars = malloc(sizeof(Animation**) * type->count);
+    vars = malloc(sizeof(Animation**) * type->vars_count);
 
     // Loop Variations cJSON
     cJSON_ArrayForEach(unit_var_json, unit_type_json)
@@ -90,7 +93,7 @@ Src_Unit_Type* init_unit_src(const cJSON* unit_type_json)
         *(vars++) = anims;
     }
 
-    vars -= type->count;
+    vars -= type->vars_count;
     type->vars = vars;
 
     return type;
@@ -136,17 +139,27 @@ Unit_Palette* init_unit_palettes(const cJSON* base_palette_json, const cJSON* un
     return res;
 }
 
-Animation* access_unit_src_animation(enum unit_type type, enum unit_var var, enum unit_anim anim)
+Animation** access_unit_src_var(unit_type type, unit_var var)
+{
+    // If variation doesn't exist on unit type, return default instead
+    unit_var returned_var = (var < units_data->src[type]->vars_count)
+        ? var
+        : UNIT_VAR_FIRST;
+
+    return units_data->src[type]->vars[returned_var];
+}
+
+Animation* access_unit_src_animation(unit_type type, unit_var var, unit_anim anim)
 {
     return units_data->src[type]->vars[var][anim];
 }
 
-Animation* access_unit_dst_animation(enum unit_type type, enum unit_anim anim)
+Animation* access_unit_dst_animation(unit_type type, unit_anim anim)
 {
     return units_data->dst[type][anim];
 }
 
-Units_Data* access_units_data()
+SS_Meta_Data* access_units_ss_meta_data()
 {
-    return units_data;
+    return units_data->ss_meta_data;
 }

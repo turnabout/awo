@@ -6,6 +6,8 @@
 #include "conf.h"
 #include "game.h"
 
+#include "Visuals/data_init.h"
+
 int init_game(Game* game)
 {
     // Initialize SDL
@@ -41,6 +43,8 @@ int init_game(Game* game)
         return ERR;
     }
 
+    SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);
+
     // Initialize sprite sheet surface
     SDL_Surface* surface = IMG_Load("Resources/spritesheet.png");
 
@@ -64,6 +68,9 @@ int init_game(Game* game)
         printf("Error creating sprite sheet texture: %s\n", IMG_GetError());
         return ERR;
     }
+
+    // Load & initialize the visuals data structure, used to process units
+    init_visuals_data_structure();
 
     return OK;
 }

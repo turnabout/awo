@@ -23,7 +23,7 @@
     UNIT(BattleCopter) \
     UNIT(TransportCopter) \
 
-enum unit_type {FOREACH_UNIT_TYPE(GENERATE_ENUM)};
+typedef enum unit_type {FOREACH_UNIT_TYPE(GENERATE_ENUM)} unit_type;
 static const char* unit_type_str[] = {FOREACH_UNIT_TYPE(GENERATE_STRING)};
 
 #define UNIT_TYPE_FIRST Infantry
@@ -38,7 +38,7 @@ static const char* unit_type_str[] = {FOREACH_UNIT_TYPE(GENERATE_STRING)};
     UNITVAR(YC) \
     UNITVAR(BH) \
 
-enum unit_var {FOREACH_UNIT_VAR(GENERATE_ENUM)};
+typedef enum unit_var {FOREACH_UNIT_VAR(GENERATE_ENUM)} unit_var;
 static const char* unit_var_str[] = {FOREACH_UNIT_VAR(GENERATE_STRING)};
 
 #define UNIT_VAR_FIRST OS
@@ -54,7 +54,7 @@ static const char* unit_var_str[] = {FOREACH_UNIT_VAR(GENERATE_STRING)};
     UNITANIM(Done) \
     UNITANIM(Left) \
 
-enum unit_anim {FOREACH_UNIT_ANIM(GENERATE_ENUM)};
+typedef enum unit_anim {FOREACH_UNIT_ANIM(GENERATE_ENUM)} unit_anim;
 static const char* unit_anim_str[] = {FOREACH_UNIT_ANIM(GENERATE_STRING)};
 
 #define UNIT_ANIM_FIRST Idle

@@ -14,11 +14,24 @@ typedef struct Animation
 } Animation;
 
 /**
+ * \brief Represents the sprite sheet meta data for a data structure.
+ */
+typedef struct SS_Meta_Data
+{
+    int src_x;
+    int src_y;
+    int src_width;
+    int src_height;
+    int dst_width;
+    int dst_height;
+} SS_Meta_Data;
+
+/**
  * \brief Represents a unit's variation and its animations.
  */
 typedef struct Src_Unit_Type
 {
-    int count;         // How many unit Variations are contained within this unit type
+    int vars_count;    // How many unit Variations are contained within this unit type
     Animation*** vars; // Variations/Animations/Frames contained within this unit type
 } Src_Unit_Type;
 
@@ -38,15 +51,23 @@ typedef struct Units_Data
 {
     Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
     Animation* dst[UNIT_TYPE_AMOUNT][UNIT_ANIM_FULL_AMOUNT];
-    int src_x;
-    int src_y;
-    int src_width;
-    int src_height;
-    int dst_width;
-    int dst_height;
+    SS_Meta_Data* ss_meta_data;
     Palette_Node* base_palette;
     Unit_Palette* unit_palettes;
 } Units_Data;
+
+/**
+ *  \brief Gets a Unit's Variation data.
+ *
+ *  \param type The Unit Type.
+ *
+ *  \param var The Unit Variation.
+ *
+ *  \return Returns the array of Animation arrays for the given unit type & variation.
+ *          If the given variation does not exist on the given unit type, returns the data for the
+ *          default unit variation.
+ */
+Animation** access_unit_src_var(unit_type type, unit_var var);
 
 /**
  *  \brief Gets a Unit's Animation source data.
@@ -58,10 +79,8 @@ typedef struct Units_Data
  *  \param anim The Unit Animation.
  *
  *  \return Returns the Animation for the given Unit/Variation/Animation.
- *
- *  \sa access_unit_src_animation()
  */
-Animation* access_unit_src_animation(enum unit_type type, enum unit_var var, enum unit_anim anim);
+Animation* access_unit_src_animation(unit_type type, unit_var var, unit_anim anim);
 
 /**
  *  \brief Gets a Unit's Animation destination data.
@@ -71,22 +90,14 @@ Animation* access_unit_src_animation(enum unit_type type, enum unit_var var, enu
  *  \param anim The Unit Animation.
  *
  *  \return Returns the Animation for the given Unit/Animation.
- *
- *  \sa access_unit_dst_animation()
  */
-Animation* access_unit_dst_animation(enum unit_type type, enum unit_anim anim);
+Animation* access_unit_dst_animation(unit_type type, unit_anim anim);
 
 /**
- *  \brief Access the entirety of units' data.
- *
- *  \param type The Unit Type.
- *
- *  \param anim The Unit Animation.
+ *  \brief Access units' sprite sheet meta data.
  *
  *  \return Returns the Animation for the given Unit/Animation.
- *
- *  \sa access_unit_dst_animation()
  */
-Units_Data* access_units_data();
+SS_Meta_Data* access_units_ss_meta_data();
 
 void print_anim_contents(Animation* anim);
