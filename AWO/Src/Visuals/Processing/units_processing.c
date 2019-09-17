@@ -4,10 +4,14 @@
 #include "../processing.h"
 #include "../data_access.h"
 
+void draw_anim(Game* game, Animation** src_anims, Animation** dst_anims, unit_anim dst_anim, int flip);
+
 SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_var)
 {
     SS_Meta_Data* ss_meta_data = access_units_ss_meta_data();
-    SDL_Rect src, dst;
+    SDL_Rect* src = (SDL_Rect*)malloc(sizeof(SDL_Rect));
+    SDL_Rect* dst = (SDL_Rect*)malloc(sizeof(SDL_Rect));
+    Unit_Palette* palette = access_unit_palette(color_var);
 
     // 1. Make a texture used to draw every individual unit sprite on
     SDL_Texture* temp = SDL_CreateTexture(
@@ -23,25 +27,13 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
 
     // Draw every unit sprite on the texture
     for (unit_type u_type = UNIT_TYPE_FIRST; u_type <= UNIT_TYPE_LAST; u_type++) {
-        Animation** u_var_anims = access_unit_src_var(u_type, type_var);
+        Animation** src_anims = access_unit_src_anims(u_type, type_var);
+        Animation** dst_anims = access_unit_dst_anims(u_type);
 
-        printf("\n\n%s\n", unit_type_str[u_type]);
-        print_anim_contents(u_var_anims[Idle]);
+        for (unit_anim u_anim = UNIT_ANIM_FULL_FIRST; u_anim <= UNIT_ANIM_FULL_LAST; u_anim++) {
+            draw_anim(game, src_anims, dst_anims, u_anim, palette->flip);
+        }
     }
-
-    // access_unit_src_var(unit_type type, unit_var var)
-
-    src.x = ss_meta_data->src_x + 213;
-    src.y = ss_meta_data->src_y + 64;
-    src.w = 15;
-    src.h = 16;
-
-    dst.x = 0;
-    dst.y = 0;
-    dst.w = 15;
-    dst.h = 16;
-
-    SDL_RenderCopy(game->rend, game->ss, &src, &dst);
 
     // 2. Make a texture used to colorize and flip the sprites
     SDL_Texture* streaming_texture = SDL_CreateTexture(
@@ -93,4 +85,39 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
 
     SDL_SetTextureBlendMode(streaming_texture, SDL_BLENDMODE_BLEND);
     return streaming_texture;
+}
+
+void draw_anim(Game* game, Animation** src_anims, Animation** dst_anims, unit_anim dst_anim, int flip)
+{
+    unit_anim src_anim = dst_anim;
+
+    switch (dst_anim) {
+    case Done:
+        src_anim = Idle;
+        break;
+    case Left:
+        src_anim = Right;
+        break;
+    }
+
+    // Flip the sprite if:
+    // 1. The destination animation is Idle/Done AND "flip" is true
+    // 2. The destination animation is Left
+    SDL_RendererFlip flip_arg = 
+        (flip == 1 && (dst_anim == Idle || dst_anim == Done)) || dst_anim == Left
+            ? SDL_FLIP_HORIZONTAL
+            : SDL_FLIP_NONE;
+
+    // Draw every individual frame
+    for (int i = 0; i < src_anims[src_anim]->count; i++) {
+        SDL_RenderCopyEx(
+            game->rend, 
+            game->ss, 
+            &src_anims[src_anim]->frames[i], 
+            &dst_anims[dst_anim]->frames[i],
+            0,
+            NULL,
+            flip_arg
+        );
+    }
 }

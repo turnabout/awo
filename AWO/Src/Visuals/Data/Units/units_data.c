@@ -139,7 +139,7 @@ Unit_Palette* init_unit_palettes(const cJSON* base_palette_json, const cJSON* un
     return res;
 }
 
-Animation** access_unit_src_var(unit_type type, unit_var var)
+Animation** access_unit_src_anims(unit_type type, unit_var var)
 {
     // If variation doesn't exist on unit type, return default instead
     unit_var returned_var = (var < units_data->src[type]->vars_count)
@@ -149,17 +149,17 @@ Animation** access_unit_src_var(unit_type type, unit_var var)
     return units_data->src[type]->vars[returned_var];
 }
 
-Animation* access_unit_src_animation(unit_type type, unit_var var, unit_anim anim)
+Animation** access_unit_dst_anims(unit_type type)
 {
-    return units_data->src[type]->vars[var][anim];
-}
-
-Animation* access_unit_dst_animation(unit_type type, unit_anim anim)
-{
-    return units_data->dst[type][anim];
+    return units_data->dst[type];
 }
 
 SS_Meta_Data* access_units_ss_meta_data()
 {
     return units_data->ss_meta_data;
+}
+
+Unit_Palette* access_unit_palette(unit_var u_var)
+{
+    return &(units_data->unit_palettes[u_var]);
 }

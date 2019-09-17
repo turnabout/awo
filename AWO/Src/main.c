@@ -22,6 +22,7 @@ int main(int argc, char** argv)
     // Draw test using unit texture
     SDL_Texture* units_OS = create_units_texture(&game, OS, OS);
 
+    SDL_SetRenderDrawColor(game.rend, 255, 255, 255, 255);
     SDL_RenderClear(game.rend);
 
     SDL_Rect dst;

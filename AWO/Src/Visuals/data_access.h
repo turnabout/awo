@@ -57,7 +57,7 @@ typedef struct Units_Data
 } Units_Data;
 
 /**
- *  \brief Gets a Unit's Variation data.
+ *  \brief Gets a unit's variation's source animations data.
  *
  *  \param type The Unit Type.
  *
@@ -67,31 +67,16 @@ typedef struct Units_Data
  *          If the given variation does not exist on the given unit type, returns the data for the
  *          default unit variation.
  */
-Animation** access_unit_src_var(unit_type type, unit_var var);
+Animation** access_unit_src_anims(unit_type type, unit_var var);
 
 /**
- *  \brief Gets a Unit's Animation source data.
+ *  \brief Gets a unit's destination animations data.
  *
  *  \param type The Unit Type.
  *
- *  \param var The Unit Variation.
- *
- *  \param anim The Unit Animation.
- *
- *  \return Returns the Animation for the given Unit/Variation/Animation.
+ *  \return Returns the array of Animation arrays for the given unit type.
  */
-Animation* access_unit_src_animation(unit_type type, unit_var var, unit_anim anim);
-
-/**
- *  \brief Gets a Unit's Animation destination data.
- *
- *  \param type The Unit Type.
- *
- *  \param anim The Unit Animation.
- *
- *  \return Returns the Animation for the given Unit/Animation.
- */
-Animation* access_unit_dst_animation(unit_type type, unit_anim anim);
+Animation** access_unit_dst_anims(unit_type type);
 
 /**
  *  \brief Access units' sprite sheet meta data.
@@ -99,5 +84,12 @@ Animation* access_unit_dst_animation(unit_type type, unit_anim anim);
  *  \return Returns the Animation for the given Unit/Animation.
  */
 SS_Meta_Data* access_units_ss_meta_data();
+
+/**
+ *  \brief Access the unit palette corresponding to the given unit variation.
+ *
+ *  \return Returns the unit palette.
+ */
+Unit_Palette* access_unit_palette(unit_var u_var);
 
 void print_anim_contents(Animation* anim);
