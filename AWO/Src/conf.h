@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * Project-wide configuration definitions.
  */
@@ -14,7 +16,12 @@
 
 // SDL initialization flags
 #define SDL_INIT_FLAGS SDL_INIT_VIDEO | SDL_INIT_TIMER
+#define REND_INIT_FLAGS SDL_RENDERER_ACCELERATED
 
 // Return values on success/failure
 #define ERR -1
 #define OK  0
+
+// Game speed
+#define FPS 60
+#define SCREEN_TICKS_PER_FRAME 1000 / FPS

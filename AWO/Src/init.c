@@ -35,7 +35,7 @@ int init_game(Game* game)
     game->rend = SDL_CreateRenderer(
         game->win, // Window where rendering is displayed
         -1,        // Index of rendering driver to initialize
-        SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC // Flags
+        REND_INIT_FLAGS
     );
 
     if (game->rend == NULL) {
