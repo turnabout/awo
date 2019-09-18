@@ -135,6 +135,12 @@ Unit_Palette* get_unit_palette(unit_var u_var)
     return result;
 }
 
+void free_unit_palette(Unit_Palette* u_palette)
+{
+    free_palette_tree(u_palette->palette);
+    free(u_palette);
+}
+
 Animation** access_unit_src_anims(unit_type type, unit_var var)
 {
     // If variation doesn't exist on unit type, return default instead

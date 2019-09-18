@@ -70,9 +70,9 @@ Animation** access_unit_src_anims(unit_type type, unit_var var);
 /**
  *  \brief Gets a unit's destination animations data.
  *
- *  \param type The Unit Type.
+ *  \param type The unit type.
  *
- *  \return Returns the array of Animation arrays for the given unit type.
+ *  \return Returns the array of animation arrays for the given unit type.
  */
 Animation** access_unit_dst_anims(unit_type type);
 
@@ -86,8 +86,17 @@ SS_Meta_Data* access_units_ss_meta_data();
 /**
  *  \brief Get the unit palette corresponding to the given unit variation.
  *
+ *  \param u_var The unit variation.
+ *
  *  \return Returns the unit palette.
  */
 Unit_Palette* get_unit_palette(unit_var u_var);
+
+/**
+ *  \brief Frees a unit palette after using it.
+ *
+ *  \param u_palette The unit palette.
+ */
+void free_unit_palette(Unit_Palette* u_palette);
 
 void print_anim_contents(Animation* anim);

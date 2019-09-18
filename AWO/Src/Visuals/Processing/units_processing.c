@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <SDL.h>
 
 #include "game.h"
@@ -11,7 +12,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
     SS_Meta_Data* ss_meta_data = access_units_ss_meta_data();
     SDL_Rect* src = (SDL_Rect*)malloc(sizeof(SDL_Rect));
     SDL_Rect* dst = (SDL_Rect*)malloc(sizeof(SDL_Rect));
-    Unit_Palette* palette = get_unit_palette(color_var);
+    Unit_Palette* u_palette = get_unit_palette(color_var);
 
     // 1. Make a texture used to draw every individual unit sprite on
     SDL_Texture* temp = SDL_CreateTexture(
@@ -31,7 +32,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
         Animation** dst_anims = access_unit_dst_anims(u_type);
 
         for (unit_anim u_anim = UNIT_ANIM_FULL_FIRST; u_anim <= UNIT_ANIM_FULL_LAST; u_anim++) {
-            draw_anim(game, src_anims, dst_anims, u_anim, 1);
+            draw_anim(game, src_anims, dst_anims, u_anim, u_palette->flip);
         }
     }
 
@@ -44,44 +45,45 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
         ss_meta_data->dst_height
     );
 
-    void* m_pixels;
-    int pitch;
+    // Transfer contents of temp texture over to the streaming texture
+    Uint32* s_pixels; // Pointer filled with pixel data
+    int s_pitch;      // Length of a row of s_pixels in bytes
 
-    // Transfer contents of first texture over to this one
-    SDL_LockTexture(streaming_texture, NULL, &m_pixels, &pitch);
-    SDL_RenderReadPixels(game->rend, NULL, SDL_PIXELFORMAT_RGBA8888, m_pixels, pitch);
+    SDL_LockTexture(streaming_texture, NULL, &s_pixels, &s_pitch);
+    SDL_RenderReadPixels(game->rend, NULL, SDL_PIXELFORMAT_RGBA8888, s_pixels, s_pitch);
 
-    // Apply keymap
+    // Get pixel count
     SDL_PixelFormat* mapping_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-
-    // Get pixel data
-    Uint32* pixels = (Uint32*)m_pixels;
-    int pixel_count = (pitch / mapping_format->BytesPerPixel) * ss_meta_data->dst_height;
-
-    // Map colors
-    // Test swapping black pixels with red pixels
-    Uint32 color_key_from = SDL_MapRGBA(mapping_format, 0, 0, 0, 0xFF);
-    Uint32 color_key_to = SDL_MapRGBA(mapping_format, 0xFF, 0, 0, 0xFF);
-
-    // printf("%X\n", color_key_from >> 24);
-    // printf("%X\n", color_key_to >> 24);
-
-    /*
-    for (int i = 0; i < pixel_count; i++) {
-
-        Uint32 pixel = pixels[i];
-
-        if (pixels[i] == color_key_from) {
-            pixels[i] = color_key_to;
-        }
-    }*/
-
-    SDL_UnlockTexture(streaming_texture);
+    int pixel_count = (s_pitch / mapping_format->BytesPerPixel) * ss_meta_data->dst_height;
     SDL_FreeFormat(mapping_format);
 
-    // Reset to default render target & clean up temp texture
+    // Apply color palette to every pixel
+    for (int i = 0; i < pixel_count; i++) {
+
+        // Ignore transparent pixels
+        if (s_pixels[i] == 0) {
+            continue;
+        }
+
+        // Swap pixel according to palette
+        Uint32 color_to;
+        if ((color_to = get_p_node_val(u_palette->palette, s_pixels[i] >> 24)) != -1) {
+            s_pixels[i] = color_to;
+        } else {
+            printf(
+                "Color '%d' not found in palette for color variation '%s'\n", 
+                s_pixels[i] >> 24, 
+                unit_type_str[color_var]
+            );
+        }
+    }
+
+    SDL_UnlockTexture(streaming_texture);
+
+    // Reset to default render target & clean up temp texture/palette
     SDL_SetRenderTarget(game->rend, NULL);
     SDL_DestroyTexture(temp);
+    free_unit_palette(u_palette);
 
     SDL_SetTextureBlendMode(streaming_texture, SDL_BLENDMODE_BLEND);
     return streaming_texture;

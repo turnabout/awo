@@ -42,4 +42,4 @@ Uint32 get_p_node_val(Palette_Node* root, int key);
  *
  *  \param root The palette tree's root node.
  */
-void dispose_p_tree(Palette_Node* root);
+void free_palette_tree(Palette_Node* root);

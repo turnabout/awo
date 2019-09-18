@@ -91,11 +91,11 @@ Uint32 get_p_node_val(Palette_Node* root, int key)
     return -1;
 }
 
-void dispose_p_tree(Palette_Node* root)
+void free_palette_tree(Palette_Node* root)
 {
     if (root != NULL) {
-        dispose_p_tree(root->left);
-        dispose_p_tree(root->right);
+        free_palette_tree(root->left);
+        free_palette_tree(root->right);
         free(root);
     }
 }
