@@ -7,7 +7,7 @@
 /**
  * \brief Represents an animation and its frames.
  */
-typedef struct Animation
+typedef struct
 {
     int count;
     SDL_Rect* frames;
@@ -16,7 +16,7 @@ typedef struct Animation
 /**
  * \brief Represents the sprite sheet meta data for a data structure.
  */
-typedef struct SS_Meta_Data
+typedef struct
 {
     int src_x;
     int src_y;
@@ -29,7 +29,7 @@ typedef struct SS_Meta_Data
 /**
  * \brief Represents a unit's variation and its animations.
  */
-typedef struct Src_Unit_Type
+typedef struct
 {
     int vars_count;    // How many unit Variations are contained within this unit type
     Animation*** vars; // Variations/Animations/Frames contained within this unit type
@@ -38,7 +38,7 @@ typedef struct Src_Unit_Type
 /**
  * \brief Represents a palette for a unit variation.
  */
-typedef struct Unit_Palette
+typedef struct
 {
     int flip;
     Palette_Node* palette;
@@ -47,13 +47,11 @@ typedef struct Unit_Palette
 /**
  * \brief Represents all visual data used by units.
  */
-typedef struct Units_Data
+typedef struct
 {
     Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
     Animation* dst[UNIT_TYPE_AMOUNT][UNIT_ANIM_FULL_AMOUNT];
     SS_Meta_Data* ss_meta_data;
-    Palette_Node* base_palette;
-    Unit_Palette* unit_palettes;
 } Units_Data;
 
 /**
@@ -86,10 +84,10 @@ Animation** access_unit_dst_anims(unit_type type);
 SS_Meta_Data* access_units_ss_meta_data();
 
 /**
- *  \brief Access the unit palette corresponding to the given unit variation.
+ *  \brief Get the unit palette corresponding to the given unit variation.
  *
  *  \return Returns the unit palette.
  */
-Unit_Palette* access_unit_palette(unit_var u_var);
+Unit_Palette* get_unit_palette(unit_var u_var);
 
 void print_anim_contents(Animation* anim);

@@ -11,7 +11,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
     SS_Meta_Data* ss_meta_data = access_units_ss_meta_data();
     SDL_Rect* src = (SDL_Rect*)malloc(sizeof(SDL_Rect));
     SDL_Rect* dst = (SDL_Rect*)malloc(sizeof(SDL_Rect));
-    Unit_Palette* palette = access_unit_palette(color_var);
+    Unit_Palette* palette = get_unit_palette(color_var);
 
     // 1. Make a texture used to draw every individual unit sprite on
     SDL_Texture* temp = SDL_CreateTexture(
@@ -31,7 +31,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
         Animation** dst_anims = access_unit_dst_anims(u_type);
 
         for (unit_anim u_anim = UNIT_ANIM_FULL_FIRST; u_anim <= UNIT_ANIM_FULL_LAST; u_anim++) {
-            draw_anim(game, src_anims, dst_anims, u_anim, palette->flip);
+            draw_anim(game, src_anims, dst_anims, u_anim, 1);
         }
     }
 

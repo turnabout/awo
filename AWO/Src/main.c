@@ -45,7 +45,7 @@ void run_game(Game* game)
         int frame_ticks = SDL_GetTicks() - start_ticks;
 
         if (frame_ticks < SCREEN_TICKS_PER_FRAME) {
-            SDL_Delay( SCREEN_TICKS_PER_FRAME - frame_ticks );
+            SDL_Delay(SCREEN_TICKS_PER_FRAME - frame_ticks);
         }
     }
 }
