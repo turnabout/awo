@@ -9,10 +9,21 @@
 #include "game.h"
 #include "init.h"
 
+#include "Visuals/data_access.h"
 #include "Visuals/processing.h"
 
-void draw_test(Game* game);
+void draw_armies_test(Game* game);
 void run_game(Game* game);
+
+void draw_unit_test(
+    Game* game,
+    SDL_Texture* unit_tex,
+    unit_type u_type,
+    unit_anim u_anim,
+    int index,
+    int x,
+    int y
+);
 
 int main(int argc, char** argv)
 {
@@ -22,7 +33,7 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    draw_test(&game);
+    draw_armies_test(&game);
     run_game(&game);
 
     return 0;
@@ -50,21 +61,60 @@ void run_game(Game* game)
     }
 }
 
-void draw_test(Game* game)
+void draw_unit_test(
+    Game* game, 
+    SDL_Texture* unit_tex, 
+    unit_type u_type, 
+    unit_anim u_anim, 
+    int index,
+    int x,
+    int y
+)
 {
-    // Draw test using unit texture
-    SDL_Texture* units_OS = create_units_texture(game, OS, OS);
+    SDL_Rect* frame = &access_unit_dst_anims(u_type)[u_anim]->frames[index];
+
+    SDL_Rect dst;
+
+    dst.x = x;
+    dst.y = y;
+    dst.w = frame->w;
+    dst.h = frame->h;
+
+    SDL_RenderCopy(game->rend, unit_tex, frame, &dst);
+}
+
+void draw_armies_test(Game* game)
+{
+    // Gather all basic army unit textures
+    SDL_Texture* armies[UNIT_VAR_AMOUNT] = {
+        create_units_texture(game, OS, OS),
+        create_units_texture(game, BM, BM),
+        create_units_texture(game, GE, GE),
+        create_units_texture(game, YC, YC),
+        create_units_texture(game, BH, BH)
+    };
+
+    // SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_NONE);
+    // SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_ADD);
+    // SDL_SetTextureBlendMode(units_OS, SDL_BLENDMODE_NONE);
+
+    // SDL_SetTextureAlphaMod(game->ss, 1);
+    // SDL_SetTextureColorMod(game->ss, 127, 255, 0);
 
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
     SDL_RenderClear(game->rend);
 
-    SDL_Rect dst;
+    // draw_unit_test(game, armies[OS], Tank, Idle, 0, 120, 120);
 
-    dst.x = 0;
-    dst.y = 0;
-    dst.w = 293;
-    dst.h = 275;
+    // Draw every unit of every army
+    int col_size = 20;
+    int row_size = 20;
 
-    SDL_RenderCopy(game->rend, units_OS, NULL, &dst);
+    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+        for (unit_type u = UNIT_TYPE_FIRST; u <= UNIT_TYPE_LAST; u++) {
+            draw_unit_test(game, armies[v], u, Idle, 0, u * col_size, v * row_size);
+        }
+    }
+
     SDL_RenderPresent(game->rend);
 }

@@ -43,8 +43,6 @@ int init_game(Game* game)
         return ERR;
     }
 
-    SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);
-
     // Initialize sprite sheet surface
     SDL_Surface* surface = IMG_Load("Resources/spritesheet.png");
 
