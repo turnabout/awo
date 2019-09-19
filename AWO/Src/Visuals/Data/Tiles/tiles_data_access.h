@@ -10,8 +10,10 @@
  */
 typedef struct
 {
-    map_t vars;
-    int sub_clock_data; // TODO
+    map_t vars;          // Map holding every variation's animation
+    int vars_amount;     // Amount of variations this tile has
+    tile_var* vars_list; // List of every variation this tile has
+    int sub_clock_data;  // TODO
 } Tile_Data;
 
 /**
