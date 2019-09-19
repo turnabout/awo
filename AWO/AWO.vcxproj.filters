@@ -45,6 +45,9 @@
     <ClCompile Include="Src\Visuals\Processing\units_processing.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\Tiles\tiles_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -100,6 +103,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\processing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Units\units_data_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\general_data_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

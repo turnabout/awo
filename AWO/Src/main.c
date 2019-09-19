@@ -12,6 +12,7 @@
 #include "Visuals/data_access.h"
 #include "Visuals/processing.h"
 
+void draw_tiles_test(Game* game);
 void draw_armies_test(Game* game);
 void run_game(Game* game);
 
@@ -33,6 +34,7 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    draw_tiles_test(&game);
     draw_armies_test(&game);
     run_game(&game);
 
@@ -140,4 +142,15 @@ void draw_armies_test(Game* game)
     }
 
     SDL_RenderPresent(game->rend);
+}
+
+void draw_tiles_test(Game* game)
+{
+    // Test accessing tile variation animation
+    Animation* anim = access_tile_var_anim(River, WaterfallDown);
+
+    if (anim != NULL) {
+        print_anim_contents(anim);
+    }
+
 }

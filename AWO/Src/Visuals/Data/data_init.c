@@ -5,6 +5,7 @@
 
 #include "JSON/JSON_access.h"
 #include "Units/units_data.h"
+#include "Tiles/tiles_data.h"
 #include "../data_access.h"
 
 #pragma warning( disable : 6011 )
@@ -19,8 +20,9 @@ int init_visuals_data_structure(void)
         return ERR;
     }
 
-    // Load cJSON into the visuals data structure
+    // Load cJSON into the visuals data structures
     init_units_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units"));
+    init_tiles_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "tiles"));
 
     return OK;
 }
@@ -39,10 +41,21 @@ Animation* get_JSON_anim(const cJSON* anim_json)
     // Gather data from every frame and populate the allocated frames
     cJSON_ArrayForEach(frame_json, anim_json)
     {
-        frames->x = cJSON_GetObjectItemCaseSensitive(frame_json, "x")->valueint;
-        frames->y = cJSON_GetObjectItemCaseSensitive(frame_json, "y")->valueint;
-        frames->w = cJSON_GetObjectItemCaseSensitive(frame_json, "w")->valueint;
-        frames->h = cJSON_GetObjectItemCaseSensitive(frame_json, "h")->valueint;
+        frames->x = (cJSON_HasObjectItem(frame_json, "x"))
+                        ? cJSON_GetObjectItemCaseSensitive(frame_json, "x")->valueint
+                        : DEFAULT_TILE_DIMENSION;
+
+        frames->y = (cJSON_HasObjectItem(frame_json, "y"))
+                        ? cJSON_GetObjectItemCaseSensitive(frame_json, "y")->valueint
+                        : DEFAULT_TILE_DIMENSION;
+
+        frames->w = (cJSON_HasObjectItem(frame_json, "w"))
+                        ? cJSON_GetObjectItemCaseSensitive(frame_json, "w")->valueint
+                        : DEFAULT_TILE_DIMENSION;
+
+        frames->h = (cJSON_HasObjectItem(frame_json, "h"))
+                        ? cJSON_GetObjectItemCaseSensitive(frame_json, "h")->valueint
+                        : DEFAULT_TILE_DIMENSION;
 
         frames++;
     }

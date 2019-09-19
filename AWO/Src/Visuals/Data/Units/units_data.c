@@ -1,8 +1,6 @@
-#include <stdio.h>
-
 #include "../JSON/JSON_access.h"
 #include "../data_init_internal.h"
-#include "../../data_access.h"
+#include "units_data_access.h"
 
 #pragma warning( disable : 6011 )
 
@@ -103,7 +101,6 @@ void init_units_dst(const cJSON* dst_json)
 
         cJSON_ArrayForEach(unit_anim_json, unit_type_json)
         {
-            // printf("%s %s\n", unit_type_str[current_type], unit_anim_str[current_anim]);
             units_data->dst[current_type][current_anim++] = get_JSON_anim(unit_anim_json);
         }
 

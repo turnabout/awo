@@ -28,3 +28,6 @@
 // Game speed
 #define FPS 60
 #define SCREEN_TICKS_PER_FRAME 1000 / FPS
+
+// Default dimension of a tile, in pixels
+#define DEFAULT_TILE_DIMENSION 16
