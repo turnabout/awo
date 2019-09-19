@@ -47,30 +47,30 @@ int init_game(Game* game)
     SDL_RenderSetLogicalSize(game->rend, X1_SCREEN_WIDTH, X1_SCREEN_HEIGHT);
 
     // Initialize sprite sheet surface
-    SDL_Surface* surface = IMG_Load("Resources/spritesheet.png");
+    SDL_Surface* surface = IMG_Load(SPRITE_SHEET_PATH);
 
     if (surface == NULL) {
         printf("Error loading sprite sheet surface: %s\n", IMG_GetError());
         return ERR;
     }
 
-    SDL_Surface* formattedSurface = SDL_ConvertSurfaceFormat(
+    SDL_Surface* formatted_surface = SDL_ConvertSurfaceFormat(
         surface, 
         SDL_PIXELFORMAT_RGBA8888, 
         0
     );
 
-    game->ss = SDL_CreateTextureFromSurface(game->rend, formattedSurface);
+    game->ss = SDL_CreateTextureFromSurface(game->rend, formatted_surface);
 
     SDL_FreeSurface(surface);
-    SDL_FreeSurface(formattedSurface);
+    SDL_FreeSurface(formatted_surface);
 
     if (game->ss == NULL) {
         printf("Error creating sprite sheet texture: %s\n", IMG_GetError());
         return ERR;
     }
 
-    // Load & initialize the visuals data structure, used to process units
+    // Load & initialize the visuals data structure
     init_visuals_data_structure();
 
     return OK;
