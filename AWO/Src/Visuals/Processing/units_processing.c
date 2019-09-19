@@ -5,7 +5,8 @@
 #include "../processing.h"
 #include "../data_access.h"
 
-void draw_anim(Game* game, Animation** src_anims, Animation** dst_anims, unit_anim dst_anim, int flip);
+// Draws every animations of the given unit type
+void draw_anims(Game* game, unit_type u_type, unit_var u_var);
 
 SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_var)
 {
@@ -28,12 +29,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
 
     // Draw every unit sprite on the texture
     for (unit_type u_type = UNIT_TYPE_FIRST; u_type <= UNIT_TYPE_LAST; u_type++) {
-        Animation** src_anims = access_unit_src_anims(u_type, type_var);
-        Animation** dst_anims = access_unit_dst_anims(u_type);
-
-        for (unit_anim u_anim = UNIT_ANIM_FULL_FIRST; u_anim <= UNIT_ANIM_FULL_LAST; u_anim++) {
-            draw_anim(game, src_anims, dst_anims, u_anim, u_palette->flip);
-        }
+        draw_anims(game, u_type, type_var);
     }
 
     // 2. Make a texture used to colorize and flip the sprites
@@ -89,37 +85,22 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
     return streaming_texture;
 }
 
-void draw_anim(Game* game, Animation** src_anims, Animation** dst_anims, unit_anim dst_anim, int flip)
+void draw_anims(Game* game, unit_type u_type, unit_var u_var)
 {
-    unit_anim src_anim = dst_anim;
+    Animation** src_anims = access_unit_src_anims(u_type, u_var);
+    Animation** dst_anims = access_unit_dst_anims(u_type);
 
-    switch (dst_anim) {
-    case Done:
-        src_anim = Idle;
-        break;
-    case Left:
-        src_anim = Right;
-        break;
-    }
+    // Draw every animation
+    for (unit_anim u_anim = UNIT_ANIM_FIRST; u_anim <= UNIT_ANIM_LAST; u_anim++) {
 
-    // Flip the sprite if:
-    // 1. The destination animation is Idle/Done AND "flip" is true
-    // 2. The destination animation is Left
-    SDL_RendererFlip flip_arg = 
-        (flip == 1 && (dst_anim == Idle || dst_anim == Done)) || dst_anim == Left
-            ? SDL_FLIP_HORIZONTAL
-            : SDL_FLIP_NONE;
-
-    // Draw every individual frame
-    for (int i = 0; i < src_anims[src_anim]->count; i++) {
-        SDL_RenderCopyEx(
-            game->rend, 
-            game->ss, 
-            &src_anims[src_anim]->frames[i], 
-            &dst_anims[dst_anim]->frames[i],
-            0,
-            NULL,
-            flip_arg
-        );
+        // Draw every frame of the animation
+        for (int i = 0; i < src_anims[u_anim]->count; i++) {
+            SDL_RenderCopy(
+                game->rend, 
+                game->ss, 
+                &src_anims[u_anim]->frames[i], 
+                &dst_anims[u_anim]->frames[i]
+            );
+        }
     }
 }

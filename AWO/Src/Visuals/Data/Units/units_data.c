@@ -99,7 +99,7 @@ void init_units_dst(const cJSON* dst_json)
     cJSON_ArrayForEach(unit_type_json, dst_json)
     {
         const cJSON* unit_anim_json;
-        enum unit_type current_anim = UNIT_ANIM_FULL_FIRST;
+        enum unit_type current_anim = UNIT_ANIM_FIRST;
 
         cJSON_ArrayForEach(unit_anim_json, unit_type_json)
         {

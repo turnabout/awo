@@ -50,7 +50,7 @@ typedef struct
 typedef struct
 {
     Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
-    Animation* dst[UNIT_TYPE_AMOUNT][UNIT_ANIM_FULL_AMOUNT];
+    Animation* dst[UNIT_TYPE_AMOUNT][UNIT_ANIM_AMOUNT];
     SS_Meta_Data* ss_meta_data;
 } Units_Data;
 

@@ -51,8 +51,6 @@ static const char* unit_var_str[] = {FOREACH_UNIT_VAR(GENERATE_STRING)};
     UNITANIM(Right) \
     UNITANIM(Up) \
     UNITANIM(Down) \
-    UNITANIM(Done) \
-    UNITANIM(Left) \
 
 typedef enum unit_anim {FOREACH_UNIT_ANIM(GENERATE_ENUM)} unit_anim;
 static const char* unit_anim_str[] = {FOREACH_UNIT_ANIM(GENERATE_STRING)};
@@ -60,9 +58,3 @@ static const char* unit_anim_str[] = {FOREACH_UNIT_ANIM(GENERATE_STRING)};
 #define UNIT_ANIM_FIRST Idle
 #define UNIT_ANIM_LAST Down
 #define UNIT_ANIM_AMOUNT UNIT_ANIM_LAST + 1
-
-#define UNIT_ANIM_FULL_FIRST Idle
-#define UNIT_ANIM_FULL_LAST Left
-#define UNIT_ANIM_FULL_AMOUNT UNIT_ANIM_FULL_LAST + 1
-
-#define UNIT_ANIM_FIRST_EXTRA Done
