@@ -43,6 +43,9 @@ int init_game(Game* game)
         return ERR;
     }
 
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 0);
+    SDL_RenderSetLogicalSize(game->rend, X1_SCREEN_WIDTH, X1_SCREEN_HEIGHT);
+
     // Initialize sprite sheet surface
     SDL_Surface* surface = IMG_Load("Resources/spritesheet.png");
 

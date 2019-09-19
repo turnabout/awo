@@ -9,10 +9,13 @@
 #define JSON_PATH         "Resources/visuals.json"
 
 // Window configuration
-#define GAME_TITLE "SDL2 Window"
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 640
+#define GAME_TITLE "AWO"
+#define SCREEN_WIDTH 720
+#define SCREEN_HEIGHT 480
 #define SDL_WINDOW_FLAGS SDL_WINDOW_OPENGL
+
+#define X1_SCREEN_WIDTH  720
+#define X1_SCREEN_HEIGHT 480
 
 // SDL initialization flags
 #define SDL_INIT_FLAGS SDL_INIT_VIDEO | SDL_INIT_TIMER

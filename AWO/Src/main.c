@@ -94,13 +94,6 @@ void draw_armies_test(Game* game)
         create_units_texture(game, BH, BH)
     };
 
-    // SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_NONE);
-    // SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_ADD);
-    // SDL_SetTextureBlendMode(units_OS, SDL_BLENDMODE_NONE);
-
-    // SDL_SetTextureAlphaMod(game->ss, 1);
-    // SDL_SetTextureColorMod(game->ss, 127, 255, 0);
-
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
     SDL_RenderClear(game->rend);
 
@@ -113,6 +106,20 @@ void draw_armies_test(Game* game)
     for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
         for (unit_type u = UNIT_TYPE_FIRST; u <= UNIT_TYPE_LAST; u++) {
             draw_unit_test(game, armies[v], u, Idle, 0, u * col_size, v * row_size);
+        }
+    }
+
+    // Draw a second group, darkened for "done" units
+    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+        // SDL_SetTextureAlphaMod(armies[v], 250);
+        SDL_SetTextureColorMod(armies[v], 127, 127, 127);
+    }
+
+    int group_2_start_y = (UNIT_VAR_LAST + 2) * row_size;
+
+    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+        for (unit_type u = UNIT_TYPE_FIRST; u <= UNIT_TYPE_LAST; u++) {
+            draw_unit_test(game, armies[v], u, Idle, 0, u * col_size, group_2_start_y + (v * row_size));
         }
     }
 
