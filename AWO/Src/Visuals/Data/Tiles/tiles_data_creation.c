@@ -1,25 +1,30 @@
-#include <stdio.h>
+#include <stdlib.h>
 
-#include "cJSON.h"
 #include "tiles_data.h"
+#include "_tiles_data_internal.h"
 
 #pragma warning( disable : 6011 )
 
-static Tiles_Data* tiles_data;
+void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json);
 
-// Initialize tiles' source visuals data
-void init_tiles_src(const cJSON* src_json);
-
-void init_tiles_visual_data_structure(cJSON* t_visuals_JSON)
+Tiles_Data* TD_create_from_JSON(cJSON* tiles_visuals_JSON)
 {
-    tiles_data = malloc(sizeof(Tiles_Data));
-    tiles_data->ss_meta_data = SS_Meta_create_from_JSON(t_visuals_JSON);
+    Tiles_Data* td = malloc(sizeof(Tiles_Data));
+
+    // Store metadata & JSON for palettes
+    td->ss_meta_data = SS_Meta_create_from_JSON(tiles_visuals_JSON);
+    // TODO: store JSON for palettes
 
     // Add tiles' src data
-    init_tiles_src(cJSON_GetObjectItemCaseSensitive(t_visuals_JSON, "src"));
+    get_tiles_src_data(
+        td,
+        cJSON_GetObjectItemCaseSensitive(tiles_visuals_JSON, "src")
+    );
+
+    return td;
 }
 
-void init_tiles_src(const cJSON* src_json)
+void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 {
     // Initialize temporary hashmap containing all variations, using short strings as keys.
     // This is done so we can access the corresponding tile variation for each tile, as we loop 
@@ -121,7 +126,7 @@ void init_tiles_src(const cJSON* src_json)
         tile_data->vars_list = vars_list;
         
         // Store populated tile data
-        tiles_data->src[tile_count++] = tile_data;
+        td->src[tile_count++] = tile_data;
     }
 
     // Free the temporary variations hashmap
@@ -138,43 +143,4 @@ void init_tiles_src(const cJSON* src_json)
     }
 
     hashmap_free(all_vars_hashmap);
-}
-
-Tile_Data* access_tile(tile_type type)
-{
-    return tiles_data->src[type];
-}
-
-Tile_Var_Data* access_tile_var(tile_type type, tile_var var)
-{
-    Tile_Var_Data* result;
-
-    if (hashmap_get(
-        tiles_data->src[type]->vars, 
-        (char*)tile_var_str_short[var], 
-        (void**)(&result)) != MAP_OK
-    ) {
-        return NULL;
-    } else {
-        return result;
-    }
-}
-
-void debug_print_tile_data(tile_type type)
-{
-    Tile_Data* tile_data = access_tile(type);
-
-    printf("=====\n%s (%d)\n=====\n", tile_type_str[type], type);
-
-    printf("Clock: %d\n", tile_data->clock);
-
-    for (int i = 0; i < tile_data->vars_amount; i++) {
-        tile_var var = tile_data->vars_list[i];
-        Tile_Var_Data* tile_var = access_tile_var(type, var);
-
-        printf("\n%s (%s)\n", tile_var_str[var], tile_var_str_short[var]);
-        printf("SubClock: %d\n", tile_var->sub_clock);
-
-        AD_print(tile_var->anim);
-    }
 }

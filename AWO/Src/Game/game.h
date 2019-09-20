@@ -12,7 +12,7 @@ typedef struct Game
     SDL_Surface*  surface;
     SDL_Texture*  ss;
     Units_Data*   ud;
-    Tiles_Data*   td;
+    // Tiles_Data*   td;
 } Game;
 
 /**

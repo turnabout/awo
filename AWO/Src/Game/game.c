@@ -1,6 +1,7 @@
 #include "Visuals/visuals_data.h"
 #include "Visuals/visuals_processing.h"
 #include "game.h"
+#include "conf.h"
 
 void draw_tiles_test(Game* game);
 void draw_armies_test(Game* game);
