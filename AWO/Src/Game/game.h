@@ -7,12 +7,12 @@
  */
 typedef struct Game
 {
-    SDL_Window* win;
+    SDL_Window*   win;
     SDL_Renderer* rend;
-    SDL_Surface* surface;
-    SDL_Texture* ss;
-    Units_Data* ud;
-    Tiles_Data* td;
+    SDL_Surface*  surface;
+    SDL_Texture*  ss;
+    Units_Data*   ud;
+    Tiles_Data*   td;
 } Game;
 
 /**
@@ -21,8 +21,6 @@ typedef struct Game
  *  \param game Pointer to the game instance.
  *
  *  \return Returns ERR if an error occurred, or OK.
- *
- *  \sa init_game()
  */
 int init_game(Game* game);
 
@@ -37,7 +35,5 @@ void exit_game(Game* game);
  *  \brief Runs the main game loop continuously.
  *
  *  \param game Pointer to the game instance.
- *
- *  \sa exit_game()
  */
 void run_game(Game* game);

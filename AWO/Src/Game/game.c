@@ -9,6 +9,7 @@ void run_game(Game* game)
 {
     // draw_tiles_test(&game);
     // draw_armies_test(&game);
+    UD_print(game->ud, UD_DST);
 
     while (1) {
         SDL_Event event;

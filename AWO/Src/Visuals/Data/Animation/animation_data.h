@@ -20,9 +20,11 @@ Animation_Data* AD_create_from_JSON(const cJSON* animation_json);
  */
 void AD_free(Animation_Data* animation_data);
 
+#ifdef _DEBUG
 /**
  *  \brief Prints an Animation_Data's contents.
  *
  *  \param animation_data Pointer to the allocated Animation_Data.
  */
 void AD_print(Animation_Data* animation_data);
+#endif

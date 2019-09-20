@@ -6,9 +6,9 @@ Units_Data* UD_create_from_JSON(const cJSON* ud_JSON)
 {
     Units_Data* ud = malloc(sizeof(Units_Data));
 
-    // Store metadata & JSON
+    // Store metadata & JSON for palettes
     ud->ss_metadata = SS_Meta_create_from_JSON(ud_JSON);
-    ud->visuals_JSON = ud_JSON;
+    ud->palettes_JSON = cJSON_GetObjectItemCaseSensitive(ud_JSON, "palettes");
 
     // Store source and destination data
     get_units_src_data(ud, cJSON_GetObjectItemCaseSensitive(ud_JSON, "src"));

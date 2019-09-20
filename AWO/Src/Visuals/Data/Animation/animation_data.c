@@ -54,6 +54,7 @@ void AD_free(Animation_Data* ad)
     // TODO
 }
 
+#ifdef _DEBUG
 void AD_print(Animation_Data* ad)
 {
     printf("\n[\n");
@@ -69,3 +70,4 @@ void AD_print(Animation_Data* ad)
     }
     printf("]\n");
 }
+#endif

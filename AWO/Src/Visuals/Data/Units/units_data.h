@@ -15,9 +15,19 @@ typedef struct Units_Data Units_Data;
  */
 Units_Data* UD_create_from_JSON(const cJSON* ud_JSON);
 
+#ifdef _DEBUG
+
+typedef enum {
+    UD_SRC,
+    UD_DST,
+} UD_print_arg;
+
 /**
- *  \brief Print contents of units data.
+ *  \brief Print contents from units data.
  *
  *  \param ud The Units_Data object to print.
+
+ *  \param which Which part of the units' data to print.
  */
-void UD_print(Units_Data* ud);
+void UD_print(Units_Data* ud, UD_print_arg which);
+#endif

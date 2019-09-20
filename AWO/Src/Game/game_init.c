@@ -3,8 +3,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include "Visuals/visuals_data.h"
+#include "Utilities/utilities.h"
 #include "conf.h"
 #include "game.h"
+
+int get_game_visuals_data(Game* game);
 
 int init_game(Game* game)
 {
@@ -68,31 +72,16 @@ int init_game(Game* game)
         return ERR;
     }
 
-    // Get initial visuals data
-
-    return OK;
-}
-
-/*
-int init_visuals_data_structure(void)
-{
-    // Load visuals JSON contents into cJSON struct
-    const cJSON* visuals_JSON;
-
-    if (load_visuals_JSON(&visuals_JSON) == ERR) {
+    // Add the visual data to the game instance
+    if (get_game_visuals_data(game) == ERR) {
+        printf("Error getting game's visual data\n");
         return ERR;
     }
 
-    // Load cJSON into the visuals data structures
-    init_units_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units"));
-    init_tiles_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "tiles"));
-
     return OK;
 }
-*/
 
-/*
-int load_visuals_JSON(const cJSON **visuals_JSON)
+int get_visuals_JSON(const cJSON **visuals_JSON)
 {
     // Get file contents & size
     char *f_contents;
@@ -107,7 +96,24 @@ int load_visuals_JSON(const cJSON **visuals_JSON)
 
     // Clear previously accumulated file contents
     memset(f_contents, 0, size);
+    free(f_contents);
 
     return OK;
 }
-*/
+
+int get_game_visuals_data(Game* game)
+{
+    // Load visuals JSON contents into cJSON struct
+    const cJSON* visuals_JSON;
+
+    if (get_visuals_JSON(&visuals_JSON) == ERR) {
+        return ERR;
+    }
+
+    // Get all visual data and attach to game
+    game->ud = UD_create_from_JSON(
+        cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units")
+    );
+
+    return OK;
+}
