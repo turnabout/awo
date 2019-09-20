@@ -120,5 +120,8 @@
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\AnimationClocks\animation_clocks_enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "../JSON/JSON_access.h"
 #include "../data_init_internal.h"
 #include "tiles_data_access.h"
@@ -45,7 +47,6 @@ void init_tiles_src(const cJSON* src_json)
         );
     }
 
-
     // Gather all data from JSON
     const cJSON* tile_type_json;
     int tile_count = 0;
@@ -55,10 +56,12 @@ void init_tiles_src(const cJSON* src_json)
     {
         const cJSON* tile_vars_json; // JSON holding all variations of this tile
         const cJSON* tile_var_json;  // JSON holding currently looped variation of this tile
+        const cJSON* var_sub_clocks; // JSON holding this tile's variations' sub clocks
         Tile_Data* tile_data;        // The tile data object representing this tile to be populated
         map_t vars_hashmap;          // Hashmap containing animations for this tile's variations
         int vars_amount;             // Amount of variations this tile has
         tile_var* vars_list;         // List of every variation this tile has
+        Animation_Sub_Clock_Index default_sub_clock; // Default sub clock used by this tile's vars
 
         tile_vars_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "vars");
 
@@ -70,6 +73,21 @@ void init_tiles_src(const cJSON* src_json)
         vars_amount = cJSON_GetArraySize(tile_vars_json);
         vars_list = malloc(sizeof(Tile_Data) * vars_amount);
 
+        // Get this tile's clock data and prepare to get tile variations' clock data
+        if (cJSON_HasObjectItem(tile_type_json, "clockData")) {
+            const cJSON* c_data = cJSON_GetObjectItemCaseSensitive(tile_type_json, "clockData");
+
+            tile_data->clock = cJSON_GetObjectItemCaseSensitive(c_data, "clock")->valueint;
+            default_sub_clock = cJSON_GetObjectItemCaseSensitive(c_data, "defaultSubClock")->valueint;
+
+            var_sub_clocks = cJSON_GetObjectItemCaseSensitive(c_data, "varSubClocks");
+        } else {
+            tile_data->clock = No_Clock;
+            default_sub_clock = No_Sub_Clock;
+
+            var_sub_clocks = NULL;
+        }
+
         // Loop tile variations
         cJSON_ArrayForEach(tile_var_json, tile_vars_json)
         {
@@ -80,11 +98,27 @@ void init_tiles_src(const cJSON* src_json)
             *vars_list = *res;
             vars_list++;
 
-            // Add this variation's animation
+            // Create this tile variation & get its animation
+            Tile_Var_Data* tile_var = malloc(sizeof(Tile_Var_Data));
+            tile_var->anim = get_JSON_anim(tile_var_json);
+
+            int bla = cJSON_HasObjectItem(var_sub_clocks, tile_var_json->string);
+
+            // Get this tile variation's correct sub clock value
+            if (
+                var_sub_clocks != NULL && 
+                cJSON_HasObjectItem(var_sub_clocks, tile_var_json->string)
+            ) {
+                tile_var->sub_clock = cJSON_GetObjectItemCaseSensitive(var_sub_clocks, tile_var_json->string)->valueint;
+            } else {
+                tile_var->sub_clock = default_sub_clock;
+            }
+
+            // Add populated tile variation to hashmap
             hashmap_put(
                 vars_hashmap, 
                 tile_var_json->string, 
-                get_JSON_anim(tile_var_json)
+                tile_var
             );
         }
 
@@ -116,9 +150,14 @@ void init_tiles_src(const cJSON* src_json)
     hashmap_free(all_vars_hashmap);
 }
 
-Animation* access_tile_var_anim(tile_type type, tile_var var)
+Tile_Data* access_tile(tile_type type)
 {
-    Animation* result;
+    return tiles_data->src[type];
+}
+
+Tile_Var_Data* access_tile_var(tile_type type, tile_var var)
+{
+    Tile_Var_Data* result;
 
     if (hashmap_get(
         tiles_data->src[type]->vars, 
@@ -128,5 +167,24 @@ Animation* access_tile_var_anim(tile_type type, tile_var var)
         return NULL;
     } else {
         return result;
+    }
+}
+
+void debug_print_tile_data(tile_type type)
+{
+    Tile_Data* tile_data = access_tile(type);
+
+    printf("=====\n%s (%d)\n=====\n", tile_type_str[type], type);
+
+    printf("Clock: %d\n", tile_data->clock);
+
+    for (int i = 0; i < tile_data->vars_amount; i++) {
+        tile_var var = tile_data->vars_list[i];
+        Tile_Var_Data* tile_var = access_tile_var(type, var);
+
+        printf("\n%s (%s)\n", tile_var_str[var], tile_var_str_short[var]);
+        printf("SubClock: %d\n", tile_var->sub_clock);
+
+        print_anim_contents(tile_var->anim);
     }
 }

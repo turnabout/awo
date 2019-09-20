@@ -42,6 +42,7 @@
     <ClInclude Include="Src\C_Hashmap\hashmap.h" />
     <ClInclude Include="Src\game.h" />
     <ClInclude Include="Src\init.h" />
+    <ClInclude Include="Src\Visuals\Data\AnimationClocks\animation_clocks_enums.h" />
     <ClInclude Include="Src\Visuals\Data\general_data_access.h" />
     <ClInclude Include="Src\Visuals\Data\Palettes\palette_tree.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h" />

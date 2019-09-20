@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     }
 
     draw_tiles_test(&game);
-    draw_armies_test(&game);
+    // draw_armies_test(&game);
     run_game(&game);
 
     return 0;
@@ -144,13 +144,10 @@ void draw_armies_test(Game* game)
     SDL_RenderPresent(game->rend);
 }
 
+
 void draw_tiles_test(Game* game)
 {
-    // Test accessing tile variation animation
-    Animation* anim = access_tile_var_anim(River, WaterfallDown);
-
-    if (anim != NULL) {
-        print_anim_contents(anim);
-    }
-
+    // debug_print_tile_data(Plain);
+    debug_print_tile_data(Shore);
+    // debug_print_tile_data(Sea);
 }

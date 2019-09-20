@@ -2,7 +2,7 @@
 #include <SDL.h>
 
 /**
- * \brief Represents an animation and its frames.
+ * \brief An animation and its frames.
  */
 typedef struct
 {
@@ -11,7 +11,7 @@ typedef struct
 } Animation;
 
 /**
- * \brief Represents the sprite sheet meta data for a data structure.
+ * \brief The sprite sheet meta data for a data structure.
  */
 typedef struct
 {

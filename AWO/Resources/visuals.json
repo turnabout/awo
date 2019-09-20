@@ -3471,16 +3471,6 @@
 		"palettes": [
 			{
 				"flip": false,
-				"doneOps": [
-					[
-						"rgba(160,  96,  96, 0.6)",
-						"color"
-					],
-					[
-						"rgba(248, 184, 120, 0.2)",
-						"color"
-					]
-				],
 				"palette": {
 					"126": [
 						248,
@@ -3531,20 +3521,6 @@
 			},
 			{
 				"flip": true,
-				"doneOps": [
-					[
-						"rgba(  0,  0,   0, 0.1)",
-						"darken"
-					],
-					[
-						"rgba(  0,  0,   0, 0.4)",
-						"saturation"
-					],
-					[
-						"rgba( 96, 96, 222, 0.4)",
-						"color"
-					]
-				],
 				"palette": {
 					"126": [
 						72,
@@ -3595,16 +3571,6 @@
 			},
 			{
 				"flip": false,
-				"doneOps": [
-					[
-						"rgba( 66, 106,  82, 0.4)",
-						"color"
-					],
-					[
-						"rgba( 80,  80,  80, 0.2)",
-						"darken"
-					]
-				],
 				"palette": {
 					"126": [
 						48,
@@ -3655,20 +3621,6 @@
 			},
 			{
 				"flip": true,
-				"doneOps": [
-					[
-						"rgba(184, 152, 112, 0.4)",
-						"color"
-					],
-					[
-						"rgba(192, 176,  80, 0.4)",
-						"color"
-					],
-					[
-						"rgba( 40,  40,  40, 0.2)",
-						"darken"
-					]
-				],
 				"palette": {
 					"126": [
 						248,
@@ -3719,16 +3671,6 @@
 			},
 			{
 				"flip": false,
-				"doneOps": [
-					[
-						"rgba(148,  96, 158, 0.3)",
-						"color"
-					],
-					[
-						"rgba(128,  96, 138, 0.4)",
-						"hue"
-					]
-				],
 				"palette": {
 					"126": [
 						152,
@@ -3777,16 +3719,6 @@
 					]
 				}
 			}
-		],
-		"baseDoneOps": [
-			[
-				"rgba(130, 130, 130, 0.4)",
-				"luminosity"
-			],
-			[
-				"rgba(  0,   0,   0, 0.4)",
-				"saturation"
-			]
 		]
 	},
 	"tiles": {
@@ -4553,10 +4485,10 @@
 						}
 					]
 				},
-				"scData": {
-					"subClockType": 1,
-					"defaultAnimIndexes": 0,
-					"varAnimIndexes": {}
+				"clockData": {
+					"clock": 1,
+					"defaultSubClock": 0,
+					"varSubClocks": {}
 				}
 			},
 			{
@@ -4874,10 +4806,10 @@
 						}
 					]
 				},
-				"scData": {
-					"subClockType": 0,
-					"defaultAnimIndexes": 0,
-					"varAnimIndexes": {
+				"clockData": {
+					"clock": 0,
+					"defaultSubClock": 0,
+					"varSubClocks": {
 						"E": 1,
 						"I": 1
 					}
@@ -4904,10 +4836,10 @@
 						}
 					]
 				},
-				"scData": {
-					"subClockType": 0,
-					"defaultAnimIndexes": 0,
-					"varAnimIndexes": {}
+				"clockData": {
+					"clock": 0,
+					"defaultSubClock": 0,
+					"varSubClocks": {}
 				}
 			},
 			{
@@ -5537,10 +5469,10 @@
 						}
 					]
 				},
-				"scData": {
-					"subClockType": 0,
-					"defaultAnimIndexes": 0,
-					"varAnimIndexes": {
+				"clockData": {
+					"clock": 0,
+					"defaultSubClock": 1,
+					"varSubClocks": {
 						"1": 0,
 						"4": 0,
 						"7": 0,
@@ -6425,10 +6357,6 @@
 					152
 				]
 			}
-		],
-		"fogOps": [
-			"rgba(30, 30, 30, 0.35)",
-			"darken"
 		]
 	},
 	"properties": {
@@ -6841,7 +6769,7 @@
 		"width": 628,
 		"height": 396
 	},
-	"animationSubClocks": [
+	"animationClocks": [
 		{
 			"changingTicks": [
 				0,
@@ -6857,7 +6785,7 @@
 				39,
 				45
 			],
-			"animIndexes": [
+			"subClocks": [
 				[
 					0,
 					1,
@@ -6913,7 +6841,7 @@
 				36,
 				41
 			],
-			"animIndexes": [
+			"subClocks": [
 				[
 					0,
 					1,
