@@ -21,11 +21,13 @@
   <ItemGroup>
     <ClCompile Include="Src\C_Hashmap\hashmap.c" />
     <ClCompile Include="Src\init.c" />
+    <ClCompile Include="Src\Visuals\Data\Animation\animation_data.c" />
     <ClCompile Include="Src\Visuals\Data\JSON\cJSON.c" />
-    <ClCompile Include="Src\Visuals\Data\data_init.c" />
-    <ClCompile Include="Src\Visuals\Data\Palettes\palette_tree.c" />
+    <ClCompile Include="Src\Visuals\Data\Palette\palette_tree.c" />
+    <ClCompile Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.c" />
     <ClCompile Include="Src\Visuals\Data\Tiles\tiles_data.c" />
-    <ClCompile Include="Src\Visuals\Data\Units\units_data.c" />
+    <ClCompile Include="Src\Visuals\Data\Units\units_data_access.c" />
+    <ClCompile Include="Src\Visuals\Data\Units\units_data_creation.c" />
     <ClCompile Include="Src\Visuals\Data\JSON\JSON_access.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utils\utils.c" />
@@ -42,23 +44,21 @@
     <ClInclude Include="Src\C_Hashmap\hashmap.h" />
     <ClInclude Include="Src\game.h" />
     <ClInclude Include="Src\init.h" />
-    <ClInclude Include="Src\Visuals\Data\AnimationClocks\animation_clocks_enums.h" />
-    <ClInclude Include="Src\Visuals\Data\general_data_access.h" />
-    <ClInclude Include="Src\Visuals\Data\Palettes\palette_tree.h" />
+    <ClInclude Include="Src\Visuals\Data\Animation_Clock\animation_clock_enums.h" />
+    <ClInclude Include="Src\Visuals\Data\Animation\animation_data.h" />
+    <ClInclude Include="Src\Visuals\Data\Palette\palette_tree.h" />
+    <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data_access.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h" />
-    <ClInclude Include="Src\Visuals\Data\Units\units_data_access.h" />
-    <ClInclude Include="Src\Visuals\data_access.h" />
+    <ClInclude Include="Src\Visuals\Data\Units\_units_data_internal.h" />
     <ClInclude Include="Src\Visuals\Data\JSON\cJSON.h" />
     <ClInclude Include="Src\Utils\macros.h" />
-    <ClInclude Include="Src\Visuals\Data\data_init_internal.h" />
     <ClInclude Include="Src\Visuals\Data\JSON\JSON_access.h" />
     <ClInclude Include="Src\Utils\utils.h" />
-    <ClInclude Include="Src\Visuals\data_init.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_enums.h" />
-    <ClInclude Include="Src\Visuals\processing.h" />
+    <ClInclude Include="Src\Visuals\visuals_processing.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

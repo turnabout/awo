@@ -27,25 +27,31 @@
     <ClCompile Include="Src\Visuals\Data\JSON\cJSON.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\Data\Units\units_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Visuals\Data\data_init.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Visuals\Data\JSON\JSON_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\C_Hashmap\hashmap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Visuals\Data\Palettes\palette_tree.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Visuals\Processing\units_processing.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Visuals\Data\Tiles\tiles_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\Animation\animation_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\Palette\palette_tree.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\Units\units_data_creation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Data\Units\units_data_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,12 +81,6 @@
     <ClInclude Include="Src\Utils\macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\data_init.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\data_access.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\Data\JSON\cJSON.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -90,19 +90,10 @@
     <ClInclude Include="Src\Visuals\Data\Units\units_enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\data_init_internal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\Data\JSON\JSON_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\C_Hashmap\hashmap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\Palettes\palette_tree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\processing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h">
@@ -111,16 +102,25 @@
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\Units\units_data_access.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\general_data_access.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\AnimationClocks\animation_clocks_enums.h">
+    <ClInclude Include="Src\Visuals\Data\Animation\animation_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Animation_Clock\animation_clock_enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Units\_units_data_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Palette\palette_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\visuals_processing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

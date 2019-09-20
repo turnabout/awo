@@ -1,10 +1,12 @@
 #pragma once
 
 #include "C_Hashmap/hashmap.h"
-#include "../general_data_access.h"
-#include "../Palettes/palette_tree.h"
 
-#include "../AnimationClocks/animation_clocks_enums.h"
+#include "../Palette/palette_tree.h"
+#include "../Animation_Clock/animation_clock_enums.h"
+#include "../Sprite_Sheet_Metadata/ss_metadata.h"
+#include "../Animation/animation_data.h"
+
 #include "tiles_enums.h"
 
 /**
@@ -25,7 +27,7 @@ typedef struct
 typedef struct
 {
     Animation_Sub_Clock_Index sub_clock; // Sub clock used by this tile var to update its animation
-    Animation* anim;                     // This tile variation's animation
+    Animation_Data* anim;                     // This tile variation's animation
 } Tile_Var_Data;
 
 /**
@@ -34,7 +36,7 @@ typedef struct
 typedef struct
 {
     Tile_Data* src[TILE_TYPE_AMOUNT];
-    SS_Meta_Data* ss_meta_data;
+    SS_Metadata* ss_meta_data;
 } Tiles_Data;
 
 /**

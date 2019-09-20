@@ -9,7 +9,6 @@
 #include "game.h"
 #include "init.h"
 
-#include "Visuals/data_access.h"
 #include "Visuals/processing.h"
 
 void draw_tiles_test(Game* game);
@@ -34,7 +33,7 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    draw_tiles_test(&game);
+    // draw_tiles_test(&game);
     // draw_armies_test(&game);
     run_game(&game);
 
@@ -73,6 +72,7 @@ void draw_unit_test(
     int y
 )
 {
+    /*
     SDL_Rect* frame = &access_unit_dst_anims(u_type)[u_anim]->frames[index];
 
     SDL_Rect dst;
@@ -83,10 +83,12 @@ void draw_unit_test(
     dst.h = frame->h;
 
     SDL_RenderCopy(game->rend, unit_tex, frame, &dst);
+*/
 }
 
 void draw_armies_test(Game* game)
 {
+    /*
     // Gather all basic army unit textures
     SDL_Texture* armies[UNIT_VAR_AMOUNT] = {
         create_units_texture(game, OS, OS),
@@ -142,12 +144,13 @@ void draw_armies_test(Game* game)
     }
 
     SDL_RenderPresent(game->rend);
+*/
 }
 
 
 void draw_tiles_test(Game* game)
 {
     // debug_print_tile_data(Plain);
-    debug_print_tile_data(Shore);
+    // debug_print_tile_data(Shore);
     // debug_print_tile_data(Sea);
 }

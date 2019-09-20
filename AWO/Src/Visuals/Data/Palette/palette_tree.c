@@ -1,7 +1,19 @@
+#include <SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "palette_tree.h"
+#include "../JSON/cJSON.h"
+
+typedef struct Palette_Node Palette_Node;
+
+struct Palette_Node
+{
+    Uint32 key;
+    Uint32 val;
+
+    struct Palette_Node* left;
+    struct Palette_Node* right;
+};
 
 int compare_p_node_keys(int left, int right)
 {
@@ -67,7 +79,7 @@ Palette_Node* insert_p_node(Palette_Node* root, int key, int val)
     return root;
 }
 
-Uint32 get_p_node_val(Palette_Node* root, int key)
+Uint32 PT_get_value(Palette_Node* root, int key)
 {
     if (root == NULL) {
         return -1;
@@ -91,16 +103,16 @@ Uint32 get_p_node_val(Palette_Node* root, int key)
     return -1;
 }
 
-void free_palette_tree(Palette_Node* root)
+void PT_free(Palette_Node* root)
 {
     if (root != NULL) {
-        free_palette_tree(root->left);
-        free_palette_tree(root->right);
+        PT_free(root->left);
+        PT_free(root->right);
         free(root);
     }
 }
 
-Palette_Node* generate_palette_tree(const cJSON* palette_json, ...)
+Palette_Node* PT_create_from_JSON(const cJSON* palette_json, ...)
 {
     Palette_Node* palette_root = NULL;
     SDL_PixelFormat* mapping_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);

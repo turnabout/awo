@@ -1,32 +1,22 @@
 #include <stdio.h>
 
-#include "../JSON/JSON_access.h"
-#include "../data_init_internal.h"
+#include "../JSON/cJSON.h"
 #include "tiles_data_access.h"
 
 #pragma warning( disable : 6011 )
 
 static Tiles_Data* tiles_data;
-static const cJSON* tiles_visuals_JSON;
 
 // Initialize tiles' source visuals data
 void init_tiles_src(const cJSON* src_json);
 
 void init_tiles_visual_data_structure(cJSON* t_visuals_JSON)
 {
-    SS_Meta_Data* ss_meta_data = malloc(sizeof(SS_Meta_Data));
     tiles_data = malloc(sizeof(Tiles_Data));
-
-    tiles_visuals_JSON = t_visuals_JSON;
+    tiles_data->ss_meta_data = SS_Meta_create_from_JSON(t_visuals_JSON);
 
     // Add tiles' src data
     init_tiles_src(cJSON_GetObjectItemCaseSensitive(t_visuals_JSON, "src"));
-
-    // Add sprite sheet meta data
-    ss_meta_data->src_x = cJSON_GetObjectItemCaseSensitive(t_visuals_JSON, "srcX")->valueint;
-    ss_meta_data->src_y = cJSON_GetObjectItemCaseSensitive(t_visuals_JSON, "srcY")->valueint;
-    ss_meta_data->src_width = cJSON_GetObjectItemCaseSensitive(t_visuals_JSON, "srcWidth")->valueint;
-    ss_meta_data->src_height = cJSON_GetObjectItemCaseSensitive(t_visuals_JSON, "srcHeight")->valueint;
 }
 
 void init_tiles_src(const cJSON* src_json)
@@ -100,7 +90,7 @@ void init_tiles_src(const cJSON* src_json)
 
             // Create this tile variation & get its animation
             Tile_Var_Data* tile_var = malloc(sizeof(Tile_Var_Data));
-            tile_var->anim = get_JSON_anim(tile_var_json);
+            tile_var->anim = AD_create_from_JSON(tile_var_json);
 
             int bla = cJSON_HasObjectItem(var_sub_clocks, tile_var_json->string);
 
@@ -185,6 +175,6 @@ void debug_print_tile_data(tile_type type)
         printf("\n%s (%s)\n", tile_var_str[var], tile_var_str_short[var]);
         printf("SubClock: %d\n", tile_var->sub_clock);
 
-        print_anim_contents(tile_var->anim);
+        AD_print(tile_var->anim);
     }
 }

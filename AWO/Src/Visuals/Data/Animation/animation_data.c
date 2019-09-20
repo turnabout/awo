@@ -1,35 +1,22 @@
-#include <SDL.h>
 #include <stdio.h>
+#include <SDL.h>
 
 #include "conf.h"
 
-#include "JSON/JSON_access.h"
-#include "Units/units_data.h"
-#include "Tiles/tiles_data.h"
-#include "../data_access.h"
+#include "../JSON/JSON_access.h"
+#include "animation_data.h"
 
 #pragma warning( disable : 6011 )
 
-
-int init_visuals_data_structure(void)
+struct Animation_Data
 {
-    // Load visuals JSON contents into cJSON struct
-    const cJSON* visuals_JSON;
+    int count;
+    SDL_Rect* frames;
+};
 
-    if (load_visuals_JSON(&visuals_JSON) == ERR) {
-        return ERR;
-    }
-
-    // Load cJSON into the visuals data structures
-    init_units_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units"));
-    init_tiles_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "tiles"));
-
-    return OK;
-}
-
-Animation* get_JSON_anim(const cJSON* anim_json)
+Animation_Data* AD_create_from_JSON(const cJSON* anim_json)
 {
-    Animation* anim = malloc(sizeof(Animation));
+    Animation_Data* anim = malloc(sizeof(Animation_Data));
 
     anim->count = cJSON_GetArraySize(anim_json);
     SDL_Rect* frames = (SDL_Rect*)malloc(
@@ -62,18 +49,24 @@ Animation* get_JSON_anim(const cJSON* anim_json)
 
     anim->frames = frames - anim->count;
     return anim;
+
 }
 
-void print_anim_contents(Animation* anim)
+void AD_free(Animation_Data* ad)
+{
+    // TODO
+}
+
+void AD_print(Animation_Data* ad)
 {
     printf("\n[\n");
-    for (int i = 0; i < anim->count; i++) {
+    for (int i = 0; i < ad->count; i++) {
         printf(
             "{x: %d, y: %d, w: %d, h: %d},\n", 
-            anim->frames[i].x,
-            anim->frames[i].y,
-            anim->frames[i].w,
-            anim->frames[i].h
+            ad->frames[i].x,
+            ad->frames[i].y,
+            ad->frames[i].w,
+            ad->frames[i].h
         );
 
     }

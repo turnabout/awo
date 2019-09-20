@@ -6,8 +6,6 @@
 #include "conf.h"
 #include "game.h"
 
-#include "Visuals/data_init.h"
-
 int init_game(Game* game)
 {
     // Initialize SDL
@@ -70,11 +68,28 @@ int init_game(Game* game)
         return ERR;
     }
 
-    // Load & initialize the visuals data structure
-    init_visuals_data_structure();
+    // Get initial visuals data
 
     return OK;
 }
+
+/*
+int init_visuals_data_structure(void)
+{
+    // Load visuals JSON contents into cJSON struct
+    const cJSON* visuals_JSON;
+
+    if (load_visuals_JSON(&visuals_JSON) == ERR) {
+        return ERR;
+    }
+
+    // Load cJSON into the visuals data structures
+    init_units_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units"));
+    init_tiles_visual_data_structure(cJSON_GetObjectItemCaseSensitive(visuals_JSON, "tiles"));
+
+    return OK;
+}
+*/
 
 void exit_game(Game* game)
 {

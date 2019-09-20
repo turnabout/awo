@@ -2,9 +2,9 @@
 #include <SDL.h>
 
 #include "game.h"
-#include "../processing.h"
-#include "../data_access.h"
+#include "../visuals_processing.h"
 
+/*
 // Draws every animations of the given unit type
 void draw_anims(Game* game, unit_type u_type, unit_var u_var);
 
@@ -63,7 +63,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
 
         // Swap pixel according to palette
         Uint32 color_to;
-        if ((color_to = get_p_node_val(u_palette->palette, s_pixels[i] >> 24)) != -1) {
+        if ((color_to = PT_get_value(u_palette->palette, s_pixels[i] >> 24)) != -1) {
             s_pixels[i] = color_to;
         } else {
             printf(
@@ -104,3 +104,4 @@ void draw_anims(Game* game, unit_type u_type, unit_var u_var)
         }
     }
 }
+*/
