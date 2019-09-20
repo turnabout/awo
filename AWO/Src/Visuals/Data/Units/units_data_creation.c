@@ -50,7 +50,7 @@ void get_units_dst_data(Units_Data* ud, const cJSON* dst_json)
 Src_Unit_Type* get_unit_src_data(const cJSON* unit_type_json)
 {
     Src_Unit_Type* type;        // The unit type data struct returned
-    Animation_Data*** vars;     // Data for this unit type's variations
+    Animation*** vars;     // Data for this unit type's variations
     const cJSON* unit_var_json; // cJSON data for current variation
 
     // Initialize unit type and its variation count
@@ -58,16 +58,16 @@ Src_Unit_Type* get_unit_src_data(const cJSON* unit_type_json)
     type->vars_count = cJSON_GetArraySize(unit_type_json);
 
     // Initialize Variations' memory
-    vars = malloc(sizeof(Animation_Data**) * type->vars_count);
+    vars = malloc(sizeof(Animation**) * type->vars_count);
 
     // Loop variations
     cJSON_ArrayForEach(unit_var_json, unit_type_json)
     {
         const cJSON* unit_anim_json; // cJSON data for current Animation
-        Animation_Data** anims;      // All Animations data for this Variation
+        Animation** anims;      // All Animations data for this Variation
 
         // Initialize Animations' memory
-        anims = malloc(sizeof(Animation_Data*) * UNIT_ANIM_AMOUNT); 
+        anims = malloc(sizeof(Animation*) * UNIT_ANIM_AMOUNT); 
 
         // Loop animations
         cJSON_ArrayForEach(unit_anim_json, unit_var_json)

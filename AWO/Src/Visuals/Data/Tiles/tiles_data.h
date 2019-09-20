@@ -28,7 +28,7 @@ typedef struct
 typedef struct
 {
     Animation_Sub_Clock_Index sub_clock; // Sub clock used by this tile var to update its animation
-    Animation_Data* anim;                     // This tile variation's animation
+    Animation* anim;                     // This tile variation's animation
 } Tile_Var_Data;
 
 /**

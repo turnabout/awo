@@ -2,29 +2,29 @@
 #include "conf.h"
 #include "cJSON.h"
 
-typedef struct Animation_Data Animation_Data;
+typedef struct Animation Animation;
 
 /**
- *  \brief Creates and populates an Animation_Data struct using data from a cJSON animation array.
+ *  \brief Creates and populates an Animation struct using data from a cJSON animation array.
  *
  *  \param animation_json Pointer to the cJSON animation array.
  *
- *  \return Returns pointer to the allocated Animation_Data struct.
+ *  \return Returns pointer to the allocated Animation struct.
  */
-Animation_Data* AD_create_from_JSON(const cJSON* animation_json);
+Animation* AD_create_from_JSON(const cJSON* animation_json);
 
 /**
- *  \brief Destroys an Animation_Data's allocated memory.
+ *  \brief Destroys an Animation's allocated memory.
  *
- *  \param animation_data Pointer to the allocated Animation_Data.
+ *  \param animation_data Pointer to the allocated Animation.
  */
-void AD_free(Animation_Data* animation_data);
+void AD_free(Animation* animation_data);
 
 #ifdef _DEBUG
 /**
- *  \brief Prints an Animation_Data's contents.
+ *  \brief Prints an Animation's contents.
  *
- *  \param animation_data Pointer to the allocated Animation_Data.
+ *  \param animation_data Pointer to the allocated Animation.
  */
-void AD_print(Animation_Data* animation_data);
+void AD_print(Animation* animation_data);
 #endif

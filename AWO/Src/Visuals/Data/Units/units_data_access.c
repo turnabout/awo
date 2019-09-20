@@ -34,7 +34,7 @@ struct Palette_Tree* get_unit_palette(unit_var u_var, int* flip)
     return NULL;
 }
 
-Animation_Data** access_unit_src_anims(unit_type type, unit_var var)
+Animation** access_unit_src_anims(unit_type type, unit_var var)
 {
     // If variation doesn't exist on unit type, return default instead
     /*
@@ -47,7 +47,7 @@ Animation_Data** access_unit_src_anims(unit_type type, unit_var var)
     return NULL;
 }
 
-Animation_Data** access_unit_dst_anims(unit_type type)
+Animation** access_unit_dst_anims(unit_type type)
 {
     // return units_data->dst[type];
     return NULL;

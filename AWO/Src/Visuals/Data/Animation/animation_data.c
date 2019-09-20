@@ -5,15 +5,15 @@
 
 #pragma warning( disable : 6011 )
 
-struct Animation_Data
+struct Animation
 {
     int count;
     SDL_Rect* frames;
 };
 
-Animation_Data* AD_create_from_JSON(const cJSON* anim_json)
+Animation* AD_create_from_JSON(const cJSON* anim_json)
 {
-    Animation_Data* anim = malloc(sizeof(Animation_Data));
+    Animation* anim = malloc(sizeof(Animation));
 
     anim->count = cJSON_GetArraySize(anim_json);
     SDL_Rect* frames = (SDL_Rect*)malloc(
@@ -49,13 +49,13 @@ Animation_Data* AD_create_from_JSON(const cJSON* anim_json)
 
 }
 
-void AD_free(Animation_Data* ad)
+void AD_free(Animation* ad)
 {
     // TODO
 }
 
 #ifdef _DEBUG
-void AD_print(Animation_Data* ad)
+void AD_print(Animation* ad)
 {
     printf("\n[\n");
     for (int i = 0; i < ad->count; i++) {
