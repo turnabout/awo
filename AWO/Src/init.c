@@ -91,6 +91,27 @@ int init_visuals_data_structure(void)
 }
 */
 
+/*
+int load_visuals_JSON(const cJSON **visuals_JSON)
+{
+    // Get file contents & size
+    char *f_contents;
+    int size;
+
+    if ((size = read_file(JSON_PATH, &f_contents)) == ERR) {
+        return ERR;
+    }
+
+    // Populate visuals JSON struct
+    *visuals_JSON = cJSON_Parse(f_contents);
+
+    // Clear previously accumulated file contents
+    memset(f_contents, 0, size);
+
+    return OK;
+}
+*/
+
 void exit_game(Game* game)
 {
     if (game->win != NULL) {

@@ -1,7 +1,6 @@
-#include "../JSON/cJSON.h"
+#include "cJSON.h"
 
 typedef struct SS_Metadata SS_Metadata;
-
 
 /**
  *  \brief Create a sprite sheet metadata object from a cJSON object.

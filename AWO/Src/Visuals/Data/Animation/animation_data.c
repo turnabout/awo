@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <SDL.h>
 
-#include "conf.h"
-
-#include "../JSON/JSON_access.h"
 #include "animation_data.h"
 
 #pragma warning( disable : 6011 )

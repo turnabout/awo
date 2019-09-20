@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../conf.h"
+#include "conf.h"
 
 #pragma warning( disable : 6386 )
 

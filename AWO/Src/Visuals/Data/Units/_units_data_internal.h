@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../JSON/cJSON.h"
+#include "cJSON.h"
 #include "units_enums.h"
 
 #include "../Sprite_Sheet_Metadata/ss_metadata.h"

@@ -1,5 +1,6 @@
 #pragma once
-#include "../JSON/cJSON.h"
+
+#include "cJSON.h"
 
 /**
  *  \brief Holds all of the game's visuals data for units.

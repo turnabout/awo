@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "../JSON/cJSON.h"
+#include "cJSON.h"
 #include "tiles_data_access.h"
 
 #pragma warning( disable : 6011 )

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../JSON/cJSON.h"
+#include "cJSON.h"
 
 typedef struct Palette_Node Palette_Node;
 

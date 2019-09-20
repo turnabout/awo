@@ -1,6 +1,6 @@
 #pragma once
 
-#include "C_Hashmap/hashmap.h"
+#include "c_hashmap.h"
 
 #include "../Palette/palette_tree.h"
 #include "../Animation_Clock/animation_clock_enums.h"

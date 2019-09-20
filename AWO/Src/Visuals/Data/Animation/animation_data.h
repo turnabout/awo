@@ -1,5 +1,6 @@
 #pragma once
-#include "../JSON/JSON_access.h"
+#include "conf.h"
+#include "cJSON.h"
 
 typedef struct Animation_Data Animation_Data;
 

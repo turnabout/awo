@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <SDL.h>
 
-#include "../JSON/cJSON.h"
+#include "cJSON.h"
 
 /**
  * \brief A node in a palette tree, holding data for a palette.

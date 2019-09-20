@@ -21,18 +21,6 @@
     <ClCompile Include="Src\init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utils\utils.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Visuals\Data\JSON\cJSON.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Visuals\Data\JSON\JSON_access.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\C_Hashmap\hashmap.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Visuals\Processing\units_processing.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,6 +40,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Visuals\Data\Units\units_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Libraries\cJSON.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Libraries\c_hashmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Utilities\utilities.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,25 +72,10 @@
     <ClInclude Include="Src\init.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utils\utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utils\macros.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\JSON\cJSON.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Units\units_enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\JSON\JSON_access.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\C_Hashmap\hashmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h">
@@ -121,6 +103,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\visuals_processing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Libraries\cJSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Libraries\c_hashmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
