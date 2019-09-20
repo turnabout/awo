@@ -98,7 +98,7 @@ typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} tile_var;
 static const char* tile_var_str[] = {FOREACH_TILE_VAR(GENERATE_STRING)};
 
 // Short versions of each tile variation string (used in JSON file to save space)
-static char* tile_var_str_short[] = {
+static const char* tile_var_str_short[] = {
 "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
 "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
 "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7",

@@ -19,8 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Game\game.c" />
+    <ClCompile Include="Src\Game\game_exit.c" />
     <ClCompile Include="Src\Libraries\c_hashmap.c" />
-    <ClCompile Include="Src\init.c" />
+    <ClCompile Include="Src\Game\game_init.c" />
     <ClCompile Include="Src\Visuals\Data\Animation\animation_data.c" />
     <ClCompile Include="Src\Libraries\cJSON.c" />
     <ClCompile Include="Src\Visuals\Data\Palette\palette_tree.c" />
@@ -41,14 +43,12 @@
   <ItemGroup>
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
-    <ClInclude Include="Src\game.h" />
-    <ClInclude Include="Src\init.h" />
+    <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Visuals\Data\Animation_Clock\animation_clock_enums.h" />
     <ClInclude Include="Src\Visuals\Data\Animation\animation_data.h" />
     <ClInclude Include="Src\Visuals\Data\Palette\palette_tree.h" />
     <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h" />
-    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data_access.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h" />
     <ClInclude Include="Src\Visuals\Data\Units\_units_data_internal.h" />
     <ClInclude Include="Src\Libraries\cJSON.h" />
@@ -56,6 +56,7 @@
     <ClInclude Include="Src\Utilities\utilities.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_enums.h" />
+    <ClInclude Include="Src\Visuals\visuals_data.h" />
     <ClInclude Include="Src\Visuals\visuals_processing.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

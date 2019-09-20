@@ -32,7 +32,7 @@ void init_tiles_src(const cJSON* src_json)
 
         hashmap_put(
             all_vars_hashmap,
-            tile_var_str_short[var],
+            (char*)tile_var_str_short[var],
             v
         );
     }
@@ -130,7 +130,7 @@ void init_tiles_src(const cJSON* src_json)
 
         hashmap_get(
             all_vars_hashmap,
-            tile_var_str_short[var],
+            (char*)tile_var_str_short[var],
             (void**)(&res)
         );
 
@@ -151,7 +151,7 @@ Tile_Var_Data* access_tile_var(tile_type type, tile_var var)
 
     if (hashmap_get(
         tiles_data->src[type]->vars, 
-        tile_var_str_short[var], 
+        (char*)tile_var_str_short[var], 
         (void**)(&result)) != MAP_OK
     ) {
         return NULL;

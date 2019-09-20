@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <SDL.h>
 
-#include "game.h"
-#include "../visuals_processing.h"
+#include "Game/game.h"
+#include "Visuals/visuals_processing.h"
 
 /*
 // Draws every animations of the given unit type

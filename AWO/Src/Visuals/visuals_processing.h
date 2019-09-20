@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include "game.h"
+#include "Game/game.h"
 #include "Data/Units/units_enums.h"
 
 /**

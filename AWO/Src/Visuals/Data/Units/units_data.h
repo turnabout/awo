@@ -1,6 +1,7 @@
 #pragma once
 
 #include "cJSON.h"
+#include "units_enums.h"
 
 /**
  *  \brief Holds all of the game's visuals data for units.
@@ -19,4 +20,4 @@ Units_Data* UD_create_from_JSON(const cJSON* ud_JSON);
  *
  *  \param ud The Units_Data object to print.
  */
-void UD_print(Units_Data* ud)
+void UD_print(Units_Data* ud);

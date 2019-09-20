@@ -18,9 +18,6 @@
     <ClCompile Include="src\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\init.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Visuals\Processing\units_processing.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,6 +48,15 @@
     <ClCompile Include="Src\Utilities\utilities.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\game_init.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\game_exit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -66,12 +72,6 @@
     <ClInclude Include="Src\conf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\init.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -79,12 +79,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Animation\animation_data.h">
@@ -115,6 +109,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Utilities\utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\visuals_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

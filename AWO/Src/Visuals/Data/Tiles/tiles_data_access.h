@@ -1,6 +1,7 @@
 #pragma once
 
 #include "c_hashmap.h"
+#include "cJSON.h"
 
 #include "../Palette/palette_tree.h"
 #include "../Animation_Clock/animation_clock_enums.h"
@@ -38,6 +39,13 @@ typedef struct
     Tile_Data* src[TILE_TYPE_AMOUNT];
     SS_Metadata* ss_meta_data;
 } Tiles_Data;
+
+/**
+ *  \brief Initialize the visual data structure for tiles.
+ *
+ *  \param tiles_visuals_JSON cJSON object containing tiles' JSON.
+ */
+void init_tiles_visual_data_structure(cJSON* tiles_visuals_JSON);
 
 /**
  *  \brief Gets a tile's data.
