@@ -1,15 +1,15 @@
+#include <stdio.h>
+#include <SDL.h>
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
 #endif
-
-#include <stdio.h>
-#include <SDL.h>
 
 #include "conf.h"
 #include "game.h"
 #include "init.h"
 
-#include "Visuals/processing.h"
+#include "Visuals/visuals_processing.h"
 
 void draw_tiles_test(Game* game);
 void draw_armies_test(Game* game);
