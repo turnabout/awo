@@ -12,7 +12,19 @@ void run_game(Game* game)
     // draw_armies_test(&game);
 
     // UD_print(game->ud, UD_DST);
-    TD_print(game->td);
+    // TD_print(game->td);
+
+    // Quick draw test
+    SDL_Texture* os_test = create_units_texture(game, OS, OS);
+
+    SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
+    SDL_RenderClear(game->rend);
+
+    SDL_Rect dst = {0, 0, 240, 226};
+    SDL_RenderCopy(game->rend, os_test, NULL, &dst);
+
+    SDL_RenderPresent(game->rend);
+    // Quick draw test
 
     while (1) {
         SDL_Event event;

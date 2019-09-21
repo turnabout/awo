@@ -3,16 +3,6 @@
 
 #pragma warning( disable : 6011 )
 
-struct SS_Metadata
-{
-    int src_x;
-    int src_y;
-    int src_w;
-    int src_h;
-    int dst_w;
-    int dst_h;
-};
-
 SS_Metadata* SS_Meta_create_from_JSON(const cJSON* json)
 {
     // Attempt to get every possible field from the given JSON object

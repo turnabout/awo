@@ -1,6 +1,15 @@
+#pragma once
 #include "cJSON.h"
 
-typedef struct SS_Metadata SS_Metadata;
+typedef struct SS_Metadata
+{
+    int src_x;
+    int src_y;
+    int src_w;
+    int src_h;
+    int dst_w;
+    int dst_h;
+} SS_Metadata;
 
 /**
  *  \brief Create a sprite sheet metadata object from a cJSON object.

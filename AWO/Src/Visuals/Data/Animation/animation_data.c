@@ -5,12 +5,6 @@
 
 #pragma warning( disable : 6011 )
 
-struct Animation
-{
-    int count;
-    SDL_Rect* frames;
-};
-
 Animation* AD_create_from_JSON(const cJSON* anim_json)
 {
     Animation* anim = malloc(sizeof(Animation));

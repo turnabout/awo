@@ -6,12 +6,11 @@
 #include "_units_data_internal.h"
 
 // TODO: Instead, return a Palette_Tree* and store the 'flip' value in an additional pointer arg
-struct Palette_Tree* get_unit_palette(unit_var u_var, int* flip)
+Palette_Tree* UD_get_palette(Units_Data* ud, unit_var u_var, int* flip)
 {
     // TODO: Can't rely on static JSON anymore, use given Units_Data* instead
-    /*
-    const cJSON* base = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "basePalette");
-    const cJSON* unit_palettes = cJSON_GetObjectItemCaseSensitive(units_visuals_JSON, "palettes");
+    const cJSON* base = cJSON_GetObjectItemCaseSensitive(ud->JSON, "basePalette");
+    const cJSON* unit_palettes = cJSON_GetObjectItemCaseSensitive(ud->JSON, "palettes");
 
     // Get cJSON item for the given palette
     const cJSON* unit_palette = cJSON_GetArrayItem(unit_palettes, u_var);
@@ -20,43 +19,33 @@ struct Palette_Tree* get_unit_palette(unit_var u_var, int* flip)
         return NULL;
     }
 
-    // Build up the result
-    struct Unit_Palette* result = malloc(sizeof(struct Unit_Palette));
+    // Get the result
+    *flip = cJSON_GetObjectItemCaseSensitive(unit_palette, "flip")->valueint;
 
-    result->flip = cJSON_GetObjectItemCaseSensitive(unit_palette, "flip")->valueint;
-    result->palette = PT_create_from_JSON(
+    return PT_create_from_JSON(
         base, 
         cJSON_GetObjectItemCaseSensitive(unit_palette, "palette")
     );
-
-    return result;
-    */
-    return NULL;
 }
 
-Animation** access_unit_src_anims(unit_type type, unit_var var)
+Animation** UD_get_src_anims(Units_Data* ud, unit_type u_type, unit_var u_var)
 {
-    // If variation doesn't exist on unit type, return default instead
-    /*
-    unit_var returned_var; = (var < units_data->src[type]->vars_count)
-        ? var
+    // If variation doesn't exist on unit type, return data for default variation instead
+    unit_var returned_var = (u_var < ud->src[u_type]->vars_count)
+        ? u_var
         : UNIT_VAR_FIRST;
 
-    return units_data->src[type]->vars[returned_var];
-*/
-    return NULL;
+    return ud->src[u_type]->vars[returned_var];
 }
 
-Animation** access_unit_dst_anims(unit_type type)
+Animation** UD_get_dst_anims(Units_Data* ud, unit_type u_type)
 {
-    // return units_data->dst[type];
-    return NULL;
+    return ud->dst[u_type];
 }
 
-SS_Metadata* access_units_ss_meta_data()
+SS_Metadata* UD_get_ss_metadata(Units_Data* ud)
 {
-    // return units_data->ss_meta_data;
-    return NULL;
+    return ud->ss_metadata;
 }
 
 #ifdef _DEBUG

@@ -1,27 +1,26 @@
 #include <stdio.h>
-#include <SDL.h>
 
-#include "Game/game.h"
 #include "Visuals/visuals_processing.h"
 
-/*
 // Draws every animations of the given unit type
-void draw_anims(Game* game, unit_type u_type, unit_var u_var);
+void draw_unit_texture_anims(Game* game, unit_type u_type, unit_var u_var);
 
 SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_var)
 {
-    SS_Meta_Data* ss_meta_data = access_units_ss_meta_data();
-    SDL_Rect* src = (SDL_Rect*)malloc(sizeof(SDL_Rect));
-    SDL_Rect* dst = (SDL_Rect*)malloc(sizeof(SDL_Rect));
-    Unit_Palette* u_palette = get_unit_palette(color_var);
+    // Get sprite sheet metadata
+    SS_Metadata* metadata = UD_get_ss_metadata(game->ud);
+
+    // Get palette data
+    int palette_flip;
+    Palette_Tree* palette = UD_get_palette(game->ud, color_var, &palette_flip);
 
     // 1. Make a texture used to draw every individual unit sprite on
     SDL_Texture* temp = SDL_CreateTexture(
         game->rend,
         SDL_PIXELFORMAT_RGBA8888,
         SDL_TEXTUREACCESS_TARGET,
-        ss_meta_data->dst_width, 
-        ss_meta_data->dst_height
+        metadata->dst_w, 
+        metadata->dst_h
     );
 
     SDL_SetRenderTarget(game->rend, temp);
@@ -29,7 +28,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
 
     // Draw every unit sprite on the texture
     for (unit_type u_type = UNIT_TYPE_FIRST; u_type <= UNIT_TYPE_LAST; u_type++) {
-        draw_anims(game, u_type, type_var);
+        draw_unit_texture_anims(game, u_type, type_var);
     }
 
     // 2. Make a texture used to colorize and flip the sprites
@@ -37,8 +36,8 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
         game->rend, 
         SDL_PIXELFORMAT_RGBA8888, 
         SDL_TEXTUREACCESS_STREAMING, 
-        ss_meta_data->dst_width, 
-        ss_meta_data->dst_height
+        metadata->dst_w, 
+        metadata->dst_h
     );
 
     // Transfer contents of temp texture over to the streaming texture
@@ -50,7 +49,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
 
     // Get pixel count
     SDL_PixelFormat* mapping_format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
-    int pixel_count = (s_pitch / mapping_format->BytesPerPixel) * ss_meta_data->dst_height;
+    int pixel_count = (s_pitch / mapping_format->BytesPerPixel) * metadata->dst_h;
     SDL_FreeFormat(mapping_format);
 
     // Apply color palette to every pixel
@@ -63,7 +62,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
 
         // Swap pixel according to palette
         Uint32 color_to;
-        if ((color_to = PT_get_value(u_palette->palette, s_pixels[i] >> 24)) != -1) {
+        if ((color_to = PT_get_value(palette, s_pixels[i] >> 24)) != -1) {
             s_pixels[i] = color_to;
         } else {
             printf(
@@ -79,20 +78,21 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
     // Reset to default render target & clean up temp texture/palette
     SDL_SetRenderTarget(game->rend, NULL);
     SDL_DestroyTexture(temp);
-    free_unit_palette(u_palette);
+    PT_free(palette);
 
     SDL_SetTextureBlendMode(streaming_texture, SDL_BLENDMODE_BLEND);
     return streaming_texture;
 }
 
-void draw_anims(Game* game, unit_type u_type, unit_var u_var)
+void draw_unit_texture_anims(Game* game, unit_type u_type, unit_var u_var)
 {
-    Animation** src_anims = access_unit_src_anims(u_type, u_var);
-    Animation** dst_anims = access_unit_dst_anims(u_type);
+    Animation** src_anims = UD_get_src_anims(game->ud, u_type, u_var);
+    Animation** dst_anims = UD_get_dst_anims(game->ud, u_type);
 
     // Draw every animation
     for (unit_anim u_anim = UNIT_ANIM_FIRST; u_anim <= UNIT_ANIM_LAST; u_anim++) {
 
+        // TODO: use functionality hidden in animation to loop every frame instead
         // Draw every frame of the animation
         for (int i = 0; i < src_anims[u_anim]->count; i++) {
             SDL_RenderCopy(
@@ -104,4 +104,3 @@ void draw_anims(Game* game, unit_type u_type, unit_var u_var)
         }
     }
 }
-*/

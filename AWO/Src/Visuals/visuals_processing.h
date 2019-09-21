@@ -1,7 +1,8 @@
 #pragma once
 #include <SDL.h>
+
 #include "Game/game.h"
-#include "Data/Units/units_enums.h"
+#include "Visuals/visuals_data.h"
 
 /**
  *  \brief Creates and returns a texture for a group of units.

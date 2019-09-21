@@ -1,8 +1,13 @@
 #pragma once
+#include <SDL.h>
 #include "conf.h"
 #include "cJSON.h"
 
-typedef struct Animation Animation;
+typedef struct Animation
+{
+    int count;
+    SDL_Rect* frames;
+} Animation;
 
 /**
  *  \brief Creates and populates an Animation struct using data from a cJSON animation array.

@@ -21,7 +21,7 @@ struct Units_Data
     Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
     Animation* dst[UNIT_TYPE_AMOUNT][UNIT_ANIM_AMOUNT];
     SS_Metadata* ss_metadata;
-    const cJSON* palettes_JSON;
+    const cJSON* JSON;
 };
 
 void get_units_src_data(Units_Data* ud, const cJSON* src_json);
