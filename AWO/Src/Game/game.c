@@ -15,6 +15,7 @@ void run_game(Game* game)
     // TD_print(game->td);
 
     // Quick draw test
+    /*
     SDL_Texture* os_test = create_units_texture(game, OS, OS);
 
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
@@ -24,6 +25,7 @@ void run_game(Game* game)
     SDL_RenderCopy(game->rend, os_test, NULL, &dst);
 
     SDL_RenderPresent(game->rend);
+*/
     // Quick draw test
 
     while (1) {
@@ -36,6 +38,8 @@ void run_game(Game* game)
                 return;
             }
         }
+
+        GC_update(game->clock);
 
         // If frame finished early, wait remaining time
         int frame_ticks = SDL_GetTicks() - start_ticks;

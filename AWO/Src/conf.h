@@ -29,5 +29,8 @@
 #define FPS 60
 #define SCREEN_TICKS_PER_FRAME 1000 / FPS
 
+// Game clock
+#define GAME_CLOCK_MAX_ACCUM_MS SCREEN_TICKS_PER_FRAME * 2
+
 // Default dimension of a tile, in pixels
 #define DEFAULT_TILE_DIMENSION 16

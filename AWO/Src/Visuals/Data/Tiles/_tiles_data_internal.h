@@ -3,7 +3,7 @@
 #include "c_hashmap.h"
 #include "cJSON.h"
 
-#include "../Animation_Clock/animation_clock_enums.h"
+#include "Game/Clock/animation_clock_enums.h"
 #include "../Animation/animation.h"
 #include "../Sprite_Sheet_Metadata/ss_metadata.h"
 #include "tiles_enums.h"
