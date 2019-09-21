@@ -10,7 +10,9 @@ void run_game(Game* game)
 {
     // draw_tiles_test(&game);
     // draw_armies_test(&game);
-    UD_print(game->ud, UD_DST);
+
+    // UD_print(game->ud, UD_DST);
+    TD_print(game->td);
 
     while (1) {
         SDL_Event event;
@@ -117,10 +119,6 @@ void draw_armies_test(Game* game)
 */
 }
 
-
 void draw_tiles_test(Game* game)
 {
-    // debug_print_tile_data(Plain);
-    // debug_print_tile_data(Shore);
-    // debug_print_tile_data(Sea);
 }

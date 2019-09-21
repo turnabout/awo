@@ -115,5 +115,9 @@ int get_game_visuals_data(Game* game)
         cJSON_GetObjectItemCaseSensitive(visuals_JSON, "units")
     );
 
+    game->td = TD_create_from_JSON(
+        cJSON_GetObjectItemCaseSensitive(visuals_JSON, "tiles")
+    );
+
     return OK;
 }
