@@ -4,7 +4,7 @@
 #include "cJSON.h"
 
 #include "../Animation_Clock/animation_clock_enums.h"
-#include "../Animation/animation_data.h"
+#include "../Animation/animation.h"
 #include "../Sprite_Sheet_Metadata/ss_metadata.h"
 #include "tiles_enums.h"
 

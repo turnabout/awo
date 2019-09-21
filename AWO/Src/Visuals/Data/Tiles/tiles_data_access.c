@@ -34,7 +34,7 @@ void print_tile_type(Tiles_Data* td, tile_type type)
         printf("\n%s (%s)\n", tile_var_str[var], tile_var_str_short[var]);
         printf("SubClock: %d\n", tile_var->sub_clock);
 
-        Anim_print(tile_var->anim);
+        anim_print(tile_var->anim);
     }
 
 }

@@ -91,16 +91,13 @@ void draw_unit_texture_anims(Game* game, unit_type u_type, unit_var u_var)
 
     // Draw every animation
     for (unit_anim u_anim = UNIT_ANIM_FIRST; u_anim <= UNIT_ANIM_LAST; u_anim++) {
+        int frame_count;
+        SDL_Rect* src_frames = anim_get_frames(src_anims[u_anim], &frame_count);
+        SDL_Rect* dst_frames = anim_get_frames(dst_anims[u_anim], &frame_count);
 
-        // TODO: use functionality hidden in animation to loop every frame instead
         // Draw every frame of the animation
-        for (int i = 0; i < src_anims[u_anim]->count; i++) {
-            SDL_RenderCopy(
-                game->rend, 
-                game->ss, 
-                &src_anims[u_anim]->frames[i], 
-                &dst_anims[u_anim]->frames[i]
-            );
+        for (int i = 0; i < frame_count; i++) {
+            SDL_RenderCopy(game->rend, game->ss, &src_frames[i], &dst_frames[i]);
         }
     }
 }

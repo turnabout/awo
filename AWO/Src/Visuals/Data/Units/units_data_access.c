@@ -60,7 +60,7 @@ void print_src_unit_type(Src_Unit_Type* src_u_type)
         // Loop every animation
         for (unit_anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
             printf("\n%s\n----------", unit_anim_str[anim]);
-            Anim_print(src_u_type->vars[u_var][anim]);
+            anim_print(src_u_type->vars[u_var][anim]);
         }
     }
 }
@@ -86,7 +86,7 @@ void UD_print(Units_Data* ud, UD_print_arg which)
 
             for (unit_anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
                 printf("\n%s\n----------", unit_anim_str[anim]);
-                Anim_print(ud->dst[type][anim]);
+                anim_print(ud->dst[type][anim]);
             }
         }
         break;

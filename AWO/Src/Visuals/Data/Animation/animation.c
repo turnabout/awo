@@ -2,11 +2,16 @@
 #include <SDL.h>
 
 #include "conf.h"
-#include "animation_data.h"
+#include "animation.h"
 
 #pragma warning( disable : 6011 )
 
-Animation* Anim_create_from_JSON(const cJSON* anim_json)
+struct Animation {
+    int count;
+    SDL_Rect* frames;
+};
+
+Animation* anim_create_from_JSON(const cJSON* anim_json)
 {
     Animation* anim = malloc(sizeof(Animation));
 
@@ -44,25 +49,32 @@ Animation* Anim_create_from_JSON(const cJSON* anim_json)
 
 }
 
-void Anim_free(Animation* ad)
+SDL_Rect* anim_get_frames(Animation* anim, int* count)
+{
+    *count = anim->count;
+    return anim->frames;
+}
+
+void anim_free(Animation* anim)
 {
     // TODO
 }
 
 #ifdef _DEBUG
-void Anim_print(Animation* ad)
+void anim_print(Animation* anim)
 {
     printf("\n[\n");
-    for (int i = 0; i < ad->count; i++) {
+
+    for (int i = 0; i < anim->count; i++) {
         printf(
             "{x: %d, y: %d, w: %d, h: %d},\n", 
-            ad->frames[i].x,
-            ad->frames[i].y,
-            ad->frames[i].w,
-            ad->frames[i].h
+            anim->frames[i].x,
+            anim->frames[i].y,
+            anim->frames[i].w,
+            anim->frames[i].h
         );
-
     }
+
     printf("]\n");
 }
 #endif

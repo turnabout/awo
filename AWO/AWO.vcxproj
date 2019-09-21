@@ -23,7 +23,7 @@
     <ClCompile Include="Src\Game\game_exit.c" />
     <ClCompile Include="Src\Libraries\c_hashmap.c" />
     <ClCompile Include="Src\Game\game_init.c" />
-    <ClCompile Include="Src\Visuals\Data\Animation\animation_data.c" />
+    <ClCompile Include="Src\Visuals\Data\Animation\animation.c" />
     <ClCompile Include="Src\Libraries\cJSON.c" />
     <ClCompile Include="Src\Visuals\Data\Palette\palette_tree.c" />
     <ClCompile Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.c" />
@@ -46,7 +46,7 @@
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Visuals\Data\Animation_Clock\animation_clock_enums.h" />
-    <ClInclude Include="Src\Visuals\Data\Animation\animation_data.h" />
+    <ClInclude Include="Src\Visuals\Data\Animation\animation.h" />
     <ClInclude Include="Src\Visuals\Data\Palette\palette_tree.h" />
     <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h" />
