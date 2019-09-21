@@ -40,7 +40,7 @@ void get_units_dst_data(Units_Data* ud, const cJSON* dst_json)
 
         cJSON_ArrayForEach(unit_anim_json, unit_type_json)
         {
-            ud->dst[current_type][current_anim++] = AD_create_from_JSON(unit_anim_json);
+            ud->dst[current_type][current_anim++] = Anim_create_from_JSON(unit_anim_json);
         }
 
         current_type++;
@@ -72,7 +72,7 @@ Src_Unit_Type* get_unit_src_data(const cJSON* unit_type_json)
         // Loop animations
         cJSON_ArrayForEach(unit_anim_json, unit_var_json)
         {
-            *(anims++) = AD_create_from_JSON(unit_anim_json);
+            *(anims++) = Anim_create_from_JSON(unit_anim_json);
         };
 
         // Reset anims pointer to the first variation, then save accumulated data

@@ -95,7 +95,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 
             // Create this tile variation & get its animation
             Tile_Var_Data* tile_var = malloc(sizeof(Tile_Var_Data));
-            tile_var->anim = AD_create_from_JSON(tile_var_json);
+            tile_var->anim = Anim_create_from_JSON(tile_var_json);
 
             int bla = cJSON_HasObjectItem(var_sub_clocks, tile_var_json->string);
 

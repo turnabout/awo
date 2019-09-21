@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <SDL.h>
 
+#include "conf.h"
 #include "animation_data.h"
 
 #pragma warning( disable : 6011 )
 
-Animation* AD_create_from_JSON(const cJSON* anim_json)
+Animation* Anim_create_from_JSON(const cJSON* anim_json)
 {
     Animation* anim = malloc(sizeof(Animation));
 
@@ -43,13 +44,13 @@ Animation* AD_create_from_JSON(const cJSON* anim_json)
 
 }
 
-void AD_free(Animation* ad)
+void Anim_free(Animation* ad)
 {
     // TODO
 }
 
 #ifdef _DEBUG
-void AD_print(Animation* ad)
+void Anim_print(Animation* ad)
 {
     printf("\n[\n");
     for (int i = 0; i < ad->count; i++) {
