@@ -12,7 +12,7 @@ typedef struct Src_Unit_Type Src_Unit_Type;
 
 struct Src_Unit_Type
 {
-    int vars_count;         // Amount of variations used by this unit type
+    int vars_count;    // Amount of variations used by this unit type
     Animation*** vars; // Animation data for every variation of this unit type
 };
 

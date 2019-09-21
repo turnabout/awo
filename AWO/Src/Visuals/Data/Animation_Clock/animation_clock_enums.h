@@ -1,8 +1,6 @@
 #pragma once
 
-/**
- * \brief Enumeration for every possible animation clock.
- */
+// Every possible animation clock's index.
 typedef enum {
     Sea_Clock,
     River_Clock,
@@ -12,9 +10,7 @@ typedef enum {
     No_Clock = -1,
 } Animation_Clock_Index;
 
-/**
- * \brief Enumeration for every possible animation sub clock.
- */
+// Every possible animation sub clock's index.
 typedef enum {
     // Sea Clock
     Pyramid1 = 0,

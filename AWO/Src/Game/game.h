@@ -1,10 +1,9 @@
 #pragma once
 #include <SDL.h>
+
 #include "Visuals/visuals_data.h"
 
-/**
- * \brief Holds components required to run the game.
- */
+// Holds components required to run the game.
 typedef struct Game
 {
     SDL_Window*   win;
@@ -15,25 +14,12 @@ typedef struct Game
     Tiles_Data*   td;
 } Game;
 
-/**
- *  \brief Initializes the game and populates the game instance pointed at by `game`.
- *
- *  \param game Pointer to the game instance.
- *
- *  \return Returns ERR if an error occurred, or OK.
- */
+// Initializes the game and populates the game instance pointed at by `game`.
+// Returns ERR if an error occured, or OK.
 int init_game(Game* game);
 
-/**
- *  \brief Exits the game and cleans up resources.
- *
- *  \param game Pointer to the game instance.
- */
+// Exits the game and cleans up resources.
 void exit_game(Game* game);
 
-/**
- *  \brief Runs the main game loop continuously.
- *
- *  \param game Pointer to the game instance.
- */
+// Runs the main game loop continuously.
 void run_game(Game* game);
