@@ -4,11 +4,15 @@
 typedef enum {
     Sea_Clock,
     River_Clock,
-    Units_Clock,
+    // Units_Clock,
 
     // None
     No_Clock = -1,
 } Animation_Clock_Index;
+
+#define ANIMATION_CLOCK_FIRST Sea_Clock
+#define ANIMATION_CLOCK_LAST River_Clock
+#define ANIMATION_CLOCK_COUNT ANIMATION_CLOCK_LAST + 1
 
 // Every possible animation sub clock's index.
 typedef enum {

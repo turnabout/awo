@@ -4,8 +4,8 @@
 // Ticks constantly from 0 to 255.
 typedef struct Game_Clock Game_Clock;
 
-// Create the game clock
-Game_Clock* GC_create(void);
+// Create the game clock, along with its animation clocks using the given data JSON
+Game_Clock* GC_create(const cJSON* json);
 
 // Update the game clock's current tick value
 void GC_update(Game_Clock* gc);

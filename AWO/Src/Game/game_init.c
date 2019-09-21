@@ -120,7 +120,9 @@ int get_game_visuals_data(Game* game)
     );
 
     // Get game clock and animation clocks
-    game->clock = GC_create();
+    game->clock = GC_create(
+        cJSON_GetObjectItemCaseSensitive(visuals_JSON, "animationClocks")
+    );
 
     return OK;
 }
