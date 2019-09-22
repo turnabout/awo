@@ -66,7 +66,7 @@ void GC_free(Game_Clock* gc)
 {
     // Free all attached animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-        free(&(gc->anim_clocks[i]));
+        AC_free(gc->anim_clocks[i]);
     }
 
     free(gc);

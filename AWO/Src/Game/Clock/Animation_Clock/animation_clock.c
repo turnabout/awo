@@ -64,6 +64,7 @@ void AC_free(Animation_Clock* ac)
         ASC_free(ac->sub_clocks[i]);
     }
 
+    free(ac->changing_ticks);
     free(ac->sub_clocks);
     free(ac);
 }
