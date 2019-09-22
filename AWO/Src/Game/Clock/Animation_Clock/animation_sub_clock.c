@@ -30,7 +30,6 @@ void ASC_update(Animation_Sub_Clock* asc, int ac_current_tick)
 void ASC_free(Animation_Sub_Clock* asc)
 {
     free(asc->ticks_array);
-    free(asc->current_tick);
     free(asc);
 }
 

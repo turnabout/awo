@@ -2,6 +2,7 @@
 
 #include "Visuals/visuals_data.h"
 #include "Visuals/visuals_processing.h"
+#include "Entities/Unit/unit.h"
 #include "game.h"
 #include "conf.h"
 
@@ -30,7 +31,14 @@ void run_game(Game* game)
 */
     // Quick draw test
 
-    // int* test_tick_ptr = GC_get_ASC_tick_ptr(game->clock, Sea_Clock, Ten);
+
+    // Unit test
+    SDL_Texture* os_test = create_units_texture(game, OS, OS);
+    Unit* test_unit = unit_create(game, os_test, Infantry);
+
+    unit_update(test_unit);
+
+    // int* test_tick_ptr = GC_get_ASC_tick_ptr(game->clock, Units_Clock, Pyramid_3_Frames);
     // printf("%d\n", *test_tick_ptr);
 
     while (1) {
@@ -45,7 +53,6 @@ void run_game(Game* game)
         }
 
         GC_update(game->clock);
-
 
         // If frame finished early, wait remaining time
         int frame_ticks = SDL_GetTicks() - start_ticks;
