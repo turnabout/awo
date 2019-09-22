@@ -5,8 +5,8 @@
 #include "cJSON.h"
 
 #include "game_clock.h"
-#include "_animation_clock_internal.h"
-#include "animation_clock_enums.h"
+#include "Animation_Clock/_animation_clock_internal.h"
+#include "Animation_Clock/animation_clock_enums.h"
 
 #pragma warning( disable : 6011 )
 

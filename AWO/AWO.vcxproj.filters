@@ -63,7 +63,10 @@
     <ClCompile Include="Src\Game\Clock\game_clock.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Clock\animation_clock.c">
+    <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_clock.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_sub_clock.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,13 +132,13 @@
     <ClInclude Include="Src\Visuals\Data\Animation\animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Clock\animation_clock_enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Clock\game_clock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Clock\_animation_clock_internal.h">
+    <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_clock_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Clock\Animation_Clock\animation_clock_enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
