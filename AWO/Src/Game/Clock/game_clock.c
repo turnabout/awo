@@ -62,6 +62,11 @@ void GC_update(Game_Clock* gc)
     }
 }
 
+int* GC_get_ASC_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Animation_Sub_Clock_Index sc_index)
+{
+    return AC_get_ASC_tick_ptr(gc->anim_clocks[ac_index], sc_index);
+}
+
 void GC_free(Game_Clock* gc)
 {
     // Free all attached animation clocks

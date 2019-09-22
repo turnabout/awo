@@ -58,6 +58,11 @@ void AC_update(Animation_Clock* ac, int game_clock_tick)
     }
 }
 
+int* AC_get_ASC_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index anim_sc_index)
+{
+    return ASC_get_tick_ptr(ac->sub_clocks[anim_sc_index]);
+}
+
 void AC_free(Animation_Clock* ac)
 {
     for (int i = 0; i < ac->sub_clocks_count; i++) {

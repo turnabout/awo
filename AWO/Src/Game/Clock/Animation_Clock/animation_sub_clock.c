@@ -8,8 +8,7 @@ Animation_Sub_Clock* ASC_create_from_JSON(const cJSON* json)
 {
     Animation_Sub_Clock* asc = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));
 
-    asc->current_tick = malloc(sizeof(int));
-    (*asc->current_tick) = 0;
+    asc->current_tick = 0;
 
     // Build up the sub-clock's tick array
     int ticks_count = cJSON_GetArraySize(json);
@@ -25,7 +24,7 @@ Animation_Sub_Clock* ASC_create_from_JSON(const cJSON* json)
 
 void ASC_update(Animation_Sub_Clock* asc, int ac_current_tick)
 {
-    (*asc->current_tick) = asc->ticks_array[ac_current_tick];
+    asc->current_tick = asc->ticks_array[ac_current_tick];
 }
 
 void ASC_free(Animation_Sub_Clock* asc)
@@ -33,4 +32,9 @@ void ASC_free(Animation_Sub_Clock* asc)
     free(asc->ticks_array);
     free(asc->current_tick);
     free(asc);
+}
+
+int* ASC_get_tick_ptr(Animation_Sub_Clock* asc)
+{
+    return &asc->current_tick;
 }

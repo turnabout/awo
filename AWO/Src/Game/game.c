@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "Visuals/visuals_data.h"
 #include "Visuals/visuals_processing.h"
 #include "game.h"
@@ -28,6 +30,9 @@ void run_game(Game* game)
 */
     // Quick draw test
 
+    // int* test_tick_ptr = GC_get_ASC_tick_ptr(game->clock, Sea_Clock, Ten);
+    // printf("%d\n", *test_tick_ptr);
+
     while (1) {
         SDL_Event event;
         Uint32 start_ticks = SDL_GetTicks();
@@ -40,6 +45,7 @@ void run_game(Game* game)
         }
 
         GC_update(game->clock);
+
 
         // If frame finished early, wait remaining time
         int frame_ticks = SDL_GetTicks() - start_ticks;
