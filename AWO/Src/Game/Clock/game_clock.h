@@ -1,7 +1,6 @@
 #pragma once
 
 // Main game clock used for updating and keeping animations synchronized.
-// Ticks constantly from 0 to 255.
 typedef struct Game_Clock Game_Clock;
 
 // Create the game clock, along with its animation clocks using the given data JSON

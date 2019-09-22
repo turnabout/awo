@@ -49,7 +49,11 @@ void GC_update(Game_Clock* gc)
     // Add to MS accumulation, advance current tick if threshold reached
     if ((gc->accum_ms += delta) > GAME_CLOCK_MAX_ACCUM_MS) {
         gc->accum_ms = 0;
-        gc->current_tick++;
+
+        // Reset tick if exceeded max
+        if (++gc->current_tick > GAME_CLOCK_TICK_MAX) {
+            gc->current_tick = 0;
+        }
 
         // Update the animation clocks
         for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {

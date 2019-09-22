@@ -31,6 +31,7 @@
 
 // Game clock
 #define GAME_CLOCK_MAX_ACCUM_MS SCREEN_TICKS_PER_FRAME * 2
+#define GAME_CLOCK_TICK_MAX 45
 
 // Default dimension of a tile, in pixels
 #define DEFAULT_TILE_DIMENSION 16
