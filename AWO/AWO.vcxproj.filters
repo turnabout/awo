@@ -75,6 +75,12 @@
     <ClCompile Include="Src\Game\Board\game_board.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Visuals\Processing\tiles_processing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Visuals\Processing\processing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -151,6 +157,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Board\game_board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Visuals\Processing\_processing_internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

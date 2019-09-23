@@ -34,4 +34,5 @@ struct Tiles_Data
 {
     Tile_Data* src[TILE_TYPE_AMOUNT];
     SS_Metadata* ss_meta_data;
+    const cJSON* JSON;
 };

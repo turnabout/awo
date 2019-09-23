@@ -8,7 +8,6 @@
 // TODO: Instead, return a Palette_Tree* and store the 'flip' value in an additional pointer arg
 Palette_Tree* UD_get_palette(Units_Data* ud, unit_var u_var, int* flip)
 {
-    // TODO: Can't rely on static JSON anymore, use given Units_Data* instead
     const cJSON* base = cJSON_GetObjectItemCaseSensitive(ud->JSON, "basePalette");
     const cJSON* unit_palettes = cJSON_GetObjectItemCaseSensitive(ud->JSON, "palettes");
 

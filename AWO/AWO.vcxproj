@@ -38,6 +38,8 @@
     <ClCompile Include="Src\Visuals\Data\Units\units_data_creation.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utilities\utilities.c" />
+    <ClCompile Include="Src\Visuals\Processing\processing.c" />
+    <ClCompile Include="Src\Visuals\Processing\tiles_processing.c" />
     <ClCompile Include="Src\Visuals\Processing\units_processing.c" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +69,7 @@
     <ClInclude Include="Src\Utilities\utilities.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_enums.h" />
+    <ClInclude Include="Src\Visuals\Processing\_processing_internal.h" />
     <ClInclude Include="Src\Visuals\visuals_data.h" />
     <ClInclude Include="Src\Visuals\visuals_processing.h" />
   </ItemGroup>

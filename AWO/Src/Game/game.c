@@ -14,11 +14,28 @@ void draw_game(Game* game);
 void run_game(Game* game)
 {
     // Drawing a unit test
-    game->test_unit_tex = create_units_texture(game, OS, OS);
+    // game->test_unit_tex = create_units_texture(game, OS, OS);
+    // GB_add_unit(game->board, unit_create(game->clock, game->ud, game->test_unit_tex, APC));
 
-    GB_add_unit(game->board, unit_create(game->clock, game->ud, game->test_unit_tex, APC));
+    // Unit texture test
+    /*
+    SDL_Texture* test_tex = create_units_texture(game, OS, OS);
+    
+    SDL_RenderClear(game->rend);
+    SDL_RenderCopy(game->rend, test_tex, NULL, NULL);
+    SDL_RenderPresent(game->rend);
+    */
+
+    // Tile texture test
+    /*
+    SDL_Texture* tile_test_tex = create_tiles_texture(game, Snow, TILE_FOG_OFF);
 
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
+
+    SDL_RenderClear(game->rend);
+    SDL_RenderCopy(game->rend, tile_test_tex, NULL, NULL);
+    SDL_RenderPresent(game->rend);
+    */
 
     while (1) {
         SDL_Event event;

@@ -13,7 +13,7 @@ Tiles_Data* TD_create_from_JSON(cJSON* tiles_visuals_JSON)
 
     // Store metadata & JSON for palettes
     td->ss_meta_data = SS_Meta_create_from_JSON(tiles_visuals_JSON);
-    // TODO: store JSON for palettes
+    td->JSON = tiles_visuals_JSON;
 
     // Add tiles' src data
     get_tiles_src_data(
@@ -96,8 +96,6 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
             // Create this tile variation & get its animation
             Tile_Var_Data* tile_var = malloc(sizeof(Tile_Var_Data));
             tile_var->anim = anim_create_from_JSON(tile_var_json);
-
-            int bla = cJSON_HasObjectItem(var_sub_clocks, tile_var_json->string);
 
             // Get this tile variation's correct sub clock value
             if (

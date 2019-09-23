@@ -4,6 +4,7 @@
 
 #include "_tiles_data_internal.h"
 #include "c_hashmap.h"
+#include "../Palette/palette_tree.h"
 
 Tile_Var_Data* get_tile_var(Tiles_Data* td, tile_type type, tile_var var)
 {
@@ -18,6 +19,53 @@ Tile_Var_Data* get_tile_var(Tiles_Data* td, tile_type type, tile_var var)
     } else {
         return result;
     }
+}
+
+Palette_Tree* TD_get_palette(Tiles_Data* td, tile_weather weather)
+{
+
+    const cJSON* base = cJSON_GetObjectItemCaseSensitive(td->JSON, "basePalette");
+    const cJSON* tiles_palettes = cJSON_GetObjectItemCaseSensitive(td->JSON, "palettes");
+
+    // Get cJSON item for the given palette
+    const cJSON* tile_palette = cJSON_GetArrayItem(tiles_palettes, weather);
+
+    if (cJSON_GetArraySize(tile_palette) < 1) {
+        return NULL;
+    }
+
+    // Get the result
+    return PT_create_from_JSON(base, tile_palette);
+}
+
+SS_Metadata* TD_get_ss_metadata(Tiles_Data* td)
+{
+    return td->ss_meta_data;
+}
+
+Animation* TD_get_next_tile_animation(Tiles_Data* td, tile_type tt)
+{
+    // Variation index
+    static int index = 0;
+
+    Tile_Data* tile = td->src[tt];
+
+    // No tile variation at given index, reset it and return NULL
+    if (index == tile->vars_amount) {
+        index = 0;
+        return NULL;
+    }
+
+    // Get tile variation data
+    tile_var v = tile->vars_list[index];
+    Tile_Var_Data* t_var_data;
+
+    hashmap_get(tile->vars, (char*)tile_var_str_short[v], (void**)(&t_var_data));
+
+    // Increment index for next time
+    index++;
+
+    return t_var_data->anim;
 }
 
 void print_tile_type(Tiles_Data* td, tile_type type)
