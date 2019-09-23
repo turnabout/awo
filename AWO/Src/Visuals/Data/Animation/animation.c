@@ -51,9 +51,7 @@ Animation* anim_create_from_JSON(const cJSON* anim_json)
 
 SDL_Rect* anim_get_frames(Animation* anim, int* count)
 {
-    if (count != NULL) {
-        *count = anim->count;
-    }
+    *count = anim->count;
 
     return anim->frames;
 }

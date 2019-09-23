@@ -8,38 +8,17 @@
 
 void draw_tiles_test(Game* game);
 void draw_armies_test(Game* game);
+void update_game(Game* game);
+void draw_game(Game* game);
 
 void run_game(Game* game)
 {
-    // draw_tiles_test(&game);
-    // draw_armies_test(&game);
+    // Drawing a unit test
+    game->test_unit_tex = create_units_texture(game, OS, OS);
 
-    // UD_print(game->ud, UD_DST);
-    // TD_print(game->td);
-
-    // Quick draw test
-    /*
-    SDL_Texture* os_test = create_units_texture(game, OS, OS);
+    GB_add_unit(game->board, unit_create(game->clock, game->ud, game->test_unit_tex, APC));
 
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
-    SDL_RenderClear(game->rend);
-
-    SDL_Rect dst = {0, 0, 240, 226};
-    SDL_RenderCopy(game->rend, os_test, NULL, &dst);
-
-    SDL_RenderPresent(game->rend);
-*/
-    // Quick draw test
-
-
-    // Unit test
-    SDL_Texture* os_test = create_units_texture(game, OS, OS);
-    Unit* test_unit = unit_create(game, os_test, Infantry);
-
-    unit_update(test_unit);
-
-    // int* test_tick_ptr = GC_get_ASC_tick_ptr(game->clock, Units_Clock, Pyramid_3_Frames);
-    // printf("%d\n", *test_tick_ptr);
 
     while (1) {
         SDL_Event event;
@@ -52,7 +31,8 @@ void run_game(Game* game)
             }
         }
 
-        GC_update(game->clock);
+        update_game(game);
+        draw_game(game);
 
         // If frame finished early, wait remaining time
         int frame_ticks = SDL_GetTicks() - start_ticks;
@@ -61,6 +41,21 @@ void run_game(Game* game)
             SDL_Delay(SCREEN_TICKS_PER_FRAME - frame_ticks);
         }
     }
+}
+
+void update_game(Game* game)
+{
+    GC_update(game->clock);
+}
+
+void draw_game(Game* game)
+{
+    SDL_RenderClear(game->rend);
+
+    // Draw all on-screen content
+    GB_draw(game->board, game->rend);
+
+    SDL_RenderPresent(game->rend);
 }
 
 void draw_unit_test(

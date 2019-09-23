@@ -35,3 +35,6 @@
 
 // Default dimension of a tile, in pixels
 #define DEFAULT_TILE_DIMENSION 16
+
+// Max amount of units for each player
+#define MAX_UNITS_PER_ARMY 50

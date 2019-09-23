@@ -3,6 +3,7 @@
 
 #include "Visuals/visuals_data.h"
 #include "Clock/game_clock.h"
+#include "Board/game_board.h"
 
 // Holds components required to run the game.
 typedef struct Game
@@ -14,6 +15,10 @@ typedef struct Game
     Units_Data*   ud;
     Tiles_Data*   td;
     Game_Clock*   clock;
+
+    // Test fields
+    Game_Board* board;
+    SDL_Texture* test_unit_tex;
 } Game;
 
 // Initializes the game and populates the game instance pointed at by `game`.

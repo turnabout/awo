@@ -72,6 +72,9 @@
     <ClCompile Include="Src\Game\Entities\Unit\unit.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Board\game_board.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -145,6 +148,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Entities\Unit\unit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Board\game_board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

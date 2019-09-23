@@ -1,5 +1,6 @@
 #pragma once
 #include "Animation_Clock/animation_clock_enums.h"
+#include "cJSON.h"
 
 // Main game clock used for updating and keeping animations synchronized.
 typedef struct Game_Clock Game_Clock;

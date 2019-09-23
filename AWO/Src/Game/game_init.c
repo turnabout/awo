@@ -78,6 +78,9 @@ int init_game(Game* game)
         return ERR;
     }
 
+    // Add the game board
+    game->board = GB_create();
+
     return OK;
 }
 
