@@ -101,7 +101,8 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
     game->board = GB_create(weathers);
 
     // Fill game board with initial tiles
-    GB_fill(game->board, game->clock, game->td, Mountain, Small);
+    GB_fill(game->board, game->clock, game->td, Sea, Middle);
+    GB_fill(game->board, game->clock, game->td, Plain, Default);
 
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
 

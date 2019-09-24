@@ -57,8 +57,14 @@ void GB_change_tile(int tile_x, int tile_y)
 
 void GB_fill(Game_Board* gb, Game_Clock* gc, Tiles_Data* td, Tile_Type tt, Tile_Var tv)
 {
-    Tile* tile = tile_create(gc, td, tt, tv);
-    TM_add_map_tile(gb->tiles_map, tile, tt, tv);
+    // Attempt to get existing tile from map
+    Tile* tile = TM_get_map_tile(gb->tiles_map, tt, tv);
+
+    // If nonexistent, make new one and add to map
+    if (tile == NULL) {
+        tile = tile_create(gc, td, tt, tv);
+        TM_add_map_tile(gb->tiles_map, tile, tt, tv);
+    }
 
     // Loop lines
     for (int i = 0; i < gb->n_lines; i++) {
