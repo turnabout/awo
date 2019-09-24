@@ -32,7 +32,7 @@ void tile_draw(Tile* t, SDL_Renderer* rend, SDL_Texture* texture, int x, int y)
 {
     SDL_Rect draw_rect = {
         x,
-        y,
+        y - (t->anim_frames[0].h + DEFAULT_TILE_DIMENSION),
         t->anim_frames[0].w,
         t->anim_frames[0].h,
     };

@@ -16,6 +16,7 @@ struct Game_Clock {
     Uint32 last_game_tick; // Result of SDL_GetTicks() last time the game clock was updated
 
     Animation_Clock* anim_clocks[ANIMATION_CLOCK_COUNT]; // Animation clocks attached to game clock
+    int* static_tick; // Static tick counter, always pointing to 0. Given to static tiles.
 };
 
 Game_Clock* GC_create(const cJSON* json)
@@ -26,6 +27,10 @@ Game_Clock* GC_create(const cJSON* json)
     gc->current_tick = 0;
     gc->accum_ms = 0;
     gc->last_game_tick = SDL_GetTicks();
+
+    // Add static tick
+    gc->static_tick = malloc(sizeof(int));
+    *gc->static_tick = 0;
 
     // Create the game clock's animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
@@ -64,11 +69,17 @@ void GC_update(Game_Clock* gc)
 
 int* GC_get_ASC_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Animation_Sub_Clock_Index sc_index)
 {
+    if (ac_index == No_Clock) {
+        return gc->static_tick;
+    }
+
     return AC_get_ASC_tick_ptr(gc->anim_clocks[ac_index], sc_index);
 }
 
 void GC_free(Game_Clock* gc)
 {
+    free(gc->static_tick);
+
     // Free all attached animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         AC_free(gc->anim_clocks[i]);
