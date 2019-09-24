@@ -81,6 +81,9 @@
     <ClCompile Include="Src\Visuals\Processing\processing.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Entities\Tile\tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -160,6 +163,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Visuals\Processing\_processing_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entities\Tile\tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

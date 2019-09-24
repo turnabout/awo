@@ -5,6 +5,7 @@
 #include "../Palette/palette_tree.h"
 #include "../Sprite_Sheet_Metadata/ss_metadata.h"
 #include "../Animation/animation.h"
+#include "Game/Clock/game_clock.h"
 
 // Holds all of the game's visuals data for tiles.
 typedef struct Tiles_Data Tiles_Data;
@@ -21,8 +22,20 @@ Palette_Tree* TD_get_palette(Tiles_Data* td, tile_weather weather);
 // Gets the tiles sprite sheet metadata.
 SS_Metadata* TD_get_ss_metadata(Tiles_Data* td);
 
-// Gets the tile data for the given tile type
-// Tile_Data* TD_get_tile(Tiles_Data* td, tile_type tt);
+// Gather data on tile of given type & variation
+// \param td Tiles' data object.
+// \param tt The tile type.
+// \param tv The tile variation.
+// \param clock Pointer filled in with the tile's animation clock index.
+// \param clock Pointer filled in with the tile's sub-clock index.
+// \returns Gets pointer to the tile's animation frames.
+SDL_Rect* TD_gather_tile_data(
+    Tiles_Data* td,
+    tile_type tt,
+    tile_var tv,
+    Animation_Clock_Index* clock_index,
+    Animation_Sub_Clock_Index* sub_clock_index
+);
 
 // Gets the next animation for tile type. Must be called continuously until it returns NULL.
 // Goes through all tile variations of the tile type until all have been returned.
@@ -32,13 +45,3 @@ Animation* TD_get_next_tile_animation(Tiles_Data* td, tile_type tt);
 // Print contents from tiles data.
 void TD_print(Tiles_Data* td);
 #endif
-
-// TODO: still need?
-// Gets a tile's data.
-// Tile_Data* access_tile(tile_type type);
-
-// TODO: still need?
-// Gets a tile's variation's data.
-// Returns the tile variation data associated with the given tile type and tile variation, or NULL
-// if given variation was not found on the tile type.
-// Tile_Var_Data* access_tile_var(tile_type type, tile_var var);

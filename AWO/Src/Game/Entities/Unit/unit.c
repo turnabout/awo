@@ -7,7 +7,7 @@
 #pragma warning( disable: 6011 6386 )
 
 struct Unit {
-    SDL_Rect draw_rect;       // Draw rectangle (where to draw on screen)
+    SDL_Rect draw_rect;       // Unit's draw rectangle (where to draw on screen)
     SDL_Texture* src_texture; // Pointer to texture used to draw this unit
 
     int* anim_index; // Pointer to sub-clock tick which dictates this unit's idle anim index

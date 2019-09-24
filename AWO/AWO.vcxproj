@@ -23,6 +23,7 @@
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_clock.c" />
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_sub_clock.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
+    <ClCompile Include="Src\Game\Entities\Tile\tile.c" />
     <ClCompile Include="Src\Game\Entities\Unit\unit.c" />
     <ClCompile Include="Src\Game\game.c" />
     <ClCompile Include="Src\Game\game_exit.c" />
@@ -53,6 +54,7 @@
     <ClInclude Include="Src\Game\Board\game_board.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_clock_internal.h" />
+    <ClInclude Include="Src\Game\Entities\Tile\tile.h" />
     <ClInclude Include="Src\Game\Entities\Unit\unit.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Game\game.h" />

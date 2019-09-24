@@ -17,5 +17,15 @@ void GB_add_unit(Game_Board* gb, Unit* u);
 // Draws entities visible on the game board.
 void GB_draw(Game_Board* gb, SDL_Renderer* rend);
 
+// Fills the game board with the given tile type/variation.
+void GB_fill(
+    Game_Board* gb,
+    Game_Clock* gc,
+    Tiles_Data* td,
+    SDL_Texture* src_texture,
+    tile_type tt,
+    tile_var tv
+);
+
 // Frees the game board.
 void GB_free(Game_Board* gb);

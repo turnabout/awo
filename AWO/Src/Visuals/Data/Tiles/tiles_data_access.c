@@ -68,6 +68,29 @@ Animation* TD_get_next_tile_animation(Tiles_Data* td, tile_type tt)
     return t_var_data->anim;
 }
 
+SDL_Rect* TD_gather_tile_data(
+    Tiles_Data* td, 
+    tile_type tt, 
+    tile_var tv,
+    Animation_Clock_Index* clock,
+    Animation_Sub_Clock_Index* sub_clock
+)
+{
+    Tile_Data* tile = td->src[tt];
+
+    // Fill in clock index
+    *clock = tile->clock;
+
+    // Fill in sub-clock index & return animation frames pointer
+    Tile_Var_Data* t_var_data;
+    int count;
+    hashmap_get(tile->vars, (char*)tile_var_str_short[tv], (void**)(&t_var_data));
+
+    *sub_clock = t_var_data->sub_clock;
+
+    return anim_get_frames(t_var_data->anim, &count);
+}
+
 void print_tile_type(Tiles_Data* td, tile_type type)
 {
     Tile_Data* tile_data = td->src[type];

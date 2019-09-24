@@ -3,10 +3,10 @@
 #include "Visuals/visuals_data.h"
 #include "Visuals/visuals_processing.h"
 #include "Entities/Unit/unit.h"
+#include "Entities/Tile/tile.h"
 #include "game.h"
 #include "conf.h"
 
-void draw_tiles_test(Game* game);
 void draw_armies_test(Game* game);
 void update_game(Game* game);
 void draw_game(Game* game);
@@ -36,6 +36,18 @@ void run_game(Game* game)
     SDL_RenderCopy(game->rend, tile_test_tex, NULL, NULL);
     SDL_RenderPresent(game->rend);
     */
+
+    // Drawing a tile test
+    SDL_Texture* tile_test_tex = create_tiles_texture(game, Rain, TILE_FOG_OFF);
+
+    GB_fill(
+        game->board,
+        game->clock,
+        game->td,
+        tile_test_tex,
+        Sea,
+        Middle
+    );
 
     while (1) {
         SDL_Event event;
@@ -158,8 +170,4 @@ void draw_armies_test(Game* game)
 
     SDL_RenderPresent(game->rend);
 */
-}
-
-void draw_tiles_test(Game* game)
-{
 }
