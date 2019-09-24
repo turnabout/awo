@@ -8,7 +8,9 @@
 int main(int argc, char** argv)
 {
     Game game;
-    if (init_game(&game) == ERR) {
+    Game_Arg_Weathers weathers = Game_Arg_Clear | Game_Arg_Snow | Game_Arg_Rain;
+
+    if (init_game(&game, weathers) == ERR) {
         exit_game(&game);
         return 1;
     }

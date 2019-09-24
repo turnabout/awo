@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * Project-wide configuration definitions.
+ * Project-wide configuration.
  */
 
 // Resource paths
@@ -36,7 +36,7 @@
 // Default dimension of a tile, in pixels
 #define DEFAULT_TILE_DIMENSION 16
 
-// Default dimensions for game board
+// Default dimensions of game board, in tiles
 #define DEFAULT_GB_WIDTH  20
 #define DEFAULT_GB_HEIGHT 20
 

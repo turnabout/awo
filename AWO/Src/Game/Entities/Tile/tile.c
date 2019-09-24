@@ -9,20 +9,11 @@
 
 struct Tile {
     SDL_Texture* src_texture; // Pointer to texture used to draw this tile
-    SDL_Rect draw_rect;       // The tile's draw rectangle
     SDL_Rect* anim_frames;    // Frame arrays for this tile's animation
     int* anim_index;          // Pointer to sub-clock tick used to update this tile's animation
 };
 
-Tile* tile_create(
-    Game_Clock* gc, 
-    Tiles_Data* td, 
-    SDL_Texture* src_texture, 
-    tile_type tt,
-    tile_var tv,
-    int x,
-    int y
-)
+Tile* tile_create(Game_Clock* gc, Tiles_Data* td, tile_type tt, tile_var tv)
 {
     Tile* t = (Tile*)malloc(sizeof(Tile));
 
@@ -35,7 +26,11 @@ Tile* tile_create(
     // Get the animation index pointer
     t->anim_index = GC_get_ASC_tick_ptr(gc, clock, sub_clock);
 
-    // Set the starting draw rectangle
+    return t;
+}
+
+void tile_draw(Tile* t, SDL_Renderer* rend, SDL_Texture* texture, int x, int y)
+{
     SDL_Rect draw_rect = {
         x,
         y,
@@ -43,17 +38,5 @@ Tile* tile_create(
         t->anim_frames[0].h,
     };
 
-    t->src_texture = src_texture;
-    t->draw_rect = draw_rect;
-    return t;
-}
-
-void tile_draw(Tile* t, SDL_Renderer* rend)
-{
-    SDL_RenderCopy(
-        rend, 
-        t->src_texture, 
-        &t->anim_frames[*t->anim_index], 
-        &t->draw_rect
-    );
+    SDL_RenderCopy(rend, texture, &t->anim_frames[*t->anim_index], &draw_rect);
 }

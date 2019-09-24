@@ -17,7 +17,7 @@ Tiles_Data* TD_create_from_JSON(cJSON* tiles_visuals_JSON);
 // Gets the palette for the given tile weather variation.
 // \param td The tiles data object.
 // \param weather The weather variation of the palette.
-Palette_Tree* TD_get_palette(Tiles_Data* td, tile_weather weather);
+Palette_Tree* TD_get_palette(Tiles_Data* td, Weather weather);
 
 // Gets the tiles sprite sheet metadata.
 SS_Metadata* TD_get_ss_metadata(Tiles_Data* td);

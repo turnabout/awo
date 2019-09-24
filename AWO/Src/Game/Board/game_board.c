@@ -8,10 +8,10 @@
 typedef Tile** Tile_Row;
 
 struct Game_Board {
-    int w, h;        // Dimensions of full game board, in tiles
-    Unit** units;    // Contains all units on the game board.
-    Tile_Row* tiles; // Contains all tiles on the game board.
-    int u_count;     // How many units are on the game board.
+    int w, h;                // Dimensions of full game board, in tiles
+    Unit** units;            // Contains all units on the game board.
+    Tile_Row* tiles;         // Contains all tiles on the game board.
+    int u_count;             // How many units are on the game board.
 };
 
 Game_Board* GB_create()
@@ -45,41 +45,31 @@ void GB_update(Game_Board* gb)
 {
 }
 
-void GB_fill(
-    Game_Board* gb,
-    Game_Clock* gc,
-    Tiles_Data* td,
-    SDL_Texture* src_texture,
-    tile_type tt,
-    tile_var tv
-)
+void GB_fill(Game_Board* gb, Game_Clock* gc, Tiles_Data* td, tile_type tt, tile_var tv)
 {
     // Columns
     for (int i = 0; i < gb->h; i++) {
         // Rows
         for (int j = 0; j < gb->w; j++) {
-            gb->tiles[i][j] = tile_create(
-                gc,
-                td,
-                src_texture,
-                tt,
-                tv,
-                i * DEFAULT_TILE_DIMENSION,
-                j * DEFAULT_TILE_DIMENSION
-            );
+            gb->tiles[i][j] = tile_create(gc, td, tt, tv);
         }
     }
 }
 
-void GB_draw(Game_Board* gb, SDL_Renderer* rend)
+void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture)
 {
-    // Draw tiles
-    // Columns
+    // Draw tiles, Columns
     for (int i = 0; i < gb->h; i++) {
         // Rows
         for (int j = 0; j < gb->w; j++) {
             if (gb->tiles[i][j] != NULL) {
-                tile_draw(gb->tiles[i][j], rend);
+                tile_draw(
+                    gb->tiles[i][j], 
+                    rend, 
+                    tile_texture, 
+                    i * DEFAULT_TILE_DIMENSION,
+                    j * DEFAULT_TILE_DIMENSION
+                );
             }
         }
     }

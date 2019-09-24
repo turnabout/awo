@@ -3,7 +3,7 @@
 
 void draw_tile_texture_anims(Game* game, tile_type t_type);
 
-SDL_Texture* create_tiles_texture(Game* game, tile_weather weather, int fog)
+SDL_Texture* create_tiles_texture(Game* game, Weather weather)
 {
     // Get palette & ss metadata
     Palette_Tree* palette = TD_get_palette(game->td, weather);

@@ -4,6 +4,8 @@
 #include "Visuals/visuals_data.h"
 #include "Clock/game_clock.h"
 #include "Board/game_board.h"
+#include "Visuals/Data/Tiles/tiles_enums.h"
+#include "game_arg_enums.h"
 
 // Holds components required to run the game.
 typedef struct Game
@@ -16,14 +18,19 @@ typedef struct Game
     Tiles_Data*   td;
     Game_Clock*   clock;
 
-    // Test fields
+    // Tile/unit textures
+    SDL_Texture* tile_textures[WEATHER_COUNT];
+
+    // State
+    Weather current_weather; // Currently active weather
+
+    // Game board
     Game_Board* board;
-    SDL_Texture* test_unit_tex;
 } Game;
 
 // Initializes the game and populates the game instance pointed at by `game`.
 // Returns ERR if an error occured, or OK.
-int init_game(Game* game);
+int init_game(Game* game, Game_Arg_Weathers weathers);
 
 // Exits the game and cleans up resources.
 void exit_game(Game* game);

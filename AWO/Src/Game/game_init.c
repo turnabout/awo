@@ -4,13 +4,14 @@
 #include <SDL_image.h>
 
 #include "Visuals/visuals_data.h"
+#include "Visuals/visuals_processing.h"
 #include "Utilities/utilities.h"
 #include "conf.h"
 #include "game.h"
 
 int get_game_visuals_data(Game* game);
 
-int init_game(Game* game)
+int init_game(Game* game, Game_Arg_Weathers weathers)
 {
     // Initialize SDL
     if (SDL_Init(SDL_INIT_FLAGS) != 0) {
@@ -78,8 +79,31 @@ int init_game(Game* game)
         return ERR;
     }
 
+    // Process weathers / tile textures
+    game->current_weather = -1;
+
+    for (Weather w = WEATHER_FIRST; w < WEATHER_COUNT; w++) {
+        if ((1 << w) & weathers) {
+
+            // Assign starting weather to first active one
+            if (game->current_weather == -1) {
+                game->current_weather = w;
+            }
+            
+            // Add tile texture for this weather
+            game->tile_textures[w] = create_tiles_texture(game, w);
+        }
+    }
+
+    // TODO: Add unit textures used by the game
+
     // Add the game board
-    game->board = GB_create();
+    game->board = GB_create(weathers);
+
+    // Fill game board with initial tiles
+    GB_fill(game->board, game->clock, game->td, Sea, Middle);
+
+    SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
 
     return OK;
 }

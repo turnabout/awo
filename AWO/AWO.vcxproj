@@ -56,6 +56,7 @@
     <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_clock_internal.h" />
     <ClInclude Include="Src\Game\Entities\Tile\tile.h" />
     <ClInclude Include="Src\Game\Entities\Unit\unit.h" />
+    <ClInclude Include="Src\Game\game_arg_enums.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\animation_clock_enums.h" />

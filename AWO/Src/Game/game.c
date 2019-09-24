@@ -7,48 +7,11 @@
 #include "game.h"
 #include "conf.h"
 
-void draw_armies_test(Game* game);
 void update_game(Game* game);
 void draw_game(Game* game);
 
 void run_game(Game* game)
 {
-    // Drawing a unit test
-    // game->test_unit_tex = create_units_texture(game, OS, OS);
-    // GB_add_unit(game->board, unit_create(game->clock, game->ud, game->test_unit_tex, APC));
-
-    // Unit texture test
-    /*
-    SDL_Texture* test_tex = create_units_texture(game, OS, OS);
-    
-    SDL_RenderClear(game->rend);
-    SDL_RenderCopy(game->rend, test_tex, NULL, NULL);
-    SDL_RenderPresent(game->rend);
-    */
-
-    // Tile texture test
-    /*
-    SDL_Texture* tile_test_tex = create_tiles_texture(game, Snow, TILE_FOG_OFF);
-
-    SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
-
-    SDL_RenderClear(game->rend);
-    SDL_RenderCopy(game->rend, tile_test_tex, NULL, NULL);
-    SDL_RenderPresent(game->rend);
-    */
-
-    // Drawing a tile test
-    SDL_Texture* tile_test_tex = create_tiles_texture(game, Rain, TILE_FOG_OFF);
-
-    GB_fill(
-        game->board,
-        game->clock,
-        game->td,
-        tile_test_tex,
-        Sea,
-        Middle
-    );
-
     while (1) {
         SDL_Event event;
         Uint32 start_ticks = SDL_GetTicks();
@@ -82,7 +45,7 @@ void draw_game(Game* game)
     SDL_RenderClear(game->rend);
 
     // Draw all on-screen content
-    GB_draw(game->board, game->rend);
+    GB_draw(game->board, game->rend, game->tile_textures[game->current_weather]);
 
     SDL_RenderPresent(game->rend);
 }
