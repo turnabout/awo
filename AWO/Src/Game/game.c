@@ -67,8 +67,8 @@ void draw_unit_test(
 
     dst.x = x;
     dst.y = y;
-    dst.w = frame->w;
-    dst.h = frame->h;
+    dst.n_columns = frame->n_columns;
+    dst.n_lines = frame->n_lines;
 
     SDL_RenderCopy(game->rend, unit_tex, frame, &dst);
 */

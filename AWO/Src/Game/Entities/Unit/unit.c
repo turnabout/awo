@@ -49,7 +49,7 @@ Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, unit
 
 void unit_update(Unit* u)
 {
-    // printf("w %d h %d\n", u->anims_frames[u->current_anim][0].w, u->anims_frames[u->current_anim][0].h);
+    // printf("n_columns %d n_lines %d\n", u->anims_frames[u->current_anim][0].n_columns, u->anims_frames[u->current_anim][0].n_lines);
 }
 
 void unit_draw(Unit* u, SDL_Renderer* rend)

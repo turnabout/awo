@@ -37,7 +37,7 @@
 #define DEFAULT_TILE_DIMENSION 16
 
 // Default dimensions of game board, in tiles
-#define DEFAULT_GB_WIDTH  20
+#define DEFAULT_GB_WIDTH  40
 #define DEFAULT_GB_HEIGHT 20
 
 // Max amount of units for each player

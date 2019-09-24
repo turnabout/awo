@@ -8,7 +8,6 @@
 #pragma warning( disable: 6011 6386 )
 
 struct Tile {
-    SDL_Texture* src_texture; // Pointer to texture used to draw this tile
     SDL_Rect* anim_frames;    // Frame arrays for this tile's animation
     int* anim_index;          // Pointer to sub-clock tick used to update this tile's animation
 };

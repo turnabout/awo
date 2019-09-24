@@ -20,6 +20,9 @@
 
 typedef enum {FOREACH_TILE_TYPE(GENERATE_ENUM)} tile_type;
 static const char* tile_type_str[] = {FOREACH_TILE_TYPE(GENERATE_STRING)};
+static const char* tile_type_str_short[] = {
+"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"
+};
 
 #define TILE_TYPE_FIRST Plain
 #define TILE_TYPE_LAST LandPiece

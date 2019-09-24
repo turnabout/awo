@@ -23,7 +23,6 @@ Tile_Var_Data* get_tile_var(Tiles_Data* td, tile_type type, tile_var var)
 
 Palette_Tree* TD_get_palette(Tiles_Data* td, Weather weather)
 {
-
     const cJSON* base = cJSON_GetObjectItemCaseSensitive(td->JSON, "basePalette");
     const cJSON* tiles_palettes = cJSON_GetObjectItemCaseSensitive(td->JSON, "palettes");
 
