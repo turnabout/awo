@@ -184,4 +184,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Font\aw2-gba.ttf" />
+  </ItemGroup>
 </Project>

@@ -1,3 +1,4 @@
+#include <SDL_ttf.h>
 #include "conf.h"
 #include "selector.h"
 

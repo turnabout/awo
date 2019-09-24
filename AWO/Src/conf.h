@@ -7,6 +7,7 @@
 // Resource paths
 #define SPRITE_SHEET_PATH "Resources/spritesheet.png"
 #define JSON_PATH         "Resources/visuals.json"
+#define FONT_PATH         "Resources/Font/aw2-gba.ttf"
 
 // Window configuration
 #define GAME_TITLE "AWO"
@@ -24,6 +25,9 @@
 // Return values on success/failure
 #define ERR -1
 #define OK  0
+
+// Font conf
+#define FONT_SIZE 24
 
 // Game speed
 #define FPS 60

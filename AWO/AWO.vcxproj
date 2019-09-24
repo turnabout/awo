@@ -80,6 +80,9 @@
     <ClInclude Include="Src\Visuals\visuals_data.h" />
     <ClInclude Include="Src\Visuals\visuals_processing.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Font\aw2-gba.ttf" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{EABBA246-9F04-4B4A-9AD2-97037C38594C}</ProjectGuid>
@@ -138,14 +141,17 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\Src\Libraries;$(ProjectDir)\Src;F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\AWO\Libraries\SDL2_ttf\include;$(ProjectDir)\Src\Libraries;$(ProjectDir)\Src;F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>F:\AWO\Libraries\SDL2_image\lib;F:\AWO\Libraries\SDL2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\AWO\Libraries\SDL2_ttf\lib;F:\AWO\Libraries\SDL2_image\lib;F:\AWO\Libraries\SDL2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>xcopy /y /d  "$(ProjectDir)..\Libraries\SDL2_ttf\lib\*.dll" "$(TargetDir)"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

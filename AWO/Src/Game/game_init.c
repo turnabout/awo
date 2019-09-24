@@ -119,6 +119,19 @@ int init_SDL_components(Game* game)
         return ERR;
     }
 
+    // Initialize SDL2_ttf & load font
+    if (TTF_Init() == -1) {
+        printf("Error initializing SDL2_ttf: %s\n", TTF_GetError());
+        return ERR;
+    }
+
+    game->font = TTF_OpenFont(FONT_PATH, FONT_SIZE);
+
+    if (game->font == NULL) {
+        printf("Error loading font: %s\n", TTF_GetError());
+        return ERR;
+    }
+
     return OK;
 }
 
