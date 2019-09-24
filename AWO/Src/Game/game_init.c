@@ -10,8 +10,54 @@
 #include "game.h"
 
 int get_game_visuals_data(Game* game);
+int init_SDL_components(Game* game);
 
 int init_game(Game* game, Game_Arg_Weathers weathers)
+{
+    // Add essential components
+    if (init_SDL_components(game) == ERR) {
+        return ERR;
+    }
+
+    // Add the visual data to the game instance
+    if (get_game_visuals_data(game) == ERR) {
+        printf("Error getting game's visual data\n");
+        return ERR;
+    }
+
+    // Add tile textures, processing weathers
+    game->current_weather = -1;
+
+    for (Weather w = WEATHER_FIRST; w < WEATHER_COUNT; w++) {
+        if ((1 << w) & weathers) {
+
+            // Assign starting weather to first active one
+            if (game->current_weather == -1) {
+                game->current_weather = w;
+            }
+            
+            // Add tile texture for this weather
+            game->tile_textures[w] = create_tiles_texture(game, w);
+        }
+    }
+
+    // TODO: Add unit textures used by the game
+
+    // Add the game board
+    game->board = GB_create(weathers);
+
+    // Fill game board with initial tiles
+    GB_fill(game->board, game->clock, game->td, Sea, Middle);
+
+    // Add editor UI
+    game->sel = selector_create(game->td);
+
+    SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
+
+    return OK;
+}
+
+int init_SDL_components(Game* game)
 {
     // Initialize SDL
     if (SDL_Init(SDL_INIT_FLAGS) != 0) {
@@ -72,39 +118,6 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
         printf("Error creating sprite sheet texture: %s\n", IMG_GetError());
         return ERR;
     }
-
-    // Add the visual data to the game instance
-    if (get_game_visuals_data(game) == ERR) {
-        printf("Error getting game's visual data\n");
-        return ERR;
-    }
-
-    // Process weathers / tile textures
-    game->current_weather = -1;
-
-    for (Weather w = WEATHER_FIRST; w < WEATHER_COUNT; w++) {
-        if ((1 << w) & weathers) {
-
-            // Assign starting weather to first active one
-            if (game->current_weather == -1) {
-                game->current_weather = w;
-            }
-            
-            // Add tile texture for this weather
-            game->tile_textures[w] = create_tiles_texture(game, w);
-        }
-    }
-
-    // TODO: Add unit textures used by the game
-
-    // Add the game board
-    game->board = GB_create(weathers);
-
-    // Fill game board with initial tiles
-    GB_fill(game->board, game->clock, game->td, Sea, Middle);
-    GB_fill(game->board, game->clock, game->td, Plain, Default);
-
-    SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
 
     return OK;
 }

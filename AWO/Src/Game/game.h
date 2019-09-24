@@ -2,10 +2,12 @@
 #include <SDL.h>
 
 #include "Visuals/visuals_data.h"
-#include "Clock/game_clock.h"
-#include "Board/game_board.h"
 #include "Visuals/Data/Tiles/tiles_enums.h"
-#include "game_arg_enums.h"
+
+#include "Game/Clock/game_clock.h"
+#include "Game/Editor/UI/selector.h"
+#include "Game/Board/game_board.h"
+#include "Game/game_arg_enums.h"
 
 // Holds components required to run the game.
 typedef struct Game
@@ -17,6 +19,7 @@ typedef struct Game
     Units_Data*   ud;
     Tiles_Data*   td;
     Game_Clock*   clock;
+    Selector*     sel;
 
     // Tile/unit textures
     SDL_Texture* tile_textures[WEATHER_COUNT];

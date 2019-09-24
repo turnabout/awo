@@ -42,3 +42,9 @@
 
 // Max amount of units for each player
 #define MAX_UNITS_PER_ARMY 50
+
+// Editor configuration
+#define EDITOR_UI_ALPHA 60
+
+#define SELECTOR_WIDTH 200
+#define SELECTOR_HEIGHT SCREEN_HEIGHT

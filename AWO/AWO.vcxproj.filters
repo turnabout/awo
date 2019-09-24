@@ -87,6 +87,9 @@
     <ClCompile Include="Src\Game\Board\Tiles_Map\tiles_map.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Editor\UI\selector.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -175,6 +178,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Board\Tiles_Map\tiles_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Editor\UI\selector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
