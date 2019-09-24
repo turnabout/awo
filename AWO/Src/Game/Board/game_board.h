@@ -23,8 +23,8 @@ void GB_fill(
     Game_Board* gb,
     Game_Clock* gc,
     Tiles_Data* td,
-    tile_type tt,
-    tile_var tv
+    Tile_Type tt,
+    Tile_Var tv
 );
 
 // Frees the game board.

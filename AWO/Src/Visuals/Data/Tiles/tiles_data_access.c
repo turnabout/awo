@@ -6,7 +6,7 @@
 #include "c_hashmap.h"
 #include "../Palette/palette_tree.h"
 
-Tile_Var_Data* get_tile_var(Tiles_Data* td, tile_type type, tile_var var)
+Tile_Var_Data* get_tile_var(Tiles_Data* td, Tile_Type type, Tile_Var var)
 {
     Tile_Var_Data* result;
 
@@ -42,7 +42,7 @@ SS_Metadata* TD_get_ss_metadata(Tiles_Data* td)
     return td->ss_meta_data;
 }
 
-Animation* TD_get_next_tile_animation(Tiles_Data* td, tile_type tt)
+Animation* TD_get_next_tile_animation(Tiles_Data* td, Tile_Type tt)
 {
     // Variation index
     static int index = 0;
@@ -56,7 +56,7 @@ Animation* TD_get_next_tile_animation(Tiles_Data* td, tile_type tt)
     }
 
     // Get tile variation data
-    tile_var v = tile->vars_list[index];
+    Tile_Var v = tile->vars_list[index];
     Tile_Var_Data* t_var_data;
 
     hashmap_get(tile->vars, (char*)tile_var_str_short[v], (void**)(&t_var_data));
@@ -69,8 +69,8 @@ Animation* TD_get_next_tile_animation(Tiles_Data* td, tile_type tt)
 
 SDL_Rect* TD_gather_tile_data(
     Tiles_Data* td, 
-    tile_type tt, 
-    tile_var tv,
+    Tile_Type tt, 
+    Tile_Var tv,
     Animation_Clock_Index* clock,
     Animation_Sub_Clock_Index* sub_clock
 )
@@ -90,7 +90,7 @@ SDL_Rect* TD_gather_tile_data(
     return anim_get_frames(t_var_data->anim, &count);
 }
 
-void print_tile_type(Tiles_Data* td, tile_type type)
+void print_tile_type(Tiles_Data* td, Tile_Type type)
 {
     Tile_Data* tile_data = td->src[type];
 
@@ -98,7 +98,7 @@ void print_tile_type(Tiles_Data* td, tile_type type)
     printf("Clock: %d\n", tile_data->clock);
 
     for (int i = 0; i < tile_data->vars_amount; i++) {
-        tile_var var = tile_data->vars_list[i];
+        Tile_Var var = tile_data->vars_list[i];
         Tile_Var_Data* tile_var = get_tile_var(td, type, var);
 
         printf("\n%s (%s)\n", tile_var_str[var], tile_var_str_short[var]);
@@ -111,7 +111,7 @@ void print_tile_type(Tiles_Data* td, tile_type type)
 
 void TD_print(Tiles_Data* td)
 {
-    for (tile_type type = TILE_TYPE_FIRST; type <= TILE_TYPE_LAST; type++) {
+    for (Tile_Type type = TILE_TYPE_FIRST; type <= TILE_TYPE_LAST; type++) {
         print_tile_type(td, type);
     }
 }

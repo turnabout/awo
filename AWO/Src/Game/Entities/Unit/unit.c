@@ -12,12 +12,12 @@ struct Unit {
 
     int* anim_index; // Pointer to sub-clock tick which dictates this unit's idle anim index
 
-    SDL_Rect* anims_frames[UNIT_ANIM_AMOUNT];  // Frame arrays for every animation
-    int anims_frames_counts[UNIT_ANIM_AMOUNT]; // Frame count for every frame array
-    unit_anim current_anim;                    // Currently active animation
+    SDL_Rect* anims_frames[UNIT_ANIM_COUNT];  // Frame arrays for every animation
+    int anims_frames_counts[UNIT_ANIM_COUNT]; // Frame count for every frame array
+    Unit_Anim current_anim;                    // Currently active animation
 };
 
-Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, unit_type ut)
+Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, Unit_Type ut)
 {
     Unit* u = (Unit*)malloc(sizeof(Unit));
 
@@ -27,7 +27,7 @@ Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, unit
     // Store starting animation data
     Animation** anims = UD_get_dst_anims(ud, ut);
 
-    for (unit_anim ua = UNIT_ANIM_FIRST; ua < UNIT_ANIM_AMOUNT; ua++) {
+    for (Unit_Anim ua = UNIT_ANIM_FIRST; ua < UNIT_ANIM_COUNT; ua++) {
         u->anims_frames[ua] = anim_get_frames(anims[ua], &u->anims_frames_counts[ua]);
     }
 

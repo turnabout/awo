@@ -12,7 +12,7 @@ struct Tile {
     int* anim_index;          // Pointer to sub-clock tick used to update this tile's animation
 };
 
-Tile* tile_create(Game_Clock* gc, Tiles_Data* td, tile_type tt, tile_var tv)
+Tile* tile_create(Game_Clock* gc, Tiles_Data* td, Tile_Type tt, Tile_Var tv)
 {
     Tile* t = (Tile*)malloc(sizeof(Tile));
 

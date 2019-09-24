@@ -17,7 +17,7 @@ struct Tile_Data
 {
     map_t vars;            // Map holding every variation (Tile_Var_Data)
     int vars_amount;       // Amount of variations this tile has
-    tile_var* vars_list;   // List of every variation this tile has
+    Tile_Var* vars_list;   // List of every variation this tile has
 
     Animation_Clock_Index clock; // Clock used by this tile to update its animation
 };
@@ -32,7 +32,7 @@ struct Tile_Var_Data
 // All tiles' visual data
 struct Tiles_Data
 {
-    Tile_Data* src[TILE_TYPE_AMOUNT];
+    Tile_Data* src[TILE_TYPE_COUNT];
     SS_Metadata* ss_meta_data;
     const cJSON* JSON;
 };

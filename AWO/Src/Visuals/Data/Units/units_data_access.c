@@ -6,7 +6,7 @@
 #include "_units_data_internal.h"
 
 // TODO: Instead, return a Palette_Tree* and store the 'flip' value in an additional pointer arg
-Palette_Tree* UD_get_palette(Units_Data* ud, unit_var u_var, int* flip)
+Palette_Tree* UD_get_palette(Units_Data* ud, Unit_Var u_var, int* flip)
 {
     const cJSON* base = cJSON_GetObjectItemCaseSensitive(ud->JSON, "basePalette");
     const cJSON* unit_palettes = cJSON_GetObjectItemCaseSensitive(ud->JSON, "palettes");
@@ -27,17 +27,17 @@ Palette_Tree* UD_get_palette(Units_Data* ud, unit_var u_var, int* flip)
     );
 }
 
-Animation** UD_get_src_anims(Units_Data* ud, unit_type u_type, unit_var u_var)
+Animation** UD_get_src_anims(Units_Data* ud, Unit_Type u_type, Unit_Var u_var)
 {
     // If variation doesn't exist on unit type, return data for default variation instead
-    unit_var returned_var = (u_var < ud->src[u_type]->vars_count)
+    Unit_Var returned_var = (u_var < ud->src[u_type]->vars_count)
         ? u_var
         : UNIT_VAR_FIRST;
 
     return ud->src[u_type]->vars[returned_var];
 }
 
-Animation** UD_get_dst_anims(Units_Data* ud, unit_type u_type)
+Animation** UD_get_dst_anims(Units_Data* ud, Unit_Type u_type)
 {
     return ud->dst[u_type];
 }
@@ -53,11 +53,11 @@ void print_src_unit_type(Src_Unit_Type* src_u_type)
     printf("Vars amount: %d\n", src_u_type->vars_count);
 
     // Loop variations
-    for (unit_var u_var = UNIT_VAR_FIRST; u_var < src_u_type->vars_count; u_var++) {
+    for (Unit_Var u_var = UNIT_VAR_FIRST; u_var < src_u_type->vars_count; u_var++) {
         printf("\n==========\n%s\n==========\n", unit_var_str[u_var]);
 
         // Loop every animation
-        for (unit_anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
+        for (Unit_Anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
             printf("\n%s\n----------", unit_anim_str[anim]);
             anim_print(src_u_type->vars[u_var][anim]);
         }
@@ -71,7 +71,7 @@ void UD_print(Units_Data* ud, UD_print_arg which)
     // Print source data
     case UD_SRC:
         printf("Units source data\n");
-        for (unit_type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {
+        for (Unit_Type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {
             printf("\n\n====================\n%s\n====================\n", unit_type_str[type]);
             print_src_unit_type(ud->src[type]);
         }
@@ -80,10 +80,10 @@ void UD_print(Units_Data* ud, UD_print_arg which)
     // Print destination data
     case UD_DST:
         printf("Units destination data\n");
-        for (unit_type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {
+        for (Unit_Type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {
             printf("\n==========\n%s\n==========\n", unit_type_str[type]);
 
-            for (unit_anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
+            for (Unit_Anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
                 printf("\n%s\n----------", unit_anim_str[anim]);
                 anim_print(ud->dst[type][anim]);
             }

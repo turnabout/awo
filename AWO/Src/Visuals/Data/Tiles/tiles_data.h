@@ -31,15 +31,15 @@ SS_Metadata* TD_get_ss_metadata(Tiles_Data* td);
 // \returns Gets pointer to the tile's animation frames.
 SDL_Rect* TD_gather_tile_data(
     Tiles_Data* td,
-    tile_type tt,
-    tile_var tv,
+    Tile_Type tt,
+    Tile_Var tv,
     Animation_Clock_Index* clock_index,
     Animation_Sub_Clock_Index* sub_clock_index
 );
 
 // Gets the next animation for tile type. Must be called continuously until it returns NULL.
 // Goes through all tile variations of the tile type until all have been returned.
-Animation* TD_get_next_tile_animation(Tiles_Data* td, tile_type tt);
+Animation* TD_get_next_tile_animation(Tiles_Data* td, Tile_Type tt);
 
 #ifdef _DEBUG
 // Print contents from tiles data.

@@ -1,7 +1,7 @@
 #include "../visuals_processing.h"
 #include "_processing_internal.h"
 
-void draw_tile_texture_anims(Game* game, tile_type t_type);
+void draw_tile_texture_anims(Game* game, Tile_Type t_type);
 
 SDL_Texture* create_tiles_texture(Game* game, Weather weather)
 {
@@ -25,7 +25,7 @@ SDL_Texture* create_tiles_texture(Game* game, Weather weather)
     draw_tile_texture_anims(game, Plain);
     draw_tile_texture_anims(game, Plain);
 
-    for (tile_type t_type = TILE_TYPE_FIRST; t_type < TILE_TYPE_AMOUNT; t_type++) {
+    for (Tile_Type t_type = TILE_TYPE_FIRST; t_type < TILE_TYPE_COUNT; t_type++) {
         draw_tile_texture_anims(game, t_type);
     }
 
@@ -46,7 +46,7 @@ SDL_Texture* create_tiles_texture(Game* game, Weather weather)
     return res_texture;
 }
 
-void draw_tile_texture_anims(Game* game, tile_type t_type)
+void draw_tile_texture_anims(Game* game, Tile_Type t_type)
 {
     Animation* anim;
         

@@ -4,9 +4,9 @@
 #include "_processing_internal.h"
 
 // Draws every animations of the given unit type
-void draw_unit_texture_anims(Game* game, unit_type u_type, unit_var u_var, int flip);
+void draw_unit_texture_anims(Game* game, Unit_Type u_type, Unit_Var u_var, int flip);
 
-SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_var)
+SDL_Texture* create_units_texture(Game* game, Unit_Var type_var, Unit_Var color_var)
 {
     // Get sprite sheet metadata
     SS_Metadata* metadata = UD_get_ss_metadata(game->ud);
@@ -28,7 +28,7 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
     SDL_RenderClear(game->rend);
 
     // Draw every unit sprite on the texture
-    for (unit_type u_type = UNIT_TYPE_FIRST; u_type < UNIT_TYPE_AMOUNT; u_type++) {
+    for (Unit_Type u_type = UNIT_TYPE_FIRST; u_type < UNIT_TYPE_COUNT; u_type++) {
         draw_unit_texture_anims(game, u_type, type_var, palette_flip);
     }
 
@@ -49,13 +49,13 @@ SDL_Texture* create_units_texture(Game* game, unit_var type_var, unit_var color_
     return res_texture;
 }
 
-void draw_unit_texture_anims(Game* game, unit_type u_type, unit_var u_var, int flip)
+void draw_unit_texture_anims(Game* game, Unit_Type u_type, Unit_Var u_var, int flip)
 {
     Animation** src_anims = UD_get_src_anims(game->ud, u_type, u_var);
     Animation** dst_anims = UD_get_dst_anims(game->ud, u_type);
 
     // Draw every animation
-    for (unit_anim u_anim = UNIT_ANIM_FIRST; u_anim <= UNIT_ANIM_LAST; u_anim++) {
+    for (Unit_Anim u_anim = UNIT_ANIM_FIRST; u_anim <= UNIT_ANIM_LAST; u_anim++) {
         int frame_count;
         SDL_Rect* src_frames = anim_get_frames(src_anims[u_anim], &frame_count);
         SDL_Rect* dst_frames = anim_get_frames(dst_anims[u_anim], &frame_count);

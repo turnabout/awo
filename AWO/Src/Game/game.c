@@ -53,8 +53,8 @@ void draw_game(Game* game)
 void draw_unit_test(
     Game* game, 
     SDL_Texture* unit_tex, 
-    unit_type u_type, 
-    unit_anim u_anim, 
+    Unit_Type u_type, 
+    Unit_Anim u_anim, 
     int index,
     int x,
     int y
@@ -78,7 +78,7 @@ void draw_armies_test(Game* game)
 {
     /*
     // Gather all basic army unit textures
-    SDL_Texture* armies[UNIT_VAR_AMOUNT] = {
+    SDL_Texture* armies[UNIT_VAR_COUNT] = {
         create_units_texture(game, OS, OS),
         create_units_texture(game, BM, BM),
         create_units_texture(game, GE, GE),
@@ -95,22 +95,22 @@ void draw_armies_test(Game* game)
     int col_size = 20;
     int row_size = 20;
 
-    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
-        for (unit_type u = UNIT_TYPE_FIRST; u <= UNIT_TYPE_LAST; u++) {
+    for (Unit_Var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+        for (Unit_Type u = UNIT_TYPE_FIRST; u <= UNIT_TYPE_LAST; u++) {
             draw_unit_test(game, armies[v], u, Idle, 0, u * col_size, v * row_size);
         }
     }
 
     // Draw a second group, darkened for "done" units
-    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+    for (Unit_Var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
         // SDL_SetTextureAlphaMod(armies[v], 250);
         SDL_SetTextureColorMod(armies[v], 137, 137, 137);
     }
 
     int group_2_start_y = (UNIT_VAR_LAST + 2) * row_size;
 
-    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
-        for (unit_type u = UNIT_TYPE_FIRST; u <= UNIT_TYPE_LAST; u++) {
+    for (Unit_Var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+        for (Unit_Type u = UNIT_TYPE_FIRST; u <= UNIT_TYPE_LAST; u++) {
             draw_unit_test(game, armies[v], u, Idle, 0, u * col_size, group_2_start_y + (v * row_size));
         }
     }
@@ -120,13 +120,13 @@ void draw_armies_test(Game* game)
     int tex_w, tex_h;
 
     // Reset the darkened color mod
-    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+    for (Unit_Var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
         SDL_SetTextureColorMod(armies[v], 255, 255, 255);
     }
 
     SDL_QueryTexture(armies[OS], NULL, NULL, &tex_w, &tex_h);
 
-    for (unit_var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
+    for (Unit_Var v = UNIT_VAR_FIRST; v <= UNIT_VAR_LAST; v++) {
         SDL_Rect dst = {tex_w * v, units_start_y, tex_w, tex_h};
         SDL_RenderCopy(game->rend, armies[v], NULL, &dst);
     }

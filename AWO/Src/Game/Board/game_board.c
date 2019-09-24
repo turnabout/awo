@@ -55,7 +55,7 @@ void GB_change_tile(int tile_x, int tile_y)
 {
 }
 
-void GB_fill(Game_Board* gb, Game_Clock* gc, Tiles_Data* td, tile_type tt, tile_var tv)
+void GB_fill(Game_Board* gb, Game_Clock* gc, Tiles_Data* td, Tile_Type tt, Tile_Var tv)
 {
     Tile* tile = tile_create(gc, td, tt, tv);
     TM_add_map_tile(gb->tiles_map, tile, tt, tv);

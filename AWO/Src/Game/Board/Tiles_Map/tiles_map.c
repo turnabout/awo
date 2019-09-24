@@ -22,7 +22,7 @@ Tiles_Map* TM_create()
 }
 
 // Gets the hash key representing a tile in the tiles map
-char* get_tile_hash_key(tile_type tt, tile_var tv)
+char* get_tile_hash_key(Tile_Type tt, Tile_Var tv)
 {
     char* result = malloc(HASH_KEY_SIZE); 
 
@@ -32,7 +32,7 @@ char* get_tile_hash_key(tile_type tt, tile_var tv)
     return result;
 }
 
-Tile* TM_get_map_tile(Tiles_Map* tm, tile_type tt, tile_var tv)
+Tile* TM_get_map_tile(Tiles_Map* tm, Tile_Type tt, Tile_Var tv)
 {
     Tile* tile;
     char* hash_key = get_tile_hash_key(tt, tv);
@@ -46,7 +46,7 @@ Tile* TM_get_map_tile(Tiles_Map* tm, tile_type tt, tile_var tv)
     return tile;
 }
 
-void TM_add_map_tile(Tiles_Map* tm, Tile* tile, tile_type tt, tile_var tv)
+void TM_add_map_tile(Tiles_Map* tm, Tile* tile, Tile_Type tt, Tile_Var tv)
 {
     char* hash_key = get_tile_hash_key(tt, tv);
 

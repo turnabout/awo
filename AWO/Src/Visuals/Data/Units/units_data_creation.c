@@ -67,7 +67,7 @@ Src_Unit_Type* get_unit_src_data(const cJSON* unit_type_json)
         Animation** anims;      // All Animations data for this Variation
 
         // Initialize Animations' memory
-        anims = malloc(sizeof(Animation*) * UNIT_ANIM_AMOUNT); 
+        anims = malloc(sizeof(Animation*) * UNIT_ANIM_COUNT); 
 
         // Loop animations
         cJSON_ArrayForEach(unit_anim_json, unit_var_json)
@@ -76,7 +76,7 @@ Src_Unit_Type* get_unit_src_data(const cJSON* unit_type_json)
         };
 
         // Reset anims pointer to the first variation, then save accumulated data
-        anims -= UNIT_ANIM_AMOUNT;
+        anims -= UNIT_ANIM_COUNT;
         *(vars++) = anims;
     }
 

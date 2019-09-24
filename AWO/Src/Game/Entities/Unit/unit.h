@@ -7,7 +7,7 @@
 typedef struct Unit Unit;
 
 // Create a unit entity.
-Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, unit_type ut);
+Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, Unit_Type ut);
 
 // Update a unit.
 void unit_update(Unit* u);

@@ -13,10 +13,10 @@ typedef struct Units_Data Units_Data;
 Units_Data* UD_create_from_JSON(const cJSON* ud_JSON);
 
 // Gets the source animations data for a unit type & variation.
-Animation** UD_get_src_anims(Units_Data* ud, unit_type u_type, unit_var u_var);
+Animation** UD_get_src_anims(Units_Data* ud, Unit_Type u_type, Unit_Var u_var);
 
 // Gets the destination animations data for a unit type & variation.
-Animation** UD_get_dst_anims(Units_Data* ud, unit_type u_type);
+Animation** UD_get_dst_anims(Units_Data* ud, Unit_Type u_type);
 
 // Gets the units sprite sheet metadata.
 SS_Metadata* UD_get_ss_metadata(Units_Data* ud);
@@ -24,7 +24,7 @@ SS_Metadata* UD_get_ss_metadata(Units_Data* ud);
 // Gets the palette for the given unit color variation.
 // \param u_var The unit color variation for which to get the palette.
 // \param flip Pointer where the resulting "flip" value of this palette gets stored.
-Palette_Tree* UD_get_palette(Units_Data* ud, unit_var u_var, int* flip);
+Palette_Tree* UD_get_palette(Units_Data* ud, Unit_Var u_var, int* flip);
 
 #ifdef _DEBUG
 // Argument given to UD_print telling it which part of units data to print.

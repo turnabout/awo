@@ -18,8 +18,8 @@ struct Src_Unit_Type
 
 struct Units_Data
 {
-    Src_Unit_Type* src[UNIT_TYPE_AMOUNT];
-    Animation* dst[UNIT_TYPE_AMOUNT][UNIT_ANIM_AMOUNT];
+    Src_Unit_Type* src[UNIT_TYPE_COUNT];
+    Animation* dst[UNIT_TYPE_COUNT][UNIT_ANIM_COUNT];
     SS_Metadata* ss_metadata;
     const cJSON* JSON;
 };

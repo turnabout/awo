@@ -18,7 +18,7 @@
     TILE(BaseSmoke) \
     TILE(LandPiece) \
 
-typedef enum {FOREACH_TILE_TYPE(GENERATE_ENUM)} tile_type;
+typedef enum {FOREACH_TILE_TYPE(GENERATE_ENUM)} Tile_Type;
 static const char* tile_type_str[] = {FOREACH_TILE_TYPE(GENERATE_STRING)};
 static const char* tile_type_str_short[] = {
 "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"
@@ -26,7 +26,7 @@ static const char* tile_type_str_short[] = {
 
 #define TILE_TYPE_FIRST Plain
 #define TILE_TYPE_LAST LandPiece
-#define TILE_TYPE_AMOUNT TILE_TYPE_LAST + 1
+#define TILE_TYPE_COUNT TILE_TYPE_LAST + 1
 
 // Tile Variation
 #define FOREACH_TILE_VAR(TILEVAR) \
@@ -97,7 +97,7 @@ static const char* tile_type_str_short[] = {
     TILEVAR(VerticalOpen) \
     TILEVAR(Used) \
 
-typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} tile_var;
+typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} Tile_Var;
 static const char* tile_var_str[] = {FOREACH_TILE_VAR(GENERATE_STRING)};
 
 // Short versions of each tile variation string (used in JSON file to save space)
@@ -110,7 +110,7 @@ static const char* tile_var_str_short[] = {
 
 #define TILE_VAR_FIRST Default
 #define TILE_VAR_LAST Used
-#define TILE_VAR_AMOUNT TILE_VAR_LAST + 1
+#define TILE_VAR_COUNT TILE_VAR_LAST + 1
 
 // Tile weather variation
 #define FOREACH_TILE_WEATHER(TILE_W) \
