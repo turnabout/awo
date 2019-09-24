@@ -39,8 +39,8 @@ Tile* tile_create(
     SDL_Rect draw_rect = {
         x,
         y,
-        (t->anim_frames[0].w != 0) ? t->anim_frames[0].w : DEFAULT_TILE_DIMENSION,
-        (t->anim_frames[0].h != 0) ? t->anim_frames[0].h : DEFAULT_TILE_DIMENSION,
+        t->anim_frames[0].w,
+        t->anim_frames[0].h,
     };
 
     t->src_texture = src_texture;
