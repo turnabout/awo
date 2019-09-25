@@ -48,11 +48,10 @@
 #define MAX_UNITS_PER_ARMY 50
 
 // Editor configuration
-#define EDITOR_UI_R     0
-#define EDITOR_UI_G     0
-#define EDITOR_UI_B     0
-#define EDITOR_UI_ALPHA 130
-#define EDITOR_FONT_SIZE 20
+#define EDITOR_UI_R      0
+#define EDITOR_UI_G      0
+#define EDITOR_UI_B      0
+#define EDITOR_UI_ALPHA  130
 
 // Tile selector
 #define TILE_SELECTOR_WIDTH   DEFAULT_TILE_DIMENSION * 2

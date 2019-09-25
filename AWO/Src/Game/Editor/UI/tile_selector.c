@@ -43,7 +43,7 @@ Tile_Selector* tile_selector_create(Tiles_Data* td)
     // Add tile frames
     int cur_y = inner_rect.y;
     int sels_w = inner_rect.w;
-    int size_multiplier = sels_w / DEFAULT_TILE_DIMENSION; // Multiplier to get selections' height
+    float size_multiplier = (float)sels_w / (float)DEFAULT_TILE_DIMENSION; // Multiplier to get selections' height
 
     for (Tile_Type tt = TILE_TYPE_FIRST; tt < TILE_TYPE_BASIC_COUNT; tt++) {
 
@@ -60,7 +60,7 @@ Tile_Selector* tile_selector_create(Tiles_Data* td)
                 inner_rect.x, 
                 cur_y, 
                 sels_w, 
-                src_rect->h * size_multiplier
+                (int)(src_rect->h * size_multiplier)
             }
         };
 
