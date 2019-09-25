@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "conf.h"
 #include "tile_selector.h"
+#include "Game/Input_State/input_state.h"
 
 #pragma warning( disable : 6011 )
 
@@ -12,7 +13,7 @@ typedef struct Tile_Selection {
 
 // UI element for selecting a tile to add.
 struct Tile_Selector {
-    int active;          // Whether the selector is currently active or not
+    Uint8 active;        // Whether the selector is currently active or not
     SDL_Rect outer_rect; // The tile selector's outer rectangle
     SDL_Rect inner_rect; // The tile selector's inner rectangle
     Tile_Selection sel_tiles[TILE_TYPE_BASIC_COUNT]; // Tile selections shown in selector
@@ -83,6 +84,14 @@ Tile_Selector* tile_selector_create(Tiles_Data* td)
 // Update the selector.
 void tile_selector_update(Tile_Selector* sel)
 {
+    if (sel->active) {
+
+    }
+
+    // Toggle tile selector
+    if (get_key_state(KEY_1) == BUTTON_JUST_PRESSED) {
+        sel->active ^= 1;
+    }
 }
 
 // Draw the selector UI.

@@ -9,6 +9,7 @@
 #include "Game/Editor/UI/tile_selector.h"
 #include "Game/Board/game_board.h"
 #include "Game/game_arg_enums.h"
+#include "Game/Input_State/input_state.h"
 
 // Holds components required to run the game.
 typedef struct Game
@@ -20,7 +21,7 @@ typedef struct Game
     Units_Data*   ud;
     Tiles_Data*   td;
     Game_Clock*   clock;
-    FC_Font* font;
+    FC_Font*      font;
 
     Tile_Selector*     sel;
 

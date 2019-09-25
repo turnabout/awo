@@ -4,7 +4,8 @@
 #include "Visuals/visuals_processing.h"
 #include "Entities/Unit/unit.h"
 #include "Entities/Tile/tile.h"
-#include "game.h"
+#include "Game/game.h"
+
 #include "conf.h"
 
 void update_game(Game* game);
@@ -16,12 +17,12 @@ void run_game(Game* game)
         SDL_Event event;
         Uint32 start_ticks = SDL_GetTicks();
 
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                exit_game(game);
-                return;
-            }
+        if (SDL_PollEvent(&event) && event.type == SDL_QUIT) {
+            exit_game(game);
+            return;
         }
+
+        // printf("state: %d\n", get_key_state(KEY_1));
 
         update_game(game);
         draw_game(game);
@@ -37,7 +38,9 @@ void run_game(Game* game)
 
 void update_game(Game* game)
 {
+    input_state_update();
     GC_update(game->clock);
+
     tile_selector_update(game->sel);
 }
 

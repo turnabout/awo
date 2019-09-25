@@ -43,17 +43,18 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
 
     // TODO: Add unit textures used by the game
 
-    // Add the game board
+    // Add other game components
     game->board = GB_create(weathers);
+    game->sel = tile_selector_create(game->td);
 
     // Fill game board with initial tiles
     GB_fill(game->board, game->clock, game->td, Sea, Middle);
 
-    // Add editor UI
-    game->sel = tile_selector_create(game->td);
-
     SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
+
+    // Initialize the input state module
+    input_state_init();
 
     return OK;
 }

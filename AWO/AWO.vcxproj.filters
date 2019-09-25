@@ -93,6 +93,9 @@
     <ClCompile Include="Src\Game\Editor\UI\tile_selector.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Input_State\input_state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -187,6 +190,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Editor\UI\tile_selector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Input_State\input_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -29,6 +29,7 @@
     <ClCompile Include="Src\Game\Entities\Unit\unit.c" />
     <ClCompile Include="Src\Game\game.c" />
     <ClCompile Include="Src\Game\game_exit.c" />
+    <ClCompile Include="Src\Game\Input_State\input_state.c" />
     <ClCompile Include="Src\Libraries\c_hashmap.c" />
     <ClCompile Include="Src\Game\game_init.c" />
     <ClCompile Include="Src\Libraries\SDL_FontCache.c" />
@@ -62,6 +63,7 @@
     <ClInclude Include="Src\Game\Entities\Tile\tile.h" />
     <ClInclude Include="Src\Game\Entities\Unit\unit.h" />
     <ClInclude Include="Src\Game\game_arg_enums.h" />
+    <ClInclude Include="Src\Game\Input_State\input_state.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\animation_clock_enums.h" />
