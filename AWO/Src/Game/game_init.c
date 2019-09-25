@@ -50,7 +50,7 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
     GB_fill(game->board, game->clock, game->td, Sea, Middle);
 
     // Add editor UI
-    game->sel = selector_create(game->td);
+    game->sel = selector_create(game->td, game->rend);
 
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
 
@@ -116,19 +116,6 @@ int init_SDL_components(Game* game)
 
     if (game->ss == NULL) {
         printf("Error creating sprite sheet texture: %s\n", IMG_GetError());
-        return ERR;
-    }
-
-    // Initialize SDL2_ttf & load font
-    if (TTF_Init() == -1) {
-        printf("Error initializing SDL2_ttf: %s\n", TTF_GetError());
-        return ERR;
-    }
-
-    game->font = TTF_OpenFont(FONT_PATH, FONT_SIZE);
-
-    if (game->font == NULL) {
-        printf("Error loading font: %s\n", TTF_GetError());
         return ERR;
     }
 

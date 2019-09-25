@@ -90,6 +90,9 @@
     <ClCompile Include="Src\Game\Editor\UI\selector.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Libraries\SDL_FontCache.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -181,6 +184,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Editor\UI\selector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Libraries\SDL_FontCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

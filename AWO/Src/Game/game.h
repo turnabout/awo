@@ -1,6 +1,5 @@
 #pragma once
 #include <SDL.h>
-#include <SDL_ttf.h>
 
 #include "Visuals/visuals_data.h"
 #include "Visuals/Data/Tiles/tiles_enums.h"
@@ -20,7 +19,6 @@ typedef struct Game
     Units_Data*   ud;
     Tiles_Data*   td;
     Game_Clock*   clock;
-    TTF_Font* font;
 
     Selector*     sel;
 

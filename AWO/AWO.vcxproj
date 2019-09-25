@@ -31,6 +31,7 @@
     <ClCompile Include="Src\Game\game_exit.c" />
     <ClCompile Include="Src\Libraries\c_hashmap.c" />
     <ClCompile Include="Src\Game\game_init.c" />
+    <ClCompile Include="Src\Libraries\SDL_FontCache.c" />
     <ClCompile Include="Src\Visuals\Data\Animation\animation.c" />
     <ClCompile Include="Src\Libraries\cJSON.c" />
     <ClCompile Include="Src\Visuals\Data\Palette\palette_tree.c" />
@@ -64,6 +65,7 @@
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\animation_clock_enums.h" />
+    <ClInclude Include="Src\Libraries\SDL_FontCache.h" />
     <ClInclude Include="Src\Visuals\Data\Animation\animation.h" />
     <ClInclude Include="Src\Visuals\Data\Palette\palette_tree.h" />
     <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h" />
@@ -143,6 +145,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>F:\AWO\Libraries\SDL2_ttf\include;$(ProjectDir)\Src\Libraries;$(ProjectDir)\Src;F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
