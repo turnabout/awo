@@ -38,7 +38,7 @@ void run_game(Game* game)
 void update_game(Game* game)
 {
     GC_update(game->clock);
-    selector_update(game->sel);
+    tile_selector_update(game->sel);
 }
 
 void draw_game(Game* game)
@@ -49,7 +49,7 @@ void draw_game(Game* game)
     GB_draw(game->board, game->rend, game->tile_textures[game->current_weather]);
 
     // Draw UI elements
-    selector_draw(game->sel, game->rend, game->tile_textures[game->current_weather]);
+    tile_selector_draw(game->sel, game->rend, game->tile_textures[game->current_weather]);
 
     SDL_RenderPresent(game->rend);
 }

@@ -50,7 +50,7 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
     GB_fill(game->board, game->clock, game->td, Sea, Middle);
 
     // Add editor UI
-    game->sel = selector_create(game->td);
+    game->sel = tile_selector_create(game->td);
 
     SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);

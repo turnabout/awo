@@ -3,13 +3,13 @@
 #include "Visuals/visuals_data.h"
 
 // Used to select the current entity to add to the map (tile/unit/etc).
-typedef struct Selector Selector;
+typedef struct Tile_Selector Selector;
 
 // Create the entity selector.
-Selector* selector_create(Tiles_Data* td);
+Selector* tile_selector_create(Tiles_Data* td);
 
 // Update the selector.
-void selector_update(Selector* sel);
+void tile_selector_update(Selector* sel);
 
 // Draw the selector UI.
-void selector_draw(Selector* sel, SDL_Renderer* rend, SDL_Texture* tile_tex);
+void tile_selector_draw(Selector* sel, SDL_Renderer* rend, SDL_Texture* tile_tex);
