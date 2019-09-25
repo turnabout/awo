@@ -23,6 +23,15 @@ typedef enum {
 #define KEY_LAST  KEY_SPACE
 #define KEY_COUNT KEY_LAST + 1
 
+typedef enum {
+    MOUSE_LEFT,
+    MOUSE_RIGHT,
+} Mouse_Button;
+
+#define MOUSE_BTN_FIRST MOUSE_LEFT
+#define MOUSE_BTN_LAST  MOUSE_RIGHT
+#define MOUSE_BTN_COUNT MOUSE_BTN_LAST + 1
+
 // Initialize the input state module.
 void input_state_init();
 
@@ -31,3 +40,9 @@ void input_state_update();
 
 // Gets the state for a single key.
 Button_State get_key_state(Key key);
+
+// Gets the current button state for a mouse button.
+Button_State get_mouse_state(Mouse_Button btn);
+
+// Stores current mouse coordinates in x and y.
+void get_mouse_coordinates(int* x, int* y);

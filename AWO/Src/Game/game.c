@@ -22,8 +22,6 @@ void run_game(Game* game)
             return;
         }
 
-        // printf("state: %d\n", get_key_state(KEY_1));
-
         update_game(game);
         draw_game(game);
 
