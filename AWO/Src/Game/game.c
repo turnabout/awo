@@ -49,7 +49,7 @@ void draw_game(Game* game)
     GB_draw(game->board, game->rend, game->tile_textures[game->current_weather]);
 
     // Draw UI elements
-    selector_draw(game->sel, game->rend);
+    selector_draw(game->sel, game->rend, game->tile_textures[game->current_weather]);
 
     SDL_RenderPresent(game->rend);
 }

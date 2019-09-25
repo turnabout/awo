@@ -1,16 +1,24 @@
+#include <stdio.h>
 #include "conf.h"
 #include "selector.h"
 
 #pragma warning( disable : 6011 )
 
+typedef struct Selector_Tile {
+
+    SDL_Rect* src_rect; // Tile frames shown in selector
+    SDL_Rect draw_rect;   // 
+} Selector_Tile;
+
 struct Selector {
     int active;
     SDL_Rect draw_rect;
-    FC_Font* font;
+    // SDL_Rect* tile_frames[TILE_TYPE_BASIC_COUNT]; 
+    Selector_Tile sel_tiles[TILE_TYPE_BASIC_COUNT]; // Tile frames shown in selector
 };
 
 // Create the entity selector.
-Selector* selector_create(Tiles_Data* td, SDL_Renderer* rend)
+Selector* selector_create(Tiles_Data* td)
 {
     Selector* sel = malloc(sizeof(Selector));
 
@@ -22,17 +30,23 @@ Selector* selector_create(Tiles_Data* td, SDL_Renderer* rend)
 
     sel->draw_rect = draw_rect;
 
-    // Add font
-    sel->font = FC_CreateFont();
+    // Add tile frames
+    int cur_y = 0;
 
-    FC_LoadFont(
-        sel->font, 
-        rend, 
-        FONT_PATH, 
-        EDITOR_FONT_SIZE, 
-        FC_MakeColor(255, 255, 255, 255), 
-        TTF_STYLE_NORMAL
-    );
+    for (Tile_Type tt = TILE_TYPE_FIRST; tt < TILE_TYPE_BASIC_COUNT; tt++) {
+        Tile_Var default_var = default_tile_vars[tt];
+
+        SDL_Rect* src_rect = TD_gather_tile_data(td, tt, default_var, NULL, NULL);
+
+        Selector_Tile tile = {
+            src_rect,
+            {0, cur_y, DEFAULT_TILE_DIMENSION, src_rect->h}
+        };
+
+        cur_y += tile.draw_rect.h;
+
+        sel->sel_tiles[tt] = tile;
+    }
 
     return sel;
 }
@@ -43,17 +57,41 @@ void selector_update(Selector* sel)
 }
 
 // Draw the selector UI.
-void selector_draw(Selector* sel, SDL_Renderer* rend)
+void selector_draw(Selector* sel, SDL_Renderer* rend, SDL_Texture* tiles_tex)
 {
     if (sel->active) {
         SDL_SetRenderDrawColor(rend, 0, 0, 0, EDITOR_UI_ALPHA);
-        SDL_SetRenderDrawBlendMode(rend, SDL_BLENDMODE_BLEND);
 
-        // SDL_RenderDrawRect(rend, &sel->draw_rect);
+        // Draw UI rectangle
         SDL_RenderFillRect(rend, &sel->draw_rect);
 
-        FC_Draw(sel->font, rend, 5, 5, tile_type_str[Plain]);
+        // Draw selector tiles
+        for (Tile_Type tt = TILE_TYPE_FIRST; tt < TILE_TYPE_BASIC_COUNT; tt++) {
+            SDL_RenderCopy(
+                rend, 
+                tiles_tex, 
+                sel->sel_tiles[tt].src_rect, 
+                &sel->sel_tiles[tt].draw_rect
+            );
+        }
 
         SDL_SetRenderDrawColor(rend, 255, 255, 255, 255);
+
+        /*
+
+        // Draw tiles selector
+        for (Tile_Type tt = TILE_TYPE_FIRST; tt < TILE_TYPE_BASIC_COUNT; tt++) {
+            SDL_Rect draw_rect = {
+                0, 
+                tt * DEFAULT_TILE_DIMENSION,
+                DEFAULT_TILE_DIMENSION, 
+                DEFAULT_TILE_DIMENSION
+            };
+
+            SDL_RenderCopy(rend, tiles_tex, sel->tile_frames[tt], &draw_rect);
+        }
+
+        SDL_SetRenderDrawColor(rend, 255, 255, 255, 255);
+*/
     }
 }

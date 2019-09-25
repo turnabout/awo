@@ -50,8 +50,9 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
     GB_fill(game->board, game->clock, game->td, Sea, Middle);
 
     // Add editor UI
-    game->sel = selector_create(game->td, game->rend);
+    game->sel = selector_create(game->td);
 
+    SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
 
     return OK;
@@ -118,6 +119,18 @@ int init_SDL_components(Game* game)
         printf("Error creating sprite sheet texture: %s\n", IMG_GetError());
         return ERR;
     }
+
+    // Add Font
+    game->font = FC_CreateFont();
+
+    FC_LoadFont(
+        game->font, 
+        game->rend, 
+        FONT_PATH, 
+        FONT_SIZE, 
+        FC_MakeColor(0, 0, 0, 255), 
+        TTF_STYLE_NORMAL
+    );
 
     return OK;
 }

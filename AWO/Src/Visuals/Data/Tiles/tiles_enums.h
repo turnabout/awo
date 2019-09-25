@@ -28,6 +28,9 @@ static const char* tile_type_str_short[] = {
 #define TILE_TYPE_LAST LandPiece
 #define TILE_TYPE_COUNT TILE_TYPE_LAST + 1
 
+#define TILE_TYPE_BASIC_LAST Silo
+#define TILE_TYPE_BASIC_COUNT TILE_TYPE_BASIC_LAST + 1
+
 // Tile Variation
 #define FOREACH_TILE_VAR(TILEVAR) \
     TILEVAR(Default) \
@@ -99,6 +102,21 @@ static const char* tile_type_str_short[] = {
 
 typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} Tile_Var;
 static const char* tile_var_str[] = {FOREACH_TILE_VAR(GENERATE_STRING)};
+
+static Tile_Var default_tile_vars[] = {
+    Default,
+    Default,
+    Default,
+    Horizontal,
+    Horizontal,
+    Horizontal,
+    Middle,
+    Default,
+    TopConnectedFull,
+    Horizontal,
+    HorizontalClosed,
+    Default,
+};
 
 // Short versions of each tile variation string (used in JSON file to save space)
 static const char* tile_var_str_short[] = {

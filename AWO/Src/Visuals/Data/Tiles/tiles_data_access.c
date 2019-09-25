@@ -78,14 +78,18 @@ SDL_Rect* TD_gather_tile_data(
     Tile_Data* tile = td->src[tt];
 
     // Fill in clock index
-    *clock = tile->clock;
+    if (clock != NULL) {
+        *clock = tile->clock;
+    }
 
     // Fill in sub-clock index & return animation frames pointer
     Tile_Var_Data* t_var_data;
     int count;
     hashmap_get(tile->vars, (char*)tile_var_str_short[tv], (void**)(&t_var_data));
 
-    *sub_clock = t_var_data->sub_clock;
+    if (sub_clock != NULL) {
+        *sub_clock = t_var_data->sub_clock;
+    }
 
     return anim_get_frames(t_var_data->anim, &count);
 }

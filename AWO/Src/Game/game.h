@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include "SDL_FontCache.h"
 
 #include "Visuals/visuals_data.h"
 #include "Visuals/Data/Tiles/tiles_enums.h"
@@ -19,6 +20,7 @@ typedef struct Game
     Units_Data*   ud;
     Tiles_Data*   td;
     Game_Clock*   clock;
+    FC_Font* font;
 
     Selector*     sel;
 
