@@ -6,7 +6,7 @@
 #include "Visuals/Data/Tiles/tiles_enums.h"
 
 #include "Game/Clock/game_clock.h"
-#include "Game/Editor/UI/selector.h"
+#include "Game/Editor/UI/tile_selector.h"
 #include "Game/Board/game_board.h"
 #include "Game/game_arg_enums.h"
 
@@ -22,7 +22,7 @@ typedef struct Game
     Game_Clock*   clock;
     FC_Font* font;
 
-    Selector*     sel;
+    Tile_Selector*     sel;
 
     // Tile/unit textures
     SDL_Texture* tile_textures[WEATHER_COUNT];

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "conf.h"
-#include "selector.h"
+#include "tile_selector.h"
 
 #pragma warning( disable : 6011 )
 
@@ -19,9 +19,9 @@ struct Tile_Selector {
 };
 
 // Create the tile selector.
-Selector* tile_selector_create(Tiles_Data* td)
+Tile_Selector* tile_selector_create(Tiles_Data* td)
 {
-    Selector* sel = malloc(sizeof(Selector));
+    Tile_Selector* sel = malloc(sizeof(Tile_Selector));
 
     sel->active = 1;
 
@@ -81,12 +81,12 @@ Selector* tile_selector_create(Tiles_Data* td)
 }
 
 // Update the selector.
-void tile_selector_update(Selector* sel)
+void tile_selector_update(Tile_Selector* sel)
 {
 }
 
 // Draw the selector UI.
-void tile_selector_draw(Selector* sel, SDL_Renderer* rend, SDL_Texture* tiles_tex)
+void tile_selector_draw(Tile_Selector* sel, SDL_Renderer* rend, SDL_Texture* tiles_tex)
 {
     if (sel->active) {
 

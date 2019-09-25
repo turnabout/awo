@@ -87,10 +87,10 @@
     <ClCompile Include="Src\Game\Board\Tiles_Map\tiles_map.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Editor\UI\selector.c">
+    <ClCompile Include="Src\Libraries\SDL_FontCache.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Libraries\SDL_FontCache.c">
+    <ClCompile Include="Src\Game\Editor\UI\tile_selector.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -183,10 +183,10 @@
     <ClInclude Include="Src\Game\Board\Tiles_Map\tiles_map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Editor\UI\selector.h">
+    <ClInclude Include="Src\Libraries\SDL_FontCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Libraries\SDL_FontCache.h">
+    <ClInclude Include="Src\Game\Editor\UI\tile_selector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
