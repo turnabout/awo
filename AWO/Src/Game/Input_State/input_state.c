@@ -3,43 +3,43 @@
 
 #pragma warning( disable : 6011 )
 
-// Array of every corresponding SDL_Scancode to every key input used by the game
-const static char keys_scancodes[] = {
+// Keyboard state
+// Array holding input state for every key used by the game
+static Button_State current_key_state[KEY_COUNT];
+
+// Pointer to SDL Keyboard state array
+const static Uint8* SDL_key_state;
+
+// Array of every SDL_Scancode corresponding to every key input used by the game
+const static char keys_scancodes[KEY_COUNT] = {
     SDL_SCANCODE_1,
     SDL_SCANCODE_2,
     SDL_SCANCODE_3,
     SDL_SCANCODE_SPACE,
 };
 
-// Current result stored at SDL_GetKeyboardState pointer
-const static Uint8* SDL_key_state;
+// Mouse state
+// Array holding input state for every mouse button
+static Button_State current_mouse_state[MOUSE_BTN_COUNT];
 
-// Array holding input state for every key used by the game
-static Button_State current_key_state[KEY_COUNT];
+// Bitmasks used to get the pressed/released bit of each mouse button
+const static Uint32 SDL_mouse_bitmasks[MOUSE_BTN_COUNT] = { SDL_BUTTON_LEFT, SDL_BUTTON_RIGHT };
 
-// Current mouse state
-static Button_State current_mouse_state[MOUSE_BTN_COUNT] = {
-    BUTTON_RELEASED,
-    BUTTON_RELEASED,
-};
-
-static int* mouse_x;
-static int* mouse_y;
-
-const static Uint32 mouse_sdl_buttons[MOUSE_BTN_COUNT] = {
-    SDL_BUTTON_LEFT,
-    SDL_BUTTON_RIGHT,
-};
+// Pointers storing mouse coordinates
+static int* mouse_x, * mouse_y;
 
 void input_state_init()
 {
     SDL_key_state = SDL_GetKeyboardState(NULL);
 
-    // Initialize current input states to default
+    // Initialize current key states to default
     for (int i = 0; i < KEY_COUNT; i++) {
         current_key_state[i] = BUTTON_STATE_DEFAULT;
     }
 
+    // Initialize mouse state to default
+    current_mouse_state[MOUSE_LEFT] = BUTTON_STATE_DEFAULT;
+    current_mouse_state[MOUSE_RIGHT] = BUTTON_STATE_DEFAULT;
     mouse_x = malloc(sizeof(int));
     mouse_y = malloc(sizeof(int));
 }
@@ -50,26 +50,18 @@ void input_state_update()
     SDL_PumpEvents();
 
     for (Key key = KEY_FIRST; key < KEY_COUNT; key++) {
-        Uint8 pressed = SDL_key_state[keys_scancodes[key]];
-        Button_State old_key_state = current_key_state[key];
 
-        // New state pressed
-        if (pressed) {
-            if (old_key_state == BUTTON_PRESSED || old_key_state == BUTTON_JUST_PRESSED) {
-                current_key_state[key] = BUTTON_PRESSED;
-            } else {
-                current_key_state[key] = BUTTON_JUST_PRESSED;
-            }
+        // Get whether the key is currently pressed
+        Uint8 current_pressed = SDL_key_state[keys_scancodes[key]];
 
-        // New state released
-        }
-        else {
-            if (old_key_state == BUTTON_RELEASED || old_key_state == BUTTON_JUST_RELEASED) {
-                current_key_state[key] = BUTTON_RELEASED;
-            } else {
-                current_key_state[key] = BUTTON_JUST_RELEASED;
-            }
-        }
+        // Get the previous state of this key
+        Button_State previous_state = current_key_state[key];
+
+        // Bit 1: get the pressed status of the key
+        // Bit 2: get whether the pressed status was changed from the previous state to this one
+        current_key_state[key] = 
+            (current_pressed & BUTTON_PRESSED) |
+            (previous_state ^ current_pressed) << 1;
     }
 
     // Update mouse state
@@ -78,26 +70,16 @@ void input_state_update()
     for (Mouse_Button btn = MOUSE_BTN_FIRST; btn < MOUSE_BTN_COUNT; btn++) {
 
         // Get whether the button is currently pressed
-        Uint32 pressed = sdl_mouse_state & SDL_BUTTON(mouse_sdl_buttons[btn]);
-        Uint8 old_mouse_state = current_mouse_state[btn];
+        // Right shift is to place the "pressed" value in the rightmost bit
+        Uint32 current_pressed = sdl_mouse_state >> (SDL_mouse_bitmasks[btn] - 1);
 
-        // New state pressed
-        if (pressed) {
-            if (old_mouse_state == BUTTON_PRESSED || old_mouse_state == BUTTON_JUST_PRESSED) {
-                current_mouse_state[btn] = BUTTON_PRESSED;
-            } else {
-                current_mouse_state[btn] = BUTTON_JUST_PRESSED;
-            }
+        // Get the previous state of this button
+        Uint8 previous_state = current_mouse_state[btn];
 
-        // New state released
-        }
-        else {
-            if (old_mouse_state == BUTTON_RELEASED || old_mouse_state == BUTTON_JUST_RELEASED) {
-                current_mouse_state[btn] = BUTTON_RELEASED;
-            } else {
-                current_mouse_state[btn] = BUTTON_JUST_RELEASED;
-            }
-        }
+        // Store new state
+        current_mouse_state[btn] = 
+            (current_pressed & BUTTON_PRESSED) | 
+            (previous_state ^ current_pressed) << 1;
     }
 }
 
@@ -106,7 +88,7 @@ Button_State get_key_state(Key key)
     return current_key_state[key];
 }
 
-Button_State get_mouse_state(Mouse_Button btn)
+Button_State get_mouse_button_state(Mouse_Button btn)
 {
     return current_mouse_state[btn];
 }

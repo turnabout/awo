@@ -89,7 +89,9 @@ void tile_selector_update(Tile_Selector* sel)
     }
 
     // Toggle tile selector
-    if (get_key_state(KEY_1) == BUTTON_JUST_PRESSED) {
+    Button_State toggle_btn_state = get_key_state(KEY_1); // TODO: Set elsewhere
+
+    if ((toggle_btn_state & BUTTON_PRESSED) && (toggle_btn_state & BUTTON_JUST_CHANGED)) {
         sel->active ^= 1;
     }
 }

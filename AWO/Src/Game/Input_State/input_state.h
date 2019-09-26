@@ -2,14 +2,13 @@
 #include <SDL.h>
 
 // List of every possible state for inputs
+// State for a button
 typedef enum {
-    BUTTON_RELEASED,      // Button is released
-    BUTTON_JUST_RELEASED, // Button was just released this frame
-    BUTTON_PRESSED,       // Button is pressed down
-    BUTTON_JUST_PRESSED,  // Button was just pressed down this frame
+    BUTTON_PRESSED = 1 << 0, // Whether the button is pressed down
+    BUTTON_JUST_CHANGED = 1 << 1, // Whether the button's pressed state was just changed
 } Button_State;
 
-#define BUTTON_STATE_DEFAULT BUTTON_RELEASED
+#define BUTTON_STATE_DEFAULT 0
 
 // List of every key input used by the game
 typedef enum {
@@ -42,7 +41,7 @@ void input_state_update();
 Button_State get_key_state(Key key);
 
 // Gets the current button state for a mouse button.
-Button_State get_mouse_state(Mouse_Button btn);
+Button_State get_mouse_button_state(Mouse_Button btn);
 
 // Stores current mouse coordinates in x and y.
 void get_mouse_coordinates(int* x, int* y);
