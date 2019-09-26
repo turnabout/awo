@@ -27,6 +27,7 @@ static const char* tile_type_str_short[] = {
 #define TILE_TYPE_FIRST Plain
 #define TILE_TYPE_LAST LandPiece
 #define TILE_TYPE_COUNT TILE_TYPE_LAST + 1
+#define TILE_TYPE_NONE -1
 
 #define TILE_TYPE_BASIC_LAST Silo
 #define TILE_TYPE_BASIC_COUNT TILE_TYPE_BASIC_LAST + 1

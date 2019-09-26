@@ -32,7 +32,7 @@ typedef enum {
 #define MOUSE_BTN_COUNT MOUSE_BTN_LAST + 1
 
 typedef struct Mouse_State {
-    int x, y;
+    SDL_Point* pointer;
     Button_State buttons[MOUSE_BTN_COUNT];
 } Mouse_State;
 
@@ -47,3 +47,12 @@ Button_State get_key_state(Key key);
 
 // Gets pointer to the mouse state.
 Mouse_State* get_mouse_state();
+
+// Gets whether a key was just pressed.
+int key_pressed(Key key);
+
+// Gets whether a click has just started.
+int click_started(Mouse_State* mouse, Mouse_Button button);
+
+// Gets whether a click has just ended.
+int click_ended(Mouse_State* mouse, Mouse_Button button);

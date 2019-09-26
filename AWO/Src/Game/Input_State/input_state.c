@@ -40,8 +40,9 @@ void input_state_init()
     // Initialize mouse state to default
     mouse_state = (Mouse_State*)malloc(sizeof(Mouse_State));
 
+    mouse_state->pointer = (SDL_Point*)malloc(sizeof(SDL_Point));
+    mouse_state->pointer->x = mouse_state->pointer->y = 0;
     mouse_state->buttons[MOUSE_LEFT] = mouse_state->buttons[MOUSE_RIGHT] = BUTTON_STATE_DEFAULT;
-    mouse_state->x = mouse_state->y = 0;
 }
 
 void input_state_update()
@@ -65,7 +66,7 @@ void input_state_update()
     }
 
     // Update mouse state
-    Uint32 sdl_mouse_state = SDL_GetMouseState(&mouse_state->x, &mouse_state->y);
+    Uint32 sdl_mouse_state = SDL_GetMouseState(&mouse_state->pointer->x, &mouse_state->pointer->y);
 
     for (Mouse_Button btn = MOUSE_BTN_FIRST; btn < MOUSE_BTN_COUNT; btn++) {
 
@@ -91,4 +92,30 @@ Button_State get_key_state(Key key)
 Mouse_State* get_mouse_state()
 {
     return mouse_state;
+}
+
+int key_pressed(Key key)
+{
+    Button_State toggle_btn_state = get_key_state(KEY_1); // TODO: Set elsewhere
+
+    return (
+        (keys_state[key] & BUTTON_PRESSED) && 
+        (keys_state[key] & BUTTON_JUST_CHANGED)
+    );
+}
+
+int click_started(Mouse_State* mouse, Mouse_Button button)
+{
+    return (
+        (mouse->buttons[button] & BUTTON_PRESSED) &&
+        (mouse->buttons[button] & BUTTON_JUST_CHANGED)
+    );
+}
+
+int click_ended(Mouse_State* mouse, Mouse_Button button)
+{
+    return (
+        !(mouse->buttons[button] & BUTTON_PRESSED) &&
+        (mouse->buttons[button] & BUTTON_JUST_CHANGED)
+    );
 }
