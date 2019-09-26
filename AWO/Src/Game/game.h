@@ -22,6 +22,7 @@ typedef struct Game
     Tiles_Data*   td;
     Game_Clock*   clock;
     FC_Font*      font;
+    Mouse_State*  mouse_state;
 
     Tile_Selector*     sel;
 

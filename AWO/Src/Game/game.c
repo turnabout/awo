@@ -39,7 +39,7 @@ void update_game(Game* game)
     input_state_update();
     GC_update(game->clock);
 
-    tile_selector_update(game->sel);
+    tile_selector_update(game->sel, game->mouse_state);
 }
 
 void draw_game(Game* game)

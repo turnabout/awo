@@ -55,6 +55,7 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
 
     // Initialize the input state module
     input_state_init();
+    game->mouse_state = get_mouse_state();
 
     return OK;
 }

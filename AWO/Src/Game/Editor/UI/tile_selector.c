@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "conf.h"
 #include "tile_selector.h"
-#include "Game/Input_State/input_state.h"
 
 #pragma warning( disable : 6011 )
 
@@ -82,10 +81,9 @@ Tile_Selector* tile_selector_create(Tiles_Data* td)
 }
 
 // Update the selector.
-void tile_selector_update(Tile_Selector* sel)
+void tile_selector_update(Tile_Selector* sel, Mouse_State* ms)
 {
     if (sel->active) {
-
     }
 
     // Toggle tile selector
