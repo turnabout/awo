@@ -146,7 +146,7 @@ static unsigned long crc32_tab[] = {
 
 /* Return a 32-bit CRC of the contents of the buffer. */
 
-unsigned long crc32(const unsigned char *s, unsigned int len)
+unsigned long c_hashmap_crc32(const unsigned char *s, unsigned int len)
 {
   unsigned int i;
   unsigned long crc32val;
@@ -166,7 +166,7 @@ unsigned long crc32(const unsigned char *s, unsigned int len)
  */
 unsigned int hashmap_hash_int(hashmap_map * m, char* keystring){
 
-    unsigned long key = crc32((unsigned char*)(keystring), strlen(keystring));
+    unsigned long key = c_hashmap_crc32((unsigned char*)(keystring), strlen(keystring));
 
 	/* Robert Jenkins' 32 bit Mix Function */
 	key += (key << 12);
