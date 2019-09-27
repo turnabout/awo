@@ -44,7 +44,7 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
     // TODO: Add unit textures used by the game
 
     // Add other game components
-    game->board = GB_create(weathers);
+    game->board = GB_create();
     game->sel = tile_selector_create(game->td);
 
     // Fill game board with initial tiles

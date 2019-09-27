@@ -18,7 +18,7 @@ Units_Data* UD_create_from_JSON(const cJSON* ud_JSON)
 void get_units_src_data(Units_Data* ud, const cJSON* src_json)
 {
     const cJSON* unit_type_json;
-    enum unit_type current_type = UNIT_TYPE_FIRST;
+    Unit_Type current_type = UNIT_TYPE_FIRST;
 
     cJSON_ArrayForEach(unit_type_json, src_json)
     {
@@ -29,12 +29,12 @@ void get_units_src_data(Units_Data* ud, const cJSON* src_json)
 void get_units_dst_data(Units_Data* ud, const cJSON* dst_json)
 {
     const cJSON* unit_type_json;
-    enum unit_type current_type = UNIT_TYPE_FIRST;
+    Unit_Type current_type = UNIT_TYPE_FIRST;
 
     cJSON_ArrayForEach(unit_type_json, dst_json)
     {
         const cJSON* unit_anim_json;
-        enum unit_type current_anim = UNIT_ANIM_FIRST;
+        Unit_Anim current_anim = UNIT_ANIM_FIRST;
 
         cJSON_ArrayForEach(unit_anim_json, unit_type_json)
         {

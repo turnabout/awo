@@ -15,7 +15,7 @@ SDL_Texture* apply_palette(SDL_Renderer* rend, Palette_Tree* palette, int w, int
     Uint32* s_pixels; // Pointer filled with pixel data
     int s_pitch;      // Length of a row of s_pixels in bytes
 
-    SDL_LockTexture(streaming_texture, NULL, &s_pixels, &s_pitch);
+    SDL_LockTexture(streaming_texture, NULL, (void**)&s_pixels, &s_pitch);
     SDL_RenderReadPixels(rend, NULL, SDL_PIXELFORMAT_RGBA8888, s_pixels, s_pitch);
 
     // Get pixel count

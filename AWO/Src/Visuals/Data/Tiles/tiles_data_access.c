@@ -94,6 +94,7 @@ SDL_Rect* TD_gather_tile_data(
     return anim_get_frames(t_var_data->anim, &count);
 }
 
+#ifdef _DEBUG
 void print_tile_type(Tiles_Data* td, Tile_Type type)
 {
     Tile_Data* tile_data = td->src[type];
@@ -119,3 +120,4 @@ void TD_print(Tiles_Data* td)
         print_tile_type(td, type);
     }
 }
+#endif

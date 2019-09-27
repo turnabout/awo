@@ -2,8 +2,6 @@
 
 #include "_animation_clock_internal.h"
 
-#pragma warning( disable: 6011 6386 )
-
 Animation_Sub_Clock* ASC_create_from_JSON(const cJSON* json)
 {
     Animation_Sub_Clock* asc = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));

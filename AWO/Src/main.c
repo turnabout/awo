@@ -15,7 +15,12 @@ int main(int argc, char** argv)
         return 1;
     }
 
+    #ifdef __EMSCRIPTEN__
+	emscripten_set_main_loop_arg(run_game, &game, FPS, 1);
+    #else
     run_game(&game);
+    #endif
+
     exit_game(&game);
 
     return 0;

@@ -2,16 +2,21 @@
 #include <stdlib.h>
 #include "conf.h"
 
-#pragma warning( disable : 6386 )
-
 int read_file(const char *file_name, char **buffer)
 {
     FILE* f_stream;
-    errno_t err;
     long f_size;
 
+    #ifndef __EMSCRIPTEN__
+    errno_t err;
+    #endif
+
     // Open the file
+    #ifdef __EMSCRIPTEN__
+    if ((f_stream = fopen(file_name, "r")) == NULL) {
+    #else
     if ((err = fopen_s(&f_stream, file_name, "r")) != 0) {
+    #endif
         printf("Error opening file %s\n", file_name);
         return ERR;
     }

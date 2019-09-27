@@ -148,7 +148,7 @@
       <AdditionalIncludeDirectories>F:\AWO\Libraries\SDL2_ttf\include;$(ProjectDir)\Src\Libraries;$(ProjectDir)\Src;F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <DisableSpecificWarnings>6011;6386;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>6011;6386;6387;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

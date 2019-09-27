@@ -44,4 +44,9 @@ int init_game(Game* game, Game_Arg_Weathers weathers);
 void exit_game(Game* game);
 
 // Runs the main game loop continuously.
+
+#ifdef __EMSCRIPTEN__
+void run_game(void* game);
+#else
 void run_game(Game* game);
+#endif

@@ -8,7 +8,7 @@ static Button_State keys_state[KEY_COUNT];
 const static Uint8* SDL_keyboard_state;
 
 // Array of every SDL_Scancode corresponding to every key input used by the game
-const static char keys_scancodes[KEY_COUNT] = {
+const static SDL_Scancode keys_scancodes[KEY_COUNT] = {
     SDL_SCANCODE_1,
     SDL_SCANCODE_2,
     SDL_SCANCODE_3,
@@ -21,9 +21,6 @@ struct Mouse_State* mouse_state;
 
 // Bitmasks used to get the pressed/released bit of each mouse button
 const static Uint32 SDL_mouse_bitmasks[MOUSE_BTN_COUNT] = { SDL_BUTTON_LEFT, SDL_BUTTON_RIGHT };
-
-// Pointers storing mouse coordinates
-static int* mouse_x, * mouse_y;
 
 void input_state_init()
 {
@@ -93,8 +90,6 @@ Mouse_State* get_mouse_state()
 
 int key_pressed(Key key)
 {
-    Button_State toggle_btn_state = get_key_state(KEY_1); // TODO: Set elsewhere
-
     return (
         (keys_state[key] & BUTTON_PRESSED) && 
         (keys_state[key] & BUTTON_JUST_CHANGED)

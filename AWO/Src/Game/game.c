@@ -11,6 +11,20 @@
 void update_game(Game* game);
 void draw_game(Game* game);
 
+#ifdef __EMSCRIPTEN__
+void run_game(void* game)
+{
+    SDL_Event event;
+
+    if (SDL_PollEvent(&event) && event.type == SDL_QUIT) {
+        exit_game(game);
+        return;
+    }
+
+    update_game(game);
+    draw_game(game);
+}
+#else
 void run_game(Game* game)
 {
     while (1) {
@@ -33,6 +47,7 @@ void run_game(Game* game)
         }
     }
 }
+#endif
 
 void update_game(Game* game)
 {

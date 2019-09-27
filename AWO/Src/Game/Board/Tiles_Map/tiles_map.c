@@ -7,8 +7,6 @@
 
 #define HASH_KEY_SIZE 3 // 2 chars representing type & var, + 1 char for null-terminator
 
-#pragma warning( disable : 6011 6387 )
-
 struct Tiles_Map {
     map_t map;
 };
