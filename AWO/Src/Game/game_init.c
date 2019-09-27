@@ -64,7 +64,7 @@ int init_SDL_components(Game* game)
 {
     // Initialize SDL
     if (SDL_Init(SDL_INIT_FLAGS) != 0) {
-        printf("Error initializing SDL: %s\n", SDL_GetError());
+        printf("SDL_Init: %s\n", SDL_GetError());
         return ERR;
     }
 
@@ -79,7 +79,7 @@ int init_SDL_components(Game* game)
     );
 
     if (game->win == NULL) {
-        printf("Could not create window: %s\n", SDL_GetError());
+        printf("SDL_CreateWindow: %s\n", SDL_GetError());
         return ERR;
     }
 
@@ -91,18 +91,27 @@ int init_SDL_components(Game* game)
     );
 
     if (game->rend == NULL) {
-        printf("Could not create renderer: %s\n", SDL_GetError());
+        printf("SDL_CreateRenderer: %s\n", SDL_GetError());
+        return ERR;
+    }
+
+    if (SDL_RenderSetLogicalSize(game->rend, X1_SCREEN_WIDTH, X1_SCREEN_HEIGHT) != 0) {
+        printf("SDL_RenderSetLogicalSize: %s\n", SDL_GetError());
         return ERR;
     }
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 0);
-    SDL_RenderSetLogicalSize(game->rend, X1_SCREEN_WIDTH, X1_SCREEN_HEIGHT);
 
     // Initialize sprite sheet surface
+    if (!IMG_Init(IMG_INIT_PNG)) {
+        printf("IMG_Init: %s\n", IMG_GetError());
+        return ERR;
+    }
+
     SDL_Surface* surface = IMG_Load(SPRITE_SHEET_PATH);
 
     if (surface == NULL) {
-        printf("Error loading sprite sheet surface: %s\n", IMG_GetError());
+        printf("IMG_Load: %s\n", IMG_GetError());
         return ERR;
     }
 
