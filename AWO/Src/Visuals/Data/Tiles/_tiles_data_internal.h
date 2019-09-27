@@ -4,8 +4,8 @@
 #include "cJSON.h"
 
 #include "Game/Clock/Animation_Clock/animation_clock_enums.h"
-#include "../Animation/animation.h"
-#include "../Sprite_Sheet_Metadata/ss_metadata.h"
+#include "Visuals/Data/Animation/animation.h"
+#include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
 #include "tiles_enums.h"
 
 typedef struct Tile_Data Tile_Data;

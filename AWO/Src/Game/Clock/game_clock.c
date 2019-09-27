@@ -1,14 +1,9 @@
 #include <stdio.h>
 #include <SDL.h>
 
-#include "conf.h"
-#include "cJSON.h"
-
-#include "game_clock.h"
 #include "Animation_Clock/_animation_clock_internal.h"
-#include "Animation_Clock/animation_clock_enums.h"
-
-#pragma warning( disable : 6011 )
+#include "game_clock.h"
+#include "conf.h"
 
 struct Game_Clock {
     Uint8 current_tick;    // Current tick the game clock is on

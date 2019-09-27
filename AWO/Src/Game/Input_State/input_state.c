@@ -1,7 +1,4 @@
-#include <SDL.h>
 #include "input_state.h"
-
-#pragma warning( disable : 6011 )
 
 // Keyboard state
 // Array holding input state for every key used by the game

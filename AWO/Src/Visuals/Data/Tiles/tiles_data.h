@@ -1,11 +1,13 @@
 #pragma once
 
 #include "cJSON.h"
-#include "tiles_enums.h"
-#include "../Palette/palette_tree.h"
-#include "../Sprite_Sheet_Metadata/ss_metadata.h"
-#include "../Animation/animation.h"
+
+#include "Visuals/Data/Palette/palette_tree.h"
+#include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
+#include "Visuals/Data/Animation/animation.h"
 #include "Game/Clock/game_clock.h"
+
+#include "tiles_enums.h"
 
 // Holds all of the game's visuals data for tiles.
 typedef struct Tiles_Data Tiles_Data;

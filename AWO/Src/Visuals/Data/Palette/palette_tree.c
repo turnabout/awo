@@ -1,8 +1,7 @@
-#include <SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cJSON.h"
+#include "palette_tree.h"
 
 typedef struct Palette_Node Palette_Node;
 

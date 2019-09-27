@@ -1,7 +1,5 @@
 #include "_units_data_internal.h"
 
-#pragma warning( disable : 6011 )
-
 Units_Data* UD_create_from_JSON(const cJSON* ud_JSON)
 {
     Units_Data* ud = malloc(sizeof(Units_Data));

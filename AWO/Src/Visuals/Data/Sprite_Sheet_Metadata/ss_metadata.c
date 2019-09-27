@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include "ss_metadata.h"
 
-#pragma warning( disable : 6011 )
-
 SS_Metadata* SS_Meta_create_from_JSON(const cJSON* json)
 {
     // Attempt to get every possible field from the given JSON object

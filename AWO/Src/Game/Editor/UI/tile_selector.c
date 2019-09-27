@@ -2,8 +2,6 @@
 #include "conf.h"
 #include "tile_selector.h"
 
-#pragma warning( disable : 6011 )
-
 // A tile selection within the tile selector.
 typedef struct Tile_Selection {
     SDL_Rect* src_rect;  // The tile's source rectangle

@@ -1,10 +1,7 @@
 #include <stdio.h>
-#include <SDL.h>
 
 #include "conf.h"
 #include "animation.h"
-
-#pragma warning( disable : 6011 )
 
 struct Animation {
     int count;

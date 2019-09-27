@@ -1,10 +1,7 @@
 #include <stdlib.h>
-#include <SDL.h>
 
 #include "unit.h"
 #include "Visuals/Data/Animation/animation.h"
-
-#pragma warning( disable: 6011 6386 )
 
 struct Unit {
     SDL_Rect draw_rect;       // Unit's draw rectangle (where to draw on screen)
@@ -14,7 +11,7 @@ struct Unit {
 
     SDL_Rect* anims_frames[UNIT_ANIM_COUNT];  // Frame arrays for every animation
     int anims_frames_counts[UNIT_ANIM_COUNT]; // Frame count for every frame array
-    Unit_Anim current_anim;                    // Currently active animation
+    Unit_Anim current_anim;                   // Currently active animation
 };
 
 Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, Unit_Type ut)

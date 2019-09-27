@@ -3,8 +3,6 @@
 #include "tiles_data.h"
 #include "_tiles_data_internal.h"
 
-#pragma warning( disable : 6011 )
-
 void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json);
 
 Tiles_Data* TD_create_from_JSON(cJSON* tiles_visuals_JSON)

@@ -11,8 +11,10 @@ See SDL_FontCache.h for license info.
 #include <stdlib.h>
 #include <string.h>
 
+#if defined(_MSC_VER)
 #pragma warning( disable : 6001 6011 6386 6387 )
 #pragma warning(push, 0)
+#endif
 
 // Visual C does not support static inline
 #ifndef static_inline
@@ -2901,4 +2903,6 @@ void FC_SetDefaultColor(FC_Font* font, SDL_Color color)
 
     font->default_color = color;
 }
+#if defined(_MSC_VER)
 #pragma warning(pop)
+#endif

@@ -4,7 +4,7 @@
 
 #include "_tiles_data_internal.h"
 #include "c_hashmap.h"
-#include "../Palette/palette_tree.h"
+#include "Visuals/Data/Palette/palette_tree.h"
 
 Tile_Var_Data* get_tile_var(Tiles_Data* td, Tile_Type type, Tile_Var var)
 {

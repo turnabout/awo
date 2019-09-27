@@ -2,9 +2,10 @@
 
 #include "cJSON.h"
 #include "units_enums.h"
-#include "../Sprite_Sheet_Metadata/ss_metadata.h"
-#include "../Palette/palette_tree.h"
-#include "../Animation/animation.h"
+
+#include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
+#include "Visuals/Data/Palette/palette_tree.h"
+#include "Visuals/Data/Animation/animation.h"
 
 // Holds all of the game's visuals data for units.
 typedef struct Units_Data Units_Data;

@@ -1,11 +1,8 @@
 #include "conf.h"
-#include "Game/Entities/Unit/unit.h"
 #include "Game/Entities/Tile/tile.h"
 #include "Game/Board/Tiles_Map/tiles_map.h"
 
 #include "game_board.h"
-
-#pragma warning( disable : 6011 )
 
 typedef Tile** Tile_Row;
 

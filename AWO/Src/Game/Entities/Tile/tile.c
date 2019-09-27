@@ -2,10 +2,6 @@
 
 #include "conf.h"
 #include "tile.h"
-#include "Game/Clock/game_clock.h"
-#include "Visuals/visuals_data.h"
-
-#pragma warning( disable: 6011 6386 )
 
 struct Tile {
     SDL_Rect* anim_frames;    // Frame arrays for this tile's animation
