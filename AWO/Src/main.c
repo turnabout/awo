@@ -6,22 +6,42 @@
 #include "conf.h"
 #include "Game/game.h"
 
+#ifndef __EMSCRIPTEN__
 int main(int argc, char** argv)
 {
-    Game game;
+    Game* game;
     Game_Arg_Weathers weathers = Game_Arg_Clear | Game_Arg_Snow | Game_Arg_Rain;
 
-    if (init_game(&game, weathers) == ERR) {
-        exit_game(&game);
+    if ((game = init_game(weathers)) == NULL) {
+        exit_game(game);
         return 1;
     }
 
-    #ifdef __EMSCRIPTEN__
-	// emscripten_set_main_loop_arg(run_game, &game, FPS, 1);
-    #else
-    run_game(&game);
-    exit_game(&game);
-    #endif
+    run_game(game);
+    exit_game(game);
 
     return 0;
 }
+#endif
+
+#ifdef __EMSCRIPTEN__
+// Initialize AWO game.
+Game* init_AWO()
+{
+    Game* game;
+    Game_Arg_Weathers weathers = Game_Arg_Clear | Game_Arg_Snow | Game_Arg_Rain;
+
+    if ((game = init_game(weathers)) == NULL) {
+        exit_game(game);
+        return NULL;
+    }
+
+    return game;
+}
+
+// Run AWO game.
+void run_AWO(Game* game)
+{
+	emscripten_set_main_loop_arg(run_game, game, FPS, 1);
+}
+#endif

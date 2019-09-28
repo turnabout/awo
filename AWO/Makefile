@@ -3,11 +3,16 @@ SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
 
 all:
 	emcc -o Web/index.html $(SOURCES) \
-	-Wall -g4 \
+	-ISrc \
+	-ISrc/Libraries \
+	-Wall \
+	--preload-file Resources \
 	-s USE_SDL=2 \
 	-s USE_SDL_IMAGE=2 \
 	-s SDL2_IMAGE_FORMATS='["png"]' \
 	-s USE_SDL_TTF=2 \
-	-ISrc \
-	-ISrc/Libraries \
-	--preload-file Resources
+	-s EXPORTED_FUNCTIONS='["_init_AWO", "_run_AWO"]' \
+	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap"]' \
+    --shell-file Web/template.html   
+
+# -g4 

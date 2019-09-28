@@ -1,3 +1,7 @@
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 #include <stdio.h>
 
 #include "Visuals/visuals_data.h"
@@ -17,6 +21,7 @@ void run_game(void* game)
     SDL_Event event;
 
     if (SDL_PollEvent(&event) && event.type == SDL_QUIT) {
+        emscripten_cancel_main_loop();
         exit_game(game);
         return;
     }
@@ -32,7 +37,6 @@ void run_game(Game* game)
         Uint32 start_ticks = SDL_GetTicks();
 
         if (SDL_PollEvent(&event) && event.type == SDL_QUIT) {
-            exit_game(game);
             return;
         }
 

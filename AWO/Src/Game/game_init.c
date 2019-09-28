@@ -12,17 +12,19 @@
 int get_game_visuals_data(Game* game);
 int init_SDL_components(Game* game);
 
-int init_game(Game* game, Game_Arg_Weathers weathers)
+Game* init_game(Game_Arg_Weathers weathers)
 {
+    Game* game = malloc(sizeof(Game));
+
     // Add essential components
     if (init_SDL_components(game) == ERR) {
-        return ERR;
+        return NULL;
     }
 
     // Add the visual data to the game instance
     if (get_game_visuals_data(game) == ERR) {
         printf("Error getting game's visual data\n");
-        return ERR;
+        return NULL;
     }
 
     // Add tile textures, processing weathers
@@ -57,7 +59,7 @@ int init_game(Game* game, Game_Arg_Weathers weathers)
     input_state_init();
     game->mouse_state = get_mouse_state();
 
-    return OK;
+    return game;
 }
 
 int init_SDL_components(Game* game)
