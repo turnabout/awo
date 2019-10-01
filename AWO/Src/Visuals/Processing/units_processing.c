@@ -8,6 +8,8 @@ void draw_unit_texture_anims(Game* game, Unit_Type u_type, Unit_Var u_var, int f
 
 SDL_Texture* create_units_texture(Game* game, Unit_Var type_var, Unit_Var color_var)
 {
+    SDL_SetRenderDrawColor(game->rend, 0, 0, 0, 0);
+
     // Get sprite sheet metadata
     SS_Metadata* metadata = UD_get_ss_metadata(game->ud);
 

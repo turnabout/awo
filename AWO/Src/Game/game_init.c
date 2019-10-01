@@ -52,9 +52,6 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
     // Fill game board with initial tiles
     GB_fill(game->board, game->clock, game->td, Sea, Middle);
 
-    SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);
-    SDL_SetRenderDrawColor(game->rend, 255, 255, 255, 255);
-
     // Initialize the input state module
     input_state_init();
     game->mouse_state = get_mouse_state();
@@ -96,6 +93,12 @@ int init_SDL_components(Game* game, int w, int h)
         printf("SDL_CreateRenderer: %s\n", SDL_GetError());
         return ERR;
     }
+
+    // Clear screen using start background color as soon as possible
+    SDL_SetRenderDrawColor(game->rend, START_BG_R, START_BG_G, START_BG_B, START_BG_A);
+    SDL_RenderClear(game->rend);
+
+    SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);
 
     if (SDL_RenderSetLogicalSize(game->rend, w, h) != 0) {
         printf("SDL_RenderSetLogicalSize: %s\n", SDL_GetError());

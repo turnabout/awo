@@ -5,6 +5,8 @@ void draw_tile_texture_anims(Game* game, Tile_Type t_type);
 
 SDL_Texture* create_tiles_texture(Game* game, Weather weather)
 {
+    SDL_SetRenderDrawColor(game->rend, 0, 0, 0, 0);
+
     // Get palette & ss metadata
     Palette_Tree* palette = TD_get_palette(game->td, weather);
     SS_Metadata* metadata = TD_get_ss_metadata(game->td);

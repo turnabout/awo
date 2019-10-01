@@ -44,6 +44,12 @@
 // Max amount of units for each player
 #define MAX_UNITS_PER_ARMY 50
 
+// Starting background color when first initializing game
+#define START_BG_R      255
+#define START_BG_G      239
+#define START_BG_B      239
+#define START_BG_A      255
+
 // Editor configuration
 #define EDITOR_UI_R      0
 #define EDITOR_UI_G      0
