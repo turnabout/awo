@@ -10,14 +10,14 @@
 #include "game.h"
 
 int get_game_visuals_data(Game* game);
-int init_SDL_components(Game* game);
+int init_SDL_components(Game* game, int w, int h);
 
-Game* init_game(Game_Arg_Weathers weathers)
+Game* init_game(Game_Arg_Weathers weathers, int w, int h)
 {
     Game* game = malloc(sizeof(Game));
 
     // Add essential components
-    if (init_SDL_components(game) == ERR) {
+    if (init_SDL_components(game, w, h) == ERR) {
         return NULL;
     }
 
@@ -62,7 +62,7 @@ Game* init_game(Game_Arg_Weathers weathers)
     return game;
 }
 
-int init_SDL_components(Game* game)
+int init_SDL_components(Game* game, int w, int h)
 {
     // Initialize SDL
     if (SDL_Init(SDL_INIT_FLAGS) != 0) {
@@ -75,8 +75,8 @@ int init_SDL_components(Game* game)
         GAME_TITLE,              // Window title
         SDL_WINDOWPOS_CENTERED,  // Initial x pos
         SDL_WINDOWPOS_CENTERED,  // Initial y pos
-        SCREEN_WIDTH,            // Width
-        SCREEN_HEIGHT,           // Height
+        w,                       // Screen width
+        h,                       // Screen height
         SDL_WINDOW_FLAGS         // Flags
     );
 
@@ -97,7 +97,7 @@ int init_SDL_components(Game* game)
         return ERR;
     }
 
-    if (SDL_RenderSetLogicalSize(game->rend, X1_SCREEN_WIDTH, X1_SCREEN_HEIGHT) != 0) {
+    if (SDL_RenderSetLogicalSize(game->rend, w, h) != 0) {
         printf("SDL_RenderSetLogicalSize: %s\n", SDL_GetError());
         return ERR;
     }

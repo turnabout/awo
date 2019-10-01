@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     Game* game;
     Game_Arg_Weathers weathers = Game_Arg_Clear | Game_Arg_Snow | Game_Arg_Rain;
 
-    if ((game = init_game(weathers)) == NULL) {
+    if ((game = init_game(weathers, SCREEN_WIDTH, SCREEN_HEIGHT)) == NULL) {
         exit_game(game);
         return 1;
     }
@@ -26,12 +26,12 @@ int main(int argc, char** argv)
 
 #ifdef __EMSCRIPTEN__
 // Initialize AWO game.
-Game* init_AWO()
+Game* init_AWO(int w, int h)
 {
     Game* game;
     Game_Arg_Weathers weathers = Game_Arg_Clear | Game_Arg_Snow | Game_Arg_Rain;
 
-    if ((game = init_game(weathers)) == NULL) {
+    if ((game = init_game(weathers, w, h)) == NULL) {
         exit_game(game);
         return NULL;
     }

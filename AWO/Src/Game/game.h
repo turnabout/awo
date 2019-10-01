@@ -38,7 +38,7 @@ typedef struct Game
 
 // Initializes the game and populates the game instance pointed at by `game`.
 // Returns ERR if an error occured, or OK.
-Game* init_game(Game_Arg_Weathers weathers);
+Game* init_game(Game_Arg_Weathers weathers, int w, int h);
 
 // Exits the game and cleans up resources.
 void exit_game(Game* game);

@@ -16,6 +16,7 @@ all:
 	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap"]' \
 	-s MODULARIZE=1 \
 	-s EXPORT_NAME="AWO_EM_MODULE" \
+	-s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=1 \
 	-s ENVIRONMENT="web"
 
 
@@ -24,8 +25,10 @@ all:
 # -s ASMFS=1
 
 
+	# emcc -o ./Web/index.html $(SOURCES) \
+	# emcc -o $(OUTPUTPATH) $(SOURCES) \
 
 # -s EXPORT_ES6=1 \
 # -s EXPORT_ES6=1 -s MODULARIZE=
 # --shell-file Web/template.html   
-# -g4 
+# -g4 \
