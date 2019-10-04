@@ -12,23 +12,13 @@ all:
 	-s USE_SDL_IMAGE=2 \
 	-s SDL2_IMAGE_FORMATS='["png"]' \
 	-s USE_SDL_TTF=2 \
-	-s EXPORTED_FUNCTIONS='["_init_AWO", "_run_AWO"]' \
+	-s EXPORTED_FUNCTIONS='["_init_AWO", "_run_AWO", "_update_game_size"]' \
 	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap"]' \
 	-s MODULARIZE=1 \
 	-s EXPORT_NAME="AWO_EM_MODULE" \
 	-s ENVIRONMENT="web"
 
-	# -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=1 \
-
-# -s MODULARIZE_INSTANCE=1 \
-# -s FETCH=1 \
-# -s ASMFS=1
-
-
-	# emcc -o ./Web/index.html $(SOURCES) \
-	# emcc -o $(OUTPUTPATH) $(SOURCES) \
-
-# -s EXPORT_ES6=1 \
-# -s EXPORT_ES6=1 -s MODULARIZE=
-# --shell-file Web/template.html   
+# -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=1 \
+# emcc -o ./Web/index.html $(SOURCES) \
+# emcc -o $(OUTPUTPATH) $(SOURCES) \
 # -g4 \
