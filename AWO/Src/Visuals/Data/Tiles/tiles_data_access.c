@@ -67,6 +67,25 @@ Animation* TD_get_next_tile_animation(Tiles_Data* td, Tile_Type tt)
     return t_var_data->anim;
 }
 
+const char* get_next_tile_variation_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val)
+{
+    // Variation index
+    static int index = 0;
+
+    Tile_Data* tile = td->src[tt];
+
+    // No tile variation at given index, reset it and return NULL
+    if (index == tile->vars_amount) {
+        index = 0;
+        return NULL;
+    }
+
+    // Get tile variation data
+    *var_val = tile->vars_list[index++];
+
+    return tile_var_str[*var_val];
+}
+
 SDL_Rect* TD_gather_tile_data(
     Tiles_Data* td, 
     Tile_Type tt, 

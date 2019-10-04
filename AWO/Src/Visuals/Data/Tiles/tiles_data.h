@@ -43,6 +43,10 @@ SDL_Rect* TD_gather_tile_data(
 // Goes through all tile variations of the tile type until all have been returned.
 Animation* TD_get_next_tile_animation(Tiles_Data* td, Tile_Type tt);
 
+// Gets the next tile variation data belonging to the given tile type.
+// Returns string corresponding to variation and stores variation value in given pointer.
+const char* get_next_tile_variation_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val);
+
 #ifdef _DEBUG
 // Print contents from tiles data.
 void TD_print(Tiles_Data* td);
