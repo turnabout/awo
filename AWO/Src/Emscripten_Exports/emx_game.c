@@ -33,5 +33,8 @@ void update_game_size(Game* game, int w, int h)
 
     SDL_Rect new_viewport = {0, 0, w, h};
     SDL_RenderSetViewport(game->rend, &new_viewport);
+
+    game->w = w;
+    game->h = h;
 }
 #endif

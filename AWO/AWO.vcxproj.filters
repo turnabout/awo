@@ -99,6 +99,9 @@
     <ClCompile Include="Src\Emscripten_Exports\emx_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Emscripten_Exports\emx_editor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">

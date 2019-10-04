@@ -26,6 +26,9 @@ typedef struct Game
 
     Tile_Selector*     sel;
 
+    Uint32 w; // Current game width
+    Uint32 h; // Current game height
+
     // Tile/unit textures
     SDL_Texture* tile_textures[WEATHER_COUNT];
 

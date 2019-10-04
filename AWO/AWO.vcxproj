@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Emscripten_Exports\emx_editor.c" />
     <ClCompile Include="Src\Emscripten_Exports\emx_game.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
     <ClCompile Include="Src\Game\Board\Tiles_Map\tiles_map.c" />
