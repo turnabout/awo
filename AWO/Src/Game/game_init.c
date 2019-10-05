@@ -50,7 +50,7 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
 
     // Fill game board with initial tiles
     GB_fill(game->board, game->clock, Sea, Middle);
-    GB_edit_tile(game->board, Plain, Default, 0, 2);
+    GB_edit_tile(game->board, Plain, Default, 0, 0);
 
     // Initialize the input state module
     input_state_init();
