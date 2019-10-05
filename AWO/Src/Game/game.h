@@ -24,8 +24,6 @@ typedef struct Game
     FC_Font*      font;
     Mouse_State*  mouse_state;
 
-    Tile_Selector*     sel;
-
     Uint32 w; // Current game width
     Uint32 h; // Current game height
 

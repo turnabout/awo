@@ -8,15 +8,23 @@ typedef Tile** Tile_Row;
 
 struct Game_Board {
     int n_columns, n_lines; // Dimensions of full game board, in tiles
-    Unit** units;           // Contains all units on the game board.
-    Tile_Row* tiles;        // Contains all tiles on the game board.
-    int u_count;            // How many units are on the game board.
+
+    Tile_Row* tiles;        // Contains all tiles on the game board. tiles[y][x]
     Tiles_Map* tiles_map;   // Map holding every unique `Tile`
+    Tiles_Data* td;         // Reference to the game's tiles' data.
+
+    Unit** units;           // Contains all units on the game board.
+    int u_count;            // How many units are on the game board.
+
+    Game_Clock* gc;         // Reference to the game clock.
 };
 
-Game_Board* GB_create()
+Game_Board* GB_create(Tiles_Data* td, Game_Clock* gc)
 {
     Game_Board* gb = malloc(sizeof(Game_Board));
+
+    gb->td = td;
+    gb->gc = gc;
 
     gb->n_columns = DEFAULT_GB_WIDTH;
     gb->n_lines   = DEFAULT_GB_HEIGHT;
@@ -52,22 +60,22 @@ void GB_change_tile(int tile_x, int tile_y)
 {
 }
 
-void GB_fill(Game_Board* gb, Game_Clock* gc, Tiles_Data* td, Tile_Type tt, Tile_Var tv)
+void GB_fill(Game_Board* gb, Game_Clock* gc, Tile_Type tt, Tile_Var tv)
 {
     // Attempt to get existing tile from map
     Tile* tile = TM_get_map_tile(gb->tiles_map, tt, tv);
 
     // If nonexistent, make new one and add to map
     if (tile == NULL) {
-        tile = tile_create(gc, td, tt, tv);
+        tile = tile_create(gc, gb->td, tt, tv);
         TM_add_map_tile(gb->tiles_map, tile, tt, tv);
     }
 
     // Loop lines
-    for (int i = 0; i < gb->n_lines; i++) {
+    for (int y = 0; y < gb->n_lines; y++) {
         // Loop columns
-        for (int j = 0; j < gb->n_columns; j++) {
-            gb->tiles[i][j] = tile;
+        for (int x = 0; x < gb->n_columns; x++) {
+            gb->tiles[y][x] = tile;
         }
     }
 }
@@ -76,17 +84,20 @@ void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture)
 {
     // Draw tiles
     // Loop lines
-    for (int i = 0; i < gb->n_lines; i++) {
+    for (int y = 0; y < gb->n_lines; y++) {
 
         // Loop columns
-        for (int j = 0; j < gb->n_columns; j++) {
-            if (gb->tiles[i][j] != NULL) {
+        for (int x = 0; x < gb->n_columns; x++) {
+            if (gb->tiles[y][x] != NULL) {
+                int xPos = x * DEFAULT_TILE_DIMENSION;
+                int yPos = y * DEFAULT_TILE_DIMENSION;
+
                 tile_draw(
-                    gb->tiles[i][j], 
+                    gb->tiles[y][x], 
                     rend, 
                     tile_texture, 
-                    j * DEFAULT_TILE_DIMENSION,
-                    i * DEFAULT_TILE_DIMENSION
+                    x * DEFAULT_TILE_DIMENSION,
+                    y * DEFAULT_TILE_DIMENSION
                 );
             }
         }
@@ -96,6 +107,20 @@ void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture)
     for (int i = 0; i < gb->u_count; i++) {
         unit_draw(gb->units[i], rend);
     }
+}
+
+void GB_edit_tile(Game_Board* gb, Tile_Type tt, Tile_Var tv, int x, int y)
+{
+    // Attempt to get existing tile of given type/variation
+    Tile* tile = TM_get_map_tile(gb->tiles_map, tt, tv);
+
+    // If nonexistent, make new one and add to map
+    if (tile == NULL) {
+        tile = tile_create(gb->gc, gb->td, tt, tv);
+        TM_add_map_tile(gb->tiles_map, tile, tt, tv);
+    }
+
+    gb->tiles[y][x] = tile;
 }
 
 void GB_free(Game_Board* gb)

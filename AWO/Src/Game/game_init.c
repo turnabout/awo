@@ -46,11 +46,11 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
     // TODO: Add unit textures used by the game
 
     // Add other game components
-    game->board = GB_create();
-    game->sel = tile_selector_create(game->td);
+    game->board = GB_create(game->td, game->clock);
 
     // Fill game board with initial tiles
-    GB_fill(game->board, game->clock, game->td, Sea, Middle);
+    GB_fill(game->board, game->clock, Sea, Middle);
+    GB_edit_tile(game->board, Plain, Default, 0, 2);
 
     // Initialize the input state module
     input_state_init();

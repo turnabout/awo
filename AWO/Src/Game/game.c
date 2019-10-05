@@ -43,6 +43,7 @@ void run_game(Game* game)
         update_game(game);
         draw_game(game);
 
+
         // If frame finished early, wait remaining time
         int frame_ticks = SDL_GetTicks() - start_ticks;
 
@@ -57,19 +58,16 @@ void update_game(Game* game)
 {
     input_state_update();
     GC_update(game->clock);
-
-    tile_selector_update(game->sel, game->mouse_state);
 }
 
 void draw_game(Game* game)
 {
     SDL_RenderClear(game->rend);
 
-    // Draw all on-screen content
+    // Draw game board
     GB_draw(game->board, game->rend, game->tile_textures[game->current_weather]);
 
     // Draw UI elements
-    tile_selector_draw(game->sel, game->rend, game->tile_textures[game->current_weather]);
 
     SDL_RenderPresent(game->rend);
 }
