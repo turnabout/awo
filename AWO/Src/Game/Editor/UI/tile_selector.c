@@ -81,7 +81,7 @@ Tile_Selector* tile_selector_create(Tiles_Data* td)
 void tile_selector_update(Tile_Selector* sel, Mouse_State* mouse)
 {
     // Toggle tile selector on key press
-    if (key_pressed(KEY_1)) {
+    if (key_down_started(KEY_1)) {
         sel->active ^= 1;
     }
 
@@ -97,7 +97,7 @@ void tile_selector_update(Tile_Selector* sel, Mouse_State* mouse)
             sel->hovered_tile = tt;
 
             // Get whether hovered tile was selected
-            if (click_started(mouse, MOUSE_LEFT)) {
+            if (mouse_down_started(mouse, MOUSE_LEFT)) {
                 sel->new_selected_tile = sel->selected_tile = sel->hovered_tile;
             }
 

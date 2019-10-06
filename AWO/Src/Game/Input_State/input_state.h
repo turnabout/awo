@@ -49,17 +49,20 @@ Button_State get_key_state(Key key);
 // Gets pointer to the mouse state.
 Mouse_State* get_mouse_state();
 
-// Gets whether a key was just pressed.
-int key_pressed(Key key);
+// Gets whether a key was just pressed down.
+int key_down_started(Key key);
 
-// Gets whether a key is being held down.
+// Gets whether a key is being pressed down.
 int key_down(Key key);
 
-// Gets whether a click has just started.
-int click_started(Mouse_State* mouse, Mouse_Button button);
+// Gets whether a key was just released.
+int key_up_started(Key key);
 
-// Gets whether a click is being held down.
-int click_down(Mouse_State* mouse, Mouse_Button button);
+// Gets whether a mouse button was just pressed down.
+int mouse_down_started(Mouse_State* mouse, Mouse_Button button);
 
-// Gets whether a click has just ended.
-int click_ended(Mouse_State* mouse, Mouse_Button button);
+// Gets whether a mouse button is being pressed down.
+int mouse_down(Mouse_State* mouse, Mouse_Button button);
+
+// Gets whether a mouse button was just released.
+int mouse_up_started(Mouse_State* mouse, Mouse_Button button);
