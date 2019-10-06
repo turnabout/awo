@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "c_hashmap.h"
 #include "Game/Entities/Tile/tile.h"
@@ -11,6 +12,11 @@ struct Tiles_Map {
     map_t map;
 };
 
+typedef struct Tile_Map_Entry {
+    char key_string[HASH_KEY_SIZE];
+    Tile* tile;
+} Tile_Map_Entry;
+
 Tiles_Map* TM_create()
 {
     Tiles_Map* tm = malloc(sizeof(Tiles_Map));
@@ -19,36 +25,27 @@ Tiles_Map* TM_create()
     return tm;
 }
 
-// Gets the hash key representing a tile in the tiles map
-char* get_tile_hash_key(Tile_Type tt, Tile_Var tv)
+Tile* TM_get_map_tile(Tiles_Map* tm, Tile_Type type, Tile_Var var)
 {
-    char* result = malloc(HASH_KEY_SIZE); 
+    Tile_Map_Entry* entry;
+    char key_string[HASH_KEY_SIZE];
 
-    memcpy(result, tile_type_str_short[tt], 1);
-    memcpy(result + 1, tile_var_str_short[tv], 2); // 2 to copy the null-terminator
-
-    return result;
-}
-
-Tile* TM_get_map_tile(Tiles_Map* tm, Tile_Type tt, Tile_Var tv)
-{
-    Tile* tile;
-    char* hash_key = get_tile_hash_key(tt, tv);
-
-    if (hashmap_get(tm->map, hash_key, (void**)(&tile)) == MAP_MISSING) {
-        free(hash_key);
+    snprintf(key_string, HASH_KEY_SIZE, "%s%s", tile_type_str_short[type], tile_var_str_short[var]);
+    
+    if (hashmap_get(tm->map, key_string, (void**)(&entry)) == MAP_MISSING) {
         return NULL;
     }
 
-    free(hash_key);
-    return tile;
+    return entry->tile;
 }
 
-void TM_add_map_tile(Tiles_Map* tm, Tile* tile, Tile_Type tt, Tile_Var tv)
+void TM_add_map_tile(Tiles_Map* tm, Tile* tile, Tile_Type type, Tile_Var var)
 {
-    char* hash_key = get_tile_hash_key(tt, tv);
+    // Create map entry with key string & tile, then add to map
+    Tile_Map_Entry* entry = malloc(sizeof(Tile_Map_Entry));
 
-    hashmap_put(tm->map, hash_key, tile);
+    snprintf(entry->key_string, HASH_KEY_SIZE, "%s%s", tile_type_str_short[type], tile_var_str_short[var]);
+    entry->tile = tile;
 
-    free(hash_key);
+    hashmap_put(tm->map, entry->key_string, entry);
 }

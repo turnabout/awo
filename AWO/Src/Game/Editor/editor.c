@@ -24,7 +24,7 @@ Editor* create_editor(Game_Board* gb)
 void update_editor(Editor* editor, Mouse_State* mouse)
 {
     if (mouse->in_window) {
-        if (click_started(mouse, MOUSE_LEFT)) {
+        if (click_down(mouse, MOUSE_LEFT)) {
             // Update tile at given coordinates with the new type/variation
             GB_edit_tile_pointer_coords(
                 editor->gb,
