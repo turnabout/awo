@@ -58,6 +58,7 @@ void update_game(Game* game)
 {
     input_state_update();
     GC_update(game->clock);
+    update_editor(game->editor, game->mouse_state);
 }
 
 void draw_game(Game* game)
@@ -68,6 +69,7 @@ void draw_game(Game* game)
     GB_draw(game->board, game->rend, game->tile_textures[game->current_weather]);
 
     // Draw UI elements
+    draw_editor(game->editor, game->rend);
 
     SDL_RenderPresent(game->rend);
 }

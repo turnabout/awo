@@ -55,7 +55,7 @@ void input_state_update()
         // Bit 1: get the pressed status of the key
         // Bit 2: get whether the pressed status was changed from the previous state to this one
         keys_state[key] = 
-            (current_pressed & BUTTON_PRESSED) |
+            (current_pressed & BUTTON_DOWN) |
             (previous_state ^ current_pressed) << 1;
     }
 
@@ -73,9 +73,11 @@ void input_state_update()
 
         // Store new state
         mouse_state->buttons[btn] = 
-            (current_pressed & BUTTON_PRESSED) | 
+            (current_pressed & BUTTON_DOWN) | 
             (previous_state ^ current_pressed) << 1;
     }
+
+    mouse_state->in_window = SDL_GetMouseFocus() != NULL;
 }
 
 Button_State get_key_state(Key key)
@@ -91,23 +93,33 @@ Mouse_State* get_mouse_state()
 int key_pressed(Key key)
 {
     return (
-        (keys_state[key] & BUTTON_PRESSED) && 
+        (keys_state[key] & BUTTON_DOWN) && 
         (keys_state[key] & BUTTON_JUST_CHANGED)
     );
+}
+
+int key_down(Key key)
+{
+    return keys_state[key] & BUTTON_DOWN;
 }
 
 int click_started(Mouse_State* mouse, Mouse_Button button)
 {
     return (
-        (mouse->buttons[button] & BUTTON_PRESSED) &&
+        (mouse->buttons[button] & BUTTON_DOWN) &&
         (mouse->buttons[button] & BUTTON_JUST_CHANGED)
     );
+}
+
+int click_down(Mouse_State* mouse, Mouse_Button button)
+{
+    return mouse->buttons[button] & BUTTON_DOWN;
 }
 
 int click_ended(Mouse_State* mouse, Mouse_Button button)
 {
     return (
-        !(mouse->buttons[button] & BUTTON_PRESSED) &&
+        !(mouse->buttons[button] & BUTTON_DOWN) &&
         (mouse->buttons[button] & BUTTON_JUST_CHANGED)
     );
 }

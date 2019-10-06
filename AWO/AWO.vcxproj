@@ -22,6 +22,7 @@
     <ClCompile Include="Src\Emscripten_Exports\emx_editor.c" />
     <ClCompile Include="Src\Emscripten_Exports\emx_game.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
+    <ClCompile Include="Src\Game\Editor\editor.c" />
     <ClCompile Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.c" />
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_clock.c" />
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_sub_clock.c" />
@@ -59,6 +60,7 @@
   <ItemGroup>
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
+    <ClInclude Include="Src\Game\Editor\editor.h" />
     <ClInclude Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_clock_internal.h" />

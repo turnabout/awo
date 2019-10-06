@@ -32,6 +32,8 @@ static const char* tile_type_str_short[] = {
 #define TILE_TYPE_BASIC_LAST Silo
 #define TILE_TYPE_BASIC_COUNT TILE_TYPE_BASIC_LAST + 1
 
+#define DEFAULT_TILE_TYPE Plain
+
 // Tile Variation
 #define FOREACH_TILE_VAR(TILEVAR) \
     TILEVAR(Default) \
@@ -130,6 +132,8 @@ static const char* tile_var_str_short[] = {
 #define TILE_VAR_FIRST Default
 #define TILE_VAR_LAST Used
 #define TILE_VAR_COUNT TILE_VAR_LAST + 1
+
+#define DEFAULT_TILE_VAR Default
 
 // Tile weather variation
 #define FOREACH_TILE_WEATHER(TILE_W) \

@@ -23,6 +23,9 @@ void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture);
 // Edits the tile type/variation at given tile x/y index.
 void GB_edit_tile(Game_Board* gb, Tile_Type tt, Tile_Var tv, int x, int y);
 
+// Edits the tile type/variation at given screen pointer coordinates.
+void GB_edit_tile_pointer_coords(Game_Board* gb, Tile_Type type, Tile_Var var, SDL_Point* pointer);
+
 // Fills the game board with tile of the given type/variation.
 void GB_fill_tiles(Game_Board* gb, Tile_Type type, Tile_Var var);
 

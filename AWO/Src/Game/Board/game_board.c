@@ -66,7 +66,21 @@ void GB_fill_tiles(Game_Board* gb, Tile_Type type, Tile_Var var)
 
 void GB_edit_tile(Game_Board* gb, Tile_Type type, Tile_Var var, int x, int y)
 {
-    gb->tiles[y][x] = TF_get_tile(gb->tf, type, var);
+    // Ensure x/y are within the game board tile boundaries
+    if (x <= DEFAULT_GB_WIDTH && y <= DEFAULT_GB_HEIGHT) {
+        gb->tiles[y][x] = TF_get_tile(gb->tf, type, var);
+    }
+}
+
+void GB_edit_tile_pointer_coords(Game_Board* gb, Tile_Type type, Tile_Var var, SDL_Point* pointer)
+{
+    GB_edit_tile(
+        gb,
+        type,
+        var,
+        (int)((float)pointer->x / (float)DEFAULT_TILE_DIMENSION),
+        (int)((float)pointer->y / (float)DEFAULT_TILE_DIMENSION)
+    );
 }
 
 void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture)

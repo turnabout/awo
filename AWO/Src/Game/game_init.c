@@ -47,9 +47,14 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
 
     // Add other game components
     game->board = GB_create(game->td, game->clock);
+    game->editor = create_editor(game->board);
 
     // Fill game board with initial tiles
     GB_fill_tiles(game->board, Sea, Middle);
+
+    GB_edit_tile(game->board, Plain, ShadowedDefault, 5, 5);
+    GB_edit_tile(game->board, Plain, ShadowedDefault, 6, 5);
+    GB_edit_tile(game->board, Plain, ShadowedDefault, 7, 5);
 
     // Initialize the input state module
     input_state_init();

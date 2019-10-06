@@ -49,5 +49,6 @@ void TM_add_map_tile(Tiles_Map* tm, Tile* tile, Tile_Type tt, Tile_Var tv)
     char* hash_key = get_tile_hash_key(tt, tv);
 
     hashmap_put(tm->map, hash_key, tile);
+
     free(hash_key);
 }
