@@ -14,3 +14,6 @@ Tile* TM_get_map_tile(Tiles_Map* tm, Tile_Type type, Tile_Var var);
 
 // Adds a tile to the map.
 void TM_add_map_tile(Tiles_Map* tm, Tile* tile, Tile_Type type, Tile_Var var);
+
+// Frees a tile map along with its stored tiles.
+void TM_free(Tiles_Map* tm);

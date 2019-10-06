@@ -49,3 +49,27 @@ void TM_add_map_tile(Tiles_Map* tm, Tile* tile, Tile_Type type, Tile_Var var)
 
     hashmap_put(tm->map, entry->key_string, entry);
 }
+
+// Callback used to iterate over every map entry & free their contents.
+int TM_free_entry_cb(any_t tm_arg, any_t entry_arg)
+{
+    Tile_Map_Entry* entry = (Tile_Map_Entry*)entry_arg;
+    Tiles_Map* tm = (Tiles_Map*)tm_arg;
+
+    // Remove entry from hashmap
+    hashmap_remove(tm->map, entry->key_string);
+
+    // Free memory from entry and its tile
+    tile_free(entry->tile);
+    free(entry);
+
+    return MAP_OK;
+}
+
+void TM_free(Tiles_Map* tm)
+{
+    hashmap_iterate(tm->map, TM_free_entry_cb, tm);
+
+    hashmap_free(tm->map);
+    free(tm);
+}
