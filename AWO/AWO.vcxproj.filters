@@ -84,9 +84,6 @@
     <ClCompile Include="Src\Game\Entities\Tile\tile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Board\Tiles_Map\tiles_map.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Libraries\SDL_FontCache.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -100,6 +97,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Emscripten_Exports\emx_editor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entities\Tile\Tile_Factory\tile_factory.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -189,9 +192,6 @@
     <ClInclude Include="Src\Game\game_arg_enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Board\Tiles_Map\tiles_map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Libraries\SDL_FontCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -199,6 +199,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Input_State\input_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entities\Tile\Tile_Factory\tile_factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
