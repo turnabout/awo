@@ -1,8 +1,7 @@
 #pragma once
 
 #include "cJSON.h"
-#include "units_enums.h"
-
+#include "Game/Entities/Unit/enums.h"
 #include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
 #include "Visuals/Data/Palette/palette_tree.h"
 #include "Visuals/Data/Animation/animation.h"

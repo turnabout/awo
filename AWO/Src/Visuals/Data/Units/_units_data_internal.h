@@ -1,20 +1,17 @@
 #pragma once
 
 #include "cJSON.h"
-#include "units_enums.h"
-
 #include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
 #include "Visuals/Data/Animation/animation.h"
 #include "Visuals/Data/Palette/palette_tree.h"
 
-typedef struct Units_Data Units_Data;
-typedef struct Src_Unit_Type Src_Unit_Type;
+#include "units_data.h"
 
-struct Src_Unit_Type
+typedef struct Src_Unit_Type
 {
     int vars_count;    // Amount of variations used by this unit type
     Animation*** vars; // Animation data for every variation of this unit type
-};
+} Src_Unit_Type;
 
 struct Units_Data
 {

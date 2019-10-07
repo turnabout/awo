@@ -78,14 +78,14 @@
     <ClInclude Include="Src\Visuals\Data\Palette\palette_tree.h" />
     <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h" />
-    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h" />
+    <ClInclude Include="Src\Game\Entities\Tile\enums.h" />
     <ClInclude Include="Src\Visuals\Data\Tiles\_tiles_data_internal.h" />
     <ClInclude Include="Src\Visuals\Data\Units\_units_data_internal.h" />
     <ClInclude Include="Src\Libraries\cJSON.h" />
     <ClInclude Include="Src\Utilities\macros.h" />
     <ClInclude Include="Src\Utilities\utilities.h" />
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h" />
-    <ClInclude Include="Src\Visuals\Data\Units\units_enums.h" />
+    <ClInclude Include="Src\Game\Entities\Unit\enums.h" />
     <ClInclude Include="Src\Visuals\Processing\_processing_internal.h" />
     <ClInclude Include="Src\Visuals\visuals_data.h" />
     <ClInclude Include="Src\Visuals\visuals_processing.h" />

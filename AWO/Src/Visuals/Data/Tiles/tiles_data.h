@@ -6,8 +6,7 @@
 #include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
 #include "Visuals/Data/Animation/animation.h"
 #include "Game/Clock/game_clock.h"
-
-#include "tiles_enums.h"
+#include "Game/Entities/Tile/enums.h"
 
 // Holds all of the game's visuals data for tiles.
 typedef struct Tiles_Data Tiles_Data;

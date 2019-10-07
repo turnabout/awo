@@ -1,6 +1,6 @@
 #include <SDL.h>
 #include "editor.h"
-#include "Visuals/Data/Tiles/tiles_enums.h"
+#include "Game/Entities/Tile/enums.h"
 
 struct Editor {
     Game_Board* gb;

@@ -3,13 +3,13 @@
 #include "SDL_FontCache.h"
 
 #include "Visuals/visuals_data.h"
-#include "Visuals/Data/Tiles/tiles_enums.h"
 
+#include "Game/Entities/Tile/enums.h"
 #include "Game/Clock/game_clock.h"
-#include "Game/Editor/editor.h"
 #include "Game/Board/game_board.h"
-#include "Game/game_arg_enums.h"
+#include "Game/Editor/editor.h"
 #include "Game/Input_State/input_state.h"
+#include "Game/game_arg_enums.h"
 
 // Holds components required to run the game.
 typedef struct Game

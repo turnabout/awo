@@ -126,12 +126,6 @@
     <ClInclude Include="Src\Visuals\Data\Units\units_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\Units\units_enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -211,6 +205,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Editor\editor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entities\Tile\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entities\Unit\enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
