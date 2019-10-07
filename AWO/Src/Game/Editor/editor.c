@@ -19,8 +19,8 @@ Editor* create_editor(Game_Board* gb, int* screen_w, int* screen_h)
     Editor* editor = malloc(sizeof(Editor));
 
     editor->gb = gb;
-    editor->selected_tile_type = DEFAULT_TILE_TYPE;
-    editor->selected_tile_var = DEFAULT_TILE_VAR;
+    editor->selected_tile_type = TILE_TYPE_DEFAULT;
+    editor->selected_tile_var = TILE_VAR_DEFAULT;
     editor->se = SE_create(screen_w, screen_h);
 
     return editor;

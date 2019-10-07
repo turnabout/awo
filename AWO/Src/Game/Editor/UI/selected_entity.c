@@ -53,8 +53,8 @@ Selected_Entity* SE_create(int* screen_w, int* screen_h)
 
     se->screen_w = screen_w;
     se->screen_h = screen_h;
-    se->selected_tile_type = DEFAULT_TILE_TYPE;
-    se->selected_tile_var = DEFAULT_TILE_VAR;
+    se->selected_tile_type = TILE_TYPE_DEFAULT;
+    se->selected_tile_var = TILE_VAR_DEFAULT;
 
     // Set dimensions
     se->inner_draw_rect.w = SELECTED_ENTITY_WIDTH;
