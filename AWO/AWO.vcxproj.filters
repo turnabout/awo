@@ -108,6 +108,9 @@
     <ClCompile Include="Src\Game\Editor\editor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Editor\UI\selected_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -211,6 +214,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Entities\Unit\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Editor\UI\selected_entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

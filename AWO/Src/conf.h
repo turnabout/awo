@@ -45,16 +45,16 @@
 #define MAX_UNITS_PER_ARMY 50
 
 // Starting background color when first initializing game
-#define START_BG_R      255
-#define START_BG_G      239
-#define START_BG_B      239
-#define START_BG_A      255
+#define GAME_BG_R      255
+#define GAME_BG_G      239
+#define GAME_BG_B      239
+#define GAME_BG_A      255
 
 // Editor configuration
 #define EDITOR_UI_R      0
 #define EDITOR_UI_G      0
 #define EDITOR_UI_B      0
-#define EDITOR_UI_ALPHA  130
+#define EDITOR_UI_A    130
 
 // Tile selector
 #define TILE_SELECTOR_WIDTH   DEFAULT_TILE_DIMENSION * 2

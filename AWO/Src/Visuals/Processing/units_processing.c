@@ -48,7 +48,7 @@ SDL_Texture* create_units_texture(Game* game, Unit_Var type_var, Unit_Var color_
     PT_free(palette);
 
     SDL_SetTextureBlendMode(res_texture, SDL_BLENDMODE_BLEND);
-    SDL_SetRenderDrawColor(game->rend, START_BG_R, START_BG_G, START_BG_B, START_BG_A);
+    SDL_SetRenderDrawColor(game->rend, GAME_BG_R, GAME_BG_G, GAME_BG_B, GAME_BG_A);
 
     return res_texture;
 }

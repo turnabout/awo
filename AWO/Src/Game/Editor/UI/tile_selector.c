@@ -112,7 +112,7 @@ void tile_selector_draw(Tile_Selector* sel, SDL_Renderer* rend, SDL_Texture* til
     if (sel->active) {
 
         // Draw wrapping UI selector rectangle
-        SDL_SetRenderDrawColor(rend, EDITOR_UI_R, EDITOR_UI_G, EDITOR_UI_B, EDITOR_UI_ALPHA);
+        SDL_SetRenderDrawColor(rend, EDITOR_UI_R, EDITOR_UI_G, EDITOR_UI_B, EDITOR_UI_A);
         SDL_RenderFillRect(rend, sel->outer_rect);
         SDL_SetRenderDrawColor(rend, 255, 0, 0, 155);
 

@@ -1,6 +1,7 @@
 #include <SDL.h>
-#include "editor.h"
 #include "Game/Entities/Tile/enums.h"
+#include "Game/Editor/UI/selected_entity.h"
+#include "editor.h"
 
 struct Editor {
     Game_Board* gb;
@@ -8,15 +9,19 @@ struct Editor {
     // Currently selected tile
     Tile_Type selected_tile_type;
     Tile_Var selected_tile_var;
+
+    // UI box showing the currently selected entity
+    Selected_Entity* se;
 };
 
-Editor* create_editor(Game_Board* gb)
+Editor* create_editor(Game_Board* gb, int* screen_w, int* screen_h)
 {
     Editor* editor = malloc(sizeof(Editor));
 
     editor->gb = gb;
     editor->selected_tile_type = DEFAULT_TILE_TYPE;
     editor->selected_tile_var = DEFAULT_TILE_VAR;
+    editor->se = SE_create(screen_w, screen_h);
 
     return editor;
 }
@@ -34,9 +39,11 @@ void update_editor(Editor* editor, Mouse_State* mouse)
             );
         }
     }
+
+    SE_update(editor->se, mouse);
 }
 
 void draw_editor(Editor* editor, SDL_Renderer* rend)
 {
-    // TODO
+    SE_draw(editor->se, rend);
 }

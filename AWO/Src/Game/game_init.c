@@ -16,6 +16,9 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
 {
     Game* game = malloc(sizeof(Game));
 
+    game->w = w;
+    game->h = h;
+
     // Add essential components
     if (init_SDL_components(game, w, h) == ERR) {
         return NULL;
@@ -47,7 +50,7 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
 
     // Add other game components
     game->board = GB_create(game->td, game->clock);
-    game->editor = create_editor(game->board);
+    game->editor = create_editor(game->board, &(game->w), &(game->h));
 
     // Fill game board with initial tiles
     GB_fill_tiles(game->board, Sea, Middle);
@@ -99,7 +102,7 @@ int init_SDL_components(Game* game, int w, int h)
     }
 
     // Clear screen using start background color as soon as possible
-    SDL_SetRenderDrawColor(game->rend, START_BG_R, START_BG_G, START_BG_B, START_BG_A);
+    SDL_SetRenderDrawColor(game->rend, GAME_BG_R, GAME_BG_G, GAME_BG_B, GAME_BG_A);
     SDL_RenderClear(game->rend);
 
     SDL_SetRenderDrawBlendMode(game->rend, SDL_BLENDMODE_BLEND);

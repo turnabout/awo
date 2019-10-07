@@ -63,6 +63,7 @@ void update_game(Game* game)
 
 void draw_game(Game* game)
 {
+    SDL_SetRenderDrawColor(game->rend, GAME_BG_R, GAME_BG_G, GAME_BG_B, GAME_BG_A);
     SDL_RenderClear(game->rend);
 
     // Draw game board
