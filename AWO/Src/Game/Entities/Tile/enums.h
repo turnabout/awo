@@ -17,11 +17,12 @@
     TILE(Silo) \
     TILE(BaseSmoke) \
     TILE(LandPiece) \
+    TILE(OOB) \
 
 typedef enum {FOREACH_TILE_TYPE(GENERATE_ENUM)} Tile_Type;
 static const char* tile_type_str[] = {FOREACH_TILE_TYPE(GENERATE_STRING)};
 static const char* tile_type_str_short[] = {
-"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"
+"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q"
 };
 
 #define TILE_TYPE_FIRST Plain

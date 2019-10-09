@@ -67,11 +67,27 @@ void GB_fill_tiles(Game_Board* gb, Tile_Type type, Tile_Var var)
 void GB_edit_tile(Game_Board* gb, Tile_Type type, Tile_Var var, int x, int y)
 {
     // Ensure x/y are within the game board tile boundaries
-    if (x <= DEFAULT_GB_WIDTH && y <= DEFAULT_GB_HEIGHT) {
+    if (x <= gb->n_columns && y <= gb->n_lines) {
         gb->tiles[y][x] = TF_get_tile(gb->tf, type, var);
     }
 }
 
+void GB_get_pointer_board_coords(Game_Board* gb, SDL_Point* pointer, int* x, int* y)
+{
+    *x = (int)((float)pointer->x / (float)DEFAULT_TILE_DIMENSION);
+    *y = (int)((float)pointer->y / (float)DEFAULT_TILE_DIMENSION);
+}
+
+Tile_Type GB_get_tile_type_at_coords(Game_Board* gb, int x, int y)
+{
+    if (x < 0 || x >= gb->n_columns || y < 0 || y >= gb->n_lines) {
+        return OOB;
+    }
+
+    return tile_get_type(gb->tiles[y][x]);
+}
+
+/*
 void GB_edit_tile_pointer_coords(Game_Board* gb, Tile_Type type, Tile_Var var, SDL_Point* pointer)
 {
     GB_edit_tile(
@@ -81,7 +97,7 @@ void GB_edit_tile_pointer_coords(Game_Board* gb, Tile_Type type, Tile_Var var, S
         (int)((float)pointer->x / (float)DEFAULT_TILE_DIMENSION),
         (int)((float)pointer->y / (float)DEFAULT_TILE_DIMENSION)
     );
-}
+}*/
 
 void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture)
 {

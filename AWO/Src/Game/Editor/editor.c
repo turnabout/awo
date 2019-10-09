@@ -33,14 +33,14 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
 void update_editor(Editor* editor, Mouse_State* mouse)
 {
     if (mouse->in_window) {
-        if (mouse_down(mouse, MOUSE_LEFT)) {
+        if (mouse_down_start(mouse, MOUSE_LEFT)) {
             // Update tile at given coordinates with the new type/variation
-            GB_edit_tile_pointer_coords(
-                editor->gb,
-                editor->selected_tile_type,
-                editor->selected_tile_var,
-                mouse->pointer
-            );
+            int x, y;
+
+            GB_get_pointer_board_coords(editor->gb, mouse->pointer, &x, &y);
+            Tile_Type clicked_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
+
+            printf("clicked tile type: %s\n", tile_type_str[clicked_tile_type]);
         }
     }
 

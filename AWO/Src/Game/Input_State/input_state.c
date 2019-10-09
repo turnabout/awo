@@ -90,7 +90,7 @@ Mouse_State* get_mouse_state()
     return mouse_state;
 }
 
-int key_down_started(Key key)
+int key_down_start(Key key)
 {
     return (
         (keys_state[key] & BUTTON_DOWN) && 
@@ -103,7 +103,7 @@ int key_down(Key key)
     return keys_state[key] & BUTTON_DOWN;
 }
 
-int key_up_started(Key key)
+int key_up_start(Key key)
 {
     return (
         !(keys_state[key] & BUTTON_DOWN) && 
@@ -111,7 +111,7 @@ int key_up_started(Key key)
     );
 }
 
-int mouse_down_started(Mouse_State* mouse, Mouse_Button button)
+int mouse_down_start(Mouse_State* mouse, Mouse_Button button)
 {
     return (
         (mouse->buttons[button] & BUTTON_DOWN) &&
@@ -124,7 +124,7 @@ int mouse_down(Mouse_State* mouse, Mouse_Button button)
     return mouse->buttons[button] & BUTTON_DOWN;
 }
 
-int mouse_up_started(Mouse_State* mouse, Mouse_Button button)
+int mouse_up_start(Mouse_State* mouse, Mouse_Button button)
 {
     return (
         !(mouse->buttons[button] & BUTTON_DOWN) &&

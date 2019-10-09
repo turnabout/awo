@@ -14,3 +14,6 @@ void tile_draw(Tile* t, SDL_Renderer* rend, SDL_Texture* texture, int x, int y);
 
 // Frees a tile.
 void tile_free(Tile* tile);
+
+// Gets the tile type of the given tile.
+Tile_Type tile_get_type(Tile* tile);

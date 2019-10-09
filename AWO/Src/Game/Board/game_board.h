@@ -23,8 +23,11 @@ void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture);
 // Edits the tile type/variation at given tile x/y index.
 void GB_edit_tile(Game_Board* gb, Tile_Type tt, Tile_Var tv, int x, int y);
 
-// Edits the tile type/variation at given screen pointer coordinates.
-void GB_edit_tile_pointer_coords(Game_Board* gb, Tile_Type type, Tile_Var var, SDL_Point* pointer);
+// Gets the board coordinates at given screen pointer coordinates. Stores in x/y pointer args.
+void GB_get_pointer_board_coords(Game_Board* gb, SDL_Point* pointer, int* x, int* y);
+
+// Returns the tile type of the tile at given board coordinates.
+Tile_Type GB_get_tile_type_at_coords(Game_Board* gb, int x, int y);
 
 // Fills the game board with tile of the given type/variation.
 void GB_fill_tiles(Game_Board* gb, Tile_Type type, Tile_Var var);

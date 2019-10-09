@@ -4,13 +4,16 @@
 #include "tile.h"
 
 struct Tile {
-    SDL_Rect* anim_frames;    // Frame arrays for this tile's animation
-    int* anim_index;          // Pointer to sub-clock tick used to update this tile's animation
+    SDL_Rect* anim_frames; // Frame arrays for this tile's animation
+    int* anim_index;       // Pointer to sub-clock tick used to update this tile's animation
+    Tile_Type type;
 };
 
 Tile* tile_create(Game_Clock* gc, Tiles_Data* td, Tile_Type tt, Tile_Var tv)
 {
     Tile* tile = (Tile*)malloc(sizeof(Tile));
+
+    tile->type = tt;
 
     // Get tile data for this tile
     Animation_Clock_Index clock;
@@ -39,4 +42,9 @@ void tile_draw(Tile* tile, SDL_Renderer* rend, SDL_Texture* texture, int x, int 
 void tile_free(Tile* tile)
 {
     // TODO
+}
+
+Tile_Type tile_get_type(Tile* tile)
+{
+    return tile->type;
 }

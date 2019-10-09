@@ -116,8 +116,6 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         // Get this tile's auto var data
         if (auto_var_json->type != cJSON_NULL) {
 
-            printf("%s\n", tile_type_str[tile_type]);
-
             tile_data->auto_var_data = get_tile_auto_var_data(
                 auto_var_json, 
                 &tile_data->auto_vars_amount,
