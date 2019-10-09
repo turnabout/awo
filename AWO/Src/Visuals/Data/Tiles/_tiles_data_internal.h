@@ -9,12 +9,24 @@
 
 #include "tiles_data.h"
 
+typedef struct Auto_Var
+{
+    Tile_Var var;           // The variation selected by this auto var
+    int adjacent_tiles[4];  // Array pointing out which adjacent tiles are acceptable for this auto
+                            // var to be selected
+} Auto_Var;
+
 // A single tile's visual data.
 struct Tile_Data
 {
-    map_t vars;            // Map holding every variation (Tile_Var_Data)
-    int vars_amount;       // Amount of variations this tile has
-    Tile_Var* vars_list;   // List of every variation this tile has
+    map_t vars;              // Map holding every variation (Tile_Var_Data)
+
+    int vars_amount;         // Amount of variations this tile has
+    Tile_Var* vars_list;     // List of every variation this tile has
+
+    int auto_vars_amount;    // Amount of auto vars this tile has
+    Auto_Var* auto_var_data; // List of auto vars used to autoselect this tile's variation when 
+                             // placing it in editor mode.
 
     Animation_Clock_Index clock; // Clock used by this tile to update its animation
 };

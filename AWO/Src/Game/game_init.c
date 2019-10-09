@@ -50,14 +50,33 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
 
     // Add other game components
     game->board = GB_create(game->td, game->clock);
-    game->editor = create_editor(game->board, &(game->w), &(game->h));
+    game->editor = create_editor(game->board, game->td, &(game->w), &(game->h));
 
     // Fill game board with initial tiles
     GB_fill_tiles(game->board, Sea, Middle);
 
-    GB_edit_tile(game->board, Plain, ShadowedDefault, 5, 5);
-    GB_edit_tile(game->board, Plain, ShadowedDefault, 6, 5);
-    GB_edit_tile(game->board, Plain, ShadowedDefault, 7, 5);
+    GB_edit_tile(game->board, Forest, TopLeft,  0, 0);
+    GB_edit_tile(game->board, Forest, Top,      1, 0);
+    GB_edit_tile(game->board, Forest, TopRight, 2, 0);
+
+
+    GB_edit_tile(game->board, Forest, DirLeft,  0, 1);
+    GB_edit_tile(game->board, Forest, Middle,   1, 1);
+    GB_edit_tile(game->board, Forest, DirRight, 2, 1);
+
+    GB_edit_tile(game->board, Forest, BottomLeft,  0, 2);
+    GB_edit_tile(game->board, Forest, Bottom,      1, 2);
+    GB_edit_tile(game->board, Forest, BottomRight, 2, 2);
+
+    GB_edit_tile(game->board, Forest, TopLeft, 5, 5);
+    GB_edit_tile(game->board, Forest, TopRight, 6, 5);
+    GB_edit_tile(game->board, Forest, BottomLeft, 5, 6);
+    GB_edit_tile(game->board, Forest, BottomRight, 6, 6);
+
+
+
+    // GB_edit_tile(game->board, Plain, ShadowedDefault, 6, 5);
+    // GB_edit_tile(game->board, Plain, ShadowedDefault, 7, 5);
 
     // Initialize the input state module
     input_state_init();

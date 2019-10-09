@@ -3737,7 +3737,27 @@
 							"y": 96
 						}
 					]
-				}
+				},
+				"autoVars": [
+					{
+						"tileVar": "N",
+						"adjTiles": [
+							4095,
+							4095,
+							4095,
+							2054
+						]
+					},
+					{
+						"tileVar": "A",
+						"adjTiles": [
+							4095,
+							4095,
+							4095,
+							4095
+						]
+					}
+				]
 			},
 			{
 				"vars": {
@@ -3825,7 +3845,135 @@
 							"y": 40
 						}
 					]
-				}
+				},
+				"autoVars": [
+					{
+						"tileVar": "M",
+						"adjTiles": [
+							2,
+							2,
+							2,
+							2
+						]
+					},
+					{
+						"tileVar": "Q",
+						"adjTiles": [
+							2,
+							2,
+							2,
+							2052
+						]
+					},
+					{
+						"tileVar": "E",
+						"adjTiles": [
+							4093,
+							2,
+							2,
+							2
+						]
+					},
+					{
+						"tileVar": "G",
+						"adjTiles": [
+							2,
+							2,
+							2,
+							4093
+						]
+					},
+					{
+						"tileVar": "H",
+						"adjTiles": [
+							2,
+							4093,
+							2,
+							2
+						]
+					},
+					{
+						"tileVar": "F",
+						"adjTiles": [
+							2,
+							2,
+							4093,
+							2
+						]
+					},
+					{
+						"tileVar": "P",
+						"adjTiles": [
+							2,
+							2,
+							4093,
+							2052
+						]
+					},
+					{
+						"tileVar": "O",
+						"adjTiles": [
+							4093,
+							2,
+							2,
+							2052
+						]
+					},
+					{
+						"tileVar": "I",
+						"adjTiles": [
+							4093,
+							2,
+							2,
+							4093
+						]
+					},
+					{
+						"tileVar": "L",
+						"adjTiles": [
+							2,
+							4093,
+							4093,
+							2
+						]
+					},
+					{
+						"tileVar": "K",
+						"adjTiles": [
+							2,
+							2,
+							4093,
+							4093
+						]
+					},
+					{
+						"tileVar": "J",
+						"adjTiles": [
+							4093,
+							4093,
+							2,
+							2
+						]
+					},
+					{
+						"tileVar": "N",
+						"adjTiles": [
+							4095,
+							4095,
+							4095,
+							2054
+						]
+					},
+					{
+						"tileVar": "A",
+						"adjTiles": [
+							4095,
+							4095,
+							4095,
+							4095
+						]
+					}
+				]
 			},
 			{
 				"vars": {
@@ -3842,7 +3990,8 @@
 							"y": 56
 						}
 					]
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -3954,7 +4103,8 @@
 							"y": 0
 						}
 					]
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -3970,7 +4120,54 @@
 							"y": 88
 						}
 					]
-				}
+				},
+				"autoVars": [
+					{
+						"tileVar": "B",
+						"adjTiles": [
+							4095,
+							3615,
+							4095,
+							4095
+						]
+					},
+					{
+						"tileVar": "B",
+						"adjTiles": [
+							4095,
+							4095,
+							4095,
+							3615
+						]
+					},
+					{
+						"tileVar": "C",
+						"adjTiles": [
+							3615,
+							4095,
+							4095,
+							4095
+						]
+					},
+					{
+						"tileVar": "C",
+						"adjTiles": [
+							4095,
+							4095,
+							3615,
+							4095
+						]
+					},
+					{
+						"tileVar": "B",
+						"adjTiles": [
+							4095,
+							4095,
+							4095,
+							4095
+						]
+					}
+				]
 			},
 			{
 				"vars": {
@@ -4489,7 +4686,8 @@
 					"clock": 1,
 					"defaultSubClock": 0,
 					"varSubClocks": {}
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -4813,7 +5011,8 @@
 						"E": 1,
 						"I": 1
 					}
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -4840,7 +5039,8 @@
 					"clock": 0,
 					"defaultSubClock": 0,
 					"varSubClocks": {}
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -5482,7 +5682,8 @@
 						"p": 0,
 						"y": 0
 					}
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -5546,7 +5747,8 @@
 							"y": 296
 						}
 					]
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -5574,7 +5776,8 @@
 							"y": 64
 						}
 					]
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -5591,7 +5794,8 @@
 							"h": 24
 						}
 					]
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -5613,7 +5817,8 @@
 							"y": 264
 						}
 					]
-				}
+				},
+				"autoVars": null
 			},
 			{
 				"vars": {
@@ -5721,7 +5926,8 @@
 							"h": 2
 						}
 					]
-				}
+				},
+				"autoVars": null
 			}
 		],
 		"srcX": 0,

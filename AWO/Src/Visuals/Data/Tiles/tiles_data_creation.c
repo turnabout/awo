@@ -22,6 +22,49 @@ Tiles_Data* TD_create_from_JSON(cJSON* tiles_visuals_JSON)
     return td;
 }
 
+// Get a tile's auto var data struct
+Auto_Var* get_tile_auto_var_data(
+    const cJSON* auto_var_json, 
+    int* auto_vars_amount, 
+    map_t* all_vars_hashmap
+)
+{
+    // Record amount
+    *auto_vars_amount = cJSON_GetArraySize(auto_var_json);
+
+    // Record all auto vars' data
+    Auto_Var* auto_var = malloc(sizeof(Auto_Var) * *auto_vars_amount);
+
+    const cJSON* auto_var_item_json;
+    int auto_var_index = 0;
+
+    cJSON_ArrayForEach(auto_var_item_json, auto_var_json)
+    {
+        // Get tile variation
+        Tile_Var* var;
+
+        hashmap_get(
+            *all_vars_hashmap, 
+            cJSON_GetObjectItemCaseSensitive(auto_var_item_json, "tileVar")->valuestring, 
+            (void**)(&var)
+        );
+
+        auto_var[auto_var_index].var = *var;
+
+        // Get adjacent tiles values
+        const cJSON* auto_var_arr = cJSON_GetObjectItemCaseSensitive(auto_var_item_json, "adjTiles");
+
+        auto_var[auto_var_index].adjacent_tiles[0] = cJSON_GetArrayItem(auto_var_arr, 0)->valueint;
+        auto_var[auto_var_index].adjacent_tiles[1] = cJSON_GetArrayItem(auto_var_arr, 1)->valueint;
+        auto_var[auto_var_index].adjacent_tiles[2] = cJSON_GetArrayItem(auto_var_arr, 2)->valueint;
+        auto_var[auto_var_index].adjacent_tiles[3] = cJSON_GetArrayItem(auto_var_arr, 3)->valueint;
+
+        auto_var_index++;
+    }
+
+    return auto_var;
+}
+
 void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 {
     // Initialize temporary hashmap containing all variations, using short strings as keys.
@@ -42,7 +85,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 
     // Gather all data from JSON
     const cJSON* tile_type_json;
-    int tile_count = 0;
+    int tile_type = 0;
 
     // Loop tile types
     cJSON_ArrayForEach(tile_type_json, src_json)
@@ -50,6 +93,8 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         const cJSON* tile_vars_json; // JSON holding all variations of this tile
         const cJSON* tile_var_json;  // JSON holding currently looped variation of this tile
         const cJSON* var_sub_clocks; // JSON holding this tile's variations' sub clocks
+        const cJSON* auto_var_json;  // JSON holding this tile type's auto-var data
+
         Tile_Data* tile_data;        // The tile data object representing this tile to be populated
         map_t vars_hashmap;          // Hashmap containing animations for this tile's variations
         int vars_amount;             // Amount of variations this tile has
@@ -57,6 +102,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         Animation_Sub_Clock_Index default_sub_clock; // Default sub clock used by this tile's vars
 
         tile_vars_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "vars");
+        auto_var_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "autoVars");
 
         // Initialize tile data
         tile_data = malloc(sizeof(Tile_Data));
@@ -65,6 +111,19 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         // Get amount of variations and initialize list of variations
         vars_amount = cJSON_GetArraySize(tile_vars_json);
         vars_list = malloc(sizeof(Tile_Data) * vars_amount);
+
+        // TODO: Only do this when game mode is design room
+        // Get this tile's auto var data
+        if (auto_var_json->type != cJSON_NULL) {
+
+            printf("%s\n", tile_type_str[tile_type]);
+
+            tile_data->auto_var_data = get_tile_auto_var_data(
+                auto_var_json, 
+                &tile_data->auto_vars_amount,
+                &all_vars_hashmap
+             );
+        }
 
         // Get this tile's clock data and prepare to get tile variations' clock data
         if (cJSON_HasObjectItem(tile_type_json, "clockData")) {
@@ -122,7 +181,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         tile_data->vars_list = vars_list;
         
         // Store populated tile data
-        td->src[tile_count++] = tile_data;
+        td->src[tile_type++] = tile_data;
     }
 
     // Free the temporary variations hashmap
