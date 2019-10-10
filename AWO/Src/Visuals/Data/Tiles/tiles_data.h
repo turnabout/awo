@@ -26,6 +26,7 @@ SS_Metadata* TD_get_ss_metadata(Tiles_Data* td);
 // Gets the tile variation the given middle tile should have, according to the given adjacent 
 // tiles.
 Tile_Var TD_get_tile_auto_var(
+    Tiles_Data* td,
     Tile_Type middle_tile,
     Tile_Type top_tile,
     Tile_Type right_tile,

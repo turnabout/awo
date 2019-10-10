@@ -116,7 +116,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         // Get this tile's auto var data
         if (auto_var_json->type != cJSON_NULL) {
 
-            tile_data->auto_var_data = get_tile_auto_var_data(
+            tile_data->auto_vars = get_tile_auto_var_data(
                 auto_var_json, 
                 &tile_data->auto_vars_amount,
                 &all_vars_hashmap

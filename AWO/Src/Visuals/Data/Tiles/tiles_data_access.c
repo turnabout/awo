@@ -87,20 +87,35 @@ const char* get_next_tile_variation_data(Tiles_Data* td, Tile_Type tt, Uint8* va
 }
 
 Tile_Var TD_get_tile_auto_var(
-    Tile_Type middle_tile,
+    Tiles_Data* td,
+    Tile_Type tile,
     Tile_Type top_tile,
     Tile_Type right_tile,
     Tile_Type bottom_tile,
     Tile_Type left_tile
 )
 {
-    printf("clicked tile: %s\n", tile_type_str[middle_tile]);
-    printf("tile above: %s\n", tile_type_str[top_tile]);
-    printf("tile to right: %s\n", tile_type_str[right_tile]);
-    printf("tile under: %s\n", tile_type_str[bottom_tile]);
-    printf("tile to left: %s\n", tile_type_str[left_tile]);
+    Tile_Data* middle_tile_data = td->src[tile];
 
-    return Default;
+    // Go through all of the middle tile's autovars
+    for (int i = 0; i < middle_tile_data->auto_vars_amount; i++) {
+
+        // Get this autovar and look for match with adjacent tiles
+        Auto_Var auto_var = middle_tile_data->auto_vars[i];
+
+        if (
+            (auto_var.adjacent_tiles[Auto_Var_Up]    & (1 << top_tile))    &&
+            (auto_var.adjacent_tiles[Auto_Var_Right] & (1 << right_tile))  &&
+            (auto_var.adjacent_tiles[Auto_Var_Down]  & (1 << bottom_tile)) &&
+            (auto_var.adjacent_tiles[Auto_Var_Left]  & (1 << left_tile))
+        ) {
+            return auto_var.var;
+        }
+    }
+
+    printf("default...\n");
+
+    return TILE_VAR_DEFAULT;
 }
 
 SDL_Rect* TD_gather_tile_data(
