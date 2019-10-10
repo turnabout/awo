@@ -86,6 +86,23 @@ const char* get_next_tile_variation_data(Tiles_Data* td, Tile_Type tt, Uint8* va
     return tile_var_str[*var_val];
 }
 
+Tile_Var TD_get_tile_auto_var(
+    Tile_Type middle_tile,
+    Tile_Type top_tile,
+    Tile_Type right_tile,
+    Tile_Type bottom_tile,
+    Tile_Type left_tile
+)
+{
+    printf("clicked tile: %s\n", tile_type_str[middle_tile]);
+    printf("tile above: %s\n", tile_type_str[top_tile]);
+    printf("tile to right: %s\n", tile_type_str[right_tile]);
+    printf("tile under: %s\n", tile_type_str[bottom_tile]);
+    printf("tile to left: %s\n", tile_type_str[left_tile]);
+
+    return Default;
+}
+
 SDL_Rect* TD_gather_tile_data(
     Tiles_Data* td, 
     Tile_Type tt, 

@@ -30,17 +30,37 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
     return editor;
 }
 
+// Adds a tile to game board at the current mouse coordinates.
+void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
+{
+    // Get the board coordinates of the existent tile that was clicked
+    int x, y;
+
+    GB_get_pointer_board_coords(editor->gb, mouse->pointer, &x, &y);
+
+    // Get the type of the clicked tile
+    Tile_Type clicked_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
+
+    // Ignore if clicked out of bounds
+    if (clicked_tile_type == OOB) {
+        return;
+    }
+
+    // Get the auto-variation of the new tile type
+    Tile_Var tile_new_var = TD_get_tile_auto_var(
+        clicked_tile_type,
+        GB_get_tile_type_at_coords(editor->gb, x, y - 1),
+        GB_get_tile_type_at_coords(editor->gb, x + 1, y),
+        GB_get_tile_type_at_coords(editor->gb, x, y + 1),
+        GB_get_tile_type_at_coords(editor->gb, x - 1, y)
+    );
+}
+
 void update_editor(Editor* editor, Mouse_State* mouse)
 {
     if (mouse->in_window) {
         if (mouse_down_start(mouse, MOUSE_LEFT)) {
-            // Update tile at given coordinates with the new type/variation
-            int x, y;
-
-            GB_get_pointer_board_coords(editor->gb, mouse->pointer, &x, &y);
-            Tile_Type clicked_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
-
-            printf("clicked tile type: %s\n", tile_type_str[clicked_tile_type]);
+            add_tile_at_mouse(editor, mouse);
         }
     }
 

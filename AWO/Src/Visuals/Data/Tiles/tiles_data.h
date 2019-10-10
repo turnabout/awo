@@ -23,6 +23,16 @@ Palette_Tree* TD_get_palette(Tiles_Data* td, Weather weather);
 // Gets the tiles sprite sheet metadata.
 SS_Metadata* TD_get_ss_metadata(Tiles_Data* td);
 
+// Gets the tile variation the given middle tile should have, according to the given adjacent 
+// tiles.
+Tile_Var TD_get_tile_auto_var(
+    Tile_Type middle_tile,
+    Tile_Type top_tile,
+    Tile_Type right_tile,
+    Tile_Type bottom_tile,
+    Tile_Type left_tile
+);
+
 // Gather data on tile of given type & variation
 // \param td Tiles' data object.
 // \param tt The tile type.
