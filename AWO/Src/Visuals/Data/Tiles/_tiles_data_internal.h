@@ -26,13 +26,13 @@ typedef enum {
 // A single tile's visual data.
 struct Tile_Data
 {
-    map_t vars;              // Map holding every variation (Tile_Var_Data)
+    map_t vars_map;          // Map holding every variation (Tile_Var_Data)
 
     int vars_amount;         // Amount of variations this tile has
     Tile_Var* vars_list;     // List of every variation this tile has
 
-    int auto_vars_amount;    // Amount of auto vars this tile has
-    Auto_Var* auto_vars;     // List of auto vars used to autoselect this tile's variation when 
+    int auto_vars_amount;    // Amount of auto vars_map this tile has
+    Auto_Var* auto_vars;     // List of auto vars_map used to autoselect this tile's variation when 
                              // placing it in editor mode.
 
     Animation_Clock_Index clock; // Clock used by this tile to update its animation

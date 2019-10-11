@@ -11,7 +11,7 @@ Tile_Var_Data* get_tile_var(Tiles_Data* td, Tile_Type type, Tile_Var var)
     Tile_Var_Data* result;
 
     if (hashmap_get(
-        td->src[type]->vars, 
+        td->src[type]->vars_map, 
         (char*)tile_var_str_short[var], 
         (void**)(&result)) != MAP_OK
     ) {
@@ -59,7 +59,7 @@ Animation* TD_get_next_tile_animation(Tiles_Data* td, Tile_Type tt)
     Tile_Var v = tile->vars_list[index];
     Tile_Var_Data* t_var_data;
 
-    hashmap_get(tile->vars, (char*)tile_var_str_short[v], (void**)(&t_var_data));
+    hashmap_get(tile->vars_map, (char*)tile_var_str_short[v], (void**)(&t_var_data));
 
     // Increment index for next time
     index++;
@@ -67,7 +67,7 @@ Animation* TD_get_next_tile_animation(Tiles_Data* td, Tile_Type tt)
     return t_var_data->anim;
 }
 
-const char* get_next_tile_variation_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val)
+const char* TD_get_next_tile_var_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val)
 {
     // Variation index
     static int index = 0;
@@ -84,6 +84,11 @@ const char* get_next_tile_variation_data(Tiles_Data* td, Tile_Type tt, Uint8* va
     *var_val = tile->vars_list[index++];
 
     return tile_var_str[*var_val];
+}
+
+Tile_Var TD_get_tile_default_var(Tiles_Data* td, Tile_Type type)
+{
+    return td->src[type]->vars_list[0];
 }
 
 Tile_Var TD_get_tile_auto_var(
@@ -136,7 +141,7 @@ SDL_Rect* TD_gather_tile_data(
     // Fill in sub-clock index & return animation frames pointer
     Tile_Var_Data* t_var_data;
     int count;
-    hashmap_get(tile->vars, (char*)tile_var_str_short[tv], (void**)(&t_var_data));
+    hashmap_get(tile->vars_map, (char*)tile_var_str_short[tv], (void**)(&t_var_data));
 
     if (sub_clock != NULL) {
         *sub_clock = t_var_data->sub_clock;

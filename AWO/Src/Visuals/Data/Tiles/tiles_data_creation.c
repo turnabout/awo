@@ -32,7 +32,7 @@ Auto_Var* get_tile_auto_var_data(
     // Record amount
     *auto_vars_amount = cJSON_GetArraySize(auto_var_json);
 
-    // Record all auto vars' data
+    // Record all auto vars_map' data
     Auto_Var* auto_var = malloc(sizeof(Auto_Var) * *auto_vars_amount);
 
     const cJSON* auto_var_item_json;
@@ -99,7 +99,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         map_t vars_hashmap;          // Hashmap containing animations for this tile's variations
         int vars_amount;             // Amount of variations this tile has
         Tile_Var* vars_list;         // List of every variation this tile has
-        Animation_Sub_Clock_Index default_sub_clock; // Default sub clock used by this tile's vars
+        Animation_Sub_Clock_Index default_sub_clock; // Default sub clock used by this tile's vars_map
 
         tile_vars_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "vars");
         auto_var_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "autoVars");
@@ -174,7 +174,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         vars_list -= vars_amount;
 
         // Populate tile data
-        tile_data->vars = vars_hashmap;
+        tile_data->vars_map = vars_hashmap;
         tile_data->vars_amount = vars_amount;
         tile_data->vars_list = vars_list;
         

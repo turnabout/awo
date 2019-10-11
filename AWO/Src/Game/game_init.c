@@ -53,7 +53,7 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
     game->editor = create_editor(game->board, game->td, &(game->w), &(game->h));
 
     // Fill game board with initial tiles
-    GB_fill_tiles(game->board, Sea, Middle);
+    GB_fill_tiles(game->board, Plain, Default);
 
     GB_edit_tile(game->board, Forest, TopLeft,  0, 0);
     GB_edit_tile(game->board, Forest, Top,      1, 0);
@@ -72,6 +72,8 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
     GB_edit_tile(game->board, Forest, TopRight, 6, 5);
     GB_edit_tile(game->board, Forest, BottomLeft, 5, 6);
     GB_edit_tile(game->board, Forest, BottomRight, 6, 6);
+
+    GB_edit_tile(game->board, Forest, Default, 16, 16);
 
 
 

@@ -30,13 +30,42 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
     return editor;
 }
 
+// Apply autovar to tile at given game board coordinates
+void apply_autovar(Editor* editor, int x, int y)
+{
+    Tile_Type middle_tile = GB_get_tile_type_at_coords(editor->gb, x, y);
+
+    // No need to apply if middle tile is out of bounds
+    if (middle_tile == OOB) {
+        return;
+    }
+
+    GB_edit_tile(
+        editor->gb, 
+        editor->selected_tile_type, 
+
+        TD_get_tile_auto_var(
+            editor->td,
+            middle_tile,
+            GB_get_tile_type_at_coords(editor->gb, x, y - 1),
+            GB_get_tile_type_at_coords(editor->gb, x + 1, y),
+            GB_get_tile_type_at_coords(editor->gb, x, y + 1),
+            GB_get_tile_type_at_coords(editor->gb, x - 1, y)
+        ),
+
+        x, 
+        y
+    );
+}
+
 // Adds a tile to game board at the current mouse coordinates.
 void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
 {
     // Get the board coordinates of the existant tile that was clicked
     int x, y;
-
     GB_get_pointer_board_coords(editor->gb, mouse->pointer, &x, &y);
+
+    // TODO: ignore if clicked tile coordinates are the same as previously added one
 
     // Get the type of the clicked tile
     Tile_Type clicked_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
@@ -46,18 +75,21 @@ void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
         return;
     }
 
-    // Get the auto-variation of the new tile type
-    Tile_Var new_tile_var = TD_get_tile_auto_var(
-        editor->td,
-        editor->selected_tile_type,
-        GB_get_tile_type_at_coords(editor->gb, x, y - 1),
-        GB_get_tile_type_at_coords(editor->gb, x + 1, y),
-        GB_get_tile_type_at_coords(editor->gb, x, y + 1),
-        GB_get_tile_type_at_coords(editor->gb, x - 1, y)
+    // Place editor's selected tile with default tile type
+    GB_edit_tile(
+        editor->gb, 
+        editor->selected_tile_type, 
+        TD_get_tile_default_var(editor->td, clicked_tile_type), 
+        x, 
+        y
     );
 
-    GB_edit_tile(editor->gb, editor->selected_tile_type, new_tile_var, x, y);
-    // printf("New tile variation: %s\n", tile_var_str[new_tile_var]);
+    // Apply autovars to placed tile and its adjacent tiles
+    apply_autovar(editor, x,     y);
+    apply_autovar(editor, x - 1, y);
+    apply_autovar(editor, x + 1, y);
+    apply_autovar(editor, x,     y - 1);
+    apply_autovar(editor, x,     y + 1);
 }
 
 void update_editor(Editor* editor, Mouse_State* mouse)

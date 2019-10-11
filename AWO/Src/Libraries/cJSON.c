@@ -2579,7 +2579,7 @@ CJSON_PUBLIC(cJSON *) cJSON_Duplicate(const cJSON *item, cJSON_bool recurse)
     {
         goto fail;
     }
-    /* Copy over all vars */
+    /* Copy over all vars_map */
     newitem->type = item->type & (~cJSON_IsReference);
     newitem->valueint = item->valueint;
     newitem->valuedouble = item->valuedouble;
