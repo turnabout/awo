@@ -23,7 +23,7 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
 
     editor->gb = gb;
     editor->td = td;
-    editor->selected_tile_type = TILE_TYPE_DEFAULT;
+    editor->selected_tile_type = Forest;
     editor->selected_tile_var = TILE_VAR_DEFAULT;
     editor->se = SE_create(screen_w, screen_h);
 
@@ -33,20 +33,20 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
 // Apply autovar to tile at given game board coordinates
 void apply_autovar(Editor* editor, int x, int y)
 {
-    Tile_Type middle_tile = GB_get_tile_type_at_coords(editor->gb, x, y);
+    Tile_Type middle_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
 
     // No need to apply if middle tile is out of bounds
-    if (middle_tile == OOB) {
+    if (middle_tile_type == OOB) {
         return;
     }
 
     GB_edit_tile(
         editor->gb, 
-        editor->selected_tile_type, 
+        middle_tile_type, 
 
         TD_get_tile_auto_var(
             editor->td,
-            middle_tile,
+            middle_tile_type,
             GB_get_tile_type_at_coords(editor->gb, x, y - 1),
             GB_get_tile_type_at_coords(editor->gb, x + 1, y),
             GB_get_tile_type_at_coords(editor->gb, x, y + 1),
@@ -65,13 +65,9 @@ void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
     int x, y;
     GB_get_pointer_board_coords(editor->gb, mouse->pointer, &x, &y);
 
-    // TODO: ignore if clicked tile coordinates are the same as previously added one
-
-    // Get the type of the clicked tile
-    Tile_Type clicked_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
-
-    // Ignore if clicked out of bounds
-    if (clicked_tile_type == OOB) {
+    // Ignore if clicked out of bounds or (TODO): if clicked tile coordinates are the same as 
+    // previously added one
+    if (GB_get_tile_type_at_coords(editor->gb, x, y) == OOB) {
         return;
     }
 
@@ -79,7 +75,7 @@ void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
     GB_edit_tile(
         editor->gb, 
         editor->selected_tile_type, 
-        TD_get_tile_default_var(editor->td, clicked_tile_type), 
+        TD_get_tile_default_var(editor->td, editor->selected_tile_type), 
         x, 
         y
     );
