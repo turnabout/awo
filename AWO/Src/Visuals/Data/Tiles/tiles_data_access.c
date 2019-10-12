@@ -93,14 +93,14 @@ Tile_Var TD_get_tile_default_var(Tiles_Data* td, Tile_Type type)
 
 Tile_Var TD_get_tile_auto_var(
     Tiles_Data* td,
-    Tile_Type tile,
+    Tile_Type middle_tile,
     Tile_Type top_tile,
     Tile_Type right_tile,
     Tile_Type bottom_tile,
     Tile_Type left_tile
 )
 {
-    Tile_Data* middle_tile_data = td->src[tile];
+    Tile_Data* middle_tile_data = td->src[middle_tile];
 
     // Go through all of the middle tile's autovars
     for (int i = 0; i < middle_tile_data->auto_vars_amount; i++) {
@@ -119,8 +119,7 @@ Tile_Var TD_get_tile_auto_var(
     }
 
     printf("default...\n");
-
-    return TILE_VAR_DEFAULT;
+    return TD_get_tile_default_var(td, middle_tile);
 }
 
 SDL_Rect* TD_gather_tile_data(

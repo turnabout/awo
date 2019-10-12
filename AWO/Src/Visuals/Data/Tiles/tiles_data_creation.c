@@ -85,7 +85,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 
     // Gather all data from JSON
     const cJSON* tile_type_json;
-    int tile_type = 0;
+    Tile_Type tile_type = 0;
 
     // Loop tile types
     cJSON_ArrayForEach(tile_type_json, src_json)

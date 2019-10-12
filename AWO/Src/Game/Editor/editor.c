@@ -6,6 +6,10 @@
 struct Editor {
     Game_Board* gb;
 
+    // Coordinates of previously edited tile
+    int prev_edited_tile_x;
+    int prev_edited_tile_y;
+
     // Currently selected tile
     Tile_Type selected_tile_type;
     Tile_Var selected_tile_var;
@@ -23,9 +27,11 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
 
     editor->gb = gb;
     editor->td = td;
-    editor->selected_tile_type = Forest;
+    editor->selected_tile_type = River;
     editor->selected_tile_var = TILE_VAR_DEFAULT;
     editor->se = SE_create(screen_w, screen_h);
+    editor->prev_edited_tile_x = -1;
+    editor->prev_edited_tile_y = -1;
 
     return editor;
 }
@@ -65,9 +71,11 @@ void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
     int x, y;
     GB_get_pointer_board_coords(editor->gb, mouse->pointer, &x, &y);
 
-    // Ignore if clicked out of bounds or (TODO): if clicked tile coordinates are the same as 
-    // previously added one
-    if (GB_get_tile_type_at_coords(editor->gb, x, y) == OOB) {
+    // Ignore if clicked out of bounds or if clicked tile coordinates the same as previous
+    if (
+        (editor->prev_edited_tile_x == x && editor->prev_edited_tile_y == y) ||
+        GB_get_tile_type_at_coords(editor->gb, x, y) == OOB
+    ) {
         return;
     }
 
@@ -86,12 +94,16 @@ void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
     apply_autovar(editor, x + 1, y);
     apply_autovar(editor, x,     y - 1);
     apply_autovar(editor, x,     y + 1);
+
+    // Set coordinates of previously edited tile
+    editor->prev_edited_tile_x = x;
+    editor->prev_edited_tile_y = y;
 }
 
 void update_editor(Editor* editor, Mouse_State* mouse)
 {
     if (mouse->in_window) {
-        if (mouse_down_start(mouse, MOUSE_LEFT)) {
+        if (mouse_down(mouse, MOUSE_LEFT)) {
             add_tile_at_mouse(editor, mouse);
         }
     }
