@@ -49,7 +49,8 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
     // TODO: Add unit textures used by the game
 
     // Add other game components
-    game->board = GB_create(game->td, game->clock);
+    // game->board = GB_create(game->td, game->clock, DEFAULT_GB_WIDTH, DEFAULT_GB_HEIGHT);
+    game->board = GB_create(game->td, game->clock, 100, 80);
     game->editor = create_editor(game->board, game->td, &game->w, &game->h);
 
     // Fill game board with initial tiles

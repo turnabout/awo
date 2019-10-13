@@ -22,6 +22,7 @@
     <ClCompile Include="Src\Emscripten_Exports\emx_editor.c" />
     <ClCompile Include="Src\Emscripten_Exports\emx_game.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
+    <ClCompile Include="Src\Game\Camera\camera.c" />
     <ClCompile Include="Src\Game\Editor\editor.c" />
     <ClCompile Include="Src\Game\Editor\UI\selected_entity.c" />
     <ClCompile Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.c" />
@@ -62,6 +63,7 @@
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\Emscripten_Exports\emx.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
+    <ClInclude Include="Src\Game\Camera\camera.h" />
     <ClInclude Include="Src\Game\Editor\editor.h" />
     <ClInclude Include="Src\Game\Editor\UI\selected_entity.h" />
     <ClInclude Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.h" />

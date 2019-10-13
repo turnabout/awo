@@ -111,6 +111,9 @@
     <ClCompile Include="Src\Game\Editor\UI\selected_entity.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Camera\camera.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\spritesheet.png">
@@ -220,6 +223,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Emscripten_Exports\emx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Camera\camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

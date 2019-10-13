@@ -8,8 +8,8 @@
 // Represents the game board used by players during gameplay. Includes all units, tiles, etc.
 typedef struct Game_Board Game_Board;
 
-// Creates the game board.
-Game_Board* GB_create(Tiles_Data* td, Game_Clock* gc);
+// Creates the game board. Width/height determine the game board's dimensions in tiles.
+Game_Board* GB_create(Tiles_Data* td, Game_Clock* gc, int w, int h);
 
 // Updates the game board and its entities.
 void GB_update(Game_Board* gb);

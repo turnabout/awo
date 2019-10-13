@@ -17,12 +17,12 @@ struct Game_Board {
     int u_count;       // How many units are on the game board.
 };
 
-Game_Board* GB_create(Tiles_Data* td, Game_Clock* gc)
+Game_Board* GB_create(Tiles_Data* td, Game_Clock* gc, int w, int h)
 {
     Game_Board* gb = malloc(sizeof(Game_Board));
 
-    gb->n_columns = DEFAULT_GB_WIDTH;
-    gb->n_lines   = DEFAULT_GB_HEIGHT;
+    gb->n_columns = w;
+    gb->n_lines   = h;
 
     gb->tf = TF_create(td, gc);
 
