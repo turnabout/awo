@@ -9,7 +9,10 @@ typedef struct Editor Editor;
 // Create the editor module.
 Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen_h);
 
-// Update the editor module.
+// Updates the editor module's selected tile type.
+void update_editor_selected_tile_type(Editor* editor, Tile_Type type);
+
+// Updates the editor module.
 void update_editor(Editor* editor, Mouse_State* mouse);
 
 // Draw the editor's visual components (gridlines, hover rectangle...).

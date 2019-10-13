@@ -50,7 +50,7 @@ Game* init_game(Game_Arg_Weathers weathers, int w, int h)
 
     // Add other game components
     game->board = GB_create(game->td, game->clock);
-    game->editor = create_editor(game->board, game->td, &(game->w), &(game->h));
+    game->editor = create_editor(game->board, game->td, &game->w, &game->h);
 
     // Fill game board with initial tiles
     GB_fill_tiles(game->board, Plain, Default);

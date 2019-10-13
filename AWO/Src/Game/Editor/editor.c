@@ -28,7 +28,7 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
     editor->gb = gb;
     editor->td = td;
     editor->selected_tile_type = River;
-    editor->selected_tile_var = TILE_VAR_DEFAULT;
+    editor->selected_tile_var = -1;
     editor->se = SE_create(screen_w, screen_h);
     editor->prev_edited_tile_x = -1;
     editor->prev_edited_tile_y = -1;
@@ -98,6 +98,11 @@ void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
     // Set coordinates of previously edited tile
     editor->prev_edited_tile_x = x;
     editor->prev_edited_tile_y = y;
+}
+
+void update_editor_selected_tile_type(Editor* editor, Tile_Type type)
+{
+    editor->selected_tile_type = type;
 }
 
 void update_editor(Editor* editor, Mouse_State* mouse)

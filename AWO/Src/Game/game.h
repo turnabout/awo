@@ -25,8 +25,8 @@ typedef struct Game
     Mouse_State*  mouse_state;
     Editor*       editor;
 
-    Uint32 w; // Current game width
-    Uint32 h; // Current game height
+    int w; // Current game width
+    int h; // Current game height
 
     // Tile/unit textures
     SDL_Texture* tile_textures[WEATHER_COUNT];

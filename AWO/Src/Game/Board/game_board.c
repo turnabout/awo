@@ -108,9 +108,6 @@ void GB_draw(Game_Board* gb, SDL_Renderer* rend, SDL_Texture* tile_texture)
         // Loop columns
         for (int x = 0; x < gb->n_columns; x++) {
             if (gb->tiles[y][x] != NULL) {
-                int xPos = x * DEFAULT_TILE_DIMENSION;
-                int yPos = y * DEFAULT_TILE_DIMENSION;
-
                 tile_draw(
                     gb->tiles[y][x], 
                     rend, 

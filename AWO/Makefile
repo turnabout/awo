@@ -12,12 +12,12 @@ all:
 	-s USE_SDL_IMAGE=2 \
 	-s SDL2_IMAGE_FORMATS='["png"]' \
 	-s USE_SDL_TTF=2 \
-	-s EXPORTED_FUNCTIONS='["_init_AWO", "_run_AWO", "_update_game_size", "_editor_get_next_tile_type", "_editor_get_next_tile_var"]' \
 	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue"]' \
 	-s MODULARIZE=1 \
 	-s EXPORT_NAME="AWO_EM_MODULE" \
 	-s ENVIRONMENT="web"
 
+# -s EXPORTED_FUNCTIONS='["_init_AWO", "_run_AWO", "_update_game_size", "_editor_get_next_tile_type", "_editor_get_next_tile_var"]' \
 # -s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=1 \
 # emcc -o ./Web/index.html $(SOURCES) \
 # emcc -o $(OUTPUTPATH) $(SOURCES) \

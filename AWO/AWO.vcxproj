@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h" />
+    <ClInclude Include="Src\Emscripten_Exports\emx.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
     <ClInclude Include="Src\Game\Editor\editor.h" />
     <ClInclude Include="Src\Game\Editor\UI\selected_entity.h" />
