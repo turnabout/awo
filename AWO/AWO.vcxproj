@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Libs\cJSON.c" />
+    <ClCompile Include="Libs\c_hashmap.c" />
+    <ClCompile Include="Libs\SDL_FontCache.c" />
     <ClCompile Include="Src\Emscripten_Exports\emx_editor.c" />
     <ClCompile Include="Src\Emscripten_Exports\emx_game.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
@@ -36,11 +39,8 @@
     <ClCompile Include="Src\Game\game.c" />
     <ClCompile Include="Src\Game\game_exit.c" />
     <ClCompile Include="Src\Game\Input_State\input_state.c" />
-    <ClCompile Include="Src\Libraries\c_hashmap.c" />
     <ClCompile Include="Src\Game\game_init.c" />
-    <ClCompile Include="Src\Libraries\SDL_FontCache.c" />
     <ClCompile Include="Src\Visuals\Data\Animation\animation.c" />
-    <ClCompile Include="Src\Libraries\cJSON.c" />
     <ClCompile Include="Src\Visuals\Data\Palette\palette_tree.c" />
     <ClCompile Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.c" />
     <ClCompile Include="Src\Visuals\Data\Tiles\tiles_data_access.c" />
@@ -156,18 +156,18 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\AWO\Libraries\SDL2_ttf\include;$(ProjectDir)\Src\Libraries;$(ProjectDir)\Src;F:\AWO\Libraries\SDL2_image\include;F:\AWO\Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\Include;$(ProjectDir)Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>6011;6386;6387;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>F:\AWO\Libraries\SDL2_ttf\lib;F:\AWO\Libraries\SDL2_image\lib;F:\AWO\Libraries\SDL2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Libraries\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d  "$(ProjectDir)..\Libraries\SDL2_ttf\lib\*.dll" "$(TargetDir)"</Command>
+      <Command>xcopy /y /d  "$(SolutionDir)\Libraries\Libs\*.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -33,12 +33,6 @@
     <ClCompile Include="Src\Visuals\Data\Units\units_data_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Libraries\cJSON.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Libraries\c_hashmap.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Utilities\utilities.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,9 +78,6 @@
     <ClCompile Include="Src\Game\Entities\Tile\tile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Libraries\SDL_FontCache.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Editor\UI\tile_selector.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -112,6 +103,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Camera\camera.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\cJSON.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\c_hashmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\SDL_FontCache.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
