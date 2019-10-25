@@ -54,10 +54,10 @@
     <ClCompile Include="Src\Visuals\Processing\units_processing.c" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\spritesheet.png" />
+    <Image Include="Resources\Textures\spritesheet.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\visuals.json" />
+    <None Include="Resources\Data\visuals.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h" />
@@ -96,7 +96,7 @@
     <ClInclude Include="Src\Visuals\visuals_processing.h" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Resources\Font\aw2-gba.ttf" />
+    <Font Include="Resources\Fonts\aw2-gba.ttf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

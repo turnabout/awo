@@ -5,9 +5,16 @@
  */
 
 // Resource paths
-#define SPRITE_SHEET_PATH "Resources/spritesheet.png"
-#define JSON_PATH         "Resources/visuals.json"
-#define FONT_PATH         "Resources/Font/aw2-gba.ttf"
+#define RESOURCES_PATH    "Resources/"
+
+#define TEXTURES_PATH RESOURCES_PATH "Textures/"
+#define DATA_PATH     RESOURCES_PATH "Data/"
+#define SHADERS_PATH  RESOURCES_PATH "Shaders/"
+#define FONTS_PATH    RESOURCES_PATH "Fonts/"
+
+#define SPRITE_SHEET_PATH  TEXTURES_PATH "spritesheet.png"
+#define JSON_PATH          DATA_PATH "visuals.json"
+#define DIALOGUE_FONT_PATH FONTS_PATH "aw2-gba.ttf"
 
 // Window configuration
 #define GAME_TITLE "AWO"

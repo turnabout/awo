@@ -116,16 +116,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\spritesheet.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\visuals.json">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Src\conf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -230,6 +220,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Resources\Font\aw2-gba.ttf" />
+    <Font Include="Resources\Fonts\aw2-gba.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Textures\spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Data\visuals.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

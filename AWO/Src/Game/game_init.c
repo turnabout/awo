@@ -171,7 +171,7 @@ int init_SDL_components(Game* game, int w, int h)
     FC_LoadFont(
         game->font, 
         game->rend, 
-        FONT_PATH, 
+        DIALOGUE_FONT_PATH, 
         FONT_SIZE, 
         FC_MakeColor(0, 0, 0, 255), 
         TTF_STYLE_NORMAL
