@@ -17,21 +17,9 @@
 #define DIALOGUE_FONT_PATH FONTS_PATH "aw2-gba.ttf"
 
 // Window configuration
-#define GAME_TITLE "AWO"
-#define SCREEN_WIDTH 1440
-#define SCREEN_HEIGHT 960
-#define SDL_WINDOW_FLAGS SDL_WINDOW_OPENGL
-
-// SDL initialization flags
-#define SDL_INIT_FLAGS SDL_INIT_VIDEO | SDL_INIT_TIMER
-#define REND_INIT_FLAGS SDL_RENDERER_ACCELERATED
-
-// Return values on success/failure
-#define ERR -1
-#define OK  0
-
-// Font conf
-#define FONT_SIZE 24
+#define DEFAULT_WINDOW_TITLE "AWO"
+#define DEFAULT_WINDOW_WIDTH 1440
+#define DEFAULT_WINDOW_HEIGHT 960
 
 // Game speed
 #define FPS 60
@@ -41,30 +29,15 @@
 #define GAME_CLOCK_MAX_ACCUM_MS SCREEN_TICKS_PER_FRAME * 2
 #define GAME_CLOCK_TICK_MAX 45
 
-// Default dimension of a tile, in pixels
+// Default dimension of a tile (pixels)
 #define DEFAULT_TILE_DIMENSION 16
 
-// Default dimensions of game board, in tiles
+// Default dimensions of game board (tiles)
 #define DEFAULT_GB_WIDTH  40
 #define DEFAULT_GB_HEIGHT 20
 
-// Max amount of units for each player
-#define MAX_UNITS_PER_ARMY 50
-
 // Starting background color when first initializing game
-#define GAME_BG_R      255
-#define GAME_BG_G      239
-#define GAME_BG_B      239
-#define GAME_BG_A      255
-
-// Editor configuration
-#define EDITOR_UI_R      0
-#define EDITOR_UI_G      0
-#define EDITOR_UI_B      0
-#define EDITOR_UI_A    130
-
-// Tile selector
-#define TILE_SELECTOR_WIDTH   DEFAULT_TILE_DIMENSION * 2
-#define TILE_SELECTOR_PADDING TILE_SELECTOR_WIDTH / 8
-#define TILE_SELECTOR_X       TILE_SELECTOR_PADDING
-#define TILE_SELECTOR_Y       TILE_SELECTOR_PADDING
+#define DEFAULT_GAME_BG_R 255
+#define DEFAULT_GAME_BG_G 239
+#define DEFAULT_GAME_BG_B 239
+#define DEFAULT_GAME_BG_A 255

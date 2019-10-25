@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "conf.h"
 
 int read_file(const char *file_name, char **buffer)
@@ -18,12 +19,12 @@ int read_file(const char *file_name, char **buffer)
     if ((err = fopen_s(&f_stream, file_name, "r")) != 0) {
     #endif
         printf("Error opening file %s\n", file_name);
-        return ERR;
+        return 0;
     }
 
     if (f_stream == 0) {
         printf("Error reading file %s\n", file_name);
-        return ERR;
+        return 0;
     }
 
     // Get file size
@@ -43,5 +44,5 @@ int read_file(const char *file_name, char **buffer)
     }
 
     printf("Error storing file contents\n");
-    return ERR;
+    return 0;
 }

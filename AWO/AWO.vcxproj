@@ -19,81 +19,51 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Libs\cglm\affine.c" />
+    <ClCompile Include="Libs\cglm\bezier.c" />
+    <ClCompile Include="Libs\cglm\box.c" />
+    <ClCompile Include="Libs\cglm\cam.c" />
+    <ClCompile Include="Libs\cglm\curve.c" />
+    <ClCompile Include="Libs\cglm\ease.c" />
+    <ClCompile Include="Libs\cglm\euler.c" />
+    <ClCompile Include="Libs\cglm\frustum.c" />
+    <ClCompile Include="Libs\cglm\io.c" />
+    <ClCompile Include="Libs\cglm\mat3.c" />
+    <ClCompile Include="Libs\cglm\mat4.c" />
+    <ClCompile Include="Libs\cglm\plane.c" />
+    <ClCompile Include="Libs\cglm\project.c" />
+    <ClCompile Include="Libs\cglm\quat.c" />
+    <ClCompile Include="Libs\cglm\sphere.c" />
+    <ClCompile Include="Libs\cglm\vec3.c" />
+    <ClCompile Include="Libs\cglm\vec4.c" />
     <ClCompile Include="Libs\cJSON.c" />
     <ClCompile Include="Libs\c_hashmap.c" />
-    <ClCompile Include="Libs\SDL_FontCache.c" />
-    <ClCompile Include="Src\Emscripten_Exports\emx_editor.c" />
-    <ClCompile Include="Src\Emscripten_Exports\emx_game.c" />
-    <ClCompile Include="Src\Game\Board\game_board.c" />
-    <ClCompile Include="Src\Game\Camera\camera.c" />
-    <ClCompile Include="Src\Game\Editor\editor.c" />
-    <ClCompile Include="Src\Game\Editor\UI\selected_entity.c" />
-    <ClCompile Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.c" />
-    <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_clock.c" />
-    <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_sub_clock.c" />
-    <ClCompile Include="Src\Game\Clock\game_clock.c" />
-    <ClCompile Include="Src\Game\Editor\UI\tile_selector.c" />
-    <ClCompile Include="Src\Game\Entities\Tile\tile.c" />
-    <ClCompile Include="Src\Game\Entities\Tile\Tile_Factory\tile_factory.c" />
-    <ClCompile Include="Src\Game\Entities\Unit\unit.c" />
-    <ClCompile Include="Src\Game\game.c" />
-    <ClCompile Include="Src\Game\game_exit.c" />
-    <ClCompile Include="Src\Game\Input_State\input_state.c" />
-    <ClCompile Include="Src\Game\game_init.c" />
-    <ClCompile Include="Src\Visuals\Data\Animation\animation.c" />
-    <ClCompile Include="Src\Visuals\Data\Palette\palette_tree.c" />
-    <ClCompile Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.c" />
-    <ClCompile Include="Src\Visuals\Data\Tiles\tiles_data_access.c" />
-    <ClCompile Include="Src\Visuals\Data\Tiles\tiles_data_creation.c" />
-    <ClCompile Include="Src\Visuals\Data\Units\units_data_access.c" />
-    <ClCompile Include="Src\Visuals\Data\Units\units_data_creation.c" />
+    <ClCompile Include="Libs\glad.c" />
+    <ClCompile Include="Libs\stb_image.c" />
+    <ClCompile Include="Src\Game\exit_game.c" />
+    <ClCompile Include="Src\Game\init_game.c" />
+    <ClCompile Include="Src\Game\run_game.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utilities\utilities.c" />
-    <ClCompile Include="Src\Visuals\Processing\processing.c" />
-    <ClCompile Include="Src\Visuals\Processing\tiles_processing.c" />
-    <ClCompile Include="Src\Visuals\Processing\units_processing.c" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\spritesheet.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Data\visuals.json" />
+    <None Include="Resources\Shaders\basic.vert" />
+    <None Include="Resources\Shaders\blue.frag" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
-    <ClInclude Include="Src\Emscripten_Exports\emx.h" />
-    <ClInclude Include="Src\Game\Board\game_board.h" />
-    <ClInclude Include="Src\Game\Camera\camera.h" />
-    <ClInclude Include="Src\Game\Editor\editor.h" />
-    <ClInclude Include="Src\Game\Editor\UI\selected_entity.h" />
-    <ClInclude Include="Src\Game\Entities\Tile\Tiles_Map\tiles_map.h" />
-    <ClInclude Include="Src\Game\Clock\game_clock.h" />
-    <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_clock_internal.h" />
-    <ClInclude Include="Src\Game\Editor\UI\tile_selector.h" />
-    <ClInclude Include="Src\Game\Entities\Tile\tile.h" />
-    <ClInclude Include="Src\Game\Entities\Tile\Tile_Factory\tile_factory.h" />
-    <ClInclude Include="Src\Game\Entities\Unit\unit.h" />
-    <ClInclude Include="Src\Game\game_arg_enums.h" />
-    <ClInclude Include="Src\Game\Input_State\input_state.h" />
-    <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Game\game.h" />
-    <ClInclude Include="Src\Game\Clock\Animation_Clock\animation_clock_enums.h" />
+    <ClInclude Include="Src\Game\_game.h" />
+    <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />
-    <ClInclude Include="Src\Visuals\Data\Animation\animation.h" />
-    <ClInclude Include="Src\Visuals\Data\Palette\palette_tree.h" />
-    <ClInclude Include="Src\Visuals\Data\Sprite_Sheet_Metadata\ss_metadata.h" />
-    <ClInclude Include="Src\Visuals\Data\Tiles\tiles_data.h" />
-    <ClInclude Include="Src\Game\Entities\Tile\enums.h" />
-    <ClInclude Include="Src\Visuals\Data\Tiles\_tiles_data_internal.h" />
-    <ClInclude Include="Src\Visuals\Data\Units\_units_data_internal.h" />
     <ClInclude Include="Src\Libraries\cJSON.h" />
     <ClInclude Include="Src\Utilities\macros.h" />
     <ClInclude Include="Src\Utilities\utilities.h" />
-    <ClInclude Include="Src\Visuals\Data\Units\units_data.h" />
-    <ClInclude Include="Src\Game\Entities\Unit\enums.h" />
-    <ClInclude Include="Src\Visuals\Processing\_processing_internal.h" />
-    <ClInclude Include="Src\Visuals\visuals_data.h" />
-    <ClInclude Include="Src\Visuals\visuals_processing.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />
@@ -160,11 +130,13 @@
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>6011;6386;6387;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)Libraries\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d  "$(SolutionDir)\Libraries\Libs\*.dll" "$(TargetDir)"</Command>
