@@ -10,4 +10,6 @@ void exit_game(Game* game)
     if (game != NULL) {
         free(game);
     }
+
+    glfwTerminate();
 }
