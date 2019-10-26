@@ -42,6 +42,7 @@
     <ClCompile Include="Libs\stb_image.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
+    <ClCompile Include="Src\Game\Rendering\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Src\Game\run_game.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
@@ -60,6 +61,7 @@
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\Game\game.h" />
+    <ClInclude Include="Src\Game\Rendering\Sprite_Batch\sprite_batch.h" />
     <ClInclude Include="Src\Game\_game.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />

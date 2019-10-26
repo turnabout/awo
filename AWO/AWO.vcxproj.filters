@@ -99,6 +99,9 @@
     <ClCompile Include="Src\GL_Helpers\create_texture.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Rendering\Sprite_Batch\sprite_batch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -129,6 +132,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\GL_Helpers\gl_helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Rendering\Sprite_Batch\sprite_batch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
