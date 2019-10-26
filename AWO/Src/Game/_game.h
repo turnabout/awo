@@ -7,4 +7,5 @@
 
 struct Game {
     GLFWwindow* window;
+    GLuint shader;
 };

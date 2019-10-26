@@ -5,8 +5,6 @@
  *
  *  \param file_name Path to the file to read.
  *
- *  \param buffer Where to store the file contents.
- *
- *  \return Returns 0 if an error occurred, or the file's size.
+ *  \return Pointer to the buffer containing the read data.
  */
-int read_file(const char* file_name, char** buffer);
+char* read_file(const char* file_name);

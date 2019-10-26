@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "conf.h"
+#include "GL_Helpers/gl_helpers.h"
 #include "Game/_game.h"
 
 Game* init_game()
@@ -46,6 +47,13 @@ Game* init_game()
         (float)DEFAULT_GAME_BG_B / 255.0f, 
         (float)DEFAULT_GAME_BG_A / 255.0f
     );
+
+    // Create shader programs
+    game->shader = create_shader_program(SHADERS_PATH "basic.vert", SHADERS_PATH "blue.frag");
+
+    if (game->shader == 0) {
+        return NULL;
+    }
 
     return game;
 }

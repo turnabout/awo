@@ -3,28 +3,28 @@
 
 #include "conf.h"
 
-int read_file(const char *file_name, char **buffer)
+char* read_file(const char* file_name)
 {
     FILE* f_stream;
     long f_size;
 
-    #ifndef __EMSCRIPTEN__
+#ifndef __EMSCRIPTEN__
     errno_t err;
-    #endif
+#endif
 
     // Open the file
-    #ifdef __EMSCRIPTEN__
-    if ((f_stream = fopen(file_name, "r")) == NULL) {
-    #else
-    if ((err = fopen_s(&f_stream, file_name, "r")) != 0) {
-    #endif
+#ifdef __EMSCRIPTEN__
+    if ((f_stream = fopen(file_name, "rb")) == NULL) {
+#else
+    if ((err = fopen_s(&f_stream, file_name, "rb")) != 0) {
+#endif
         printf("Error opening file %s\n", file_name);
-        return 0;
+        return NULL;
     }
 
     if (f_stream == 0) {
         printf("Error reading file %s\n", file_name);
-        return 0;
+        return NULL;
     }
 
     // Get file size
@@ -33,16 +33,16 @@ int read_file(const char *file_name, char **buffer)
     fseek(f_stream, 0, SEEK_SET);
 
     // Store file contents
-    *buffer = malloc(f_size + 1);
+    char *buffer = malloc(f_size + 1);
 
-    if (*buffer != NULL) {
-        fread(*buffer, 1, f_size, f_stream);
+    if (buffer != NULL) {
+        fread(buffer, 1, f_size, f_stream);
         fclose(f_stream);
-        (*buffer)[f_size] = '\0';
+        (buffer)[f_size] = '\0';
 
-        return f_size;
+        return buffer;
     }
 
     printf("Error storing file contents\n");
-    return 0;
+    return NULL;
 }

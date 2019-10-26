@@ -43,8 +43,9 @@
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\run_game.c" />
+    <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\main.c" />
-    <ClCompile Include="Src\Utilities\utilities.c" />
+    <ClCompile Include="Src\Utilities\read_file.c" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\spritesheet.png" />
@@ -62,6 +63,7 @@
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />
     <ClInclude Include="Src\Libraries\cJSON.h" />
+    <ClInclude Include="Src\GL_Helpers\gl_helpers.h" />
     <ClInclude Include="Src\Utilities\macros.h" />
     <ClInclude Include="Src\Utilities\utilities.h" />
   </ItemGroup>
