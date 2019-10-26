@@ -55,5 +55,12 @@ Game* init_game()
         return NULL;
     }
 
+    // Load sprite sheet
+    game->sprite_sheet = create_texture_object(SPRITE_SHEET_PATH);
+
+    if (game->sprite_sheet == 0) {
+        return NULL;
+    }
+
     return game;
 }

@@ -8,4 +8,5 @@
 struct Game {
     GLFWwindow* window;
     GLuint shader;
+    GLuint sprite_sheet;
 };

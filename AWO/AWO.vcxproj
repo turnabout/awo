@@ -44,6 +44,7 @@
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\run_game.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
+    <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utilities\read_file.c" />
   </ItemGroup>
