@@ -7,6 +7,6 @@
 
 struct Game {
     GLFWwindow* window;
-    GLuint shader;
+    GLuint shader_program;
     GLuint sprite_sheet;
 };

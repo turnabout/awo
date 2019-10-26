@@ -40,18 +40,10 @@ Game* init_game()
 
     glViewport(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 
-    // Set some other options
-    glClearColor(
-        (float)DEFAULT_GAME_BG_R / 255.0f, 
-        (float)DEFAULT_GAME_BG_G / 255.0f, 
-        (float)DEFAULT_GAME_BG_B / 255.0f, 
-        (float)DEFAULT_GAME_BG_A / 255.0f
-    );
+    // Create shader_program programs
+    game->shader_program = create_shader_program(SHADERS_PATH "basic.vert", SHADERS_PATH "blue.frag");
 
-    // Create shader programs
-    game->shader = create_shader_program(SHADERS_PATH "basic.vert", SHADERS_PATH "blue.frag");
-
-    if (game->shader == 0) {
+    if (game->shader_program == 0) {
         return NULL;
     }
 
@@ -61,6 +53,19 @@ Game* init_game()
     if (game->sprite_sheet == 0) {
         return NULL;
     }
+
+    glUniform1i(glGetUniformLocation(game->shader_program, "img"), 0);
+
+    // Set some other options
+    glClearColor(
+        (float)DEFAULT_GAME_BG_R / 255.0f, 
+        (float)DEFAULT_GAME_BG_G / 255.0f, 
+        (float)DEFAULT_GAME_BG_B / 255.0f, 
+        (float)DEFAULT_GAME_BG_A / 255.0f
+    );
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     return game;
 }

@@ -56,12 +56,11 @@ GLuint create_shader_at_path(unsigned int shader_type, const char* file_path)
     // Get sprite_shader source
     char* shader_source_buffer;
     if ((shader_source_buffer = read_file(file_path)) == NULL) {
-        printf("Couldn't read file %s\n", file_path);
         return 0;
     }
 
     // Create and compile sprite_shader
-    unsigned int shader = create_shader(shader_type, shader_source_buffer);
+    GLuint shader = create_shader(shader_type, shader_source_buffer);
     free(shader_source_buffer);
 
     return shader;
