@@ -150,7 +150,7 @@
     <None Include="Resources\Data\visuals.json">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="Resources\Shaders\basic.vert" />
-    <None Include="Resources\Shaders\blue.frag" />
+    <None Include="Resources\Shaders\sprite.vert" />
+    <None Include="Resources\Shaders\sprite.frag" />
   </ItemGroup>
 </Project>

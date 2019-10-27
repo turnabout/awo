@@ -54,8 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Data\visuals.json" />
-    <None Include="Resources\Shaders\basic.vert" />
-    <None Include="Resources\Shaders\blue.frag" />
+    <None Include="Resources\Shaders\sprite.vert" />
+    <None Include="Resources\Shaders\sprite.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\cglm\config.h" />

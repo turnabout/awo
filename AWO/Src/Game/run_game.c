@@ -21,6 +21,8 @@ void render_game(Game* game)
 
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    glBindVertexArray(0);
 }
 
 void run_game(Game* game)
@@ -34,7 +36,6 @@ void run_game(Game* game)
     glUniformMatrix4fv(glGetUniformLocation(game->shader_program, "projection"), 1, GL_FALSE, main_projection[0]);
 
     VAO = make_VAO();
-    glUseProgram(game->shader_program);
 
     // --------------------------------------------------------------------------------------------
     // 
@@ -85,7 +86,7 @@ GLuint make_VAO()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     // Vertex attribute
-    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
     glEnableVertexAttribArray(0);
 
     glBindVertexArray(0);

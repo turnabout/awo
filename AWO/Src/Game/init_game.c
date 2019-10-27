@@ -41,7 +41,7 @@ Game* init_game()
     glViewport(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
 
     // Create shader_program programs
-    game->shader_program = create_shader_program(SHADERS_PATH "basic.vert", SHADERS_PATH "blue.frag");
+    game->shader_program = create_shader_program(SHADERS_PATH "sprite.vert", SHADERS_PATH "sprite.frag");
 
     if (game->shader_program == 0) {
         return NULL;
@@ -54,7 +54,8 @@ Game* init_game()
         return NULL;
     }
 
-    glUniform1i(glGetUniformLocation(game->shader_program, "img"), 0);
+    glUseProgram(game->shader_program);
+    glUniform1i(glGetUniformLocation(game->shader_program, "sprite_sheet"), 0);
 
     // Set some other options
     glClearColor(
