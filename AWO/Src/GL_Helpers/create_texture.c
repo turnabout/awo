@@ -37,7 +37,7 @@ GLuint create_texture_object(const char* texture_path, GLint* width, GLint* heig
         ? GL_RGBA
         : GL_RGB;
 
-    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, format, *width, *height, 0, format, GL_UNSIGNED_BYTE, data);
 
     // Free the image memory
     stbi_image_free(data);

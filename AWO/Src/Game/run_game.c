@@ -3,6 +3,8 @@
 #include "Game/_game.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
 
+static Animation* test_animation;
+
 void update_game(Game* game, float delta_time)
 {
 }
@@ -35,6 +37,14 @@ void render_game(Game* game)
 
 void run_game(Game* game)
 {
+    test_animation = gather_tile_data(
+        game->tiles_data, 
+        Plain, Default, 
+        NULL, 
+        NULL
+    );
+    // ------------------------------------------------------------------------
+
     static float delta_time = 0.0f;      // Time between current frame and last frame.
     static float last_frame_time = 0.0f; // Time of last frame.
 

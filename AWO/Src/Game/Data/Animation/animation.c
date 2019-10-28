@@ -85,26 +85,26 @@ void print_animation(Animation* animation)
     printf("\nFrames [\n");
 
     for (int i = 0; i < animation->count; i++) {
-        printf("{\n");
-        printf("Top left\n");
+        printf("\t{\n");
+        printf("\tTop left\n\t");
         glm_vec3_print(animation->frames->top_left, stdout);
 
-        printf("Top right\n");
+        printf("\tTop right\n\t");
         glm_vec3_print(animation->frames->top_right, stdout);
 
-        printf("Bottom left\n");
+        printf("\tBottom left\n\t");
         glm_vec3_print(animation->frames->bottom_left, stdout);
 
-        printf("Bottom right\n");
+        printf("\tBottom right\n\t");
         glm_vec3_print(animation->frames->bottom_right, stdout);
         
         printf(
-            "(Dimensions): %.2f | %.2f\n", 
+            "\t(Dimensions): %.2f | %.2f\n", 
             animation->frames->dimensions[0], 
             animation->frames->dimensions[1]
         );
 
-        printf("},\n");
+        printf("\t},\n");
     }
 
     printf("]\n");

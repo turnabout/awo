@@ -61,8 +61,8 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
 
     // Test
 
-    Animation* animation = gather_tile_data(game->tiles_data, Plain, Default, NULL, NULL);
-    print_animation(animation);
+    // Animation* animation = gather_tile_data(game->tiles_data, River, Horizontal, NULL, NULL);
+    // print_animation(animation);
 
     return 1;
 }
