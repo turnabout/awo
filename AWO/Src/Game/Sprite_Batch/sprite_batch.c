@@ -26,7 +26,7 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch, int max_elements)
 
     // Reserve VBO memory (one 2D quad's data requires 4 vertices of 4 floats each)
     size_t element_size = (sizeof(GLfloat) * 4) * 4;
-    glBufferData(GL_ARRAY_BUFFER, element_size, NULL, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, element_size * max_elements, NULL, GL_DYNAMIC_DRAW);
 
     // EBO
     GLuint indices[] = {
