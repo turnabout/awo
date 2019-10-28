@@ -9,7 +9,7 @@ void exit_game(Game* game)
 
     // glfwTerminate();
 
-    // if (game != NULL) {
-        // free(game);
-    // }
+    if (game != NULL) {
+        free(game);
+    }
 }

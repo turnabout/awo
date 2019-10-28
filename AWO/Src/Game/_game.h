@@ -13,7 +13,8 @@ struct Game {
 
     Tiles_Data* tiles_data;
 
-    int w, h;
+    int w;
+    int h;
 };
 
 /*! @brief Initializes the game data, storing on the main Game struct object.

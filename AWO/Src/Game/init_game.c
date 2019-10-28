@@ -65,7 +65,7 @@ int init_glfw(Game* game)
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Get GLFW window
-    game->window = glfwCreateWindow(
+    GLFWwindow* window = glfwCreateWindow(
         DEFAULT_WINDOW_WIDTH, 
         DEFAULT_WINDOW_HEIGHT, 
         DEFAULT_WINDOW_TITLE, 
@@ -73,19 +73,20 @@ int init_glfw(Game* game)
         NULL
     );
 
-    if (game->window == NULL) {
+    if (window == NULL) {
         printf("Failed to create GLFW window\n");
         return 0;
     }
 
-    glfwMakeContextCurrent(game->window);
+    glfwMakeContextCurrent(window);
+    game->window = window;
 
     return 1;
 }
 
 Game* init_game()
 {
-    Game* game = (Game*)malloc(sizeof(game));
+    Game* game = (Game*)malloc(sizeof(Game));
 
     // GLFW | GLAD
     if (!init_glfw(game) || !gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -93,7 +94,6 @@ Game* init_game()
         return NULL;
     }
 
-    // Window Size
     glfwGetWindowSize(game->window, &game->w, &game->h);
     glViewport(0, 0, game->w, game->h);
 
