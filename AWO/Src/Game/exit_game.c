@@ -7,9 +7,9 @@ void exit_game(Game* game)
 {
     // TODO: Free other resources
 
-    glfwTerminate();
+    // glfwTerminate();
 
-    if (game != NULL) {
-        free(game);
-    }
+    // if (game != NULL) {
+        // free(game);
+    // }
 }

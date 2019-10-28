@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Utilities/macros.h"
 
 // Tile Type
@@ -104,10 +105,10 @@ static const char* tile_type_str_short[] = {
     TILEVAR(VerticalOpen) \
     TILEVAR(Used) \
 
-typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} Tile_Var;
+typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} Tile_Variation;
 static const char* tile_var_str[] = {FOREACH_TILE_VAR(GENERATE_STRING)};
 
-static Tile_Var default_tile_vars[] = {
+static Tile_Variation default_tile_vars[] = {
     Default,
     Default,
     Default,

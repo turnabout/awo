@@ -75,28 +75,37 @@ Animation* create_animation_from_JSON(const cJSON* animation_JSON, mat4 projecti
 
 void free_animation(Animation* animation)
 {
-    // TODO: free every frame
-
+    free(animation->frames);
     free(animation);
 }
 
 #ifdef _DEBUG
-void print_animation(Animation* anim)
+void print_animation(Animation* animation)
 {
-    printf("\n[\n");
+    printf("\nFrames [\n");
 
-    // TODO
-    /*
-    for (int i = 0; i < anim->count; i++) {
+    for (int i = 0; i < animation->count; i++) {
+        printf("{\n");
+        printf("Top left\n");
+        glm_vec3_print(animation->frames->top_left, stdout);
+
+        printf("Top right\n");
+        glm_vec3_print(animation->frames->top_right, stdout);
+
+        printf("Bottom left\n");
+        glm_vec3_print(animation->frames->bottom_left, stdout);
+
+        printf("Bottom right\n");
+        glm_vec3_print(animation->frames->bottom_right, stdout);
+        
         printf(
-            "{x: %d, y: %d, w: %d, h: %d},\n", 
-            anim->frames[i].x,
-            anim->frames[i].y,
-            anim->frames[i].w,
-            anim->frames[i].h
+            "(Dimensions): %.2f | %.2f\n", 
+            animation->frames->dimensions[0], 
+            animation->frames->dimensions[1]
         );
+
+        printf("},\n");
     }
-    */
 
     printf("]\n");
 }

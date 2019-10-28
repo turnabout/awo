@@ -9,7 +9,7 @@
  */
 typedef struct Frame {
     vec4 top_left;     // This frame's source coordinates, in Normalized Device Coordinates
-    vec4 top_right;    // Indexes go x/y/w/h
+    vec4 top_right;    // Indexes go x/y/z/w
     vec4 bottom_left;
     vec4 bottom_right;
 

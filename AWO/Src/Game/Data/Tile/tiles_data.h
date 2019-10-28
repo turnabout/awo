@@ -1,31 +1,27 @@
 #pragma once
 
-#include "cJSON.h"
+#include <cJSON.h>
 
-#include "Visuals/Data/Palette/palette_tree.h"
-#include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
-#include "Visuals/Data/Animation/animation.h"
+#include "types.h"
+#include "Game/Data/Animation/animation.h"
 #include "Game/Clock/game_clock.h"
-#include "Game/Entities/Tile/enums.h"
+#include "Game/Data/Tile/enums.h"
 
 // Holds all of the game's visuals data for tiles.
 typedef struct Tiles_Data Tiles_Data;
 typedef struct Tile_Data Tile_Data;
 
 // Create tiles data object from JSON.
-Tiles_Data* TD_create_from_JSON(cJSON* tiles_visuals_JSON);
+Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection);
 
 // Gets the palette for the given tile weather variation.
 // \param td The tiles data object.
 // \param weather The weather variation of the palette.
-Palette_Tree* TD_get_palette(Tiles_Data* td, Weather weather);
-
-// Gets the tiles sprite sheet metadata.
-SS_Metadata* TD_get_ss_metadata(Tiles_Data* td);
+// Palette_Tree* TD_get_palette(Tiles_Data* td, Weather weather);
 
 // Gets the tile variation the given middle tile should have, according to the given adjacent 
 // tiles.
-Tile_Var TD_get_tile_auto_var(
+Tile_Variation get_tile_auto_var(
     Tiles_Data* td,
     Tile_Type middle_tile,
     Tile_Type top_tile,
@@ -40,27 +36,27 @@ Tile_Var TD_get_tile_auto_var(
 // \param tv The tile variation.
 // \param clock Pointer filled in with the tile's animation clock index.
 // \param clock Pointer filled in with the tile's sub-clock index.
-// \returns Gets pointer to the tile's animation frames.
-SDL_Rect* TD_gather_tile_data(
-    Tiles_Data* td,
-    Tile_Type tt,
-    Tile_Var tv,
+// \returns The tile's Animation object.
+Animation* gather_tile_data(
+    Tiles_Data* tiles_data,
+    Tile_Type type,
+    Tile_Variation variation,
     Animation_Clock_Index* clock_index,
     Animation_Sub_Clock_Index* sub_clock_index
 );
 
 // Gets the next animation for tile type. Must be called continuously until it returns NULL.
 // Goes through all tile variations of the tile type until all have been returned.
-Animation* TD_get_next_tile_animation(Tiles_Data* td, Tile_Type tt);
+Animation* get_next_tile_animation(Tiles_Data* td, Tile_Type tt);
 
 // Gets the first (default) tile variation for a tile type.
-Tile_Var TD_get_tile_default_var(Tiles_Data* td, Tile_Type type);
+Tile_Variation get_tile_default_var(Tiles_Data* td, Tile_Type type);
 
 // Gets the next tile variation data belonging to the given tile type.
 // Returns string corresponding to variation and stores variation value in given pointer.
-const char* TD_get_next_tile_var_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val);
+const char* get_next_tile_var_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val);
 
 #ifdef _DEBUG
 // Print contents from tiles data.
-void TD_print(Tiles_Data* td);
+void print_tiles_data(Tiles_Data* td);
 #endif

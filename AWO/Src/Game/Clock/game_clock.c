@@ -15,7 +15,7 @@ struct Game_Clock {
     int* static_tick; // Static tick counter, always pointing to 0. Given to static tiles.
 };
 
-Game_Clock* create_game_clock(const cJSON* json)
+Game_Clock* create_game_clock(const cJSON* JSON)
 {
     // Create the game clock
     Game_Clock* gc = (Game_Clock*)malloc(sizeof(Game_Clock));
@@ -31,7 +31,7 @@ Game_Clock* create_game_clock(const cJSON* json)
     // Create the game clock's animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         gc->anim_clocks[i] = AC_create_from_JSON(
-            cJSON_GetArrayItem(json, i)
+            cJSON_GetArrayItem(JSON, i)
         );
     }
 

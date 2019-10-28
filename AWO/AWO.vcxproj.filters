@@ -114,6 +114,15 @@
     <ClCompile Include="Src\Game\Clock\game_clock.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\tiles_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\init_game_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -162,6 +171,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\_tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\tiles_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

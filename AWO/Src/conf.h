@@ -12,9 +12,9 @@
 #define SHADERS_PATH  RESOURCES_PATH "Shaders/"
 #define FONTS_PATH    RESOURCES_PATH "Fonts/"
 
-#define SPRITE_SHEET_PATH  TEXTURES_PATH "spritesheet.png"
-#define JSON_PATH          DATA_PATH "visuals.json"
-#define DIALOGUE_FONT_PATH FONTS_PATH "aw2-gba.ttf"
+#define SPRITE_SHEET_PATH   TEXTURES_PATH "spritesheet.png"
+#define GAME_DATA_JSON_PATH DATA_PATH "visuals.json"
+#define DIALOGUE_FONT_PATH  FONTS_PATH "aw2-gba.ttf"
 
 // Window configuration
 #define DEFAULT_WINDOW_TITLE "AWO"

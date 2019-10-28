@@ -3,7 +3,7 @@
 
 #include "conf.h"
 
-char* read_file(const char* file_name)
+char* read_file(const char* file_path)
 {
     FILE* f_stream;
     long f_size;
@@ -16,14 +16,14 @@ char* read_file(const char* file_name)
 #ifdef __EMSCRIPTEN__
     if ((f_stream = fopen(file_name, "rb")) == NULL) {
 #else
-    if ((err = fopen_s(&f_stream, file_name, "rb")) != 0) {
+    if ((err = fopen_s(&f_stream, file_path, "rb")) != 0) {
 #endif
-        printf("Error opening file %s\n", file_name);
+        printf("Error opening file %s\n", file_path);
         return NULL;
     }
 
     if (f_stream == 0) {
-        printf("Error reading file %s\n", file_name);
+        printf("Error reading file %s\n", file_path);
         return NULL;
     }
 

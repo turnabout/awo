@@ -6,12 +6,11 @@
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Tile/tiles_data.h"
-// #include "Game/Clock/Animation_Clock/animation_clock_enums.h"
-
+#include "Game/Clock/Animation_Clock/enums.h"
 
 typedef struct Auto_Var
 {
-    Tile_Var var;           // The variation selected by this auto var
+    Tile_Variation var;           // The variation selected by this auto var
     int adjacent_tiles[4];  // Array pointing out which adjacent tiles are acceptable for this auto
                             // var to be selected
 } Auto_Var;
@@ -26,14 +25,14 @@ typedef enum {
 // A single tile's visual data.
 struct Tile_Data
 {
-    map_t vars_map;          // Map holding every variation (Tile_Var_Data)
+    map_t vars_map;            // Map holding every variation (Tile_Var_Data)
 
-    int vars_amount;         // Amount of variations this tile has
-    Tile_Var* vars_list;     // List of every variation this tile has
+    int vars_count;            // How many variations this tile has
+    Tile_Variation* vars_list; // List of every variation this tile has
 
-    int auto_vars_amount;    // Amount of auto vars_map this tile has
-    Auto_Var* auto_vars;     // List of auto vars_map used to autoselect this tile's variation when 
-                             // placing it in editor mode.
+    int auto_vars_count;       // Amount of auto vars_map this tile has
+    Auto_Var* auto_vars;       // List of auto vars_map used to autoselect this tile's variation 
+                               // when placing it in editor mode.
 
     Animation_Clock_Index clock; // Clock used by this tile to update its animation
 };
@@ -42,13 +41,13 @@ struct Tile_Data
 typedef struct Tile_Var_Data
 {
     Animation_Sub_Clock_Index sub_clock; // Sub clock used by this tile var to update its animation
-    Animation* anim;                     // This tile variation's animation
+    Animation* animation;                // This tile variation's animation
 } Tile_Var_Data;
 
 // All tiles' visual data
 struct Tiles_Data
 {
     Tile_Data* src[TILE_TYPE_COUNT];
-    SS_Metadata* ss_meta_data;
-    const cJSON* JSON;
+
+    // TODO: hold palette data
 };

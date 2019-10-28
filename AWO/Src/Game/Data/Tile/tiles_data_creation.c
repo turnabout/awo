@@ -1,22 +1,19 @@
 #include <stdlib.h>
+#include <cglm/cglm.h>
 
-#include "tiles_data.h"
-#include "_tiles_data_internal.h"
+#include "Game/Data/Tile/_tiles_data.h"
 
-void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json);
+void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projection);
 
-Tiles_Data* TD_create_from_JSON(cJSON* tiles_visuals_JSON)
+Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection)
 {
     Tiles_Data* td = malloc(sizeof(Tiles_Data));
-
-    // Store metadata & JSON for palettes
-    td->ss_meta_data = SS_Meta_create_from_JSON(tiles_visuals_JSON);
-    td->JSON = tiles_visuals_JSON;
 
     // Add tiles' src data
     get_tiles_src_data(
         td,
-        cJSON_GetObjectItemCaseSensitive(tiles_visuals_JSON, "src")
+        cJSON_GetObjectItemCaseSensitive(tiles_visuals_JSON, "src"),
+        ss_projection
     );
 
     return td;
@@ -41,7 +38,7 @@ Auto_Var* get_tile_auto_var_data(
     cJSON_ArrayForEach(auto_var_item_json, auto_var_json)
     {
         // Get tile variation
-        Tile_Var* var;
+        Tile_Variation* var;
 
         hashmap_get(
             *all_vars_hashmap, 
@@ -65,15 +62,16 @@ Auto_Var* get_tile_auto_var_data(
     return auto_var;
 }
 
-void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
+// TODO: refactor/clean up
+void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projection)
 {
     // Initialize temporary hashmap containing all variations, using short strings as keys.
     // This is done so we can access the corresponding tile variation for each tile, as we loop 
     // the JSON data
     map_t all_vars_hashmap = hashmap_new();
 
-    for (Tile_Var var = TILE_VAR_FIRST; var <= TILE_VAR_LAST; var++) {
-        Tile_Var* v = malloc(sizeof(Tile_Var));
+    for (Tile_Variation var = TILE_VAR_FIRST; var <= TILE_VAR_LAST; var++) {
+        Tile_Variation* v = malloc(sizeof(Tile_Variation));
         *v = var;
 
         hashmap_put(
@@ -98,7 +96,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         Tile_Data* tile_data;        // The tile data object representing this tile to be populated
         map_t vars_hashmap;          // Hashmap containing animations for this tile's variations
         int vars_amount;             // Amount of variations this tile has
-        Tile_Var* vars_list;         // List of every variation this tile has
+        Tile_Variation* vars_list;         // List of every variation this tile has
         Animation_Sub_Clock_Index default_sub_clock; // Default sub clock used by this tile's vars_map
 
         tile_vars_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "vars");
@@ -118,7 +116,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 
             tile_data->auto_vars = get_tile_auto_var_data(
                 auto_var_json, 
-                &tile_data->auto_vars_amount,
+                &tile_data->auto_vars_count,
                 &all_vars_hashmap
              );
         }
@@ -142,7 +140,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
         cJSON_ArrayForEach(tile_var_json, tile_vars_json)
         {
             // Add this variation to the tile's variations list
-            Tile_Var* res;
+            Tile_Variation* res;
             hashmap_get(all_vars_hashmap, tile_var_json->string, (void**)(&res));
 
             *vars_list = *res;
@@ -150,7 +148,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 
             // Create this tile variation & get its animation
             Tile_Var_Data* tile_var = malloc(sizeof(Tile_Var_Data));
-            tile_var->anim = anim_create_from_JSON(tile_var_json);
+            tile_var->animation = create_animation_from_JSON(tile_var_json, ss_projection);
 
             // Get this tile variation's correct sub clock value
             if (
@@ -175,7 +173,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
 
         // Populate tile data
         tile_data->vars_map = vars_hashmap;
-        tile_data->vars_amount = vars_amount;
+        tile_data->vars_count = vars_amount;
         tile_data->vars_list = vars_list;
         
         // Store populated tile data
@@ -183,8 +181,8 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json)
     }
 
     // Free the temporary variations hashmap
-    for (Tile_Var var = TILE_VAR_FIRST; var <= TILE_VAR_LAST; var++) {
-        Tile_Var* res;
+    for (Tile_Variation var = TILE_VAR_FIRST; var <= TILE_VAR_LAST; var++) {
+        Tile_Variation* res;
 
         hashmap_get(
             all_vars_hashmap,

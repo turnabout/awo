@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <stb_image.h>
 
-GLuint create_texture_object(const char* path)
+GLuint create_texture_object(const char* texture_path, GLint* width, GLint* height)
 {
     // Tell stb_image to flip the y-axis during image loading.
     // This is because OpenGL expects the 0.0 coordinate on the y-axis to be the bottom side of the
@@ -10,11 +10,11 @@ GLuint create_texture_object(const char* path)
     stbi_set_flip_vertically_on_load(1);
 
     // Load texture image
-    GLint width, height, channels_amount;
-    unsigned char* data = stbi_load(path, &width, &height, &channels_amount, 0);
+    GLint channels_amount;
+    unsigned char* data = stbi_load(texture_path, width, height, &channels_amount, 0);
 
     if (!data) {
-        printf("Failed to load texture image at %s\n", path);
+        printf("Failed to load texture image at %s\n", texture_path);
         return 0;
     }
 

@@ -7,7 +7,7 @@
 #include "Game/Sprite_Batch/sprite_batch.h"
 #include "Game/_game.h"
 
-int init_game_sprite_batches(Game* game)
+int init_game_sprite_batches(Game* game, GLint* ss_width, GLint* ss_height)
 {
     // Create sprite batches
     // 1. Main sprites sprite batch
@@ -18,7 +18,7 @@ int init_game_sprite_batches(Game* game)
             SHADERS_PATH "sprite.vert",
             SHADERS_PATH "sprite.frag"
         )) || 
-        !(sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH))
+        !(sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH, ss_width, ss_height))
         ) {
         return 0;
     }
@@ -93,12 +93,18 @@ Game* init_game()
         return NULL;
     }
 
-    // Size
+    // Window Size
     glfwGetWindowSize(game->window, &game->w, &game->h);
     glViewport(0, 0, game->w, game->h);
 
     // Set the game's sprite batches used for rendering
-    if (!init_game_sprite_batches(game)) {
+    GLint sprite_sheet_w, sprite_sheet_h;
+    if (!init_game_sprite_batches(game, &sprite_sheet_w, &sprite_sheet_h)) {
+        return NULL;
+    }
+
+    // Load the game's data
+    if (!init_game_data(game, sprite_sheet_w, sprite_sheet_h)) {
         return NULL;
     }
 
@@ -113,5 +119,6 @@ Game* init_game()
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    return NULL;
     return game;
 }

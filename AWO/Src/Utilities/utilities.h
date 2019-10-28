@@ -1,10 +1,8 @@
 #pragma once
 
-/**
- *  \brief Reads a file and stores its contents in memory.
+/*! @brief Reads a file and returns its contents in allocated memory.
  *
- *  \param file_name Path to the file to read.
- *
- *  \return Pointer to the buffer containing the read data.
+ *  @param[in] file_path The path of the file to read.
+ *  @return Pointer to the buffer containing the read data or NULL if an error occurred.
  */
-char* read_file(const char* file_name);
+char* read_file(const char* file_path);
