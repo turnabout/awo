@@ -40,6 +40,7 @@
     <ClCompile Include="Libs\c_hashmap.c" />
     <ClCompile Include="Libs\glad.c" />
     <ClCompile Include="Libs\stb_image.c" />
+    <ClCompile Include="Src\Game\Data\Animation\animation.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\Sprite_Batch\sprite_batch.c" />
@@ -60,6 +61,7 @@
   <ItemGroup>
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
+    <ClInclude Include="Src\Game\Data\Animation\animation.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Sprite_Batch\sprite_batch.h" />
     <ClInclude Include="Src\Game\_game.h" />
