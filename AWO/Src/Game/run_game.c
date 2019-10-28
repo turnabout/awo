@@ -32,14 +32,11 @@ void add_to_sprite_batch_test(vec2 dst, vec4 tex_data)
 
     // Set the quad's vertices data
     GLfloat quad_vertices[] = {
-        // Pos      // Tex
-        dst[0],               dst[1] + tex_data[3], top_left[0],     top_left[1],     // Top left
-        dst[0] + tex_data[2], dst[1],               bottom_right[0], bottom_right[1], // Bottom right
-        dst[0],               dst[1],               bottom_left[0],  bottom_left[1],  // Bottom left
-
+        // Pos                                      // Tex
         dst[0],               dst[1] + tex_data[3], top_left[0],     top_left[1],     // Top left
         dst[0] + tex_data[2], dst[1] + tex_data[3], top_right[0],    top_right[1],    // Top right
-        dst[0] + tex_data[2], dst[1],               bottom_right[0], bottom_right[1], // Bottom right
+        dst[0],               dst[1],               bottom_left[0],  bottom_left[1],  // Bot. left
+        dst[0] + tex_data[2], dst[1],               bottom_right[0], bottom_right[1], // Bot. right
     };
 
     // Store vertices data in previously allocated buffer
@@ -62,11 +59,12 @@ void render_game(Game* game)
 
     // Draw test sprite 1
     add_to_sprite_batch_test((vec2) { 500, 500 }, (vec4) {549, 64, 15, 16});
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     // Draw test sprite 2
     add_to_sprite_batch_test((vec2) { 515, 500 }, (vec4) {549, 16, 15, 16});
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    // glDrawArrays(GL_TRIANGLES, 0, 6);
 
     glBindVertexArray(0);
 }
@@ -117,6 +115,7 @@ void run_game(Game* game)
 GLuint make_VAO(Game* game)
 {
     // VAO
+    GLuint VAO;
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
 
@@ -125,9 +124,20 @@ GLuint make_VAO(Game* game)
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    // Reserve VBO memory (one 2D quad requires 6 vertices of 4 floats each)
-    size_t quad_size = (sizeof(GLfloat) * 4) * 6;
+    // Reserve VBO memory (one 2D quad requires 4 vertices of 4 floats each)
+    size_t quad_size = (sizeof(GLfloat) * 4) * 4;
     glBufferData(GL_ARRAY_BUFFER, quad_size, NULL, GL_DYNAMIC_DRAW);
+
+    // EBO
+    GLuint indices[] = {
+        0, 1, 2, // First triangle
+        2, 1, 3, // Second triangle
+    };
+
+    unsigned int EBO;
+    glGenBuffers(1, &EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Vertex attributes
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
