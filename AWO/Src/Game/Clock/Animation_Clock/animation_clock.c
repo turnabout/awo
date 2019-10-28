@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "_animation_clock_internal.h"
+#include "Game/Clock/Animation_Clock/_animation_clock.h"
 
 Animation_Clock* AC_create_from_JSON(const cJSON* json)
 {
@@ -25,7 +25,7 @@ Animation_Clock* AC_create_from_JSON(const cJSON* json)
 
     // Add every sub-clock to this animation clock
     for (int i = 0; i < sub_clocks_count; i++) {
-        *(ac->sub_clocks++) = ASC_create_from_JSON( cJSON_GetArrayItem(sub_clocks_JSON, i) );
+        *(ac->sub_clocks++) = create_animation_sub_clock_from_JSON( cJSON_GetArrayItem(sub_clocks_JSON, i) );
     }
 
     // Reset to first sub-clock pointer
@@ -38,7 +38,7 @@ Animation_Clock* AC_create_from_JSON(const cJSON* json)
 void AC_update_sub_clocks(Animation_Clock* ac)
 {
     for (int i = 0; i < ac->sub_clocks_count; i++) {
-        ASC_update(ac->sub_clocks[i], ac->current_tick);
+        update_animation_sub_clock(ac->sub_clocks[i], ac->current_tick);
     }
 }
 
@@ -58,13 +58,13 @@ void AC_update(Animation_Clock* ac, int game_clock_tick)
 
 int* AC_get_ASC_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index anim_sc_index)
 {
-    return ASC_get_tick_ptr(ac->sub_clocks[anim_sc_index]);
+    return get_animation_sub_clock_tick_ptr(ac->sub_clocks[anim_sc_index]);
 }
 
 void AC_free(Animation_Clock* ac)
 {
     for (int i = 0; i < ac->sub_clocks_count; i++) {
-        ASC_free(ac->sub_clocks[i]);
+        free_animation_sub_clock(ac->sub_clocks[i]);
     }
 
     free(ac->changing_ticks);

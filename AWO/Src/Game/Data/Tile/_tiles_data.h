@@ -1,13 +1,13 @@
 #pragma once
 
-#include "c_hashmap.h"
-#include "cJSON.h"
-#include "Visuals/Data/Animation/animation.h"
-#include "Visuals/Data/Sprite_Sheet_Metadata/ss_metadata.h"
-#include "Game/Clock/Animation_Clock/animation_clock_enums.h"
-#include "Game/Entities/Tile/enums.h"
+#include <c_hashmap.h>
+#include <cJSON.h>
 
-#include "tiles_data.h"
+#include "Game/Data/Animation/animation.h"
+#include "Game/Data/Tile/enums.h"
+#include "Game/Data/Tile/tiles_data.h"
+// #include "Game/Clock/Animation_Clock/animation_clock_enums.h"
+
 
 typedef struct Auto_Var
 {

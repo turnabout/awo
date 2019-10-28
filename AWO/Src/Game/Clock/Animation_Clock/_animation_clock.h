@@ -1,6 +1,8 @@
 #pragma once
-#include "cJSON.h"
-#include "animation_clock_enums.h"
+
+#include <cJSON.h>
+
+#include "Game/Clock/Animation_Clock/enums.h"
 
 typedef struct Animation_Sub_Clock {
     int current_tick; // Current tick of this animation sub clock
@@ -30,13 +32,13 @@ int* AC_get_ASC_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index sub_cloc
 void AC_free(Animation_Clock* ac);
 
 // Creates an animation sub clock using the given JSON data describing it.
-Animation_Sub_Clock* ASC_create_from_JSON(const cJSON* json);
+Animation_Sub_Clock* create_animation_sub_clock_from_JSON(const cJSON* json);
 
 // Updates the current tick of a sub clock depending on its animation clock's current tick
-void ASC_update(Animation_Sub_Clock* asc, int ac_current_tick);
+void update_animation_sub_clock(Animation_Sub_Clock* asc, int ac_current_tick);
 
 // Gets pointer to the animation sub-clock's current tick
-int* ASC_get_tick_ptr(Animation_Sub_Clock* asc);
+int* get_animation_sub_clock_tick_ptr(Animation_Sub_Clock* asc);
 
 // Frees an animation sub clock
-void ASC_free(Animation_Sub_Clock* asc);
+void free_animation_sub_clock(Animation_Sub_Clock* asc);

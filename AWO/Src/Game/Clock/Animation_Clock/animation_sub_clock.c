@@ -1,8 +1,8 @@
 #include <stdlib.h>
 
-#include "_animation_clock_internal.h"
+#include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-Animation_Sub_Clock* ASC_create_from_JSON(const cJSON* json)
+Animation_Sub_Clock* create_animation_sub_clock_from_JSON(const cJSON* json)
 {
     Animation_Sub_Clock* asc = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));
 
@@ -20,18 +20,18 @@ Animation_Sub_Clock* ASC_create_from_JSON(const cJSON* json)
     return asc;
 }
 
-void ASC_update(Animation_Sub_Clock* asc, int ac_current_tick)
+void update_animation_sub_clock(Animation_Sub_Clock* asc, int ac_current_tick)
 {
     asc->current_tick = asc->ticks_array[ac_current_tick];
 }
 
-void ASC_free(Animation_Sub_Clock* asc)
+void free_animation_sub_clock(Animation_Sub_Clock* asc)
 {
     free(asc->ticks_array);
     free(asc);
 }
 
-int* ASC_get_tick_ptr(Animation_Sub_Clock* asc)
+int* get_animation_sub_clock_tick_ptr(Animation_Sub_Clock* asc)
 {
     return &asc->current_tick;
 }

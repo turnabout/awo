@@ -1,9 +1,10 @@
 #include <stdio.h>
-#include <SDL.h>
+#include <stdlib.h>
 
-#include "Animation_Clock/_animation_clock_internal.h"
-#include "game_clock.h"
 #include "conf.h"
+#include "types.h"
+#include "Game/Clock/game_clock.h"
+#include "Game/Clock/Animation_Clock/_animation_clock.h"
 
 struct Game_Clock {
     Uint8 current_tick;    // Current tick the game clock is on
@@ -14,14 +15,14 @@ struct Game_Clock {
     int* static_tick; // Static tick counter, always pointing to 0. Given to static tiles.
 };
 
-Game_Clock* GC_create(const cJSON* json)
+Game_Clock* create_game_clock(const cJSON* json)
 {
     // Create the game clock
     Game_Clock* gc = (Game_Clock*)malloc(sizeof(Game_Clock));
 
     gc->current_tick = 0;
     gc->accum_ms = 0;
-    gc->last_game_tick = SDL_GetTicks();
+    gc->last_game_tick = 0; // TODO: use GLFW time functions
 
     // Add static tick
     gc->static_tick = malloc(sizeof(int));
@@ -37,10 +38,11 @@ Game_Clock* GC_create(const cJSON* json)
     return gc;
 }
 
-void GC_update(Game_Clock* gc)
+void update_game_clock(Game_Clock* gc)
 {
     // Get how many milliseconds passed since last update
-    Uint32 current_tick = SDL_GetTicks();
+    // Uint32 current_tick = SDL_GetTicks();
+    Uint32 current_tick = 0; // TODO: Use GLFW time functions
     Uint32 delta = current_tick - gc->last_game_tick;
 
     gc->last_game_tick = current_tick;
@@ -62,7 +64,7 @@ void GC_update(Game_Clock* gc)
     }
 }
 
-int* GC_get_ASC_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Animation_Sub_Clock_Index sc_index)
+int* get_game_clock_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Animation_Sub_Clock_Index sc_index)
 {
     if (ac_index == No_Clock) {
         return gc->static_tick;
@@ -71,7 +73,7 @@ int* GC_get_ASC_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Animati
     return AC_get_ASC_tick_ptr(gc->anim_clocks[ac_index], sc_index);
 }
 
-void GC_free(Game_Clock* gc)
+void free_game_clock(Game_Clock* gc)
 {
     free(gc->static_tick);
 
