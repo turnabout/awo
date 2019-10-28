@@ -14,6 +14,7 @@ int main(int argc, char** argv)
 
     run_game(game);
     exit_game(game);
+
     return 0;
 }
 #endif

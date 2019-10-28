@@ -1,15 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <cglm/cglm.h>
 
 #include "conf.h"
 #include "GL_Helpers/gl_helpers.h"
+#include "Game/Sprite_Batch/sprite_batch.h"
 #include "Game/_game.h"
 
-Game* init_game()
+int init_game_sprite_batches(Game* game)
 {
-    Game* game = (Game*)malloc(sizeof(game));
+    // Create sprite batches
+    // 1. Main sprites sprite batch
+    GLuint sprites_shader_program, sprite_sheet_texture;
+    
+    if (
+        !(sprites_shader_program = create_shader_program(
+            SHADERS_PATH "sprite.vert",
+            SHADERS_PATH "sprite.frag"
+        )) || 
+        !(sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH))
+        ) {
+        return 0;
+    }
 
+    game->sprite_batches[SPRITES_SPRITE_BATCH] = create_sprite_batch(
+        sprites_shader_program,
+        sprite_sheet_texture,
+        MAX_SPRITE_BATCH_ELEMENTS
+    );
+
+    // Set sprite sheet uniform
+    glUseProgram(sprites_shader_program);
+    glUniform1i(glGetUniformLocation(sprite_sheet_texture, "sprite_sheet"), 0);
+
+    // Set main projection matrix uniform
+    mat4 main_projection;
+    glm_ortho(0.0f, (float)game->w, 0.0f, (float)game->h, -1.0f, 1.0f, main_projection);
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(sprites_shader_program, "projection"), 
+        1, 
+        GL_FALSE, 
+        main_projection[0]
+    );
+
+    glUseProgram(0);
+
+    return 1;
+}
+
+void glfw_error_cb(int err_int, const char* err_str)
+{
+    printf("GLFW Error: %s\n", err_str);
+}
+
+int init_glfw(Game* game)
+{
     // Initialize GLFW
+    glfwSetErrorCallback(glfw_error_cb);
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -27,35 +75,32 @@ Game* init_game()
 
     if (game->window == NULL) {
         printf("Failed to create GLFW window\n");
-        return NULL;
+        return 0;
     }
 
     glfwMakeContextCurrent(game->window);
 
-    // Initialize GLAD
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        printf("Failed to initialize GLAD\n");
+    return 1;
+}
+
+Game* init_game()
+{
+    Game* game = (Game*)malloc(sizeof(game));
+
+    // GLFW | GLAD
+    if (!init_glfw(game) || !gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        printf("Failed to initialize\n");
         return NULL;
     }
 
-    glViewport(0, 0, DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
+    // Size
+    glfwGetWindowSize(game->window, &game->w, &game->h);
+    glViewport(0, 0, game->w, game->h);
 
-    // Create shader_program programs
-    game->shader_program = create_shader_program(SHADERS_PATH "sprite.vert", SHADERS_PATH "sprite.frag");
-
-    if (game->shader_program == 0) {
+    // Set the game's sprite batches used for rendering
+    if (!init_game_sprite_batches(game)) {
         return NULL;
     }
-
-    // Load sprite sheet
-    game->sprite_sheet = create_texture_object(SPRITE_SHEET_PATH);
-
-    if (game->sprite_sheet == 0) {
-        return NULL;
-    }
-
-    glUseProgram(game->shader_program);
-    glUniform1i(glGetUniformLocation(game->shader_program, "sprite_sheet"), 0);
 
     // Set some other options
     glClearColor(

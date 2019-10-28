@@ -4,9 +4,10 @@
 #include <GLFW/glfw3.h>
 
 #include "Game/game.h"
+#include "Game/Sprite_Batch/sprite_batch.h"
 
 struct Game {
     GLFWwindow* window;
-    GLuint shader_program;
-    GLuint sprite_sheet;
+    Sprite_Batch* sprite_batches[SPRITE_BATCH_TYPE_COUNT];
+    int w, h;
 };
