@@ -20,19 +20,19 @@ typedef struct Animation_Clock {
 } Animation_Clock;
 
 // Creates an animation clock using the given JSON data describing it.
-Animation_Clock* AC_create_from_JSON(const cJSON* json);
+Animation_Clock* create_animation_clock(const cJSON* animation_clock_JSON);
 
 // Updates an animation clock
-void AC_update(Animation_Clock* animation_clock, int game_clock_tick);
+void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tick);
 
 // Gets pointer to the animation sub-clock's current tick, belonging to the given animation clock
-int* AC_get_ASC_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index sub_clock_index);
+int* get_animation_clock_child_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index sub_clock_index);
 
 // Frees an animation clock
-void AC_free(Animation_Clock* ac);
+void free_animation_clock(Animation_Clock* ac);
 
 // Creates an animation sub clock using the given JSON data describing it.
-Animation_Sub_Clock* create_animation_sub_clock_from_JSON(const cJSON* json);
+Animation_Sub_Clock* create_animation_sub_clock(const cJSON* json);
 
 // Updates the current tick of a sub clock depending on its animation clock's current tick
 void update_animation_sub_clock(Animation_Sub_Clock* asc, int ac_current_tick);

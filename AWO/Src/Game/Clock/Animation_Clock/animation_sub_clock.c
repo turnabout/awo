@@ -2,36 +2,36 @@
 
 #include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-Animation_Sub_Clock* create_animation_sub_clock_from_JSON(const cJSON* json)
+Animation_Sub_Clock* create_animation_sub_clock(const cJSON* JSON)
 {
-    Animation_Sub_Clock* asc = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));
+    Animation_Sub_Clock* sub_clock = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));
 
-    asc->current_tick = 0;
+    sub_clock->current_tick = 0;
 
     // Build up the sub-clock's tick array
-    int ticks_count = cJSON_GetArraySize(json);
+    int ticks_count = cJSON_GetArraySize(JSON);
 
-    asc->ticks_array = malloc(sizeof(int) * ticks_count);
+    sub_clock->ticks_array = malloc(sizeof(int) * ticks_count);
 
     for (int i = 0; i < ticks_count; i++) {
-        asc->ticks_array[i] = cJSON_GetArrayItem(json, i)->valueint;
+        sub_clock->ticks_array[i] = cJSON_GetArrayItem(JSON, i)->valueint;
     }
 
-    return asc;
+    return sub_clock;
 }
 
-void update_animation_sub_clock(Animation_Sub_Clock* asc, int ac_current_tick)
+void update_animation_sub_clock(Animation_Sub_Clock* sub_clock, int ac_current_tick)
 {
-    asc->current_tick = asc->ticks_array[ac_current_tick];
+    sub_clock->current_tick = sub_clock->ticks_array[ac_current_tick];
 }
 
-void free_animation_sub_clock(Animation_Sub_Clock* asc)
+void free_animation_sub_clock(Animation_Sub_Clock* sub_clock)
 {
-    free(asc->ticks_array);
-    free(asc);
+    free(sub_clock->ticks_array);
+    free(sub_clock);
 }
 
-int* get_animation_sub_clock_tick_ptr(Animation_Sub_Clock* asc)
+int* get_animation_sub_clock_tick_ptr(Animation_Sub_Clock* sub_clock)
 {
-    return &asc->current_tick;
+    return &sub_clock->current_tick;
 }

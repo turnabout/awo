@@ -2,66 +2,71 @@
 
 #include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-Animation_Clock* AC_create_from_JSON(const cJSON* json)
+Animation_Clock* create_animation_clock(const cJSON* JSON)
 {
-    Animation_Clock* ac = malloc(sizeof(Animation_Clock));
+    Animation_Clock* clock = malloc(sizeof(Animation_Clock));
 
     // Set changing ticks
-    const cJSON* changing_ticks_JSON = cJSON_GetObjectItemCaseSensitive(json, "changingTicks");
+    const cJSON* changing_ticks_JSON = cJSON_GetObjectItemCaseSensitive(JSON, "changingTicks");
 
-    ac->current_tick = 0;
-    ac->changing_ticks_count = cJSON_GetArraySize(changing_ticks_JSON);
-    ac->changing_ticks = malloc(sizeof(int) * ac->changing_ticks_count);
+    clock->current_tick = 0;
+    clock->changing_ticks_count = cJSON_GetArraySize(changing_ticks_JSON);
+    clock->changing_ticks = malloc(sizeof(int) * clock->changing_ticks_count);
 
-    for (int i = 0; i < ac->changing_ticks_count; i++) {
-        ac->changing_ticks[i] = cJSON_GetArrayItem(changing_ticks_JSON, i)->valueint;
+    for (int i = 0; i < clock->changing_ticks_count; i++) {
+        clock->changing_ticks[i] = cJSON_GetArrayItem(changing_ticks_JSON, i)->valueint;
     }
 
     // Set animation sub-clocks
-    const cJSON* sub_clocks_JSON = cJSON_GetObjectItemCaseSensitive(json, "subClocks");
+    const cJSON* sub_clocks_JSON = cJSON_GetObjectItemCaseSensitive(JSON, "subClocks");
     int sub_clocks_count = cJSON_GetArraySize(sub_clocks_JSON);
 
-    ac->sub_clocks = malloc(sizeof(Animation_Sub_Clock*) * sub_clocks_count);
+    clock->sub_clocks = malloc(sizeof(Animation_Sub_Clock*) * sub_clocks_count);
 
     // Add every sub-clock to this animation clock
     for (int i = 0; i < sub_clocks_count; i++) {
-        *(ac->sub_clocks++) = create_animation_sub_clock_from_JSON( cJSON_GetArrayItem(sub_clocks_JSON, i) );
+        *(clock->sub_clocks++) = create_animation_sub_clock(
+            cJSON_GetArrayItem(sub_clocks_JSON, i)
+        );
     }
 
     // Reset to first sub-clock pointer
-    ac->sub_clocks -= sub_clocks_count;
-    ac->sub_clocks_count = sub_clocks_count;
+    clock->sub_clocks -= sub_clocks_count;
+    clock->sub_clocks_count = sub_clocks_count;
 
-    return ac;
+    return clock;
 }
 
-void AC_update_sub_clocks(Animation_Clock* ac)
+void update_animation_clock_children(Animation_Clock* animation_clock)
 {
-    for (int i = 0; i < ac->sub_clocks_count; i++) {
-        update_animation_sub_clock(ac->sub_clocks[i], ac->current_tick);
+    for (int i = 0; i < animation_clock->sub_clocks_count; i++) {
+        update_animation_sub_clock(animation_clock->sub_clocks[i], animation_clock->current_tick);
     }
 }
 
-void AC_update(Animation_Clock* ac, int game_clock_tick)
+void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tick)
 {
-    for (int i = 0; i < ac->changing_ticks_count; i++) {
+    for (int i = 0; i < animation_clock->changing_ticks_count; i++) {
 
         // Update tick if a game clock tick is found amongst changing ticks
-        if (game_clock_tick == ac->changing_ticks[i]) {
-            ac->current_tick = i;
+        if (game_clock_tick == animation_clock->changing_ticks[i]) {
+            animation_clock->current_tick = i;
 
             // Animation clock update, so update its sub-clocks
-            AC_update_sub_clocks(ac);
+            update_animation_clock_children(animation_clock);
         }
     }
 }
 
-int* AC_get_ASC_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index anim_sc_index)
+int* get_animation_clock_child_tick_ptr(
+    Animation_Clock* animation_clock, 
+    Animation_Sub_Clock_Index anim_sc_index
+)
 {
-    return get_animation_sub_clock_tick_ptr(ac->sub_clocks[anim_sc_index]);
+    return get_animation_sub_clock_tick_ptr(animation_clock->sub_clocks[anim_sc_index]);
 }
 
-void AC_free(Animation_Clock* ac)
+void free_animation_clock(Animation_Clock* ac)
 {
     for (int i = 0; i < ac->sub_clocks_count; i++) {
         free_animation_sub_clock(ac->sub_clocks[i]);

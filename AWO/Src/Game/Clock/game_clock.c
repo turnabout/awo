@@ -30,7 +30,7 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON)
 
     // Create the game clock's animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-        game_clock->animation_clocks[i] = AC_create_from_JSON(
+        game_clock->animation_clocks[i] = create_animation_clock(
             cJSON_GetArrayItem(clock_data_JSON, i)
         );
     }
@@ -51,7 +51,7 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
 
         // Update the animation clocks
         for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-            AC_update(game_clock->animation_clocks[i], game_clock->current_tick);
+            update_animation_clock(game_clock->animation_clocks[i], game_clock->current_tick);
         }
     }
 }
@@ -62,7 +62,7 @@ int* get_game_clock_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Ani
         return gc->static_tick;
     }
 
-    return AC_get_ASC_tick_ptr(gc->animation_clocks[ac_index], sc_index);
+    return get_animation_clock_child_tick_ptr(gc->animation_clocks[ac_index], sc_index);
 }
 
 void free_game_clock(Game_Clock* gc)
@@ -71,7 +71,7 @@ void free_game_clock(Game_Clock* gc)
 
     // Free all attached animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-        AC_free(gc->animation_clocks[i]);
+        free_animation_clock(gc->animation_clocks[i]);
     }
 
     free(gc);

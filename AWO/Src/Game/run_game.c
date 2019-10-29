@@ -9,7 +9,6 @@ static Animation** test_unit_animation;
 void update_game(Game* game, float delta_time)
 {
     update_game_clock(game->clock, delta_time);
-    // printf("%.6f\n", delta_time);
 }
 
 void render_game(Game* game)
