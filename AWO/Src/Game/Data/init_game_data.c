@@ -27,7 +27,7 @@ int get_data_JSON(const cJSON **data_JSON)
 int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
 {
     // Load cJSON data object
-    const cJSON* data_JSON;
+    cJSON* data_JSON;
 
     if (!get_data_JSON(&data_JSON)) {
         return 0;
@@ -50,15 +50,10 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
         projection
     );
 
-    // Create game clock from data
-    // TODO
-
-    // create_game_clock(const cJSON* JSON)
-    /*
-    game->clock = GC_create(
-        cJSON_GetObjectItemCaseSensitive(visuals_JSON, "animationClocks")
+    // Create game clock
+    game->clock = create_game_clock(
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
     );
-    */
 
     // Delete parsed cJSON data object
     cJSON_Delete(data_JSON);

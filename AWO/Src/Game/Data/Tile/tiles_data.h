@@ -50,6 +50,9 @@ Tile_Variation get_tile_default_var(Tiles_Data* td, Tile_Type type);
 // Returns string corresponding to variation and stores variation value in given pointer.
 const char* get_next_tile_var_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val);
 
+// Frees all memory occupied by tiles data.
+void free_tiles_data(Tiles_Data* tiles_data);
+
 #ifdef _DEBUG
 // Print contents from tiles data.
 void print_tiles_data(Tiles_Data* td);

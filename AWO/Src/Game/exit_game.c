@@ -5,9 +5,11 @@
 
 void exit_game(Game* game)
 {
-    // TODO: Free other resources
+    glfwTerminate();
 
-    // glfwTerminate();
+    free_tiles_data(game->tiles_data);
+    free_units_data(game->units_data);
+    free_game_clock(game->clock);
 
     if (game != NULL) {
         free(game);

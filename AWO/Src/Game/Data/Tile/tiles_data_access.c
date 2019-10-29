@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <c_hashmap.h>
 
 #include "Game/Data/Tile/_tiles_data.h"
@@ -119,6 +120,12 @@ Animation* gather_tile_data(
     }
 
     return tile_var_data->animation;
+}
+
+void free_tiles_data(Tiles_Data* tiles_data)
+{
+    // TODO
+    free(tiles_data);
 }
 
 #ifdef _DEBUG

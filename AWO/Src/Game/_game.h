@@ -6,6 +6,7 @@
 #include "Game/game.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
+#include "Game/Clock/game_clock.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
 
 struct Game {
@@ -14,6 +15,8 @@ struct Game {
 
     Tiles_Data* tiles_data;
     Units_Data* units_data;
+
+    Game_Clock* clock;
 
     int w;
     int h;

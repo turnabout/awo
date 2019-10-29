@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "Game/Data/Unit/_units_data.h"
 
@@ -15,6 +16,7 @@ Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Unit_Var
 void free_units_data(Units_Data* units_data)
 {
     // TODO
+    free(units_data);
 }
 
 #ifdef _DEBUG

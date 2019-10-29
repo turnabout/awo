@@ -5,7 +5,7 @@
 #include "Game/Clock/Animation_Clock/enums.h"
 
 typedef struct Animation_Sub_Clock {
-    int current_tick; // Current tick of this animation sub clock
+    int current_tick;  // Current tick of this animation sub clock
     int* ticks_array;  // Array of every possible game tick
 } Animation_Sub_Clock;
 
