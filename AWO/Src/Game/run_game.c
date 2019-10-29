@@ -8,6 +8,8 @@ static Animation** test_unit_animation;
 
 void update_game(Game* game, float delta_time)
 {
+    update_game_clock(game->clock, delta_time);
+    // printf("%.6f\n", delta_time);
 }
 
 void render_game(Game* game)
@@ -46,7 +48,11 @@ void run_game(Game* game)
     static float delta_time = 0.0f;      // Time between current frame and last frame.
     static float last_frame_time = 0.0f; // Time of last frame.
 
+    // Use vSync
     glfwSwapInterval(1);
+
+    // Reset the GLFW timer before starting the game loop
+    glfwSetTime(0);
 
     while (!glfwWindowShouldClose(game->window)) {
 
@@ -58,6 +64,7 @@ void run_game(Game* game)
         glfwPollEvents();
 
         glClear(GL_COLOR_BUFFER_BIT);
+        update_game(game, delta_time);
         render_game(game);
 
         glfwSwapBuffers(game->window);

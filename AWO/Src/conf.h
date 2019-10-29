@@ -23,11 +23,11 @@
 
 // Game speed
 #define FPS 60
-#define SCREEN_TICKS_PER_FRAME 1000 / FPS
+#define FRAME_TIME 1.0f / FPS
 
 // Game clock
-#define GAME_CLOCK_MAX_ACCUM_MS SCREEN_TICKS_PER_FRAME * 2
-#define GAME_CLOCK_TICK_MAX 45
+#define GAME_CLOCK_FRAMES_TO_TICK 60 // How many frames it takes it tick the game clock
+#define GAME_CLOCK_TICK_MAX       45 // Game clock's maximum tick value before resetting
 
 // Default dimension of a tile (pixels)
 #define DEFAULT_TILE_DIMENSION 16

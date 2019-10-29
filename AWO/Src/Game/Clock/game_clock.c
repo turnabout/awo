@@ -6,60 +6,52 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-struct Game_Clock {
-    Uint8 current_tick;    // Current tick the game clock is on
-    Uint32 accum_ms;       // Accumulated milliseconds
-    Uint32 last_game_tick; // Result of SDL_GetTicks() last time the game clock was updated
+// How much time (in seconds) must be accumulated before the game clock ticks
+static const float GAME_CLOCK_MAX_ACCUM = FRAME_TIME * GAME_CLOCK_FRAMES_TO_TICK;
 
-    Animation_Clock* anim_clocks[ANIMATION_CLOCK_COUNT]; // Animation clocks attached to game clock
+struct Game_Clock {
+    Uint8 current_tick; // Current tick the game clock is on
+    float accum_time;   // Accumulated game delta time
+    Animation_Clock* animation_clocks[ANIMATION_CLOCK_COUNT]; // Animation clocks attached to game clock
     int* static_tick; // Static tick counter, always pointing to 0. Given to static tiles.
 };
 
-Game_Clock* create_game_clock(const cJSON* JSON)
+Game_Clock* create_game_clock(const cJSON* clock_data_JSON)
 {
     // Create the game clock
-    Game_Clock* gc = (Game_Clock*)malloc(sizeof(Game_Clock));
+    Game_Clock* game_clock = (Game_Clock*)malloc(sizeof(Game_Clock));
 
-    gc->current_tick = 0;
-    gc->accum_ms = 0;
-    gc->last_game_tick = 0; // TODO: use GLFW time functions
+    game_clock->current_tick = 0;
+    game_clock->accum_time = 0.0f;
 
     // Add static tick
-    gc->static_tick = malloc(sizeof(int));
-    *gc->static_tick = 0;
+    game_clock->static_tick = malloc(sizeof(int));
+    *game_clock->static_tick = 0;
 
     // Create the game clock's animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-        gc->anim_clocks[i] = AC_create_from_JSON(
-            cJSON_GetArrayItem(JSON, i)
+        game_clock->animation_clocks[i] = AC_create_from_JSON(
+            cJSON_GetArrayItem(clock_data_JSON, i)
         );
     }
 
-    return gc;
+    return game_clock;
 }
 
-void update_game_clock(Game_Clock* gc)
+void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
-    // Get how many milliseconds passed since last update
-    // Uint32 current_tick = SDL_GetTicks();
-    Uint32 current_tick = 0; // TODO: Use GLFW time functions
-    Uint32 delta = current_tick - gc->last_game_tick;
-
-    gc->last_game_tick = current_tick;
-
-    // Threshold reached, advance the current tick
     // Add to MS accumulation, advance current tick if threshold reached
-    if ((gc->accum_ms += delta) > GAME_CLOCK_MAX_ACCUM_MS) {
-        gc->accum_ms = 0;
+    if ((game_clock->accum_time += delta_time) > GAME_CLOCK_MAX_ACCUM) {
+        game_clock->accum_time = 0;
 
         // Reset tick if exceeded max
-        if (++gc->current_tick > GAME_CLOCK_TICK_MAX) {
-            gc->current_tick = 0;
+        if (++game_clock->current_tick > GAME_CLOCK_TICK_MAX) {
+            game_clock->current_tick = 0;
         }
 
         // Update the animation clocks
         for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-            AC_update(gc->anim_clocks[i], gc->current_tick);
+            AC_update(game_clock->animation_clocks[i], game_clock->current_tick);
         }
     }
 }
@@ -70,7 +62,7 @@ int* get_game_clock_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Ani
         return gc->static_tick;
     }
 
-    return AC_get_ASC_tick_ptr(gc->anim_clocks[ac_index], sc_index);
+    return AC_get_ASC_tick_ptr(gc->animation_clocks[ac_index], sc_index);
 }
 
 void free_game_clock(Game_Clock* gc)
@@ -79,7 +71,7 @@ void free_game_clock(Game_Clock* gc)
 
     // Free all attached animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-        AC_free(gc->anim_clocks[i]);
+        AC_free(gc->animation_clocks[i]);
     }
 
     free(gc);
