@@ -10,9 +10,9 @@
 
 typedef struct Auto_Var
 {
-    Tile_Variation var;           // The variation selected by this auto var
-    int adjacent_tiles[4];  // Array pointing out which adjacent tiles are acceptable for this auto
-                            // var to be selected
+    Tile_Variation tile_var; // The variation selected by this auto tile_var
+    int adjacent_tiles[4];   // Array pointing out which adjacent tiles are acceptable for this 
+                             // auto tile_var to be selected.
 } Auto_Var;
 
 typedef enum {
@@ -40,7 +40,7 @@ typedef struct Tile_Type_Data
 // A tile variation's visual data
 typedef struct Tile_Var_Data
 {
-    Animation_Sub_Clock_Index sub_clock; // Sub clock used by this tile var to update its animation
+    Animation_Sub_Clock_Index sub_clock; // Sub clock used by this tile tile_var to update its animation
     Animation* animation;                // This tile variation's animation
 } Tile_Var_Data;
 

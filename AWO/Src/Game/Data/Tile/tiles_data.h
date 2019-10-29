@@ -28,7 +28,7 @@ Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection);
  *  @param[in] right_tile The right adjacent tile.
  *  @param[in] bottom_tile The bottom adjacent tile.
  *  @param[in] left_tile The left adjacent tile.
- *  @return The generated auto var.
+ *  @return The generated auto tile_var.
  */
 Tile_Variation get_tile_auto_var(
     Tiles_Data* tiles_data,

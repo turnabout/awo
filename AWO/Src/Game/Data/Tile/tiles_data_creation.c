@@ -19,7 +19,7 @@ Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection)
     return tiles_data;
 }
 
-// Get a tile's auto var data struct
+// Get a tile's auto tile_var data struct
 Auto_Var* get_tile_auto_var_data(
     const cJSON* auto_var_json, 
     int* auto_vars_amount, 
@@ -46,7 +46,7 @@ Auto_Var* get_tile_auto_var_data(
             (void**)(&var)
         );
 
-        auto_var[auto_var_index].var = *var;
+        auto_var[auto_var_index].tile_var = *var;
 
         // Get adjacent tiles values
         const cJSON* auto_var_arr = cJSON_GetObjectItemCaseSensitive(auto_var_item_json, "adjTiles");
@@ -93,7 +93,7 @@ void get_tiles_src_data(Tiles_Data* tiles_data, const cJSON* src_json, mat4 ss_p
         const cJSON* tile_vars_json; // JSON holding all variations of this tile
         const cJSON* tile_var_json;  // JSON holding currently looped variation of this tile
         const cJSON* var_sub_clocks; // JSON holding this tile's variations' sub clocks
-        const cJSON* auto_var_json;  // JSON holding this tile type's auto-var data
+        const cJSON* auto_var_json;  // JSON holding this tile type's auto-tile_var data
 
         Tile_Type_Data* tile_data; // The tile data object representing this tile to be populated
         map_t vars_hashmap;        // Hashmap containing animations for this tile's variations
@@ -113,7 +113,7 @@ void get_tiles_src_data(Tiles_Data* tiles_data, const cJSON* src_json, mat4 ss_p
         vars_list = malloc(sizeof(Tile_Type_Data) * vars_amount);
 
         // TODO: Only do this when game mode is design room
-        // Get this tile's auto var data
+        // Get this tile's auto tile_var data
         if (auto_var_json->type != cJSON_NULL) {
 
             tile_data->auto_vars = get_tile_auto_var_data(

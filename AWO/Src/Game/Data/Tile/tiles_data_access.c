@@ -86,7 +86,7 @@ Tile_Variation get_tile_auto_var(
             (auto_var.adjacent_tiles[Auto_Var_Down]  & (1 << bottom_tile)) &&
             (auto_var.adjacent_tiles[Auto_Var_Left]  & (1 << left_tile))
         ) {
-            return auto_var.var;
+            return auto_var.tile_var;
         }
     }
 
