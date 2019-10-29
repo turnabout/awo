@@ -1,9 +1,7 @@
 #include <stdlib.h>
-#include <cglm/cglm.h>// TODO: temp, remove
 
 #include "Game/Sprite_Batch/sprite_batch.h"
-
-static mat4 texture_projection; // TODO: temporary, remove
+#include "Game/Data/Animation/animation.h"
 
 struct Sprite_Batch {
     GLuint VAO;
@@ -57,10 +55,6 @@ Sprite_Batch* create_sprite_batch(GLuint shader_program, GLuint sprite_sheet_tex
     sprite_batch->elements_max = max_elements;
     sprite_batch->elements_queued = 0;
 
-    // Set texture projection matrix TODO: temporary, remove
-    int ss_w = 628, ss_h = 396;
-    glm_ortho(0.0f, (float)ss_w, (float)ss_h, 0.0f, -1.0f, 1.0f, texture_projection);
-
     return sprite_batch;
 }
 
@@ -78,37 +72,36 @@ void begin_sprite_batch(Sprite_Batch* sprite_batch)
     sprite_batch->elements_queued = 0;
 }
 
-// TODO: Need to take in dimensions (width/height) vec2
-void add_to_sprite_batch(Sprite_Batch* sprite_batch, vec2 dst, vec4 tex_data)
+void add_to_sprite_batch(Sprite_Batch* sprite_batch, vec2 dst, Frame* frame_data)
 {
-    vec4 top_left     = {tex_data[0],               tex_data[1],               0.0f, 1.0f};
-    vec4 top_right    = {tex_data[0] + tex_data[2], tex_data[1],               0.0f, 1.0f};
-    vec4 bottom_left  = {tex_data[0],               tex_data[1] + tex_data[3], 0.0f, 1.0f};
-    vec4 bottom_right = {tex_data[0] + tex_data[2], tex_data[1] + tex_data[3], 0.0f, 1.0f};
-
-    // Transform texture data into Normalized Device Coordinates
-    // TODO: tex_data will need to have been normalized beforehand, do this elsewhere
-    glm_mat4_mulv(texture_projection, top_left, top_left);
-    glm_mat4_mulv(texture_projection, top_right, top_right);
-    glm_mat4_mulv(texture_projection, bottom_left, bottom_left);
-    glm_mat4_mulv(texture_projection, bottom_right, bottom_right);
-
-    top_left[0]     = (top_left[0] / 2) + 0.50f;
-    top_left[1]     = (top_left[1] / 2) + 0.50f;
-    top_right[0]    = (top_right[0] / 2) + 0.50f;
-    top_right[1]    = (top_right[1] / 2) + 0.50f;
-    bottom_left[0]  = (bottom_left[0] / 2) + 0.50f;
-    bottom_left[1]  = (bottom_left[1] / 2) + 0.50f;
-    bottom_right[0] = (bottom_right[0] / 2) + 0.50f;
-    bottom_right[1] = (bottom_right[1] / 2) + 0.50f;
-
     // Set the quad's vertices data
-    GLfloat quad_vertices[] = {
-        // Pos                                      // Tex
-        dst[0],               dst[1] + tex_data[3], top_left[0],     top_left[1],     // Top left
-        dst[0] + tex_data[2], dst[1] + tex_data[3], top_right[0],    top_right[1],    // Top right
-        dst[0],               dst[1],               bottom_left[0],  bottom_left[1],  // Bot. left
-        dst[0] + tex_data[2], dst[1],               bottom_right[0], bottom_right[1], // Bot. right
+    // TODO: un-hardcode [4][4]
+    GLfloat quad_vertices[4][4] = {
+
+        // Top left
+        { 
+            dst[0], dst[1] + frame_data->dimensions[1],      // Destination
+            frame_data->top_left[0], frame_data->top_left[1] // Texture
+        },     
+
+        // Top right
+        {
+            dst[0] + frame_data->dimensions[0], dst[1] + frame_data->dimensions[1],
+            frame_data->top_right[0], frame_data->top_right[1]
+        },
+
+        // Bottom left
+        {
+            dst[0], dst[1], 
+            frame_data->bottom_left[0],frame_data->bottom_left[1]
+        },
+
+        // Bottom right
+        {
+            dst[0] + frame_data->dimensions[0], dst[1], 
+            frame_data->bottom_right[0], frame_data->bottom_right[1]
+        }
+
     };
 
     // Store vertices data in previously allocated buffer

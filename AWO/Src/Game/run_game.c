@@ -14,36 +14,25 @@ void render_game(Game* game)
     // Draw main sprites
     begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
 
-    // Test sprite 1
     add_to_sprite_batch(
         game->sprite_batches[SPRITES_SPRITE_BATCH], 
-        (vec2) { 500, 500 }, 
-        (vec4) {549, 64, 15, 16}
+        (vec2) { 0, 0 }, 
+        &test_animation->frames[0]
     );
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-
-    // Test sprite 2
-    /*
-    add_to_sprite_batch(
-        game->sprite_batches[SPRITES_SPRITE_BATCH], 
-        (vec2) { 515, 500 }, 
-        (vec4) {549, 16, 15, 16}
-    );
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    */
 
     end_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
 }
 
 void run_game(Game* game)
 {
+    // Test drawing 
     test_animation = gather_tile_data(
         game->tiles_data, 
-        Plain, Default, 
+        Sea, Middle, 
         NULL, 
         NULL
     );
-    // ------------------------------------------------------------------------
 
     static float delta_time = 0.0f;      // Time between current frame and last frame.
     static float last_frame_time = 0.0f; // Time of last frame.
