@@ -7,21 +7,37 @@
 // Main game clock used for updating and keeping animations synchronized.
 typedef struct Game_Clock Game_Clock;
 
-// Create the game clock, along with its animation clocks using the given data JSON
+/*! @brief Creates the game clock along with its animation clocks.
+ *
+ *  @param[in] clock_data_cJSON The data JSON object describing the game clock and its animation 
+ *  clocks.
+ *  @param[in] delta_time Time elapsed since the last game frame.
+ */
 Game_Clock* create_game_clock(const cJSON* clock_data_JSON);
 
-// Update the game clock's current tick value
+/*! @brief Keeps the game clock's current tick updated, along with its animation clocks.
+ *
+ *  @param[in] game_clock The game clock.
+ *  @param[in] delta_time Time elapsed since the last game frame.
+ */
 void update_game_clock(Game_Clock* game_clock, float delta_time);
 
-// Gets pointer to the tick counter belonging to the given animation clock & animation sub-clock
-// \param gc       Pointer to the game clock.
-// \param ac_index Index of the animation clock, to which the sought sub-clock belongs.
-// \param sc_index Index of the sought sub-clock, from which the tick pointer will be returned.
+/*! @brief Gets pointer to the tick counter corresponding to given animation clock & sub-clock.
+ *
+ *  @param[in] game_clock The game clock.
+ *  @param[in] animation_clock_index Index of the animation clock holding the sub-clock.
+ *  @param[in] sub_clock_index Index of the sought sub-clock, from which the tick pointer will be 
+ *  returned.
+ *  @return The tick counter pointer.
+ */
 int* get_game_clock_tick_ptr(
     Game_Clock* game_clock, 
     Animation_Clock_Index animation_clock_index, 
     Animation_Sub_Clock_Index sub_clock_index
 );
 
-// Free the game clock's allocated memory
+/*! @brief Frees the game clock's allocated memory.
+ *
+ *  @param[in] game_clock The game clock.
+ */
 void free_game_clock(Game_Clock* clock);
