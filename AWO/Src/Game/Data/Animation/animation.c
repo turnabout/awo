@@ -37,7 +37,6 @@ void create_frame_from_JSON(Frame* frame_ptr, const cJSON* frame_JSON, mat4 proj
     // The above transformation leaves us with coordinates between -1,-1 and 1,1, so we need
     // to transform them so they all fit between 0,0 and 1,1.
     // Dividing each vertex by 2 and adding 0.5 does the trick.
-    // TODO: use glm funcs
     top_left[0]     = (top_left[0] / 2) + 0.50f;
     top_left[1]     = (top_left[1] / 2) + 0.50f;
     top_right[0]    = (top_right[0] / 2) + 0.50f;
