@@ -11,7 +11,7 @@
 typedef struct Tiles_Data Tiles_Data;
 
 // Create tiles data object from JSON.
-Tiles_Data* create_tiles_data(cJSON* tiles_visuals_JSON, mat4 ss_projection);
+Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection);
 
 // Gets the tile variation the given middle tile should have, according to the given adjacent 
 // tiles.

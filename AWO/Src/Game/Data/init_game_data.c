@@ -45,7 +45,7 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
     );
 
     // Gather tiles data
-    game->tiles_data = create_tiles_data(
+    game->tiles_data = create_tiles_data_from_JSON(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
         projection
     );
@@ -61,7 +61,7 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
     */
 
     // Delete parsed cJSON data object
-    // TODO
+    cJSON_Delete(data_JSON);
 
     return 1;
 }

@@ -5,7 +5,7 @@
 
 void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projection);
 
-Tiles_Data* create_tiles_data(cJSON* tiles_visuals_JSON, mat4 ss_projection)
+Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection)
 {
     Tiles_Data* td = malloc(sizeof(Tiles_Data));
 

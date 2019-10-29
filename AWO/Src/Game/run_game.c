@@ -18,8 +18,8 @@ void render_game(Game* game)
     add_to_sprite_batch(
         game->sprite_batches[SPRITES_SPRITE_BATCH], 
         (vec2) { 500, 500 }, 
-        // &test_animation->frames[0]
-        &(test_unit_animation[Right]->frames[0])
+        &test_animation->frames[0]
+        // &(test_unit_animation[Right]->frames[0])
     );
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -32,7 +32,7 @@ void run_game(Game* game)
     // Test drawing 
     test_animation = gather_tile_data(
         game->tiles_data, 
-        Sea, Middle, 
+        River, Horizontal, 
         NULL, 
         NULL
     );
