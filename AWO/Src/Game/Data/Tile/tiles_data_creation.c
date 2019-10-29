@@ -5,7 +5,7 @@
 
 void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projection);
 
-Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection)
+Tiles_Data* create_tiles_data(cJSON* tiles_visuals_JSON, mat4 ss_projection)
 {
     Tiles_Data* td = malloc(sizeof(Tiles_Data));
 
@@ -93,7 +93,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projectio
         const cJSON* var_sub_clocks; // JSON holding this tile's variations' sub clocks
         const cJSON* auto_var_json;  // JSON holding this tile type's auto-var data
 
-        Tile_Data* tile_data;        // The tile data object representing this tile to be populated
+        Tile_Type_Data* tile_data;        // The tile data object representing this tile to be populated
         map_t vars_hashmap;          // Hashmap containing animations for this tile's variations
         int vars_amount;             // Amount of variations this tile has
         Tile_Variation* vars_list;         // List of every variation this tile has
@@ -103,12 +103,12 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projectio
         auto_var_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "autoVars");
 
         // Initialize tile data
-        tile_data = malloc(sizeof(Tile_Data));
+        tile_data = malloc(sizeof(Tile_Type_Data));
         vars_hashmap = hashmap_new();
 
         // Get amount of variations and initialize list of variations
         vars_amount = cJSON_GetArraySize(tile_vars_json);
-        vars_list = malloc(sizeof(Tile_Data) * vars_amount);
+        vars_list = malloc(sizeof(Tile_Type_Data) * vars_amount);
 
         // TODO: Only do this when game mode is design room
         // Get this tile's auto var data

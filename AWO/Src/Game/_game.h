@@ -5,6 +5,7 @@
 
 #include "Game/game.h"
 #include "Game/Data/Tile/tiles_data.h"
+#include "Game/Data/Unit/units_data.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
 
 struct Game {
@@ -12,6 +13,7 @@ struct Game {
     Sprite_Batch* sprite_batches[SPRITE_BATCH_TYPE_COUNT];
 
     Tiles_Data* tiles_data;
+    Units_Data* units_data;
 
     int w;
     int h;

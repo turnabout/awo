@@ -9,15 +9,9 @@
 
 // Holds all of the game's visuals data for tiles.
 typedef struct Tiles_Data Tiles_Data;
-typedef struct Tile_Data Tile_Data;
 
 // Create tiles data object from JSON.
-Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection);
-
-// Gets the palette for the given tile weather variation.
-// \param td The tiles data object.
-// \param weather The weather variation of the palette.
-// Palette_Tree* TD_get_palette(Tiles_Data* td, Weather weather);
+Tiles_Data* create_tiles_data(cJSON* tiles_visuals_JSON, mat4 ss_projection);
 
 // Gets the tile variation the given middle tile should have, according to the given adjacent 
 // tiles.

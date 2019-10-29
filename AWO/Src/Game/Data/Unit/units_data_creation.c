@@ -1,85 +1,66 @@
-#include "_units_data_internal.h"
+#include <stdlib.h>
 
-Units_Data* UD_create_from_JSON(const cJSON* ud_JSON)
+#include "Game/Data/Unit/_units_data.h"
+
+Unit_Type_Data* create_unit_src_data(const cJSON* unit_type_JSON, mat4 ss_projection)
 {
-    Units_Data* ud = malloc(sizeof(Units_Data));
-
-    // Store metadata & JSON for palettes
-    ud->ss_metadata = SS_Meta_create_from_JSON(ud_JSON);
-    ud->JSON = ud_JSON;
-
-    // Store source and destination data
-    get_units_src_data(ud, cJSON_GetObjectItemCaseSensitive(ud_JSON, "src"));
-    get_units_dst_data(ud, cJSON_GetObjectItemCaseSensitive(ud_JSON, "dst"));
-
-    return ud;
-}
-
-void get_units_src_data(Units_Data* ud, const cJSON* src_json)
-{
-    const cJSON* unit_type_json;
-    Unit_Type current_type = UNIT_TYPE_FIRST;
-
-    cJSON_ArrayForEach(unit_type_json, src_json)
-    {
-        ud->src[current_type++] = get_unit_src_data(unit_type_json);
-    }
-}
-
-void get_units_dst_data(Units_Data* ud, const cJSON* dst_json)
-{
-    const cJSON* unit_type_json;
-    Unit_Type current_type = UNIT_TYPE_FIRST;
-
-    cJSON_ArrayForEach(unit_type_json, dst_json)
-    {
-        const cJSON* unit_anim_json;
-        Unit_Anim current_anim = UNIT_ANIM_FIRST;
-
-        cJSON_ArrayForEach(unit_anim_json, unit_type_json)
-        {
-            ud->dst[current_type][current_anim++] = anim_create_from_JSON(unit_anim_json);
-        }
-
-        current_type++;
-    }
-}
-
-Src_Unit_Type* get_unit_src_data(const cJSON* unit_type_json)
-{
-    Src_Unit_Type* type;        // The unit type data struct returned
-    Animation*** vars;     // Data for this unit type's variations
-    const cJSON* unit_var_json; // cJSON data for current variation
+    Unit_Type_Data* type;        // The unit type data struct returned
+    Animation*** variations;    // Data for this unit type's variations
+    const cJSON* unit_var_JSON; // cJSON data for current variation
 
     // Initialize unit type and its variation count
-    type = malloc(sizeof(struct Src_Unit_Type));
-    type->vars_count = cJSON_GetArraySize(unit_type_json);
+    type = malloc(sizeof(struct Unit_Type_Data));
+    type->variations_count = cJSON_GetArraySize(unit_type_JSON);
 
     // Initialize Variations' memory
-    vars = malloc(sizeof(Animation**) * type->vars_count);
+    variations = malloc(sizeof(Animation**) * type->variations_count);
 
     // Loop variations
-    cJSON_ArrayForEach(unit_var_json, unit_type_json)
+    cJSON_ArrayForEach(unit_var_JSON, unit_type_JSON)
     {
-        const cJSON* unit_anim_json; // cJSON data for current Animation
-        Animation** anims;      // All Animations data for this Variation
+        Animation** animations;
 
         // Initialize Animations' memory
-        anims = malloc(sizeof(Animation*) * UNIT_ANIM_COUNT); 
+        animations = malloc(sizeof(Animation*) * UNIT_ANIM_COUNT); 
 
         // Loop animations
-        cJSON_ArrayForEach(unit_anim_json, unit_var_json)
+        const cJSON* unit_anim_JSON;
+        cJSON_ArrayForEach(unit_anim_JSON, unit_var_JSON)
         {
-            *(anims++) = anim_create_from_JSON(unit_anim_json);
+            *(animations++) = create_animation_from_JSON(unit_anim_JSON, ss_projection);
         };
 
-        // Reset anims pointer to the first variation, then save accumulated data
-        anims -= UNIT_ANIM_COUNT;
-        *(vars++) = anims;
+        // Reset animations pointer to the first variation, then save accumulated data
+        animations -= UNIT_ANIM_COUNT;
+        *(variations++) = animations;
     }
 
-    vars -= type->vars_count;
-    type->vars = vars;
+    variations -= type->variations_count;
+    type->variations = variations;
 
     return type;
+}
+
+void create_units_src_data(Units_Data* units_data, const cJSON* src_JSON, mat4 ss_projection)
+{
+    const cJSON* unit_type_JSON;
+    Unit_Type current_type = UNIT_TYPE_FIRST;
+
+    cJSON_ArrayForEach(unit_type_JSON, src_JSON)
+    {
+        units_data->src[current_type++] = create_unit_src_data(unit_type_JSON, ss_projection);
+    }
+}
+
+Units_Data* create_units_data(const cJSON* units_data_JSON, mat4 ss_projection)
+{
+    Units_Data* units_data = malloc(sizeof(Units_Data));
+
+    create_units_src_data(
+        units_data, 
+        cJSON_GetObjectItemCaseSensitive(units_data_JSON, "src"),
+        ss_projection
+    );
+
+    return units_data;
 }

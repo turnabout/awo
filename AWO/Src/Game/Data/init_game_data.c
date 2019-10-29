@@ -38,14 +38,17 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
     mat4 projection;
     glm_ortho(0.0f, (float)sprite_sheet_w, (float)sprite_sheet_h, 0.0f, -1.0f, 1.0f, projection);
 
-    // Gather tiles data
-    game->tiles_data = create_tiles_data_from_JSON(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
+    // Gather units data
+    game->units_data = create_units_data(
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "units"),
         projection
     );
 
-    // Gather units data
-    // TODO
+    // Gather tiles data
+    game->tiles_data = create_tiles_data(
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
+        projection
+    );
 
     // Create game clock from data
     // TODO

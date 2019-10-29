@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Utilities/macros.h"
 
 // Unit Type
@@ -38,7 +39,7 @@ static const char* unit_type_str[] = {FOREACH_UNIT_TYPE(GENERATE_STRING)};
     UNITVAR(YC) \
     UNITVAR(BH) \
 
-typedef enum {FOREACH_UNIT_VAR(GENERATE_ENUM)} Unit_Var;
+typedef enum {FOREACH_UNIT_VAR(GENERATE_ENUM)} Unit_Variation;
 static const char* unit_var_str[] = {FOREACH_UNIT_VAR(GENERATE_STRING)};
 
 #define UNIT_VAR_FIRST OS

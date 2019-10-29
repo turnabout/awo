@@ -4,6 +4,7 @@
 #include "Game/Sprite_Batch/sprite_batch.h"
 
 static Animation* test_animation;
+static Animation** test_unit_animation;
 
 void update_game(Game* game, float delta_time)
 {
@@ -16,9 +17,11 @@ void render_game(Game* game)
 
     add_to_sprite_batch(
         game->sprite_batches[SPRITES_SPRITE_BATCH], 
-        (vec2) { 0, 0 }, 
-        &test_animation->frames[0]
+        (vec2) { 500, 500 }, 
+        // &test_animation->frames[0]
+        &(test_unit_animation[Right]->frames[0])
     );
+
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     end_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
@@ -32,6 +35,12 @@ void run_game(Game* game)
         Sea, Middle, 
         NULL, 
         NULL
+    );
+
+    test_unit_animation = get_unit_animations(
+        game->units_data,
+        Tank,
+        OS
     );
 
     static float delta_time = 0.0f;      // Time between current frame and last frame.

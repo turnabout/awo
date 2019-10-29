@@ -1,99 +1,44 @@
-#ifdef _DEBUG
 #include <stdio.h>
-#endif
 
-#include "units_data.h"
-#include "_units_data_internal.h"
+#include "Game/Data/Unit/_units_data.h"
 
-// TODO: Instead, return a Palette_Tree* and store the 'flip' value in an additional pointer arg
-Palette_Tree* UD_get_palette(Units_Data* ud, Unit_Var u_var, int* flip)
-{
-    const cJSON* base = cJSON_GetObjectItemCaseSensitive(ud->JSON, "basePalette");
-    const cJSON* unit_palettes = cJSON_GetObjectItemCaseSensitive(ud->JSON, "palettes");
-
-    // Get cJSON item for the given palette
-    const cJSON* unit_palette = cJSON_GetArrayItem(unit_palettes, u_var);
-
-    if (cJSON_GetArraySize(unit_palette) < 1) {
-        return NULL;
-    }
-
-    // Get the result
-    *flip = cJSON_GetObjectItemCaseSensitive(unit_palette, "flip")->valueint;
-
-    return PT_create_from_JSON(
-        base, 
-        cJSON_GetObjectItemCaseSensitive(unit_palette, "palette")
-    );
-}
-
-Animation** UD_get_src_anims(Units_Data* ud, Unit_Type u_type, Unit_Var u_var)
+Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Unit_Variation variation)
 {
     // If variation doesn't exist on unit type, return data for default variation instead
-    Unit_Var returned_var = (u_var < ud->src[u_type]->vars_count)
-        ? u_var
+    Unit_Variation returned_var = (variation < units_data->src[type]->variations_count)
+        ? variation
         : UNIT_VAR_FIRST;
 
-    return ud->src[u_type]->vars[returned_var];
+    return units_data->src[type]->variations[returned_var];
 }
 
-Animation** UD_get_dst_anims(Units_Data* ud, Unit_Type u_type)
+void free_units_data(Units_Data* units_data)
 {
-    return ud->dst[u_type];
-}
-
-SS_Metadata* UD_get_ss_metadata(Units_Data* ud)
-{
-    return ud->ss_metadata;
+    // TODO
 }
 
 #ifdef _DEBUG
-void print_src_unit_type(Src_Unit_Type* src_u_type)
+void print_unit_type_data(Unit_Type_Data* unit_type_data)
 {
-    printf("Vars amount: %d\n", src_u_type->vars_count);
+    printf("Vars amount: %d\n", unit_type_data->variations_count);
 
     // Loop variations
-    for (Unit_Var u_var = UNIT_VAR_FIRST; u_var < src_u_type->vars_count; u_var++) {
-        printf("\n==========\n%s\n==========\n", unit_var_str[u_var]);
+    for (Unit_Variation var = UNIT_VAR_FIRST; var < unit_type_data->variations_count; var++) {
+        printf("\n==========\n%s\n==========\n", unit_var_str[var]);
 
         // Loop every animation
         for (Unit_Anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
             printf("\n%s\n----------", unit_anim_str[anim]);
-            anim_print(src_u_type->vars[u_var][anim]);
+            print_animation(unit_type_data->variations[var][anim]);
         }
     }
 }
 
-void UD_print(Units_Data* ud, UD_print_arg which)
+void print_units_data(Units_Data* units_data)
 {
-    switch (which) {
-
-    // Print source data
-    case UD_SRC:
-        printf("Units source data\n");
-        for (Unit_Type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {
-            printf("\n\n====================\n%s\n====================\n", unit_type_str[type]);
-            print_src_unit_type(ud->src[type]);
-        }
-        break;
-
-    // Print destination data
-    case UD_DST:
-        printf("Units destination data\n");
-        for (Unit_Type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {
-            printf("\n==========\n%s\n==========\n", unit_type_str[type]);
-
-            for (Unit_Anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {
-                printf("\n%s\n----------", unit_anim_str[anim]);
-                anim_print(ud->dst[type][anim]);
-            }
-        }
-        break;
+    for (Unit_Type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {
+        printf("\n\n====================\n%s\n====================\n", unit_type_str[type]);
+        print_unit_type_data(units_data->src[type]);
     }
 }
 #endif
-
-void UD_free(Units_Data* ud)
-{
-    // TODO
-}
