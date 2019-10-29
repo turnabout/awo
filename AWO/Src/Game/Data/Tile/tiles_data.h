@@ -7,16 +7,31 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/enums.h"
 
-// Holds all of the game's visuals data for tiles.
+// Holds all of the game's data for tiles.
 typedef struct Tiles_Data Tiles_Data;
 
-// Create tiles data object from JSON.
-Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection);
+/*! @brief Creates the tiles data object.
+ *
+ *  @param[in] tiles_data_JSON The JSON describing the tiles' data.
+ *  @param[in] ss_projection The sprite sheet projection matrix, used to transform sprite sheet
+ *             coordinates into Normalized Device Coordinates usable by OpenGL.
+ *  @return The generated tiles data object.
+ */
+Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection);
 
-// Gets the tile variation the given middle tile should have, according to the given adjacent 
-// tiles.
+/*! @brief Gets the tile variation the given middle tile should have, according to the given 
+ *  adjacent tiles.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] middle_tile The middle tile surrounded by the other given tiles.
+ *  @param[in] top_tile The top adjacent tile.
+ *  @param[in] right_tile The right adjacent tile.
+ *  @param[in] bottom_tile The bottom adjacent tile.
+ *  @param[in] left_tile The left adjacent tile.
+ *  @return The generated auto var.
+ */
 Tile_Variation get_tile_auto_var(
-    Tiles_Data* td,
+    Tiles_Data* tiles_data,
     Tile_Type middle_tile,
     Tile_Type top_tile,
     Tile_Type right_tile,
@@ -24,13 +39,15 @@ Tile_Variation get_tile_auto_var(
     Tile_Type left_tile
 );
 
-// Gather data on tile of given type & variation
-// \param td Tiles' data object.
-// \param tt The tile type.
-// \param tv The tile variation.
-// \param clock Pointer filled in with the tile's animation clock index.
-// \param clock Pointer filled in with the tile's sub-clock index.
-// \returns The tile's Animation object.
+/*! @brief Gathers data on tile of given type & variation.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] type The tile's type.
+ *  @param[in] variation The tile variation.
+ *  @param[out] clock_index Pointer filled in with the tile's animation clock index.
+ *  @param[out] sub_clock_index Pointer filled in with the tile's sub-clock index.
+ *  @return The tile's Animation object.
+ */
 Animation* gather_tile_data(
     Tiles_Data* tiles_data,
     Tile_Type type,
@@ -39,21 +56,45 @@ Animation* gather_tile_data(
     Animation_Sub_Clock_Index* sub_clock_index
 );
 
-// Gets the next animation for tile type. Must be called continuously until it returns NULL.
-// Goes through all tile variations of the tile type until all have been returned.
-Animation* get_next_tile_animation(Tiles_Data* td, Tile_Type tt);
+/*! @brief Gets the next tile variation belonging to the given tile type.
+ *  Must be called continuously until it returns NULL.
+ *  Goes through all tile variations of the tile type until all have been returned.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] type The tile's type.
+ *  @return The next tile variation belonging to this tile type or TILE_VAR_NONE if the tile
+ *          type has no more variation.
+ */
+Tile_Variation get_next_tile_type_var(Tiles_Data* tiles_data, Tile_Type type);
 
-// Gets the first (default) tile variation for a tile type.
-Tile_Variation get_tile_default_var(Tiles_Data* td, Tile_Type type);
+/*! @brief Gets the next tile variation animation for the given tile type.
+ *  Must be called continuously until it returns NULL.
+ *  Goes through all tile variations of the tile type until all have been returned.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] type The tile's type.
+ *  @return The next tile's Animation object or NULL if the tile has no more animation.
+ */
+Animation* get_next_tile_type_var_animation(Tiles_Data* tiles_data, Tile_Type type);
 
-// Gets the next tile variation data belonging to the given tile type.
-// Returns string corresponding to variation and stores variation value in given pointer.
-const char* get_next_tile_var_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val);
+/*! @brief Gets the first (default) tile variation for a tile type.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] type The tile's type.
+ *  @return The default tile variation for the given tile type.
+ */
+Tile_Variation get_tile_type_default_var(Tiles_Data* tiles_data, Tile_Type type);
 
-// Frees all memory occupied by tiles data.
+/*! @brief Frees all memory occupied by tiles data.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ */
 void free_tiles_data(Tiles_Data* tiles_data);
 
 #ifdef _DEBUG
-// Print contents from tiles data.
-void print_tiles_data(Tiles_Data* td);
+/*! @brief Prints all contents stored in tiles data.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ */
+void print_tiles_data(Tiles_Data* tiles_data);
 #endif

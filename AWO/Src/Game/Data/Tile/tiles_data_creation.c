@@ -5,18 +5,18 @@
 
 void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projection);
 
-Tiles_Data* create_tiles_data_from_JSON(cJSON* tiles_visuals_JSON, mat4 ss_projection)
+Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection)
 {
-    Tiles_Data* td = malloc(sizeof(Tiles_Data));
+    Tiles_Data* tiles_data = malloc(sizeof(Tiles_Data));
 
     // Add tiles' src data
     get_tiles_src_data(
-        td,
-        cJSON_GetObjectItemCaseSensitive(tiles_visuals_JSON, "src"),
+        tiles_data,
+        cJSON_GetObjectItemCaseSensitive(tiles_data_JSON, "src"),
         ss_projection
     );
 
-    return td;
+    return tiles_data;
 }
 
 // Get a tile's auto var data struct
@@ -63,7 +63,7 @@ Auto_Var* get_tile_auto_var_data(
 }
 
 // TODO: refactor/clean up
-void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projection)
+void get_tiles_src_data(Tiles_Data* tiles_data, const cJSON* src_json, mat4 ss_projection)
 {
     // Initialize temporary hashmap containing all variations, using short strings as keys.
     // This is done so we can access the corresponding tile variation for each tile, as we loop 
@@ -71,13 +71,15 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projectio
     map_t all_vars_hashmap = hashmap_new();
 
     for (Tile_Variation var = TILE_VAR_FIRST; var <= TILE_VAR_LAST; var++) {
-        Tile_Variation* v = malloc(sizeof(Tile_Variation));
-        *v = var;
+
+        // Have to malloc the tile variation, because hashmap_put requires a value to be a pointer
+        Tile_Variation* tile_variation = malloc(sizeof(Tile_Variation));
+        *tile_variation = var;
 
         hashmap_put(
             all_vars_hashmap,
             (char*)tile_var_str_short[var],
-            v
+            tile_variation
         );
     }
 
@@ -93,10 +95,10 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projectio
         const cJSON* var_sub_clocks; // JSON holding this tile's variations' sub clocks
         const cJSON* auto_var_json;  // JSON holding this tile type's auto-var data
 
-        Tile_Type_Data* tile_data;        // The tile data object representing this tile to be populated
-        map_t vars_hashmap;          // Hashmap containing animations for this tile's variations
-        int vars_amount;             // Amount of variations this tile has
-        Tile_Variation* vars_list;         // List of every variation this tile has
+        Tile_Type_Data* tile_data; // The tile data object representing this tile to be populated
+        map_t vars_hashmap;        // Hashmap containing animations for this tile's variations
+        int vars_amount;           // Amount of variations this tile has
+        Tile_Variation* vars_list; // List of every variation this tile has
         Animation_Sub_Clock_Index default_sub_clock; // Default sub clock used by this tile's vars_map
 
         tile_vars_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "vars");
@@ -177,7 +179,7 @@ void get_tiles_src_data(Tiles_Data* td, const cJSON* src_json, mat4 ss_projectio
         tile_data->vars_list = vars_list;
         
         // Store populated tile data
-        td->src[tile_type++] = tile_data;
+        tiles_data->src[tile_type++] = tile_data;
     }
 
     // Free the temporary variations hashmap

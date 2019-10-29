@@ -45,7 +45,7 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
     );
 
     // Gather tiles data
-    game->tiles_data = create_tiles_data_from_JSON(
+    game->tiles_data = create_tiles_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
         projection
     );

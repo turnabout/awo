@@ -6,68 +6,65 @@
 
 Tile_Var_Data* get_tile_var_data(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var)
 {
-    Tile_Var_Data* result;
+    Tile_Var_Data* tile_var_data;
 
     if (hashmap_get(
         tiles_data->src[type]->vars_map, 
         (char*)tile_var_str_short[var], 
-        (void**)(&result)) != MAP_OK
+        (void**)(&tile_var_data)) != MAP_OK
     ) {
         return NULL;
     } else {
-        return result;
+        return tile_var_data;
     }
 }
 
-Animation* get_next_tile_animation(Tiles_Data* tiles_data, Tile_Type type)
+Tile_Variation get_next_tile_type_var(Tiles_Data* tiles_data, Tile_Type type)
 {
-    // Variation var_index
-    static int var_index = 0;
+    // Variation tile_var_index
+    static int index = 0;
 
     Tile_Type_Data* tile = tiles_data->src[type];
 
-    // No tile variation at given var_index, reset it and return NULL
-    if (var_index == tile->vars_count) {
-        var_index = 0;
+    // No tile_type_data variation at given tile_var_index, reset it and return NULL
+    if (index == tile->vars_count) {
+        index = 0;
+        return TILE_VAR_NONE;
+    }
+
+    return tile->vars_list[index++];
+}
+
+Animation* get_next_tile_type_var_animation(Tiles_Data* tiles_data, Tile_Type type)
+{
+    // Variation tile_var_index
+    static int tile_var_index = 0;
+
+    Tile_Type_Data* tile = tiles_data->src[type];
+
+    // No tile_type_data variation at given tile_var_index, reset it and return NULL
+    if (tile_var_index == tile->vars_count) {
+        tile_var_index = 0;
         return NULL;
     }
 
-    // Get tile variation data
-    Tile_Variation v = tile->vars_list[var_index];
-    Tile_Var_Data* tile_var_data = get_tile_var_data(tiles_data, type, v);
+    // Get tile_type_data variation data
+    Tile_Variation tile_var = tile->vars_list[tile_var_index];
+    Tile_Var_Data* tile_var_data = get_tile_var_data(tiles_data, type, tile_var);
 
-    // Increment var_index for next time
-    var_index++;
+    // Increment tile_var_index for next time
+    tile_var_index++;
 
     return tile_var_data->animation;
 }
 
-const char* get_next_tile_var_data(Tiles_Data* td, Tile_Type tt, Uint8* var_val)
+Tile_Variation get_tile_type_default_var(Tiles_Data* tiles_data, Tile_Type type)
 {
-    // Variation var_index
-    static int index = 0;
-
-    Tile_Type_Data* tile = td->src[tt];
-
-    // No tile variation at given var_index, reset it and return NULL
-    if (index == tile->vars_count) {
-        index = 0;
-        return NULL;
-    }
-
-    // Get tile variation data
-    *var_val = tile->vars_list[index++];
-
-    return tile_var_str[*var_val];
-}
-
-Tile_Variation get_tile_default_var(Tiles_Data* td, Tile_Type type)
-{
-    return td->src[type]->vars_list[0];
+    return tiles_data->src[type]->vars_list[0];
 }
 
 Tile_Variation get_tile_auto_var(
-    Tiles_Data* td,
+    Tiles_Data* tiles_data,
     Tile_Type middle_tile,
     Tile_Type top_tile,
     Tile_Type right_tile,
@@ -75,9 +72,9 @@ Tile_Variation get_tile_auto_var(
     Tile_Type left_tile
 )
 {
-    Tile_Type_Data* middle_tile_data = td->src[middle_tile];
+    Tile_Type_Data* middle_tile_data = tiles_data->src[middle_tile];
 
-    // Go through all of the middle tile's autovars
+    // Go through all of the middle tile_type_data's autovars
     for (int i = 0; i < middle_tile_data->auto_vars_count; i++) {
 
         // Get this autovar and look for match with adjacent tiles
@@ -94,7 +91,7 @@ Tile_Variation get_tile_auto_var(
     }
 
     printf("default...\n");
-    return get_tile_default_var(td, middle_tile);
+    return get_tile_type_default_var(tiles_data, middle_tile);
 }
 
 Animation* gather_tile_data(
@@ -105,14 +102,14 @@ Animation* gather_tile_data(
     Animation_Sub_Clock_Index* sub_clock
 )
 {
-    Tile_Type_Data* tile = tiles_data->src[type];
+    Tile_Type_Data* tile_type_data = tiles_data->src[type];
 
-    // Fill in clock var_index
+    // Fill in clock tile_var_index
     if (clock != NULL) {
-        *clock = tile->clock;
+        *clock = tile_type_data->clock;
     }
 
-    // Fill in sub-clock var_index & return animation pointer
+    // Fill in sub-clock tile_var_index & return animation pointer
     Tile_Var_Data* tile_var_data = get_tile_var_data(tiles_data, type, var);
 
     if (sub_clock != NULL) {

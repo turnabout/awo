@@ -134,6 +134,7 @@ static const char* tile_var_str_short[] = {
 #define TILE_VAR_FIRST Default
 #define TILE_VAR_LAST Used
 #define TILE_VAR_COUNT TILE_VAR_LAST + 1
+#define TILE_VAR_NONE -1
 
 #define TILE_VAR_DEFAULT Default
 
