@@ -1,8 +1,15 @@
 #include <stdlib.h>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 #include "Game/Inputs/inputs.h"
+
+// Every GLFW key definition corresponding to the game keys
+static const int GAME_KEYS[] = { 
+    GLFW_KEY_SPACE,
+    GLFW_KEY_1,
+    GLFW_KEY_A
+};
+
+static const int GAME_KEYS_COUNT = sizeof(GAME_KEYS) / sizeof(int);
 
 // Reference to the game's window
 static GLFWwindow* window_instance;

@@ -111,6 +111,7 @@ Game* init_game()
 
     // Initialize input handling
     init_keys_state_module(game->window);
+    init_mouse_state_module(game->window, &game->h);
 
     // Set some other options
     glClearColor(

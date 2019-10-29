@@ -10,6 +10,7 @@ static Animation** test_unit_animation;
 void update_game(Game* game, float delta_time)
 {
     update_keys_state();
+    update_mouse_buttons_state();
     update_game_clock(game->clock, delta_time);
 }
 

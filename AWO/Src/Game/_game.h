@@ -18,8 +18,7 @@ struct Game {
 
     Game_Clock* clock;
 
-    int w;
-    int h;
+    int w, h;
 };
 
 /*! @brief Initializes the game data, storing on the main Game struct object.
