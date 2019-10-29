@@ -1,13 +1,15 @@
 #include <cglm/cglm.h>
 
-#include "Game/_game.h"
+#include "Game/Inputs/inputs.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
+#include "Game/_game.h"
 
 static Animation* test_animation;
 static Animation** test_unit_animation;
 
 void update_game(Game* game, float delta_time)
 {
+    update_keys_state();
     update_game_clock(game->clock, delta_time);
 }
 

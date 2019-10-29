@@ -5,6 +5,7 @@
 #include "conf.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
+#include "Game/Inputs/inputs.h"
 #include "Game/_game.h"
 
 int init_game_sprite_batches(Game* game, GLint* ss_width, GLint* ss_height)
@@ -107,6 +108,9 @@ Game* init_game()
     if (!init_game_data(game, sprite_sheet_w, sprite_sheet_h)) {
         return NULL;
     }
+
+    // Initialize input handling
+    init_keys_state_module(game->window);
 
     // Set some other options
     glClearColor(
