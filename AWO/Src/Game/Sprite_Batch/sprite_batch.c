@@ -7,6 +7,7 @@ struct Sprite_Batch {
     GLuint VAO;
     GLuint shader_program;
     GLuint sprite_sheet_texture;
+    GLuint palette_texture;
     int elements_queued;
     int elements_max;
 };
@@ -44,7 +45,12 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch, int max_elements)
     glBindVertexArray(0);
 }
 
-Sprite_Batch* create_sprite_batch(GLuint shader_program, GLuint sprite_sheet_texture, int max_elements)
+Sprite_Batch* create_sprite_batch(
+    GLuint shader_program, 
+    GLuint sprite_sheet_texture, 
+    GLuint palette_texture, 
+    int max_elements
+)
 {
     Sprite_Batch* sprite_batch = (Sprite_Batch*)malloc(sizeof(Sprite_Batch));
 
@@ -52,6 +58,7 @@ Sprite_Batch* create_sprite_batch(GLuint shader_program, GLuint sprite_sheet_tex
 
     sprite_batch->shader_program = shader_program;
     sprite_batch->sprite_sheet_texture = sprite_sheet_texture;
+    sprite_batch->palette_texture = palette_texture;
     sprite_batch->elements_max = max_elements;
     sprite_batch->elements_queued = 0;
 
@@ -65,6 +72,9 @@ void begin_sprite_batch(Sprite_Batch* sprite_batch)
 
     glActiveTexture(GL_TEXTURE0); 
     glBindTexture(GL_TEXTURE_2D, sprite_batch->sprite_sheet_texture);
+
+    glActiveTexture(GL_TEXTURE1); 
+    glBindTexture(GL_TEXTURE_2D, sprite_batch->palette_texture);
 
     glBindVertexArray(sprite_batch->VAO);
 
@@ -121,4 +131,23 @@ void end_sprite_batch(Sprite_Batch* sprite_batch)
 void free_sprite_batch(Sprite_Batch* sprite_batch)
 {
     free(sprite_batch);
+}
+
+void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch)
+{
+    #define LEFT   0
+    #define RIGHT  255
+    #define TOP    801
+    #define BOTTOM 600
+
+    GLfloat quad_vertices[4][4] = {
+        {LEFT, TOP, 0.0, 1.0}, // Top left
+        {RIGHT, TOP, 1.0, 1.0}, // Top right
+        {LEFT, BOTTOM, 0.0, 0.0}, // Bottom left
+        {RIGHT, BOTTOM, 1.0, 0.0}, // Bottom right
+    };
+
+    // Store vertices data in previously allocated buffer
+    // TODO: change offset as we add more elements to sprite batch queue
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(quad_vertices), quad_vertices);
 }

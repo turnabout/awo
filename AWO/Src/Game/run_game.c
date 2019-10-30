@@ -4,8 +4,13 @@
 #include "Game/Sprite_Batch/sprite_batch.h"
 #include "Game/_game.h"
 
+void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch, GLuint texture);
+
 static Animation* test_animation;
 static Animation** test_unit_animation;
+static GLuint test_texture;
+
+
 
 void update_game(Game* game, float delta_time)
 {
@@ -22,10 +27,12 @@ void render_game(Game* game)
     add_to_sprite_batch(
         game->sprite_batches[SPRITES_SPRITE_BATCH], 
         (vec2) { 500, 500 }, 
-        &test_animation->frames[0]
-        // &(test_unit_animation[Right]->frames[0])
+        // &test_animation->frames[0]
+        &(test_unit_animation[Right]->frames[0])
     );
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
+    add_to_sprite_batch__test_palette(game->sprite_batches[SPRITES_SPRITE_BATCH], test_texture);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     end_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
@@ -47,6 +54,7 @@ void run_game(Game* game)
         OS
     );
 
+    // --------------------------------------------------------------
     static float delta_time = 0.0f;      // Time between current frame and last frame.
     static float last_frame_time = 0.0f; // Time of last frame.
 

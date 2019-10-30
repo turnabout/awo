@@ -8,11 +8,39 @@
 #include "Game/Inputs/inputs.h"
 #include "Game/_game.h"
 
+GLubyte make_palette_texture__test()
+{
+    #define palette_tex_width 256
+    #define palette_text_height 1
+    GLubyte checkImage[palette_text_height][palette_tex_width][4];
+
+    for (int i = 0; i < palette_tex_width; i++) {
+        checkImage[0][i][0] = (GLubyte)i;
+        checkImage[0][i][1] = (GLubyte)0;
+        checkImage[0][i][2] = (GLubyte)0;
+        checkImage[0][i][3] = (GLubyte)255;
+    }
+
+    // glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+    GLuint texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, palette_tex_width, palette_text_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, checkImage);
+
+    return texture;
+}
+
 int init_game_sprite_batches(Game* game, GLint* ss_width, GLint* ss_height)
 {
     // Create sprite batches
     // 1. Main sprites sprite batch
-    GLuint sprites_shader_program, sprite_sheet_texture;
+    GLuint sprites_shader_program, sprite_sheet_texture, palette_texture;
     
     if (
         !(sprites_shader_program = create_shader_program(
@@ -24,26 +52,30 @@ int init_game_sprite_batches(Game* game, GLint* ss_width, GLint* ss_height)
         return 0;
     }
 
+    palette_texture = make_palette_texture__test();
+
     game->sprite_batches[SPRITES_SPRITE_BATCH] = create_sprite_batch(
         sprites_shader_program,
         sprite_sheet_texture,
+        palette_texture,
         MAX_SPRITE_BATCH_ELEMENTS
     );
-
-    // Set sprite sheet uniform
-    glUseProgram(sprites_shader_program);
-    glUniform1i(glGetUniformLocation(sprite_sheet_texture, "sprite_sheet"), 0);
 
     // Set main projection matrix uniform
     mat4 main_projection;
     glm_ortho(0.0f, (float)game->w, 0.0f, (float)game->h, -1.0f, 1.0f, main_projection);
 
+    // Set uniforms for main sprites' sprite batch
+    glUseProgram(sprites_shader_program);
+
+    // Projection matrix
     glUniformMatrix4fv(
-        glGetUniformLocation(sprites_shader_program, "projection"), 
-        1, 
-        GL_FALSE, 
-        main_projection[0]
+        glGetUniformLocation(sprites_shader_program, "projection"), 1, GL_FALSE, main_projection[0]
     );
+
+    // Textures
+    glUniform1i(glGetUniformLocation(sprites_shader_program, "sprite_sheet"), 0);
+    glUniform1i(glGetUniformLocation(sprites_shader_program, "color_table"), 1);
 
     glUseProgram(0);
 
