@@ -2,9 +2,11 @@
 
 #include <cJSON.h>
 #include <c_hashmap.h>
+#include <cglm/types.h>
 
-#include "Game/Data/Tile/Type/Variation/_tile_variation_data.h"
 #include "Game/Data/Tile/Type/Auto_Var/_tile_auto_var_data.h"
+#include "Game/Data/Tile/enums.h"
+#include "Game/Clock/Animation_Clock/enums.h"
 
 // A single tile's visual data.
 typedef struct Tile_Type_Data
@@ -34,3 +36,9 @@ Tile_Type_Data* create_tile_type_data(
     map_t variations_list_hashmap,
     mat4 projection
 );
+
+/*! @brief Frees all data used up by the given tile type data object.
+ *
+ *  @param[in] tile_type_data The tile type data object to free.
+ */
+void free_tile_type_data(Tile_Type_Data* tile_type_data);

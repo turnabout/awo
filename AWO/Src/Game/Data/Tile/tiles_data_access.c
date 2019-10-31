@@ -4,6 +4,7 @@
 
 #include "Game/Data/Tile/_tiles_data.h"
 #include "Game/Data/Tile/Type/_tile_type_data.h"
+#include "Game/Data/Tile/Type/Variation/_tile_variation_data.h"
 
 Tile_Variation_Data* get_tile_var_data(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var)
 {
@@ -121,7 +122,7 @@ Animation* gather_tile_data(
 void free_tiles_data(Tiles_Data* tiles_data)
 {
     for (Tile_Type type = TILE_TYPE_FIRST; type < TILE_TYPE_COUNT; type++) {
-        // TODO: free every tile type data
+        free_tile_type_data(tiles_data->src[type]);
     }
 
     free(tiles_data);
