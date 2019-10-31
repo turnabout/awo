@@ -8,8 +8,7 @@ uniform sampler2D color_table;
 
 void main()
 {
-	// vec4 textureColor = texture(sprite_sheet, texCoords);
-	// float textureVal = textureColor.r;
+	vec4 greyScaleColor = texture(sprite_sheet, texCoords);
 
 	// if (outColor.a == 0) {
 		// outColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
@@ -20,6 +19,12 @@ void main()
 
 	// outColor = vec4(textureVal, textureVal, textureVal, 1.0);
 
+	// Index into palette
+	vec2 palette_index = vec2(greyScaleColor.r, 0);
+	outColor = vec4(texture(color_table, palette_index).rgb, greyScaleColor.a);
+
+
+	// outColor = greyScaleColor;
 	// outColor = texture(sprite_sheet, texCoords);
-	outColor = texture(color_table, texCoords);
+	// outColor = texture(color_table, texCoords);
 }

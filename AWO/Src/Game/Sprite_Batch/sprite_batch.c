@@ -135,10 +135,13 @@ void free_sprite_batch(Sprite_Batch* sprite_batch)
 
 void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch)
 {
+    #define LG_BOTTOM 600
+    #define SM_BOTTOM 800
+
     #define LEFT   0
     #define RIGHT  255
     #define TOP    801
-    #define BOTTOM 600
+    #define BOTTOM LG_BOTTOM
 
     GLfloat quad_vertices[4][4] = {
         {LEFT, TOP, 0.0, 1.0}, // Top left

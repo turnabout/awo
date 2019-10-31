@@ -15,17 +15,16 @@ struct Game {
 
     Tiles_Data* tiles_data;
     Units_Data* units_data;
+    GLuint      palette_texture;
 
     Game_Clock* clock;
 
     int w, h;
 };
 
-/*! @brief Initializes the game data, storing on the main Game struct object.
+/*! @brief Initializes the game data and modules using it, attaching results to the game object.
  *
  *  @param[in] game The main game struct object.
- *  @param[in] sprite_sheet_w The width of the game's loaded sprite sheet.
- *  @param[in] sprite_sheet_h The height of the game's loaded sprite sheet.
  *  @return 1 if successful, 0 if an error occurred.
  */
-int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h);
+int init_game_data(Game* game);

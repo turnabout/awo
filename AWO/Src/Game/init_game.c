@@ -8,56 +8,26 @@
 #include "Game/Inputs/inputs.h"
 #include "Game/_game.h"
 
-GLubyte make_palette_texture__test()
-{
-    #define palette_tex_width 256
-    #define palette_text_height 1
-    GLubyte checkImage[palette_text_height][palette_tex_width][4];
-
-    for (int i = 0; i < palette_tex_width; i++) {
-        checkImage[0][i][0] = (GLubyte)i;
-        checkImage[0][i][1] = (GLubyte)0;
-        checkImage[0][i][2] = (GLubyte)0;
-        checkImage[0][i][3] = (GLubyte)255;
-    }
-
-    // glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-    GLuint texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, palette_tex_width, palette_text_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, checkImage);
-
-    return texture;
-}
-
-int init_game_sprite_batches(Game* game, GLint* ss_width, GLint* ss_height)
+int init_game_sprite_batches(Game* game)
 {
     // Create sprite batches
     // 1. Main sprites sprite batch
-    GLuint sprites_shader_program, sprite_sheet_texture, palette_texture;
+    GLuint sprites_shader_program, sprite_sheet_texture;
     
     if (
         !(sprites_shader_program = create_shader_program(
             SHADERS_PATH "sprite.vert",
             SHADERS_PATH "sprite.frag"
         )) || 
-        !(sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH, ss_width, ss_height))
+        !(sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH))
         ) {
         return 0;
     }
 
-    palette_texture = make_palette_texture__test();
-
     game->sprite_batches[SPRITES_SPRITE_BATCH] = create_sprite_batch(
         sprites_shader_program,
         sprite_sheet_texture,
-        palette_texture,
+        game->palette_texture,
         MAX_SPRITE_BATCH_ELEMENTS
     );
 
@@ -130,14 +100,13 @@ Game* init_game()
     glfwGetWindowSize(game->window, &game->w, &game->h);
     glViewport(0, 0, game->w, game->h);
 
-    // Set the game's sprite batches used for rendering
-    GLint sprite_sheet_w, sprite_sheet_h;
-    if (!init_game_sprite_batches(game, &sprite_sheet_w, &sprite_sheet_h)) {
+    // Load the game's data
+    if (!init_game_data(game)) {
         return NULL;
     }
 
-    // Load the game's data
-    if (!init_game_data(game, sprite_sheet_w, sprite_sheet_h)) {
+    // Set the game's sprite batches used for rendering
+    if (!init_game_sprite_batches(game)) {
         return NULL;
     }
 
