@@ -59,3 +59,9 @@ Tile_Variation_Data* create_tile_variation_data(
 
     return tile_variation_data;
 }
+
+void free_tile_variation_data(Tile_Variation_Data* tile_variation_data)
+{
+    free_animation(tile_variation_data->animation);
+    free(tile_variation_data);
+}

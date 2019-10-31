@@ -66,7 +66,7 @@
     <Image Include="Resources\Textures\spritesheet.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Data\visuals.json" />
+    <None Include="Resources\Data\game_data.json" />
     <None Include="Resources\Shaders\sprite.vert" />
     <None Include="Resources\Shaders\sprite.frag" />
   </ItemGroup>

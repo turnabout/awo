@@ -228,10 +228,8 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Data\visuals.json">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="Resources\Shaders\sprite.vert" />
     <None Include="Resources\Shaders\sprite.frag" />
+    <None Include="Resources\Data\game_data.json" />
   </ItemGroup>
 </Project>
