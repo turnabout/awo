@@ -1,10 +1,7 @@
 #include <stdlib.h>
 
 #include "conf.h"
-#include "Game/Data/Palette/palette.h"
-
-#define PALETTE_TEX_WIDTH  256
-#define PALETTE_TEX_HEIGHT   1
+#include "Game/Data/Palette/_palette.h"
 
 // Apply a color to the given index of the given palette texture row.
 void apply_palette_row_color(
@@ -42,6 +39,7 @@ void apply_palette_colors(GLubyte palette_texture_row[PALETTE_TEX_WIDTH][4], cJS
 
 GLuint create_palette_texture(cJSON* data_JSON)
 {
+    int palette_count = 0;
     GLubyte palette_texture_data[PALETTE_TEX_HEIGHT][PALETTE_TEX_WIDTH][4];
 
     /*
@@ -66,13 +64,21 @@ GLuint create_palette_texture(cJSON* data_JSON)
     apply_palette_colors(palette_texture_data[0], OS_palette);
 
     // BM
-    /*
     cJSON* BM_palette_wrapper = cJSON_GetArrayItem(units_palettes_JSON, 1);
     cJSON* BM_palette = cJSON_GetObjectItemCaseSensitive(BM_palette_wrapper, "palette");
 
     apply_palette_colors(palette_texture_data[1], units_base_palette_JSON);
     apply_palette_colors(palette_texture_data[1], BM_palette);
-*/
+
+    // GE
+    cJSON* GE_palette_wrapper = cJSON_GetArrayItem(units_palettes_JSON, 2);
+    cJSON* GE_palette = cJSON_GetObjectItemCaseSensitive(GE_palette_wrapper, "palette");
+
+    apply_palette_colors(palette_texture_data[2], units_base_palette_JSON);
+    apply_palette_colors(palette_texture_data[2], GE_palette);
+
+    init_palette_NDC_indexes(3);
+
     // Create the texture
     GLuint texture;
     glGenTextures(1, &texture);

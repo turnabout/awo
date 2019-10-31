@@ -1,15 +1,40 @@
-#include "Game/Data/Palette/palette.h"
+#include <cglm/cglm.h>
+
+#include "Game/Data/Palette/_palette.h"
+
+// Array of every palette indexes NDC y values.
+static GLfloat* palette_NDC_indexes;
+
+void init_palette_NDC_indexes(int palette_count)
+{
+    // Make the projection matrix used to transform palette texture Y coordinates into NDC
+    mat4 projection;
+    glm_ortho(0.0f, (float)PALETTE_TEX_WIDTH, 0.0f, (float)palette_count, -1.0f, 1.0f, projection);
+
+    palette_NDC_indexes = malloc(sizeof(GLfloat) * palette_count);
+
+    for (int i = 0; i < palette_count; i++) {
+        vec4 position = {0.0f, (float)i, 0.0f, 1.0f};
+        glm_mat4_mulv(projection, position, position);
+        palette_NDC_indexes[i] = (position[1] / 2.0f) + 0.5f;
+    }
+}
 
 // Unit variation palette indexes are stored first
-GLuint get_unit_palette_index(Unit_Variation unit_var)
+GLfloat get_unit_palette_index(Unit_Variation unit_var)
 {
-    return (GLuint)unit_var;
+    return palette_NDC_indexes[unit_var];
 }
 
 // Tile weather palette indexes are stored second, followed by fog versions
-GLuint get_tile_palette_index(Weather weather, GLboolean fog)
+GLfloat get_tile_palette_index(Weather weather, GLboolean fog)
 {
     return (GLuint)UNIT_VAR_LAST + (fog)
-        ? (GLuint)(WEATHER_COUNT + weather)
-        : (GLuint)weather;
+        ? palette_NDC_indexes[(WEATHER_COUNT + weather)]
+        : palette_NDC_indexes[weather];
+}
+
+void free_palette_NDC_indexes()
+{
+    free(palette_NDC_indexes);
 }

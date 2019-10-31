@@ -10,8 +10,6 @@ static Animation* test_animation;
 static Animation** test_unit_animation;
 static GLuint test_texture;
 
-
-
 void update_game(Game* game, float delta_time)
 {
     update_keys_state();
