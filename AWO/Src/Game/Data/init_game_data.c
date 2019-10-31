@@ -42,7 +42,7 @@ int init_game_data(Game* game)
     // Set sprite sheet projection matrix. Used to transform sprites' x/y/w/h coordinates into
     // Normalized Device Coordinates usable by OpenGL.
     mat4 projection;
-    glm_ortho(0.0f, (float)sprite_sheet_w, (float)sprite_sheet_h, 0.0f, -1.0f, 1.0f, projection);
+    glm_ortho(0.0f, (float)sprite_sheet_w, 0.0f, (float)sprite_sheet_h, -1.0f, 1.0f, projection);
 
     // Gather units data
     game->units_data = create_units_data(

@@ -144,10 +144,10 @@ void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch)
     #define BOTTOM LG_BOTTOM
 
     GLfloat quad_vertices[4][4] = {
-        {LEFT, TOP, 0.0, 1.0}, // Top left
-        {RIGHT, TOP, 1.0, 1.0}, // Top right
-        {LEFT, BOTTOM, 0.0, 0.0}, // Bottom left
-        {RIGHT, BOTTOM, 1.0, 0.0}, // Bottom right
+        {LEFT, TOP, 0.0, 0.0}, // Top left
+        {RIGHT, TOP, 1.0, 0.0}, // Top right
+        {LEFT, BOTTOM, 0.0, 1.0}, // Bottom left
+        {RIGHT, BOTTOM, 1.0, 1.0}, // Bottom right
     };
 
     // Store vertices data in previously allocated buffer

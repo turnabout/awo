@@ -4,11 +4,6 @@
 
 GLuint create_texture_object(const char* texture_path)
 {
-    // Tell stb_image to flip the y-axis during image loading.
-    // This is because OpenGL expects the 0.0 coordinate on the y-axis to be the bottom side of the
-    // image, but images usually have 0.0 at the top of the y-axis.
-    stbi_set_flip_vertically_on_load(1);
-
     // Load texture image
     GLint channels_amount, width, height;
     unsigned char* data = stbi_load(texture_path, &width, &height, &channels_amount, 0);

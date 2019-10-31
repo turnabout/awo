@@ -48,7 +48,7 @@ void run_game(Game* game)
 
     test_unit_animation = get_unit_animations(
         game->units_data,
-        Tank,
+        Bomber,
         OS
     );
 
