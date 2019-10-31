@@ -97,5 +97,6 @@ void free_tile_type_data(Tile_Type_Data* tile_type_data)
     // Free the map itself
     free(tile_type_data->vars_map);
 
+    free(tile_type_data->auto_vars);
     free(tile_type_data);
 }
