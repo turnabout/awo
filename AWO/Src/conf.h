@@ -16,7 +16,7 @@
 #define FONTS_PATH    RESOURCES_PATH "Fonts/"
 
 #define SPRITE_SHEET_PATH   TEXTURES_PATH "spritesheet.png"
-#define GAME_DATA_JSON_PATH DATA_PATH "visuals.json"
+#define GAME_DATA_JSON_PATH DATA_PATH "game_data.json"
 #define DIALOGUE_FONT_PATH  FONTS_PATH "aw2-gba.ttf"
 
 // Window configuration

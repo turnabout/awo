@@ -35,7 +35,7 @@ int init_game_data(Game* game)
     }
 
     // Get the sprite sheet's dimensions
-    cJSON* ss_dimensions_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "ssMetaData");
+    cJSON* ss_dimensions_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "ssDimensions");
     int sprite_sheet_w = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "width")->valueint;
     int sprite_sheet_h = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "height")->valueint;
 
