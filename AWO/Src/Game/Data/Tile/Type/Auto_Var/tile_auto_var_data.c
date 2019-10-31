@@ -1,8 +1,8 @@
 #include <stdlib.h>
 
-#include "Game/Data/Tile/Tile_Type_Data/Tile_Auto_Var/_tile_auto_var.h"
+#include "Game/Data/Tile/Type/Auto_Var/_tile_auto_var_data.h"
 
-Auto_Var* create_tile_auto_var_data(
+Auto_Var_Data* create_tile_auto_var_data(
     cJSON* auto_var_JSON,
     map_t* variations_list_hashmap,
     int* auto_vars_amount
@@ -16,7 +16,7 @@ Auto_Var* create_tile_auto_var_data(
     *auto_vars_amount = cJSON_GetArraySize(auto_var_JSON);
 
     // Record all auto vars_map' data
-    Auto_Var* auto_var = malloc(sizeof(Auto_Var) * *auto_vars_amount);
+    Auto_Var_Data* auto_var = malloc(sizeof(Auto_Var_Data) * *auto_vars_amount);
 
     cJSON* auto_var_item_JSON;
     int auto_var_index = 0;

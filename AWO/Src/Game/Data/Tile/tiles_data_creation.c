@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <cJSON.h>
+#include <c_hashmap.h>
 #include <cglm/cglm.h>
 
 #include "Game/Data/Tile/_tiles_data.h"

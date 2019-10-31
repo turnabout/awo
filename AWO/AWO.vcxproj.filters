@@ -138,13 +138,13 @@
     <ClCompile Include="Src\Game\Data\Palette\create_palette_texture.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Tile_Variation_Data\tile_variation_data.c">
+    <ClCompile Include="Src\Game\Data\Tile\Type\tile_type_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Tile_Type_Data\tile_type_data.c">
+    <ClCompile Include="Src\Game\Data\Tile\Type\Variation\tile_variation_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Tile_Type_Data\Tile_Auto_Var\tile_auto_var.c">
+    <ClCompile Include="Src\Game\Data\Tile\Type\Auto_Var\tile_auto_var_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -221,13 +221,13 @@
     <ClInclude Include="Src\Game\Data\Palette\palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\Tile_Variation_Data\_tile_variation_data.h">
+    <ClInclude Include="Src\Game\Data\Tile\Type\_tile_type_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\Tile_Type_Data\_tile_type_data.h">
+    <ClInclude Include="Src\Game\Data\Tile\Type\Variation\_tile_variation_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\Tile_Type_Data\Tile_Auto_Var\_tile_auto_var.h">
+    <ClInclude Include="Src\Game\Data\Tile\Type\Auto_Var\_tile_auto_var_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

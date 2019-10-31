@@ -48,9 +48,9 @@
     <ClCompile Include="Src\Game\Data\Palette\create_palette_texture.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
-    <ClCompile Include="Src\Game\Data\Tile\Tile_Type_Data\Tile_Auto_Var\tile_auto_var.c" />
-    <ClCompile Include="Src\Game\Data\Tile\Tile_Type_Data\tile_type_data.c" />
-    <ClCompile Include="Src\Game\Data\Tile\Tile_Variation_Data\tile_variation_data.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Type\Auto_Var\tile_auto_var_data.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Type\tile_type_data.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Type\Variation\tile_variation_data.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_access.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_creation.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
@@ -82,9 +82,9 @@
     <ClInclude Include="Src\Game\Data\Palette\palette.h" />
     <ClInclude Include="Src\Game\Data\Tile\enums.h" />
     <ClInclude Include="Src\Game\Data\Tile\tiles_data.h" />
-    <ClInclude Include="Src\Game\Data\Tile\Tile_Type_Data\Tile_Auto_Var\_tile_auto_var.h" />
-    <ClInclude Include="Src\Game\Data\Tile\Tile_Type_Data\_tile_type_data.h" />
-    <ClInclude Include="Src\Game\Data\Tile\Tile_Variation_Data\_tile_variation_data.h" />
+    <ClInclude Include="Src\Game\Data\Tile\Type\Auto_Var\_tile_auto_var_data.h" />
+    <ClInclude Include="Src\Game\Data\Tile\Type\_tile_type_data.h" />
+    <ClInclude Include="Src\Game\Data\Tile\Type\Variation\_tile_variation_data.h" />
     <ClInclude Include="Src\Game\Data\Tile\_tiles_data.h" />
     <ClInclude Include="Src\Game\Data\Unit\enums.h" />
     <ClInclude Include="Src\Game\Data\Unit\units_data.h" />

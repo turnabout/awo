@@ -3,14 +3,14 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Game/Data/Tile/Tile_Variation_Data/_tile_variation_data.h"
+#include "Game/Data/Tile/enums.h"
 
 typedef struct Auto_Var
 {
     Tile_Variation tile_var; // The variation selected by this auto tile_var
     int adjacent_tiles[4];   // Array pointing out which adjacent tiles are acceptable for this 
                              // auto tile_var to be selected.
-} Auto_Var;
+} Auto_Var_Data;
 
 typedef enum Auto_Var_Adjacent_Tile {
     Auto_Var_Up    = 0,
@@ -26,7 +26,7 @@ typedef enum Auto_Var_Adjacent_Tile {
  *  @param[out] auto_vars_amount The amount of auto vars generated.
  *  @return The created auto var data objects.
  */
-Auto_Var* create_tile_auto_var_data(
+Auto_Var_Data* create_tile_auto_var_data(
     cJSON* auto_var_JSON,
     map_t* variations_list_hashmap,
     int* auto_vars_amount

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Data/Tile/Tile_Type_Data/_tile_type_data.h"
+#include "Game/Data/Tile/Type/_tile_type_data.h"
 
 Tile_Type_Data* create_tile_type_data(
     cJSON* tile_type_JSON, 
@@ -75,4 +75,9 @@ Tile_Type_Data* create_tile_type_data(
     );
 
     return tile_type_data;
+}
+
+void free_tile_type_data(Tile_Type_Data* tile_type_data)
+{
+    free(tile_type_data);
 }

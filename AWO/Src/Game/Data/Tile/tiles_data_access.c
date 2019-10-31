@@ -3,6 +3,7 @@
 #include <c_hashmap.h>
 
 #include "Game/Data/Tile/_tiles_data.h"
+#include "Game/Data/Tile/Type/_tile_type_data.h"
 
 Tile_Variation_Data* get_tile_var_data(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var)
 {
@@ -76,7 +77,7 @@ Tile_Variation get_tile_auto_var(
     for (int i = 0; i < middle_tile_data->auto_vars_count; i++) {
 
         // Get this autovar and look for match with adjacent tiles
-        Auto_Var auto_var = middle_tile_data->auto_vars[i];
+        Auto_Var_Data auto_var = middle_tile_data->auto_vars[i];
 
         if (
             (auto_var.adjacent_tiles[Auto_Var_Up]    & (1 << top_tile))    &&
@@ -119,7 +120,10 @@ Animation* gather_tile_data(
 
 void free_tiles_data(Tiles_Data* tiles_data)
 {
-    // TODO
+    for (Tile_Type type = TILE_TYPE_FIRST; type < TILE_TYPE_COUNT; type++) {
+        // TODO: free every tile type data
+    }
+
     free(tiles_data);
 }
 

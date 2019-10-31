@@ -3,8 +3,8 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Game/Data/Tile/Tile_Variation_Data/_tile_variation_data.h"
-#include "Game/Data/Tile/Tile_Type_Data/Tile_Auto_Var/_tile_auto_var.h"
+#include "Game/Data/Tile/Type/Variation/_tile_variation_data.h"
+#include "Game/Data/Tile/Type/Auto_Var/_tile_auto_var_data.h"
 
 // A single tile's visual data.
 typedef struct Tile_Type_Data
@@ -15,7 +15,7 @@ typedef struct Tile_Type_Data
     Tile_Variation* vars_list;   // List of every variation this tile has
 
     int auto_vars_count;         // Amount of auto vars_map this tile has
-    Auto_Var* auto_vars;         // List of auto vars_map used to autoselect this tile's variation 
+    Auto_Var_Data* auto_vars;         // List of auto vars_map used to autoselect this tile's variation 
                                  // when placing it in editor mode.
 
     Animation_Clock_Index clock; // Clock used by this tile to update its animation
