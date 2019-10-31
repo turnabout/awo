@@ -3,9 +3,10 @@
 #include <c_hashmap.h>
 #include <cJSON.h>
 
-#include "Game/Data/Animation/animation.h"
+#include "Game/Data/Tile/Tile_Variation_Data/_tile_variation_data.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Tile/tiles_data.h"
+#include "Game/Data/Animation/animation.h"
 #include "Game/Clock/Animation_Clock/enums.h"
 
 typedef struct Auto_Var
@@ -25,7 +26,7 @@ typedef enum {
 // A single tile's visual data.
 typedef struct Tile_Type_Data
 {
-    map_t vars_map;            // Map holding every variation (Tile_Var_Data)
+    map_t vars_map;            // Map holding every variation (Tile_Variation_Data)
 
     int vars_count;            // How many variations this tile has
     Tile_Variation* vars_list; // List of every variation this tile has
@@ -36,13 +37,6 @@ typedef struct Tile_Type_Data
 
     Animation_Clock_Index clock; // Clock used by this tile to update its animation
 } Tile_Type_Data;
-
-// A tile variation's visual data
-typedef struct Tile_Var_Data
-{
-    Animation_Sub_Clock_Index sub_clock; // Sub clock used by this tile tile_var to update its animation
-    Animation* animation;                // This tile variation's animation
-} Tile_Var_Data;
 
 // All tiles' visual data
 struct Tiles_Data

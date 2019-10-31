@@ -19,7 +19,7 @@ Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection)
     return tiles_data;
 }
 
-// Get a tile's auto tile_var data struct
+// Get a tile's auto tile_variation_data data struct
 Auto_Var* get_tile_auto_var_data(
     const cJSON* auto_var_json, 
     int* auto_vars_amount, 
@@ -84,25 +84,25 @@ void get_tiles_src_data(Tiles_Data* tiles_data, const cJSON* src_json, mat4 ss_p
     }
 
     // Gather all data from JSON
-    const cJSON* tile_type_json;
-    Tile_Type tile_type = 0;
+    Tile_Type tile_type = TILE_TYPE_FIRST;
 
     // Loop tile types
-    cJSON_ArrayForEach(tile_type_json, src_json)
+    cJSON* tile_type_JSON;
+    cJSON_ArrayForEach(tile_type_JSON, src_json)
     {
-        const cJSON* tile_vars_json; // JSON holding all variations of this tile
-        const cJSON* tile_var_json;  // JSON holding currently looped variation of this tile
-        const cJSON* var_sub_clocks; // JSON holding this tile's variations' sub clocks
-        const cJSON* auto_var_json;  // JSON holding this tile type's auto-tile_var data
+        cJSON* tile_vars_json; // JSON holding all variations of this tile
+        cJSON* tile_variation_JSON;  // JSON holding currently looped variation of this tile
+        cJSON* var_sub_clocks; // JSON holding this tile's variations' sub clocks
+        cJSON* auto_var_json;  // JSON holding this tile type's auto-tile_variation_data data
 
         Tile_Type_Data* tile_data; // The tile data object representing this tile to be populated
-        map_t vars_hashmap;        // Hashmap containing animations for this tile's variations
+        map_t vars_hashmap;        // Hashmap every tile variation data for this tile type
         int vars_amount;           // Amount of variations this tile has
         Tile_Variation* vars_list; // List of every variation this tile has
         Animation_Sub_Clock_Index default_sub_clock; // Default sub clock used by this tile's vars_map
 
-        tile_vars_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "vars");
-        auto_var_json = cJSON_GetObjectItemCaseSensitive(tile_type_json, "autoVars");
+        tile_vars_json = cJSON_GetObjectItemCaseSensitive(tile_type_JSON, "vars");
+        auto_var_json = cJSON_GetObjectItemCaseSensitive(tile_type_JSON, "autoVars");
 
         // Initialize tile data
         tile_data = malloc(sizeof(Tile_Type_Data));
@@ -113,7 +113,7 @@ void get_tiles_src_data(Tiles_Data* tiles_data, const cJSON* src_json, mat4 ss_p
         vars_list = malloc(sizeof(Tile_Type_Data) * vars_amount);
 
         // TODO: Only do this when game mode is design room
-        // Get this tile's auto tile_var data
+        // Get this tile's auto tile_variation_data data
         if (auto_var_json->type != cJSON_NULL) {
 
             tile_data->auto_vars = get_tile_auto_var_data(
@@ -123,50 +123,46 @@ void get_tiles_src_data(Tiles_Data* tiles_data, const cJSON* src_json, mat4 ss_p
              );
         }
 
+        // Gather clock data for this tile type
+        cJSON* tile_type_clock_data_JSON = cJSON_GetObjectItemCaseSensitive(
+            tile_type_JSON, 
+            "clockData"
+        );
+
         // Get this tile's clock data and prepare to get tile variations' clock data
-        if (cJSON_HasObjectItem(tile_type_json, "clockData")) {
-            const cJSON* c_data = cJSON_GetObjectItemCaseSensitive(tile_type_json, "clockData");
+        tile_data->clock = (cJSON_HasObjectItem(tile_type_JSON, "clockData"))
 
-            tile_data->clock = cJSON_GetObjectItemCaseSensitive(c_data, "clock")->valueint;
-            default_sub_clock = cJSON_GetObjectItemCaseSensitive(c_data, "defaultSubClock")->valueint;
+            ? tile_data->clock = cJSON_GetObjectItemCaseSensitive(
+                tile_type_clock_data_JSON,
+                "clock"
+            )->valueint
 
-            var_sub_clocks = cJSON_GetObjectItemCaseSensitive(c_data, "varSubClocks");
-        } else {
-            tile_data->clock = No_Clock;
-            default_sub_clock = No_Sub_Clock;
-
-            var_sub_clocks = NULL;
-        }
+            : No_Clock;
 
         // Loop tile variations
-        cJSON_ArrayForEach(tile_var_json, tile_vars_json)
+        cJSON_ArrayForEach(tile_variation_JSON, tile_vars_json)
         {
-            // Add this variation to the tile's variations list
-            Tile_Variation* res;
-            hashmap_get(all_vars_hashmap, tile_var_json->string, (void**)(&res));
+            // Get which tile variation this JSON object represents
+            Tile_Variation* tile_variation;
+            hashmap_get(all_vars_hashmap, tile_variation_JSON->string, (void**)(&tile_variation));
 
-            *vars_list = *res;
+            // Store on this tile data's vars list
+            *vars_list = *tile_variation;
             vars_list++;
 
-            // Create this tile variation & get its animation
-            Tile_Var_Data* tile_var = malloc(sizeof(Tile_Var_Data));
-            tile_var->animation = create_animation_from_JSON(tile_var_json, ss_projection);
-
-            // Get this tile variation's correct sub clock value
-            if (
-                var_sub_clocks != NULL && 
-                cJSON_HasObjectItem(var_sub_clocks, tile_var_json->string)
-            ) {
-                tile_var->sub_clock = cJSON_GetObjectItemCaseSensitive(var_sub_clocks, tile_var_json->string)->valueint;
-            } else {
-                tile_var->sub_clock = default_sub_clock;
-            }
+            // Get short string representing this tile variation
+            char* tile_variation_string = tile_var_str_short[*tile_variation];
 
             // Add populated tile variation to hashmap
             hashmap_put(
                 vars_hashmap, 
-                tile_var_json->string, 
-                tile_var
+                tile_variation_string, 
+
+                create_tile_variation_data(
+                    tile_variation_string,
+                    tile_type_JSON,
+                    ss_projection
+                )
             );
         }
 

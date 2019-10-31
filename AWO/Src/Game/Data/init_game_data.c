@@ -4,6 +4,7 @@
 
 #include "conf.h"
 #include "Utilities/utilities.h"
+#include "Game/Data/Palette/palette.h"
 #include "Game/_game.h"
 
 int get_data_JSON(const cJSON **data_JSON)
@@ -24,7 +25,7 @@ int get_data_JSON(const cJSON **data_JSON)
     return 1;
 }
 
-int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
+int init_game_data(Game* game)
 {
     // Load cJSON data object
     cJSON* data_JSON;
@@ -32,6 +33,11 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
     if (!get_data_JSON(&data_JSON)) {
         return 0;
     }
+
+    // Get the sprite sheet's dimensions
+    cJSON* ss_dimensions_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "ssMetaData");
+    int sprite_sheet_w = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "width")->valueint;
+    int sprite_sheet_h = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "height")->valueint;
 
     // Set sprite sheet projection matrix. Used to transform sprites' x/y/w/h coordinates into
     // Normalized Device Coordinates usable by OpenGL.
@@ -49,6 +55,9 @@ int init_game_data(Game* game, int sprite_sheet_w, int sprite_sheet_h)
         cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
         projection
     );
+
+    // Use palette data to create palette color map texture
+    game->palette_texture = create_palette_texture(data_JSON);
 
     // Create game clock
     game->clock = create_game_clock(

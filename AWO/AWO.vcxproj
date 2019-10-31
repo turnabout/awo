@@ -45,8 +45,10 @@
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
     <ClCompile Include="Src\Game\Data\Animation\animation.c" />
     <ClCompile Include="Src\Game\Data\init_game_data.c" />
+    <ClCompile Include="Src\Game\Data\Palette\create_palette_texture.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Tile_Variation_Data\tile_variation_data.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_access.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_creation.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
@@ -75,8 +77,10 @@
     <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_clock.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
     <ClInclude Include="Src\Game\Data\Animation\animation.h" />
+    <ClInclude Include="Src\Game\Data\Palette\palette.h" />
     <ClInclude Include="Src\Game\Data\Tile\enums.h" />
     <ClInclude Include="Src\Game\Data\Tile\tiles_data.h" />
+    <ClInclude Include="Src\Game\Data\Tile\Tile_Variation_Data\_tile_variation_data.h" />
     <ClInclude Include="Src\Game\Data\Tile\_tiles_data.h" />
     <ClInclude Include="Src\Game\Data\Unit\enums.h" />
     <ClInclude Include="Src\Game\Data\Unit\units_data.h" />

@@ -4,15 +4,13 @@
 
 #include "Game/Data/Tile/_tiles_data.h"
 
-Tile_Var_Data* get_tile_var_data(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var)
+Tile_Variation_Data* get_tile_var_data(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var)
 {
-    Tile_Var_Data* tile_var_data;
+    Tile_Variation_Data* tile_var_data;
 
-    if (hashmap_get(
-        tiles_data->src[type]->vars_map, 
-        (char*)tile_var_str_short[var], 
-        (void**)(&tile_var_data)) != MAP_OK
-    ) {
+    char* key = (char*)tile_var_str_short[var];
+
+    if (hashmap_get(tiles_data->src[type]->vars_map, key, (void**)(&tile_var_data)) != MAP_OK) {
         return NULL;
     } else {
         return tile_var_data;
@@ -50,7 +48,7 @@ Animation* get_next_tile_type_var_animation(Tiles_Data* tiles_data, Tile_Type ty
 
     // Get tile_type_data variation data
     Tile_Variation tile_var = tile->vars_list[tile_var_index];
-    Tile_Var_Data* tile_var_data = get_tile_var_data(tiles_data, type, tile_var);
+    Tile_Variation_Data* tile_var_data = get_tile_var_data(tiles_data, type, tile_var);
 
     // Increment tile_var_index for next time
     tile_var_index++;
@@ -110,7 +108,7 @@ Animation* gather_tile_data(
     }
 
     // Fill in sub-clock tile_var_index & return animation pointer
-    Tile_Var_Data* tile_var_data = get_tile_var_data(tiles_data, type, var);
+    Tile_Variation_Data* tile_var_data = get_tile_var_data(tiles_data, type, var);
 
     if (sub_clock != NULL) {
         *sub_clock = tile_var_data->sub_clock;
@@ -135,7 +133,7 @@ void print_tile_type(Tiles_Data* td, Tile_Type type)
 
     for (int i = 0; i < tile_data->vars_count; i++) {
         Tile_Variation var = tile_data->vars_list[i];
-        Tile_Var_Data* tile_var = get_tile_var_data(td, type, var);
+        Tile_Variation_Data* tile_var = get_tile_var_data(td, type, var);
 
         printf("\n%s (%s)\n", tile_var_str[var], tile_var_str_short[var]);
         printf("SubClock: %d\n", tile_var->sub_clock);

@@ -135,6 +135,12 @@
     <ClCompile Include="Src\Game\Inputs\mouse_state.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\Palette\create_palette_texture.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Tile_Variation_Data\tile_variation_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -204,6 +210,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Inputs\inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Palette\palette.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Tile_Variation_Data\_tile_variation_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
