@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cJSON.h>
 #include <cglm/types.h>
 
@@ -15,7 +17,7 @@ typedef struct Tile_Variation_Data
     Animation* animation;
 } Tile_Variation_Data;
 
-/*! @brief Creates tile variation data for a tile variation belonging to a tile type.
+/*! @brief Creates tile variation data from the given JSON.
  *
  *  @param[in] tile_variation_string Short string representing the tile variation.
  *  @param[in] tile_type_JSON The JSON object of this tile variation's tile type.
