@@ -44,12 +44,14 @@ GLuint create_palette_texture(cJSON* data_JSON)
 {
     GLubyte palette_texture_data[PALETTE_TEX_HEIGHT][PALETTE_TEX_WIDTH][4];
 
+    /*
     for (int i = 0; i < PALETTE_TEX_WIDTH; i++) {
         palette_texture_data[0][i][0] = (GLubyte)i;
         palette_texture_data[0][i][1] = (GLubyte)0;
         palette_texture_data[0][i][2] = (GLubyte)0;
         palette_texture_data[0][i][3] = (GLubyte)255;
     }
+    */
 
     // Add unit palettes
     cJSON* units_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "units");
@@ -63,6 +65,14 @@ GLuint create_palette_texture(cJSON* data_JSON)
     apply_palette_colors(palette_texture_data[0], units_base_palette_JSON);
     apply_palette_colors(palette_texture_data[0], OS_palette);
 
+    // BM
+    /*
+    cJSON* BM_palette_wrapper = cJSON_GetArrayItem(units_palettes_JSON, 1);
+    cJSON* BM_palette = cJSON_GetObjectItemCaseSensitive(BM_palette_wrapper, "palette");
+
+    apply_palette_colors(palette_texture_data[1], units_base_palette_JSON);
+    apply_palette_colors(palette_texture_data[1], BM_palette);
+*/
     // Create the texture
     GLuint texture;
     glGenTextures(1, &texture);
