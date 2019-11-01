@@ -9,10 +9,10 @@
 
 /*! @brief Creates the main palette texture used to color swap sprites.
  *
- *  @param[in] data_JSON The entire JSON data file.
+ *  @param[in] palette_data_JSON The palette data JSON object.
  *  @return ID of the generated texture object.
  */
-GLuint create_palette_texture(cJSON* data_JSON);
+GLuint create_palette_texture(cJSON* palette_data_JSON);
 
 /*! @brief Gets the palette index for a unit of the given variation.
  *
@@ -27,7 +27,7 @@ GLfloat get_unit_palette_index(Unit_Variation unit_variation);
  *  @param[in] fog Whether to get the "fog" version of the weather palette.
  *  @return The index of the palette corresponding to the weather/fog combination.
  */
-GLfloat get_tile_palette_index(Weather weather, GLboolean fog);
+GLfloat get_tile_palette_index(Weather weather);
 
 /*! @brief Frees data allocated for NDC palette indexes.
  */

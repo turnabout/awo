@@ -3,9 +3,11 @@
 #include "conf.h"
 #include "Game/Data/Palette/_palette.h"
 
+typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
+
 // Apply a color to the given index of the given palette texture row.
 void apply_palette_row_color(
-    GLubyte palette_texture_row[PALETTE_TEX_WIDTH][4],
+    Palette_Texture_Row palette_texture_row,
     int palette_index,
     GLubyte color[]
 )
@@ -17,7 +19,7 @@ void apply_palette_row_color(
 }
 
 // Apply palette colors in the JSON object to the given palette texture row.
-void apply_palette_colors(GLubyte palette_texture_row[PALETTE_TEX_WIDTH][4], cJSON* palette_JSON)
+void apply_palette_colors(Palette_Texture_Row palette_texture_row, cJSON* palette_JSON)
 {
     // Apply colors from the palette
     cJSON* palette_item_JSON;
@@ -37,47 +39,78 @@ void apply_palette_colors(GLubyte palette_texture_row[PALETTE_TEX_WIDTH][4], cJS
     }
 }
 
-GLuint create_palette_texture(cJSON* data_JSON)
+void print_row(Palette_Texture_Row palette_texture_row, int palette_count)
 {
-    int palette_count = 0;
-    GLubyte palette_texture_data[PALETTE_TEX_HEIGHT][PALETTE_TEX_WIDTH][4];
-
-    /*
     for (int i = 0; i < PALETTE_TEX_WIDTH; i++) {
-        palette_texture_data[0][i][0] = (GLubyte)i;
-        palette_texture_data[0][i][1] = (GLubyte)0;
-        palette_texture_data[0][i][2] = (GLubyte)0;
-        palette_texture_data[0][i][3] = (GLubyte)255;
+        if (palette_texture_row[i][0] == 111 &&
+            palette_texture_row[i][1] == 111 &&
+            palette_texture_row[i][2] == 111) {
+            continue;
+        }
+
+        printf(
+            "%d: [%d,%d,%d]\n",
+            i,
+            palette_texture_row[i][0],
+            palette_texture_row[i][1],
+            palette_texture_row[i][2]
+        );
     }
-    */
+}
+
+GLuint create_palette_texture(cJSON* palette_data_JSON)
+{
+    cJSON* base_palettes_JSON = cJSON_GetObjectItemCaseSensitive(palette_data_JSON, "basePalettes");
+    cJSON* palettes_JSON = cJSON_GetObjectItemCaseSensitive(palette_data_JSON, "palettes");
+
+    int palette_count = cJSON_GetArraySize(palettes_JSON);
+
+    Palette_Texture_Row* palette_texture_data = malloc(sizeof(Palette_Texture_Row) * palette_count);
 
     // Add unit palettes
-    cJSON* units_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "units");
-    cJSON* units_palettes_JSON = cJSON_GetObjectItemCaseSensitive(units_JSON, "palettes");
-    cJSON* units_base_palette_JSON = cJSON_GetObjectItemCaseSensitive(units_JSON, "basePalette");
+    cJSON* units_base_palette = cJSON_GetObjectItemCaseSensitive(base_palettes_JSON, "units");
+    cJSON* tiles_base_palette = cJSON_GetObjectItemCaseSensitive(base_palettes_JSON, "tiles");
+    cJSON* props_base_palette = cJSON_GetObjectItemCaseSensitive(base_palettes_JSON, "properties");
 
-    // OS
-    cJSON* OS_palette_wrapper = cJSON_GetArrayItem(units_palettes_JSON, 0);
-    cJSON* OS_palette = cJSON_GetObjectItemCaseSensitive(OS_palette_wrapper, "palette");
+    for (int j = 0; j < palette_count; j++) {
+        for (int i = 0; i < PALETTE_TEX_WIDTH; i++) {
+            palette_texture_data[j][i][0] = (GLubyte)0;
+            palette_texture_data[j][i][1] = (GLubyte)0;
+            palette_texture_data[j][i][2] = (GLubyte)0;
+            palette_texture_data[j][i][3] = (GLubyte)255;
+        }
+    }
 
-    apply_palette_colors(palette_texture_data[0], units_base_palette_JSON);
-    apply_palette_colors(palette_texture_data[0], OS_palette);
+    for (int i = 0; i < palette_count; i++) {
+        // Get appropriate base palette
+        cJSON* base_palette;
 
-    // BM
-    cJSON* BM_palette_wrapper = cJSON_GetArrayItem(units_palettes_JSON, 1);
-    cJSON* BM_palette = cJSON_GetObjectItemCaseSensitive(BM_palette_wrapper, "palette");
+        if (i <= UNIT_VAR_LAST) {
+            base_palette = units_base_palette;
+        } else if (i <= UNIT_VAR_LAST + WEATHER_LAST) {
+            base_palette = tiles_base_palette;
+        } else {
+            base_palette = props_base_palette;
+        }
 
-    apply_palette_colors(palette_texture_data[1], units_base_palette_JSON);
-    apply_palette_colors(palette_texture_data[1], BM_palette);
+        // Apply palettes
+        apply_palette_colors(palette_texture_data[i], base_palette);
+        apply_palette_colors(palette_texture_data[i], cJSON_GetArrayItem(palettes_JSON, i));
+    }
 
-    // GE
-    cJSON* GE_palette_wrapper = cJSON_GetArrayItem(units_palettes_JSON, 2);
-    cJSON* GE_palette = cJSON_GetObjectItemCaseSensitive(GE_palette_wrapper, "palette");
+    init_palette_NDC_indexes(palette_count);
 
-    apply_palette_colors(palette_texture_data[2], units_base_palette_JSON);
-    apply_palette_colors(palette_texture_data[2], GE_palette);
-
-    init_palette_NDC_indexes(3);
+    printf("Palette count: %d\n", palette_count);
+    /*
+    printf("OS %.4f\n", get_unit_palette_index(OS));
+    printf("BM %.4f\n", get_unit_palette_index(BM));
+    printf("GE %.4f\n", get_unit_palette_index(GE));
+    printf("YC %.4f\n", get_unit_palette_index(YC));
+    printf("BH %.4f\n", get_unit_palette_index(BH));
+    printf("Clear %.4f\n", get_tile_palette_index(Clear));
+    printf("Snow %.4f\n", get_tile_palette_index(Snow));
+    printf("Rain %.4f\n", get_tile_palette_index(Rain));
+*/
 
     // Create the texture
     GLuint texture;
@@ -94,12 +127,14 @@ GLuint create_palette_texture(cJSON* data_JSON)
         0, 
         GL_RGBA, 
         PALETTE_TEX_WIDTH, 
-        PALETTE_TEX_HEIGHT, 
+        palette_count, 
         0, 
         GL_RGBA, 
         GL_UNSIGNED_BYTE, 
         palette_texture_data
     );
+
+    // free(palette_texture_data);
 
     return texture;
 }

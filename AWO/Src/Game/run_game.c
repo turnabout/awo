@@ -7,7 +7,7 @@
 
 void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch, GLuint texture);
 
-static Animation* test_animation;
+static Animation* test_tile_animation;
 static Animation** test_unit_animation;
 static GLuint test_texture;
 
@@ -18,19 +18,42 @@ void update_game(Game* game, float delta_time)
     update_game_clock(game->clock, delta_time);
 }
 
+void test_palettes(Game* game)
+{
+
+    GLfloat unit_x = 500;
+    for (Unit_Variation unit_var = UNIT_VAR_FIRST; unit_var < UNIT_VAR_COUNT; unit_var++) {
+        add_to_sprite_batch(
+            game->sprite_batches[SPRITES_SPRITE_BATCH], 
+            (vec2) { unit_x, 500 }, 
+            &(test_unit_animation[Right]->frames[0]),
+            get_unit_palette_index(unit_var)
+        );
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        unit_x += 25;
+    }
+
+    GLfloat tile_x = 500;
+    for (Weather weather = WEATHER_FIRST; weather < WEATHER_COUNT; weather++) {
+        add_to_sprite_batch(
+            game->sprite_batches[SPRITES_SPRITE_BATCH], 
+            (vec2) { tile_x, 550 }, 
+            &test_tile_animation->frames[0],
+            get_tile_palette_index(weather)
+        );
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        tile_x += 25;
+    }
+}
+
 void render_game(Game* game)
 {
     // Draw main sprites
     begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
 
-    add_to_sprite_batch(
-        game->sprite_batches[SPRITES_SPRITE_BATCH], 
-        (vec2) { 500, 500 }, 
-        // &test_animation->frames[0]
-        &(test_unit_animation[Right]->frames[0]),
-        get_unit_palette_index(OS)
-    );
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    test_palettes(game);
 
     add_to_sprite_batch__test_palette(game->sprite_batches[SPRITES_SPRITE_BATCH], test_texture);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -41,7 +64,7 @@ void render_game(Game* game)
 void run_game(Game* game)
 {
     // Test drawing 
-    test_animation = gather_tile_data(
+    test_tile_animation = gather_tile_data(
         game->tiles_data, 
         River, Horizontal, 
         NULL, 
