@@ -49,10 +49,6 @@ int init_game_sprite_batches(Game* game)
     glUniform1i(glGetUniformLocation(sprites_shader_program, "sprite_sheet"), 0);
     glUniform1i(glGetUniformLocation(sprites_shader_program, "palettes_texture"), 1);
 
-    // TEST: temporary, test getting palette index
-    GLfloat index = get_unit_palette_index(BM);
-    glUniform1f(glGetUniformLocation(sprites_shader_program, "color_table_Y_index"), index);
-
     glUseProgram(0);
 
     return 1;

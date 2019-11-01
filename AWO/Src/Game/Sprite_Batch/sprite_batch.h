@@ -43,8 +43,14 @@ void begin_sprite_batch(Sprite_Batch* sprite_batch);
  *  @param[in] sprite_batch The sprite batch object used to queue the element.
  *  @param[in] dst The on-screen destination coordinates. (x/y)
  *  @param[in] frame_data The frame's data.
+ *  @param[in] palette_index Index of which palette used to draw the added sprite.
  */
-void add_to_sprite_batch(Sprite_Batch* sprite_batch, vec2 dst, Frame* frame_data);
+void add_to_sprite_batch(
+    Sprite_Batch* sprite_batch,
+    vec2 dst,
+    Frame* frame_data,
+    GLfloat palette_index
+);
 
 /*! @brief Ends the sprite batch queue, drawing the accumulated elements.
  *

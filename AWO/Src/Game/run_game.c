@@ -2,6 +2,7 @@
 
 #include "Game/Inputs/inputs.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
+#include "Game/Data/Palette/palette.h"
 #include "Game/_game.h"
 
 void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch, GLuint texture);
@@ -26,7 +27,8 @@ void render_game(Game* game)
         game->sprite_batches[SPRITES_SPRITE_BATCH], 
         (vec2) { 500, 500 }, 
         // &test_animation->frames[0]
-        &(test_unit_animation[Right]->frames[0])
+        &(test_unit_animation[Right]->frames[0]),
+        get_unit_palette_index(OS)
     );
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 

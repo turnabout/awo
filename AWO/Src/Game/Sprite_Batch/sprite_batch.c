@@ -3,6 +3,16 @@
 #include "Game/Sprite_Batch/sprite_batch.h"
 #include "Game/Data/Animation/animation.h"
 
+/* How many elements are included in a single vertex:
+ * - Destination x & y
+ * - Texture x & y
+ * - Palette index
+ */
+#define VERTEX_FLOAT_COUNT 5
+
+// How many vertices make up a full quad (4)
+#define QUAD_VERTICES_AMOUNT 4
+
 struct Sprite_Batch {
     GLuint VAO;
     GLuint shader_program;
@@ -23,9 +33,9 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch, int max_elements)
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    // Reserve VBO memory (one 2D quad's data requires 4 vertices of 4 floats each)
-    size_t element_size = (sizeof(GLfloat) * 4) * 4;
-    glBufferData(GL_ARRAY_BUFFER, element_size * max_elements, NULL, GL_DYNAMIC_DRAW);
+    // Reserve VBO memory (one 2D quad's data requires 4 vertices of 5 floats each)
+    size_t quad_size = (sizeof(GLfloat) * VERTEX_FLOAT_COUNT) * QUAD_VERTICES_AMOUNT;
+    glBufferData(GL_ARRAY_BUFFER, quad_size * max_elements, NULL, GL_DYNAMIC_DRAW);
 
     // EBO
     GLuint indices[] = {
@@ -38,9 +48,40 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch, int max_elements)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    // Vertex attributes
-    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
+    size_t stride = VERTEX_FLOAT_COUNT * sizeof(GLfloat);
+
+    // Vertex attribute for destination position
+    glVertexAttribPointer(
+        0, 
+        2, 
+        GL_FLOAT, 
+        GL_FALSE, 
+        stride, 
+        (void*)(0 * sizeof(GLfloat))
+    );
     glEnableVertexAttribArray(0);
+
+    // Vertex attribute for texture position
+    glVertexAttribPointer(
+        1, 
+        2, 
+        GL_FLOAT, 
+        GL_FALSE, 
+        stride, 
+        (void*)(2 * sizeof(GLfloat))
+    );
+    glEnableVertexAttribArray(1);
+
+    // Vertex attribute for texture position
+    glVertexAttribPointer(
+        2, 
+        1, 
+        GL_FLOAT, 
+        GL_FALSE, 
+        stride, 
+        (void*)(4 * sizeof(GLfloat))
+    );
+    glEnableVertexAttribArray(2);
 
     glBindVertexArray(0);
 }
@@ -82,34 +123,42 @@ void begin_sprite_batch(Sprite_Batch* sprite_batch)
     sprite_batch->elements_queued = 0;
 }
 
-void add_to_sprite_batch(Sprite_Batch* sprite_batch, vec2 dst, Frame* frame_data)
+void add_to_sprite_batch(
+    Sprite_Batch* sprite_batch, 
+    vec2 dst, 
+    Frame* frame_data, 
+    GLfloat palette_index
+)
 {
     // Set the quad's vertices data
-    // TODO: un-hardcode [4][4]
-    GLfloat quad_vertices[4][4] = {
+    GLfloat quad_vertices[QUAD_VERTICES_AMOUNT][VERTEX_FLOAT_COUNT] = {
 
         // Top left
         { 
-            dst[0], dst[1] + frame_data->dimensions[1],      // Destination
-            frame_data->top_left[0], frame_data->top_left[1] // Texture
+            dst[0], dst[1] + frame_data->dimensions[1],       // <vec2> Destination
+            frame_data->top_left[0], frame_data->top_left[1], // <vec2> Texture
+            palette_index                                     // <float> Palette index
         },     
 
         // Top right
         {
             dst[0] + frame_data->dimensions[0], dst[1] + frame_data->dimensions[1],
-            frame_data->top_right[0], frame_data->top_right[1]
+            frame_data->top_right[0], frame_data->top_right[1],
+            palette_index
         },
 
         // Bottom left
         {
             dst[0], dst[1], 
-            frame_data->bottom_left[0],frame_data->bottom_left[1]
+            frame_data->bottom_left[0],frame_data->bottom_left[1],
+            palette_index
         },
 
         // Bottom right
         {
             dst[0] + frame_data->dimensions[0], dst[1], 
-            frame_data->bottom_right[0], frame_data->bottom_right[1]
+            frame_data->bottom_right[0], frame_data->bottom_right[1],
+            palette_index
         }
 
     };
@@ -143,11 +192,11 @@ void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch)
     #define TOP    801
     #define BOTTOM LG_BOTTOM
 
-    GLfloat quad_vertices[4][4] = {
-        {LEFT, TOP, 0.0, 0.0}, // Top left
-        {RIGHT, TOP, 1.0, 0.0}, // Top right
-        {LEFT, BOTTOM, 0.0, 1.0}, // Bottom left
-        {RIGHT, BOTTOM, 1.0, 1.0}, // Bottom right
+    GLfloat quad_vertices[QUAD_VERTICES_AMOUNT][VERTEX_FLOAT_COUNT] = {
+        {LEFT, TOP, 0.0, 0.0, 0.0}, // Top left
+        {RIGHT, TOP, 1.0, 0.0, 0.0}, // Top right
+        {LEFT, BOTTOM, 0.0, 1.0, 0.0}, // Bottom left
+        {RIGHT, BOTTOM, 1.0, 1.0, 0.0}, // Bottom right
     };
 
     // Store vertices data in previously allocated buffer
