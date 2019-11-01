@@ -1,3 +1,5 @@
+#pragma warning(disable: 6385)
+
 #include <stdlib.h>
 
 #include "conf.h"
@@ -35,25 +37,6 @@ void apply_palette_colors(Palette_Texture_Row palette_texture_row, cJSON* palett
                 cJSON_GetArrayItem(palette_item_JSON, 1)->valueint,
                 cJSON_GetArrayItem(palette_item_JSON, 2)->valueint 
             }
-        );
-    }
-}
-
-void print_row(Palette_Texture_Row palette_texture_row, int palette_count)
-{
-    for (int i = 0; i < PALETTE_TEX_WIDTH; i++) {
-        if (palette_texture_row[i][0] == 111 &&
-            palette_texture_row[i][1] == 111 &&
-            palette_texture_row[i][2] == 111) {
-            continue;
-        }
-
-        printf(
-            "%d: [%d,%d,%d]\n",
-            i,
-            palette_texture_row[i][0],
-            palette_texture_row[i][1],
-            palette_texture_row[i][2]
         );
     }
 }
@@ -100,18 +83,6 @@ GLuint create_palette_texture(cJSON* palette_data_JSON)
 
     init_palette_NDC_indexes(palette_count);
 
-    printf("Palette count: %d\n", palette_count);
-    /*
-    printf("OS %.4f\n", get_unit_palette_index(OS));
-    printf("BM %.4f\n", get_unit_palette_index(BM));
-    printf("GE %.4f\n", get_unit_palette_index(GE));
-    printf("YC %.4f\n", get_unit_palette_index(YC));
-    printf("BH %.4f\n", get_unit_palette_index(BH));
-    printf("Clear %.4f\n", get_tile_palette_index(Clear));
-    printf("Snow %.4f\n", get_tile_palette_index(Snow));
-    printf("Rain %.4f\n", get_tile_palette_index(Rain));
-*/
-
     // Create the texture
     GLuint texture;
     glGenTextures(1, &texture);
@@ -134,7 +105,7 @@ GLuint create_palette_texture(cJSON* palette_data_JSON)
         palette_texture_data
     );
 
-    // free(palette_texture_data);
+    free(palette_texture_data);
 
     return texture;
 }
