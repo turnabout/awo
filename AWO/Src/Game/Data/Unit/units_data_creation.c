@@ -27,7 +27,7 @@ Unit_Type_Data* create_unit_src_data(const cJSON* unit_type_JSON, mat4 ss_projec
         const cJSON* unit_anim_JSON;
         cJSON_ArrayForEach(unit_anim_JSON, unit_var_JSON)
         {
-            *(animations++) = create_animation_from_JSON(unit_anim_JSON, ss_projection);
+            *(animations++) = create_animation(unit_anim_JSON, ss_projection);
         };
 
         // Reset animations pointer to the first variation, then save accumulated data

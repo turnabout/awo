@@ -52,7 +52,7 @@ Tile_Variation_Data* create_tile_variation_data(
 
     cJSON* tile_variations_JSON = cJSON_GetObjectItemCaseSensitive(tile_type_JSON, "vars");
 
-    tile_variation_data->animation = create_animation_from_JSON(
+    tile_variation_data->animation = create_animation(
         cJSON_GetObjectItemCaseSensitive(tile_variations_JSON, tile_variation_string),
         projection
     );

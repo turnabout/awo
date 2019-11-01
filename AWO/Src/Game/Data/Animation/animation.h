@@ -31,7 +31,7 @@ typedef struct Animation {
  *  @param[in] projection The projection matrix used to convert frame source coordinates 
  *  to NDC.
  */
-Animation* create_animation_from_JSON(const cJSON* animation_JSON, mat4 projection);
+Animation* create_animation(const cJSON* animation_JSON, mat4 projection);
 
 // 
 /*! @brief Frees an animation's allocated memory.

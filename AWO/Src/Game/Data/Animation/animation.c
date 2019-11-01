@@ -5,7 +5,7 @@
 #include "conf.h"
 #include "Game/Data/Animation/animation.h"
 
-void create_frame_from_JSON(Frame* frame_ptr, const cJSON* frame_JSON, mat4 projection)
+void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, mat4 projection)
 {
     // Gather dimensions
     float x = (float)cJSON_GetObjectItemCaseSensitive(frame_JSON, "x")->valueint;
@@ -52,7 +52,7 @@ void create_frame_from_JSON(Frame* frame_ptr, const cJSON* frame_JSON, mat4 proj
     glm_vec4_copy(bottom_right, frame_ptr->bottom_right);
 }
 
-Animation* create_animation_from_JSON(const cJSON* animation_JSON, mat4 projection)
+Animation* create_animation(const cJSON* animation_JSON, mat4 projection)
 {
     Animation* animation = malloc(sizeof(Animation));
 
@@ -63,7 +63,7 @@ Animation* create_animation_from_JSON(const cJSON* animation_JSON, mat4 projecti
     cJSON* frame_JSON = NULL;
     cJSON_ArrayForEach(frame_JSON, animation_JSON)
     {
-        create_frame_from_JSON(frames, frame_JSON, projection);
+        create_animation_frame(frames, frame_JSON, projection);
         frames++;
     }
 
