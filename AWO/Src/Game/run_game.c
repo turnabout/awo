@@ -83,7 +83,6 @@ void test_palettes(Game* game)
             &(test_unit_animation[Right]->frames[0]),
             get_unit_palette_index(unit_var)
         );
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         unit_x += 25;
     }
@@ -96,7 +95,6 @@ void test_palettes(Game* game)
             &test_tile_animation->frames[0],
             get_tile_palette_index(weather)
         );
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         tile_x += 25;
     }
@@ -108,9 +106,6 @@ void render_game(Game* game)
     begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
 
     test_palettes(game);
-
-    add_to_sprite_batch__test_palette(game->sprite_batches[SPRITES_SPRITE_BATCH], test_texture);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
     end_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
 }

@@ -13,16 +13,29 @@
 // How many vertices make up a full quad (4)
 #define QUAD_VERTICES_AMOUNT 4
 
+/*! @brief Sprite batch object. Describes a sprite batch.
+ */
 struct Sprite_Batch {
+    // The VAO generated and used by this sprite batch.
     GLuint VAO;
+
+    // Program containing shaders used by this sprite batch.
     GLuint shader_program;
-    GLuint sprite_sheet_texture;
-    GLuint palettes_texture;
-    int elements_queued;
-    int elements_max;
+
+    // IDs of the textures containing raw sprites and palette data
+    GLuint sprite_sheet_texture, palettes_texture;
+
+    // Amount of elements currently queued and max amount
+    int elements_queued, elements_max;
+
+    // Offset taken up by the sprite batch's elements
+    size_t current_offset;
+
+    // Pointer containing every vertex index of every sprite quads
+    GLuint* indices;
 };
 
-void init_sprite_batch_data(Sprite_Batch* sprite_batch, int max_elements)
+void init_sprite_batch_data(Sprite_Batch* sprite_batch)
 {
     // VAO
     glGenVertexArrays(1, &sprite_batch->VAO);
@@ -33,22 +46,37 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch, int max_elements)
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    // Reserve VBO memory (one 2D quad's data requires 4 vertices of 5 floats each)
-    size_t quad_size = (sizeof(GLfloat) * VERTEX_FLOAT_COUNT) * QUAD_VERTICES_AMOUNT;
-    glBufferData(GL_ARRAY_BUFFER, quad_size * max_elements, NULL, GL_DYNAMIC_DRAW);
+    // Calculate stride - how many bytes we need to use to jump from one vertex to another
+    size_t stride = VERTEX_FLOAT_COUNT * sizeof(GLfloat);
+
+    // Reserve VBO memory (one 2D quad's data requires 4 vertices)
+    size_t quad_size = stride * QUAD_VERTICES_AMOUNT;
+    glBufferData(GL_ARRAY_BUFFER, quad_size * sprite_batch->elements_max, NULL, GL_DYNAMIC_DRAW);
 
     // EBO
-    GLuint indices[] = {
+    GLuint indices_base[] = {
         0, 1, 2, // First triangle
         2, 1, 3, // Second triangle
     };
 
+    size_t indices_size = (sizeof(GLuint) * 6) * sprite_batch->elements_max;
+    sprite_batch->indices = malloc(indices_size);
+
+    for (int i = 0; i < sprite_batch->elements_max; i++) {
+        int start_index = i * 6;
+
+        sprite_batch->indices[start_index + 0] = indices_base[0] + (4 * i);
+        sprite_batch->indices[start_index + 1] = indices_base[1] + (4 * i);
+        sprite_batch->indices[start_index + 2] = indices_base[2] + (4 * i);
+        sprite_batch->indices[start_index + 3] = indices_base[3] + (4 * i);
+        sprite_batch->indices[start_index + 4] = indices_base[4] + (4 * i);
+        sprite_batch->indices[start_index + 5] = indices_base[5] + (4 * i);
+    }
+
     unsigned int EBO;
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-    size_t stride = VERTEX_FLOAT_COUNT * sizeof(GLfloat);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_size, sprite_batch->indices, GL_STATIC_DRAW);
 
     // Vertex attribute for destination position
     glVertexAttribPointer(
@@ -95,13 +123,13 @@ Sprite_Batch* create_sprite_batch(
 {
     Sprite_Batch* sprite_batch = (Sprite_Batch*)malloc(sizeof(Sprite_Batch));
 
-    init_sprite_batch_data(sprite_batch, max_elements);
-
     sprite_batch->shader_program = shader_program;
     sprite_batch->sprite_sheet_texture = sprite_sheet_texture;
     sprite_batch->palettes_texture = palette_texture;
     sprite_batch->elements_max = max_elements;
     sprite_batch->elements_queued = 0;
+
+    init_sprite_batch_data(sprite_batch);
 
     return sprite_batch;
 }
@@ -119,7 +147,8 @@ void begin_sprite_batch(Sprite_Batch* sprite_batch)
 
     glBindVertexArray(sprite_batch->VAO);
 
-    // Reset amount of elements queued
+    // Reset counters
+    sprite_batch->current_offset = 0;
     sprite_batch->elements_queued = 0;
 }
 
@@ -165,20 +194,29 @@ void add_to_sprite_batch(
 
     // Store vertices data in previously allocated buffer
     // TODO: change offset as we add more elements to sprite batch queue
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(quad_vertices), quad_vertices);
+    glBufferSubData(
+        GL_ARRAY_BUFFER, 
+        sprite_batch->current_offset, 
+        sizeof(quad_vertices), 
+        quad_vertices
+    );
 
     // Update sprite batch state
     sprite_batch->elements_queued++;
+    sprite_batch->current_offset += sizeof(quad_vertices);
 }
 
 void end_sprite_batch(Sprite_Batch* sprite_batch)
 {
+    glDrawElements(GL_TRIANGLES, 6 * sprite_batch->elements_queued, GL_UNSIGNED_INT, 0);
+
     glUseProgram(0);
     glBindVertexArray(0);
 }
 
 void free_sprite_batch(Sprite_Batch* sprite_batch)
 {
+    free(sprite_batch->indices);
     free(sprite_batch);
 }
 
