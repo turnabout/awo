@@ -1,7 +1,6 @@
 #pragma once
 
 #define PALETTE_TEX_WIDTH  256
-#define PALETTE_TEX_HEIGHT   3
 
 #include "Game/Data/Palette/palette.h"
 

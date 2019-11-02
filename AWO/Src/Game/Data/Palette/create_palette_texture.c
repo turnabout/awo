@@ -11,7 +11,7 @@ typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
 void apply_palette_row_color(
     Palette_Texture_Row palette_texture_row,
     int palette_index,
-    GLubyte color[]
+    GLubyte color[4]
 )
 {
     palette_texture_row[palette_index][0] = color[0];

@@ -26,6 +26,16 @@ GLfloat get_tile_palette_index(Weather weather)
     return palette_NDC_indexes[UNIT_VAR_COUNT + weather];
 }
 
+GLint get_unit_palette_index_i(Unit_Variation unit_var)
+{
+    return unit_var;
+}
+
+GLint get_tile_palette_index_i(Weather weather)
+{
+    return UNIT_VAR_COUNT + weather;
+}
+
 void free_palette_NDC_indexes()
 {
     free(palette_NDC_indexes);

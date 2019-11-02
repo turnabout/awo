@@ -47,6 +47,7 @@
     <ClCompile Include="Src\Game\Data\init_game_data.c" />
     <ClCompile Include="Src\Game\Data\Palette\create_palette_texture.c" />
     <ClCompile Include="Src\Game\Data\Palette\get_palette_index.c" />
+    <ClCompile Include="Src\Game\Data\Palette\update_palette_texture.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\Type\Auto_Var\tile_auto_var_data.c" />

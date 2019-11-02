@@ -20,7 +20,14 @@ typedef enum Button_State {
 typedef enum Key {
     KEY_SPACE,
     KEY_1,
+    KEY_2,
+    KEY_3,
+    KEY_4,
+    KEY_5,
     KEY_A,
+    KEY_S,
+    KEY_D,
+    KEY_F,
 } Key;
 
 // Every mouse button used by the game

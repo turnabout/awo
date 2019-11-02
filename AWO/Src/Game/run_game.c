@@ -11,11 +11,65 @@ static Animation* test_tile_animation;
 static Animation** test_unit_animation;
 static GLuint test_texture;
 
+void test_update_units_black_pixel(Game* game)
+{
+    static Unit_Variation unit_variation = OS;
+
+    // Update unit variation to update
+    if (get_key_state(KEY_1) == BUTTON_DOWN_START) { unit_variation = OS; }
+    if (get_key_state(KEY_2) == BUTTON_DOWN_START) { unit_variation = BM; }
+    if (get_key_state(KEY_3) == BUTTON_DOWN_START) { unit_variation = GE; }
+    if (get_key_state(KEY_4) == BUTTON_DOWN_START) { unit_variation = YC; }
+    if (get_key_state(KEY_5) == BUTTON_DOWN_START) { unit_variation = BH; }
+
+    // Update black pixels of selected unit variation
+    if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
+        glBindTexture(GL_TEXTURE_2D, game->palette_texture);
+        update_palette_black_pixel(
+            get_unit_palette_index_i(unit_variation), 
+            0
+        );
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    if (get_key_state(KEY_S) == BUTTON_DOWN_START) {
+        glBindTexture(GL_TEXTURE_2D, game->palette_texture);
+        update_palette_black_pixel(
+            get_unit_palette_index_i(unit_variation), 
+            58
+        );
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    if (get_key_state(KEY_D) == BUTTON_DOWN_START) {
+        glBindTexture(GL_TEXTURE_2D, game->palette_texture);
+        update_palette_black_pixel(
+            get_unit_palette_index_i(unit_variation), 
+            115
+        );
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    if (get_key_state(KEY_F) == BUTTON_DOWN_START) {
+        glBindTexture(GL_TEXTURE_2D, game->palette_texture);
+        update_palette_black_pixel(
+            get_unit_palette_index_i(unit_variation), 
+            173
+        );
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+}
+
 void update_game(Game* game, float delta_time)
 {
     update_keys_state();
     update_mouse_buttons_state();
     update_game_clock(game->clock, delta_time);
+
+    test_update_units_black_pixel(game);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void test_palettes(Game* game)
