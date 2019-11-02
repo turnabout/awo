@@ -30,9 +30,6 @@ struct Sprite_Batch {
 
     // Offset taken up by the sprite batch's elements
     size_t current_offset;
-
-    // Pointer containing every vertex index of every sprite quads
-    GLuint* indices;
 };
 
 void init_sprite_batch_data(Sprite_Batch* sprite_batch)
@@ -59,24 +56,27 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch)
         2, 1, 3, // Second triangle
     };
 
+
     size_t indices_size = (sizeof(GLuint) * 6) * sprite_batch->elements_max;
-    sprite_batch->indices = malloc(indices_size);
+    GLuint* indices = malloc(indices_size);
 
     for (int i = 0; i < sprite_batch->elements_max; i++) {
         int start_index = i * 6;
 
-        sprite_batch->indices[start_index + 0] = indices_base[0] + (4 * i);
-        sprite_batch->indices[start_index + 1] = indices_base[1] + (4 * i);
-        sprite_batch->indices[start_index + 2] = indices_base[2] + (4 * i);
-        sprite_batch->indices[start_index + 3] = indices_base[3] + (4 * i);
-        sprite_batch->indices[start_index + 4] = indices_base[4] + (4 * i);
-        sprite_batch->indices[start_index + 5] = indices_base[5] + (4 * i);
+        indices[start_index + 0] = indices_base[0] + (4 * i);
+        indices[start_index + 1] = indices_base[1] + (4 * i);
+        indices[start_index + 2] = indices_base[2] + (4 * i);
+        indices[start_index + 3] = indices_base[3] + (4 * i);
+        indices[start_index + 4] = indices_base[4] + (4 * i);
+        indices[start_index + 5] = indices_base[5] + (4 * i);
     }
 
     unsigned int EBO;
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_size, sprite_batch->indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_size, indices, GL_STATIC_DRAW);
+
+    free(indices);
 
     // Vertex attribute for destination position
     glVertexAttribPointer(
@@ -216,7 +216,6 @@ void end_sprite_batch(Sprite_Batch* sprite_batch)
 
 void free_sprite_batch(Sprite_Batch* sprite_batch)
 {
-    free(sprite_batch->indices);
     free(sprite_batch);
 }
 
