@@ -1,4 +1,3 @@
-#include <stdio.h>
 #pragma warning(disable: 6385)
 
 #include <stdlib.h>
