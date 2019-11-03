@@ -32,6 +32,13 @@ GLfloat get_unit_palette_index(Unit_Variation unit_variation, GLboolean done);
  */
 GLfloat get_tile_palette_index(Weather weather, GLboolean fog);
 
+/*! @brief Gets the NDC palette index for a property of the given unit variation.
+ *
+ *  @param[in] unit_variation The unit variation.
+ *  @return The index of the palette corresponding to the property of the given variation.
+ */
+GLfloat get_property_palette_index(Unit_Variation unit_variation);
+
 /*! @brief Gets the integer palette index for a unit of the given variation.
  *
  *  @param[in] unit_variation The unit variation.
@@ -48,6 +55,13 @@ GLint get_unit_palette_index_i(Unit_Variation unit_variation, GLboolean done);
  */
 GLint get_tile_palette_index_i(Weather weather, GLboolean fog);
 
+/*! @brief Gets the integer palette index for a property of the given unit variation.
+ *
+ *  @param[in] unit_variation The unit variation.
+ *  @return The integer index of the palette corresponding to the property of the given variation.
+ */
+GLint get_property_palette_index_i(Unit_Variation unit_variation);
+
 /*! @brief Update the black pixel on the palette at the given index.
  *
  * Note: The palette texture must be bound before calling this function.
@@ -59,7 +73,3 @@ void update_palette_black_pixel(
     GLint palette_index,
     GLubyte new_color
 );
-
-/*! @brief Frees data allocated for NDC palette indexes.
- */
-void free_palette_NDC_indexes();

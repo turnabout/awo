@@ -12,16 +12,19 @@ void init_palette_NDC_indexes()
     }
 }
 
-// Unit variation palette indexes are stored first
 GLfloat get_unit_palette_index(Unit_Variation unit_variation, GLboolean done)
 {
     return palette_NDC_indexes[ get_unit_palette_index_i(unit_variation, done) ];
 }
 
-// Tile weather palette indexes are stored second, followed by fog versions
 GLfloat get_tile_palette_index(Weather weather, GLboolean fog)
 {
     return palette_NDC_indexes[ get_tile_palette_index_i(weather, fog) ];
+}
+
+GLfloat get_property_palette_index(Unit_Variation unit_variation)
+{
+    return palette_NDC_indexes[ get_property_palette_index_i(unit_variation) ];
 }
 
 GLint get_unit_palette_index_i(Unit_Variation unit_variation, GLboolean done)
@@ -32,4 +35,9 @@ GLint get_unit_palette_index_i(Unit_Variation unit_variation, GLboolean done)
 GLint get_tile_palette_index_i(Weather weather, GLboolean fog)
 {
     return UNIT_PALETTE_COUNT + (weather * 2) + fog;
+}
+
+GLint get_property_palette_index_i(Unit_Variation unit_variation)
+{
+    return UNIT_PALETTE_COUNT + TILE_PALETTE_COUNT + unit_variation;
 }
