@@ -11,10 +11,10 @@ typedef struct Palette_Texture Palette_Texture;
 
 /*! @brief Creates the main palette texture used to color swap sprites.
  *
- *  @param[in] palette_data_JSON The palette data JSON object.
+ *  @param[in] palette_JSON The palette data JSON object.
  *  @return The generated texture ID.
  */
-GLuint create_palette_texture(cJSON* palette_data_JSON);
+GLuint create_palette_texture(cJSON* palette_JSON);
 
 /*! @brief Gets the NDC palette index for a unit of the given variation.
  *

@@ -58,7 +58,7 @@ int init_game_data(Game* game)
 
     // Use palette data to create palette color map texture
     game->palette_texture = create_palette_texture(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "paletteData")
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "palettes")
     );
 
     // Create game clock
