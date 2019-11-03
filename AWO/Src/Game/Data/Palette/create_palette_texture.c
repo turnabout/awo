@@ -68,9 +68,9 @@ GLuint create_palette_texture(cJSON* palette_data_JSON)
         // Get appropriate base palette
         cJSON* base_palette;
 
-        if (i <= UNIT_VAR_LAST) {
+        if (i < UNIT_PALETTE_COUNT) {
             base_palette = units_base_palette;
-        } else if (i <= UNIT_VAR_LAST + WEATHER_LAST) {
+        } else if (i < UNIT_PALETTE_COUNT + TILE_PALETTE_COUNT) {
             base_palette = tiles_base_palette;
         } else {
             base_palette = props_base_palette;

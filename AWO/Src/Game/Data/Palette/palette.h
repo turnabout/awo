@@ -29,7 +29,7 @@ GLfloat get_unit_palette_index(Unit_Variation unit_variation);
  *  @param[in] fog Whether to get the "fog" version of the weather palette.
  *  @return The index of the palette corresponding to the weather/fog combination.
  */
-GLfloat get_tile_palette_index(Weather weather);
+GLfloat get_tile_palette_index(Weather weather, GLboolean fog);
 
 /*! @brief Gets the integer palette index for a unit of the given variation.
  *
@@ -44,7 +44,7 @@ GLint get_unit_palette_index_i(Unit_Variation unit_var);
  *  @param[in] fog Whether to get the "fog" version of the weather palette.
  *  @return The integer index of the palette corresponding to the weather/fog combination.
  */
-GLint get_tile_palette_index_i(Weather weather);
+GLint get_tile_palette_index_i(Weather weather, GLboolean fog);
 
 /*! @brief Update the black pixel on the palette at the given index.
  *

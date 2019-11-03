@@ -8,7 +8,7 @@
 void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch, GLuint texture);
 
 static Animation* test_tile_animation;
-static Animation** test_unit_animation;
+static Animation** test_unit_animations;
 static GLuint test_texture;
 
 void test_update_units_black_pixel(Game* game)
@@ -80,7 +80,7 @@ void test_palettes(Game* game)
         add_to_sprite_batch(
             game->sprite_batches[SPRITES_SPRITE_BATCH], 
             (vec2) { unit_x, 500 }, 
-            &(test_unit_animation[Right]->frames[0]),
+            &(test_unit_animations[Right]->frames[0]),
             get_unit_palette_index(unit_var)
         );
 
@@ -93,7 +93,14 @@ void test_palettes(Game* game)
             game->sprite_batches[SPRITES_SPRITE_BATCH], 
             (vec2) { tile_x, 550 }, 
             &test_tile_animation->frames[0],
-            get_tile_palette_index(weather)
+            get_tile_palette_index(weather, 0)
+        );
+
+        add_to_sprite_batch(
+            game->sprite_batches[SPRITES_SPRITE_BATCH], 
+            (vec2) { tile_x, 571 }, 
+            &test_tile_animation->frames[0],
+            get_tile_palette_index(weather, 1)
         );
 
         tile_x += 25;
@@ -120,7 +127,7 @@ void run_game(Game* game)
         NULL
     );
 
-    test_unit_animation = get_unit_animations(
+    test_unit_animations = get_unit_animations(
         game->units_data,
         Bomber,
         OS

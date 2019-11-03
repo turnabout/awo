@@ -2,6 +2,11 @@
 
 #define PALETTE_TEX_WIDTH  256
 
+// Counts of every different types of palettes
+#define UNIT_PALETTE_COUNT UNIT_VAR_COUNT
+#define TILE_PALETTE_COUNT WEATHER_COUNT * 2
+#define PROP_PALETTE_COUNT UNIT_VAR_COUNT + 2 // + neutral & fogged
+
 #include "Game/Data/Palette/palette.h"
 
 /*! @brief Initializes Normalized Device Coordinate palette indexes.

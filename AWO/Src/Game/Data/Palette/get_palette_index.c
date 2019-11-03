@@ -21,9 +21,9 @@ GLfloat get_unit_palette_index(Unit_Variation unit_var)
 }
 
 // Tile weather palette indexes are stored second, followed by fog versions
-GLfloat get_tile_palette_index(Weather weather)
+GLfloat get_tile_palette_index(Weather weather, GLboolean fog)
 {
-    return palette_NDC_indexes[UNIT_VAR_COUNT + weather];
+    return palette_NDC_indexes[UNIT_PALETTE_COUNT + (weather * 2) + fog];
 }
 
 GLint get_unit_palette_index_i(Unit_Variation unit_var)
@@ -31,9 +31,9 @@ GLint get_unit_palette_index_i(Unit_Variation unit_var)
     return unit_var;
 }
 
-GLint get_tile_palette_index_i(Weather weather)
+GLint get_tile_palette_index_i(Weather weather, GLboolean fog)
 {
-    return UNIT_VAR_COUNT + weather;
+    return UNIT_PALETTE_COUNT + (weather * 2) + fog;
 }
 
 void free_palette_NDC_indexes()
