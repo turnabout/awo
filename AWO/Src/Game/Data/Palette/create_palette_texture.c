@@ -1,3 +1,4 @@
+#include <stdio.h>
 #pragma warning(disable: 6385)
 
 #include <stdlib.h>
@@ -44,7 +45,6 @@ void apply_palette_colors(Palette_Texture_Row palette_texture_row, cJSON* palett
 
 GLuint create_palette_texture(cJSON* palettes_JSON)
 {
-    // cJSON* palettes_JSON = cJSON_GetObjectItemCaseSensitive(palette_data_JSON, "palettes");
     int palette_count = cJSON_GetArraySize(palettes_JSON);
     
     Palette_Texture_Row* palette_texture_data = malloc(sizeof(Palette_Texture_Row) * palette_count);
@@ -53,7 +53,7 @@ GLuint create_palette_texture(cJSON* palettes_JSON)
         apply_palette_colors(palette_texture_data[i], cJSON_GetArrayItem(palettes_JSON, i));
     }
 
-    init_palette_NDC_indexes(palette_count);
+    init_palette_NDC_indexes();
 
     // Create the texture
     GLuint texture;
@@ -70,7 +70,7 @@ GLuint create_palette_texture(cJSON* palettes_JSON)
         0, 
         GL_RGBA, 
         PALETTE_TEX_WIDTH, 
-        palette_count, 
+        PALETTE_TEX_HEIGHT, 
         0, 
         GL_RGBA, 
         GL_UNSIGNED_BYTE, 

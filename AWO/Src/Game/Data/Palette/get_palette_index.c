@@ -3,40 +3,33 @@
 #include "Game/Data/Palette/_palette.h"
 
 // Array of every palette indexes NDC y values.
-static GLfloat* palette_NDC_indexes;
+static GLfloat palette_NDC_indexes[PALETTE_TEX_HEIGHT];
 
-void init_palette_NDC_indexes(int palette_count)
+void init_palette_NDC_indexes()
 {
-    palette_NDC_indexes = malloc(sizeof(GLfloat) * palette_count);
-
-    for (int i = 0; i < palette_count; i++) {
-        palette_NDC_indexes[i] = (float)i / (float)palette_count;
+    for (int i = 0; i < PALETTE_TEX_HEIGHT; i++) {
+        palette_NDC_indexes[i] = (float)i / (float)PALETTE_TEX_HEIGHT;
     }
 }
 
 // Unit variation palette indexes are stored first
-GLfloat get_unit_palette_index(Unit_Variation unit_var)
+GLfloat get_unit_palette_index(Unit_Variation unit_variation, GLboolean done)
 {
-    return palette_NDC_indexes[unit_var];
+    return palette_NDC_indexes[ get_unit_palette_index_i(unit_variation, done) ];
 }
 
 // Tile weather palette indexes are stored second, followed by fog versions
 GLfloat get_tile_palette_index(Weather weather, GLboolean fog)
 {
-    return palette_NDC_indexes[UNIT_PALETTE_COUNT + (weather * 2) + fog];
+    return palette_NDC_indexes[ get_tile_palette_index_i(weather, fog) ];
 }
 
-GLint get_unit_palette_index_i(Unit_Variation unit_var)
+GLint get_unit_palette_index_i(Unit_Variation unit_variation, GLboolean done)
 {
-    return unit_var;
+    return (unit_variation * 2) + done;
 }
 
 GLint get_tile_palette_index_i(Weather weather, GLboolean fog)
 {
     return UNIT_PALETTE_COUNT + (weather * 2) + fog;
-}
-
-void free_palette_NDC_indexes()
-{
-    free(palette_NDC_indexes);
 }

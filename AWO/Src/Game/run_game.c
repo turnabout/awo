@@ -26,7 +26,7 @@ void test_update_units_black_pixel(Game* game)
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
         glBindTexture(GL_TEXTURE_2D, game->palette_texture);
         update_palette_black_pixel(
-            get_unit_palette_index_i(unit_variation), 
+            get_unit_palette_index_i(unit_variation, 0), 
             0
         );
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -35,7 +35,7 @@ void test_update_units_black_pixel(Game* game)
     if (get_key_state(KEY_S) == BUTTON_DOWN_START) {
         glBindTexture(GL_TEXTURE_2D, game->palette_texture);
         update_palette_black_pixel(
-            get_unit_palette_index_i(unit_variation), 
+            get_unit_palette_index_i(unit_variation, 0), 
             58
         );
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -44,7 +44,7 @@ void test_update_units_black_pixel(Game* game)
     if (get_key_state(KEY_D) == BUTTON_DOWN_START) {
         glBindTexture(GL_TEXTURE_2D, game->palette_texture);
         update_palette_black_pixel(
-            get_unit_palette_index_i(unit_variation), 
+            get_unit_palette_index_i(unit_variation, 0), 
             115
         );
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -53,7 +53,7 @@ void test_update_units_black_pixel(Game* game)
     if (get_key_state(KEY_F) == BUTTON_DOWN_START) {
         glBindTexture(GL_TEXTURE_2D, game->palette_texture);
         update_palette_black_pixel(
-            get_unit_palette_index_i(unit_variation), 
+            get_unit_palette_index_i(unit_variation, 0), 
             173
         );
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -81,7 +81,7 @@ void test_palettes(Game* game)
             game->sprite_batches[SPRITES_SPRITE_BATCH], 
             (vec2) { unit_x, 500 }, 
             &(test_unit_animations[Right]->frames[0]),
-            get_unit_palette_index(unit_var)
+            get_unit_palette_index(unit_var, 0)
         );
 
         unit_x += 25;

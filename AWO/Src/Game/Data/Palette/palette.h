@@ -19,9 +19,10 @@ GLuint create_palette_texture(cJSON* palette_JSON);
 /*! @brief Gets the NDC palette index for a unit of the given variation.
  *
  *  @param[in] unit_variation The unit variation.
+ *  @param[in] done Whether to get the "done" version of the unit palette.
  *  @return The index of the palette corresponding to the unit variation.
  */
-GLfloat get_unit_palette_index(Unit_Variation unit_variation);
+GLfloat get_unit_palette_index(Unit_Variation unit_variation, GLboolean done);
 
 /*! @brief Gets the NDC palette index for a tile of the given weather and fog status.
  *
@@ -34,9 +35,10 @@ GLfloat get_tile_palette_index(Weather weather, GLboolean fog);
 /*! @brief Gets the integer palette index for a unit of the given variation.
  *
  *  @param[in] unit_variation The unit variation.
+ *  @param[in] done Whether to get the "done" version of the unit palette.
  *  @return The integer index of the palette corresponding to the unit variation.
  */
-GLint get_unit_palette_index_i(Unit_Variation unit_var);
+GLint get_unit_palette_index_i(Unit_Variation unit_variation, GLboolean done);
 
 /*! @brief Gets the integer palette index for a tile of the given weather and fog status.
  *

@@ -1,11 +1,12 @@
 #pragma once
 
 #define PALETTE_TEX_WIDTH  256
+#define PALETTE_TEX_HEIGHT 32
 
 // Counts of every different types of palettes
-#define UNIT_PALETTE_COUNT UNIT_VAR_COUNT
-#define TILE_PALETTE_COUNT WEATHER_COUNT * 2
-#define PROP_PALETTE_COUNT UNIT_VAR_COUNT + 2 // + neutral & fogged
+#define UNIT_PALETTE_COUNT (UNIT_VAR_COUNT) * (2) // 2 of each unit variation (normal / done)
+#define TILE_PALETTE_COUNT (WEATHER_COUNT)  * (2) // 2 of each tile variation (normal / foggy)
+#define PROP_PALETTE_COUNT UNIT_VAR_COUNT + 2     // + 2 is neutral & fogged
 
 #include "Game/Data/Palette/palette.h"
 
@@ -15,7 +16,5 @@
  *  rendering. This initializes those values based on the amount of generated palette rows in
  *  create_palette_texture, and makes it so get_palette_index functions can return proper palette
  *  texture Normalized Device Coordinates.
- *  
- *  @param[in] palette_count How many palettes were generated in create_palette_texture.
  */
-void init_palette_NDC_indexes(int palette_count);
+void init_palette_NDC_indexes();
