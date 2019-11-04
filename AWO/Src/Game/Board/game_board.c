@@ -3,6 +3,7 @@
 #include "conf.h"
 #include "Game/Board/game_board.h"
 #include "Game/Entity/Tile/Factory/tile_factory.h"
+#include "Game/Data/Palette/palette.h"
 
 typedef Tile** Tile_Row;
 
@@ -15,6 +16,12 @@ struct Game_Board {
 
     // Factory responsible for getting new tiles
     Tile_Factory* tile_factory;
+
+    // Current palette index used to draw tiles
+    GLfloat tiles_regular_palette_index;
+
+    // Current palette index used to draw tiles in fog
+    GLfloat tiles_fog_palette_index;
 };
 
 Game_Board* create_game_board(
@@ -38,6 +45,9 @@ Game_Board* create_game_board(
         game_board->tiles[i] = (Tile**)malloc(sizeof(Tile*) * game_board->n_columns);
     }
 
+    game_board->tiles_regular_palette_index = get_tile_palette_index(Clear, 0);
+    game_board->tiles_fog_palette_index = get_tile_palette_index(Clear, 1);
+
     return game_board;
 }
 
@@ -55,9 +65,14 @@ void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch)
         for (int x = 0; x < game_board->n_columns; x++) {
             if (game_board->tiles[y][x] != NULL) {
                 /*
-                tile_draw(
+                draw_tile(
+
+Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination
+
+
+
                     game_board->tiles[board_y][board_x], 
-                    rend, 
+                    sprite_batch, 
                     tile_texture, 
                     board_x * DEFAULT_TILE_DIMENSION,
                     board_y * DEFAULT_TILE_DIMENSION

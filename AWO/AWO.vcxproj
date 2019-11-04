@@ -63,8 +63,10 @@
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\Inputs\keys_state.c" />
     <ClCompile Include="Src\Game\Inputs\mouse_state.c" />
+    <ClCompile Include="Src\Game\render_game.c" />
     <ClCompile Include="Src\Game\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Src\Game\run_game.c" />
+    <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\main.c" />

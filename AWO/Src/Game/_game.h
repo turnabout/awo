@@ -7,6 +7,7 @@
 #include "Game/Board/game_board.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
+#include "Game/Inputs/inputs.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
 
@@ -26,7 +27,20 @@ struct Game {
 
 /*! @brief Initializes the game data and modules using it, attaching results to the game object.
  *
- *  @param[in] game The main game struct object.
+ *  @param[in] game The game object.
  *  @return 1 if successful, 0 if an error occurred.
  */
 int init_game_data(Game* game);
+
+/*! @brief Updates the game's entities.
+ *
+ *  @param[in] game The game object.
+ *  @param[in] delta_time Elapsed seconds since last frame.
+ */
+void update_game(Game* game, float delta_time);
+
+/*! @brief Renders the game's entities.
+ *
+ *  @param[in] game The game object.
+ */
+void render_game(Game* game);
