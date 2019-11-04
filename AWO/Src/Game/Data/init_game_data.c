@@ -56,7 +56,7 @@ int init_game_data(Game* game)
         projection
     );
 
-    // Use palette data to create palette color map texture
+    // Use palette data to create palette color hashmap texture
     game->palette_texture = create_palette_texture(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "palettes")
     );

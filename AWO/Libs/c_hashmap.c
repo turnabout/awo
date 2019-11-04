@@ -1,5 +1,5 @@
 /*
- * Generic map implementation.
+ * Generic hashmap implementation.
  */
 #include "c_hashmap.h"
 
@@ -346,7 +346,7 @@ int hashmap_iterate(map_t in, PFany f, any_t item) {
 }
 
 /*
- * Remove an element with that key from the map
+ * Remove an element with that key from the hashmap
  */
 int hashmap_remove(map_t in, char* key){
 	int i;

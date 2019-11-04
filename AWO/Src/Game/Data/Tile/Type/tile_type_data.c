@@ -96,7 +96,7 @@ void free_tile_type_data(Tile_Type_Data* tile_type_data)
         free_tile_variation_data(tile_variation_data);
     }
 
-    // Free the map itself
+    // Free the hashmap itself
     free(tile_type_data->vars_map);
 
     free(tile_type_data->auto_vars);

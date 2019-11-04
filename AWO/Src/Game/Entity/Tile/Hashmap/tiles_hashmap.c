@@ -53,7 +53,7 @@ void add_hashmap_tile(
     Tile_Variation variation
 )
 {
-    // Create map entry with key string & tile, then add to map
+    // Create hashmap entry with key string & tile, then add to hashmap
     Tile_Map_Entry* entry = malloc(sizeof(Tile_Map_Entry));
 
     snprintf(
@@ -69,7 +69,7 @@ void add_hashmap_tile(
     hashmap_put(tiles_hashmap->map, entry->key_string, entry);
 }
 
-// Callback used to iterate over every map entry & free their contents.
+// Callback used to iterate over every hashmap entry & free their contents.
 int free_tiles_hashmap_entry_CB(any_t tiles_hashmap_arg, any_t entry_arg)
 {
     Tile_Map_Entry* entry = (Tile_Map_Entry*)entry_arg;

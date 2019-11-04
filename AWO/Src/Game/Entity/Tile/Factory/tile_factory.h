@@ -16,7 +16,7 @@ typedef struct Tile_Factory Tile_Factory;
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] game_clock The game clock object.
  */
-Tile_Factory* TF_create(Tiles_Data* tiles_data, Game_Clock* game_clock);
+Tile_Factory* create_tile_factory(Tiles_Data* tiles_data, Game_Clock* game_clock);
 
 /*! @brief Gets a tile.
  *
@@ -24,4 +24,10 @@ Tile_Factory* TF_create(Tiles_Data* tiles_data, Game_Clock* game_clock);
  *  @param[in] type The type of the tile to get.
  *  @param[in] variation The variation of the tile to get.
  */
-Tile* TF_get_tile(Tile_Factory* factory, Tile_Type type, Tile_Variation variation);
+Tile* get_tile_factory_tile(Tile_Factory* factory, Tile_Type type, Tile_Variation variation);
+
+/*! @brief Frees memory taken up by tile factory.
+ *
+ *  @param[in] factory The tile factory object.
+ */
+void free_tile_factory(Tile_Factory* factory);
