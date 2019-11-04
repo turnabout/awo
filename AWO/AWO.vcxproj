@@ -55,6 +55,9 @@
     <ClCompile Include="Src\Game\Data\Tile\Type\Variation\tile_variation_data.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_access.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_creation.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\Factory\tile_factory.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\tile.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\Inputs\keys_state.c" />
@@ -77,6 +80,7 @@
   <ItemGroup>
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
+    <ClInclude Include="Src\Game\Board\game_board.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\enums.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_clock.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
@@ -92,6 +96,9 @@
     <ClInclude Include="Src\Game\Data\Unit\enums.h" />
     <ClInclude Include="Src\Game\Data\Unit\units_data.h" />
     <ClInclude Include="Src\Game\Data\Unit\_units_data.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\tile.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\Factory\tile_factory.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
     <ClInclude Include="Src\Game\Sprite_Batch\sprite_batch.h" />

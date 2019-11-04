@@ -112,7 +112,7 @@ void render_game(Game* game)
     // Draw main sprites
     begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
 
-    test_palettes(game);
+    // test_palettes(game);
 
     end_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
 }
@@ -120,6 +120,7 @@ void render_game(Game* game)
 void run_game(Game* game)
 {
     // Test drawing 
+    /*
     test_tile_animation = gather_tile_data(
         game->tiles_data, 
         River, Horizontal, 
@@ -132,6 +133,7 @@ void run_game(Game* game)
         Bomber,
         OS
     );
+*/
 
     // --------------------------------------------------------------
     static float delta_time = 0.0f;      // Time between current frame and last frame.

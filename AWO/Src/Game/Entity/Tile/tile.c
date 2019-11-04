@@ -1,50 +1,67 @@
-#include <SDL.h>
+#include <stdlib.h>
 
 #include "conf.h"
-#include "tile.h"
+#include "Game/Entity/Tile/tile.h"
 
 struct Tile {
-    SDL_Rect* anim_frames; // Frame arrays for this tile's animation
-    int* anim_index;       // Pointer to sub-clock tick used to update this tile's animation
+
+    // This tile's type.
     Tile_Type type;
+
+    // This tile's animation.
+    Animation* animation;
+
+    // Pointer to sub-clock tick used to update this tile's animation.
+    int* animation_index_ptr;
 };
 
-Tile* tile_create(Game_Clock* gc, Tiles_Data* td, Tile_Type tt, Tile_Var tv)
+Tile* create_tile(
+    Game_Clock* game_clock, 
+    Tiles_Data* tiles_data, 
+    Tile_Type type, 
+    Tile_Variation variation
+)
 {
     Tile* tile = (Tile*)malloc(sizeof(Tile));
 
-    tile->type = tt;
+    tile->type = type;
 
     // Get tile data for this tile
-    Animation_Clock_Index clock;
-    Animation_Sub_Clock_Index sub_clock;
+    Animation_Clock_Index clock_index;
+    Animation_Sub_Clock_Index sub_clock_index;
 
-    tile->anim_frames = TD_gather_tile_data(td, tt, tv, &clock, &sub_clock);
+    // Gather clock index, sub clock index and the tile animation.
+    gather_tile_data(
+        tiles_data,
+        type,
+        variation,
+        &clock_index,
+        &sub_clock_index,
+        &tile->animation
+    );
 
     // Get the animation index pointer
-    tile->anim_index = GC_get_ASC_tick_ptr(gc, clock, sub_clock);
+    tile->animation_index_ptr = get_game_clock_tick_ptr(game_clock, clock_index, sub_clock_index);
 
     return tile;
 }
 
-void tile_draw(Tile* tile, SDL_Renderer* rend, SDL_Texture* texture, int x, int y)
+void draw_tile(Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination)
 {
-    SDL_Rect draw_rect = {
-        x,
-        y - tile->anim_frames[0].h + DEFAULT_TILE_DIMENSION,
-        tile->anim_frames[0].w,
-        tile->anim_frames[0].h,
-    };
-
-    SDL_RenderCopy(rend, texture, &tile->anim_frames[*tile->anim_index], &draw_rect);
+    add_to_sprite_batch(
+        sprite_batch, 
+        destination,
+        &(tile->animation->frames[*tile->animation_index_ptr]),
+        palette_index
+    );
 }
 
-void tile_free(Tile* tile)
+void free_tile(Tile* tile)
 {
     // TODO
 }
 
-Tile_Type tile_get_type(Tile* tile)
+Tile_Type get_tile_type(Tile* tile)
 {
     return tile->type;
 }

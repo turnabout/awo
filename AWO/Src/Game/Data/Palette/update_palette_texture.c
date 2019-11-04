@@ -1,9 +1,6 @@
 #include "Game/Data/Palette/_palette.h"
 
-void update_palette_black_pixel(
-    GLint palette_index, 
-    GLubyte new_color
-)
+void update_palette_black_pixel(GLint palette_index, GLubyte new_color)
 {
     GLubyte new_color_array[4] = { new_color, new_color, new_color, 255 };
 

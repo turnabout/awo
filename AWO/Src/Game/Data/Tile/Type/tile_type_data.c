@@ -1,3 +1,5 @@
+#pragma warning (disable: 4090)
+
 #include <stdlib.h>
 
 #include "Game/Data/Tile/Type/_tile_type_data.h"

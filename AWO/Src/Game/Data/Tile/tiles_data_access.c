@@ -94,12 +94,13 @@ Tile_Variation get_tile_auto_var(
     return get_tile_type_default_var(tiles_data, middle_tile);
 }
 
-Animation* gather_tile_data(
+void gather_tile_data(
     Tiles_Data* tiles_data, 
     Tile_Type type, 
     Tile_Variation var,
     Animation_Clock_Index* clock,
-    Animation_Sub_Clock_Index* sub_clock
+    Animation_Sub_Clock_Index* sub_clock,
+    Animation** animation
 )
 {
     Tile_Type_Data* tile_type_data = tiles_data->src[type];
@@ -116,7 +117,9 @@ Animation* gather_tile_data(
         *sub_clock = tile_var_data->sub_clock;
     }
 
-    return tile_var_data->animation;
+    if (animation != NULL) {
+        *animation = tile_var_data->animation;
+    }
 }
 
 void free_tiles_data(Tiles_Data* tiles_data)

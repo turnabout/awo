@@ -69,7 +69,4 @@ GLint get_property_palette_index_i(Unit_Variation unit_variation);
  *  @param[in] palette_index Index of the palette to update.
  *  @param[in] new_color Color to replace the current black pixel value with.
  */
-void update_palette_black_pixel(
-    GLint palette_index,
-    GLubyte new_color
-);
+void update_palette_black_pixel(GLint palette_index, GLubyte new_color);
