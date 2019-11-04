@@ -10,7 +10,7 @@ struct Game_Board {
     // Amount of tile columns and lines making up the game board
     int n_columns, n_lines;
 
-    // Contains all tiles on the game board. tiles[y][x]
+    // Contains all tiles on the game board. tiles[board_y][board_x]
     Tile_Row* tiles;
 
     // Factory responsible for getting new tiles
@@ -56,11 +56,11 @@ void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch)
             if (game_board->tiles[y][x] != NULL) {
                 /*
                 tile_draw(
-                    game_board->tiles[y][x], 
+                    game_board->tiles[board_y][board_x], 
                     rend, 
                     tile_texture, 
-                    x * DEFAULT_TILE_DIMENSION,
-                    y * DEFAULT_TILE_DIMENSION
+                    board_x * DEFAULT_TILE_DIMENSION,
+                    board_y * DEFAULT_TILE_DIMENSION
                 );
                 */
             }
@@ -82,11 +82,17 @@ void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variatio
     }
 }
 
-void edit_game_board_tile(Game_Board* gb, Tile_Type type, Tile_Variation var, int x, int y)
+void edit_game_board_tile(
+    Game_Board* game_board,
+    int board_x,
+    int board_y,
+    Tile_Type type,
+    Tile_Variation variation
+)
 {
-    // Ensure x/y are within the game board tile boundaries
-    if (x <= gb->n_columns && y <= gb->n_lines) {
-        gb->tiles[y][x] = get_tile_factory_tile(gb->tile_factory, type, var);
+    // Ensure board_x/board_y are within the game board tile boundaries
+    if (board_x <= game_board->n_columns && board_y <= game_board->n_lines) {
+        game_board->tiles[board_y][board_x] = get_tile_factory_tile(game_board->tile_factory, type, variation);
     }
 }
 

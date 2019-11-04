@@ -64,10 +64,6 @@ int init_glfw(Game* game)
     // Initialize GLFW
     glfwSetErrorCallback(glfw_error_cb);
     glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Get GLFW window
     GLFWwindow* window = glfwCreateWindow(
@@ -89,43 +85,58 @@ int init_glfw(Game* game)
     return 1;
 }
 
+void set_GL_options(Game* game)
+{
+    // Set viewport
+    glfwGetWindowSize(game->window, &game->w, &game->h);
+    glViewport(0, 0, game->w, game->h);
+
+    // Set other OpenGL options
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+
+    glClearColor(
+        (float)GAME_CLEAR_COLOR_R / 255.0f, 
+        (float)GAME_CLEAR_COLOR_G / 255.0f, 
+        (float)GAME_CLEAR_COLOR_B / 255.0f, 
+        (float)GAME_CLEAR_COLOR_A / 255.0f
+    );
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+}
+
 Game* init_game()
 {
     Game* game = (Game*)malloc(sizeof(Game));
 
-    // GLFW | GLAD
-    if (!init_glfw(game) || !gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+    // Initialize game components: GLFW, GLAD, game data and sprite batches.
+    if (
+        !init_glfw(game) || 
+        !gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) ||
+        !init_game_data(game) ||
+        !init_game_sprite_batches(game)
+    ) {
         printf("Failed to initialize\n");
         return NULL;
     }
 
-    glfwGetWindowSize(game->window, &game->w, &game->h);
-    glViewport(0, 0, game->w, game->h);
-
-    // Load the game's data
-    if (!init_game_data(game)) {
-        return NULL;
-    }
-
-    // Set the game's sprite batches used for rendering
-    if (!init_game_sprite_batches(game)) {
-        return NULL;
-    }
+    // Set OpenGL options
+    set_GL_options(game);
 
     // Initialize input handling
     init_keys_state_module(game->window);
     init_mouse_state_module(game->window, &game->h);
 
-    // Set some other options
-    glClearColor(
-        (float)DEFAULT_GAME_BG_R / 255.0f, 
-        (float)DEFAULT_GAME_BG_G / 255.0f, 
-        (float)DEFAULT_GAME_BG_B / 255.0f, 
-        (float)DEFAULT_GAME_BG_A / 255.0f
+    // Set game board
+    game->board = create_game_board(
+        game->tiles_data,
+        game->clock,
+        DEFAULT_GAME_BOARD_WIDTH,
+        DEFAULT_GAME_BOARD_HEIGHT
     );
-
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     return game;
 }

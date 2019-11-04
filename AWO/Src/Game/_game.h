@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Game/game.h"
+#include "Game/Board/game_board.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
 #include "Game/Clock/game_clock.h"
@@ -17,6 +18,7 @@ struct Game {
     Units_Data* units_data;
     GLuint      palette_texture;
 
+    Game_Board* board;
     Game_Clock* clock;
 
     int w, h;

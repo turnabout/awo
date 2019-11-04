@@ -16,8 +16,8 @@
 #define FONTS_PATH    RESOURCES_PATH "Fonts/"
 
 #define SPRITE_SHEET_PATH   TEXTURES_PATH "spritesheet.png"
-#define GAME_DATA_JSON_PATH DATA_PATH "game_data.json"
-#define DIALOGUE_FONT_PATH  FONTS_PATH "aw2-gba.ttf"
+#define GAME_DATA_JSON_PATH DATA_PATH     "game_data.json"
+#define DIALOGUE_FONT_PATH  FONTS_PATH    "aw2-gba.ttf"
 
 // Window configuration
 #define DEFAULT_WINDOW_TITLE "AWO"
@@ -36,13 +36,13 @@
 #define DEFAULT_TILE_DIMENSION 16
 
 // Default dimensions of game board (tiles)
-#define DEFAULT_GB_WIDTH  40
-#define DEFAULT_GB_HEIGHT 20
+#define DEFAULT_GAME_BOARD_WIDTH  40
+#define DEFAULT_GAME_BOARD_HEIGHT 20
 
-// Starting background color when first initializing game
-#define DEFAULT_GAME_BG_R 255
-#define DEFAULT_GAME_BG_G 239
-#define DEFAULT_GAME_BG_B 239
-#define DEFAULT_GAME_BG_A 255
+// Clear color
+#define GAME_CLEAR_COLOR_R 255
+#define GAME_CLEAR_COLOR_G 239
+#define GAME_CLEAR_COLOR_B 239
+#define GAME_CLEAR_COLOR_A 255
 
 #define MAX_SPRITE_BATCH_ELEMENTS 200
