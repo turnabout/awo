@@ -10,10 +10,12 @@
 #include "Game/Inputs/inputs.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Sprite_Batch/sprite_batch.h"
+#include "Game/Renderer/renderer.h"
 
 struct Game {
     GLFWwindow* window;
     Sprite_Batch* sprite_batches[SPRITE_BATCH_TYPE_COUNT];
+    Renderer* tiles_renderer;
 
     Tiles_Data* tiles_data;
     Units_Data* units_data;

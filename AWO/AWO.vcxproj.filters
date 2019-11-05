@@ -171,6 +171,9 @@
     <ClCompile Include="Src\Game\update_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -269,6 +272,9 @@
     <ClInclude Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />
@@ -282,5 +288,7 @@
     <None Include="Resources\Shaders\sprite.vert" />
     <None Include="Resources\Shaders\sprite.frag" />
     <None Include="Resources\Data\game_data.json" />
+    <None Include="Resources\Shaders\tiles.frag" />
+    <None Include="Resources\Shaders\tiles.vert" />
   </ItemGroup>
 </Project>

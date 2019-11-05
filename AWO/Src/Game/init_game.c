@@ -54,15 +54,24 @@ int init_game_sprite_batches(Game* game)
         MAX_SPRITE_BATCH_ELEMENTS
     );
 
+    // Uniforms
     glUseProgram(sprites_shader_program);
-
-    init_transformation_matrices(game, sprites_shader_program);
-
-    // Textures
     glUniform1i(glGetUniformLocation(sprites_shader_program, "sprite_sheet"), 0);
     glUniform1i(glGetUniformLocation(sprites_shader_program, "palettes_texture"), 1);
+    init_transformation_matrices(game, sprites_shader_program);
 
-    glUseProgram(0);
+    // Renderer
+    GLuint tiles_renderer_shader = create_shader_program(
+        SHADERS_PATH "tiles.vert", 
+        SHADERS_PATH "tiles.frag"
+    );
+
+    game->tiles_renderer = create_renderer(
+        sprite_sheet_texture,
+        game->palette_texture,
+        tiles_renderer_shader
+    );
+    init_transformation_matrices(game, tiles_renderer_shader);
 
     return 1;
 }

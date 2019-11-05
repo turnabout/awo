@@ -63,6 +63,7 @@
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\Inputs\keys_state.c" />
     <ClCompile Include="Src\Game\Inputs\mouse_state.c" />
+    <ClCompile Include="Src\Game\Renderer\renderer.c" />
     <ClCompile Include="Src\Game\render_game.c" />
     <ClCompile Include="Src\Game\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Src\Game\run_game.c" />
@@ -79,6 +80,8 @@
     <None Include="Resources\Data\game_data.json" />
     <None Include="Resources\Shaders\sprite.vert" />
     <None Include="Resources\Shaders\sprite.frag" />
+    <None Include="Resources\Shaders\tiles.frag" />
+    <None Include="Resources\Shaders\tiles.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libs\cglm\config.h" />
@@ -104,6 +107,7 @@
     <ClInclude Include="Src\Game\Entity\Tile\Factory\tile_factory.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
+    <ClInclude Include="Src\Game\Renderer\renderer.h" />
     <ClInclude Include="Src\Game\Sprite_Batch\sprite_batch.h" />
     <ClInclude Include="Src\Game\_game.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
