@@ -59,6 +59,14 @@ void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch)
 {
     // Draw tiles
     // Loop lines
+
+    draw_tile(
+        game_board->tiles[0][0],
+        sprite_batch,
+        game_board->tiles_regular_palette_index,
+        (vec2) { 100, 100 }
+    );
+
     for (int y = 0; y < game_board->n_lines; y++) {
 
         // Loop columns

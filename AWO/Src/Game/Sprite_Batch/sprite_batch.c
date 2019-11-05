@@ -193,7 +193,6 @@ void add_to_sprite_batch(
     };
 
     // Store vertices data in previously allocated buffer
-    // TODO: change offset as we add more elements to sprite batch queue
     glBufferSubData(
         GL_ARRAY_BUFFER, 
         sprite_batch->current_offset, 
@@ -237,6 +236,9 @@ void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch)
     };
 
     // Store vertices data in previously allocated buffer
-    // TODO: change offset as we add more elements to sprite batch queue
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(quad_vertices), quad_vertices);
+
+    // Update sprite batch state
+    sprite_batch->elements_queued++;
+    sprite_batch->current_offset += sizeof(quad_vertices);
 }

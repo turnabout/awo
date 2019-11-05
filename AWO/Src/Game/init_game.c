@@ -85,18 +85,30 @@ int init_glfw(Game* game)
     return 1;
 }
 
-void set_GL_options(Game* game)
+int set_GL_options(Game* game)
 {
-    // Set viewport
-    glfwGetWindowSize(game->window, &game->w, &game->h);
-    glViewport(0, 0, game->w, game->h);
-
-    // Set other OpenGL options
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
+    // Set viewport
+    glfwGetWindowSize(game->window, &game->w, &game->h);
+    glViewport(0, 0, game->w, game->h);
+
+    // Set initial window position
+    GLFWmonitor* primary = glfwGetPrimaryMonitor();
+
+    int monitor_x, monitor_y, monitor_w, monitor_h;
+    glfwGetMonitorWorkarea(primary, &monitor_x, &monitor_y, &monitor_w, &monitor_h);
+
+    glfwSetWindowPos(
+        game->window,
+        monitor_x + ((monitor_w / 2) - (game->w / 2)),
+        monitor_y + ((monitor_h / 2) - (game->h / 2))
+    );
+
+    // Set other options
     glClearColor(
         (float)GAME_CLEAR_COLOR_R / 255.0f, 
         (float)GAME_CLEAR_COLOR_G / 255.0f, 
@@ -106,6 +118,8 @@ void set_GL_options(Game* game)
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    return 1;
 }
 
 Game* init_game()
@@ -116,15 +130,13 @@ Game* init_game()
     if (
         !init_glfw(game) || 
         !gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) ||
+        !set_GL_options(game) ||
         !init_game_data(game) ||
         !init_game_sprite_batches(game)
     ) {
         printf("Failed to initialize\n");
         return NULL;
     }
-
-    // Set OpenGL options
-    set_GL_options(game);
 
     // Initialize input handling
     init_keys_state_module(game->window);
@@ -137,6 +149,8 @@ Game* init_game()
         DEFAULT_GAME_BOARD_WIDTH,
         DEFAULT_GAME_BOARD_HEIGHT
     );
+
+    fill_game_board_tiles(game->board, Plain, Default);
 
     return game;
 }
