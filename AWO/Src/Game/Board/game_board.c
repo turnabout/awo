@@ -67,26 +67,16 @@ void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch)
         (vec2) { 100, 100 }
     );
 
-    for (int y = 0; y < game_board->n_lines; y++) {
+    for (int y = (game_board->n_lines - 1); y >= 0; y--) {
 
         // Loop columns
-        for (int x = 0; x < game_board->n_columns; x++) {
-            if (game_board->tiles[y][x] != NULL) {
-                /*
-                draw_tile(
-
-Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination
-
-
-
-                    game_board->tiles[board_y][board_x], 
-                    sprite_batch, 
-                    tile_texture, 
-                    board_x * DEFAULT_TILE_DIMENSION,
-                    board_y * DEFAULT_TILE_DIMENSION
-                );
-                */
-            }
+        for (int x = (game_board->n_columns - 1); x >= 0; x--) {
+            draw_tile(
+                game_board->tiles[y][x],
+                sprite_batch,
+                game_board->tiles_regular_palette_index,
+                (vec2) { (float)x * DEFAULT_TILE_DIMENSION, (float)y * DEFAULT_TILE_DIMENSION }
+            );
         }
     }
 }

@@ -10,6 +10,27 @@
 
 #include "Game/Data/Palette/palette.h"
 
+void init_transformation_matrices(Game* game, GLuint sprites_shader_program)
+{
+    // View matrix
+    mat4 view = GLM_MAT4_IDENTITY_INIT;
+
+    // glm_translate(view, (vec3) { 200.0f, 0.0f, 0.0f } );
+    // glm_scale(view, (vec3) { 1.0f, 1.0f, 1.0f });
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(sprites_shader_program, "view"), 1, GL_FALSE, view[0]
+    );
+
+    // Projection matrix
+    mat4 projection = GLM_MAT4_IDENTITY_INIT;
+    glm_ortho(0.0f, (float)game->w, 0.0f, (float)game->h, -1.0f, 1.0f, projection);
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(sprites_shader_program, "projection"), 1, GL_FALSE, projection[0]
+    );
+}
+
 int init_game_sprite_batches(Game* game)
 {
     // Create sprite batches
@@ -33,17 +54,9 @@ int init_game_sprite_batches(Game* game)
         MAX_SPRITE_BATCH_ELEMENTS
     );
 
-    // Set main projection matrix uniform
-    mat4 main_projection;
-    glm_ortho(0.0f, (float)game->w, 0.0f, (float)game->h, -1.0f, 1.0f, main_projection);
-
-    // Set uniforms for main sprites' sprite batch
     glUseProgram(sprites_shader_program);
 
-    // Projection matrix
-    glUniformMatrix4fv(
-        glGetUniformLocation(sprites_shader_program, "projection"), 1, GL_FALSE, main_projection[0]
-    );
+    init_transformation_matrices(game, sprites_shader_program);
 
     // Textures
     glUniform1i(glGetUniformLocation(sprites_shader_program, "sprite_sheet"), 0);
