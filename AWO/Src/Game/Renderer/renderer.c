@@ -127,7 +127,7 @@ Renderer* create_renderer(GLuint sprite_sheet_tex, GLuint palette_tex, GLuint sh
     init_renderer_buffer(renderer);
     init_tiles_texture(renderer);
 
-    glUniform1i(glGetUniformLocation(renderer->shader, "sprite_sheet"), 0);
+    glUniform1i(glGetUniformLocation(renderer->shader, "sprite_sheet_texture"), 0);
     glUniform1i(glGetUniformLocation(renderer->shader, "tiles_texture"), 1);
     glUniform1i(glGetUniformLocation(renderer->shader, "palettes_texture"), 2);
 
@@ -156,11 +156,12 @@ void update_tiles_palette_pixel(
     GLuint x,
     GLuint y,
     GLfloat R, 
-    GLfloat G
+    GLfloat G,
+    GLfloat B
 )
 {
     glBindTexture(GL_TEXTURE_2D, renderer->tiles_tex);
-    GLfloat new_color_array[4] = { R, G, 1.0f, 1.0f };
+    GLfloat new_color_array[4] = { R, G, B, 1.0f };
 
     glTexSubImage2D(
         GL_TEXTURE_2D,

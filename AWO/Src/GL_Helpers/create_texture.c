@@ -4,6 +4,8 @@
 
 GLuint create_texture_object(const char* texture_path)
 {
+    // stbi_set_flip_vertically_on_load(1);
+
     // Load texture image
     GLint channels_amount, width, height;
     unsigned char* data = stbi_load(texture_path, &width, &height, &channels_amount, 0);
@@ -24,8 +26,8 @@ GLuint create_texture_object(const char* texture_path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
     // Set the texture filtering method (for when we have to minify or magnify a texture)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
     // Generate texture
     GLenum format = (channels_amount == 4)

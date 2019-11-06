@@ -172,7 +172,7 @@ Game* init_game()
         DEFAULT_GAME_BOARD_HEIGHT
     );
 
-    fill_game_board_tiles(game->board, Plain, Default);
+    fill_game_board_tiles(game->board, Sea, Middle);
 
     return game;
 }

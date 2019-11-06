@@ -11,5 +11,6 @@ void update_tiles_palette_pixel(
     GLuint x,
     GLuint y,
     GLfloat R,
-    GLfloat G
+    GLfloat G,
+    GLfloat B
 );
