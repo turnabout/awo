@@ -16,7 +16,7 @@ void init_transformation_matrices(Game* game, GLuint sprites_shader_program)
     mat4 view = GLM_MAT4_IDENTITY_INIT;
 
     // glm_translate(view, (vec3) { 200.0f, 0.0f, 0.0f } );
-    // glm_scale(view, (vec3) { 1.0f, 1.0f, 1.0f });
+    glm_scale(view, (vec3) { (GLfloat)DEFAULT_TILE_DIMENSION, (GLfloat)DEFAULT_TILE_DIMENSION, 1.0f });
 
     glUniformMatrix4fv(
         glGetUniformLocation(sprites_shader_program, "view"), 1, GL_FALSE, view[0]
