@@ -165,7 +165,7 @@ void update_tiles_pixel(
 )
 {
     glBindTexture(GL_TEXTURE_2D, renderer->tiles_tex);
-    GLfloat new_color_array[4] = { R / 255.0f, G / 255.0f, B, 1.0f };
+    GLfloat color[4] = { R / 510.0f, G / 510.0f, B, 1.0f };
 
     glTexSubImage2D(
         GL_TEXTURE_2D,
@@ -176,7 +176,7 @@ void update_tiles_pixel(
         1,
         GL_RGBA,
         GL_FLOAT,
-        &new_color_array
+        &color
     );
 }
 
@@ -188,7 +188,8 @@ void fill_tiles_palette_pixels(
 )
 {
     glBindTexture(GL_TEXTURE_2D, renderer->tiles_tex);
-    GLfloat new_color_array[4] = { R / 255.0f, G / 255.0f, B, 1.0f };
+
+    GLfloat color[4] = { R / 510.0f, G / 510.0f, B, 1.0f };
 
     for (int y = 0; y < (int)renderer->height; y++) {
         for (int x = 0; x < (int)renderer->width; x++) {
@@ -201,7 +202,7 @@ void fill_tiles_palette_pixels(
                 1,
                 GL_RGBA,
                 GL_FLOAT,
-                &new_color_array
+                &color
             );
         }
     }

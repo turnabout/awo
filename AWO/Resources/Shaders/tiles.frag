@@ -31,12 +31,12 @@ void main()
 	// Take the tile's top-left coordinates & add current quad texture offset coordinates
 	// along with offset to get the correct sprite sheet coordinates
 	vec2 tex_coords_offset;
-	
+
 	vec2 sprite_sheet_coordinates = vec2(
-		((tile_data.x  * 255.0) / sprite_sheet_width) + ( 
+		(tile_data.x * 510.0) / sprite_sheet_width + ( 
 			mod( (tex_coords.x * quad_width), scale ) / sprite_sheet_width
 		),
-		((tile_data.y * 255.0) / sprite_sheet_height) + (
+		(tile_data.y * 510.0) / sprite_sheet_height + ( 
 			mod( (tex_coords.y * quad_height), scale ) / sprite_sheet_height
 		)
 	);
@@ -51,8 +51,8 @@ void main()
 	// 4. Index into textures palette to get the final color output
 	outColor = vec4(
 		texture(palettes_texture, vec2(palette_column_index, palette_row_index)).rgb,
-		1.0
+		sprite_sheet_grayscale.a
 	);
 
-	// outColor = vec4(tile_width_NDC, tile_height_NDC, 0.0, 1.0);
+	// outColor = sprite_sheet_grayscale;
 }

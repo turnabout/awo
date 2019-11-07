@@ -10,6 +10,7 @@ static const int GAME_KEYS[] = {
     GLFW_KEY_3,
     GLFW_KEY_4,
     GLFW_KEY_5,
+    GLFW_KEY_W,
     GLFW_KEY_A,
     GLFW_KEY_S,
     GLFW_KEY_D,

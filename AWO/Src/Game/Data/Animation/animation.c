@@ -5,7 +5,7 @@
 #include "conf.h"
 #include "Game/Data/Animation/animation.h"
 
-void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, int ss_width, int ss_height)
+void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, float ss_width, float ss_height)
 {
     // Gather dimensions
     float x = (float)cJSON_GetObjectItemCaseSensitive(frame_JSON, "x")->valueint;
@@ -48,7 +48,7 @@ Animation* create_animation(const cJSON* animation_JSON, int ss_width, int ss_he
     cJSON* frame_JSON = NULL;
     cJSON_ArrayForEach(frame_JSON, animation_JSON)
     {
-        create_animation_frame(frames, frame_JSON, ss_width, ss_height);
+        create_animation_frame(frames, frame_JSON, (float)ss_width, (float)ss_height);
         frames++;
     }
 
