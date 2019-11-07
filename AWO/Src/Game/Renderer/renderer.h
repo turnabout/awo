@@ -12,7 +12,7 @@ Renderer* create_renderer(
     GLuint height
 );
 
-void render(Renderer* renderer, int x_offset, int y_offset);
+void render(Renderer* renderer);
 
 void update_tiles_pixel(
     Renderer* renderer,

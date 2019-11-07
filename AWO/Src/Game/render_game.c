@@ -21,15 +21,22 @@ void render_game(Game* game)
 
         // printf("%.16f %.16f\n", test_tile->frames[0].top_left[0], test_tile->frames[0].top_left[1]);
 
-        update_tiles_pixel(game->tiles_renderer, 0, 0, one, two, get_tile_palette_index(Clear, 0));
-        update_tiles_pixel(game->tiles_renderer, 1, 0, one, two, get_tile_palette_index(Clear, 0));
         fill_tiles_palette_pixels(game->tiles_renderer, one, two, get_tile_palette_index(Clear, 0));
+
+        Animation* add_tile_1;
+        gather_tile_data(game->tiles_data, River, Horizontal, NULL, NULL, &add_tile_1);
+
+        update_tiles_pixel(
+            game->tiles_renderer, 
+            10, 
+            10, 
+            add_tile_1->frames[0].raw_top_left[0], 
+            add_tile_1->frames[0].raw_top_left[1], 
+            get_tile_palette_index(Clear, 0)
+        );
     }
 
-
-
-
-    render(game->tiles_renderer, 0, 0);
+    render(game->tiles_renderer);
 
     // Draw main sprites
     // begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);

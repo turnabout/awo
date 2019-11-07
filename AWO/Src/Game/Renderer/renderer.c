@@ -138,7 +138,7 @@ Renderer* create_renderer(
     return renderer;
 }
 
-void render(Renderer* renderer, int x_offset, int y_offset)
+void render(Renderer* renderer)
 {
     glUseProgram(renderer->shader);
     glBindVertexArray(renderer->VAO);
