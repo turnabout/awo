@@ -41,7 +41,7 @@ void free_variations_list_hashmap(map_t variations_list_hashmap)
     hashmap_free(variations_list_hashmap);
 }
 
-Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection)
+Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, int ss_width, int ss_height)
 {
     Tiles_Data* tiles_data = malloc(sizeof(Tiles_Data));
     map_t variations_list_hashmap = create_variations_list_hashmap();
@@ -57,7 +57,8 @@ Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection)
          tiles_data->src[tile_type++] = create_tile_type_data(
             tile_type_JSON, 
             variations_list_hashmap,
-            ss_projection
+             ss_width,
+             ss_height
         );
     }
 

@@ -8,12 +8,17 @@
  * Describes the source data of a frame within the sprite sheet.
  */
 typedef struct Frame {
-    vec4 top_left;     // This frame's source coordinates, in Normalized Device Coordinates
-    vec4 top_right;    // Indexes go x/y/z/w
+    // This frame's source coordinates, in Normalized Device Coordinates
+    vec4 top_left;
+    vec4 top_right;
     vec4 bottom_left;
     vec4 bottom_right;
 
-    vec2 dimensions;  // Width/height of this frame. Indexes go w/h
+    // This frame's raw top-left source coordinates, in pixels
+    vec2 raw_top_left;
+
+    // Width/height of this frame.
+    vec2 dimensions;  
 } Frame;
 
 /*! @brief Animation object.
@@ -28,12 +33,11 @@ typedef struct Animation {
 /*! @brief Creates an animation struct from the given cJSON animation array object.
  *
  *  @param[in] animation_json The JSON representing this animation and its frames.
- *  @param[in] projection The projection matrix used to convert frame source coordinates 
- *  to NDC.
+ *  @param[in] ss_width The width of the sprite sheet this animation comes from.
+ *  @param[in] ss_height The height of the sprite sheet this animation comes from.
  */
-Animation* create_animation(const cJSON* animation_JSON, mat4 projection);
+Animation* create_animation(const cJSON* animation_JSON, int ss_width, int ss_height);
 
-// 
 /*! @brief Frees an animation's allocated memory.
  *
  *  @param[in] animation The animation to free.

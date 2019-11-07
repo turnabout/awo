@@ -5,7 +5,7 @@
 #include "conf.h"
 #include "Game/Data/Animation/animation.h"
 
-void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, mat4 projection)
+void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, int ss_width, int ss_height)
 {
     // Gather dimensions
     float x = (float)cJSON_GetObjectItemCaseSensitive(frame_JSON, "x")->valueint;
@@ -22,37 +22,22 @@ void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, mat4 proj
     frame_ptr->dimensions[0] = w;
     frame_ptr->dimensions[1] = h;
 
-    vec4 top_left     = { x,     y,     0.0f, 1.0f };
-    vec4 top_right    = { x + w, y,     0.0f, 1.0f };
-    vec4 bottom_left  = { x,     y + h, 0.0f, 1.0f };
-    vec4 bottom_right = { x + w, y + h, 0.0f, 1.0f };
+    vec4 top_left     = { (x    ) / ss_width, (y)     / ss_height, 0.0f, 1.0f };
+    vec4 top_right    = { (x + w) / ss_width, (y)     / ss_height, 0.0f, 1.0f };
+    vec4 bottom_left  = { (x    ) / ss_width, (y + h) / ss_height, 0.0f, 1.0f };
+    vec4 bottom_right = { (x + w) / ss_width, (y + h) / ss_height, 0.0f, 1.0f };
 
-    // Transform frame data into Normalized Device Coordinates
-    glm_mat4_mulv(projection, top_left, top_left);
-    glm_mat4_mulv(projection, top_right, top_right);
-    glm_mat4_mulv(projection, bottom_left, bottom_left);
-    glm_mat4_mulv(projection, bottom_right, bottom_right);
-
-    // Texture coordinates are mapped between 0,0 and 1,1.
-    // The above transformation leaves us with coordinates between -1,-1 and 1,1, so we need
-    // to transform them so they all fit between 0,0 and 1,1.
-    // Dividing each vertex by 2 and adding 0.5 does the trick.
-    top_left[0]     = (top_left[0] / 2) + 0.50f;
-    top_left[1]     = (top_left[1] / 2) + 0.50f;
-    top_right[0]    = (top_right[0] / 2) + 0.50f;
-    top_right[1]    = (top_right[1] / 2) + 0.50f;
-    bottom_left[0]  = (bottom_left[0] / 2) + 0.50f;
-    bottom_left[1]  = (bottom_left[1] / 2) + 0.50f;
-    bottom_right[0] = (bottom_right[0] / 2) + 0.50f;
-    bottom_right[1] = (bottom_right[1] / 2) + 0.50f;
+    vec2 raw_top_left = { x, y };
 
     glm_vec4_copy(top_left, frame_ptr->top_left);
     glm_vec4_copy(top_right, frame_ptr->top_right);
     glm_vec4_copy(bottom_left, frame_ptr->bottom_left);
     glm_vec4_copy(bottom_right, frame_ptr->bottom_right);
+
+    glm_vec4_copy(raw_top_left, frame_ptr->raw_top_left);
 }
 
-Animation* create_animation(const cJSON* animation_JSON, mat4 projection)
+Animation* create_animation(const cJSON* animation_JSON, int ss_width, int ss_height)
 {
     Animation* animation = malloc(sizeof(Animation));
 
@@ -63,7 +48,7 @@ Animation* create_animation(const cJSON* animation_JSON, mat4 projection)
     cJSON* frame_JSON = NULL;
     cJSON_ArrayForEach(frame_JSON, animation_JSON)
     {
-        create_animation_frame(frames, frame_JSON, projection);
+        create_animation_frame(frames, frame_JSON, ss_width, ss_height);
         frames++;
     }
 

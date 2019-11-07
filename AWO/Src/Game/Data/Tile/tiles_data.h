@@ -13,11 +13,11 @@ typedef struct Tiles_Data Tiles_Data;
 /*! @brief Creates the tiles data object.
  *
  *  @param[in] tiles_data_JSON The JSON describing the tiles' data.
- *  @param[in] ss_projection The sprite sheet projection matrix, used to transform sprite sheet
- *             coordinates into Normalized Device Coordinates usable by OpenGL.
+ *  @param[in] ss_width The width of the game's sprite sheet.
+ *  @param[in] ss_height The height of the game's sprite sheet.
  *  @return The generated tiles data object.
  */
-Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, mat4 ss_projection);
+Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, int ss_width, int ss_height);
 
 /*! @brief Gets the tile variation the given middle tile should have, according to the given 
  *  adjacent tiles.

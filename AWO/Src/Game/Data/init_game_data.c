@@ -39,21 +39,18 @@ int init_game_data(Game* game)
     int sprite_sheet_w = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "width")->valueint;
     int sprite_sheet_h = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "height")->valueint;
 
-    // Set sprite sheet projection matrix. Used to transform sprites' x/y/w/h coordinates into
-    // Normalized Device Coordinates usable by OpenGL.
-    mat4 projection;
-    glm_ortho(0.0f, (float)sprite_sheet_w, 0.0f, (float)sprite_sheet_h, -1.0f, 1.0f, projection);
-
     // Gather units data
     game->units_data = create_units_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "units"),
-        projection
+        sprite_sheet_w,
+        sprite_sheet_h
     );
 
     // Gather tiles data
     game->tiles_data = create_tiles_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
-        projection
+        sprite_sheet_w,
+        sprite_sheet_h
     );
 
     // Use palette data to create palette color hashmap texture

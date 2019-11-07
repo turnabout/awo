@@ -8,7 +8,8 @@
 Tile_Type_Data* create_tile_type_data(
     cJSON* tile_type_JSON, 
     map_t variations_list_hashmap,
-    mat4 projection
+    int ss_width,
+    int ss_height
 )
 {
     // Initialize tile data
@@ -60,7 +61,8 @@ Tile_Type_Data* create_tile_type_data(
             create_tile_variation_data(
                 tile_variation_string,
                 tile_type_JSON,
-                projection
+                ss_width,
+                ss_height
             )
         );
     }

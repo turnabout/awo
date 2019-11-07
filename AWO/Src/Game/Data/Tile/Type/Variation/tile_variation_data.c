@@ -40,7 +40,8 @@ Animation_Sub_Clock_Index get_tile_variation_clock_index(
 Tile_Variation_Data* create_tile_variation_data(
     char* tile_variation_string,
     cJSON* tile_type_JSON, 
-    mat4 projection
+    int ss_width,
+    int ss_height
 )
 {
     Tile_Variation_Data* tile_variation_data = malloc(sizeof(Tile_Variation_Data));
@@ -54,7 +55,8 @@ Tile_Variation_Data* create_tile_variation_data(
 
     tile_variation_data->animation = create_animation(
         cJSON_GetObjectItemCaseSensitive(tile_variations_JSON, tile_variation_string),
-        projection
+        ss_width,
+        ss_height
     );
 
     return tile_variation_data;

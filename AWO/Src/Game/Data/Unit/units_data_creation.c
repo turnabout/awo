@@ -2,7 +2,7 @@
 
 #include "Game/Data/Unit/_units_data.h"
 
-Unit_Type_Data* create_unit_src_data(const cJSON* unit_type_JSON, mat4 ss_projection)
+Unit_Type_Data* create_unit_src_data(const cJSON* unit_type_JSON, int ss_width, int ss_height)
 {
     Unit_Type_Data* type;        // The unit type data struct returned
     Animation*** variations;    // Data for this unit type's variations
@@ -27,7 +27,7 @@ Unit_Type_Data* create_unit_src_data(const cJSON* unit_type_JSON, mat4 ss_projec
         const cJSON* unit_anim_JSON;
         cJSON_ArrayForEach(unit_anim_JSON, unit_var_JSON)
         {
-            *(animations++) = create_animation(unit_anim_JSON, ss_projection);
+            *(animations++) = create_animation(unit_anim_JSON, ss_width, ss_height);
         };
 
         // Reset animations pointer to the first variation, then save accumulated data
@@ -41,25 +41,35 @@ Unit_Type_Data* create_unit_src_data(const cJSON* unit_type_JSON, mat4 ss_projec
     return type;
 }
 
-void create_units_src_data(Units_Data* units_data, const cJSON* src_JSON, mat4 ss_projection)
+void create_units_src_data(
+    Units_Data* units_data, 
+    const cJSON* src_JSON, 
+    int ss_width, 
+    int ss_height
+)
 {
     const cJSON* unit_type_JSON;
     Unit_Type current_type = UNIT_TYPE_FIRST;
 
     cJSON_ArrayForEach(unit_type_JSON, src_JSON)
     {
-        units_data->src[current_type++] = create_unit_src_data(unit_type_JSON, ss_projection);
+        units_data->src[current_type++] = create_unit_src_data(
+            unit_type_JSON, 
+            ss_width, 
+            ss_height
+        );
     }
 }
 
-Units_Data* create_units_data(const cJSON* units_data_JSON, mat4 ss_projection)
+Units_Data* create_units_data(const cJSON* units_data_JSON, int ss_width, int ss_height)
 {
     Units_Data* units_data = malloc(sizeof(Units_Data));
 
     create_units_src_data(
         units_data, 
         cJSON_GetObjectItemCaseSensitive(units_data_JSON, "src"),
-        ss_projection
+        ss_width,
+        ss_height
     );
 
     return units_data;
