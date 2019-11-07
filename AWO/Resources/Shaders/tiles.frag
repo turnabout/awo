@@ -23,44 +23,20 @@ float sprite_sheet_height = 396.0;
 void main()
 {
 	// 1. Get data for this tile
-	// Red/Blue: X/Y of the top-left of the tile we're drawing
+	// Red/Blue: X/Y of the top-left of the tile we're drawing, in pixels
 	// Green: Index of the palette to apply to the grayscale value
 	vec4 tile_data = texture2D(tiles_texture, tex_coords);
 
 	// 2. Get the sprite sheet grayscale value
-	// Take the tile's top-left coordinates & add current quad offset coordinates, converted
-	// to the sprite sheet's size, to it to get the correct sprite sheet coordinates
+	// Take the tile's top-left coordinates & add current quad texture offset coordinates
+	// along with offset to get the correct sprite sheet coordinates
 	vec2 tex_coords_offset;
-
-	float raw_ss_x = 32.0;
-	float raw_ss_y = 24.0;
-
 	
-	
-
-	/*
 	vec2 sprite_sheet_coordinates = vec2(
-		(raw_ss_x / sprite_sheet_width) + ( 
+		((tile_data.x  * 255.0) / sprite_sheet_width) + ( 
 			mod( (tex_coords.x * quad_width), scale ) / sprite_sheet_width
 		),
-		(raw_ss_y / sprite_sheet_height) + (
-			mod( (tex_coords.y * quad_height), scale ) / sprite_sheet_height
-		)
-	);
-	*/
-
-	/*
-	vec2 sprite_sheet_coordinates = vec2(
-		tile_data.x + ((tex_coords.x * 640) / 628),
-		tile_data.y + ((tex_coords.y * 640) / 396)
-	);
-	*/
-
-	vec2 sprite_sheet_coordinates = vec2(
-		tile_data.x + ( 
-			mod( (tex_coords.x * quad_width), scale ) / sprite_sheet_width
-		),
-		tile_data.y + (
+		((tile_data.y * 255.0) / sprite_sheet_height) + (
 			mod( (tex_coords.y * quad_height), scale ) / sprite_sheet_height
 		)
 	);

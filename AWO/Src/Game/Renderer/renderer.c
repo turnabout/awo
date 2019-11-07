@@ -13,6 +13,10 @@ struct Renderer {
     GLuint sprite_sheet_tex;
     GLuint palettes_tex;
     GLuint tiles_tex;
+
+    // Width
+    GLuint width;
+    GLuint height;
 };
 
 void init_renderer_buffer(Renderer* renderer)
@@ -40,40 +44,32 @@ void init_renderer_buffer(Renderer* renderer)
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    #define ss_w  628
-    #define ss_h 396
-
-    #define palette_w 256
-    #define palette_h 32
-
-    #define board_w DEFAULT_GAME_BOARD_WIDTH
-    #define board_h DEFAULT_GAME_BOARD_HEIGHT
-
-    #define left    0
-    #define bottom  0
-    #define top     board_h
-    #define right   board_w
+    GLfloat top = (GLfloat)renderer->height;
+    GLfloat right = (GLfloat)renderer->width;
 
     GLfloat quad_vertices[4][4] = {
         // Bottom left
         {
-            left, bottom, // Position
-            0.0f, 1.0f,   // Texture coordinates
+            0, 0,       // Position
+            0.0f, 1.0f, // Texture coordinates
         }, 
+
         // Top left
         { 
-            left, top,  // Position
+            0, top,     // Position
             0.0f, 0.0f, // Texture coordinates
         }, 
+
         // Top right
         { 
             right, top, // Position
             1.0f, 0.0f, // Texture coordinates
         }, 
+
         // Bottom right
         { 
-            right, bottom, // Position
-            1.0f, 1.0f,    // Texture coordinates
+            right, 0,   // Position
+            1.0f, 1.0f, // Texture coordinates
         }, 
     };
 
@@ -113,7 +109,13 @@ void init_tiles_texture(Renderer* renderer)
     free(tiles_texture_data);
 }
 
-Renderer* create_renderer(GLuint sprite_sheet_tex, GLuint palette_tex, GLuint shader)
+Renderer* create_renderer(
+    GLuint sprite_sheet_tex, 
+    GLuint palette_tex, 
+    GLuint shader,
+    GLuint width,
+    GLuint height
+)
 {
     Renderer* renderer = (Renderer*)malloc(sizeof(Renderer));
 
@@ -121,6 +123,8 @@ Renderer* create_renderer(GLuint sprite_sheet_tex, GLuint palette_tex, GLuint sh
 
     renderer->sprite_sheet_tex = sprite_sheet_tex;
     renderer->palettes_tex = palette_tex;
+    renderer->width = width;
+    renderer->height = height;
 
     glUseProgram(renderer->shader);
 
@@ -151,7 +155,7 @@ void render(Renderer* renderer, int x_offset, int y_offset)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void update_tiles_palette_pixel(
+void update_tiles_pixel(
     Renderer* renderer, 
     GLuint x,
     GLuint y,
@@ -161,7 +165,7 @@ void update_tiles_palette_pixel(
 )
 {
     glBindTexture(GL_TEXTURE_2D, renderer->tiles_tex);
-    GLfloat new_color_array[4] = { R, G, B, 1.0f };
+    GLfloat new_color_array[4] = { R / 255.0f, G / 255.0f, B, 1.0f };
 
     glTexSubImage2D(
         GL_TEXTURE_2D,
@@ -174,4 +178,31 @@ void update_tiles_palette_pixel(
         GL_FLOAT,
         &new_color_array
     );
+}
+
+void fill_tiles_palette_pixels(
+    Renderer* renderer,
+    GLfloat R,
+    GLfloat G,
+    GLfloat B
+)
+{
+    glBindTexture(GL_TEXTURE_2D, renderer->tiles_tex);
+    GLfloat new_color_array[4] = { R / 255.0f, G / 255.0f, B, 1.0f };
+
+    for (int y = 0; y < (int)renderer->height; y++) {
+        for (int x = 0; x < (int)renderer->width; x++) {
+            glTexSubImage2D(
+                GL_TEXTURE_2D,
+                0,
+                x,
+                y,
+                1,
+                1,
+                GL_RGBA,
+                GL_FLOAT,
+                &new_color_array
+            );
+        }
+    }
 }

@@ -69,8 +69,11 @@ int init_game_sprite_batches(Game* game)
     game->tiles_renderer = create_renderer(
         sprite_sheet_texture,
         game->palette_texture,
-        tiles_renderer_shader
+        tiles_renderer_shader,
+        DEFAULT_GAME_BOARD_WIDTH,
+        DEFAULT_GAME_BOARD_HEIGHT
     );
+
     init_transformation_matrices(game, tiles_renderer_shader);
 
     return 1;
