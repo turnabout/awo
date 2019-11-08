@@ -1,7 +1,6 @@
 #version 330 core
 
 in vec2 tex_coords;
-in vec4 tile_size;
 
 out vec4 outColor;
 
@@ -9,8 +8,8 @@ uniform sampler2D sprite_sheet_texture;
 uniform sampler2D tiles_texture;
 uniform sampler2D palettes_texture;
 
-// Tile map quad scale
-float scale = 16.0;
+// Base size of a regular tile, in pixels
+float base_tile_size = 16.0;
 
 // Tilemap quad dimensions in pixels
 float quad_width = 640.0;
@@ -34,10 +33,10 @@ void main()
 
 	vec2 sprite_sheet_coordinates = vec2(
 		(tile_data.x * 510.0) / sprite_sheet_width + ( 
-			mod( (tex_coords.x * quad_width), scale ) / sprite_sheet_width
+			mod( (tex_coords.x * quad_width), base_tile_size ) / sprite_sheet_width
 		),
 		(tile_data.y * 510.0) / sprite_sheet_height + ( 
-			mod( (tex_coords.y * quad_height), scale ) / sprite_sheet_height
+			mod( (tex_coords.y * quad_height), base_tile_size ) / sprite_sheet_height
 		)
 	);
 

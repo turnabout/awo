@@ -206,3 +206,10 @@ void fill_tiles_layer_mem(Tiles_Layer* tiles_layer, vec4 values)
         }
     }
 }
+
+void update_tiles_layer_view_matrix(Tiles_Layer* tiles_layer, mat4 view)
+{
+    glUniformMatrix4fv(
+        glGetUniformLocation(tiles_layer->shader_program, "view"), 1, GL_FALSE, view[0]
+    );
+}
