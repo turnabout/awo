@@ -60,13 +60,13 @@ int init_game_sprite_batches(Game* game)
     glUniform1i(glGetUniformLocation(sprites_shader_program, "palettes_texture"), 1);
     init_transformation_matrices(game, sprites_shader_program);
 
-    // Renderer
+    // Tiles_Layer
     GLuint tiles_renderer_shader = create_shader_program(
         SHADERS_PATH "tiles.vert", 
         SHADERS_PATH "tiles.frag"
     );
 
-    game->tiles_renderer = create_renderer(
+    game->tiles_layer = create_tiles_layer(
         sprite_sheet_texture,
         game->palette_texture,
         tiles_renderer_shader,

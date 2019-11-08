@@ -136,7 +136,7 @@ Sprite_Batch* create_sprite_batch(
 
 void begin_sprite_batch(Sprite_Batch* sprite_batch)
 {
-    // Set active sprite sheet texture/shader program/VAO
+    // Set active sprite sheet texture/shader_program program/VAO
     glUseProgram(sprite_batch->shader_program);
 
     glActiveTexture(GL_TEXTURE0); 

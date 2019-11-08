@@ -55,4 +55,5 @@ void main()
 	);
 
 	// outColor = sprite_sheet_grayscale;
+	// outColor = vec4(tile_data.x, tile_data.y, 0.0, 1.0);
 }

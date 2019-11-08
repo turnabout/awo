@@ -18,7 +18,7 @@ typedef enum Sprite_Batch_Type {
 
 /*! @brief Initializes a sprite batch object.
  *
- *  @param[in] shader_program The shader program associated with this sprite batch.
+ *  @param[in] shader_program The shader_program program associated with this sprite batch.
  *  @param[in] texture The texture associated with this sprite batch.
  *  @param[in] palettes_texture The palette texture associated with this sprite batch. Used to 
  *  specify which colors to apply to greyscale sprites. 0 for none.
