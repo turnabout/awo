@@ -29,6 +29,10 @@ typedef enum Key {
     KEY_S,
     KEY_D,
     KEY_F,
+    KEY_UP,
+    KEY_DOWN,
+    KEY_LEFT,
+    KEY_RIGHT,
 } Key;
 
 // Every mouse button used by the game

@@ -11,13 +11,15 @@ uniform sampler2D palettes_texture;
 // Base size of a regular tile, in pixels
 float base_tile_size = 16.0;
 
+// TODO: make into a uniform
 // Tilemap quad dimensions in pixels
 float quad_width = 640.0;
 float quad_height = 640.0;
 
+// TODO: make into a uniform
 // Sprite sheet dimensions in pixels
-float sprite_sheet_width = 628.0;
-float sprite_sheet_height = 396.0;
+float sprite_sheet_width = 456.0;
+float sprite_sheet_height = 454.0;
 
 void main()
 {

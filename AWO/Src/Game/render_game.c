@@ -23,7 +23,7 @@ void render_game(Game* game)
     if (!flag) {
         flag = 1;
         Animation* test_tile;
-        gather_tile_data(game->tiles_data, Sea, Middle, NULL, NULL, &test_tile);
+        gather_tile_data(game->tiles_data, Plain, Default, NULL, NULL, &test_tile);
 
         fill_tiles_layer_mem(
             game->tiles_layer,
@@ -37,25 +37,37 @@ void render_game(Game* game)
     }
 
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
-        // offset_x -= 16.0f;
+        offset_x -= 16.0f;
+        fill_tiles_layer_mem(game->tiles_layer,(vec4) {offset_x,offset_y,get_tile_palette_index(Clear, 0),0.0f});
+        printf("%d,%d\n", (int)offset_x, (int)offset_y);
     }
 
     if (get_key_state(KEY_D) == BUTTON_DOWN_START) {
-        // offset_x += 16.0f;
+        offset_x += 16.0f;
+        fill_tiles_layer_mem(game->tiles_layer,(vec4) {offset_x,offset_y,get_tile_palette_index(Clear, 0),0.0f});
+        printf("%d,%d\n", (int)offset_x, (int)offset_y);
     }
 
-    if (get_key_state(KEY_W) == BUTTON_DOWN) {
+    if (get_key_state(KEY_W) == BUTTON_DOWN_START) {
+        offset_y -= 16.0f;
+        fill_tiles_layer_mem(game->tiles_layer,(vec4) {offset_x,offset_y,get_tile_palette_index(Clear, 0),0.0f});
+        printf("%d,%d\n", (int)offset_x, (int)offset_y);
+    }
+
+    if (get_key_state(KEY_S) == BUTTON_DOWN_START) {
+        offset_y += 16.0f;
+        fill_tiles_layer_mem(game->tiles_layer,(vec4) {offset_x,offset_y,get_tile_palette_index(Clear, 0),0.0f});
+        printf("%d,%d\n", (int)offset_x, (int)offset_y);
+    }
+
+    if (get_key_state(KEY_UP) == BUTTON_DOWN) {
         scale += 1.0f;
         update_view_matrix(game);
-
-        // offset_y -= 16.0f;
     }
 
-    if (get_key_state(KEY_S) == BUTTON_DOWN) {
+    if (get_key_state(KEY_DOWN) == BUTTON_DOWN) {
         scale -= 1.0f;
         update_view_matrix(game);
-
-        // offset_y += 16.0f;
     }
 
     render_tiles_layer(game->tiles_layer);

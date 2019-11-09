@@ -15,6 +15,10 @@ static const int GAME_KEYS[] = {
     GLFW_KEY_S,
     GLFW_KEY_D,
     GLFW_KEY_F,
+    GLFW_KEY_UP,
+    GLFW_KEY_DOWN,
+    GLFW_KEY_LEFT,
+    GLFW_KEY_RIGHT,
 };
 
 static const int GAME_KEYS_COUNT = sizeof(GAME_KEYS) / sizeof(int);
