@@ -65,6 +65,7 @@
     <ClCompile Include="Src\Game\Inputs\keys_state.c" />
     <ClCompile Include="Src\Game\Inputs\mouse_state.c" />
     <ClCompile Include="Src\Game\Renderer\game_renderer.c" />
+    <ClCompile Include="Src\Game\Renderer\Tiles_Layer\get_tiles_layers_VAO.c" />
     <ClCompile Include="Src\Game\Renderer\Tiles_Layer\tiles_layer.c" />
     <ClCompile Include="Src\Game\render_game.c" />
     <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c" />

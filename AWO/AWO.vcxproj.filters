@@ -180,6 +180,9 @@
     <ClCompile Include="Src\Game\init_GL.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\Tiles_Layer\get_tiles_layers_VAO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">

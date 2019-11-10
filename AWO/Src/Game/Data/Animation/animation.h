@@ -17,7 +17,7 @@ typedef struct Frame {
     // This frame's raw top-left source coordinates, in pixels
     vec2 raw_top_left;
 
-    // Width/height of this frame.
+    // Width/tiles_height of this frame.
     vec2 dimensions;  
 } Frame;
 
@@ -33,8 +33,8 @@ typedef struct Animation {
 /*! @brief Creates an animation struct from the given cJSON animation array object.
  *
  *  @param[in] animation_json The JSON representing this animation and its frames.
- *  @param[in] ss_width The width of the sprite sheet this animation comes from.
- *  @param[in] ss_height The height of the sprite sheet this animation comes from.
+ *  @param[in] ss_width The tiles_width of the sprite sheet this animation comes from.
+ *  @param[in] ss_height The tiles_height of the sprite sheet this animation comes from.
  */
 Animation* create_animation(const cJSON* animation_JSON, int ss_width, int ss_height);
 

@@ -67,7 +67,7 @@ void free_keys_state_module();
 /*! @brief Initializes the module keeping the mouse's current state updated.
  *
  *  @param[in] window The game's window.
- *  @param[in] game_window_height_ptr Pointer to the game's window height, updated when the game is
+ *  @param[in] game_window_height_ptr Pointer to the game's window tiles_height, updated when the game is
  *  resized.
  */
 void init_mouse_state_module(GLFWwindow* window, int* game_window_height_ptr);

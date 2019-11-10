@@ -38,8 +38,8 @@ struct Game {
 /*! @brief Initializes OpenGL and GLFW and sets related options.
  *
  *  @param[in] game The game object.
- *  @param[in] initial_window_width The initial game window's width.
- *  @param[in] initial_window_height The initial game window's height.
+ *  @param[in] initial_window_width The initial game window's tiles_width.
+ *  @param[in] initial_window_height The initial game window's tiles_height.
  *  @return 1 if successful, 0 if an error occurred.
  */
 int init_GL(Game* game, int initial_window_width, int initial_window_height);

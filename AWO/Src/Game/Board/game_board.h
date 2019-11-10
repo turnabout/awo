@@ -11,8 +11,8 @@ typedef struct Game_Board Game_Board;
  *
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] game_clock The game clock object.
- *  @param[in] width The width of the game board in tiles.
- *  @param[in] height The height of the game board in tiles.
+ *  @param[in] tiles_width The tiles_width of the game board in tiles.
+ *  @param[in] tiles_height The tiles_height of the game board in tiles.
  */
 Game_Board* create_game_board(
     Tiles_Data* tiles_data,

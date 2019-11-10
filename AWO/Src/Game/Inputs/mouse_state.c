@@ -20,7 +20,7 @@ static Button_State* mouse_buttons_state;
 static int mouse_x = 0;
 static int mouse_y = 0;
 
-// Pointer to the game's height. Necessary to update the mouse's Y value.
+// Pointer to the game's tiles_height. Necessary to update the mouse's Y value.
 static int* game_window_height;
 
 void update_mouse_buttons_state()
@@ -38,7 +38,7 @@ void mouse_cb(GLFWwindow* window, double x, double y)
 {
     mouse_x = (int)x;
 
-    // Subtract the current game window height from the mouse position to get the Y coordinate 
+    // Subtract the current game window tiles_height from the mouse position to get the Y coordinate 
     // relative to the lower edge instead of the upper edge.
     mouse_y = abs((int)y - *game_window_height);
 }

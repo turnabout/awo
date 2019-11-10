@@ -28,8 +28,8 @@ typedef struct Tile_Type_Data
  *  @param[in] tile_type_JSON The JSON object of this tile type.
  *  @param[in] variations_list_hashmap Hashmap containing every individual tile variation, with
  *  the keys as the corresponding variation short strings.
- *  @param[in] ss_width The width of the game's sprite sheet.
- *  @param[in] ss_height The height of the game's sprite sheet.
+ *  @param[in] ss_width The tiles_width of the game's sprite sheet.
+ *  @param[in] ss_height The tiles_height of the game's sprite sheet.
  *  @return The created tile variation data object.
  */
 Tile_Type_Data* create_tile_type_data(

@@ -4,6 +4,8 @@
 #include "conf.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Game/Renderer/game_renderer.h"
+#include "Game/Renderer/Tiles_Layer/tiles_layer.h"
+#include "Game/Renderer/Sprite_Batch/sprite_batch.h"
 
 struct Game_Renderer {
 
@@ -21,6 +23,12 @@ struct Game_Renderer {
 
     // Dimensions of the raw sprite sheet
     int sprite_sheet_width, sprite_sheet_height;
+
+    // Tiles layers, used to render tiles in single draw calls.
+    Tiles_Layer* tiles_layers[TILE_LAYER_TYPE_COUNT];
+
+    // VAO used by tiles layers
+    GLuint tiles_layers_VAO;
 };
 
 int init_game_renderer_shader_programs(Game_Renderer* renderer)
@@ -55,9 +63,18 @@ void init_game_renderer_uniforms(Game_Renderer* renderer)
     glUniform1i(glGetUniformLocation(renderer->sprites_shader_program, "palettes_texture"), 1);
 }
 
+void init_tiles_layers(Game_Renderer* renderer, int tiles_layer_width, int tiles_layer_height)
+{
+    renderer->tiles_layers_VAO = get_tiles_layers_VAO(tiles_layer_width, tiles_layer_height);
+
+    for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
+        renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
+    }
+}
+
 Game_Renderer* create_game_renderer(
-    int tile_layers_width, 
-    int tile_layers_height, 
+    int tiles_layer_width, 
+    int tiles_layer_height, 
     GLuint palettes_texture
 )
 {
@@ -88,16 +105,7 @@ Game_Renderer* create_game_renderer(
     */
 
     // Set tiles layers
-    // Create tiles renderer
-    /*
-    renderer->tiles_renderer = create_tiles_renderer(
-        DEFAULT_GAME_BOARD_WIDTH,
-        DEFAULT_GAME_BOARD_HEIGHT,
-        sprite_sheet_texture,
-        0,
-        0
-    );
-    */
+    init_tiles_layers(renderer, tiles_layer_width, tiles_layer_height);
 
     return renderer;
 }
@@ -105,7 +113,12 @@ Game_Renderer* create_game_renderer(
 void free_game_renderer(Game_Renderer* renderer)
 {
     if (renderer != NULL) {
-        // TODO
+
+        // Free tiles layers
+        for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
+            free_tiles_layer(renderer->tiles_layers[i]);
+        }
+
         free(renderer);
     }
 }
