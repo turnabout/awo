@@ -10,10 +10,18 @@
 static const float GAME_CLOCK_MAX_ACCUM = FRAME_TIME * GAME_CLOCK_FRAMES_TO_TICK;
 
 struct Game_Clock {
-    Uint8 current_tick; // Current tick the game clock is on
-    float accum_time;   // Accumulated game delta time
-    Animation_Clock* animation_clocks[ANIMATION_CLOCK_COUNT]; // Animation clocks attached to game clock
-    int* static_tick; // Static tick counter, always pointing to 0. Given to static tiles.
+
+    // Current tick the game clock is on.
+    Uint8 current_tick;
+
+    // Accumulated game delta time.
+    float accum_time;
+
+    // Animation clocks attached to game clock.
+    Animation_Clock* animation_clocks[ANIMATION_CLOCK_COUNT];
+
+    // Static tick counter, always pointing to 0. Given to static tiles.
+    int* static_tick;
 };
 
 Game_Clock* create_game_clock(const cJSON* clock_data_JSON)
@@ -56,25 +64,29 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
     }
 }
 
-int* get_game_clock_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Animation_Sub_Clock_Index sc_index)
+int* get_game_clock_tick_ptr(
+    Game_Clock* game_clock, 
+    Animation_Clock_Index anim_clock_index, 
+    Animation_Sub_Clock_Index anim_sub_clock_index
+)
 {
-    if (ac_index == No_Clock) {
-        return gc->static_tick;
+    if (anim_clock_index == No_Clock) {
+        return game_clock->static_tick;
     }
 
-    return get_animation_clock_child_tick_ptr(gc->animation_clocks[ac_index], sc_index);
+    return get_animation_clock_child_tick_ptr(game_clock->animation_clocks[anim_clock_index], anim_sub_clock_index);
 }
 
-void free_game_clock(Game_Clock* gc)
+void free_game_clock(Game_Clock* game_clock)
 {
-    if (gc != NULL) {
-        free(gc->static_tick);
+    if (game_clock != NULL) {
+        free(game_clock->static_tick);
 
         // Free all attached animation clocks
         for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-            free_animation_clock(gc->animation_clocks[i]);
+            free_animation_clock(game_clock->animation_clocks[i]);
         }
 
-        free(gc);
+        free(game_clock);
     }
 }
