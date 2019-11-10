@@ -2,6 +2,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <cglm/cglm.h>
 
 typedef struct Game_Renderer Game_Renderer;
 
@@ -17,5 +18,13 @@ Game_Renderer* create_game_renderer(
     int tile_layers_height, 
     GLuint palettes_texture
 );
+
+/*! @brief Update one of the matrices used by the game renderer to render objects.
+ *
+ *  @param[in] renderer The game renderer object.
+ *  @param[in] matrix The new matrix.
+ *  @param[in] matrix_str The string representing the matrix to update ("view"|"projection").
+ */
+void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const char* matrix_str);
 
 void free_game_renderer(Game_Renderer* renderer);

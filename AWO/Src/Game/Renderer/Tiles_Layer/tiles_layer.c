@@ -79,7 +79,7 @@ void render_tiles_layer(Tiles_Layer* renderer)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void update_tiles_layer_mem(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4 values)
+void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4 values)
 {
     glBindTexture(GL_TEXTURE_2D, tiles_layer->tiles_texture);
 
@@ -97,7 +97,7 @@ void update_tiles_layer_mem(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4 v
     );
 }
 
-void fill_tiles_layer_mem(Tiles_Layer* tiles_layer, vec4 values)
+void fill_tiles_layer_pixels(Tiles_Layer* tiles_layer, vec4 values)
 {
     glBindTexture(GL_TEXTURE_2D, tiles_layer->tiles_texture);
 

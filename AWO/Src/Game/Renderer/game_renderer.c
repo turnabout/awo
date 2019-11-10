@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <cglm/cglm.h>
 
 #include "conf.h"
 #include "GL_Helpers/gl_helpers.h"
@@ -63,15 +62,6 @@ void init_game_renderer_uniforms(Game_Renderer* renderer)
     glUniform1i(glGetUniformLocation(renderer->sprites_shader_program, "palettes_texture"), 1);
 }
 
-void init_tiles_layers(Game_Renderer* renderer, int tiles_layer_width, int tiles_layer_height)
-{
-    renderer->tiles_layers_VAO = get_tiles_layers_VAO(tiles_layer_width, tiles_layer_height);
-
-    for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
-        renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
-    }
-}
-
 Game_Renderer* create_game_renderer(
     int tiles_layer_width, 
     int tiles_layer_height, 
@@ -105,9 +95,36 @@ Game_Renderer* create_game_renderer(
     */
 
     // Set tiles layers
-    init_tiles_layers(renderer, tiles_layer_width, tiles_layer_height);
+    renderer->tiles_layers_VAO = get_tiles_layers_VAO(tiles_layer_width, tiles_layer_height);
+
+    for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
+        renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
+    }
 
     return renderer;
+}
+
+void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const char* matrix_str)
+{
+    // Update sprites shader's given matrix
+    glUseProgram(renderer->sprites_shader_program);
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(renderer->sprites_shader_program, matrix_str), 
+        1, 
+        GL_FALSE, 
+        matrix[0]
+    );
+
+    // Update tiles shader's given matrix
+    glUseProgram(renderer->tiles_shader_program);
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(renderer->tiles_shader_program, matrix_str), 
+        1, 
+        GL_FALSE, 
+        matrix[0]
+    );
 }
 
 void free_game_renderer(Game_Renderer* renderer)
