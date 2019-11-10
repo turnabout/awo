@@ -42,6 +42,8 @@ Tile* get_tile_factory_tile(Tile_Factory* factory, Tile_Type type, Tile_Variatio
 
 void free_tile_factory(Tile_Factory* factory)
 {
-    free_tiles_hashmap(factory->hashmap);
-    free(factory);
+    if (factory != NULL) {
+        free_tiles_hashmap(factory->hashmap);
+        free(factory);
+    }
 }

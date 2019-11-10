@@ -87,8 +87,10 @@ int free_tiles_hashmap_entry_CB(any_t tiles_hashmap_arg, any_t entry_arg)
 
 void free_tiles_hashmap(Tiles_Hashmap* tiles_hashmap)
 {
-    hashmap_iterate(tiles_hashmap->map, free_tiles_hashmap_entry_CB, tiles_hashmap);
+    if (tiles_hashmap != NULL) {
+        hashmap_iterate(tiles_hashmap->map, free_tiles_hashmap_entry_CB, tiles_hashmap);
 
-    hashmap_free(tiles_hashmap->map);
-    free(tiles_hashmap);
+        hashmap_free(tiles_hashmap->map);
+        free(tiles_hashmap);
+    }
 }

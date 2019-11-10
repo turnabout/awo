@@ -67,12 +67,14 @@ int* get_game_clock_tick_ptr(Game_Clock* gc, Animation_Clock_Index ac_index, Ani
 
 void free_game_clock(Game_Clock* gc)
 {
-    free(gc->static_tick);
+    if (gc != NULL) {
+        free(gc->static_tick);
 
-    // Free all attached animation clocks
-    for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-        free_animation_clock(gc->animation_clocks[i]);
+        // Free all attached animation clocks
+        for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+            free_animation_clock(gc->animation_clocks[i]);
+        }
+
+        free(gc);
     }
-
-    free(gc);
 }

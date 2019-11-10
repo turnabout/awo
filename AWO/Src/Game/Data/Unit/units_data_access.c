@@ -15,8 +15,10 @@ Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Unit_Var
 
 void free_units_data(Units_Data* units_data)
 {
-    // TODO
-    free(units_data);
+    if (units_data != NULL) {
+        // TODO
+        free(units_data);
+    }
 }
 
 #ifdef _DEBUG

@@ -58,5 +58,7 @@ Button_State get_key_state(Key key)
 
 void free_keys_state_module()
 {
-    free(keys_state);
+    if (keys_state != NULL) {
+        free(keys_state);
+    }
 }

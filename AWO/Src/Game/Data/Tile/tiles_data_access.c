@@ -124,11 +124,13 @@ void gather_tile_data(
 
 void free_tiles_data(Tiles_Data* tiles_data)
 {
-    for (Tile_Type type = TILE_TYPE_FIRST; type < TILE_TYPE_COUNT; type++) {
-        free_tile_type_data(tiles_data->src[type]);
-    }
+    if (tiles_data != NULL) {
+        for (Tile_Type type = TILE_TYPE_FIRST; type < TILE_TYPE_COUNT; type++) {
+            free_tile_type_data(tiles_data->src[type]);
+        }
 
-    free(tiles_data);
+        free(tiles_data);
+    }
 }
 
 #ifdef _DEBUG

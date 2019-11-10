@@ -122,8 +122,10 @@ Tile_Type get_game_board_tile_type(Game_Board* gb, int x, int y)
 
 void free_game_board(Game_Board* game_board)
 {
-    free_tile_factory(game_board->tile_factory);
-    free(game_board);
+    if (game_board != NULL) {
+        free_tile_factory(game_board->tile_factory);
+        free(game_board);
+    }
 }
 
 void get_game_board_screen_coordinate_indices(

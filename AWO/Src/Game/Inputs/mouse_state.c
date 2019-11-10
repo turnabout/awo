@@ -69,5 +69,7 @@ void get_mouse_position(int* x, int* y)
 
 void free_mouse_state_module()
 {
-    free(mouse_buttons_state);
+    if (mouse_buttons_state != NULL) {
+        free(mouse_buttons_state);
+    }
 }

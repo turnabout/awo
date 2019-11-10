@@ -104,6 +104,8 @@ Game_Renderer* create_game_renderer(
 
 void free_game_renderer(Game_Renderer* renderer)
 {
-    // TODO
-    free(renderer);
+    if (renderer != NULL) {
+        // TODO
+        free(renderer);
+    }
 }
