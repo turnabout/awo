@@ -46,6 +46,7 @@ Tile* create_tile(
     return tile;
 }
 
+/*
 void draw_tile(Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination)
 {
     add_to_sprite_batch(
@@ -55,6 +56,7 @@ void draw_tile(Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, ve
         palette_index
     );
 }
+*/
 
 void free_tile(Tile* tile)
 {

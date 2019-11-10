@@ -4,7 +4,6 @@
 
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
-#include "Game/Sprite_Batch/sprite_batch.h"
 
 /*! @brief Represents a game tile.
  */
@@ -32,7 +31,7 @@ Tile* create_tile(
  *  @param[in] palette_index Index of the palette to draw the tile with.
  *  @param[in] destination Vector of screen coordinates to draw the tile at.
  */
-void draw_tile(Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination);
+// void draw_tile(Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination);
 
 // Gets the tile type of the given tile.
 /*! @brief Gets the tile type of the given tile.

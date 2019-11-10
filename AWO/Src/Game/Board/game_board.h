@@ -2,7 +2,6 @@
 
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
-#include "Game/Sprite_Batch/sprite_batch.h"
 
 /*! @brief Represents the game board used by players during gameplay. Contains all game entities.
  */
@@ -33,7 +32,7 @@ void update_game_board(Game_Board* game_board);
  *  @param[in] game_board The game board.
  *  @param[in] sprite_batch The sprite batch object used to draw game sprites.
  */
-void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch);
+// void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch);
 
 /*! @brief Fills the game board with tile of the given type & variation.
  *

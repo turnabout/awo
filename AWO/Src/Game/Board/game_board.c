@@ -55,6 +55,7 @@ void update_game_board(Game_Board* game_board)
 {
 }
 
+/*
 void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch)
 {
     // Draw tiles
@@ -80,6 +81,7 @@ void draw_game_board(Game_Board* game_board, Sprite_Batch* sprite_batch)
         }
     }
 }
+*/
 
 void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation)
 {

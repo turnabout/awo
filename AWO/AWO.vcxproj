@@ -61,11 +61,13 @@
     <ClCompile Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
+    <ClCompile Include="Src\Game\init_GL.c" />
     <ClCompile Include="Src\Game\Inputs\keys_state.c" />
     <ClCompile Include="Src\Game\Inputs\mouse_state.c" />
-    <ClCompile Include="Src\Game\Tiles_Layer\tiles_layer.c" />
+    <ClCompile Include="Src\Game\Renderer\game_renderer.c" />
+    <ClCompile Include="Src\Game\Renderer\Tiles_Layer\tiles_layer.c" />
     <ClCompile Include="Src\Game\render_game.c" />
-    <ClCompile Include="Src\Game\Sprite_Batch\sprite_batch.c" />
+    <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Src\Game\run_game.c" />
     <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
@@ -107,8 +109,9 @@
     <ClInclude Include="Src\Game\Entity\Tile\Factory\tile_factory.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
-    <ClInclude Include="Src\Game\Tiles_Layer\tiles_layer.h" />
-    <ClInclude Include="Src\Game\Sprite_Batch\sprite_batch.h" />
+    <ClInclude Include="Src\Game\Renderer\game_renderer.h" />
+    <ClInclude Include="Src\Game\Renderer\Tiles_Layer\tiles_layer.h" />
+    <ClInclude Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.h" />
     <ClInclude Include="Src\Game\_game.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />

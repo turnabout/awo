@@ -10,6 +10,8 @@ GLuint create_shader_program(const char* vertex_shader_path, const char* fragmen
 /*! @brief Creates a texture object from an image loaded at the given path.
  *
  *  @param[in] texture_path The full path to the texture.
+ *  @param[out] texture_width The width of the loaded texture.
+ *  @param[out] texture_height The height of the loaded texture.
  *  @return The texture object ID or 0 if an error occurred.
  */
-GLuint create_texture_object(const char* texture_path);
+GLuint create_texture_object(const char* texture_path, int* texture_width, int* texture_height);

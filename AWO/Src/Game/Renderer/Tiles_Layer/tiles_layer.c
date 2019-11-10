@@ -6,15 +6,26 @@
 
 #include "conf.h"
 #include "GL_Helpers/gl_helpers.h"
-#include "Game/Tiles_Layer/tiles_layer.h"
+#include "Game/Renderer/Tiles_Layer/tiles_layer.h"
 
 struct Tiles_Layer {
+
+    // Tiles layer's shader program.
     GLuint shader_program;
+
+    // Tiles layer's VAO.
     GLuint VAO;
+
+    // The raw sprite sheet texture.
     GLuint sprite_sheet_texture;
+
+    // The palettes texture.
     GLuint palettes_texture;
+
+    // The tiles layer texture.
     GLuint tiles_texture;
 
+    // Width/height of the tiles layer, in tiles.
     int width, height;
 
     vec4* data4;

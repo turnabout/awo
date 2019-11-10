@@ -99,9 +99,6 @@
     <ClCompile Include="Src\GL_Helpers\create_texture.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Sprite_Batch\sprite_batch.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Animation\animation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -171,7 +168,16 @@
     <ClCompile Include="Src\Game\update_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Tiles_Layer\tiles_layer.c">
+    <ClCompile Include="Src\Game\Renderer\game_renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\Tiles_Layer\tiles_layer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\init_GL.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -204,9 +210,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\GL_Helpers\gl_helpers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Sprite_Batch\sprite_batch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\Animation\animation.h">
@@ -272,7 +275,13 @@
     <ClInclude Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Tiles_Layer\tiles_layer.h">
+    <ClInclude Include="Src\Game\Renderer\game_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\Tiles_Layer\tiles_layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,7 +10,7 @@ void update_view_matrix(Game* game)
     mat4 view = GLM_MAT4_IDENTITY_INIT;
     glm_scale(view, (vec3) { (GLfloat)scale, (GLfloat)scale, 1.0f });
 
-    update_tiles_layer_view_matrix(game->tiles_layer, view);
+    // update_tiles_layer_view_matrix(game->tiles_layer, view);
 }
 
 void render_game(Game* game)
@@ -20,6 +20,7 @@ void render_game(Game* game)
     static GLfloat offset_x = 0.0f;
     static GLfloat offset_y = 0.0f;
 
+    /*
     if (!flag) {
         flag = 1;
         Animation* test_tile;
@@ -71,6 +72,7 @@ void render_game(Game* game)
     }
 
     render_tiles_layer(game->tiles_layer);
+*/
 
     // Draw main sprites
     // begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);

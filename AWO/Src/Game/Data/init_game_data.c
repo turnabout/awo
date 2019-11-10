@@ -25,7 +25,7 @@ int get_data_JSON(const cJSON **data_JSON)
     return 1;
 }
 
-int init_game_data(Game* game)
+int init_game_data(Game* game, GLuint* palettes_texture)
 {
     // Load cJSON data object
     cJSON* data_JSON;
@@ -54,7 +54,7 @@ int init_game_data(Game* game)
     );
 
     // Use palette data to create palette color hashmap texture
-    game->palette_texture = create_palette_texture(
+    *palettes_texture = create_palette_texture(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "palettes")
     );
 
