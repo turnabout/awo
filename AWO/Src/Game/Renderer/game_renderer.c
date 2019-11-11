@@ -5,6 +5,7 @@
 #include "Game/Renderer/game_renderer.h"
 #include "Game/Renderer/Tiles_Layer/tiles_layer.h"
 #include "Game/Renderer/Sprite_Batch/sprite_batch.h"
+#include "Game/Data/Palette/palette.h"
 
 struct Game_Renderer {
 
@@ -100,7 +101,7 @@ Game_Renderer* create_game_renderer(
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
         renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
-        fill_tiles_layer_pixels(renderer->tiles_layers[i], (vec4) { 0.0, 0.0, 0.0, 0.0 });
+        fill_tiles_layer_pixels(renderer->tiles_layers[i], (vec4) { 0.0, 96.0, get_active_tile_palette_index(1), 0.0 });
     }
 
     return renderer;

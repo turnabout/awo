@@ -8,7 +8,13 @@
 #define TILE_PALETTE_COUNT (WEATHER_COUNT)  * (2) // 2 of each tile variation (normal / foggy)
 #define PROP_PALETTE_COUNT UNIT_VAR_COUNT + 2     // + 2 is neutral & fogged
 
+// Index of the texture rows reserved for the currently active tile palette
+#define ACTIVE_TILE_PALETTE_INDEX     PROP_PALETTE_COUNT
+#define ACTIVE_FOG_TILE_PALETTE_INDEX PROP_PALETTE_COUNT + 1
+
 #include "Game/Data/Palette/palette.h"
+
+typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
 
 /*! @brief Initializes Normalized Device Coordinate palette indexes.
  *

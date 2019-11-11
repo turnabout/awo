@@ -33,6 +33,9 @@ struct Game {
 
     // Data for all units.
     Units_Data* units_data;
+
+    // Texture object for palettes
+    GLuint palettes_texture;
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.
@@ -47,10 +50,9 @@ int init_GL(Game* game, int initial_window_width, int initial_window_height);
 /*! @brief Initializes the game data and modules using it, attaching results to the game object.
  *
  *  @param[in] game The game object.
- *  @param[out] palettes_texture Filled in with the palettes texture.
  *  @return 1 if successful, 0 if an error occurred.
  */
-int init_game_data(Game* game, GLuint* palettes_texture);
+int init_game_data(Game* game);
 
 /*! @brief Updates the game's entities.
  *

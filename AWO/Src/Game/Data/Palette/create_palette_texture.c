@@ -6,8 +6,6 @@
 #include "conf.h"
 #include "Game/Data/Palette/_palette.h"
 
-typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
-
 // Apply a color to the given index of the given palette texture row.
 void apply_palette_row_color(
     Palette_Texture_Row palette_texture_row,
@@ -75,6 +73,9 @@ GLuint create_palette_texture(cJSON* palettes_JSON)
         GL_UNSIGNED_BYTE, 
         palette_texture_data
     );
+
+    // Set the active tile palette to the default one
+    update_active_tile_palette(WEATHER_FIRST);
 
     free(palette_texture_data);
 

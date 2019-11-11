@@ -17,10 +17,33 @@ void render_game(Game* game)
 {
     static int flag = 0;
 
+    if (!flag) {
+        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        update_active_tile_palette(Clear);
+        flag = 1;
+    }
+
     static GLfloat offset_x = 0.0f;
     static GLfloat offset_y = 0.0f;
 
     render_game_renderer(game->renderer);
+
+    if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
+        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        update_active_tile_palette(Clear);
+    }
+
+    if (get_key_state(KEY_S) == BUTTON_DOWN_START) {
+        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        update_active_tile_palette(Rain);
+    }
+
+    if (get_key_state(KEY_D) == BUTTON_DOWN_START) {
+        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        update_active_tile_palette(Snow);
+    }
+
+// update_active_tile_palette(Weather weather)
 
     /*
     if (!flag) {

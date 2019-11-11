@@ -32,11 +32,9 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     Game* game = (Game*)malloc(sizeof(Game));
 
     // Initialize base game components: GLFW, GLAD and game data.
-    GLuint palettes_texture = 0;
-
     if (
         !init_GL(game, window_width, window_height) || 
-        !init_game_data(game, &palettes_texture)
+        !init_game_data(game)
     ) {
         printf("Failed to initialize\n");
         return NULL;
@@ -53,7 +51,7 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     game->renderer = create_game_renderer(
         game_board_width,
         game_board_height,
-        palettes_texture
+        game->palettes_texture
     );
 
     update_game_renderer_matrix(game->renderer, projection, "projection");

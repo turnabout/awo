@@ -27,6 +27,11 @@ GLfloat get_property_palette_index(Unit_Variation unit_variation)
     return palette_NDC_indexes[ get_property_palette_index_i(unit_variation) ];
 }
 
+GLfloat get_active_tile_palette_index(GLboolean fog)
+{
+    return palette_NDC_indexes[ fog ? ACTIVE_FOG_TILE_PALETTE_INDEX : ACTIVE_TILE_PALETTE_INDEX];
+}
+
 GLint get_unit_palette_index_i(Unit_Variation unit_variation, GLboolean done)
 {
     return (unit_variation * 2) + done;
