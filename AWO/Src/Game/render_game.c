@@ -16,6 +16,8 @@ void update_view_matrix(Game* game)
 void render_game(Game* game)
 {
     static int flag = 0;
+    static GLfloat offset_x = 0.0f;
+    static GLfloat offset_y = 0.0f;
 
     if (!flag) {
         glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
@@ -23,8 +25,7 @@ void render_game(Game* game)
         flag = 1;
     }
 
-    static GLfloat offset_x = 0.0f;
-    static GLfloat offset_y = 0.0f;
+    render_game_board(game->board, game->renderer);
 
     render_tiles_layers(game->renderer);
 

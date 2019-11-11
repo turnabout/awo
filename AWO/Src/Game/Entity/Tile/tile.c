@@ -2,6 +2,7 @@
 
 #include "conf.h"
 #include "Game/Entity/Tile/tile.h"
+#include "Game/Data/Palette/palette.h"
 
 struct Tile {
 
@@ -10,6 +11,9 @@ struct Tile {
 
     // This tile's animation.
     Animation* animation;
+
+    // Index of the palette applied to this tile.
+    GLfloat palette_index;
 
     // Pointer to sub-clock tick used to update this tile's animation.
     int* animation_index_ptr;
@@ -25,6 +29,7 @@ Tile* create_tile(
     Tile* tile = (Tile*)malloc(sizeof(Tile));
 
     tile->type = type;
+    tile->palette_index = get_active_tile_palette_index(0);
 
     // Get tile data for this tile
     Animation_Clock_Index clock_index;
@@ -46,21 +51,27 @@ Tile* create_tile(
     return tile;
 }
 
-/*
-void draw_tile(Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination)
+void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y)
 {
-    add_to_sprite_batch(
-        sprite_batch, 
-        destination,
-        &(tile->animation->frames[*tile->animation_index_ptr]),
-        palette_index
+    update_renderer_tiles_layer_pixel(
+        renderer,
+        TILE_LAYER_0,
+        x,
+        y,
+        (vec4) {
+            tile->animation->frames[*(tile->animation_index_ptr)].raw_top_left[0],
+            tile->animation->frames[*(tile->animation_index_ptr)].raw_top_left[1],
+            tile->palette_index,
+            0.0f
+        }
     );
 }
-*/
 
 void free_tile(Tile* tile)
 {
-    // TODO
+    if (tile != NULL) {
+        free(tile);
+    }
 }
 
 Tile_Type get_tile_type(Tile* tile)

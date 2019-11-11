@@ -36,4 +36,20 @@ void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const cha
  */
 void render_tiles_layers(Game_Renderer* renderer);
 
+/*! @brief Update a pixel's value in a tiles layer's tiles texture.
+ *
+ *  @param[in] renderer The game's renderer.
+ *  @param[in] layer Which layer to update.
+ *  @param[in] x X offset of the pixel to update.
+ *  @param[in] y Y offset of the pixel to update.
+ *  @param[in] value The value used to update with.
+ */
+void update_renderer_tiles_layer_pixel(
+    Game_Renderer* renderer, 
+    Tile_Layer_Type layer,
+    GLuint x, 
+    GLuint y, 
+    vec4 value
+);
+
 void free_game_renderer(Game_Renderer* renderer);

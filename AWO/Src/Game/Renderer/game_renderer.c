@@ -119,6 +119,7 @@ Game_Renderer* create_game_renderer(
     }
 
     // Test: initially fill layer 0 with plains
+    /*
     fill_tiles_layer_pixels(
         renderer->tiles_layers[TILE_LAYER_0], 
         (vec4) { 
@@ -128,6 +129,7 @@ Game_Renderer* create_game_renderer(
             0.0f
         }
     );
+    */
 
     return renderer;
 }
@@ -153,6 +155,17 @@ void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const cha
         GL_FALSE, 
         matrix[0]
     );
+}
+
+void update_renderer_tiles_layer_pixel(
+    Game_Renderer* renderer,
+    Tile_Layer_Type layer,
+    GLuint x,
+    GLuint y,
+    vec4 value
+)
+{
+    update_tiles_layer_pixel(renderer->tiles_layers[layer], x, y, value);
 }
 
 void render_tiles_layers(Game_Renderer* renderer)

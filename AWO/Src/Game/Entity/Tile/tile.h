@@ -4,6 +4,7 @@
 
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
+#include "Game/Renderer/game_renderer.h"
 
 /*! @brief Represents a game tile.
  */
@@ -24,14 +25,14 @@ Tile* create_tile(
     Tile_Variation variation
 );
 
-/*! @brief Draws a tile.
+/*! @brief Renders a tile.
  *
  *  @param[in] tile The tile to draw.
- *  @param[in] sprite_batch The sprite batch object used to draw game sprites.
- *  @param[in] palette_index Index of the palette to draw the tile with.
- *  @param[in] destination Vector of screen coordinates to draw the tile at.
+ *  @param[in] renderer The game renderer.
+ *  @param[in] x The x offset of the tile, in tiles.
+ *  @param[in] y The y offset of the tile, in tiles.
  */
-// void draw_tile(Tile* tile, Sprite_Batch* sprite_batch, GLfloat palette_index, vec2 destination);
+void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y);
 
 // Gets the tile type of the given tile.
 /*! @brief Gets the tile type of the given tile.
