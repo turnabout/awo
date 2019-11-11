@@ -31,8 +31,9 @@ Tile* create_tile(
  *  @param[in] renderer The game renderer.
  *  @param[in] x The x offset of the tile, in tiles.
  *  @param[in] y The y offset of the tile, in tiles.
+ *  @param[in] palette_index Index of the palette used to render the tile.
  */
-void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y);
+void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y, GLfloat palette_index);
 
 // Gets the tile type of the given tile.
 /*! @brief Gets the tile type of the given tile.

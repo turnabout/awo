@@ -16,6 +16,9 @@ struct Game_Board {
 
     // Factory responsible for getting new tiles
     Tile_Factory* tile_factory;
+
+    // Indices of the currently active tile and fog tile palettes.
+    GLfloat active_tile_palette_index, active_fog_tile_palette_index;
 };
 
 Game_Board* create_game_board(
@@ -31,6 +34,9 @@ Game_Board* create_game_board(
     game_board->height   = height;
 
     game_board->tile_factory = create_tile_factory(tiles_data, game_clock);
+
+    game_board->active_tile_palette_index = get_active_tile_palette_index(0);
+    game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);
 
     // Allocate space for tiles
     game_board->tiles = (Tile_Row*)malloc(sizeof(Tile_Row) * game_board->height);
@@ -50,7 +56,13 @@ void render_game_board(Game_Board* game_board, Game_Renderer* renderer)
 {
     for (int y = (game_board->height - 1); y >= 0; y--) {
         for (int x = (game_board->width - 1); x >= 0; x--) {
-            render_tile(game_board->tiles[y][x], renderer, x, y);
+            render_tile(
+                game_board->tiles[y][x], 
+                renderer, 
+                x, 
+                y, 
+                game_board->active_tile_palette_index
+            );
         }
     }
 }

@@ -12,9 +12,6 @@ struct Tile {
     // This tile's animation.
     Animation* animation;
 
-    // Index of the palette applied to this tile.
-    GLfloat palette_index;
-
     // Pointer to sub-clock tick used to update this tile's animation.
     int* animation_index_ptr;
 };
@@ -29,7 +26,6 @@ Tile* create_tile(
     Tile* tile = (Tile*)malloc(sizeof(Tile));
 
     tile->type = type;
-    tile->palette_index = get_active_tile_palette_index(0);
 
     // Get tile data for this tile
     Animation_Clock_Index clock_index;
@@ -51,7 +47,7 @@ Tile* create_tile(
     return tile;
 }
 
-void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y)
+void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y, GLfloat palette_index)
 {
     update_renderer_tiles_layer_pixel(
         renderer,
@@ -61,7 +57,7 @@ void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y)
         (vec4) {
             tile->animation->frames[*(tile->animation_index_ptr)].raw_top_left[0],
             tile->animation->frames[*(tile->animation_index_ptr)].raw_top_left[1],
-            tile->palette_index,
+            palette_index,
             0.0f
         }
     );
