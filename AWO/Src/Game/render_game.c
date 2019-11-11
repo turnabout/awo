@@ -20,6 +20,8 @@ void render_game(Game* game)
     static GLfloat offset_x = 0.0f;
     static GLfloat offset_y = 0.0f;
 
+    render_game_renderer(game->renderer);
+
     /*
     if (!flag) {
         flag = 1;

@@ -27,4 +27,6 @@ Game_Renderer* create_game_renderer(
  */
 void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const char* matrix_str);
 
+void render_game_renderer(Game_Renderer* renderer);
+
 void free_game_renderer(Game_Renderer* renderer);

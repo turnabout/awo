@@ -58,8 +58,9 @@ void init_game_renderer_uniforms(Game_Renderer* renderer)
 
     // Tiles shader
     glUseProgram(renderer->tiles_shader_program);
-    glUniform1i(glGetUniformLocation(renderer->sprites_shader_program, "sprite_sheet"), 0);
-    glUniform1i(glGetUniformLocation(renderer->sprites_shader_program, "palettes_texture"), 1);
+    glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "sprite_sheet"), 0);
+    glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "palettes_texture"), 1);
+    glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "tiles_texture"), 2);
 }
 
 Game_Renderer* create_game_renderer(
@@ -75,14 +76,14 @@ Game_Renderer* create_game_renderer(
         return NULL;
     }
 
-    // Set sprite sheet texture
+    // Set textures
     renderer->sprite_sheet_texture = create_texture_object(
         SPRITE_SHEET_PATH, 
         &renderer->sprite_sheet_width, 
         &renderer->sprite_sheet_height
     );
-
     renderer->palettes_texture = palettes_texture;
+    init_game_renderer_uniforms(renderer);
 
     // Set sprite batches
     /*
@@ -99,6 +100,7 @@ Game_Renderer* create_game_renderer(
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
         renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
+        fill_tiles_layer_pixels(renderer->tiles_layers[i], (vec4) { 0.0, 0.0, 0.0, 0.0 });
     }
 
     return renderer;
@@ -125,6 +127,21 @@ void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const cha
         GL_FALSE, 
         matrix[0]
     );
+}
+
+void render_game_renderer(Game_Renderer* renderer)
+{
+    // Render tiles layers
+    glUseProgram(renderer->tiles_shader_program);
+    glBindVertexArray(renderer->tiles_layers_VAO);
+
+    glActiveTexture(GL_TEXTURE0); 
+    glBindTexture(GL_TEXTURE_2D, renderer->sprite_sheet_texture);
+
+    glActiveTexture(GL_TEXTURE1); 
+    glBindTexture(GL_TEXTURE_2D, renderer->palettes_texture);
+
+    render_tiles_layer(renderer->tiles_layers[TILE_LAYER_0]);
 }
 
 void free_game_renderer(Game_Renderer* renderer)

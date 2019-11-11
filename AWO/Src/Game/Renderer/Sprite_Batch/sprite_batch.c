@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Sprite_Batch/sprite_batch.h"
+#include "Game/Renderer/Sprite_Batch/sprite_batch.h"
 #include "Game/Data/Animation/animation.h"
 
 /* How many elements are included in a single vertex:

@@ -13,11 +13,11 @@ struct Tiles_Layer {
     // The tiles layer texture.
     GLuint tiles_texture;
 
+    // This tiles layer's tiles texture pixel data.
+    vec4* pixel_data;
+
     // Dimensions of the tiles layer, in tiles.
     int tiles_width, tiles_height;
-
-    // This tiles layer's pixel data.
-    vec4* data;
 };
 
 void init_tiles_texture(Tiles_Layer* tiles_layer)
@@ -41,39 +41,38 @@ void init_tiles_texture(Tiles_Layer* tiles_layer)
         GL_FLOAT, 
         NULL
     );
-
-    tiles_layer->data = malloc(sizeof(vec4) * tiles_layer->tiles_width * tiles_layer->tiles_height);
 }
 
 Tiles_Layer* create_tiles_layer(GLuint tiles_layer_width, GLuint tiles_layer_height)
 {
-    Tiles_Layer* renderer = (Tiles_Layer*)malloc(sizeof(Tiles_Layer));
+    Tiles_Layer* tiles_layer = (Tiles_Layer*)malloc(sizeof(Tiles_Layer));
 
-    renderer->tiles_width = tiles_layer_width;
-    renderer->tiles_height = tiles_layer_height;
+    tiles_layer->tiles_width = tiles_layer_width;
+    tiles_layer->tiles_height = tiles_layer_height;
 
+    init_tiles_texture(tiles_layer);
+    tiles_layer->pixel_data = malloc(sizeof(vec4) * tiles_layer->tiles_width * tiles_layer->tiles_height);
 
-    init_tiles_texture(renderer);
-
-    return renderer;
+    return tiles_layer;
 }
 
-void render_tiles_layer(Tiles_Layer* renderer)
+void render_tiles_layer(Tiles_Layer* tiles_layer)
 {
+    // Set this layer's tiles texture as active
     glActiveTexture(GL_TEXTURE2); 
-    glBindTexture(GL_TEXTURE_2D, renderer->tiles_texture);
+    glBindTexture(GL_TEXTURE_2D, tiles_layer->tiles_texture);
 
-    // Update tiles texture with current contents of tiles_layer's texture data
+    // Update tiles texture with current contents of tiles_layer's pixel data
     glTexSubImage2D(
         GL_TEXTURE_2D,
         0,
         0,
         0,
-        renderer->tiles_width,
-        renderer->tiles_height,
+        tiles_layer->tiles_width,
+        tiles_layer->tiles_height,
         GL_RGBA,
         GL_FLOAT,
-        renderer->data
+        tiles_layer->pixel_data
     );
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -91,7 +90,7 @@ void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4
     };
 
     memcpy(
-        (tiles_layer->data + x + (y * tiles_layer->tiles_width)), 
+        (tiles_layer->pixel_data + x + (y * tiles_layer->tiles_width)), 
         &stored_values, 
         sizeof(stored_values)
     );
@@ -111,7 +110,7 @@ void fill_tiles_layer_pixels(Tiles_Layer* tiles_layer, vec4 values)
     for (int y = 0; y < (int)tiles_layer->tiles_height; y++) {
         for (int x = 0; x < (int)tiles_layer->tiles_width; x++) {
             memcpy(
-                (tiles_layer->data + x + (y * tiles_layer->tiles_width)), 
+                (tiles_layer->pixel_data + x + (y * tiles_layer->tiles_width)), 
                 &stored_values, 
                 sizeof(stored_values)
             );
@@ -121,6 +120,8 @@ void fill_tiles_layer_pixels(Tiles_Layer* tiles_layer, vec4 values)
 
 void free_tiles_layer(Tiles_Layer* tiles_layer)
 {
-    free(tiles_layer->data);
-    free(tiles_layer);
+    if (tiles_layer != NULL) {
+        free(tiles_layer->pixel_data);
+        free(tiles_layer);
+    }
 }
