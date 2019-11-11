@@ -6,27 +6,6 @@
 #include "Game/Inputs/inputs.h"
 #include "Game/_game.h"
 
-void init_transformation_matrices(Game* game, GLuint sprites_shader_program)
-{
-    // View matrix
-    mat4 view = GLM_MAT4_IDENTITY_INIT;
-
-    // glm_translate(view, (vec3) { 200.0f, 0.0f, 0.0f } );
-    glm_scale(view, (vec3) { (GLfloat)DEFAULT_TILE_DIMENSION, (GLfloat)DEFAULT_TILE_DIMENSION, 1.0f });
-
-    glUniformMatrix4fv(
-        glGetUniformLocation(sprites_shader_program, "view"), 1, GL_FALSE, view[0]
-    );
-
-    // Projection matrix
-    mat4 projection = GLM_MAT4_IDENTITY_INIT;
-    glm_ortho(0.0f, (float)game->window_width, 0.0f, (float)game->window_height, -1.0f, 1.0f, projection);
-
-    glUniformMatrix4fv(
-        glGetUniformLocation(sprites_shader_program, "projection"), 1, GL_FALSE, projection[0]
-    );
-}
-
 Game* init_game(int game_board_width, int game_board_height, int window_width, int window_height)
 {
     Game* game = (Game*)malloc(sizeof(Game));
@@ -51,7 +30,8 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     game->renderer = create_game_renderer(
         game_board_width,
         game_board_height,
-        game->palettes_texture
+        game->palettes_texture,
+        game->tiles_data
     );
 
     update_game_renderer_matrix(game->renderer, projection, "projection");

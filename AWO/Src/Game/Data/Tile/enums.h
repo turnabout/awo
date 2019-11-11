@@ -18,6 +18,7 @@
     TILE(Silo) \
     TILE(BaseSmoke) \
     TILE(LandPiece) \
+    TILE(Empty) \
     TILE(OOB) \
 
 typedef enum {FOREACH_TILE_TYPE(GENERATE_ENUM)} Tile_Type;
@@ -27,7 +28,7 @@ static const char* tile_type_str_short[] = {
 };
 
 #define TILE_TYPE_FIRST Plain
-#define TILE_TYPE_LAST LandPiece
+#define TILE_TYPE_LAST Empty
 #define TILE_TYPE_COUNT TILE_TYPE_LAST + 1
 #define TILE_TYPE_NONE -1
 

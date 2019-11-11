@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
+#include "Game/Data/Tile/tiles_data.h"
+
 typedef struct Game_Renderer Game_Renderer;
 
 typedef enum Tile_Layer_Type {
@@ -16,7 +18,8 @@ typedef enum Tile_Layer_Type {
 Game_Renderer* create_game_renderer(
     int tile_layers_width, 
     int tile_layers_height, 
-    GLuint palettes_texture
+    GLuint palettes_texture,
+    Tiles_Data* tiles_data
 );
 
 /*! @brief Update one of the matrices used by the game renderer to render objects.
@@ -27,6 +30,10 @@ Game_Renderer* create_game_renderer(
  */
 void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const char* matrix_str);
 
-void render_game_renderer(Game_Renderer* renderer);
+/*! @brief Render the game renderer's tiles layers.
+ *
+ *  @param[in] renderer The game renderer object.
+ */
+void render_tiles_layers(Game_Renderer* renderer);
 
 void free_game_renderer(Game_Renderer* renderer);

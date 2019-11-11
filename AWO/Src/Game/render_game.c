@@ -26,7 +26,7 @@ void render_game(Game* game)
     static GLfloat offset_x = 0.0f;
     static GLfloat offset_y = 0.0f;
 
-    render_game_renderer(game->renderer);
+    render_tiles_layers(game->renderer);
 
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
         glBindTexture(GL_TEXTURE_2D, game->palettes_texture);

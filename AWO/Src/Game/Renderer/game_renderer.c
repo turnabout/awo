@@ -67,7 +67,8 @@ void init_game_renderer_uniforms(Game_Renderer* renderer)
 Game_Renderer* create_game_renderer(
     int tiles_layer_width, 
     int tiles_layer_height, 
-    GLuint palettes_texture
+    GLuint palettes_texture,
+    Tiles_Data* tiles_data
 )
 {
     Game_Renderer* renderer = (Game_Renderer*)malloc(sizeof(Game_Renderer));
@@ -99,10 +100,34 @@ Game_Renderer* create_game_renderer(
     // Set tiles layers
     renderer->tiles_layers_VAO = get_tiles_layers_VAO(tiles_layer_width, tiles_layer_height);
 
+    // Get empty tile frames used to initially fill every layer
+    Animation* empty_tile_frames;
+    gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &empty_tile_frames);
+
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
         renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
-        fill_tiles_layer_pixels(renderer->tiles_layers[i], (vec4) { 0.0, 96.0, get_active_tile_palette_index(1), 0.0 });
+
+        fill_tiles_layer_pixels(
+            renderer->tiles_layers[i], 
+            (vec4) { 
+                empty_tile_frames->frames[0].raw_top_left[0], 
+                empty_tile_frames->frames[0].raw_top_left[1], 
+                get_active_tile_palette_index(1), 
+                0.0 
+            }
+        );
     }
+
+    // Test: initially fill layer 0 with plains
+    fill_tiles_layer_pixels(
+        renderer->tiles_layers[TILE_LAYER_0], 
+        (vec4) { 
+            0.0f, 
+            96.0f, 
+            get_active_tile_palette_index(1), 
+            0.0f
+        }
+    );
 
     return renderer;
 }
@@ -130,7 +155,7 @@ void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const cha
     );
 }
 
-void render_game_renderer(Game_Renderer* renderer)
+void render_tiles_layers(Game_Renderer* renderer)
 {
     // Render tiles layers
     glUseProgram(renderer->tiles_shader_program);
@@ -142,7 +167,9 @@ void render_game_renderer(Game_Renderer* renderer)
     glActiveTexture(GL_TEXTURE1); 
     glBindTexture(GL_TEXTURE_2D, renderer->palettes_texture);
 
-    render_tiles_layer(renderer->tiles_layers[TILE_LAYER_0]);
+    for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
+        render_tiles_layer(renderer->tiles_layers[i]);
+    }
 }
 
 void free_game_renderer(Game_Renderer* renderer)
