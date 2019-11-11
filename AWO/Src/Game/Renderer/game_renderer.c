@@ -50,7 +50,11 @@ int init_game_renderer_shader_programs(Game_Renderer* renderer)
     return 1;
 }
 
-void init_game_renderer_uniforms(Game_Renderer* renderer)
+void init_game_renderer_uniforms(
+    Game_Renderer* renderer, 
+    int tiles_layer_width, 
+    int tiles_layer_height
+)
 {
     // Sprites shader
     glUseProgram(renderer->sprites_shader_program);
@@ -62,6 +66,27 @@ void init_game_renderer_uniforms(Game_Renderer* renderer)
     glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "sprite_sheet"), 0);
     glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "palettes_texture"), 1);
     glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "tiles_texture"), 2);
+
+    glUniform1f(
+        glGetUniformLocation(renderer->tiles_shader_program, "sprite_sheet_width"), 
+        (GLfloat)renderer->sprite_sheet_width
+    );
+
+    glUniform1f(
+        glGetUniformLocation(renderer->tiles_shader_program, "sprite_sheet_height"), 
+        (GLfloat)renderer->sprite_sheet_height
+    );
+
+    glUniform1f(
+        glGetUniformLocation(renderer->tiles_shader_program, "quad_width"), 
+        (GLfloat)(tiles_layer_width * DEFAULT_TILE_DIMENSION)
+    );
+
+    glUniform1f(
+        glGetUniformLocation(renderer->tiles_shader_program, "quad_height"), 
+        (GLfloat)(tiles_layer_height * DEFAULT_TILE_DIMENSION)
+    );
+
 }
 
 Game_Renderer* create_game_renderer(
@@ -85,7 +110,7 @@ Game_Renderer* create_game_renderer(
         &renderer->sprite_sheet_height
     );
     renderer->palettes_texture = palettes_texture;
-    init_game_renderer_uniforms(renderer);
+    init_game_renderer_uniforms(renderer, tiles_layer_width, tiles_layer_height);
 
     // Set sprite batches
     /*
