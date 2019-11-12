@@ -1,8 +1,14 @@
+#pragma warning( disable : 6308 28182 )
+
 #include <stdlib.h>
 
 #include "conf.h"
 #include "Game/Entity/Tile/tile.h"
 #include "Game/Data/Palette/palette.h"
+
+typedef struct Tile_Position {
+    Uint8 x, y;
+} Tile_Position;
 
 struct Tile {
 
@@ -20,6 +26,15 @@ struct Tile {
 
     // Index of the sub-clock this tile subscribes to.
     Animation_Sub_Clock_Index sub_clock_index;
+
+    // How many of this tile type/variation exist.
+    Uint16 count;
+
+    // The x/y position of every tile of this type/variation.
+    Tile_Position* positions;
+
+    // Current animation index of tiles of this type/variation.
+    Uint8 animation_index;
 };
 
 Tile* create_tile(
@@ -35,6 +50,9 @@ Tile* create_tile(
 
     tile->type = type;
     tile->variation = variation;
+    tile->count = 0;
+    tile->positions = NULL;
+    tile->animation_index = 0;
 
     // Gather clock index, sub clock index and the tile animation.
     gather_tile_data(
@@ -49,22 +67,34 @@ Tile* create_tile(
     return tile;
 }
 
-void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y, GLfloat palette_index)
+void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
 {
-    /*
-    update_renderer_tiles_layer_pixel(
-        renderer,
-        TILE_LAYER_0,
-        x,
-        y,
-        (vec4) {
-            tile->animation->frames[*(tile->animation_index_ptr)].raw_top_left[0],
-            tile->animation->frames[*(tile->animation_index_ptr)].raw_top_left[1],
-            palette_index,
-            0.0f
-        }
-    );
-*/
+    int new_position_index = tile->count++;
+
+    tile->positions = realloc(tile->positions, sizeof(Tile_Position) * tile->count);
+
+    tile->positions[new_position_index].x = x;
+    tile->positions[new_position_index].y = y;
+
+    // TODO: update render grid
+    // update_render_grid(Game_Renderer * renderer, Tile * tile);
+}
+
+void update_render_grid(Game_Renderer* renderer, Tile* tile)
+{
+    for (int i = 0; i < tile->count; i++) {
+
+        update_renderer_tiles_layer_pixel_low(
+            renderer,
+            TILE_LAYER_0,
+            tile->positions[i].x,
+            tile->positions[i].y,
+            (vec2) {
+                tile->animation->frames[tile->animation_index].raw_top_left[0],
+                tile->animation->frames[tile->animation_index].raw_top_left[1]
+            }
+        );
+    }
 }
 
 void get_tile_clock_data(

@@ -25,15 +25,7 @@ Tile* create_tile(
     Tile_Variation variation
 );
 
-/*! @brief Renders a tile.
- *
- *  @param[in] tile The tile to draw.
- *  @param[in] renderer The game renderer.
- *  @param[in] x The x offset of the tile, in tiles.
- *  @param[in] y The y offset of the tile, in tiles.
- *  @param[in] palette_index Index of the palette used to render the tile.
- */
-void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y, GLfloat palette_index);
+void register_tile_position(Tile* tile, Uint8 x, Uint8 y);
 
 /*! @brief Gets the tile type of the given tile.
  *

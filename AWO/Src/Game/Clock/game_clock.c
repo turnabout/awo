@@ -63,6 +63,11 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
     }
 }
 
+Tick_Event_List* get_game_clock_tick_event_list(Game_Clock* game_clock)
+{
+    return game_clock->tick_events;
+}
+
 int* get_game_clock_tick_ptr(
     Game_Clock* game_clock, 
     Animation_Clock_Index anim_clock_index, 

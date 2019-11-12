@@ -7,28 +7,6 @@
 
 typedef Tile** Tile_Row;
 
-// An entry representing a tile within the game board.
-typedef struct Tile_Entry {
-
-    // Pointer to the tile itself.
-    Tile* tile;
-
-    // Where the tile entry is located in the game board.
-    Uint8 x, y;
-
-} Tile_Entry;
-
-// A list of entries representing a clock tile within the game board.
-typedef struct Tile_Entry_List {
-
-    // How many tile entries are in this list.
-    int count;
-
-    // The tile entries.
-    Tile_Entry* tile_entries;
-
-} Tile_Entry_List;
-
 struct Game_Board {
     // Amount of tile columns and lines making up the game board
     int width, height;
@@ -41,25 +19,23 @@ struct Game_Board {
 
     // Indices of the currently active tile and fog tile palettes.
     GLfloat active_tile_palette_index, active_fog_tile_palette_index;
-
-    // Lists of every clock tiles, sorted by their animation clock data.
-    // All subscribe to the game clock publisher.
-    Tile_Entry_List* clock_tiles_subscriber[ANIMATION_CLOCK_COUNT][MINIMAL_ANIMATION_SUB_CLOCK_COUNT];
 };
 
 Game_Board* create_game_board(
     Tiles_Data* tiles_data, 
     Game_Clock* game_clock, 
     int width, 
-    int height
+    int height,
+    Tiles_Clock_Subscriber* tiles_clock_sub
 )
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
     game_board->width = width;
-    game_board->height   = height;
+    game_board->height = height;
 
-    game_board->tile_factory = create_tile_factory(tiles_data, game_clock);
+    game_board->tile_factory = create_tile_factory(tiles_data, game_clock, tiles_clock_sub);
+    
 
     game_board->active_tile_palette_index = get_active_tile_palette_index(0);
     game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);
@@ -69,14 +45,6 @@ Game_Board* create_game_board(
 
     for (int i = 0; i < game_board->height; i++) {
         game_board->tiles_grid[i] = (Tile**)malloc(sizeof(Tile*) * game_board->width);
-    }
-
-    // Allocate space for game clock tiles subscriber
-    for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-        for (int j = 0; j < MINIMAL_ANIMATION_SUB_CLOCK_COUNT; j++) {
-            game_board->clock_tiles_subscriber[i][j] = malloc(sizeof(Tile_Entry_List));
-            game_board->clock_tiles_subscriber[i][j]->count = 0;
-        }
     }
 
     return game_board;
@@ -103,26 +71,13 @@ void render_game_board(Game_Board* game_board, Game_Renderer* renderer)
     */
 }
 
-void add_game_board_tile(Game_Board* game_board, Tile* tile, int x, int y)
+void add_game_board_tile(Game_Board* game_board, Tile* tile, Uint8 x, Uint8 y)
 {
     // Add tile to tiles grid
     game_board->tiles_grid[y][x] = tile;
 
-    // Create tile entry wrapping the tile
-    Tile_Entry tile_entry = { tile, x, y };
-
-    // Add tile entry to game clock tiles subscriber
-    Animation_Clock_Index clock_index;
-    Animation_Sub_Clock_Index sub_clock_index;
-
-    get_tile_clock_data(tile, &clock_index, &sub_clock_index);
-
-    Tile_Entry_List* entry_list = game_board->clock_tiles_subscriber[clock_index][sub_clock_index];
-
-    int index = entry_list->count++;
-
-    entry_list->tile_entries = realloc(entry_list->tile_entries, entry_list->count * sizeof(Tile_Entry));
-    entry_list->tile_entries[index] = tile_entry;
+    // Add the coordinates to the tile's list
+    register_tile_position(tile, x, y);
 }
 
 void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation)
@@ -137,6 +92,7 @@ void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variatio
     }
 }
 
+/*
 void edit_game_board_tile(
     Game_Board* game_board,
     int board_x,
@@ -160,17 +116,6 @@ Tile_Type get_game_board_tile_type(Game_Board* gb, int x, int y)
     return get_tile_type(gb->tiles_grid[y][x]);
 }
 
-void free_game_board(Game_Board* game_board)
-{
-    if (game_board != NULL) {
-        free_tile_factory(game_board->tile_factory);
-
-        // TODO: fully deallocate clock_tiles_subscriber
-
-        free(game_board);
-    }
-}
-
 void get_game_board_screen_coordinate_indices(
     int screen_x, 
     int screen_y, 
@@ -180,4 +125,13 @@ void get_game_board_screen_coordinate_indices(
 {
     *board_x = (int)((float)screen_x / (float)DEFAULT_TILE_DIMENSION);
     *board_y = (int)((float)screen_y / (float)DEFAULT_TILE_DIMENSION);
+}
+*/
+
+void free_game_board(Game_Board* game_board)
+{
+    if (game_board != NULL) {
+        free_tile_factory(game_board->tile_factory);
+        free(game_board);
+    }
 }

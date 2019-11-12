@@ -3,6 +3,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Renderer/game_renderer.h"
+#include "Game/Entity/Tile/TilesClockSubscriber/tiles_clock_subscriber.h"
 
 /*! @brief Represents the game board used by players during gameplay. Contains all game entities.
  */
@@ -14,12 +15,14 @@ typedef struct Game_Board Game_Board;
  *  @param[in] game_clock The game clock object.
  *  @param[in] tiles_width The tiles_width of the game board in tiles.
  *  @param[in] tiles_height The tiles_height of the game board in tiles.
+ *  @param[in] tiles_clock_sub The tiles clock subscription module.
  */
 Game_Board* create_game_board(
     Tiles_Data* tiles_data,
     Game_Clock* game_clock,
     int width,
-    int height
+    int height,
+    Tiles_Clock_Subscriber* tiles_clock_sub
 );
 
 /*! @brief Updates the game board and its entities.

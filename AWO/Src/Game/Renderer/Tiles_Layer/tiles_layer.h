@@ -29,6 +29,8 @@ void render_tiles_layer(Tiles_Layer* tiles_layer);
  */
 void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4 value);
 
+void update_tiles_layer_pixel_low(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec2 values);
+
 /*! @brief Fill pixels' values in the tiles layer's tiles texture.
  *
  *  @param[in] tiles_layer The tiles layer to update.

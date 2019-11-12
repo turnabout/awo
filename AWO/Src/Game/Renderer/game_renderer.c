@@ -193,6 +193,17 @@ void update_renderer_tiles_layer_pixel(
     update_tiles_layer_pixel(renderer->tiles_layers[layer], x, y, value);
 }
 
+void update_renderer_tiles_layer_pixel_low(
+    Game_Renderer* renderer,
+    Tile_Layer_Type layer,
+    GLuint x,
+    GLuint y,
+    vec2 value
+)
+{
+    update_tiles_layer_pixel_low(renderer->tiles_layers[layer], x, y, value);
+}
+
 void render_tiles_layers(Game_Renderer* renderer)
 {
     // Render tiles layers

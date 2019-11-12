@@ -52,4 +52,12 @@ void update_renderer_tiles_layer_pixel(
     vec4 value
 );
 
+void update_renderer_tiles_layer_pixel_low(
+    Game_Renderer* renderer, 
+    Tile_Layer_Type layer,
+    GLuint x, 
+    GLuint y, 
+    vec2 value
+);
+
 void free_game_renderer(Game_Renderer* renderer);

@@ -41,12 +41,15 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     init_keys_state_module(game->window);
     init_mouse_state_module(game->window, &game->window_height);
 
+    game->tiles_clock_sub = create_tiles_clock_subscriber();
+
     // Set game board
     game->board = create_game_board(
         game->tiles_data,
         game->clock,
         game_board_width,
-        game_board_height
+        game_board_height,
+        game->tiles_clock_sub
     );
 
     fill_game_board_tiles(game->board, Sea, Middle);
