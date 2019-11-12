@@ -35,14 +35,27 @@ Tile* create_tile(
  */
 void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y, GLfloat palette_index);
 
-// Gets the tile type of the given tile.
 /*! @brief Gets the tile type of the given tile.
+ *
  *  @param[in] The tile.
  *  @return The tile type.
  */
 Tile_Type get_tile_type(Tile* tile);
 
+/*! @brief Gets the clock data of the given tile.
+ *
+ *  @param[in] The tile.
+ *  @param[out] The clock index.
+ *  @param[out] The sub-clock index.
+ */
+void get_tile_clock_data(
+    Tile* tile,
+    Animation_Clock_Index* clock_index,
+    Animation_Sub_Clock_Index* sub_clock_index
+);
+
 /*! @brief Frees memory occupied by a tile.
+ *
  *  @param[in] The tile to free.
  */
 void free_tile(Tile* tile);

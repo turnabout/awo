@@ -9,11 +9,17 @@ struct Tile {
     // This tile's type.
     Tile_Type type;
 
+    // This tile's variation.
+    Tile_Variation variation;
+
     // This tile's animation.
     Animation* animation;
 
-    // Pointer to sub-clock tick used to update this tile's animation.
-    int* animation_index_ptr;
+    // Index of the clock this tile subscribes to, to update its animation.
+    Animation_Clock_Index clock_index;
+
+    // Index of the sub-clock this tile subscribes to.
+    Animation_Sub_Clock_Index sub_clock_index;
 };
 
 Tile* create_tile(
@@ -25,30 +31,27 @@ Tile* create_tile(
 {
     Tile* tile = (Tile*)malloc(sizeof(Tile));
 
-    tile->type = type;
+    printf("%d, %d\n", sizeof(tiles_data), sizeof(type));
 
-    // Get tile data for this tile
-    Animation_Clock_Index clock_index;
-    Animation_Sub_Clock_Index sub_clock_index;
+    tile->type = type;
+    tile->variation = variation;
 
     // Gather clock index, sub clock index and the tile animation.
     gather_tile_data(
         tiles_data,
         type,
         variation,
-        &clock_index,
-        &sub_clock_index,
+        &tile->clock_index,
+        &tile->sub_clock_index,
         &tile->animation
     );
-
-    // Get the animation index pointer
-    tile->animation_index_ptr = get_game_clock_tick_ptr(game_clock, clock_index, sub_clock_index);
 
     return tile;
 }
 
 void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y, GLfloat palette_index)
 {
+    /*
     update_renderer_tiles_layer_pixel(
         renderer,
         TILE_LAYER_0,
@@ -61,6 +64,22 @@ void render_tile(Tile* tile, Game_Renderer* renderer, int x, int y, GLfloat pale
             0.0f
         }
     );
+*/
+}
+
+void get_tile_clock_data(
+    Tile* tile,
+    Animation_Clock_Index* clock_index, 
+    Animation_Sub_Clock_Index* sub_clock_index
+)
+{
+    *clock_index = tile->clock_index;
+    *sub_clock_index = tile->sub_clock_index;
+}
+
+Tile_Type get_tile_type(Tile* tile)
+{
+    return tile->type;
 }
 
 void free_tile(Tile* tile)
@@ -68,9 +87,4 @@ void free_tile(Tile* tile)
     if (tile != NULL) {
         free(tile);
     }
-}
-
-Tile_Type get_tile_type(Tile* tile)
-{
-    return tile->type;
 }

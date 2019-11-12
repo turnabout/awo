@@ -31,4 +31,5 @@ typedef enum Animation_Sub_Clock_Index {
     No_Sub_Clock = -1,
 } Animation_Sub_Clock_Index;
 
+#define MINIMAL_ANIMATION_SUB_CLOCK_COUNT 3
 #define ANIMATION_SUB_CLOCK_COUNT 5
