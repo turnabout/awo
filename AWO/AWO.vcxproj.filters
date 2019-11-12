@@ -183,6 +183,9 @@
     <ClCompile Include="Src\Game\Renderer\Tiles_Layer\get_tiles_layers_VAO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Clock\Debug\debug_game_clock.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -285,6 +288,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Renderer\Tiles_Layer\tiles_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Clock\Animation_Clock\tick_event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Clock\Animation_Clock\_animation_sub_clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Clock\_game_clock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

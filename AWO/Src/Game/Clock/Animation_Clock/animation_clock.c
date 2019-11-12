@@ -2,7 +2,10 @@
 
 #include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-Animation_Clock* create_animation_clock(const cJSON* JSON)
+Animation_Clock* create_animation_clock(
+    const cJSON* JSON,
+    Animation_Clock_Index clock_index
+)
 {
     Animation_Clock* clock = malloc(sizeof(Animation_Clock));
 
@@ -26,7 +29,9 @@ Animation_Clock* create_animation_clock(const cJSON* JSON)
     // Add every sub-clock to this animation clock
     for (int i = 0; i < sub_clocks_count; i++) {
         *(clock->sub_clocks++) = create_animation_sub_clock(
-            cJSON_GetArrayItem(sub_clocks_JSON, i)
+            cJSON_GetArrayItem(sub_clocks_JSON, i),
+            clock_index,
+            (Animation_Sub_Clock_Index)i
         );
     }
 
@@ -37,14 +42,22 @@ Animation_Clock* create_animation_clock(const cJSON* JSON)
     return clock;
 }
 
-void update_animation_clock_children(Animation_Clock* animation_clock)
+void update_animation_clock_children(Animation_Clock* animation_clock, Tick_Event_List* event_list)
 {
     for (int i = 0; i < animation_clock->sub_clocks_count; i++) {
-        update_animation_sub_clock(animation_clock->sub_clocks[i], animation_clock->current_tick);
+        update_animation_sub_clock(
+            animation_clock->sub_clocks[i], 
+            animation_clock->current_tick,
+            event_list
+        );
     }
 }
 
-void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tick)
+void update_animation_clock(
+    Animation_Clock* animation_clock,
+    int game_clock_tick,
+    Tick_Event_List* event_list
+)
 {
     for (int i = 0; i < animation_clock->changing_ticks_count; i++) {
 
@@ -53,7 +66,7 @@ void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tic
             animation_clock->current_tick = i;
 
             // Animation clock update, so update its sub-clocks
-            update_animation_clock_children(animation_clock);
+            update_animation_clock_children(animation_clock, event_list);
         }
     }
 }

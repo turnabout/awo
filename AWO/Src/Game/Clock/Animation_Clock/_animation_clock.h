@@ -3,42 +3,42 @@
 #include <cJSON.h>
 
 #include "Game/Clock/Animation_Clock/enums.h"
-
-typedef struct Animation_Sub_Clock {
-    int current_tick;  // Current tick of this animation sub clock
-    int* ticks_array;  // Array of every possible game tick
-} Animation_Sub_Clock;
+#include "Game/Clock/Animation_Clock/tick_event.h"
+#include "Game/Clock/Animation_Clock/_animation_sub_clock.h"
 
 typedef struct Animation_Clock {
-    int current_tick; // Current tick of this animation clock
+    // Current tick of this animation clock.
+    int current_tick;
 
-    int* changing_ticks;      // Array of every game tick that updates this animation clock
-    int changing_ticks_count; // Amount of changing ticks
+    // Array of every game tick that updates this animation clock.
+    int* changing_ticks;
 
-    Animation_Sub_Clock** sub_clocks; // Pointers to sub-clocks subscribed to this animation clock
-    int sub_clocks_count;             // Amount of sub-clocks subscribed to this animation clock
+    // Amount of changing ticks.
+    int changing_ticks_count;
+
+    // Pointers to sub-clocks subscribed to this animation clock.
+    Animation_Sub_Clock** sub_clocks;
+
+    // Amount of sub-clocks subscribed to this animation clock.
+    int sub_clocks_count;
+
 } Animation_Clock;
 
 // Creates an animation clock using the given JSON data describing it.
-Animation_Clock* create_animation_clock(const cJSON* animation_clock_JSON);
+Animation_Clock* create_animation_clock(
+    const cJSON* JSON,
+    Animation_Clock_Index clock_index
+);
 
 // Updates an animation clock
-void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tick);
+void update_animation_clock(
+    Animation_Clock* animation_clock,
+    int game_clock_tick,
+    Tick_Event_List* event_list
+);
 
 // Gets pointer to the animation sub-clock's current tick, belonging to the given animation clock
 int* get_animation_clock_child_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index sub_clock_index);
 
 // Frees an animation clock
 void free_animation_clock(Animation_Clock* ac);
-
-// Creates an animation sub clock using the given JSON data describing it.
-Animation_Sub_Clock* create_animation_sub_clock(const cJSON* json);
-
-// Updates the current tick of a sub clock depending on its animation clock's current tick
-void update_animation_sub_clock(Animation_Sub_Clock* asc, int ac_current_tick);
-
-// Gets pointer to the animation sub-clock's current tick
-int* get_animation_sub_clock_tick_ptr(Animation_Sub_Clock* asc);
-
-// Frees an animation sub clock
-void free_animation_sub_clock(Animation_Sub_Clock* asc);

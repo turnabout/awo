@@ -3,26 +3,11 @@
 
 #include "conf.h"
 #include "types.h"
-#include "Game/Clock/game_clock.h"
+#include "Game/Clock/_game_clock.h"
 #include "Game/Clock/Animation_Clock/_animation_clock.h"
 
 // How much time (in seconds) must be accumulated before the game clock ticks
 static const float GAME_CLOCK_MAX_ACCUM = FRAME_TIME * GAME_CLOCK_FRAMES_TO_TICK;
-
-struct Game_Clock {
-
-    // Current tick the game clock is on.
-    Uint8 current_tick;
-
-    // Accumulated game delta time.
-    float accum_time;
-
-    // Animation clocks attached to game clock.
-    Animation_Clock* animation_clocks[ANIMATION_CLOCK_COUNT];
-
-    // Static tick counter, always pointing to 0. Given to static tiles.
-    int* static_tick;
-};
 
 Game_Clock* create_game_clock(const cJSON* clock_data_JSON)
 {
@@ -39,15 +24,25 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON)
     // Create the game clock's animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         game_clock->animation_clocks[i] = create_animation_clock(
-            cJSON_GetArrayItem(clock_data_JSON, i)
+            cJSON_GetArrayItem(clock_data_JSON, i),
+            (Animation_Clock_Index)i
         );
     }
+
+    game_clock->tick_events = (Tick_Event_List*)malloc(sizeof(Tick_Event_List));
+    game_clock->tick_events->ticks_count = 0;
 
     return game_clock;
 }
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
+    // Reset tick events list from previous frame, if non-empty
+    if (game_clock->tick_events->ticks_count) {
+        print_game_clock_tick_events(game_clock);
+        game_clock->tick_events->ticks_count = 0;
+    }
+
     // Add to MS accumulation, advance current tick if threshold reached
     if ((game_clock->accum_time += delta_time) > GAME_CLOCK_MAX_ACCUM) {
         game_clock->accum_time = 0;
@@ -59,7 +54,11 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
 
         // Update the animation clocks
         for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-            update_animation_clock(game_clock->animation_clocks[i], game_clock->current_tick);
+            update_animation_clock(
+                game_clock->animation_clocks[i],
+                game_clock->current_tick,
+                game_clock->tick_events
+            );
         }
     }
 }

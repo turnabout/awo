@@ -1,7 +1,7 @@
 #pragma once
 
 // Every possible animation clock's index.
-typedef enum {
+typedef enum Animation_Clock_Index {
     Sea_Clock,
     River_Clock,
     Units_Clock,
@@ -15,7 +15,7 @@ typedef enum {
 #define ANIMATION_CLOCK_COUNT ANIMATION_CLOCK_LAST + 1
 
 // Every possible animation sub clock's index.
-typedef enum {
+typedef enum Animation_Sub_Clock_Index {
     // Sea Clock
     Pyramid1 = 0,
     Pyramid2 = 1,
@@ -30,3 +30,5 @@ typedef enum {
     // None
     No_Sub_Clock = -1,
 } Animation_Sub_Clock_Index;
+
+#define ANIMATION_SUB_CLOCK_COUNT 5

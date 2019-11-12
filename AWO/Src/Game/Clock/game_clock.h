@@ -3,6 +3,7 @@
 #include <cJSON.h>
 
 #include "Game/Clock/Animation_Clock/enums.h"
+#include "Game/Clock/Animation_Clock/tick_event.h"
 
 // Main game clock used for updating and keeping animations synchronized.
 typedef struct Game_Clock Game_Clock;
@@ -25,7 +26,7 @@ void update_game_clock(Game_Clock* game_clock, float delta_time);
 /*! @brief Gets pointer to the tick counter corresponding to given animation clock & sub-clock.
  *
  *  @param[in] game_clock The game clock.
- *  @param[in] animation_clock_index Index of the animation clock holding the sub-clock.
+ *  @param[in] clock_index Index of the animation clock holding the sub-clock.
  *  @param[in] sub_clock_index Index of the sought sub-clock, from which the tick pointer will be 
  *  returned.
  *  @return The tick counter pointer.
