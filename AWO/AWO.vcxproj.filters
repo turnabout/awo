@@ -183,7 +183,7 @@
     <ClCompile Include="Src\Game\Renderer\Tiles_Layer\get_tiles_layers_VAO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Debug\debug_game_clock.c">
+    <ClCompile Include="Src\Game\Clock\debug_game_clock.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
