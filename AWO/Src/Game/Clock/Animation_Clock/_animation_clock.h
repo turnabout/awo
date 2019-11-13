@@ -37,8 +37,5 @@ void update_animation_clock(
     Tick_Events_List* event_list
 );
 
-// Gets pointer to the animation sub-clock's current tick, belonging to the given animation clock
-int* get_animation_clock_child_tick_ptr(Animation_Clock* ac, Animation_Sub_Clock_Index sub_clock_index);
-
 // Frees an animation clock
 void free_animation_clock(Animation_Clock* ac);

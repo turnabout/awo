@@ -67,19 +67,6 @@ Tick_Events_List* get_game_clock_tick_event_list(Game_Clock* game_clock)
     return game_clock->tick_events;
 }
 
-int* get_game_clock_tick_ptr(
-    Game_Clock* game_clock, 
-    Animation_Clock_Index anim_clock_index, 
-    Animation_Sub_Clock_Index anim_sub_clock_index
-)
-{
-    if (anim_clock_index == No_Clock) {
-        return game_clock->static_tick;
-    }
-
-    return get_animation_clock_child_tick_ptr(game_clock->animation_clocks[anim_clock_index], anim_sub_clock_index);
-}
-
 void free_game_clock(Game_Clock* game_clock)
 {
     if (game_clock != NULL) {

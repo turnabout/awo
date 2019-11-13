@@ -71,14 +71,6 @@ void update_animation_clock(
     }
 }
 
-int* get_animation_clock_child_tick_ptr(
-    Animation_Clock* animation_clock, 
-    Animation_Sub_Clock_Index anim_sc_index
-)
-{
-    return get_animation_sub_clock_tick_ptr(animation_clock->sub_clocks[anim_sc_index]);
-}
-
 void free_animation_clock(Animation_Clock* ac)
 {
     for (int i = 0; i < ac->sub_clocks_count; i++) {

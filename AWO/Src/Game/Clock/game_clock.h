@@ -5,7 +5,8 @@
 #include "Game/Clock/Animation_Clock/enums.h"
 #include "Game/Clock/Animation_Clock/tick_event.h"
 
-// Main game clock used for updating and keeping animations synchronized.
+/*! @brief Main game clock used for updating and keeping animations synchronized.
+ */
 typedef struct Game_Clock Game_Clock;
 
 /*! @brief Creates the game clock along with its animation clocks.
@@ -24,20 +25,6 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON);
 void update_game_clock(Game_Clock* game_clock, float delta_time);
 
 Tick_Events_List* get_game_clock_tick_event_list(Game_Clock* game_clock);
-
-/*! @brief Gets pointer to the tick counter corresponding to given animation clock & sub-clock.
- *
- *  @param[in] game_clock The game clock.
- *  @param[in] clock_index Index of the animation clock holding the sub-clock.
- *  @param[in] sub_clock_index Index of the sought sub-clock, from which the tick pointer will be 
- *  returned.
- *  @return The tick counter pointer.
- */
-int* get_game_clock_tick_ptr(
-    Game_Clock* game_clock, 
-    Animation_Clock_Index animation_clock_index, 
-    Animation_Sub_Clock_Index sub_clock_index
-);
 
 #ifdef _DEBUG
 /*! @brief Prints the contents of the given list of tick events.

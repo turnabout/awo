@@ -43,8 +43,3 @@ void free_animation_sub_clock(Animation_Sub_Clock* sub_clock)
     free(sub_clock->ticks_array);
     free(sub_clock);
 }
-
-int* get_animation_sub_clock_tick_ptr(Animation_Sub_Clock* sub_clock)
-{
-    return &sub_clock->current_tick;
-}
