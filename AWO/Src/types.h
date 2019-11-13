@@ -10,3 +10,9 @@ typedef int32_t  Sint32;
 typedef uint32_t Uint32;
 typedef int64_t  Sint64;
 typedef uint64_t Uint64;
+
+/*! @brief A set of x/y coordinates.
+ */
+typedef struct Point {
+    Uint8 x, y;
+} Point;

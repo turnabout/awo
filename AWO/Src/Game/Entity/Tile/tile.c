@@ -5,10 +5,6 @@
 #include "conf.h"
 #include "Game/Entity/Tile/tile.h"
 
-typedef struct Tile_Position {
-    Uint8 x, y;
-} Tile_Position;
-
 struct Tile {
 
     // This tile's type.
@@ -30,7 +26,7 @@ struct Tile {
     Uint16 count;
 
     // The x/y position of every tile of this type/variation.
-    Tile_Position* positions;
+    Point* positions;
 
     // Current animation index of tiles of this type/variation.
     Uint8 animation_index;
@@ -88,7 +84,7 @@ void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
 {
     int new_position_index = tile->count++;
 
-    tile->positions = realloc(tile->positions, sizeof(Tile_Position) * tile->count);
+    tile->positions = realloc(tile->positions, sizeof(Point) * tile->count);
 
     tile->positions[new_position_index].x = x;
     tile->positions[new_position_index].y = y;
