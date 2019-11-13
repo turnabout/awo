@@ -34,7 +34,7 @@ Animation_Clock* create_animation_clock(
 void update_animation_clock(
     Animation_Clock* animation_clock,
     int game_clock_tick,
-    Tick_Event_List* event_list
+    Tick_Events_List* event_list
 );
 
 // Gets pointer to the animation sub-clock's current tick, belonging to the given animation clock

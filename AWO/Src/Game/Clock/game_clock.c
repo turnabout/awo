@@ -29,7 +29,7 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON)
         );
     }
 
-    game_clock->tick_events = (Tick_Event_List*)malloc(sizeof(Tick_Event_List));
+    game_clock->tick_events = (Tick_Events_List*)malloc(sizeof(Tick_Events_List));
     game_clock->tick_events->ticks_count = 0;
 
     return game_clock;
@@ -62,7 +62,7 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
     }
 }
 
-Tick_Event_List* get_game_clock_tick_event_list(Game_Clock* game_clock)
+Tick_Events_List* get_game_clock_tick_event_list(Game_Clock* game_clock)
 {
     return game_clock->tick_events;
 }

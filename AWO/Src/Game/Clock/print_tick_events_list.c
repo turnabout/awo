@@ -3,7 +3,7 @@
 #include "Game/Clock/_game_clock.h"
 #include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-void print_tick_event_list(Tick_Event_List* tick_events)
+void print_tick_event_list(Tick_Events_List* tick_events)
 {
     printf("Tick_Event_List [\n");
 
@@ -47,12 +47,13 @@ void print_tick_event_list(Tick_Event_List* tick_events)
             break;
         }
         printf(
-            "Tick_Event { %-16s - %-16s  Frame %d}\n",
+            "\tTick_Event { %-16s - %-16s  Frame %d}\n",
             clock_str,
             sub_clock_str,
             tick_events->ticks[i].frame_index
         );
     }
-    printf("\n]\n");
+
+    printf("\n]\n\n");
 
 }

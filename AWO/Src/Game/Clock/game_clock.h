@@ -23,7 +23,7 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON);
  */
 void update_game_clock(Game_Clock* game_clock, float delta_time);
 
-Tick_Event_List* get_game_clock_tick_event_list(Game_Clock* game_clock);
+Tick_Events_List* get_game_clock_tick_event_list(Game_Clock* game_clock);
 
 /*! @brief Gets pointer to the tick counter corresponding to given animation clock & sub-clock.
  *
@@ -44,7 +44,7 @@ int* get_game_clock_tick_ptr(
  *
  *  @param[in] game_clock The game clock.
  */
-void print_tick_event_list(Tick_Event_List* tick_events);
+void print_tick_event_list(Tick_Events_List* tick_events);
 #endif
 
 /*! @brief Frees the game clock's allocated memory.

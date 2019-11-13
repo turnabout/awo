@@ -6,7 +6,7 @@
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Renderer/game_renderer.h"
 
-/*! @brief Represents a game tile.
+/*! @brief Represents a tile used in the game's tile map system.
  */
 typedef struct Tile Tile;
 
@@ -25,8 +25,29 @@ Tile* create_tile(
     Tile_Variation variation
 );
 
+/*! @brief Registers a position on the given tile.
+ *
+ * Appends the given x/y coordinate to the tile's list of tile positions. This is used to update 
+ * the contents of the tiles render grid, and keep them updated.
+ *
+ *  @param[in] tile The tile.
+ *  @param[in] x The x coordinate to register.
+ *  @param[in] y The y coordinate to register.
+ */
 void register_tile_position(Tile* tile, Uint8 x, Uint8 y);
+
+/*! @brief Updates the animation index currently used by the given tile.
+ *
+ *  @param[in] tile The tile.
+ *  @param[in] index The new animation index to update to.
+ */
 void update_tile_animation_index(Tile* tile, Uint8 index);
+
+/*! @brief Updates parts of the render grid occupied by the given tile.
+ *
+ *  @param[in] tile The tile.
+ */
+void update_tiles_render_grid(Tile* tile);
 
 /*! @brief Gets the tile type of the given tile.
  *

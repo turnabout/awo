@@ -65,25 +65,8 @@ Tile* create_tile(
     return tile;
 }
 
-void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
-{
-    int new_position_index = tile->count++;
-
-    tile->positions = realloc(tile->positions, sizeof(Tile_Position) * tile->count);
-
-    tile->positions[new_position_index].x = x;
-    tile->positions[new_position_index].y = y;
-
-    // TODO: update render grid
-    // update_render_grid(Game_Renderer * renderer, Tile * tile);
-}
-
-void update_tile_animation_index(Tile* tile, Uint8 index)
-{
-    tile->animation_index = index;
-}
-
-void update_render_grid(Tile* tile)
+// Update every render grid cell occupied by this tile.
+void update_tiles_render_grid(Tile* tile)
 {
     for (int i = 0; i < tile->count; i++) {
 
@@ -97,6 +80,24 @@ void update_render_grid(Tile* tile)
             }
         );
     }
+}
+
+void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
+{
+    int new_position_index = tile->count++;
+
+    tile->positions = realloc(tile->positions, sizeof(Tile_Position) * tile->count);
+
+    tile->positions[new_position_index].x = x;
+    tile->positions[new_position_index].y = y;
+}
+
+void update_tile_animation_index(Tile* tile, Uint8 index)
+{
+    tile->animation_index = index;
+
+    
+    // update_render_grid(tile);
 }
 
 void get_tile_clock_data(

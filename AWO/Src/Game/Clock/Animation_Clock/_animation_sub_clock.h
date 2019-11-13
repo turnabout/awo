@@ -31,7 +31,7 @@ Animation_Sub_Clock* create_animation_sub_clock(
 void update_animation_sub_clock(
     Animation_Sub_Clock* asc, 
     int ac_current_tick,
-    Tick_Event_List* event_list
+    Tick_Events_List* event_list
 );
 
 // Gets pointer to the animation sub-clock's current tick

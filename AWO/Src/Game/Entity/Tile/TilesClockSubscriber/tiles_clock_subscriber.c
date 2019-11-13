@@ -55,14 +55,14 @@ void register_tiles_clock_subscriber_tile(Tiles_Clock_Subscriber* sub_module, Ti
     sub_module->tiles_list[clock_index][sub_clock_index]->tiles[index] = tile;
 }
 
-void process_tiles_tick_events(Tiles_Clock_Subscriber* sub_module, Tick_Event_List* events_list)
+void process_tiles_tick_events(Tiles_Clock_Subscriber* sub_module, Tick_Events_List* events_list)
 {
+    // Loop the received tick events
     for (int i = 0; i < events_list->ticks_count; i++) {
-
         Tick_Event event = events_list->ticks[i];
         Tiles_List* tiles_list = sub_module->tiles_list[event.clock_index][event.sub_clock_index];
-        
 
+        // Update the animation index of every tile subscribed to this tick event
         for (int j = 0; j < tiles_list->tiles_count; j++) {
             update_tile_animation_index(tiles_list->tiles[j], event.frame_index);
         }
@@ -75,5 +75,9 @@ void free_tiles_clock_subscriber(Tiles_Clock_Subscriber* sub_module)
         return;
     }
 
-    // TODO
+    for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+        for (int j = 0; j < MINIMAL_ANIMATION_SUB_CLOCK_COUNT; j++) {
+            free(sub_module->tiles_list[i][j]);
+        }
+    }
 }

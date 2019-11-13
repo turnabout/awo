@@ -19,5 +19,5 @@ struct Game_Clock {
     int* static_tick;
 
     // List of current tick events.
-    Tick_Event_List* tick_events;
+    Tick_Events_List* tick_events;
 };

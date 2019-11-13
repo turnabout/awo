@@ -29,7 +29,7 @@ Animation_Sub_Clock* create_animation_sub_clock(
 void update_animation_sub_clock(
     Animation_Sub_Clock* sub_clock, 
     int ac_current_tick,
-    Tick_Event_List* event_list
+    Tick_Events_List* event_list
 )
 {
     event_list->ticks[event_list->ticks_count].clock_index = sub_clock->clock_index;

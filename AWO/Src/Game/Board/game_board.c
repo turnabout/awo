@@ -73,6 +73,9 @@ void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variatio
             add_game_board_tile(game_board, tile, x, y);
         }
     }
+
+    // Update the render grid of the added tile.
+    update_tiles_render_grid(tile);
 }
 
 /*

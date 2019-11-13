@@ -18,7 +18,7 @@ typedef struct Tick_Event {
 } Tick_Event;
 
 // List of tick events.
-typedef struct Tick_Event_List {
+typedef struct Tick_Events_List {
 
     // List of ticks.
     Tick_Event ticks[ANIMATION_SUB_CLOCK_COUNT];
@@ -26,4 +26,4 @@ typedef struct Tick_Event_List {
     // Amount of ticks.
     Uint8 ticks_count;
 
-} Tick_Event_List;
+} Tick_Events_List;
