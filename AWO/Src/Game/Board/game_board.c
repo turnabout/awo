@@ -75,7 +75,7 @@ void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variatio
     }
 
     // Update the render grid of the added tile.
-    update_tiles_render_grid(tile);
+    update_tile_render_grid(tile);
 }
 
 /*

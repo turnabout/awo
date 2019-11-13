@@ -1,20 +1,19 @@
 #include <stdio.h>
 
 #include "Game/Clock/_game_clock.h"
-#include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-void print_tick_event_list(Tick_Events_List* tick_events)
+void print_tick_events_list(Tick_Events_List* tick_events_list)
 {
     printf("Tick_Event_List [\n");
 
-    for (int i = 0; i < tick_events->ticks_count; i++) {
+    for (int i = 0; i < tick_events_list->ticks_count; i++) {
 
         // Temporary test
         const char* clock_str = "?";
         const char* sub_clock_str = "?";
 
-        int clock_index = tick_events->ticks[i].clock_index;
-        int sub_clock_index = tick_events->ticks[i].sub_clock_index;
+        int clock_index = tick_events_list->ticks[i].clock_index;
+        int sub_clock_index = tick_events_list->ticks[i].sub_clock_index;
 
         switch (clock_index) {
         case 0:
@@ -50,7 +49,7 @@ void print_tick_event_list(Tick_Events_List* tick_events)
             "\tTick_Event { %-16s - %-16s  Frame %d}\n",
             clock_str,
             sub_clock_str,
-            tick_events->ticks[i].frame_index
+            tick_events_list->ticks[i].frame_index
         );
     }
 

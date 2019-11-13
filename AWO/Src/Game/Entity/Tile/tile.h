@@ -47,7 +47,7 @@ void update_tile_animation_index(Tile* tile, Uint8 index);
  *
  *  @param[in] tile The tile.
  */
-void update_tiles_render_grid(Tile* tile);
+void update_tile_render_grid(Tile* tile);
 
 /*! @brief Gets the tile type of the given tile.
  *

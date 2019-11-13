@@ -2,7 +2,7 @@
 
 #include <cJSON.h>
 
-#include "Game/Clock/Animation_Clock/tick_event.h"
+#include "Game/Clock/Tick_Event/tick_event.h"
 
 typedef struct Animation_Sub_Clock {
 
@@ -12,11 +12,11 @@ typedef struct Animation_Sub_Clock {
     // Index of this sub-clock.
     Animation_Sub_Clock_Index sub_clock_index;
 
-    // Current tick of this animation sub clock.
-    int current_tick;
+    // Frame value that was stored the last time this sub clock ticked.
+    Uint8 previous_tick_value;
 
     // Array of every possible game tick.
-    int* ticks_array;
+    Uint8* ticks_array;
 
 } Animation_Sub_Clock;
 
@@ -28,7 +28,7 @@ Animation_Sub_Clock* create_animation_sub_clock(
 );
 
 // Updates the current tick of a sub clock depending on its animation clock's current tick
-void update_animation_sub_clock(
+void tick_animation_sub_clock(
     Animation_Sub_Clock* asc, 
     int ac_current_tick,
     Tick_Events_List* event_list

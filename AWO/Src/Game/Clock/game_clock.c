@@ -37,11 +37,6 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON)
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
-    // Reset tick events list from previous frame, if non-empty
-    if (game_clock->tick_events->ticks_count) {
-        game_clock->tick_events->ticks_count = 0;
-    }
-
     // Add to MS accumulation, advance current tick if threshold reached
     if ((game_clock->accum_time += delta_time) > GAME_CLOCK_MAX_ACCUM) {
         game_clock->accum_time = 0;

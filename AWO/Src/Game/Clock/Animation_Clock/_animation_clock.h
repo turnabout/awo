@@ -2,8 +2,8 @@
 
 #include <cJSON.h>
 
+#include "Game/Clock/Tick_Event/tick_event.h"
 #include "Game/Clock/Animation_Clock/enums.h"
-#include "Game/Clock/Animation_Clock/tick_event.h"
 #include "Game/Clock/Animation_Clock/_animation_sub_clock.h"
 
 typedef struct Animation_Clock {

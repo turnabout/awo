@@ -3,7 +3,7 @@
 #include <cJSON.h>
 
 #include "Game/Clock/Animation_Clock/enums.h"
-#include "Game/Clock/Animation_Clock/tick_event.h"
+#include "Game/Clock/Tick_Event/tick_event.h"
 
 /*! @brief Main game clock used for updating and keeping animations synchronized.
  */
@@ -29,9 +29,9 @@ Tick_Events_List* get_game_clock_tick_event_list(Game_Clock* game_clock);
 #ifdef _DEBUG
 /*! @brief Prints the contents of the given list of tick events.
  *
- *  @param[in] game_clock The game clock.
+ *  @param[in] tick_events_list The list of tick events to print.
  */
-void print_tick_event_list(Tick_Events_List* tick_events);
+void print_tick_events_list(Tick_Events_List* tick_events_list);
 #endif
 
 /*! @brief Frees the game clock's allocated memory.

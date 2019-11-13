@@ -4,7 +4,6 @@
 
 #include "conf.h"
 #include "Game/Entity/Tile/tile.h"
-#include "Game/Data/Palette/palette.h"
 
 typedef struct Tile_Position {
     Uint8 x, y;
@@ -66,7 +65,7 @@ Tile* create_tile(
 }
 
 // Update every render grid cell occupied by this tile.
-void update_tiles_render_grid(Tile* tile)
+void update_tile_render_grid(Tile* tile)
 {
     for (int i = 0; i < tile->count; i++) {
 
@@ -95,9 +94,7 @@ void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
 void update_tile_animation_index(Tile* tile, Uint8 index)
 {
     tile->animation_index = index;
-
-    
-    // update_render_grid(tile);
+    update_tile_render_grid(tile);
 }
 
 void get_tile_clock_data(

@@ -67,6 +67,9 @@ void process_tiles_tick_events(Tiles_Clock_Subscriber* sub_module, Tick_Events_L
             update_tile_animation_index(tiles_list->tiles[j], event.frame_index);
         }
     }
+
+    // Reset the count of the now-processed tick events list
+    events_list->ticks_count = 0;
 }
 
 void free_tiles_clock_subscriber(Tiles_Clock_Subscriber* sub_module)

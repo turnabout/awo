@@ -45,7 +45,7 @@ Animation_Clock* create_animation_clock(
 void update_animation_clock_children(Animation_Clock* animation_clock, Tick_Events_List* event_list)
 {
     for (int i = 0; i < animation_clock->sub_clocks_count; i++) {
-        update_animation_sub_clock(
+        tick_animation_sub_clock(
             animation_clock->sub_clocks[i], 
             animation_clock->current_tick,
             event_list
