@@ -29,15 +29,15 @@
 #define FRAME_TIME 1.0f / FPS
 
 // Game clock
-#define GAME_CLOCK_FRAMES_TO_TICK 60 // How many frames it takes it tick the game clock
+#define GAME_CLOCK_FRAMES_TO_TICK  2 // How many frames it takes it tick the game clock
 #define GAME_CLOCK_TICK_MAX       45 // Game clock's maximum tick value before resetting
 
 // Default dimension of a tile (pixels)
 #define DEFAULT_TILE_DIMENSION 16
 
 // Default dimensions of game board (tiles)
-#define DEFAULT_GAME_BOARD_WIDTH  40
-#define DEFAULT_GAME_BOARD_HEIGHT 40
+#define DEFAULT_GAME_BOARD_WIDTH  255
+#define DEFAULT_GAME_BOARD_HEIGHT 255
 
 // Clear color
 #define GAME_CLEAR_COLOR_R 255

@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 
 #include "conf.h"
+#include <types.h>
 #include "GL_Helpers/gl_helpers.h"
 #include "Game/Renderer/Tiles_Layer/tiles_layer.h"
 
@@ -17,7 +18,10 @@ struct Tiles_Layer {
     vec4* pixel_data;
 
     // Dimensions of the tiles layer, in tiles.
-    int tiles_width, tiles_height;
+    Uint8 tiles_width, tiles_height;
+
+    // Whether the tiles layer's pixel data has been changed since the last time it was rendered.
+    Uint8 dirty;
 };
 
 void init_tiles_texture(Tiles_Layer* tiles_layer)
@@ -49,6 +53,7 @@ Tiles_Layer* create_tiles_layer(GLuint tiles_layer_width, GLuint tiles_layer_hei
 
     tiles_layer->tiles_width = tiles_layer_width;
     tiles_layer->tiles_height = tiles_layer_height;
+    tiles_layer->dirty = 0;
 
     init_tiles_texture(tiles_layer);
     tiles_layer->pixel_data = malloc(sizeof(vec4) * tiles_layer->tiles_width * tiles_layer->tiles_height);
@@ -63,17 +68,21 @@ void render_tiles_layer(Tiles_Layer* tiles_layer)
     glBindTexture(GL_TEXTURE_2D, tiles_layer->tiles_texture);
 
     // Update tiles texture with current contents of tiles_layer's pixel data
-    glTexSubImage2D(
-        GL_TEXTURE_2D,
-        0,
-        0,
-        0,
-        tiles_layer->tiles_width,
-        tiles_layer->tiles_height,
-        GL_RGBA,
-        GL_FLOAT,
-        tiles_layer->pixel_data
-    );
+    if (tiles_layer->dirty) {
+        glTexSubImage2D(
+            GL_TEXTURE_2D,
+            0,
+            0,
+            0,
+            tiles_layer->tiles_width,
+            tiles_layer->tiles_height,
+            GL_RGBA,
+            GL_FLOAT,
+            tiles_layer->pixel_data
+        );
+
+        tiles_layer->dirty = 0;
+    }
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
@@ -92,6 +101,8 @@ void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4
         &stored_values, 
         sizeof(stored_values)
     );
+
+    tiles_layer->dirty = 1;
 }
 
 void update_tiles_layer_pixel_low(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec2 values)
@@ -106,6 +117,8 @@ void update_tiles_layer_pixel_low(Tiles_Layer* tiles_layer, GLuint x, GLuint y, 
         &stored_values, 
         sizeof(stored_values)
     );
+
+    tiles_layer->dirty = 1;
 }
 
 void fill_tiles_layer_pixels(Tiles_Layer* tiles_layer, vec4 values)
@@ -128,6 +141,8 @@ void fill_tiles_layer_pixels(Tiles_Layer* tiles_layer, vec4 values)
             );
         }
     }
+
+    tiles_layer->dirty = 1;
 }
 
 void bind_tile_texture(Tiles_Layer* tiles_layer)
