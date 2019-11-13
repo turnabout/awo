@@ -25,9 +25,7 @@ void render_game(Game* game)
         flag = 1;
     }
 
-    render_game_board(game->board, game->renderer);
-
-    render_tiles_layers(game->renderer);
+    render_tiles_layers();
 
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
         glBindTexture(GL_TEXTURE_2D, game->palettes_texture);

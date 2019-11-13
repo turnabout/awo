@@ -54,23 +54,6 @@ void update_game_board(Game_Board* game_board)
 {
 }
 
-void render_game_board(Game_Board* game_board, Game_Renderer* renderer)
-{
-    /*
-    for (int y = (game_board->height - 1); y >= 0; y--) {
-        for (int x = (game_board->width - 1); x >= 0; x--) {
-            render_tile(
-                game_board->tiles_grid[y][x], 
-                renderer, 
-                x, 
-                y, 
-                game_board->active_tile_palette_index
-            );
-        }
-    }
-    */
-}
-
 void add_game_board_tile(Game_Board* game_board, Tile* tile, Uint8 x, Uint8 y)
 {
     // Add tile to tiles grid

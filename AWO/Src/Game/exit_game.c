@@ -11,7 +11,6 @@ void exit_game(Game* game)
         free_tiles_data(game->tiles_data);
         free_units_data(game->units_data);
         free_game_clock(game->clock);
-        free_game_renderer(game->renderer);
         free_keys_state_module();
         free_mouse_state_module();
         free(game);

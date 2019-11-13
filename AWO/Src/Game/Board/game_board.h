@@ -31,13 +31,6 @@ Game_Board* create_game_board(
  */
 void update_game_board(Game_Board* game_board);
 
-/*! @brief Renders the game board entities.
- *
- *  @param[in] game_board The game board.
- *  @param[in] sprite_batch The sprite batch object used to draw game sprites.
- */
-void render_game_board(Game_Board* game_board, Game_Renderer* game_renderer);
-
 /*! @brief Fills the game board with tile of the given type & variation.
  *
  *  @param[in] game_board The game board.

@@ -132,13 +132,13 @@ void init_game_renderer(
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
         renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
-
+        
         fill_tiles_layer_pixels(
             renderer->tiles_layers[i], 
             (vec4) { 
                 empty_tile_frames->frames[0].raw_top_left[0], 
                 empty_tile_frames->frames[0].raw_top_left[1], 
-                get_active_tile_palette_index(1), 
+                get_active_tile_palette_index(0), 
                 0.0 
             }
         );

@@ -34,8 +34,8 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
         game->tiles_data
     );
 
-    update_game_renderer_matrix(game->renderer, projection, "projection");
-    update_game_renderer_matrix(game->renderer, view, "view");
+    update_game_renderer_matrix(projection, "projection");
+    update_game_renderer_matrix(view, "view");
 
     // Initialize input handling modules
     init_keys_state_module(game->window);

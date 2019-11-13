@@ -19,9 +19,6 @@ struct Game {
     // Dimensions of the game's window.
     int window_width, window_height;
 
-    // Game renderer, responsible for rendering all of the game's on-screen entities.
-    Game_Renderer* renderer;
-
     // The game's board, containing and updating all current on-board game entities.
     Game_Board* board;
 
