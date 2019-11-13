@@ -46,8 +46,6 @@ Tile* create_tile(
 {
     Tile* tile = (Tile*)malloc(sizeof(Tile));
 
-    printf("%d, %d\n", sizeof(tiles_data), sizeof(type));
-
     tile->type = type;
     tile->variation = variation;
     tile->count = 0;

@@ -39,7 +39,6 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
     // Reset tick events list from previous frame, if non-empty
     if (game_clock->tick_events->ticks_count) {
-        print_game_clock_tick_events(game_clock);
         game_clock->tick_events->ticks_count = 0;
     }
 

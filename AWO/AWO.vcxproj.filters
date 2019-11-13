@@ -183,10 +183,10 @@
     <ClCompile Include="Src\Game\Renderer\Tiles_Layer\get_tiles_layers_VAO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Clock\debug_game_clock.c">
+    <ClCompile Include="Src\Game\Entity\Tile\TilesClockSubscriber\tiles_clock_subscriber.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\TilesClockSubscriber\tiles_clock_subscriber.c">
+    <ClCompile Include="Src\Game\Clock\print_tick_event_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -39,6 +39,14 @@ int* get_game_clock_tick_ptr(
     Animation_Sub_Clock_Index sub_clock_index
 );
 
+#ifdef _DEBUG
+/*! @brief Prints the contents of the given list of tick events.
+ *
+ *  @param[in] game_clock The game clock.
+ */
+void print_tick_event_list(Tick_Event_List* tick_events);
+#endif
+
 /*! @brief Frees the game clock's allocated memory.
  *
  *  @param[in] game_clock The game clock.

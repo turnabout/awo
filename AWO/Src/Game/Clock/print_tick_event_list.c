@@ -3,18 +3,18 @@
 #include "Game/Clock/_game_clock.h"
 #include "Game/Clock/Animation_Clock/_animation_clock.h"
 
-void print_game_clock_tick_events(Game_Clock* game_clock)
+void print_tick_event_list(Tick_Event_List* tick_events)
 {
-    printf("Updated last frame (game clock tick %d):\n", game_clock->current_tick);
+    printf("Tick_Event_List [\n");
 
-    for (int i = 0; i < game_clock->tick_events->ticks_count; i++) {
+    for (int i = 0; i < tick_events->ticks_count; i++) {
 
         // Temporary test
         const char* clock_str = "?";
         const char* sub_clock_str = "?";
 
-        int clock_index = game_clock->tick_events->ticks[i].clock_index;
-        int sub_clock_index = game_clock->tick_events->ticks[i].sub_clock_index;
+        int clock_index = tick_events->ticks[i].clock_index;
+        int sub_clock_index = tick_events->ticks[i].sub_clock_index;
 
         switch (clock_index) {
         case 0:
@@ -47,12 +47,12 @@ void print_game_clock_tick_events(Game_Clock* game_clock)
             break;
         }
         printf(
-            "%-16s - %-16s Frame %d\n",
+            "Tick_Event { %-16s - %-16s  Frame %d}\n",
             clock_str,
             sub_clock_str,
-            game_clock->tick_events->ticks[i].frame_index
+            tick_events->ticks[i].frame_index
         );
     }
-    printf("\n");
+    printf("\n]\n");
 
 }

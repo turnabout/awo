@@ -21,11 +21,3 @@ struct Game_Clock {
     // List of current tick events.
     Tick_Event_List* tick_events;
 };
-
-#ifdef _DEBUG
-/*! @brief Prints the contents of the game clock's current clock tick events.
- *
- *  @param[in] game_clock The game clock.
- */
-void print_game_clock_tick_events(Game_Clock* game_clock);
-#endif
