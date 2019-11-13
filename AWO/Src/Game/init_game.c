@@ -27,7 +27,7 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     glm_ortho(0.0f, (float)game->window_width, 0.0f, (float)game->window_height, -1.0f, 1.0f, projection);
 
     // Initialize game rendering module
-    game->renderer = create_game_renderer(
+    init_game_renderer(
         game_board_width,
         game_board_height,
         game->palettes_texture,

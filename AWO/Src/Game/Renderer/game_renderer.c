@@ -7,6 +7,8 @@
 #include "Game/Renderer/Sprite_Batch/sprite_batch.h"
 #include "Game/Data/Palette/palette.h"
 
+static Game_Renderer* renderer;
+
 struct Game_Renderer {
 
     // Basic shader program for rendering any sprite.
@@ -31,7 +33,7 @@ struct Game_Renderer {
     GLuint tiles_layers_VAO;
 };
 
-int init_game_renderer_shader_programs(Game_Renderer* renderer)
+int init_game_renderer_shader_programs()
 {
     renderer->sprites_shader_program = create_shader_program(
         SHADERS_PATH "sprite.vert",
@@ -51,7 +53,6 @@ int init_game_renderer_shader_programs(Game_Renderer* renderer)
 }
 
 void init_game_renderer_uniforms(
-    Game_Renderer* renderer, 
     int tiles_layer_width, 
     int tiles_layer_height
 )
@@ -89,18 +90,18 @@ void init_game_renderer_uniforms(
 
 }
 
-Game_Renderer* create_game_renderer(
+void init_game_renderer(
     int tiles_layer_width, 
     int tiles_layer_height, 
     GLuint palettes_texture,
     Tiles_Data* tiles_data
 )
 {
-    Game_Renderer* renderer = (Game_Renderer*)malloc(sizeof(Game_Renderer));
+    renderer = (Game_Renderer*)malloc(sizeof(Game_Renderer));
 
     if (!init_game_renderer_shader_programs(renderer)) {
         free_game_renderer(renderer);
-        return NULL;
+        return;
     }
 
     // Set textures
@@ -110,7 +111,7 @@ Game_Renderer* create_game_renderer(
         &renderer->sprite_sheet_height
     );
     renderer->palettes_texture = palettes_texture;
-    init_game_renderer_uniforms(renderer, tiles_layer_width, tiles_layer_height);
+    init_game_renderer_uniforms(tiles_layer_width, tiles_layer_height);
 
     // Set sprite batches
     /*
@@ -155,11 +156,9 @@ Game_Renderer* create_game_renderer(
         }
     );
     */
-
-    return renderer;
 }
 
-void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const char* matrix_str)
+void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
 {
     // Update sprites shader's given matrix
     glUseProgram(renderer->sprites_shader_program);
@@ -183,7 +182,6 @@ void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const cha
 }
 
 void update_renderer_tiles_layer_pixel(
-    Game_Renderer* renderer,
     Tile_Layer_Type layer,
     GLuint x,
     GLuint y,
@@ -194,7 +192,6 @@ void update_renderer_tiles_layer_pixel(
 }
 
 void update_renderer_tiles_layer_pixel_low(
-    Game_Renderer* renderer,
     Tile_Layer_Type layer,
     GLuint x,
     GLuint y,
@@ -204,7 +201,7 @@ void update_renderer_tiles_layer_pixel_low(
     update_tiles_layer_pixel_low(renderer->tiles_layers[layer], x, y, value);
 }
 
-void render_tiles_layers(Game_Renderer* renderer)
+void render_tiles_layers()
 {
     // Render tiles layers
     glUseProgram(renderer->tiles_shader_program);
@@ -221,7 +218,7 @@ void render_tiles_layers(Game_Renderer* renderer)
     }
 }
 
-void free_game_renderer(Game_Renderer* renderer)
+void free_game_renderer()
 {
     if (renderer != NULL) {
 

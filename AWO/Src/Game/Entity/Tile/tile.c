@@ -85,12 +85,11 @@ void update_tile_animation_index(Tile* tile, Uint8 index)
     tile->animation_index = index;
 }
 
-void update_render_grid(Game_Renderer* renderer, Tile* tile)
+void update_render_grid(Tile* tile)
 {
     for (int i = 0; i < tile->count; i++) {
 
         update_renderer_tiles_layer_pixel_low(
-            renderer,
             TILE_LAYER_0,
             tile->positions[i].x,
             tile->positions[i].y,
