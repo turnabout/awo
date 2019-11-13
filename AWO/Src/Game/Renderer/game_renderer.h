@@ -11,7 +11,7 @@ typedef struct Game_Renderer Game_Renderer;
 typedef enum Tile_Layer_Type {
     TILE_LAYER_0,
     TILE_LAYER_1,
-} Tile_Layer_Type;
+} Tile_Layer_Index;
 
 #define TILE_LAYER_TYPE_COUNT TILE_LAYER_1 + 1
 
@@ -33,6 +33,12 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str);
  */
 void render_tiles_layers();
 
+/*! @brief Binds the tile texture of the given tiles layer index.
+ *
+ *  @param[in] layer The index of the layer.
+ */
+void bind_tile_layer_texture(Tile_Layer_Index layer);
+
 /*! @brief Update a pixel's value in a tiles layer's tiles texture.
  *
  *  @param[in] layer Which layer to update.
@@ -41,14 +47,14 @@ void render_tiles_layers();
  *  @param[in] value The value used to update with.
  */
 void update_renderer_tiles_layer_pixel(
-    Tile_Layer_Type layer,
+    Tile_Layer_Index layer,
     GLuint x, 
     GLuint y, 
     vec4 value
 );
 
 void update_renderer_tiles_layer_pixel_low(
-    Tile_Layer_Type layer,
+    Tile_Layer_Index layer,
     GLuint x, 
     GLuint y, 
     vec2 value

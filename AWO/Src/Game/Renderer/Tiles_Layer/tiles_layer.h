@@ -14,11 +14,17 @@ typedef struct Tiles_Layer Tiles_Layer;
  */
 Tiles_Layer* create_tiles_layer(GLuint tiles_layer_width, GLuint tiles_layer_height);
 
-/*! @brief Render this tiles layer.
+/*! @brief Renders this tiles layer.
  *
  *  @param[in] tiles_layer The tiles layer struct.
  */
 void render_tiles_layer(Tiles_Layer* tiles_layer);
+
+/*! @brief Binds the tile texture associated with this tiles layer.
+ *
+ *  @param[in] tiles_layer The tiles layer struct.
+ */
+void bind_tile_texture(Tiles_Layer* tiles_layer);
 
 /*! @brief Update a pixel's value in the tiles layer's tiles texture.
  *

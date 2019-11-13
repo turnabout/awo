@@ -182,7 +182,7 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
 }
 
 void update_renderer_tiles_layer_pixel(
-    Tile_Layer_Type layer,
+    Tile_Layer_Index layer,
     GLuint x,
     GLuint y,
     vec4 value
@@ -192,7 +192,7 @@ void update_renderer_tiles_layer_pixel(
 }
 
 void update_renderer_tiles_layer_pixel_low(
-    Tile_Layer_Type layer,
+    Tile_Layer_Index layer,
     GLuint x,
     GLuint y,
     vec2 value
@@ -216,6 +216,11 @@ void render_tiles_layers()
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
         render_tiles_layer(renderer->tiles_layers[i]);
     }
+}
+
+void bind_tile_layer_texture(Tile_Layer_Index tile_layer)
+{
+    bind_tile_texture(renderer->tiles_layers[tile_layer]);
 }
 
 void free_game_renderer()

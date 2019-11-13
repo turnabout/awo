@@ -67,6 +67,9 @@ Tile* create_tile(
 // Update every render grid cell occupied by this tile.
 void update_tile_render_grid(Tile* tile)
 {
+    // Bind the tile texture of the tile layer bound to this tile
+    bind_tile_layer_texture(TILE_LAYER_0);
+
     for (int i = 0; i < tile->count; i++) {
 
         update_renderer_tiles_layer_pixel_low(

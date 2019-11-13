@@ -80,8 +80,6 @@ void render_tiles_layer(Tiles_Layer* tiles_layer)
 
 void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4 values)
 {
-    glBindTexture(GL_TEXTURE_2D, tiles_layer->tiles_texture);
-
     GLfloat stored_values[4] = {
         values[0] / 510.0f, 
         values[1] / 510.0f, 
@@ -98,8 +96,6 @@ void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4
 
 void update_tiles_layer_pixel_low(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec2 values)
 {
-    glBindTexture(GL_TEXTURE_2D, tiles_layer->tiles_texture);
-
     GLfloat stored_values[2] = {
         values[0] / 510.0f, 
         values[1] / 510.0f, 
@@ -132,6 +128,11 @@ void fill_tiles_layer_pixels(Tiles_Layer* tiles_layer, vec4 values)
             );
         }
     }
+}
+
+void bind_tile_texture(Tiles_Layer* tiles_layer)
+{
+    glBindTexture(GL_TEXTURE_2D, tiles_layer->tiles_texture);
 }
 
 void free_tiles_layer(Tiles_Layer* tiles_layer)
