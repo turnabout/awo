@@ -19,13 +19,14 @@ typedef struct Tile Tile;
  *  @return The created tile.
  */
 Tile* create_tile(
-    Game_Clock* game_clock, 
-    Tiles_Data* tiles_data, 
-    Tile_Type type, 
+    Game_Clock* game_clock,
+    Tiles_Data* tiles_data,
+    Tile_Type type,
     Tile_Variation variation
 );
 
 void register_tile_position(Tile* tile, Uint8 x, Uint8 y);
+void update_tile_animation_index(Tile* tile, Uint8 index);
 
 /*! @brief Gets the tile type of the given tile.
  *

@@ -80,6 +80,11 @@ void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
     // update_render_grid(Game_Renderer * renderer, Tile * tile);
 }
 
+void update_tile_animation_index(Tile* tile, Uint8 index)
+{
+    tile->animation_index = index;
+}
+
 void update_render_grid(Game_Renderer* renderer, Tile* tile)
 {
     for (int i = 0; i < tile->count; i++) {

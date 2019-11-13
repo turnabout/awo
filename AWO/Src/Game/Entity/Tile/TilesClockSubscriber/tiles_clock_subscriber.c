@@ -57,6 +57,15 @@ void register_tiles_clock_subscriber_tile(Tiles_Clock_Subscriber* sub_module, Ti
 
 void process_tiles_tick_events(Tiles_Clock_Subscriber* sub_module, Tick_Event_List* events_list)
 {
+    for (int i = 0; i < events_list->ticks_count; i++) {
+
+        Tick_Event event = events_list->ticks[i];
+        Tiles_List* tiles_list = sub_module->tiles_list[event.clock_index][event.sub_clock_index];
+
+        for (int j = 0; j < tiles_list->tiles_count; j++) {
+            update_tile_animation_index(tiles_list->tiles[j], event.frame_index);
+        }
+    }
 }
 
 void free_tiles_clock_subscriber(Tiles_Clock_Subscriber* sub_module)
