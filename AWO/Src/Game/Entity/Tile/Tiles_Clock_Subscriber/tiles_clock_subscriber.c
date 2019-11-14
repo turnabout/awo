@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "Game/Clock/game_clock.h"
-#include "Game/Entity/Tile/TilesClockSubscriber/tiles_clock_subscriber.h"
+#include "Game/Entity/Tile/Tiles_Clock_Subscriber/tiles_clock_subscriber.h"
 
 typedef struct Tiles_List {
 

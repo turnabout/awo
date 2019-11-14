@@ -60,7 +60,7 @@
     <ClCompile Include="Src\Game\Entity\Tile\Factory\tile_factory.c" />
     <ClCompile Include="Src\Game\Entity\Tile\tile.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.c" />
-    <ClCompile Include="Src\Game\Entity\Tile\TilesClockSubscriber\tiles_clock_subscriber.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\Tiles_Clock_Subscriber\tiles_clock_subscriber.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\init_GL.c" />
@@ -113,7 +113,7 @@
     <ClInclude Include="Src\Game\Entity\Tile\tile.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Factory\tile_factory.h" />
-    <ClInclude Include="Src\Game\Entity\Tile\TilesClockSubscriber\tiles_clock_subscriber.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\Tiles_Clock_Subscriber\tiles_clock_subscriber.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
     <ClInclude Include="Src\Game\Renderer\game_renderer.h" />

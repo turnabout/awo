@@ -3,7 +3,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Renderer/game_renderer.h"
-#include "Game/Entity/Tile/TilesClockSubscriber/tiles_clock_subscriber.h"
+#include "Game/Entity/Tile/Tiles_Clock_Subscriber/tiles_clock_subscriber.h"
 
 /*! @brief Represents the game board used by players during gameplay. Contains all game entities.
  */

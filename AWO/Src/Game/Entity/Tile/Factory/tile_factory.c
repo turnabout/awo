@@ -2,7 +2,6 @@
 
 #include "Game/Entity/Tile/Factory/tile_factory.h"
 #include "Game/Entity/Tile/Hashmap/tiles_hashmap.h"
-#include "Game/Entity/Tile/TilesClockSubscriber/tiles_clock_subscriber.h"
 
 struct Tile_Factory {
 
