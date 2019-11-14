@@ -40,7 +40,7 @@ struct Game {
     GLuint palettes_texture;
 
     // String representation of the stage to load.
-    char* stage_str;
+    Stage_Descriptor* stage;
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.
@@ -48,17 +48,17 @@ struct Game {
  *  @param[in] game The game object.
  *  @param[in] initial_window_width The initial game window's tiles_width.
  *  @param[in] initial_window_height The initial game window's tiles_height.
- *  @return 1 if successful, 0 if an error occurred.
+ *  @return TRUE if successful, FALSE if an error occurred.
  */
-int init_GL(Game* game, int initial_window_width, int initial_window_height);
+Bool init_GL(Game* game, int initial_window_width, int initial_window_height);
 
 /*! @brief Initializes the game data and modules using it, attaching results to the game object.
  *
  *  @param[in] game The game object.
  *  @param[in] stage_index Index of the stage string to load into the game struct.
- *  @return 1 if successful, 0 if an error occurred.
+ *  @return TRUE if successful, FALSE if an error occurred.
  */
-int init_game_data(Game* game, int stage_index);
+Bool init_game_data(Game* game, int stage_index);
 
 /*! @brief Updates the game's entities.
  *

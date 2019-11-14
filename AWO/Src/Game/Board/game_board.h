@@ -5,6 +5,7 @@
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Renderer/game_renderer.h"
 #include "Game/Clock/Clock_Subscriber/clock_subscriber.h"
+#include "Game/Stage/stage_descriptor.h"
 
 /*! @brief Represents the game board used by players during gameplay. Contains all game entities.
  */
@@ -33,14 +34,12 @@ Game_Board* create_game_board(
  */
 void update_game_board(Game_Board* game_board);
 
-/*! @brief Loads stage into the game board.
+/*! @brief Loads stage described by the given stage descriptor into the game board.
  *
  *  @param[in] game_board The game board.
- *  @param[in] stage_str String representing the stage to load, to be processed by the function.
- *  @param[in] tiles_data The game's tiles data module object.
- *  @return Whether the stage string was valid and loaded successfully.
+ *  @param[in] stage_descriptor Descriptor detailing the stage to load.
  */
-Bool load_stage(Game_Board* game_board, char* stage_str, Tiles_Data* tiles_data);
+void load_game_board_stage(Game_Board* game_board, Stage_Descriptor* stage_descriptor);
 
 /*! @brief Frees all memory occupied by the game board and its contents.
  *

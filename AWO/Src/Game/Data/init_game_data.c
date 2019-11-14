@@ -7,13 +7,13 @@
 #include "Game/Data/Palette/palette.h"
 #include "Game/_game.h"
 
-int get_data_JSON(const cJSON **data_JSON)
+Bool get_data_JSON(const cJSON **data_JSON)
 {
     // Get file contents & size
     char *JSON_file_contents;
 
     if ((JSON_file_contents = read_file(GAME_DATA_JSON_PATH)) == NULL) {
-        return 0;
+        return FALSE;
     }
 
     // Populate visuals JSON struct
@@ -22,16 +22,16 @@ int get_data_JSON(const cJSON **data_JSON)
     // Clear previously allocated file contents
     free(JSON_file_contents);
 
-    return 1;
+    return TRUE;
 }
 
-int init_game_data(Game* game, int stage_index)
+Bool init_game_data(Game* game, int stage_index)
 {
     // Load cJSON data object
     cJSON* data_JSON;
 
     if (!get_data_JSON(&data_JSON)) {
-        return 0;
+        return FALSE;
     }
 
     // Get the sprite sheet's dimensions
@@ -67,13 +67,12 @@ int init_game_data(Game* game, int stage_index)
     cJSON* stages_array_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "stages");
     cJSON* stage_JSON = cJSON_GetArrayItem(stages_array_JSON, stage_index);
 
-    game->stage_str = stage_JSON->valuestring;
-
-    // Detach valuestring of the loaded stage to prevent cJSON_Delete from deleting it
-    stage_JSON->valuestring = NULL;
+    if ((game->stage = load_stage_descriptor(stage_JSON->valuestring, game->tiles_data)) == NULL) {
+        return FALSE;
+    }
 
     // Delete parsed cJSON data object
     cJSON_Delete(data_JSON);
 
-    return 1;
+    return TRUE;
 }

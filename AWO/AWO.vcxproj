@@ -41,8 +41,8 @@
     <ClCompile Include="Libs\glad.c" />
     <ClCompile Include="Libs\stb_image.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
-    <ClCompile Include="Src\Game\Board\Stage_Loader\load_stage.c" />
-    <ClCompile Include="Src\Game\Board\Stage_Loader\validate_stage_data.c" />
+    <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
+    <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_clock.c" />
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_sub_clock.c" />
     <ClCompile Include="Src\Game\Clock\print_tick_events_list.c" />
@@ -74,6 +74,7 @@
     <ClCompile Include="Src\Game\render_game.c" />
     <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Src\Game\run_game.c" />
+    <ClCompile Include="Src\Game\Stage\stage_descriptor.c" />
     <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
@@ -95,7 +96,6 @@
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
-    <ClInclude Include="Src\Game\Board\Stage_Loader\_stage_loader.h" />
     <ClInclude Include="Src\Game\Board\_game_board.h" />
     <ClInclude Include="Src\Game\Clock\Animation_Clock\enums.h" />
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
@@ -124,6 +124,8 @@
     <ClInclude Include="Src\Game\Renderer\game_renderer.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\render_grid.h" />
     <ClInclude Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.h" />
+    <ClInclude Include="Src\Game\Stage\stage_descriptor.h" />
+    <ClInclude Include="Src\Game\Stage\_stage_descriptor.h" />
     <ClInclude Include="Src\Game\_game.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />

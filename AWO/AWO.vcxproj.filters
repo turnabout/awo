@@ -192,10 +192,13 @@
     <ClCompile Include="Src\Utilities\hex_string_to_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Board\Stage_Loader\load_stage.c">
+    <ClCompile Include="Src\Game\Stage\stage_descriptor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Board\Stage_Loader\validate_stage_data.c">
+    <ClCompile Include="Src\Game\Stage\validate_stage_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Board\load_game_board_stage.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -317,7 +320,10 @@
     <ClInclude Include="Src\Game\Board\_game_board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Board\Stage_Loader\_stage_loader.h">
+    <ClInclude Include="Src\Game\Stage\stage_descriptor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Stage\_stage_descriptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

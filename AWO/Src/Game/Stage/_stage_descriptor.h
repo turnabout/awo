@@ -2,16 +2,16 @@
 
 #include "types.h"
 #include "Game/Data/Tile/tiles_data.h"
+#include "Game/Stage/stage_descriptor.h"
 
 #define STAGE_STRING_SEPARATOR_CHARACTER 0xFF
 #define STAGE_NAME_MIN_LENGTH              4
-#define STAGE_NAME_MAX_LENGTH             16
 
 #define STAGE_MAX_WIDTH                  255
 #define STAGE_MAX_HEIGHT                 255
 #define STAGE_MIN_SURFACE                 10
 
-/*! @brief Confirms the given stage data is valid and usable for a game.
+/*! @brief Confirms the given stage data array is valid and usable for a game.
  *
  *  @param[in] stage_data The stage data bytes array.
  *  @param[in] data_length The length of the stage data.

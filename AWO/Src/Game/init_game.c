@@ -6,7 +6,7 @@
 #include "Game/Inputs/inputs.h"
 #include "Game/_game.h"
 
-Game* init_game(int game_board_width, int game_board_height, int window_width, int window_height)
+Game* init_game(int window_width, int window_height)
 {
     Game* game = (Game*)malloc(sizeof(Game));
 
@@ -28,8 +28,8 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
 
     // Initialize game rendering module
     init_game_renderer(
-        game_board_width,
-        game_board_height,
+        game->stage->width,
+        game->stage->height,
         game->palettes_texture,
         game->tiles_data
     );
@@ -47,15 +47,15 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     game->board = create_game_board(
         game->tiles_data,
         game->clock,
-        game_board_width,
-        game_board_height,
+        game->stage->width,
+        game->stage->height,
         game->tiles_clock_sub
     );
 
     // Load the stage
-    if (!load_stage(game->board, game->stage_str, game->tiles_data)) {
-        return NULL;
-    }
+    load_game_board_stage(game->board, game->stage);
+
+    printf("%d-%d\n", Sea, Middle);
 
     return game;
 }

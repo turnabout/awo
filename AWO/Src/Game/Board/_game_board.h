@@ -17,6 +17,9 @@ struct Game_Board {
 
     // Indices of the currently active tile and fog tile palettes.
     GLfloat active_tile_palette_index, active_fog_tile_palette_index;
+
+    // Descriptor of the loaded stage.
+    Stage_Descriptor* loaded_stage;
 };
 
 /*! @brief Adds a new tile of the given type and variation to the game board at x/y coordinate.

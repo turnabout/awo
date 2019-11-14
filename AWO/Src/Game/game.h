@@ -4,13 +4,11 @@ typedef struct Game Game;
 
 /*! @brief Initializes game.
  *
- *  @param[in] game_board_width The game board's tiles_width, in tiles.
- *  @param[in] game_board_height The game board's tiles_height, in tiles.
  *  @param[in] window_width The window's initial tiles_width, in pixels.
  *  @param[in] window_height The window's initial tiles_height, in pixels.
  *  @return The game struct if successful, NULL if an error occurred.
  */
-Game* init_game(int game_board_width, int game_board_height, int window_width, int window_height);
+Game* init_game(int window_width, int window_height);
 
 /*! @brief Starts running the game.
  *

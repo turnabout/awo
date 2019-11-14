@@ -71,15 +71,15 @@ int set_GL_options(Game* game)
     return 1;
 }
 
-int init_GL(Game* game, int initial_window_width, int initial_window_height)
+Bool init_GL(Game* game, int initial_window_width, int initial_window_height)
 {
     if (
         init_glfw(game, initial_window_width, initial_window_height) && 
         gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) && 
         set_GL_options(game)
     ) {
-        return 1;
+        return TRUE;
     }
 
-    return 0;
+    return FALSE;
 }

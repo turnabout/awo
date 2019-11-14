@@ -1,4 +1,4 @@
-#include "Game/Board/Stage_Loader/_stage_loader.h"
+#include "Game/Stage/_stage_descriptor.h"
 
 Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data)
 {
