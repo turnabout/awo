@@ -1,25 +1,8 @@
 #include <stdlib.h>
 
 #include "conf.h"
-#include "Game/Board/game_board.h"
-#include "Game/Entity/Tile/Factory/tile_factory.h"
+#include "Game/Board/_game_board.h"
 #include "Game/Data/Palette/palette.h"
-
-typedef Tile** Tile_Row;
-
-struct Game_Board {
-    // Amount of tile columns and lines making up the game board
-    int width, height;
-
-    // Contains all tiles on the game board. tiles[board_y][board_x]
-    Tile_Row* tiles_grid;
-
-    // Factory responsible for getting new tiles
-    Tile_Factory* tile_factory;
-
-    // Indices of the currently active tile and fog tile palettes.
-    GLfloat active_tile_palette_index, active_fog_tile_palette_index;
-};
 
 Game_Board* create_game_board(
     Tiles_Data* tiles_data, 
@@ -81,42 +64,6 @@ void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variatio
         }
     }
 }
-
-/*
-void edit_game_board_tile(
-    Game_Board* game_board,
-    int board_x,
-    int board_y,
-    Tile_Type type,
-    Tile_Variation variation
-)
-{
-    // Ensure board_x/board_y are within the game board tile boundaries
-    if (board_x <= game_board->width && board_y <= game_board->height) {
-        game_board->tiles_grid[board_y][board_x] = get_tile_factory_tile(game_board->tile_factory, type, variation);
-    }
-}
-
-Tile_Type get_game_board_tile_type(Game_Board* gb, int x, int y)
-{
-    if (x < 0 || x >= gb->width || y < 0 || y >= gb->height) {
-        return OOB;
-    }
-
-    return get_tile_type(gb->tiles_grid[y][x]);
-}
-
-void get_game_board_screen_coordinate_indices(
-    int screen_x, 
-    int screen_y, 
-    int* board_x, 
-    int* board_y
-)
-{
-    *board_x = (int)((float)screen_x / (float)DEFAULT_TILE_DIMENSION);
-    *board_y = (int)((float)screen_y / (float)DEFAULT_TILE_DIMENSION);
-}
-*/
 
 void free_game_board(Game_Board* game_board)
 {

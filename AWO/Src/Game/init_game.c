@@ -13,7 +13,7 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     // Initialize base game components: GLFW, GLAD and game data.
     if (
         !init_GL(game, window_width, window_height) || 
-        !init_game_data(game)
+        !init_game_data(game, 0) // TODO: un-hardcode stage index
     ) {
         printf("Failed to initialize\n");
         return NULL;
@@ -52,25 +52,10 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
         game->tiles_clock_sub
     );
 
-    add_game_board_tile(game->board, Sea, Middle, 0, 0);
-    add_game_board_tile(game->board, Sea, Middle, 1, 0);
-    add_game_board_tile(game->board, Sea, Middle, 2, 0);
-    add_game_board_tile(game->board, Sea, Middle, 3, 0);
-    add_game_board_tile(game->board, Sea, Middle, 4, 0);
-
-    add_game_board_tile(game->board, Sea, Bottom, 0, 1);
-    add_game_board_tile(game->board, Sea, Bottom, 1, 1);
-    add_game_board_tile(game->board, Sea, Bottom, 2, 1);
-    add_game_board_tile(game->board, Sea, Bottom, 3, 1);
-    add_game_board_tile(game->board, Sea, Bottom, 4, 1);
-
-    add_game_board_tile(game->board, Plain, Default, 0, 2);
-    add_game_board_tile(game->board, Plain, Default, 1, 2);
-    add_game_board_tile(game->board, Plain, Default, 2, 2);
-    add_game_board_tile(game->board, Plain, Default, 3, 2);
-    add_game_board_tile(game->board, Plain, Default, 4, 2);
-
-    // fill_game_board_tiles(game->board, Sea, Middle);
+    // Load the stage
+    if (!load_stage(game->board, game->stage_str)) {
+        return NULL;
+    }
 
     return game;
 }

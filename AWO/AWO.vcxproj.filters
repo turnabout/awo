@@ -189,6 +189,9 @@
     <ClCompile Include="Src\Game\Clock\Clock_Subscriber\clock_subscriber.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Board\load_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -303,6 +306,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Clock\Clock_Subscriber\clock_subscriber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Board\_game_board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

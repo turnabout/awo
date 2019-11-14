@@ -25,7 +25,7 @@ int get_data_JSON(const cJSON **data_JSON)
     return 1;
 }
 
-int init_game_data(Game* game)
+int init_game_data(Game* game, int stage_index)
 {
     // Load cJSON data object
     cJSON* data_JSON;
@@ -62,6 +62,15 @@ int init_game_data(Game* game)
     game->clock = create_game_clock(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
     );
+
+    // Attach string of the stage to load
+    cJSON* stages_array_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "stages");
+    cJSON* stage_JSON = cJSON_GetArrayItem(stages_array_JSON, stage_index);
+
+    game->stage_str = stage_JSON->valuestring;
+
+    // Detach valuestring of the loaded stage to prevent cJSON_Delete from deleting it
+    stage_JSON->valuestring = NULL;
 
     // Delete parsed cJSON data object
     cJSON_Delete(data_JSON);

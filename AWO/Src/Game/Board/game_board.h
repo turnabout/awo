@@ -16,6 +16,7 @@ typedef struct Game_Board Game_Board;
  *  @param[in] tiles_width The tiles_width of the game board in tiles.
  *  @param[in] tiles_height The tiles_height of the game board in tiles.
  *  @param[in] tiles_clock_sub The tiles clock subscription module.
+ *  @return The created game board object.
  */
 Game_Board* create_game_board(
     Tiles_Data* tiles_data,
@@ -31,72 +32,13 @@ Game_Board* create_game_board(
  */
 void update_game_board(Game_Board* game_board);
 
-/*! @brief Adds a new tile of the given type and variation to the game board at x/y coordinate.
+/*! @brief Loads stage into the game board.
  *
  *  @param[in] game_board The game board.
- *  @param[in] type Type of the newly added tile.
- *  @param[in] variation Variation of the newly added tile.
- *  @param[in] x Game board x coordinate of the new tile.
- *  @param[in] y Game board y coordinate of the new tile.
+ *  @param[in] stage_str String representing the stage to load, to be processed by the function.
+ *  @return Whether the stage string was valid and loaded successfully.
  */
-void add_game_board_tile(
-    Game_Board* game_board,
-    Tile_Type type,
-    Tile_Variation variation,
-    Uint8 x,
-    Uint8 y
-);
-
-/*! @brief Fills the game board with tile of the given type & variation.
- *
- *  @param[in] game_board The game board.
- *  @param[in] type Type of the tile to fill with.
- *  @param[in] variation Variation of the tile to fill with.
- */
-void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation);
-
-/*! @brief Edits the tile type/variation at given board x and y indices.
- *
- *  @param[in] game_board The game board.
- *  @param[in] board_x The board x index of the tile to edit.
- *  @param[in] board_y The board y index of the tile to edit.
- *  @param[in] type Type given to the tile.
- *  @param[in] variation Variation given to the tile.
- */
-/*
-void edit_game_board_tile(
-    Game_Board* game_board,
-    int board_x,
-    int board_y,
-    Tile_Type type,
-    Tile_Variation variation
-);
-*/
-
-/*! @brief Returns the tile type of the tile at given board indices.
- *
- *  @param[in] game_board The game board.
- *  @param[in] board_x The board x index of the tile.
- *  @param[in] board_y The board y index of the tile.
- *  @return The tile type of the board found at the given x/y indices.
- */
-// Tile_Type get_game_board_tile_type(Game_Board* game_board, int board_x, int board_y);
-
-/*! @brief Gets the board indices of the tile found at given screen coordinates.
- *
- *  @param[in] screen_x The screen x coordinate.
- *  @param[in] screen_y The screen y coordinate.
- *  @param[out] board_x The board x index of the found tile.
- *  @param[out] board_y The board y index of the found tile.
- */
-/*
-void get_game_board_screen_coordinate_indices(
-    int screen_x, 
-    int screen_y, 
-    int* board_x, 
-    int* board_y
-);
-*/
+Bool load_stage(Game_Board* game_board, char* stage_str);
 
 /*! @brief Frees all memory occupied by the game board and its contents.
  *
