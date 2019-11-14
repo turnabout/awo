@@ -11,6 +11,12 @@ typedef uint32_t Uint32;
 typedef int64_t  Sint64;
 typedef uint64_t Uint64;
 
+// Boolean definition.
+typedef Uint8    Bool;
+
+#define TRUE (Uint8)1
+#define FALSE (Uint8)0
+
 /*! @brief A set of x/y coordinates.
  */
 typedef struct Point {

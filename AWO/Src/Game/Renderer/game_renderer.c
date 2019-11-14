@@ -3,7 +3,7 @@
 #include "conf.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Game/Renderer/game_renderer.h"
-#include "Game/Renderer/Tiles_Layer/tiles_layer.h"
+#include "Game/Renderer/Render_Grid/render_grid.h"
 #include "Game/Renderer/Sprite_Batch/sprite_batch.h"
 #include "Game/Data/Palette/palette.h"
 
@@ -26,8 +26,8 @@ struct Game_Renderer {
     // Dimensions of the raw sprite sheet
     int sprite_sheet_width, sprite_sheet_height;
 
-    // Tiles layers, used to render tiles in single draw calls.
-    Tiles_Layer* tiles_layers[TILE_LAYER_TYPE_COUNT];
+    // Layers of tile grids used to render tiles.
+    Render_Grid* tile_grid_layers[TILE_LAYER_TYPE_COUNT];
 
     // VAO used by tiles layers
     GLuint tiles_layers_VAO;
@@ -91,8 +91,8 @@ void init_game_renderer_uniforms(
 }
 
 void init_game_renderer(
-    int tiles_layer_width, 
-    int tiles_layer_height, 
+    int tile_layers_width, 
+    int tile_layers_height, 
     GLuint palettes_texture,
     Tiles_Data* tiles_data
 )
@@ -111,7 +111,7 @@ void init_game_renderer(
         &renderer->sprite_sheet_height
     );
     renderer->palettes_texture = palettes_texture;
-    init_game_renderer_uniforms(tiles_layer_width, tiles_layer_height);
+    init_game_renderer_uniforms(tile_layers_width, tile_layers_height);
 
     // Set sprite batches
     /*
@@ -124,17 +124,17 @@ void init_game_renderer(
     */
 
     // Set tiles layers
-    renderer->tiles_layers_VAO = get_tiles_layers_VAO(tiles_layer_width, tiles_layer_height);
+    renderer->tiles_layers_VAO = get_render_grid_VAO(tile_layers_width, tile_layers_height);
 
     // Get empty tile frames used to initially fill every layer
     Animation* empty_tile_frames;
     gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &empty_tile_frames);
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
-        renderer->tiles_layers[i] = create_tiles_layer(tiles_layer_width, tiles_layer_height);
+        renderer->tile_grid_layers[i] = create_render_grid(tile_layers_width, tile_layers_height);
         
-        fill_tiles_layer_pixels(
-            renderer->tiles_layers[i], 
+        fill_render_grid_pixels(
+            renderer->tile_grid_layers[i], 
             (vec4) { 
                 empty_tile_frames->frames[0].raw_top_left[0], 
                 empty_tile_frames->frames[0].raw_top_left[1], 
@@ -143,19 +143,6 @@ void init_game_renderer(
             }
         );
     }
-
-    // Test: initially fill layer 0 with plains
-    /*
-    fill_tiles_layer_pixels(
-        renderer->tiles_layers[TILE_LAYER_0], 
-        (vec4) { 
-            0.0f, 
-            96.0f, 
-            get_active_tile_palette_index(1), 
-            0.0f
-        }
-    );
-    */
 }
 
 void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
@@ -181,24 +168,24 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
     );
 }
 
-void update_renderer_tiles_layer_pixels(
+void update_tile_layer_pixels(
     Tile_Layer_Index layer,
     Point* points,
     Uint16 count,
     vec4 value
 )
 {
-    update_tiles_layer_pixels(renderer->tiles_layers[layer], points, count, value);
+    update_render_grid_pixels(renderer->tile_grid_layers[layer], points, count, value);
 }
 
-void update_renderer_tiles_layer_pixels_low(
+void update_tile_layer_pixels_low(
     Tile_Layer_Index layer,
     Point* points,
     Uint16 count,
     vec2 value
 )
 {
-    update_tiles_layer_pixels_low(renderer->tiles_layers[layer], points, count, value);
+    update_render_grid_pixels_low(renderer->tile_grid_layers[layer], points, count, value);
 }
 
 void render_tiles_layers()
@@ -214,13 +201,8 @@ void render_tiles_layers()
     glBindTexture(GL_TEXTURE_2D, renderer->palettes_texture);
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
-        render_tiles_layer(renderer->tiles_layers[i]);
+        render_r_grid(renderer->tile_grid_layers[i]);
     }
-}
-
-void bind_tile_layer_texture(Tile_Layer_Index tile_layer)
-{
-    bind_tile_texture(renderer->tiles_layers[tile_layer]);
 }
 
 void free_game_renderer()
@@ -229,7 +211,7 @@ void free_game_renderer()
 
         // Free tiles layers
         for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
-            free_tiles_layer(renderer->tiles_layers[i]);
+            free_render_grid(renderer->tile_grid_layers[i]);
         }
 
         free(renderer);

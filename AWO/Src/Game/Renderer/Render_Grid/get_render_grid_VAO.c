@@ -1,6 +1,6 @@
-#include "Game/Renderer/Tiles_Layer/tiles_layer.h"
+#include "Game/Renderer/Render_Grid/render_grid.h"
 
-GLuint get_tiles_layers_VAO(int tile_layers_width, int tile_layers_height)
+GLuint get_render_grid_VAO(int tile_layers_width, int tile_layers_height)
 {
     size_t stride = 4 * sizeof(GLfloat);
     size_t quad_size = 4 * stride;
