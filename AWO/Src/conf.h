@@ -36,8 +36,8 @@
 #define DEFAULT_TILE_DIMENSION 16
 
 // Default dimensions of game board (tiles)
-#define DEFAULT_GAME_BOARD_WIDTH  20
-#define DEFAULT_GAME_BOARD_HEIGHT 10
+#define DEFAULT_GAME_BOARD_WIDTH  5
+#define DEFAULT_GAME_BOARD_HEIGHT 3
 
 // Clear color
 #define GAME_CLEAR_COLOR_R 255

@@ -54,28 +54,32 @@ void update_game_board(Game_Board* game_board)
 {
 }
 
-void add_game_board_tile(Game_Board* game_board, Tile* tile, Uint8 x, Uint8 y)
-{
-    // Add tile to tiles grid
-    game_board->tiles_grid[y][x] = tile;
-
-    // Add the coordinates to the tile's list
-    register_tile_position(tile, x, y);
-}
-
-void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation)
+void add_game_board_tile(
+    Game_Board* game_board, 
+    Tile_Type type, 
+    Tile_Variation variation, 
+    Uint8 x, 
+    Uint8 y
+)
 {
     // Get tile of given type and variation
     Tile* tile = get_tile_factory_tile(game_board->tile_factory, type, variation);
 
+    // Add tile to tiles grid
+    game_board->tiles_grid[y][x] = tile;
+
+    // Add the coordinates to the tile's list & update the tile's render grid pixel
+    register_tile_board_position(tile, x, y);
+    update_tile_render_grid(tile);
+}
+
+void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation)
+{
     for (int y = 0; y < game_board->height; y++) {
         for (int x = 0; x < game_board->width; x++) {
-            add_game_board_tile(game_board, tile, x, y);
+            add_game_board_tile(game_board, type, variation, x, y);
         }
     }
-
-    // Update the render grid of the added tile.
-    update_tile_render_grid(tile);
 }
 
 /*

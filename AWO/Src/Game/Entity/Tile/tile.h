@@ -8,7 +8,32 @@
 
 /*! @brief Represents a tile used in the game's tile map system.
  */
-typedef struct Tile Tile;
+typedef struct Tile {
+
+    // This tile's type.
+    Tile_Type type;
+
+    // This tile's variation.
+    Tile_Variation variation;
+
+    // This tile's animation.
+    Animation* animation;
+
+    // Index of the clock this tile subscribes to, to update its animation.
+    Animation_Clock_Index clock_index;
+
+    // Index of the sub-clock this tile subscribes to.
+    Animation_Sub_Clock_Index sub_clock_index;
+
+    // The coordinates of every instances of this tile present in the game.
+    Point* positions;
+
+    // How many instances of this tile exist in the game.
+    Uint16 count;
+
+    // Current animation index of tiles of this type/variation.
+    Uint8 animation_index;
+} Tile;
 
 /*! @brief Creates a tile.
  *
@@ -25,7 +50,7 @@ Tile* create_tile(
     Tile_Variation variation
 );
 
-/*! @brief Registers a position on the given tile.
+/*! @brief Registers a board position on the given tile.
  *
  * Appends the given x/y coordinate to the tile's list of tile positions. This is used to update 
  * the contents of the tiles render grid, and keep them updated.
@@ -34,7 +59,7 @@ Tile* create_tile(
  *  @param[in] x The x coordinate to register.
  *  @param[in] y The y coordinate to register.
  */
-void register_tile_position(Tile* tile, Uint8 x, Uint8 y);
+void register_tile_board_position(Tile* tile, Uint8 x, Uint8 y);
 
 /*! @brief Updates the animation index currently used by the given tile.
  *
@@ -48,25 +73,6 @@ void update_tile_animation_index(Tile* tile, Uint8 index);
  *  @param[in] tile The tile.
  */
 void update_tile_render_grid(Tile* tile);
-
-/*! @brief Gets the tile type of the given tile.
- *
- *  @param[in] The tile.
- *  @return The tile type.
- */
-Tile_Type get_tile_type(Tile* tile);
-
-/*! @brief Gets the clock data of the given tile.
- *
- *  @param[in] The tile.
- *  @param[out] The clock index.
- *  @param[out] The sub-clock index.
- */
-void get_tile_clock_data(
-    Tile* tile,
-    Animation_Clock_Index* clock_index,
-    Animation_Sub_Clock_Index* sub_clock_index
-);
 
 /*! @brief Frees memory occupied by a tile.
  *

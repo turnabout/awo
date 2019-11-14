@@ -5,33 +5,6 @@
 #include "conf.h"
 #include "Game/Entity/Tile/tile.h"
 
-struct Tile {
-
-    // This tile's type.
-    Tile_Type type;
-
-    // This tile's variation.
-    Tile_Variation variation;
-
-    // This tile's animation.
-    Animation* animation;
-
-    // Index of the clock this tile subscribes to, to update its animation.
-    Animation_Clock_Index clock_index;
-
-    // Index of the sub-clock this tile subscribes to.
-    Animation_Sub_Clock_Index sub_clock_index;
-
-    // The coordinates of every instances of this tile present in the game.
-    Point* positions;
-
-    // How many instances of this tile exist in the game.
-    Uint16 count;
-
-    // Current animation index of tiles of this type/variation.
-    Uint8 animation_index;
-};
-
 Tile* create_tile(
     Game_Clock* game_clock, 
     Tiles_Data* tiles_data, 
@@ -74,7 +47,7 @@ void update_tile_render_grid(Tile* tile)
     );
 }
 
-void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
+void register_tile_board_position(Tile* tile, Uint8 x, Uint8 y)
 {
     tile->positions = realloc(tile->positions, sizeof(Point) * (tile->count + 1));
 
@@ -88,25 +61,10 @@ void update_tile_animation_index(Tile* tile, Uint8 index)
     update_tile_render_grid(tile);
 }
 
-void get_tile_clock_data(
-    Tile* tile,
-    Animation_Clock_Index* clock_index, 
-    Animation_Sub_Clock_Index* sub_clock_index
-)
-{
-    *clock_index = tile->clock_index;
-    *sub_clock_index = tile->sub_clock_index;
-}
-
-Tile_Type get_tile_type(Tile* tile)
-{
-    return tile->type;
-}
-
 void free_tile(Tile* tile)
 {
     if (tile != NULL) {
         free(tile);
-        // TODO
+        // TODO: free game board positions
     }
 }

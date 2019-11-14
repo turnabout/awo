@@ -39,10 +39,8 @@ Clock_Subscriber* create_clock_subscriber()
 void register_clock_subscriber_tile(Clock_Subscriber* module, Tile* tile)
 {
     // Get the tile's clock/sub-clock index.
-    Animation_Clock_Index clock_index;
-    Animation_Sub_Clock_Index sub_clock_index;
-
-    get_tile_clock_data(tile, &clock_index, &sub_clock_index);
+    Animation_Clock_Index clock_index = tile->clock_index;
+    Animation_Sub_Clock_Index sub_clock_index = tile->sub_clock_index;
 
     // Add this tile to the tiles list it belongs to.
     int index = module->tiles_list[clock_index][sub_clock_index]->tiles_count++;

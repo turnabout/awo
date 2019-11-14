@@ -44,8 +44,10 @@ Tile* get_tile_factory_tile(Tile_Factory* factory, Tile_Type type, Tile_Variatio
         tile = create_tile(factory->game_clock, factory->tiles_data, type, variation);
         add_hashmap_tile(factory->hashmap, tile, type, variation);
 
-        // Register the new tile with the tiles clock subscriber module
-        register_clock_subscriber_tile(factory->tiles_clock_sub, tile);
+        // If tile is animated, register it with the clock subscriber module
+        if (tile->animation->count > 1) {
+            register_clock_subscriber_tile(factory->tiles_clock_sub, tile);
+        }
     }
 
     return tile;
