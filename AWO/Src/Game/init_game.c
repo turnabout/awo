@@ -55,7 +55,5 @@ Game* init_game(int window_width, int window_height)
     // Load the stage
     load_game_board_stage(game->board, game->stage);
 
-    printf("%d-%d\n", Sea, Middle);
-
     return game;
 }

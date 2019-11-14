@@ -30,6 +30,7 @@ Clock_Subscriber* create_clock_subscriber()
         for (int j = 0; j < MINIMAL_ANIMATION_SUB_CLOCK_COUNT; j++) {
             module->tiles_list[i][j] = malloc(sizeof(Tiles_List));
             module->tiles_list[i][j]->tiles_count = 0;
+            module->tiles_list[i][j]->tiles = NULL;
         }
     }
 
