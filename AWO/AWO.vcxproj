@@ -77,6 +77,7 @@
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\main.c" />
+    <ClCompile Include="Src\Utilities\hex_string_to_data.c" />
     <ClCompile Include="Src\Utilities\read_file.c" />
   </ItemGroup>
   <ItemGroup>
