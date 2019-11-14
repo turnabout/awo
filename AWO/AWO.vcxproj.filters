@@ -189,10 +189,13 @@
     <ClCompile Include="Src\Game\Clock\Clock_Subscriber\clock_subscriber.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Board\load_stage.c">
+    <ClCompile Include="Src\Utilities\hex_string_to_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utilities\hex_string_to_data.c">
+    <ClCompile Include="Src\Game\Board\Stage_Loader\load_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Board\Stage_Loader\validate_stage_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -312,6 +315,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Board\_game_board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Board\Stage_Loader\_stage_loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

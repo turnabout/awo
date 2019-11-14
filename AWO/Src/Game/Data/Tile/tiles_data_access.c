@@ -6,6 +6,19 @@
 #include "Game/Data/Tile/Type/_tile_type_data.h"
 #include "Game/Data/Tile/Type/Variation/_tile_variation_data.h"
 
+Bool tile_type_variation_exists(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var)
+{
+    Tile_Variation_Data* tile_var_data;
+
+    char* key = (char*)tile_var_str_short[var];
+
+    if (hashmap_get(tiles_data->src[type]->vars_map, key, (void**)(&tile_var_data)) != MAP_OK) {
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
 Tile_Variation_Data* get_tile_var_data(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var)
 {
     Tile_Variation_Data* tile_var_data;

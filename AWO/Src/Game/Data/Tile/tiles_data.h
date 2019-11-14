@@ -19,6 +19,15 @@ typedef struct Tiles_Data Tiles_Data;
  */
 Tiles_Data* create_tiles_data(cJSON* tiles_data_JSON, int ss_width, int ss_height);
 
+/*! @brief Gets whether the given tile/variation combination exists in tiles data.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] type The tile type to check.
+ *  @param[in] var The tile variation to check.
+ *  @return TRUE if it exists, FALSE if it doesn't.
+ */
+Bool tile_type_variation_exists(Tiles_Data* tiles_data, Tile_Type type, Tile_Variation var);
+
 /*! @brief Gets the tile variation the given middle tile should have, according to the given 
  *  adjacent tiles.
  *

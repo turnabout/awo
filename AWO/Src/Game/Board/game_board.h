@@ -37,9 +37,10 @@ void update_game_board(Game_Board* game_board);
  *
  *  @param[in] game_board The game board.
  *  @param[in] stage_str String representing the stage to load, to be processed by the function.
+ *  @param[in] tiles_data The game's tiles data module object.
  *  @return Whether the stage string was valid and loaded successfully.
  */
-Bool load_stage(Game_Board* game_board, char* stage_str);
+Bool load_stage(Game_Board* game_board, char* stage_str, Tiles_Data* tiles_data);
 
 /*! @brief Frees all memory occupied by the game board and its contents.
  *

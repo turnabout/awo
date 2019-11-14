@@ -53,7 +53,7 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     );
 
     // Load the stage
-    if (!load_stage(game->board, game->stage_str)) {
+    if (!load_stage(game->board, game->stage_str, game->tiles_data)) {
         return NULL;
     }
 
