@@ -6,20 +6,17 @@
 typedef Tile** Tile_Row;
 
 struct Game_Board {
-    // Amount of tile columns and lines making up the game board
-    int width, height;
-
     // Contains all tiles on the game board. tiles[board_y][board_x]
     Tile_Row* tiles_grid;
 
     // Factory responsible for getting new tiles
     Tile_Factory* tile_factory;
 
+    // Descriptor of the loaded stage.
+    Stage_Descriptor* stage;
+
     // Indices of the currently active tile and fog tile palettes.
     GLfloat active_tile_palette_index, active_fog_tile_palette_index;
-
-    // Descriptor of the loaded stage.
-    Stage_Descriptor* loaded_stage;
 };
 
 /*! @brief Adds a new tile of the given type and variation to the game board at x/y coordinate.

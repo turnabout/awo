@@ -47,8 +47,6 @@ Game* init_game(int window_width, int window_height)
     game->board = create_game_board(
         game->tiles_data,
         game->clock,
-        game->stage->width,
-        game->stage->height,
         game->tiles_clock_sub
     );
 

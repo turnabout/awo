@@ -17,9 +17,6 @@ struct Game {
     // Handle to the game's window.
     GLFWwindow* window;
 
-    // Dimensions of the game's window.
-    int window_width, window_height;
-
     // The game's board, containing and updating all current on-board game entities.
     Game_Board* board;
 
@@ -36,11 +33,14 @@ struct Game {
     // Data for all units.
     Units_Data* units_data;
 
-    // Texture object for palettes
-    GLuint palettes_texture;
-
     // String representation of the stage to load.
     Stage_Descriptor* stage;
+
+    // Dimensions of the game's window.
+    int window_width, window_height;
+
+    // Texture object for palettes
+    GLuint palettes_texture;
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.
