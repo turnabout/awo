@@ -86,37 +86,51 @@ void render_tiles_layer(Tiles_Layer* tiles_layer)
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
-
-void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4 values)
+    
+void update_tiles_layer_pixels(
+    Tiles_Layer* tiles_layer, 
+    Point* points, 
+    Uint16 points_count, 
+    vec4 value
+)
 {
-    GLfloat stored_values[4] = {
-        values[0] / 510.0f, 
-        values[1] / 510.0f, 
-        values[2], 
-        values[3] 
+    GLfloat copied_value[4] = {
+        value[0] / 510.0f, 
+        value[1] / 510.0f, 
+        value[2], 
+        value[3] 
     };
 
-    memcpy(
-        (tiles_layer->pixel_data + x + (y * tiles_layer->tiles_width)), 
-        &stored_values, 
-        sizeof(stored_values)
-    );
+    for (int i = 0; i < points_count; i++) {
+        memcpy(
+            (tiles_layer->pixel_data + points[i].x + (points[i].y * tiles_layer->tiles_width)), 
+            &copied_value, 
+            sizeof(copied_value)
+        );
+    }
 
     tiles_layer->dirty = 1;
 }
 
-void update_tiles_layer_pixel_low(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec2 values)
+void update_tiles_layer_pixels_low(
+    Tiles_Layer* tiles_layer, 
+    Point* points, 
+    Uint16 points_count, 
+    vec2 value
+)
 {
-    GLfloat stored_values[2] = {
-        values[0] / 510.0f, 
-        values[1] / 510.0f, 
+    GLfloat copied_value[2] = {
+        value[0] / 510.0f, 
+        value[1] / 510.0f, 
     };
 
-    memcpy(
-        (tiles_layer->pixel_data + x + (y * tiles_layer->tiles_width)), 
-        &stored_values, 
-        sizeof(stored_values)
-    );
+    for (int i = 0; i < points_count; i++) {
+        memcpy(
+            (tiles_layer->pixel_data + points[i].x + (points[i].y * tiles_layer->tiles_width)), 
+            &copied_value, 
+            sizeof(copied_value)
+        );
+    }
 
     tiles_layer->dirty = 1;
 }

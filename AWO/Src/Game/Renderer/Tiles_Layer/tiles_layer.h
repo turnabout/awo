@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <cglm/types.h>
 
+#include "types.h"
+
 typedef struct Tiles_Layer Tiles_Layer;
 
 /*! @brief 
@@ -26,16 +28,26 @@ void render_tiles_layer(Tiles_Layer* tiles_layer);
  */
 void bind_tile_texture(Tiles_Layer* tiles_layer);
 
-/*! @brief Update a pixel's value in the tiles layer's tiles texture.
+/*! @brief Updates the pixels at the given points with the given value.
  *
  *  @param[in] tiles_layer The tiles layer to update.
  *  @param[in] x X offset of the pixel to update.
  *  @param[in] y Y offset of the pixel to update.
  *  @param[in] value The value used to update with.
  */
-void update_tiles_layer_pixel(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec4 value);
+void update_tiles_layer_pixels(
+    Tiles_Layer* tiles_layer,
+    Point* points,
+    Uint16 points_count,
+    vec4 value
+);
 
-void update_tiles_layer_pixel_low(Tiles_Layer* tiles_layer, GLuint x, GLuint y, vec2 values);
+void update_tiles_layer_pixels_low(
+    Tiles_Layer* tiles_layer,
+    Point* points,
+    Uint16 points_count,
+    vec2 value
+);
 
 /*! @brief Fill pixels' values in the tiles layer's tiles texture.
  *

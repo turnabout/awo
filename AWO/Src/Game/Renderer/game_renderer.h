@@ -46,17 +46,17 @@ void bind_tile_layer_texture(Tile_Layer_Index layer);
  *  @param[in] y Y offset of the pixel to update.
  *  @param[in] value The value used to update with.
  */
-void update_renderer_tiles_layer_pixel(
+void update_renderer_tiles_layer_pixels(
     Tile_Layer_Index layer,
-    GLuint x, 
-    GLuint y, 
+    Point* points,
+    Uint16 count,
     vec4 value
 );
 
-void update_renderer_tiles_layer_pixel_low(
+void update_renderer_tiles_layer_pixels_low(
     Tile_Layer_Index layer,
-    GLuint x, 
-    GLuint y, 
+    Point* points,
+    Uint16 count,
     vec2 value
 );
 

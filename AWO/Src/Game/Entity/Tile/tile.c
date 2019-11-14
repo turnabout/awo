@@ -22,11 +22,11 @@ struct Tile {
     // Index of the sub-clock this tile subscribes to.
     Animation_Sub_Clock_Index sub_clock_index;
 
-    // How many of this tile type/variation exist.
-    Uint16 count;
-
-    // The x/y position of every tile of this type/variation.
+    // The coordinates of every instances of this tile present in the game.
     Point* positions;
+
+    // How many instances of this tile exist in the game.
+    Uint16 count;
 
     // Current animation index of tiles of this type/variation.
     Uint8 animation_index;
@@ -66,28 +66,23 @@ void update_tile_render_grid(Tile* tile)
     // Bind the tile texture of the tile layer bound to this tile
     bind_tile_layer_texture(TILE_LAYER_0);
 
-    for (int i = 0; i < tile->count; i++) {
-
-        update_renderer_tiles_layer_pixel_low(
-            TILE_LAYER_0,
-            tile->positions[i].x,
-            tile->positions[i].y,
-            (vec2) {
-                tile->animation->frames[tile->animation_index].raw_top_left[0],
-                tile->animation->frames[tile->animation_index].raw_top_left[1]
-            }
-        );
-    }
+    update_renderer_tiles_layer_pixels_low(
+        TILE_LAYER_0,
+        tile->positions,
+        tile->count,
+        (vec2) {
+            tile->animation->frames[tile->animation_index].raw_top_left[0],
+            tile->animation->frames[tile->animation_index].raw_top_left[1]
+        }
+    );
 }
 
 void register_tile_position(Tile* tile, Uint8 x, Uint8 y)
 {
-    int new_position_index = tile->count++;
+    tile->positions = realloc(tile->positions, sizeof(Point) * (tile->count + 1));
 
-    tile->positions = realloc(tile->positions, sizeof(Point) * tile->count);
-
-    tile->positions[new_position_index].x = x;
-    tile->positions[new_position_index].y = y;
+    tile->positions[tile->count].x = x;
+    tile->positions[tile->count++].y = y;
 }
 
 void update_tile_animation_index(Tile* tile, Uint8 index)
@@ -115,5 +110,6 @@ void free_tile(Tile* tile)
 {
     if (tile != NULL) {
         free(tile);
+        // TODO
     }
 }

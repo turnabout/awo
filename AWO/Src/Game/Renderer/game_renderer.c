@@ -181,24 +181,24 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
     );
 }
 
-void update_renderer_tiles_layer_pixel(
+void update_renderer_tiles_layer_pixels(
     Tile_Layer_Index layer,
-    GLuint x,
-    GLuint y,
+    Point* points,
+    Uint16 count,
     vec4 value
 )
 {
-    update_tiles_layer_pixel(renderer->tiles_layers[layer], x, y, value);
+    update_tiles_layer_pixels(renderer->tiles_layers[layer], points, count, value);
 }
 
-void update_renderer_tiles_layer_pixel_low(
+void update_renderer_tiles_layer_pixels_low(
     Tile_Layer_Index layer,
-    GLuint x,
-    GLuint y,
+    Point* points,
+    Uint16 count,
     vec2 value
 )
 {
-    update_tiles_layer_pixel_low(renderer->tiles_layers[layer], x, y, value);
+    update_tiles_layer_pixels_low(renderer->tiles_layers[layer], points, count, value);
 }
 
 void render_tiles_layers()
