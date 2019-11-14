@@ -15,13 +15,13 @@ struct Tile_Factory {
     Game_Clock* game_clock;
 
     // Module subscribing animated tiles to the game clock.
-    Tiles_Clock_Subscriber* tiles_clock_sub;
+    Clock_Subscriber* tiles_clock_sub;
 };
 
 Tile_Factory* create_tile_factory(
     Tiles_Data* tiles_data, 
     Game_Clock* game_clock,
-    Tiles_Clock_Subscriber* tiles_clock_sub
+    Clock_Subscriber* tiles_clock_sub
 )
 {
     Tile_Factory* factory = malloc(sizeof(Tile_Factory));
@@ -45,7 +45,7 @@ Tile* get_tile_factory_tile(Tile_Factory* factory, Tile_Type type, Tile_Variatio
         add_hashmap_tile(factory->hashmap, tile, type, variation);
 
         // Register the new tile with the tiles clock subscriber module
-        register_tiles_clock_subscriber_tile(factory->tiles_clock_sub, tile);
+        register_clock_subscriber_tile(factory->tiles_clock_sub, tile);
     }
 
     return tile;

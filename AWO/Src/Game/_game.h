@@ -27,7 +27,7 @@ struct Game {
 
     // Module subscribed to the game clock. Used to tell tiles of certain type/variation when they
     // need to update their sections of the render map.
-    Tiles_Clock_Subscriber* tiles_clock_sub;
+    Clock_Subscriber* tiles_clock_sub;
 
     // Data for all tiles.
     Tiles_Data* tiles_data;

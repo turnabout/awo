@@ -8,7 +8,7 @@
 
 typedef struct Game_Renderer Game_Renderer;
 
-typedef enum Tile_Layer_Type {
+typedef enum Tile_Layer_Index {
     TILE_LAYER_0,
     TILE_LAYER_1,
 } Tile_Layer_Index;

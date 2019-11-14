@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "Game/Clock/game_clock.h"
-#include "Game/Entity/Tile/Tiles_Clock_Subscriber/tiles_clock_subscriber.h"
+#include "Game/Clock/Clock_Subscriber/clock_subscriber.h"
 
 typedef struct Tiles_List {
 
@@ -15,28 +15,28 @@ typedef struct Tiles_List {
 
 } Tiles_List;
 
-struct Tiles_Clock_Subscriber {
+struct Clock_Subscriber {
 
     // List of every tile, sorted by which animation clock/sub-clocks they belong to.
     Tiles_List* tiles_list[ANIMATION_CLOCK_COUNT][MINIMAL_ANIMATION_SUB_CLOCK_COUNT];
 };
 
-Tiles_Clock_Subscriber* create_tiles_clock_subscriber()
+Clock_Subscriber* create_clock_subscriber()
 {
-    Tiles_Clock_Subscriber* sub_module = malloc(sizeof(Tiles_Clock_Subscriber));
+    Clock_Subscriber* module = (Clock_Subscriber*)malloc(sizeof(Clock_Subscriber));
 
     // Allocate space for the tiles list.
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         for (int j = 0; j < MINIMAL_ANIMATION_SUB_CLOCK_COUNT; j++) {
-            sub_module->tiles_list[i][j] = malloc(sizeof(Tiles_List));
-            sub_module->tiles_list[i][j]->tiles_count = 0;
+            module->tiles_list[i][j] = malloc(sizeof(Tiles_List));
+            module->tiles_list[i][j]->tiles_count = 0;
         }
     }
 
-    return sub_module;
+    return module;
 }
 
-void register_tiles_clock_subscriber_tile(Tiles_Clock_Subscriber* sub_module, Tile* tile)
+void register_clock_subscriber_tile(Clock_Subscriber* module, Tile* tile)
 {
     // Get the tile's clock/sub-clock index.
     Animation_Clock_Index clock_index;
@@ -45,22 +45,22 @@ void register_tiles_clock_subscriber_tile(Tiles_Clock_Subscriber* sub_module, Ti
     get_tile_clock_data(tile, &clock_index, &sub_clock_index);
 
     // Add this tile to the tiles list it belongs to.
-    int index = sub_module->tiles_list[clock_index][sub_clock_index]->tiles_count++;
+    int index = module->tiles_list[clock_index][sub_clock_index]->tiles_count++;
 
-    sub_module->tiles_list[clock_index][sub_clock_index]->tiles = realloc(
-        sub_module->tiles_list[clock_index][sub_clock_index]->tiles,
-        sizeof(Tile**) * sub_module->tiles_list[clock_index][sub_clock_index]->tiles_count
+    module->tiles_list[clock_index][sub_clock_index]->tiles = realloc(
+        module->tiles_list[clock_index][sub_clock_index]->tiles,
+        sizeof(Tile**) * module->tiles_list[clock_index][sub_clock_index]->tiles_count
     );
 
-    sub_module->tiles_list[clock_index][sub_clock_index]->tiles[index] = tile;
+    module->tiles_list[clock_index][sub_clock_index]->tiles[index] = tile;
 }
 
-void process_tiles_tick_events(Tiles_Clock_Subscriber* sub_module, Tick_Events_List* events_list)
+void process_tiles_tick_events(Clock_Subscriber* module, Tick_Events_List* events_list)
 {
     // Loop the received tick events
     for (int i = 0; i < events_list->ticks_count; i++) {
         Tick_Event event = events_list->ticks[i];
-        Tiles_List* tiles_list = sub_module->tiles_list[event.clock_index][event.sub_clock_index];
+        Tiles_List* tiles_list = module->tiles_list[event.clock_index][event.sub_clock_index];
 
         // Update the animation index of every tile subscribed to this tick event
         for (int j = 0; j < tiles_list->tiles_count; j++) {
@@ -72,15 +72,15 @@ void process_tiles_tick_events(Tiles_Clock_Subscriber* sub_module, Tick_Events_L
     events_list->ticks_count = 0;
 }
 
-void free_tiles_clock_subscriber(Tiles_Clock_Subscriber* sub_module)
+void free_tiles_clock_subscriber(Clock_Subscriber* module)
 {
-    if (sub_module == NULL) {
+    if (module == NULL) {
         return;
     }
 
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         for (int j = 0; j < MINIMAL_ANIMATION_SUB_CLOCK_COUNT; j++) {
-            free(sub_module->tiles_list[i][j]);
+            free(module->tiles_list[i][j]);
         }
     }
 }

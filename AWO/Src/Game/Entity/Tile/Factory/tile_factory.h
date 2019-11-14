@@ -3,7 +3,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Entity/Tile/tile.h"
-#include "Game/Entity/Tile/Tiles_Clock_Subscriber/tiles_clock_subscriber.h"
+#include "Game/Clock/Clock_Subscriber/clock_subscriber.h"
 
 /*! @brief Object used to create tiles.
  *
@@ -21,7 +21,7 @@ typedef struct Tile_Factory Tile_Factory;
 Tile_Factory* create_tile_factory(
     Tiles_Data* tiles_data,
     Game_Clock* game_clock,
-    Tiles_Clock_Subscriber* tiles_clock_sub
+    Clock_Subscriber* tiles_clock_sub
 );
 
 /*! @brief Gets a tile.

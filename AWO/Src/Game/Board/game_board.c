@@ -26,7 +26,7 @@ Game_Board* create_game_board(
     Game_Clock* game_clock, 
     int width, 
     int height,
-    Tiles_Clock_Subscriber* tiles_clock_sub
+    Clock_Subscriber* tiles_clock_sub
 )
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
