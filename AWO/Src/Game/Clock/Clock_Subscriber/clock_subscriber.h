@@ -13,7 +13,7 @@ typedef struct Clock_Subscriber Clock_Subscriber;
  *  
  *  @return The created module.
  */
-Clock_Subscriber* create_tiles_clock_subscriber();
+Clock_Subscriber* create_clock_subscriber();
 
 /*! @brief Registers the given tile with the subscriber module.
  *
@@ -29,10 +29,7 @@ void register_clock_subscriber_tile(Clock_Subscriber* clock_subscriber, Tile* ti
  *  @param[in] clock_subscriber The clock subscriber module.
  *  @param[in] events_list The list of tick events to process.
  */
-void process_tick_events(
-    Clock_Subscriber* clock_subscriber, 
-    Tick_Events_List* events_list
-);
+void process_tick_events(Clock_Subscriber* clock_subscriber, Tick_Events_List* events_list);
 
 /*! @brief Frees the subscriber module.
  *  

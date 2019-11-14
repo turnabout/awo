@@ -55,7 +55,7 @@ void register_clock_subscriber_tile(Clock_Subscriber* module, Tile* tile)
     module->tiles_list[clock_index][sub_clock_index]->tiles[index] = tile;
 }
 
-void process_tiles_tick_events(Clock_Subscriber* module, Tick_Events_List* events_list)
+void process_tick_events(Clock_Subscriber* module, Tick_Events_List* events_list)
 {
     // Loop the received tick events
     for (int i = 0; i < events_list->ticks_count; i++) {

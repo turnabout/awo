@@ -10,7 +10,7 @@ void update_game(Game* game, float delta_time)
 
     Tick_Events_List* tick_events = get_game_clock_tick_event_list(game->clock);
 
-    process_tiles_tick_events(game->tiles_clock_sub, tick_events);
+    process_tick_events(game->tiles_clock_sub, tick_events);
 
     update_game_board(game->board);
 }

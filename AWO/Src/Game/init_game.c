@@ -53,6 +53,7 @@ Game* init_game(int game_board_width, int game_board_height, int window_width, i
     );
 
     fill_game_board_tiles(game->board, Sea, Middle);
+    
 
     return game;
 }
