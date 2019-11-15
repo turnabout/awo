@@ -164,14 +164,14 @@ void add_to_sprite_batch(
 
         // Top left
         { 
-            dst[0], dst[1] + frame_data->dimensions[1],       // <vec2> Destination
+            dst[0], dst[1] + (float)frame_data->height,       // <vec2> Destination
             frame_data->top_left[0], frame_data->top_left[1], // <vec2> Texture
             palette_index                                     // <float> Palette index
         },     
 
         // Top right
         {
-            dst[0] + frame_data->dimensions[0], dst[1] + frame_data->dimensions[1],
+            dst[0] + (float)frame_data->width, dst[1] + (float)frame_data->height,
             frame_data->top_right[0], frame_data->top_right[1],
             palette_index
         },
@@ -185,7 +185,7 @@ void add_to_sprite_batch(
 
         // Bottom right
         {
-            dst[0] + frame_data->dimensions[0], dst[1], 
+            dst[0] + (float)frame_data->width, dst[1], 
             frame_data->bottom_right[0], frame_data->bottom_right[1],
             palette_index
         }

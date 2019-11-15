@@ -3,6 +3,8 @@
 #include <cglm/types.h>
 #include <cJSON.h>
 
+#include "types.h"
+
 /*! @brief Frame object.
  *
  * Describes the source data of a frame within the sprite sheet.
@@ -17,8 +19,8 @@ typedef struct Frame {
     // This frame's raw top-left source coordinates, in pixels
     vec2 raw_top_left;
 
-    // Width/tiles_height of this frame.
-    vec2 dimensions;  
+    // Height of this frame, in pixels.
+    Uint8 width, height;
 } Frame;
 
 /*! @brief Animation object.

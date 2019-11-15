@@ -21,7 +21,7 @@ Game* init_game(int window_width, int window_height)
 
     // Set transformation matrices
     mat4 view = GLM_MAT4_IDENTITY_INIT;
-    glm_scale(view, (vec3) { (GLfloat)DEFAULT_TILE_DIMENSION, (GLfloat)DEFAULT_TILE_DIMENSION, 1.0f });
+    glm_scale(view, (vec3) { (GLfloat)DEFAULT_TILE_SIZE, (GLfloat)DEFAULT_TILE_SIZE, 1.0f });
 
     mat4 projection = GLM_MAT4_IDENTITY_INIT;
     glm_ortho(0.0f, (float)game->window_width, 0.0f, (float)game->window_height, -1.0f, 1.0f, projection);

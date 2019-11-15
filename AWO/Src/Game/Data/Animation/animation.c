@@ -11,16 +11,16 @@ void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, float ss_
     float x = (float)cJSON_GetObjectItemCaseSensitive(frame_JSON, "x")->valueint;
     float y = (float)cJSON_GetObjectItemCaseSensitive(frame_JSON, "y")->valueint;
 
-    float w = (cJSON_HasObjectItem(frame_JSON, "w"))
-                ? (float)cJSON_GetObjectItemCaseSensitive(frame_JSON, "w")->valueint
-                : (float)DEFAULT_TILE_DIMENSION;
+    Uint8 w = (cJSON_HasObjectItem(frame_JSON, "w"))
+                ? cJSON_GetObjectItemCaseSensitive(frame_JSON, "w")->valueint
+                : DEFAULT_TILE_SIZE;
 
-    float h = (cJSON_HasObjectItem(frame_JSON, "h"))
-                ? (float)cJSON_GetObjectItemCaseSensitive(frame_JSON, "h")->valueint
-                : (float)DEFAULT_TILE_DIMENSION;
+    Uint8 h = (cJSON_HasObjectItem(frame_JSON, "h"))
+                ? cJSON_GetObjectItemCaseSensitive(frame_JSON, "h")->valueint
+                : DEFAULT_TILE_SIZE;
 
-    frame_ptr->dimensions[0] = w;
-    frame_ptr->dimensions[1] = h;
+    frame_ptr->width = w;
+    frame_ptr->height = h;
 
     vec4 top_left     = { (x    ) / ss_width, (y)     / ss_height, 0.0f, 1.0f };
     vec4 top_right    = { (x + w) / ss_width, (y)     / ss_height, 0.0f, 1.0f };
@@ -34,7 +34,8 @@ void create_animation_frame(Frame* frame_ptr, const cJSON* frame_JSON, float ss_
     glm_vec4_copy(bottom_left, frame_ptr->bottom_left);
     glm_vec4_copy(bottom_right, frame_ptr->bottom_right);
 
-    glm_vec4_copy(raw_top_left, frame_ptr->raw_top_left);
+    frame_ptr->raw_top_left[0] = raw_top_left[0];
+    frame_ptr->raw_top_left[1] = raw_top_left[1];
 }
 
 Animation* create_animation(const cJSON* animation_JSON, int ss_width, int ss_height)
@@ -83,9 +84,9 @@ void print_animation(Animation* animation)
         glm_vec3_print(animation->frames->bottom_right, stdout);
         
         printf(
-            "\t(Dimensions): %.2f | %.2f\n", 
-            animation->frames->dimensions[0], 
-            animation->frames->dimensions[1]
+            "\t(Dimensions): %d | %d\n", 
+            animation->frames->width, 
+            animation->frames->height
         );
 
         printf("\t},\n");

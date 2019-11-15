@@ -80,12 +80,12 @@ void init_game_renderer_uniforms(
 
     glUniform1f(
         glGetUniformLocation(renderer->tiles_shader_program, "quad_width"), 
-        (GLfloat)(tiles_layer_width * DEFAULT_TILE_DIMENSION)
+        (GLfloat)(tiles_layer_width * DEFAULT_TILE_SIZE)
     );
 
     glUniform1f(
         glGetUniformLocation(renderer->tiles_shader_program, "quad_height"), 
-        (GLfloat)(tiles_layer_height * DEFAULT_TILE_DIMENSION)
+        (GLfloat)(tiles_layer_height * DEFAULT_TILE_SIZE)
     );
 
 }
