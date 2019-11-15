@@ -10,23 +10,17 @@
  */
 typedef struct Tile {
 
+    // This tile's animation.
+    Animation* animation;
+
+    // The coordinates of every instances of this tile present in the game.
+    Point* positions;
+
     // This tile's type.
     Tile_Type type;
 
     // This tile's variation.
     Tile_Variation variation;
-
-    // This tile's animation.
-    Animation* animation;
-
-    // Index of the clock this tile subscribes to, to update its animation.
-    Animation_Clock_Index clock_index;
-
-    // Index of the sub-clock this tile subscribes to.
-    Animation_Sub_Clock_Index sub_clock_index;
-
-    // The coordinates of every instances of this tile present in the game.
-    Point* positions;
 
     // How many instances of this tile exist in the game.
     Uint16 count;

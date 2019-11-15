@@ -20,20 +20,12 @@ Tile* create_tile(
     tile->positions = NULL;
     tile->animation_index = 0;
 
-    // Gather clock index, sub clock index and the tile animation.
-    gather_tile_data(
-        tiles_data,
-        type,
-        variation,
-        &tile->clock_index,
-        &tile->sub_clock_index,
-        &tile->animation
-    );
+    // Get the tile's animation.
+    gather_tile_data(tiles_data, type, variation, NULL, NULL, &tile->animation);
 
     return tile;
 }
 
-// Update every render grid cell occupied by this tile.
 void update_tile_render_grid(Tile* tile)
 {
     update_tile_layer_pixels_low(

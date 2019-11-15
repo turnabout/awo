@@ -41,7 +41,7 @@ Game* init_game(int window_width, int window_height)
     init_keys_state_module(game->window);
     init_mouse_state_module(game->window, &game->window_height);
 
-    game->tiles_clock_sub = create_clock_subscriber();
+    game->tiles_clock_sub = create_clock_subscriber(game->tiles_data);
 
     // Set game board
     game->board = create_game_board(

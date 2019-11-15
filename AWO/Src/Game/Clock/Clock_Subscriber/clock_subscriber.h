@@ -11,9 +11,10 @@ typedef struct Clock_Subscriber Clock_Subscriber;
 
 /*! @brief Creates the clock subscriber module.
  *  
+ *  @param[in] tiles_data Pointer to the game's tiles data object.
  *  @return The created module.
  */
-Clock_Subscriber* create_clock_subscriber();
+Clock_Subscriber* create_clock_subscriber(Tiles_Data* tiles_data);
 
 /*! @brief Registers the given tile with the subscriber module.
  *
