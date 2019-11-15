@@ -12,9 +12,10 @@ typedef struct Render_Grid Render_Grid;
  *
  *  @param[in] grid_width
  *  @param[in] grid_height
+ *  @param[in] vertical_offset Amount of pixels used to offset the render grid vertically.
  *  @return The created render grid.
  */
-Render_Grid* create_render_grid(GLuint grid_width, GLuint grid_height);
+Render_Grid* create_render_grid(GLuint grid_width, GLuint grid_height, GLuint vertical_offset);
 
 /*! @brief Renders the given render grid.
  *
@@ -68,8 +69,9 @@ void free_render_grid(Render_Grid* render_grid);
 
 /*! @brief Get the VAO used by tiles layers.
  *
- *  @param[in] tile_layers_width The width taken up by the tiles texture.
- *  @param[in] tile_layers_height The height taken up by the tiles texture.
+ *  @param[in] width The width taken up by the tiles texture.
+ *  @param[in] height The height taken up by the tiles texture.
+ *  @param[in] vertical_offset Amount of pixels used to offset the render grid vertically.
  *  @return The tiles layers VAO.
  */
-GLuint get_render_grid_VAO(int tile_layers_width, int tile_layers_height);
+GLuint get_render_grid_VAO(GLuint width, GLuint height, GLuint vertical_offset);

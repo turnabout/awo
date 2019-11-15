@@ -1,6 +1,6 @@
 #include "Game/Renderer/Render_Grid/render_grid.h"
 
-GLuint get_render_grid_VAO(int tile_layers_width, int tile_layers_height)
+GLuint get_render_grid_VAO(GLuint width, GLuint height, GLuint vertical_offset)
 {
     size_t stride = 4 * sizeof(GLfloat);
     size_t quad_size = 4 * stride;
@@ -16,7 +16,7 @@ GLuint get_render_grid_VAO(int tile_layers_width, int tile_layers_height)
         3, 0, 2, // Second triangle
     };
 
-    unsigned int EBO;
+    GLuint EBO;
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
@@ -26,32 +26,34 @@ GLuint get_render_grid_VAO(int tile_layers_width, int tile_layers_height)
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    GLfloat right = (GLfloat)tile_layers_width;
-    GLfloat top = (GLfloat)tile_layers_height;
+    GLfloat left = 0.0f;
+    GLfloat right = (GLfloat)width;
+    GLfloat top = (GLfloat)height + (GLfloat)vertical_offset;
+    GLfloat bottom = 0.0f + (GLfloat)vertical_offset;
 
     GLfloat quad_vertices[4][4] = {
         // Bottom left
         {
-            0, 0,       // Position
-            0.0f, 1.0f, // Texture coordinates
+            left, bottom,  // Position
+            0.0f, 1.0f,    // Texture coordinates
         }, 
 
         // Top left
         { 
-            0, top,     // Position
-            0.0f, 0.0f, // Texture coordinates
+            left, top,     // Position
+            0.0f, 0.0f,    // Texture coordinates
         }, 
 
         // Top right
         { 
-            right, top, // Position
-            1.0f, 0.0f, // Texture coordinates
+            right, top,    // Position
+            1.0f, 0.0f,    // Texture coordinates
         }, 
 
         // Bottom right
         { 
-            right, 0,   // Position
-            1.0f, 1.0f, // Texture coordinates
+            right, bottom, // Position
+            1.0f, 1.0f,    // Texture coordinates
         }, 
     };
 

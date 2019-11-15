@@ -11,6 +11,9 @@ static Game_Renderer* renderer;
 
 struct Game_Renderer {
 
+    // Dimensions of the raw sprite sheet
+    int sprite_sheet_width, sprite_sheet_height;
+
     // Basic shader program for rendering any sprite.
     GLuint sprites_shader_program;
 
@@ -23,14 +26,8 @@ struct Game_Renderer {
     // Texture containing palettes.
     GLuint palettes_texture;
 
-    // Dimensions of the raw sprite sheet
-    int sprite_sheet_width, sprite_sheet_height;
-
     // Layers of tile grids used to render tiles.
     Render_Grid* tile_grid_layers[TILE_LAYER_TYPE_COUNT];
-
-    // VAO used by tiles layers
-    GLuint tiles_layers_VAO;
 };
 
 int init_game_renderer_shader_programs()
@@ -91,8 +88,8 @@ void init_game_renderer_uniforms(
 }
 
 void init_game_renderer(
-    int tile_layers_width, 
-    int tile_layers_height, 
+    int render_grid_width, 
+    int render_grid_height, 
     GLuint palettes_texture,
     Tiles_Data* tiles_data
 )
@@ -111,7 +108,7 @@ void init_game_renderer(
         &renderer->sprite_sheet_height
     );
     renderer->palettes_texture = palettes_texture;
-    init_game_renderer_uniforms(tile_layers_width, tile_layers_height);
+    init_game_renderer_uniforms(render_grid_width, render_grid_height);
 
     // Set sprite batches
     /*
@@ -123,15 +120,17 @@ void init_game_renderer(
     );
     */
 
-    // Set tiles layers
-    renderer->tiles_layers_VAO = get_render_grid_VAO(tile_layers_width, tile_layers_height);
-
     // Get empty tile frames used to initially fill every layer
     Animation* empty_tile_frames;
     gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &empty_tile_frames);
+    Uint8 offset_y = 0;
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
-        renderer->tile_grid_layers[i] = create_render_grid(tile_layers_width, tile_layers_height);
+        renderer->tile_grid_layers[i] = create_render_grid(
+            render_grid_width, 
+            render_grid_height, 
+            offset_y++
+        );
         
         fill_render_grid_pixels(
             renderer->tile_grid_layers[i], 
@@ -190,9 +189,7 @@ void update_tile_layer_pixels_low(
 
 void render_tiles_layers()
 {
-    // Render tiles layers
     glUseProgram(renderer->tiles_shader_program);
-    glBindVertexArray(renderer->tiles_layers_VAO);
 
     glActiveTexture(GL_TEXTURE0); 
     glBindTexture(GL_TEXTURE_2D, renderer->sprite_sheet_texture);

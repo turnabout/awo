@@ -21,17 +21,20 @@ struct Render_Grid {
     // The texture used by this grid to render.
     GLuint grid_texture;
 
-    // Dimensions of the render grid.
-    Uint8 grid_width, grid_height;
+    // VAO used to render this render grid.
+    GLuint VAO;
 
-    // Whether the tiles layer's pixel data has been changed since the last time it was rendered.
+    // Dimensions of the render grid.
+    Uint8 width, height;
+
+    // Whether the tiles layer's pixel data was changed since the last render.
     Bool dirty;
 };
 
-void init_tiles_texture(Render_Grid* tiles_layer)
+void init_render_grid_texture(Render_Grid* render_grid)
 {
-    glGenTextures(1, &tiles_layer->grid_texture);
-    glBindTexture(GL_TEXTURE_2D, tiles_layer->grid_texture);
+    glGenTextures(1, &render_grid->grid_texture);
+    glBindTexture(GL_TEXTURE_2D, render_grid->grid_texture);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -42,8 +45,8 @@ void init_tiles_texture(Render_Grid* tiles_layer)
         GL_TEXTURE_2D, 
         0, 
         GL_RGBA, 
-        tiles_layer->grid_width, 
-        tiles_layer->grid_height, 
+        render_grid->width, 
+        render_grid->height, 
         0, 
         GL_RGBA, 
         GL_FLOAT, 
@@ -51,41 +54,47 @@ void init_tiles_texture(Render_Grid* tiles_layer)
     );
 }
 
-Render_Grid* create_render_grid(GLuint tiles_layer_width, GLuint tiles_layer_height)
+Render_Grid* create_render_grid(GLuint width, GLuint height, GLuint vertical_offset)
 {
-    Render_Grid* tiles_layer = (Render_Grid*)malloc(sizeof(Render_Grid));
+    Render_Grid* render_grid = (Render_Grid*)malloc(sizeof(Render_Grid));
 
-    tiles_layer->grid_width = tiles_layer_width;
-    tiles_layer->grid_height = tiles_layer_height;
-    tiles_layer->dirty = TRUE;
+    render_grid->width = width;
+    render_grid->height = height;
+    render_grid->dirty = TRUE;
 
-    init_tiles_texture(tiles_layer);
-    tiles_layer->pixel_data = malloc(sizeof(vec4) * tiles_layer->grid_width * tiles_layer->grid_height);
+    init_render_grid_texture(render_grid);
 
-    return tiles_layer;
+    render_grid->VAO = get_render_grid_VAO(width, height, vertical_offset);
+
+    render_grid->pixel_data = malloc(sizeof(vec4) * render_grid->width * render_grid->height);
+
+    return render_grid;
 }
 
-void render_r_grid(Render_Grid* tiles_layer)
+void render_r_grid(Render_Grid* render_grid)
 {
     // Bind this grid's texture
     glActiveTexture(GL_TEXTURE2); 
-    glBindTexture(GL_TEXTURE_2D, tiles_layer->grid_texture);
+    glBindTexture(GL_TEXTURE_2D, render_grid->grid_texture);
+
+    // Set tiles layers
+    glBindVertexArray(render_grid->VAO);
 
     // Update the grid texture's GPU pixel data only if it was changed since the last render
-    if (tiles_layer->dirty) {
+    if (render_grid->dirty) {
         glTexSubImage2D(
             GL_TEXTURE_2D,
             0,
             0,
             0,
-            tiles_layer->grid_width,
-            tiles_layer->grid_height,
+            render_grid->width,
+            render_grid->height,
             GL_RGBA,
             GL_FLOAT,
-            tiles_layer->pixel_data
+            render_grid->pixel_data
         );
 
-        tiles_layer->dirty = TRUE;
+        render_grid->dirty = TRUE;
     }
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -107,7 +116,7 @@ void update_render_grid_pixels(
 
     for (int i = 0; i < points_count; i++) {
         memcpy(
-            (tiles_layer->pixel_data + points[i].x + (points[i].y * tiles_layer->grid_width)), 
+            (tiles_layer->pixel_data + points[i].x + (points[i].y * tiles_layer->width)), 
             &copied_value, 
             sizeof(copied_value)
         );
@@ -130,7 +139,7 @@ void update_render_grid_pixels_low(
 
     for (int i = 0; i < points_count; i++) {
         memcpy(
-            (tiles_layer->pixel_data + points[i].x + (points[i].y * tiles_layer->grid_width)), 
+            (tiles_layer->pixel_data + points[i].x + (points[i].y * tiles_layer->width)), 
             &copied_value, 
             sizeof(copied_value)
         );
@@ -148,10 +157,10 @@ void fill_render_grid_pixels(Render_Grid* tiles_layer, vec4 values)
         values[3] 
     };
 
-    for (int y = 0; y < (int)tiles_layer->grid_height; y++) {
-        for (int x = 0; x < (int)tiles_layer->grid_width; x++) {
+    for (int y = 0; y < (int)tiles_layer->height; y++) {
+        for (int x = 0; x < (int)tiles_layer->width; x++) {
             memcpy(
-                (tiles_layer->pixel_data + x + (y * tiles_layer->grid_width)), 
+                (tiles_layer->pixel_data + x + (y * tiles_layer->width)), 
                 &stored_values, 
                 sizeof(stored_values)
             );
