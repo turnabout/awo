@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "conf.h"
-#include "Game/Entity/Tile/tile.h"
+#include "Game/Entity/Tile/_tile.h"
 
 Tile* create_tile(
     Game_Clock* game_clock, 
@@ -16,26 +16,17 @@ Tile* create_tile(
 
     tile->type = type;
     tile->variation = variation;
+
     tile->count = 0;
     tile->positions = NULL;
 
     // Get the tile's animation.
     gather_tile_data(tiles_data, type, variation, NULL, NULL, &tile->animation);
 
-    return tile;
-}
+    // Set the appropriate render grid update callback function
+    tile->update_render_grid = update_regular_tile_render_grid;
 
-void update_tile_render_grid(Tile* tile, Uint8 animation_index)
-{
-    update_tile_layer_pixels_low(
-        TILE_LAYER_0,
-        tile->positions,
-        tile->count,
-        (vec2) {
-            tile->animation->frames[animation_index].raw_top_left[0],
-            tile->animation->frames[animation_index].raw_top_left[1]
-        }
-    );
+    return tile;
 }
 
 void register_tile_board_position(Tile* tile, Uint8 x, Uint8 y)
@@ -44,17 +35,15 @@ void register_tile_board_position(Tile* tile, Uint8 x, Uint8 y)
 
     tile->positions[tile->count].x = x;
     tile->positions[tile->count++].y = y;
-}
 
-void update_tile_animation_index(Tile* tile, Uint8 animation_index)
-{
-    update_tile_render_grid(tile, animation_index);
+    // Update the render grid
+    tile->update_render_grid(tile, 0);
 }
 
 void free_tile(Tile* tile)
 {
     if (tile != NULL) {
+        free(tile->positions);
         free(tile);
-        // TODO: free game board positions
     }
 }

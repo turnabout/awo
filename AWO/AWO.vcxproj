@@ -42,6 +42,7 @@
     <ClCompile Include="Libs\stb_image.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\tile_render_grid_update.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_clock.c" />
     <ClCompile Include="Src\Game\Clock\Animation_Clock\animation_sub_clock.c" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Factory\tile_factory.h" />
     <ClInclude Include="Src\Game\Clock\Clock_Subscriber\clock_subscriber.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\_tile.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
     <ClInclude Include="Src\Game\Renderer\game_renderer.h" />

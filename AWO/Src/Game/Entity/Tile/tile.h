@@ -6,6 +6,13 @@
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Renderer/game_renderer.h"
 
+/*! @brief Callback function used by tiles to update the render grid.
+ *
+ *  @param[in] tile The tile whose corresponding render grid(s) pixels should be updated.
+ *  @param[in] animation_index The animation index of the frame used to update the render grid.
+ */
+typedef void (*tile_update_render_grid_cb)();
+
 /*! @brief Represents a tile used in the game's tile map system.
  */
 typedef struct Tile {
@@ -15,6 +22,9 @@ typedef struct Tile {
 
     // The coordinates of every instances of this tile present in the game.
     Point* positions;
+
+    // Callback function used to update this tile's corresponding render grid pixels.
+    tile_update_render_grid_cb update_render_grid;
 
     // This tile's type.
     Tile_Type type;
@@ -51,20 +61,6 @@ Tile* create_tile(
  *  @param[in] y The y coordinate to register.
  */
 void register_tile_board_position(Tile* tile, Uint8 x, Uint8 y);
-
-/*! @brief Updates the animation index currently used by the given tile.
- *
- *  @param[in] tile The tile.
- *  @param[in] index The new animation index to update to.
- */
-void update_tile_animation_index(Tile* tile, Uint8 index);
-
-/*! @brief Updates parts of the render grid occupied by the given tile.
- *
- *  @param[in] tile The tile.
- *  @param[in] animation_index The index of the animation frame used to updated the render grid.
- */
-void update_tile_render_grid(Tile* tile, Uint8 animation_index);
 
 /*! @brief Frees memory occupied by a tile.
  *

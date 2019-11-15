@@ -80,9 +80,9 @@ void process_tick_events(Clock_Subscriber* module, Tick_Events_List* events_list
         Tick_Event event = events_list->ticks[i];
         Tiles_List* tiles_list = module->tiles_list[event.clock_index][event.sub_clock_index];
 
-        // Update the animation index of every tile subscribed to this tick event
+        // Update the render grid pixels for every tile subscribed to this tick event
         for (int j = 0; j < tiles_list->tiles_count; j++) {
-            update_tile_animation_index(tiles_list->tiles[j], event.frame_index);
+            tiles_list->tiles[j]->update_render_grid(tiles_list->tiles[j], event.frame_index);
         }
     }
 
