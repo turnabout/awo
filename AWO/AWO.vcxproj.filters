@@ -204,6 +204,9 @@
     <ClCompile Include="Src\Game\Entity\Tile\tile_render_grid_update.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -330,6 +333,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Entity\Tile\_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
