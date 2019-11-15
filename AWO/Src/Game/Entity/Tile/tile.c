@@ -18,7 +18,6 @@ Tile* create_tile(
     tile->variation = variation;
     tile->count = 0;
     tile->positions = NULL;
-    tile->animation_index = 0;
 
     // Get the tile's animation.
     gather_tile_data(tiles_data, type, variation, NULL, NULL, &tile->animation);
@@ -26,15 +25,15 @@ Tile* create_tile(
     return tile;
 }
 
-void update_tile_render_grid(Tile* tile)
+void update_tile_render_grid(Tile* tile, Uint8 animation_index)
 {
     update_tile_layer_pixels_low(
         TILE_LAYER_0,
         tile->positions,
         tile->count,
         (vec2) {
-            tile->animation->frames[tile->animation_index].raw_top_left[0],
-            tile->animation->frames[tile->animation_index].raw_top_left[1]
+            tile->animation->frames[animation_index].raw_top_left[0],
+            tile->animation->frames[animation_index].raw_top_left[1]
         }
     );
 }
@@ -47,10 +46,9 @@ void register_tile_board_position(Tile* tile, Uint8 x, Uint8 y)
     tile->positions[tile->count++].y = y;
 }
 
-void update_tile_animation_index(Tile* tile, Uint8 index)
+void update_tile_animation_index(Tile* tile, Uint8 animation_index)
 {
-    tile->animation_index = index;
-    update_tile_render_grid(tile);
+    update_tile_render_grid(tile, animation_index);
 }
 
 void free_tile(Tile* tile)

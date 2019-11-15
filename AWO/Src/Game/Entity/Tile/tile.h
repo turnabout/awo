@@ -24,9 +24,6 @@ typedef struct Tile {
 
     // How many instances of this tile exist in the game.
     Uint16 count;
-
-    // Current animation index of tiles of this type/variation.
-    Uint8 animation_index;
 } Tile;
 
 /*! @brief Creates a tile.
@@ -65,8 +62,9 @@ void update_tile_animation_index(Tile* tile, Uint8 index);
 /*! @brief Updates parts of the render grid occupied by the given tile.
  *
  *  @param[in] tile The tile.
+ *  @param[in] animation_index The index of the animation frame used to updated the render grid.
  */
-void update_tile_render_grid(Tile* tile);
+void update_tile_render_grid(Tile* tile, Uint8 animation_index);
 
 /*! @brief Frees memory occupied by a tile.
  *

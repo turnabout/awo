@@ -39,7 +39,7 @@ void add_game_board_tile(
 
     // Add the coordinates to the tile's list & update the tile's render grid pixel
     register_tile_board_position(tile, x, y);
-    update_tile_render_grid(tile);
+    update_tile_render_grid(tile, 0);
 }
 
 void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation)
