@@ -39,16 +39,23 @@ Bool init_game_data(Game* game, int stage_index)
     int sprite_sheet_w = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "width")->valueint;
     int sprite_sheet_h = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "height")->valueint;
 
-    // Gather units data
-    game->units_data = create_units_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "units"),
+    // Gather tiles data
+    game->tiles_data = create_tiles_data(
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
         sprite_sheet_w,
         sprite_sheet_h
     );
 
-    // Gather tiles data
-    game->tiles_data = create_tiles_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
+    // Create properties data
+    game->properties_data = create_properties_data(
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "properties"),
+        sprite_sheet_w,
+        sprite_sheet_h
+    );
+
+    // Gather units data
+    game->units_data = create_units_data(
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "units"),
         sprite_sheet_w,
         sprite_sheet_h
     );

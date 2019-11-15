@@ -3,7 +3,6 @@
 #include "Game/Data/Tile/Type/_tile_type_data.h"
 #include "Game/Data/Tile/tiles_data.h"
 
-// All tiles' visual data
 struct Tiles_Data
 {
     Tile_Type_Data* src[TILE_TYPE_COUNT];

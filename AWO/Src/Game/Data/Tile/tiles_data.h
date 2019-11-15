@@ -7,7 +7,8 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/enums.h"
 
-// Holds all of the game's data for tiles.
+/*! @brief Holds all of the game's data for regular tiles.
+ */
 typedef struct Tiles_Data Tiles_Data;
 
 /*! @brief Creates the tiles data object.

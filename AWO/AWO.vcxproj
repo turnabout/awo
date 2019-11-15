@@ -42,6 +42,7 @@
     <ClCompile Include="Libs\stb_image.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
+    <ClCompile Include="Src\Game\Data\Property\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Entity\Tile\tile_render_grid_update.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
@@ -108,6 +109,9 @@
     <ClInclude Include="Src\Game\Data\Animation\animation.h" />
     <ClInclude Include="Src\Game\Data\Palette\palette.h" />
     <ClInclude Include="Src\Game\Data\Palette\_palette.h" />
+    <ClInclude Include="Src\Game\Data\Property\enums.h" />
+    <ClInclude Include="Src\Game\Data\Property\properties_data.h" />
+    <ClInclude Include="Src\Game\Data\Property\_properties_data.h" />
     <ClInclude Include="Src\Game\Data\Tile\enums.h" />
     <ClInclude Include="Src\Game\Data\Tile\tiles_data.h" />
     <ClInclude Include="Src\Game\Data\Tile\Type\Auto_Var\_tile_auto_var_data.h" />

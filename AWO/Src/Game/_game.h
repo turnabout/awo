@@ -9,6 +9,7 @@
 #include "Game/Clock/Clock_Subscriber/clock_subscriber.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
+#include "Game/Data/Property/properties_data.h"
 #include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
 
@@ -29,6 +30,9 @@ struct Game {
 
     // Data for all tiles.
     Tiles_Data* tiles_data;
+
+    // Data for all properties.
+    Properties_Data* properties_data;
 
     // Data for all units.
     Units_Data* units_data;
