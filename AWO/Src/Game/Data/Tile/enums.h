@@ -138,16 +138,3 @@ static const char* tile_var_str_short[] = {
 #define TILE_VAR_NONE -1
 
 #define TILE_VAR_DEFAULT Default
-
-// Tile weather variation
-#define FOREACH_TILE_WEATHER(TILE_W) \
-    TILE_W(Clear) \
-    TILE_W(Snow) \
-    TILE_W(Rain) \
-
-typedef enum {FOREACH_TILE_WEATHER(GENERATE_ENUM)} Weather;
-static const char* weather_str[] = {FOREACH_TILE_WEATHER(GENERATE_STRING)};
-
-#define WEATHER_FIRST Clear
-#define WEATHER_LAST Rain
-#define WEATHER_COUNT WEATHER_LAST + 1

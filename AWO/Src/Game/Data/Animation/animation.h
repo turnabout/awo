@@ -4,24 +4,7 @@
 #include <cJSON.h>
 
 #include "types.h"
-
-/*! @brief Frame object.
- *
- * Describes the source data of a frame within the sprite sheet.
- */
-typedef struct Frame {
-    // This frame's source coordinates, in Normalized Device Coordinates
-    vec4 top_left;
-    vec4 top_right;
-    vec4 bottom_left;
-    vec4 bottom_right;
-
-    // This frame's raw top-left source coordinates, in pixels
-    vec2 raw_top_left;
-
-    // Height of this frame, in pixels.
-    Uint8 width, height;
-} Frame;
+#include "Game/Data/Animation/Frame/frame.h"
 
 /*! @brief Animation object.
  *

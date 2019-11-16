@@ -6,6 +6,7 @@
 
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/enums.h"
+#include "Game/Data/Enums/weather.h"
 
 typedef struct Palette_Texture Palette_Texture;
 
