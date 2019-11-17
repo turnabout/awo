@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Data/Property/_properties_data.h"
+#include "Game/Data/Tile/Property_Tile/_property_tiles_data.h"
 
 Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_w, int ss_h)
 {
@@ -38,9 +38,9 @@ Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_
     return property_type_data;
 }
 
-Properties_Data* create_properties_data(cJSON* properties_data_JSON, int ss_width, int ss_height)
+Property_Tiles_Data* create_property_tiles_data(cJSON* properties_data_JSON, int ss_width, int ss_height)
 {
-    Properties_Data* data = (Properties_Data*)malloc(sizeof(Properties_Data));
+    Property_Tiles_Data* data = (Property_Tiles_Data*)malloc(sizeof(Property_Tiles_Data));
 
     // Loop property types & populate properties source data
     Property_Type property_type = PROPERTY_TYPE_FIRST;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Data/Animation/Frame/frame.h"
-#include "Game/Data/Property/properties_data.h"
+#include "Game/Data/Tile/Property_Tile/property_tiles_data.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
 #include "Game/Data/Unit/enums.h"
@@ -16,7 +16,7 @@ typedef struct Property_Type_Data {
 
 } Property_Type_Data;
 
-struct Properties_Data
+struct Property_Tiles_Data
 {
     // All properties' source data.
     // Structure goes: Property type -> Weather variation -> Army variation

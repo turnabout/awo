@@ -1,9 +1,9 @@
 #include <stdlib.h>
 
-#include "Game/Data/Property/_properties_data.h"
+#include "Game/Data/Tile/Property_Tile/_property_tiles_data.h"
 
 Frame* get_property_frame(
-    Properties_Data* properties_data, 
+    Property_Tiles_Data* properties_data, 
     Property_Type property_type, 
     Weather weather_variation, 
     Unit_Variation army_variation
@@ -24,7 +24,7 @@ Frame* get_property_frame(
     return properties_data->src[property_type]->frames[used_weather][used_army_variation];
 }
 
-void free_properties_data(Properties_Data* properties_data)
+void free_properties_data(Property_Tiles_Data* properties_data)
 {
     for (Property_Type type = PROPERTY_TYPE_FIRST; type < PROPERTY_TYPE_COUNT; type++) {
         for (Weather weather = WEATHER_FIRST; weather < PROPERTY_WEATHER_COUNT; weather++) {

@@ -111,12 +111,6 @@
     <ClCompile Include="Src\Game\Clock\game_clock.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\tiles_data_access.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\init_game_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -133,15 +127,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Data\Palette\create_palette_texture.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Type\tile_type_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Type\Variation\tile_variation_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Type\Auto_Var\tile_auto_var_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Data\Palette\get_palette_index.c">
@@ -207,13 +192,37 @@
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Property\properties_data_creation.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Property\properties_data_access.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Auto_Var\tile_auto_var_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Variation\tile_variation_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\tile_type_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\neutral_tiles_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\neutral_tiles_data_creation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -263,15 +272,6 @@
     <ClInclude Include="Src\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\_tiles_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\tiles_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Data\Unit\enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -285,15 +285,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\Palette\palette.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\Type\_tile_type_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\Type\Variation\_tile_variation_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Data\Tile\Type\Auto_Var\_tile_auto_var_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\Palette\_palette.h">
@@ -347,15 +338,6 @@
     <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Data\Property\properties_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Data\Property\enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Data\Property\_properties_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Data\Enums\weather.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -363,6 +345,48 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\Animation\Frame\_frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\property_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Property_Tile\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\Type\Auto_Var\_tile_auto_var_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\Type\Variation\_tile_variation_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\Type\_tile_type_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\neutral_tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Property_Tile\property_tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\_tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\_neutral_tiles_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Property_Tile\_property_tiles_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

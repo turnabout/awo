@@ -42,12 +42,6 @@ Bool init_game_data(Game* game, int stage_index)
     // Gather tiles data
     game->tiles_data = create_tiles_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
-        sprite_sheet_w,
-        sprite_sheet_h
-    );
-
-    // Create properties data
-    game->properties_data = create_properties_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "properties"),
         sprite_sheet_w,
         sprite_sheet_h
