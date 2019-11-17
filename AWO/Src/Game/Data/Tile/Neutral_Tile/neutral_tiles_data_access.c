@@ -28,7 +28,11 @@ Tile_Variation_Data* get_tile_var_data(Tiles_Data* tiles_data, Tile_Type type, T
 
     char* key = (char*)tile_var_str_short[var];
 
-    if (hashmap_get(tiles_data->neutral_tiles->src[type]->vars_map, key, (void**)(&tile_var_data)) != MAP_OK) {
+    if (hashmap_get(
+        tiles_data->neutral_tiles->src[type]->vars_map, 
+        key, 
+        (void**)(&tile_var_data)) != MAP_OK
+    ) {
         return NULL;
     } else {
         return tile_var_data;
@@ -141,7 +145,7 @@ void gather_tile_data(
 void free_tiles_data(Tiles_Data* tiles_data)
 {
     if (tiles_data != NULL) {
-        for (Tile_Type type = TILE_TYPE_FIRST; type < TILE_TYPE_COUNT; type++) {
+        for (Tile_Type type = NEUTRAL_TILE_TYPE_FIRST; type < NEUTRAL_TILE_TYPE_COUNT; type++) {
             free_tile_type_data(tiles_data->neutral_tiles->src[type]);
         }
 
@@ -171,7 +175,7 @@ void print_tile_type(Tiles_Data* td, Tile_Type type)
 
 void print_tiles_data(Tiles_Data* td)
 {
-    for (Tile_Type type = TILE_TYPE_FIRST; type <= TILE_TYPE_LAST; type++) {
+    for (Tile_Type type = NEUTRAL_TILE_TYPE_FIRST; type <= NEUTRAL_TILE_TYPE_LAST; type++) {
         print_tile_type(td, type);
     }
 }

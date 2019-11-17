@@ -47,7 +47,7 @@ Neutral_Tiles_Data* create_neutral_tiles_data(cJSON* tiles_data_JSON, int ss_wid
     map_t variations_list_hashmap = create_variations_list_hashmap();
 
     // Gather all data from JSON
-    Tile_Type tile_type = TILE_TYPE_FIRST;
+    Tile_Type tile_type = NEUTRAL_TILE_TYPE_FIRST;
 
     // Loop tile types
     cJSON* src_JSON = cJSON_GetObjectItemCaseSensitive(tiles_data_JSON, "src");

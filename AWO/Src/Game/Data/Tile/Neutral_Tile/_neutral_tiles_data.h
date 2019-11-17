@@ -5,5 +5,5 @@
 
 struct Neutral_Tiles_Data
 {
-    Tile_Type_Data* src[TILE_TYPE_COUNT];
+    Tile_Type_Data* src[NEUTRAL_TILE_TYPE_COUNT];
 };
