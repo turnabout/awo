@@ -2,7 +2,9 @@
 
 #include <cJSON.h>
 
+#include "Game/Data/Unit/enums.h"
 #include "Game/Data/Property/enums.h"
+#include "Game/Data/Enums/weather.h"
 
 /*! @brief Holds all of the game's data for properties.
  */
@@ -16,3 +18,24 @@ typedef struct Properties_Data Properties_Data;
  *  @return The generated properties data object.
  */
 Properties_Data* create_properties_data(cJSON* properties_data_JSON, int ss_width, int ss_height);
+
+/*! @brief Retrieves the frame corresponding to the given property info.
+ *
+ *  @param[in] properties_data The properties data object.
+ *  @param[in] property_type The property type of the frame to get.
+ *  @param[in] weather_variation The weather variation of the frame to get.
+ *  @param[in] army_variation The army variation of the frame to get.
+ *  @return The frame representing the property corresponding to the given arguments.
+ */
+Frame* get_property_frame(
+    Properties_Data* properties_data, 
+    Property_Type property_type, 
+    Weather weather_variation, 
+    Unit_Variation army_variation
+);
+
+/*! @brief Frees the memory occupied by the properties data object.
+ *
+ *  @param[in] properties_data The properties data object.
+ */
+void free_properties_data(Properties_Data* properties_data);

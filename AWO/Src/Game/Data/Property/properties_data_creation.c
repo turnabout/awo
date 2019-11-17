@@ -4,17 +4,19 @@
 
 Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_w, int ss_h)
 {
-    Property_Type_Data* property_type = (Property_Type_Data*)malloc(sizeof(Property_Type_Data));
+    Property_Type_Data* property_type_data = (Property_Type_Data*)malloc(
+        sizeof(Property_Type_Data)
+    );
 
     // Loop weather variations
     cJSON* property_weather_var_JSON;
     Weather weather = WEATHER_FIRST;
     cJSON_ArrayForEach(property_weather_var_JSON, property_type_JSON)
     {
-        property_type->army_variation_count = cJSON_GetArraySize(property_weather_var_JSON);
+        property_type_data->army_variation_count = cJSON_GetArraySize(property_weather_var_JSON);
 
-        property_type->frames[weather] = (Frame**)malloc(
-            sizeof(Frame*) * property_type->army_variation_count
+        property_type_data->frames[weather] = (Frame**)malloc(
+            sizeof(Frame*) * property_type_data->army_variation_count
         );
 
         // Loop army variations
@@ -23,7 +25,7 @@ Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_
         
         cJSON_ArrayForEach(army_var_JSON, property_weather_var_JSON)
         {
-            property_type->frames[weather][army_variation++] = create_frame(
+            property_type_data->frames[weather][army_variation++] = create_frame(
                 army_var_JSON,
                 ss_w,
                 ss_h
@@ -33,7 +35,7 @@ Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_
         weather++;
     }
 
-    return property_type;
+    return property_type_data;
 }
 
 Properties_Data* create_properties_data(cJSON* properties_data_JSON, int ss_width, int ss_height)
