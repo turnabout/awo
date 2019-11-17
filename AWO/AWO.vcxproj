@@ -47,7 +47,9 @@
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile_render_grid_update.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile_render_grid_update.c" />
     <ClCompile Include="Src\Game\Entity\Tile\tile_render_grid_update.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
@@ -133,11 +135,14 @@
     <ClInclude Include="Src\Game\Data\Unit\units_data.h" />
     <ClInclude Include="Src\Game\Data\Unit\_units_data.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_neutral_tile_render_grid_update.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\property_tile.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_property_tile_render_grid_update.h" />
     <ClInclude Include="Src\Game\Entity\Tile\tile.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Factory\tile_factory.h" />
     <ClInclude Include="Src\Game\Clock\Clock_Subscriber\clock_subscriber.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\tile_render_grid_update.h" />
     <ClInclude Include="Src\Game\Entity\Tile\_tile.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />

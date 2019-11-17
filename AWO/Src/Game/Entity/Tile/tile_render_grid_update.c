@@ -1,7 +1,7 @@
 #include "conf.h"
 #include "Game/Entity/Tile/_tile.h"
 
-void update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
+void _old_update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
 {
     update_tile_layer_pixels_low(
         TILE_LAYER_0,
@@ -14,7 +14,7 @@ void update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
     );
 }
 
-void update_multi_layered_tile_render_grid(Tile* tile, Uint8 animation_index)
+void _old_update_multi_layered_tile_render_grid(Tile* tile, Uint8 animation_index)
 {
     update_tile_layer_pixels_low(
         TILE_LAYER_0,

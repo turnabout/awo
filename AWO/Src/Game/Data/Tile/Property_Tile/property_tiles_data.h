@@ -6,6 +6,8 @@
 #include "Game/Data/Tile/Property_Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
 
+typedef struct Tiles_Data Tiles_Data;
+
 /*! @brief Holds all of the game's data for properties.
  */
 typedef struct Property_Tiles_Data Property_Tiles_Data;
@@ -25,14 +27,14 @@ Property_Tiles_Data* create_property_tiles_data(
 
 /*! @brief Retrieves the frame corresponding to the given property info.
  *
- *  @param[in] properties_data The properties data object.
+ *  @param[in] tiles_data The tiles data object.
  *  @param[in] property_type The property type of the frame to get.
  *  @param[in] weather_variation The weather variation of the frame to get.
  *  @param[in] army_variation The army variation of the frame to get.
  *  @return The frame representing the property corresponding to the given arguments.
  */
 Frame* get_property_frame(
-    Property_Tiles_Data* properties_data, 
+    Tiles_Data* tiles_data, 
     Property_Type property_type, 
     Weather weather_variation, 
     Unit_Variation army_variation
@@ -40,6 +42,6 @@ Frame* get_property_frame(
 
 /*! @brief Frees the memory occupied by the properties data object.
  *
- *  @param[in] properties_data The properties data object.
+ *  @param[in] tiles_data The tiles data object.
  */
-void free_properties_data(Property_Tiles_Data* properties_data);
+void free_properties_data(Tiles_Data* tiles_data);

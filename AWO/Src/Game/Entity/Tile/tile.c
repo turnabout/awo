@@ -26,9 +26,9 @@ Tile* create_tile(
     // Set the appropriate render grid update callback function
     // Use multi-layered cb if height of frame is that of two regular-sized frames
     if (tile->animation->frames->height == (DEFAULT_TILE_SIZE * 2)) {
-        tile->update_render_grid = update_multi_layered_tile_render_grid;
+        tile->update_render_grid = _old_update_multi_layered_tile_render_grid;
     } else {
-        tile->update_render_grid = update_regular_tile_render_grid;
+        tile->update_render_grid = _old_update_regular_tile_render_grid;
     }
 
     return tile;

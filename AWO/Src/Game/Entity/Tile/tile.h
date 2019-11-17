@@ -5,13 +5,16 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Renderer/game_renderer.h"
+#include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
+#include "Game/Entity/Tile/Property_Tile/property_tile.h"
+#include "Game/Entity/Tile/tile_render_grid_update.h"
 
-/*! @brief Callback function used by tiles to update the render grid.
- *
- *  @param[in] tile The tile whose corresponding render grid(s) pixels should be updated.
- *  @param[in] animation_index The animation index of the frame used to update the render grid.
+/*! @brief Represents the different types of tile contents.
  */
-typedef void (*tile_update_render_grid_cb)();
+typedef enum Tile_Contents_Type {
+    Tile_Contents_Neutral,
+    Tile_Contents_Property
+} Tile_Contents_Type;
 
 /*! @brief Represents a tile used in the game's tile map system.
  */
@@ -34,6 +37,13 @@ typedef struct Tile {
 
     // How many instances of this tile exist in the game.
     Uint16 count;
+
+    // The contents of this tile.
+    // Can either be a Neutral_Tile or Property_Tile.
+    void* tile_contents;
+
+    // The type of this tile's contents.
+    Tile_Contents_Type tile_contents_type;
 } Tile;
 
 /*! @brief Creates a tile.
