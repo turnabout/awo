@@ -36,6 +36,7 @@ Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tile
 
     // Validate players
     size_t player_count = 0;
+    Uint8 player_armies_flags = 0;
 
     while (1) {
 
@@ -50,6 +51,12 @@ Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tile
             return FALSE;
         }
 
+        // Duplicate army
+        if ((1 << player_army) & player_armies_flags) {
+            return FALSE;
+        }
+
+        player_armies_flags |= (1 << player_army);
         player_count++;
     }
 
