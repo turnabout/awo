@@ -129,9 +129,6 @@
     <ClCompile Include="Src\Game\Entity\Tile\tile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Board\game_board.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -166,9 +163,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\tile_render_grid_update.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c">
@@ -293,9 +287,6 @@
     <ClInclude Include="Src\Game\Entity\Tile\tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Hashmap\tiles_hashmap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Renderer\game_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -318,9 +309,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Stage\_stage_descriptor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\_tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h">

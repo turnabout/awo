@@ -25,6 +25,7 @@ typedef struct Property_Tile {
 
 /*! @brief Creates a property tile.
  *
+ *  @param[in] parent_tile Reference to the parent tile entity holding this property tile.
  *  @param[in] game_clock The game's clock struct.
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] property_type The type of this property.
@@ -33,9 +34,10 @@ typedef struct Property_Tile {
  *  @return The created property tile.
  */
 Property_Tile* create_property_tile(
+    Tile* parent_tile,
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
-    Property_Type property_type, 
+    Property_Type property_type,
     Unit_Variation army,
     tile_update_render_grid_cb* update_render_grid_cb
 );

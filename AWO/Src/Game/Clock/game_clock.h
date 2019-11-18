@@ -31,8 +31,15 @@ void update_game_clock(Game_Clock* game_clock, float delta_time);
  *
  *  @param[in] game_clock The game clock.
  *  @param[in] tile The tile object.
+ *  @param[in] clock_index Index of the animation clock the tile should subscribe to.
+ *  @param[in] sub_clock_index Index of the animation sub-clock the tile should subscribe to.
  */
-void register_game_clock_tile(Game_Clock* game_clock, Tile* tile);
+void register_game_clock_tile(
+    Game_Clock* game_clock, 
+    Tile* tile,
+    Animation_Clock_Index clock_index,
+    Animation_Sub_Clock_Index sub_clock_index
+);
 
 /*! @brief Frees the game clock's allocated memory.
  *

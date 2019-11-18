@@ -27,21 +27,13 @@ Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(
     return module;
 }
 
-void register_clock_subscriber_tile(Game_Clock_Tile_Subscriber* module, Tile* tile)
+void register_clock_subscriber_tile(
+    Game_Clock_Tile_Subscriber* module, 
+    Tile* tile,
+    Animation_Clock_Index clock_index,
+    Animation_Sub_Clock_Index sub_clock_index
+)
 {
-    // Get the tile's clock/sub-clock index.
-    Animation_Clock_Index clock_index;
-    Animation_Sub_Clock_Index sub_clock_index;
-
-    gather_tile_data(
-        module->tiles_data,
-        tile->type,
-        tile->variation,
-        &clock_index,
-        &sub_clock_index,
-        NULL
-    );
-
     // No need to register the tile if no clock or sub clock
     if (clock_index == No_Clock || sub_clock_index == No_Sub_Clock) {
         return;
@@ -60,9 +52,6 @@ void register_clock_subscriber_tile(Game_Clock_Tile_Subscriber* module, Tile* ti
 
 void update_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* clock_subscriber)
 {
-    print_tick_events_list(clock_subscriber->tick_events);
-
-
     // Loop the current tick events
     for (int i = 0; i < clock_subscriber->tick_events->ticks_count; i++) {
         Tick_Event event = clock_subscriber->tick_events->ticks[i];
@@ -73,9 +62,6 @@ void update_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* clock_subscri
             tiles_list->tiles[j]->update_render_grid(tiles_list->tiles[j], event.frame_index);
         }
     }
-
-    // Reset the count of the now-processed tick events list
-    // events_list->ticks_count = 0;
 }
 
 void free_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* module)

@@ -47,8 +47,15 @@ Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(
  *  
  *  @param[in] clock_subscriber The clock subscriber module.
  *  @param[in] tile The tile to register with the module.
+ *  @param[in] clock_index Index of the animation clock the tile should subscribe to.
+ *  @param[in] sub_clock_index Index of the animation sub-clock the tile should subscribe to.
  */
-void register_clock_subscriber_tile(Game_Clock_Tile_Subscriber* clock_subscriber, Tile* tile);
+void register_clock_subscriber_tile(
+    Game_Clock_Tile_Subscriber* module,
+    Tile* tile,
+    Animation_Clock_Index clock_index,
+    Animation_Sub_Clock_Index sub_clock_index
+);
 
 /*! @brief Update entities registered with the module, processing current tick events.
  *  

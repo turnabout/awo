@@ -27,6 +27,7 @@ typedef struct Neutral_Tile {
 
 /*! @brief Creates a neutral tile (plain/river/etc).
  *
+ *  @param[in] parent_tile Reference to the parent tile entity holding this property tile.
  *  @param[in] game_clock The game's clock struct.
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] tile_type The type of the created tile.
@@ -34,6 +35,7 @@ typedef struct Neutral_Tile {
  *  @return The created neutral tile.
  */
 Neutral_Tile* create_neutral_tile(
+    Tile* parent_tile,
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Type type, 
