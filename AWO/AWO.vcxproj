@@ -142,6 +142,7 @@
     <ClInclude Include="Src\Game\Entity\Tile\tile_render_grid_update.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
+    <ClInclude Include="Src\Game\player_index_enum.h" />
     <ClInclude Include="Src\Game\Renderer\game_renderer.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\render_grid.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h" />

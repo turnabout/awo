@@ -8,6 +8,35 @@
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
 
+/*! @brief Texture containing every row of palette data used by the game.
+ *  Structure:
+ *   0: Clear
+ *   1: Clear (Fog)
+ *   2: Snow
+ *   3: Snow (Fog)
+ *   4: Rain
+ *   5: Rain (Fog)
+ *   6: Active Tile
+ *   7: Active Tile (Fog)
+ *   8: Player 0 Units
+ *   9: Player 0 Units (Done)
+ *  10: Player 1 Units
+ *  11: Player 1 Units (Done)
+ *  12: Player 2 Units
+ *  13: Player 2 Units (Done)
+ *  14: Player 3 Units
+ *  15: Player 3 Units (Done)
+ *  16: Player 0 Property
+ *  17: Player 0 Property (Fog)
+ *  18: Player 1 Property
+ *  19: Player 1 Property (Fog)
+ *  20: Player 2 Property
+ *  21: Player 2 Property (Fog)
+ *  22: Player 3 Property
+ *  23: Player 3 Property (Fog)
+ *  24: Player Neutral Property
+ *  25: Player Neutral Property (Fog)
+ */
 typedef struct Palette_Texture Palette_Texture;
 
 /*! @brief Creates the main palette texture used to color swap sprites.

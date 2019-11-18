@@ -392,6 +392,9 @@
     <ClInclude Include="Src\Game\Clock\Tile_Subscriber\_game_clock_tile_subscriber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Game\player_index_enum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />

@@ -27,6 +27,8 @@ void update_properties_weather_colors(
 )
 {
     // TODO
+    // Grab the colors from the currently active tile palette texture and apply to all property
+    // palettes
 }
 
 void update_active_tile_palette(Weather weather)

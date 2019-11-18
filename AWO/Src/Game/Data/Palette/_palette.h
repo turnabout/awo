@@ -1,7 +1,7 @@
 #pragma once
 
 #define PALETTE_TEX_WIDTH  256
-#define PALETTE_TEX_HEIGHT 32
+#define PALETTE_TEX_HEIGHT  32
 
 // Counts of every different types of palettes
 #define UNIT_PALETTE_COUNT (UNIT_VAR_COUNT) * (2) // 2 of each unit variation (normal / done)
@@ -11,6 +11,11 @@
 // Index of the texture rows reserved for the currently active tile palette
 #define ACTIVE_TILE_PALETTE_INDEX     PROP_PALETTE_COUNT
 #define ACTIVE_FOG_TILE_PALETTE_INDEX PROP_PALETTE_COUNT + 1
+#define ACTIVE_TILE_PALETTE_COUNT     2
+
+// Index of the texture rows reserved for the players
+// #define PLAYERS_PALETTES_INDEX_START PROP_PALETTE_COUNT + ACTIVE_TILE_PALETTE_COUNT
+// #define PLAYERS_PALETTE_COUNT PROP_PALETTE_COUNT
 
 #include "Game/Data/Palette/palette.h"
 
