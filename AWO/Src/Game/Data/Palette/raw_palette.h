@@ -101,19 +101,8 @@ GLint get_tile_palette_index_i(Weather weather, GLboolean fog);
  */
 GLint get_property_palette_index_i(Unit_Variation unit_variation);
 
-/*! @brief Updates the black pixel on the palette at the given index.
+/*! @brief Gets the integer palette index for the fog property palette row.
  *
- * Note: The palettes texture must be bound before calling this function.
- *
- *  @param[in] palette_index Index of the palette to update.
- *  @param[in] new_color Color to replace the current black pixel value with.
+ *  @return The integer index of the fog property palette.
  */
-void update_unit_palette_black_pixel(GLint palette_index, GLubyte new_color);
-
-/*! @brief Updates the currently active tile palette.
- *
- * Note: The palettes texture must be bound before calling this function.
- *
- *  @param[in] weather The weather of the new active tile palette.
- */
-void update_active_tile_palette(Weather weather);
+GLint get_raw_fog_property_palette_index_i();

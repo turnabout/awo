@@ -5,6 +5,7 @@
 #include <cJSON.h>
 
 #include "conf.h"
+#include "Game/player_index_enum.h"
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
@@ -22,15 +23,11 @@
  *   8: Player 3 Units
  *   9: Player 3 Units (Done)
  *  10: Player 0 Property
- *  11: Player 0 Property (Fog)
  *  12: Player 1 Property
- *  13: Player 1 Property (Fog)
  *  14: Player 2 Property
- *  15: Player 2 Property (Fog)
  *  16: Player 3 Property
- *  17: Player 3 Property (Fog)
  *  18: Player Neutral Property
- *  19: Player Neutral Property (Fog)
+ *  19: Fog property
  */
 
 /*! @brief Creates the palette texture used during a game.
@@ -47,6 +44,13 @@ GLuint create_game_palette_texture(
     Weather active_weather, 
     Unit_Variation player_armies[MAX_PLAYER_COUNT]
 );
+
+GLfloat get_active_tile_palette_index(GLboolean fog);
+
+GLuint get_active_tile_palette_index_i(GLboolean fog);
+GLuint get_player_unit_palette_index_i(Player_Index player_index, GLboolean done);
+GLuint get_player_property_palette_index_i(Player_Index player_index);
+GLuint get_fog_property_palette_index_i();
 
 /*! @brief Updates the black pixel on the palette at the given index.
  *

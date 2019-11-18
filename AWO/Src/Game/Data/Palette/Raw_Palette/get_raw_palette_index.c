@@ -31,3 +31,8 @@ GLint get_property_palette_index_i(Unit_Variation unit_variation)
 {
     return UNIT_PALETTE_COUNT + TILE_PALETTE_COUNT + unit_variation;
 }
+
+GLint get_raw_fog_property_palette_index_i()
+{
+    return (UNIT_PALETTE_COUNT + TILE_PALETTE_COUNT + PROP_PALETTE_COUNT) - 1;
+}

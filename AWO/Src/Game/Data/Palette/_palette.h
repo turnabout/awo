@@ -8,15 +8,6 @@
 #define TILE_PALETTE_COUNT (WEATHER_COUNT)  * (2) // 2 of each tile variation (normal / foggy)
 #define PROP_PALETTE_COUNT UNIT_VAR_COUNT + 2     // + 2 is neutral & fogged
 
-// Index of the texture rows reserved for the currently active tile palette
-#define ACTIVE_TILE_PALETTE_INDEX     PROP_PALETTE_COUNT
-#define ACTIVE_FOG_TILE_PALETTE_INDEX PROP_PALETTE_COUNT + 1
-#define ACTIVE_TILE_PALETTE_COUNT     2
-
-// Index of the texture rows reserved for the players
-// #define PLAYERS_PALETTES_INDEX_START PROP_PALETTE_COUNT + ACTIVE_TILE_PALETTE_COUNT
-// #define PLAYERS_PALETTE_COUNT PROP_PALETTE_COUNT
-
 #include "Game/Data/Palette/raw_palette.h"
 #include "Game/Data/Palette/game_palette.h"
 
@@ -30,9 +21,6 @@ typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
  *  texture Normalized Device Coordinates.
  */
 void init_palette_NDC_indexes();
-
-void init_raw_palette_NDC_indexes();
-
 
 /*! @brief Gets the NDC palette index at the given row.
  *

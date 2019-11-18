@@ -49,7 +49,6 @@ static const char* unit_var_str[] = {FOREACH_UNIT_VAR(GENERATE_STRING)};
 
 // Additional unit variations for property palettes
 #define UNIT_VAR_NEUTRAL     UNIT_VAR_LAST + 1
-#define UNIT_VAR_NEUTRAL_FOG UNIT_VAR_LAST + 2
 
 // Unit Animation
 #define FOREACH_UNIT_ANIM(UNITANIM) \
