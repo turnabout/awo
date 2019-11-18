@@ -1,7 +1,7 @@
 #pragma once
 
 #include "types.h"
-#include "Game/Clock/Animation_Clock/enums.h"
+#include "Game/Clock/enums.h"
 
 // Event generated whenever an animation sub-clock ticks.
 typedef struct Tick_Event {
@@ -27,3 +27,11 @@ typedef struct Tick_Events_List {
     Uint8 ticks_count;
 
 } Tick_Events_List;
+
+#ifdef _DEBUG
+/*! @brief Prints the contents of the given list of tick events.
+ *
+ *  @param[in] tick_events_list The list of tick events to print.
+ */
+void print_tick_events_list(Tick_Events_List* tick_events_list);
+#endif

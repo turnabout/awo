@@ -6,7 +6,7 @@
 
 #include "Game/Data/Tile/Neutral_Tile/Type/Auto_Var/_tile_auto_var_data.h"
 #include "Game/Data/Tile/enums.h"
-#include "Game/Clock/Animation_Clock/enums.h"
+#include "Game/Clock/enums.h"
 
 // A single tile's visual data.
 typedef struct Tile_Type_Data

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Board/game_board.h"
-#include "Game/Entity/Tile/Factory/tile_factory.h"
+#include "Game/Entity/Tile/tile.h"
 
 typedef Tile** Tile_Row;
 
@@ -9,11 +9,11 @@ struct Game_Board {
     // Contains all tiles on the game board. tiles[board_y][board_x]
     Tile_Row* tiles_grid;
 
-    // Factory responsible for getting new tiles
-    Tile_Factory* tile_factory;
-
     // Descriptor of the loaded stage.
     Stage_Descriptor* stage;
+
+    // Reference to the game clock module.
+    Game_Clock* game_clock;
 
     // Indices of the currently active tile and fog tile palettes.
     GLfloat active_tile_palette_index, active_fog_tile_palette_index;

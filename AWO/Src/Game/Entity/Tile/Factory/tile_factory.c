@@ -15,13 +15,13 @@ struct Tile_Factory {
     Game_Clock* game_clock;
 
     // Module subscribing animated tiles to the game clock.
-    Clock_Subscriber* tiles_clock_sub;
+    Game_Clock_Tile_Subscriber* tiles_clock_sub;
 };
 
 Tile_Factory* create_tile_factory(
     Tiles_Data* tiles_data, 
     Game_Clock* game_clock,
-    Clock_Subscriber* tiles_clock_sub
+    Game_Clock_Tile_Subscriber* tiles_clock_sub
 )
 {
     Tile_Factory* factory = malloc(sizeof(Tile_Factory));

@@ -6,7 +6,6 @@
 #include "Game/game.h"
 #include "Game/Board/game_board.h"
 #include "Game/Clock/game_clock.h"
-#include "Game/Clock/Clock_Subscriber/clock_subscriber.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
 #include "Game/Inputs/inputs.h"
@@ -22,10 +21,6 @@ struct Game {
 
     // The game's clock used to update and synchronize entities' animations.
     Game_Clock* clock;
-
-    // Module subscribed to the game clock. Used to tell tiles of certain type/variation when they
-    // need to update their sections of the render map.
-    Clock_Subscriber* tiles_clock_sub;
 
     // Data for all tiles.
     Tiles_Data* tiles_data;

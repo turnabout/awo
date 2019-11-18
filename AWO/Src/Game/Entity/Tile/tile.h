@@ -40,10 +40,10 @@ typedef struct Tile {
 
     // The contents of this tile.
     // Can either be a Neutral_Tile or Property_Tile.
-    void* tile_contents;
+    void* contents;
 
     // The type of this tile's contents.
-    Tile_Contents_Type tile_contents_type;
+    Tile_Contents_Type contents_type;
 } Tile;
 
 /*! @brief Creates a tile.

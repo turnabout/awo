@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Clock/Animation_Clock/_animation_clock.h"
+#include "Game/Clock/Publisher/Animation_Clock/_animation_clock.h"
 
 Animation_Clock* create_animation_clock(
     const cJSON* JSON,

@@ -2,20 +2,23 @@
 
 #include <cJSON.h>
 
-#include "Game/Clock/Animation_Clock/enums.h"
+#include "Game/Clock/enums.h"
 #include "Game/Clock/Tick_Event/tick_event.h"
 
 /*! @brief Main game clock used for updating and keeping animations synchronized.
  */
 typedef struct Game_Clock Game_Clock;
 
+typedef struct Tiles_Data Tiles_Data;
+typedef struct Tile Tile;
+
 /*! @brief Creates the game clock along with its animation clocks.
  *
- *  @param[in] clock_data_cJSON The data JSON object describing the game clock and its animation 
- *  clocks.
- *  @param[in] delta_time Time elapsed since the last game frame.
+ *  @param[in] clock_data_cJSON JSON describing the game clock and its animation clocks.
+ *  @param[in] tiles_data The game's tiles data object.
+ *  @return The created game clock object.
  */
-Game_Clock* create_game_clock(const cJSON* clock_data_JSON);
+Game_Clock* create_game_clock(const cJSON* clock_data_JSON, Tiles_Data* tiles_data);
 
 /*! @brief Keeps the game clock's current tick updated, along with its animation clocks.
  *
@@ -24,15 +27,12 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON);
  */
 void update_game_clock(Game_Clock* game_clock, float delta_time);
 
-Tick_Events_List* get_game_clock_tick_event_list(Game_Clock* game_clock);
-
-#ifdef _DEBUG
-/*! @brief Prints the contents of the given list of tick events.
+/*! @brief Registers the given tile with the game clock module to keep its animation updated.
  *
- *  @param[in] tick_events_list The list of tick events to print.
+ *  @param[in] game_clock The game clock.
+ *  @param[in] tile The tile object.
  */
-void print_tick_events_list(Tick_Events_List* tick_events_list);
-#endif
+void register_game_clock_tile(Game_Clock* game_clock, Tile* tile);
 
 /*! @brief Frees the game clock's allocated memory.
  *

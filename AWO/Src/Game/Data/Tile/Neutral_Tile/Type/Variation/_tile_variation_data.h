@@ -5,7 +5,7 @@
 
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Animation/animation.h"
-#include "Game/Clock/Animation_Clock/enums.h"
+#include "Game/Clock/enums.h"
 
 // A tile variation's visual data
 typedef struct Tile_Variation_Data

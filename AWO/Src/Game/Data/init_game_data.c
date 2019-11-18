@@ -61,7 +61,8 @@ Bool init_game_data(Game* game, int stage_index)
 
     // Create game clock
     game->clock = create_game_clock(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks"),
+        game->tiles_data
     );
 
     // Attach string of the stage to load

@@ -6,15 +6,15 @@
 
 Game_Board* create_game_board(
     Tiles_Data* tiles_data, 
-    Game_Clock* game_clock, 
-    Clock_Subscriber* tiles_clock_sub
+    Game_Clock* game_clock
 )
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
-    game_board->tile_factory = create_tile_factory(tiles_data, game_clock, tiles_clock_sub);
+    // game_board->tile_factory = create_tile_factory(tiles_data, game_clock, tiles_clock_sub);
     game_board->active_tile_palette_index = get_active_tile_palette_index(0);
     game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);
+    game_board->game_clock = game_clock;
 
     return game_board;
 }
@@ -32,13 +32,13 @@ void add_game_board_tile(
 )
 {
     // Get tile of given type and variation
-    Tile* tile = get_tile_factory_tile(game_board->tile_factory, type, variation);
+    // Tile* tile = get_tile_factory_tile(game_board->tile_factory, type, variation);
 
     // Add tile to tiles grid
-    game_board->tiles_grid[y][x] = tile;
+    // game_board->tiles_grid[y][x] = tile;
 
     // Add the coordinates to the tile's list
-    register_tile_board_position(tile, x, y);
+    // register_tile_board_position(tile, x, y);
 }
 
 void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation)
@@ -53,8 +53,6 @@ void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variatio
 void free_game_board(Game_Board* game_board)
 {
     if (game_board != NULL) {
-        free_tile_factory(game_board->tile_factory);
-
         for (int i = 0; i < game_board->stage->height; i++) {
             free(game_board->tiles_grid[i]);
         }
