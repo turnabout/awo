@@ -1,7 +1,7 @@
 #include <cglm/cglm.h>
 
 #include "Game/_game.h"
-#include "Game/Data/Palette/palette.h"
+#include "Game/Data/Palette/game_palette.h"
 
 static GLfloat scale = 16.0f;
 
@@ -20,7 +20,7 @@ void render_game(Game* game)
     static GLfloat offset_y = 0.0f;
 
     if (!flag) {
-        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        glBindTexture(GL_TEXTURE_2D, game->raw_palette_texture);
         update_active_tile_palette(Clear);
         flag = 1;
     }
@@ -28,17 +28,17 @@ void render_game(Game* game)
     render_tiles_layers();
 
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
-        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        glBindTexture(GL_TEXTURE_2D, game->raw_palette_texture);
         update_active_tile_palette(Clear);
     }
 
     if (get_key_state(KEY_S) == BUTTON_DOWN_START) {
-        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        glBindTexture(GL_TEXTURE_2D, game->raw_palette_texture);
         update_active_tile_palette(Rain);
     }
 
     if (get_key_state(KEY_D) == BUTTON_DOWN_START) {
-        glBindTexture(GL_TEXTURE_2D, game->palettes_texture);
+        glBindTexture(GL_TEXTURE_2D, game->raw_palette_texture);
         update_active_tile_palette(Snow);
     }
 

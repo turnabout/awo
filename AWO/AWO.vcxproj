@@ -44,6 +44,9 @@
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
+    <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette_texture.c" />
+    <ClCompile Include="Src\Game\Data\Palette\Game_Palette\get_game_palette_index.c" />
+    <ClCompile Include="Src\Game\Data\Palette\get_palette_NDC_index.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
@@ -59,9 +62,9 @@
     <ClCompile Include="Src\Game\Clock\Publisher\game_clock_publisher.c" />
     <ClCompile Include="Src\Game\Data\Animation\animation.c" />
     <ClCompile Include="Src\Game\Data\init_game_data.c" />
-    <ClCompile Include="Src\Game\Data\Palette\create_palette_texture.c" />
-    <ClCompile Include="Src\Game\Data\Palette\get_palette_index.c" />
-    <ClCompile Include="Src\Game\Data\Palette\update_palette_texture.c" />
+    <ClCompile Include="Src\Game\Data\Palette\Raw_Palette\create_raw_palette_texture.c" />
+    <ClCompile Include="Src\Game\Data\Palette\Raw_Palette\get_raw_palette_index.c" />
+    <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette_texture.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\neutral_tiles_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\neutral_tiles_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Auto_Var\tile_auto_var_data.c" />
@@ -116,7 +119,8 @@
     <ClInclude Include="Src\Game\Data\Animation\Frame\frame.h" />
     <ClInclude Include="Src\Game\Data\Animation\Frame\_frame.h" />
     <ClInclude Include="Src\Game\Data\Enums\weather.h" />
-    <ClInclude Include="Src\Game\Data\Palette\palette.h" />
+    <ClInclude Include="Src\Game\Data\Palette\game_palette.h" />
+    <ClInclude Include="Src\Game\Data\Palette\raw_palette.h" />
     <ClInclude Include="Src\Game\Data\Palette\_palette.h" />
     <ClInclude Include="Src\Game\Data\Tile\enums.h" />
     <ClInclude Include="Src\Game\Data\Tile\Property_Tile\enums.h" />

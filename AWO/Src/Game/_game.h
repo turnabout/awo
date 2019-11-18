@@ -35,7 +35,7 @@ struct Game {
     int window_width, window_height;
 
     // Texture object for palettes
-    GLuint palettes_texture;
+    GLuint raw_palette_texture;
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.

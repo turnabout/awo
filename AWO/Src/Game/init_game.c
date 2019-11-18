@@ -30,7 +30,7 @@ Game* init_game(int window_width, int window_height)
     init_game_renderer(
         game->stage->width,
         game->stage->height,
-        game->palettes_texture,
+        game->raw_palette_texture,
         game->tiles_data
     );
 

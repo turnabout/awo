@@ -4,7 +4,7 @@
 
 #include "conf.h"
 #include "Utilities/utilities.h"
-#include "Game/Data/Palette/palette.h"
+#include "Game/Data/Palette/raw_palette.h"
 #include "Game/_game.h"
 
 Bool get_data_JSON(const cJSON **data_JSON)
@@ -54,8 +54,8 @@ Bool init_game_data(Game* game, int stage_index)
         sprite_sheet_h
     );
 
-    // Use palette data to create palette color hashmap texture
-    game->palettes_texture = create_palette_texture(
+    // Get the raw palette data and store it
+    game->raw_palette_texture = create_raw_palette_texture(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "palettes")
     );
 

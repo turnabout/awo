@@ -18,7 +18,7 @@ typedef enum Tile_Layer_Index {
 void init_game_renderer(
     int tile_layers_width, 
     int tile_layers_height, 
-    GLuint palettes_texture,
+    GLuint raw_palette_texture,
     Tiles_Data* tiles_data
 );
 

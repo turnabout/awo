@@ -45,6 +45,7 @@ static const char* unit_var_str[] = {FOREACH_UNIT_VAR(GENERATE_STRING)};
 #define UNIT_VAR_FIRST OS
 #define UNIT_VAR_LAST BH
 #define UNIT_VAR_COUNT UNIT_VAR_LAST + 1
+#define UNIT_VAR_NONE -1
 
 // Additional unit variations for property palettes
 #define UNIT_VAR_NEUTRAL     UNIT_VAR_LAST + 1

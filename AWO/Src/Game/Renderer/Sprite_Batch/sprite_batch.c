@@ -23,7 +23,7 @@ struct Sprite_Batch {
     GLuint shader_program;
 
     // IDs of the textures containing raw sprites and palette data
-    GLuint sprite_sheet_texture, palettes_texture;
+    GLuint sprite_sheet_texture, raw_palette_texture;
 
     // Amount of elements currently queued and max amount
     int elements_queued, elements_max;
@@ -125,7 +125,7 @@ Sprite_Batch* create_sprite_batch(
 
     sprite_batch->shader_program = shader_program;
     sprite_batch->sprite_sheet_texture = sprite_sheet_texture;
-    sprite_batch->palettes_texture = palette_texture;
+    sprite_batch->raw_palette_texture = palette_texture;
     sprite_batch->elements_max = max_elements;
     sprite_batch->elements_queued = 0;
 
@@ -143,7 +143,7 @@ void begin_sprite_batch(Sprite_Batch* sprite_batch)
     glBindTexture(GL_TEXTURE_2D, sprite_batch->sprite_sheet_texture);
 
     glActiveTexture(GL_TEXTURE1); 
-    glBindTexture(GL_TEXTURE_2D, sprite_batch->palettes_texture);
+    glBindTexture(GL_TEXTURE_2D, sprite_batch->raw_palette_texture);
 
     glBindVertexArray(sprite_batch->VAO);
 

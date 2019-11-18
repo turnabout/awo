@@ -17,7 +17,8 @@
 // #define PLAYERS_PALETTES_INDEX_START PROP_PALETTE_COUNT + ACTIVE_TILE_PALETTE_COUNT
 // #define PLAYERS_PALETTE_COUNT PROP_PALETTE_COUNT
 
-#include "Game/Data/Palette/palette.h"
+#include "Game/Data/Palette/raw_palette.h"
+#include "Game/Data/Palette/game_palette.h"
 
 typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
 
@@ -29,3 +30,13 @@ typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
  *  texture Normalized Device Coordinates.
  */
 void init_palette_NDC_indexes();
+
+void init_raw_palette_NDC_indexes();
+
+
+/*! @brief Gets the NDC palette index at the given row.
+ *
+ * @param palette_row Which palette row to get the NDC index value of.
+ * @return The Normalized Device Coordinate palette index.
+ */
+GLfloat get_palette_NDC_index(GLuint palette_row);

@@ -2,7 +2,7 @@
 
 #include "conf.h"
 #include "Game/Board/_game_board.h"
-#include "Game/Data/Palette/palette.h"
+#include "Game/Data/Palette/game_palette.h"
 
 Game_Board* create_game_board(
     Tiles_Data* tiles_data, 
@@ -12,8 +12,8 @@ Game_Board* create_game_board(
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
     // game_board->tile_factory = create_tile_factory(tiles_data, game_clock, tiles_clock_sub);
-    game_board->active_tile_palette_index = get_active_tile_palette_index(0);
-    game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);
+    // game_board->active_tile_palette_index = get_active_tile_palette_index(0);
+    // game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);
     game_board->game_clock = game_clock;
 
     return game_board;

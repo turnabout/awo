@@ -40,7 +40,7 @@ void apply_palette_colors(Palette_Texture_Row palette_texture_row, cJSON* palett
     }
 }
 
-GLuint create_palette_texture(cJSON* palettes_JSON)
+GLuint create_raw_palette_texture(cJSON* palettes_JSON)
 {
     int palette_count = cJSON_GetArraySize(palettes_JSON);
     
