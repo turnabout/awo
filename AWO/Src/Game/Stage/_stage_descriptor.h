@@ -1,15 +1,14 @@
 #pragma once
 
-#include "types.h"
-#include "Game/Data/Tile/tiles_data.h"
 #include "Game/Stage/stage_descriptor.h"
 
 #define STAGE_STRING_SEPARATOR_CHARACTER 0xFF
-#define STAGE_NAME_MIN_LENGTH              4
+#define VALID_SEPARATOR_COUNT               4
+#define STAGE_NAME_MIN_LENGTH               4
 
-#define STAGE_MAX_WIDTH                  255
-#define STAGE_MAX_HEIGHT                 255
-#define STAGE_MIN_SURFACE                 10
+#define STAGE_MAX_WIDTH                   255
+#define STAGE_MAX_HEIGHT                  255
+#define STAGE_MIN_SURFACE                  10
 
 /*! @brief Confirms the given stage data array is valid and usable for a game.
  *

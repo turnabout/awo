@@ -10,7 +10,7 @@
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
 
-/*! @brief Texture containing every row of palette data used during gameplay.
+/*! Texture containing every row of palette data used during gameplay.
  *  Structure:
  *   0: Active Tile
  *   1: Active Tile (Fog)

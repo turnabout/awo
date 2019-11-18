@@ -47,5 +47,6 @@
 
 #define MAX_SPRITE_BATCH_ELEMENTS 2000
 
-// Max amount of players for a game
+// Min/max amount of players for a game
+#define MIN_PLAYER_COUNT 2
 #define MAX_PLAYER_COUNT 4

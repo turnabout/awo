@@ -1,7 +1,9 @@
 #pragma once
 
 #include "types.h"
+#include "conf.h"
 #include "Game/Data/Tile/tiles_data.h"
+#include "Game/Data/Unit/units_data.h"
 #include "Game/Stage/stage_descriptor.h"
 
 #define STAGE_NAME_MAX_LENGTH 16
@@ -24,6 +26,12 @@ typedef struct Stage_Descriptor {
 
     // Descriptors of every tile making up the stage.
     Tile_Descriptor* tile_descriptors;
+
+    // Amount of players on this stage.
+    Uint8 player_count;
+
+    // Array containing the army of each player.
+    Unit_Variation player_armies[MAX_PLAYER_COUNT];
 
 }Stage_Descriptor;
 

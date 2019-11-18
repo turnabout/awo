@@ -34,8 +34,11 @@ struct Game {
     // Dimensions of the game's window.
     int window_width, window_height;
 
-    // Texture object for palettes
+    // Texture holding the raw palette.
     GLuint raw_palette_texture;
+
+    // Texture holding the palette used during gameplay.
+    GLuint game_palette_texture;
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.

@@ -34,6 +34,26 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
         i++;
     }
 
+    // Process players data
+    descriptor->player_count = 0;
+
+    while (1) {
+
+        Unit_Variation player_army = stage_data[i++];
+
+        if (player_army == STAGE_STRING_SEPARATOR_CHARACTER) {
+            break;
+        }
+
+        descriptor->player_armies[descriptor->player_count] = player_army;
+        descriptor->player_count++;
+    }
+
+    // Initialize other player armies to NONE
+    for (int j = descriptor->player_count; j < MAX_PLAYER_COUNT; j++) {
+        descriptor->player_armies[j] = UNIT_VAR_NONE;
+    }
+
     // Process stage dimensions
     descriptor->width = stage_data[i];
     descriptor->height = stage_data[i + 1];

@@ -8,7 +8,7 @@
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
 
-/*! @brief Texture containing every row of palette data that can be used by the game.
+/*! Texture containing every row of palette data that can be used by the game.
  *  Structure:
  *   0: Units: OS
  *   1: Units: OS (Done)

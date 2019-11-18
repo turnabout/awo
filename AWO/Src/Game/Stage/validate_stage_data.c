@@ -2,7 +2,7 @@
 
 Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data)
 {
-    // Confirm there are 3 separators
+    // Confirm amount of separators
     Uint8 sep_count = 0;
 
     for (size_t i = 0; i < data_length; i++) {
@@ -11,7 +11,7 @@ Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tile
         }
     }
 
-    if (sep_count != 3) {
+    if (sep_count != VALID_SEPARATOR_COUNT) {
         return FALSE;
     }
 
@@ -34,9 +34,33 @@ Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tile
         return FALSE;
     }
 
+    // Validate players
+    size_t player_count = 0;
+
+    while (1) {
+
+        Unit_Variation player_army = stage_data[data_i++];
+
+        if (player_army == STAGE_STRING_SEPARATOR_CHARACTER) {
+            break;
+        }
+
+        // Invalid player army
+        if (player_army < UNIT_VAR_FIRST || player_army > UNIT_VAR_LAST) {
+            return FALSE;
+        }
+
+        player_count++;
+    }
+
+    // Validate player count
+    if (player_count < MIN_PLAYER_COUNT || player_count > MAX_PLAYER_COUNT) {
+        return FALSE;
+    }
+
     // Validate stage dimensions
     size_t dimension_bytes_count = 0;
-    data_i++;
+    data_i++; // Skip over separator
 
     while (1) {
         dimension_bytes_count++;
