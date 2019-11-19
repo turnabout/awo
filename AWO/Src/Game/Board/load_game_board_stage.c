@@ -1,6 +1,13 @@
+#include <stdlib.h>
+
 #include "Game/Board/_game_board.h"
 
-void load_game_board_stage(Game_Board* game_board, Stage_Descriptor* stage_descriptor)
+void load_game_board_stage(
+    Game_Board* game_board, 
+    Game_Clock* game_clock,
+    Tiles_Data* tiles_data,
+    Stage_Descriptor* stage_descriptor
+)
 {
     // Allocate space for tiles
     game_board->tiles_grid = (Tile_Row*)malloc(sizeof(Tile_Row) * stage_descriptor->height);
@@ -18,7 +25,15 @@ void load_game_board_stage(Game_Board* game_board, Stage_Descriptor* stage_descr
                 (stage_descriptor->width * y)
             );
 
-            add_game_board_tile(game_board, tile->type, tile->variation, x, y);
+            add_game_board_tile(
+                game_board, 
+                game_clock,
+                tiles_data,
+                tile->type, 
+                tile->variation, 
+                x, 
+                y
+            );
         }
     }
 

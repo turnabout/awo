@@ -40,6 +40,7 @@
     <ClCompile Include="Libs\c_hashmap.c" />
     <ClCompile Include="Libs\glad.c" />
     <ClCompile Include="Libs\stb_image.c" />
+    <ClCompile Include="Src\Game\Board\add_game_board_tile.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />

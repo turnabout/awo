@@ -234,6 +234,9 @@
     <ClCompile Include="Src\Game\Data\Palette\get_palette_NDC_index.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Board\add_game_board_tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">

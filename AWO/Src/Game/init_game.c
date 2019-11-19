@@ -50,10 +50,7 @@ Game* init_game(int window_width, int window_height)
     init_mouse_state_module(game->window, &game->window_height);
 
     // Set game board
-    game->board = create_game_board(game->tiles_data, game->clock);
-
-    // Load the stage
-    load_game_board_stage(game->board, game->stage);
+    game->board = create_game_board(game->clock, game->tiles_data, game->stage);
 
     return game;
 }
