@@ -3,6 +3,7 @@
 #include <cglm/cglm.h>
 
 #include "conf.h"
+#include "Game/Data/Palette/game_palette.h"
 #include "Game/Inputs/inputs.h"
 #include "Game/_game.h"
 
@@ -43,6 +44,13 @@ Game* init_game(int window_width, int window_height)
 
     // Set game board
     game->board = create_game_board(game->tiles_data, game->clock);
+
+    // Load the palette texture used by the game
+    game->palette_texture = create_game_palette_texture(
+        game->raw_palette_texture, 
+        Clear, 
+        game->stage->player_armies
+    );
 
     // Load the stage
     load_game_board_stage(game->board, game->stage);

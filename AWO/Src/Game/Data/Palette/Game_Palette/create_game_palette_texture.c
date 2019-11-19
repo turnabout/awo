@@ -29,17 +29,21 @@ GLuint create_game_palette_texture(
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
+    // Get the size of a single row in a palette texture
+    // * 4 due to an RGBA array taking up 4 bytes
+    size_t row_size = 4 * PALETTE_TEX_WIDTH;
+
     // Populate active tile palette
     memcpy(
         &game_palette_texture_data[get_active_tile_palette_index_i(0)],
         &raw_palette_texture_data[get_tile_palette_index_i(active_weather, 0)],
-        PALETTE_TEX_WIDTH
+        row_size
     );
 
     memcpy(
         &game_palette_texture_data[get_active_tile_palette_index_i(1)],
         &raw_palette_texture_data[get_tile_palette_index_i(active_weather, 1)],
-        PALETTE_TEX_WIDTH
+        row_size
     );
 
     // Populate player units & player properties palettes
@@ -54,20 +58,20 @@ GLuint create_game_palette_texture(
         memcpy(
             &game_palette_texture_data[get_player_unit_palette_index_i(i, 0)],
             &raw_palette_texture_data[get_unit_palette_index_i(player_army, 0)],
-            PALETTE_TEX_WIDTH
+            row_size
         );
 
         memcpy(
             &game_palette_texture_data[get_player_unit_palette_index_i(i, 1)],
             &raw_palette_texture_data[get_unit_palette_index_i(player_army, 1)],
-            PALETTE_TEX_WIDTH
+            row_size
         );
 
         // Populate properties palettes
         memcpy(
             &game_palette_texture_data[get_player_property_palette_index_i(i)],
             &raw_palette_texture_data[get_property_palette_index_i(player_army)],
-            PALETTE_TEX_WIDTH
+            row_size
         );
     }
 
@@ -75,13 +79,13 @@ GLuint create_game_palette_texture(
     memcpy(
         &game_palette_texture_data[get_player_property_palette_index_i(Player_Index_Neutral)],
         &raw_palette_texture_data[get_property_palette_index_i(UNIT_VAR_NEUTRAL)],
-        PALETTE_TEX_WIDTH
+        row_size
     );
 
     memcpy(
         &game_palette_texture_data[ get_fog_property_palette_index_i()],
         &raw_palette_texture_data[get_raw_fog_property_palette_index_i()],
-        PALETTE_TEX_WIDTH
+        row_size
     );
 
     // Create the texture
@@ -103,7 +107,7 @@ GLuint create_game_palette_texture(
         0, 
         GL_RGBA, 
         GL_UNSIGNED_BYTE, 
-        raw_palette_texture_data
+        game_palette_texture_data
     );
 
     free(game_palette_texture_data);
