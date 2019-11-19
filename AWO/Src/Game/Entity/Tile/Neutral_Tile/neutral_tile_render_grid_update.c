@@ -4,7 +4,7 @@
 
 void update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
 {
-    Neutral_Tile* neutral_tile = (Neutral_Tile*)tile->contents;
+    // Neutral_Tile* neutral_tile = (Neutral_Tile*)tile->contents;
 
     /*
     update_tile_layer_pixels_low(
@@ -21,7 +21,7 @@ void update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
 
 void update_multi_layered_tile_render_grid(Tile* tile, Uint8 animation_index)
 {
-    Neutral_Tile* neutral_tile = (Neutral_Tile*)tile->contents;
+    // Neutral_Tile* neutral_tile = (Neutral_Tile*)tile->contents;
 
     /*
     update_tile_layer_pixels_low(

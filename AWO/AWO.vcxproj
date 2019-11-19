@@ -73,7 +73,6 @@
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Variation\tile_variation_data.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_access.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_creation.c" />
-    <ClCompile Include="Src\Game\Entity\Tile\tile.c" />
     <ClCompile Include="Src\Game\Clock\Tile_Subscriber\game_clock_tile_subscriber.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />

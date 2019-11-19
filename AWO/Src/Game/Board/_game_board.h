@@ -11,9 +11,6 @@ struct Game_Board {
     // Descriptor of the loaded stage.
     Stage_Descriptor* stage;
 
-    // Reference to the game clock module.
-    // Game_Clock* game_clock;
-
     // Indices of the currently active tile and fog tile palettes.
     // GLfloat active_tile_palette_index, active_fog_tile_palette_index;
 };

@@ -117,9 +117,6 @@
     <ClCompile Include="Src\Game\Inputs\mouse_state.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Board\game_board.c">
       <Filter>Source Files</Filter>
     </ClCompile>
