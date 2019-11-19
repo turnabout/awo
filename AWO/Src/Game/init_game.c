@@ -20,6 +20,13 @@ Game* init_game(int window_width, int window_height)
         return NULL;
     }
 
+    // Load the palette texture used by the game
+    game->palette_texture = create_game_palette_texture(
+        game->raw_palette_texture, 
+        Clear, 
+        game->stage->player_armies
+    );
+
     // Set transformation matrices
     mat4 view = GLM_MAT4_IDENTITY_INIT;
     glm_scale(view, (vec3) { (GLfloat)DEFAULT_TILE_SIZE, (GLfloat)DEFAULT_TILE_SIZE, 1.0f });
@@ -31,7 +38,7 @@ Game* init_game(int window_width, int window_height)
     init_game_renderer(
         game->stage->width,
         game->stage->height,
-        game->raw_palette_texture,
+        game->palette_texture,
         game->tiles_data
     );
 
@@ -44,13 +51,6 @@ Game* init_game(int window_width, int window_height)
 
     // Set game board
     game->board = create_game_board(game->tiles_data, game->clock);
-
-    // Load the palette texture used by the game
-    game->palette_texture = create_game_palette_texture(
-        game->raw_palette_texture, 
-        Clear, 
-        game->stage->player_armies
-    );
 
     // Load the stage
     load_game_board_stage(game->board, game->stage);

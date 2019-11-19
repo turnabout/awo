@@ -24,7 +24,7 @@ struct Game_Renderer {
     GLuint sprite_sheet_texture;
 
     // Texture containing palettes.
-    GLuint raw_palette_texture;
+    GLuint game_palette_texture;
 
     // Layers of tile grids used to render tiles.
     Render_Grid* tile_grid_layers[TILE_LAYER_TYPE_COUNT];
@@ -90,7 +90,7 @@ void init_game_renderer_uniforms(
 void init_game_renderer(
     int render_grid_width, 
     int render_grid_height, 
-    GLuint raw_palette_texture,
+    GLuint game_palette_texture,
     Tiles_Data* tiles_data
 )
 {
@@ -107,7 +107,7 @@ void init_game_renderer(
         &renderer->sprite_sheet_width, 
         &renderer->sprite_sheet_height
     );
-    renderer->raw_palette_texture = raw_palette_texture;
+    renderer->game_palette_texture = game_palette_texture;
     init_game_renderer_uniforms(render_grid_width, render_grid_height);
 
     // Set sprite batches
@@ -138,8 +138,7 @@ void init_game_renderer(
                 empty_tile_frames->frames[0].raw_top_left[0], 
                 empty_tile_frames->frames[0].raw_top_left[1], 
                 0.0,
-                // get_active_tile_palette_index(0), 
-                0.0 
+                0.0
             }
         );
     }
@@ -196,7 +195,7 @@ void render_tiles_layers()
     glBindTexture(GL_TEXTURE_2D, renderer->sprite_sheet_texture);
 
     glActiveTexture(GL_TEXTURE1); 
-    glBindTexture(GL_TEXTURE_2D, renderer->raw_palette_texture);
+    glBindTexture(GL_TEXTURE_2D, renderer->game_palette_texture);
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
         render_r_grid(renderer->tile_grid_layers[i]);

@@ -74,9 +74,6 @@ GLuint create_raw_palette_texture(cJSON* palettes_JSON)
         palette_texture_data
     );
 
-    // Set the active tile palette to the default one
-    update_active_tile_palette(WEATHER_FIRST);
-
     free(palette_texture_data);
 
     return texture;
