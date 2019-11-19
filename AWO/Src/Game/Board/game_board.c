@@ -4,10 +4,7 @@
 #include "Game/Board/_game_board.h"
 #include "Game/Data/Palette/game_palette.h"
 
-Game_Board* create_game_board(
-    Tiles_Data* tiles_data, 
-    Game_Clock* game_clock
-)
+Game_Board* create_game_board(Tiles_Data* tiles_data, Game_Clock* game_clock)
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
@@ -39,15 +36,6 @@ void add_game_board_tile(
 
     // Add the coordinates to the tile's list
     // register_tile_board_position(tile, x, y);
-}
-
-void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation)
-{
-    for (int y = 0; y < game_board->stage->height; y++) {
-        for (int x = 0; x < game_board->stage->width; x++) {
-            add_game_board_tile(game_board, type, variation, x, y);
-        }
-    }
 }
 
 void free_game_board(Game_Board* game_board)

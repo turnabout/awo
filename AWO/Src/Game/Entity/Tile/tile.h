@@ -37,13 +37,14 @@ typedef struct Tile {
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] tile_type The type of the created tile.
  *  @param[in] tile_variation The variation of the created tile.
+ *  For neutral tiles, this is a Tile_Variation. For property tiles, Player_Index.
  *  @return The created tile.
  */
 Tile* create_tile(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Type type,
-    Tile_Variation variation
+    Uint8 variation
 );
 
 /*! @brief Frees memory occupied by a tile.

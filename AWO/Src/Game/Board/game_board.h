@@ -16,10 +16,7 @@ typedef struct Game_Board Game_Board;
  *  @param[in] game_clock The game clock object.
  *  @return The created game board object.
  */
-Game_Board* create_game_board(
-    Tiles_Data* tiles_data,
-    Game_Clock* game_clock
-);
+Game_Board* create_game_board(Tiles_Data* tiles_data, Game_Clock* game_clock);
 
 /*! @brief Updates the game board and its entities.
  *

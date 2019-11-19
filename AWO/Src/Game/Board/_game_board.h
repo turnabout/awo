@@ -34,11 +34,3 @@ void add_game_board_tile(
     Uint8 x,
     Uint8 y
 );
-
-/*! @brief Fills the game board with tile of the given type & variation.
- *
- *  @param[in] game_board The game board.
- *  @param[in] type Type of the tile to fill with.
- *  @param[in] variation Variation of the tile to fill with.
- */
-void fill_game_board_tiles(Game_Board* game_board, Tile_Type type, Tile_Variation variation);
