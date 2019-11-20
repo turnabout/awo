@@ -4,6 +4,7 @@
 #include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
 #include "Game/Entity/Tile/Neutral_Tile/_neutral_tile_animation_update.h"
 
+// TODO: clean up
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Renderer/game_renderer.h"
 
