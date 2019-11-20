@@ -57,6 +57,8 @@
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile_fog_update.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile_animation_update.c" />
+    <ClCompile Include="Src\Game\Player\CO\CO.c" />
+    <ClCompile Include="Src\Game\Player\player.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c" />
@@ -151,7 +153,9 @@
     <ClInclude Include="Src\Game\Entity\Tile\tile_fog_update_cb.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
-    <ClInclude Include="Src\Game\player_index_enum.h" />
+    <ClInclude Include="Src\Game\Player\CO\CO.h" />
+    <ClInclude Include="Src\Game\Player\player.h" />
+    <ClInclude Include="Src\Game\Player\player_index_enum.h" />
     <ClInclude Include="Src\Game\Renderer\game_renderer.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\render_grid.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h" />

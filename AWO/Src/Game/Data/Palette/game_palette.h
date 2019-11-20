@@ -5,7 +5,7 @@
 #include <cJSON.h>
 
 #include "conf.h"
-#include "Game/player_index_enum.h"
+#include "Game/Player/player_index_enum.h"
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"

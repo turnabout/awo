@@ -1,7 +1,7 @@
 #pragma once
 
 #include "types.h"
-#include "Game/player_index_enum.h"
+#include "Game/Player/player.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Animation/Frame/frame.h"
 #include "Game/Data/Animation/animation.h"
