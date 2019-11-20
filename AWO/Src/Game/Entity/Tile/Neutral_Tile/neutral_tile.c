@@ -3,6 +3,7 @@
 #include "conf.h"
 #include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
 #include "Game/Entity/Tile/Neutral_Tile/_neutral_tile_animation_update.h"
+#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile_fog_update.h"
 
 // TODO: clean up
 #include "Game/Data/Palette/game_palette.h"
@@ -19,7 +20,6 @@ Neutral_Tile* create_neutral_tile(
 {
     Neutral_Tile* tile = (Neutral_Tile*)malloc(sizeof(Neutral_Tile));
 
-
     tile->type = type;
     tile->variation = variation;
     tile->x = x;
@@ -35,37 +35,15 @@ Neutral_Tile* create_neutral_tile(
     // Set the appropriate render grid update callback function
     // Use multi-layered cb if height of frame is that of two regular-sized frames
     if (tile->animation->frames->height == (DEFAULT_TILE_SIZE * 2)) {
-        tile->update_render_grid_cb = update_multi_layered_tile_render_grid;
+        tile->update_animation = update_multi_layered_tile_render_grid;
+        tile->update_palette = update_multi_layered_tile_fog_status;
     } else {
-        tile->update_render_grid_cb = update_regular_tile_render_grid;
+        tile->update_animation = update_regular_tile_render_grid;
+        tile->update_palette = update_regular_tile_fog_status;
     }
 
-    // TODO: clean up (place outside)
-    update_tile_layer_pixel_high(
-        TILE_LAYER_0,
-        x,
-        y,
-        (vec2) {
-            get_active_tile_palette_index(1),
-            0.0f
-        }
-    );
-
-    /*
-    update_tile_layer_pixel(
-        TILE_LAYER_0,
-        x,
-        y,
-        (vec4){
-            tile->animation->frames[0].raw_top_left[0],
-            tile->animation->frames[0].raw_top_left[1],
-            get_active_tile_palette_index(0),
-            0.0f
-        }
-    );
-*/
-
-    tile->update_render_grid_cb(tile, 0);
+    tile->update_animation(tile, 0);
+    tile->update_palette(tile, TRUE);
 
     return tile;
 }

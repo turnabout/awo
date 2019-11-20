@@ -5,6 +5,7 @@
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Entity/Tile/tile_animation_update_cb.h"
+#include "Game/Entity/Tile/tile_fog_update_cb.h"
 
 typedef struct Neutral_Tile {
 
@@ -15,7 +16,10 @@ typedef struct Neutral_Tile {
     Tile_Variation variation;
 
     // Callback function used to update this tile's corresponding render grid pixels.
-    tile_animation_update_cb update_render_grid_cb;
+    tile_animation_update_cb update_animation;
+
+    // Function called when this tile's fog status updates.
+    fog_update_cb update_palette;
 
     // Coordinates of this tile within the game board.
     Uint8 x, y;

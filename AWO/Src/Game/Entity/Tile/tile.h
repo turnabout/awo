@@ -3,6 +3,7 @@
 #include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
 #include "Game/Entity/Tile/Property_Tile/property_tile.h"
 #include "Game/Entity/Tile/tile_animation_update_cb.h"
+#include "Game/Entity/Tile/tile_fog_update_cb.h"
 
 /*! @brief Generic representation of a Tile, which can either be a Neutral tile or a Property tile.
  *
@@ -22,6 +23,9 @@ typedef struct Tile {
 
     // Function called when this tile's animation updates.
     tile_animation_update_cb update_animation;
+
+    // Function called when this tile's fog status updates.
+    fog_update_cb update_fog;
 
     // Coordinates of this tile within the game board.
     Uint8 x, y;

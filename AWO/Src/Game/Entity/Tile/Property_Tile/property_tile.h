@@ -7,6 +7,7 @@
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Entity/Tile/tile_animation_update_cb.h"
+#include "Game/Entity/Tile/tile_fog_update_cb.h"
 
 typedef struct Property_Tile {
 
@@ -18,6 +19,9 @@ typedef struct Property_Tile {
 
     // Callback function used to update this tile's corresponding render grid pixels.
     tile_animation_update_cb update_render_grid;
+
+    // Function called when this tile's fog status updates.
+    fog_update_cb update_fog;
 
     // Coordinates of this tile within the game board.
     Uint8 x, y;
