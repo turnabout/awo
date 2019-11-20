@@ -4,9 +4,9 @@
 #define PALETTE_TEX_HEIGHT  32
 
 // Counts of every different types of palettes
-#define UNIT_PALETTE_COUNT (UNIT_VAR_COUNT) * (2) // 2 of each unit variation (normal / done)
-#define TILE_PALETTE_COUNT (WEATHER_COUNT)  * (2) // 2 of each tile variation (normal / foggy)
-#define PROP_PALETTE_COUNT UNIT_VAR_COUNT + 2     // + 2 is neutral & fogged
+#define UNIT_PALETTE_COUNT (ARMY_TYPE_COUNT) * (2) // 2 of each unit variation (normal / done)
+#define TILE_PALETTE_COUNT (WEATHER_COUNT)  * (2)  // 2 of each tile variation (normal / foggy)
+#define PROP_PALETTE_COUNT ARMY_TYPE_COUNT + 2     // + 2 is neutral & fogged
 
 #include "Game/Data/Palette/raw_palette.h"
 #include "Game/Data/Palette/game_palette.h"

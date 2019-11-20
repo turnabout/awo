@@ -10,7 +10,7 @@ typedef struct Player {
     Player_Index index;
 
     // The army occupied by the player in this current game.
-    Unit_Variation army;
+    Army_Type army;
 
     // The Commanding Officer used by the player.
     CO* co;

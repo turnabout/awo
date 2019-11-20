@@ -6,7 +6,7 @@
 GLuint create_game_palette_texture(
     GLuint raw_palette_texture, 
     Weather active_weather, 
-    Unit_Variation player_armies[MAX_PLAYER_COUNT]
+    Army_Type player_armies[MAX_PLAYER_COUNT]
 )
 {
     // Get the raw palette texture data
@@ -51,9 +51,9 @@ GLuint create_game_palette_texture(
 
     // Populate player units & player properties palettes
     for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
-        Unit_Variation player_army = player_armies[i];
+        Army_Type player_army = player_armies[i];
 
-        if (player_army == UNIT_VAR_NONE) {
+        if (player_army == ARMY_TYPE_NONE) {
             continue;
         }
 
@@ -87,7 +87,7 @@ GLuint create_game_palette_texture(
     // printf("%d -> %d\n", get_raw_fog_property_palette_index_i(), get_fog_property_palette_index_i());
     memcpy(
         &game_palette_texture_data[get_player_property_palette_index_i(Player_Index_Neutral)],
-        &raw_palette_texture_data[get_property_palette_index_i(UNIT_VAR_NEUTRAL)],
+        &raw_palette_texture_data[get_property_palette_index_i(ARMY_TYPE_NEUTRAL)],
         row_size
     );
 

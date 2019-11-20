@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Game/Data/Unit/enums.h"
+#include "Game/Data/Enums/army_type.h"
 #include "Game/Player/CO/enums.h"
 
 /*! @brief Commanding Officer.
@@ -14,6 +15,6 @@ typedef struct CO {
     char name[16];
 
     // Army the CO belongs to. Determines which visuals are used for certain properties & units.
-    Unit_Variation army;
+    Army_Type army;
 
 } CO;

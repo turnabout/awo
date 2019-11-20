@@ -5,6 +5,7 @@
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/Property_Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
+#include "Game/Data/Enums/army_type.h"
 
 typedef struct Tiles_Data Tiles_Data;
 
@@ -37,7 +38,7 @@ Frame* get_property_frame(
     Tiles_Data* tiles_data, 
     Property_Type property_type, 
     Weather weather_variation, 
-    Unit_Variation army_variation
+    Army_Type army_variation
 );
 
 /*! @brief Frees the memory occupied by the properties data object.

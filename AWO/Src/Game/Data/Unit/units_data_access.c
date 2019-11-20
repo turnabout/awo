@@ -3,12 +3,12 @@
 
 #include "Game/Data/Unit/_units_data.h"
 
-Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Unit_Variation variation)
+Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Army_Type variation)
 {
     // If variation doesn't exist on unit type, return data for default variation instead
-    Unit_Variation returned_var = (variation < units_data->src[type]->variations_count)
+    Army_Type returned_var = (variation < units_data->src[type]->variations_count)
         ? variation
-        : UNIT_VAR_FIRST;
+        : ARMY_TYPE_FIRST;
 
     return units_data->src[type]->variations[returned_var];
 }
@@ -27,8 +27,8 @@ void print_unit_type_data(Unit_Type_Data* unit_type_data)
     printf("Vars amount: %d\n", unit_type_data->variations_count);
 
     // Loop variations
-    for (Unit_Variation var = UNIT_VAR_FIRST; var < unit_type_data->variations_count; var++) {
-        printf("\n==========\n%s\n==========\n", unit_var_str[var]);
+    for (Army_Type var = ARMY_TYPE_FIRST; var < unit_type_data->variations_count; var++) {
+        printf("\n==========\n%s\n==========\n", army_type_str[var]);
 
         // Loop every animation
         for (Unit_Anim anim = UNIT_ANIM_FIRST; anim <= UNIT_ANIM_LAST; anim++) {

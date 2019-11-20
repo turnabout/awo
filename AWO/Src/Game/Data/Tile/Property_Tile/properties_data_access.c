@@ -7,14 +7,14 @@ Frame* get_property_frame(
     Tiles_Data* tiles_data, 
     Property_Type property_type, 
     Weather weather_variation, 
-    Unit_Variation army_variation
+    Army_Type army_variation
 )
 {
     // If given army variation doesn't exist on unit type, return data for default variation
-    Unit_Variation used_army_variation = 
+    Army_Type used_army_variation = 
         (army_variation < tiles_data->property_tiles->src[property_type]->army_variation_count)
             ? army_variation
-            : UNIT_VAR_FIRST;
+            : ARMY_TYPE_FIRST;
 
     // If given weather variation doesn't exist, return data for default weather
     Weather used_weather =

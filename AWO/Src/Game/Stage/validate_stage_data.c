@@ -40,14 +40,14 @@ Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tile
 
     while (1) {
 
-        Unit_Variation player_army = stage_data[data_i++];
+        Army_Type player_army = stage_data[data_i++];
 
         if (player_army == STAGE_STRING_SEPARATOR_CHARACTER) {
             break;
         }
 
         // Invalid player army
-        if (player_army < UNIT_VAR_FIRST || player_army > UNIT_VAR_LAST) {
+        if (player_army < ARMY_TYPE_FIRST || player_army > ARMY_TYPE_LAST) {
             return FALSE;
         }
 

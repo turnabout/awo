@@ -21,7 +21,7 @@ Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_
 
         // Loop army variations
         cJSON* army_var_JSON;
-        Unit_Variation army_variation = UNIT_VAR_FIRST;
+        Army_Type army_variation = ARMY_TYPE_FIRST;
         
         cJSON_ArrayForEach(army_var_JSON, property_weather_var_JSON)
         {

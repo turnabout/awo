@@ -9,6 +9,7 @@
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
+#include "Game/Data/Enums/army_type.h"
 
 /*! Texture containing every row of palette data used during gameplay.
  *  Structure:
@@ -42,7 +43,7 @@
 GLuint create_game_palette_texture(
     GLuint raw_palette_texture, 
     Weather active_weather, 
-    Unit_Variation player_armies[MAX_PLAYER_COUNT]
+    Army_Type player_armies[MAX_PLAYER_COUNT]
 );
 
 GLfloat get_active_tile_palette_index(GLboolean fog);

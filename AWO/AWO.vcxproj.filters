@@ -434,6 +434,15 @@
     <ClInclude Include="Src\Game\Player\CO\CO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Game\Player\CO\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Enums\army_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\CO\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />

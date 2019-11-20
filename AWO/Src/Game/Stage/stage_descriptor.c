@@ -39,7 +39,7 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
 
     while (1) {
 
-        Unit_Variation player_army = stage_data[i++];
+        Army_Type player_army = stage_data[i++];
 
         if (player_army == STAGE_STRING_SEPARATOR_CHARACTER) {
             break;
@@ -51,7 +51,7 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
 
     // Initialize other player armies to NONE
     for (int j = descriptor->player_count; j < MAX_PLAYER_COUNT; j++) {
-        descriptor->player_armies[j] = UNIT_VAR_NONE;
+        descriptor->player_armies[j] = ARMY_TYPE_NONE;
     }
 
     // Process stage dimensions

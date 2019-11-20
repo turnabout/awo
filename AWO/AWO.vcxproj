@@ -122,6 +122,8 @@
     <ClInclude Include="Src\Game\Data\Animation\animation.h" />
     <ClInclude Include="Src\Game\Data\Animation\Frame\frame.h" />
     <ClInclude Include="Src\Game\Data\Animation\Frame\_frame.h" />
+    <ClInclude Include="Src\Game\Data\CO\enums.h" />
+    <ClInclude Include="Src\Game\Data\Enums\army_type.h" />
     <ClInclude Include="Src\Game\Data\Enums\weather.h" />
     <ClInclude Include="Src\Game\Data\Palette\game_palette.h" />
     <ClInclude Include="Src\Game\Data\Palette\raw_palette.h" />
@@ -154,6 +156,7 @@
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
     <ClInclude Include="Src\Game\Player\CO\CO.h" />
+    <ClInclude Include="Src\Game\Player\CO\enums.h" />
     <ClInclude Include="Src\Game\Player\player.h" />
     <ClInclude Include="Src\Game\Player\player_index_enum.h" />
     <ClInclude Include="Src\Game\Renderer\game_renderer.h" />

@@ -6,6 +6,7 @@
 #include "Game/Data/Animation/Frame/frame.h"
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/tiles_data.h"
+#include "Game/Data/Enums/army_type.h"
 #include "Game/Entity/Tile/tile_animation_update_cb.h"
 #include "Game/Entity/Tile/tile_fog_update_cb.h"
 
@@ -15,7 +16,7 @@ typedef struct Property_Tile {
     Tile_Type type;
 
     // Index of the player who owns this property.
-    Unit_Variation player;
+    Army_Type player;
 
     // Callback function used to update this tile's corresponding render grid pixels.
     tile_animation_update_cb update_render_grid;

@@ -7,6 +7,7 @@
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
+#include "Game/Data/Enums/army_type.h"
 
 /*! Texture containing every row of palette data that can be used by the game.
  *  Structure:
@@ -54,7 +55,7 @@ GLuint create_raw_palette_texture(cJSON* palette_JSON);
  *  @param[in] done Whether to get the "done" version of the unit palette.
  *  @return The index of the palette corresponding to the unit variation.
  */
-GLfloat get_unit_palette_index(Unit_Variation unit_variation, GLboolean done);
+GLfloat get_unit_palette_index(Army_Type unit_variation, GLboolean done);
 
 /*! @brief Gets the NDC palette index for a tile of the given weather and fog status.
  *
@@ -76,7 +77,7 @@ GLfloat get_active_tile_palette_index(GLboolean fog);
  *  @param[in] unit_variation The unit variation.
  *  @return The index of the palette corresponding to the property of the given variation.
  */
-GLfloat get_property_palette_index(Unit_Variation unit_variation);
+GLfloat get_property_palette_index(Army_Type unit_variation);
 
 /*! @brief Gets the integer palette index for a unit of the given variation.
  *
@@ -84,7 +85,7 @@ GLfloat get_property_palette_index(Unit_Variation unit_variation);
  *  @param[in] done Whether to get the "done" version of the unit palette.
  *  @return The integer index of the palette corresponding to the unit variation.
  */
-GLint get_unit_palette_index_i(Unit_Variation unit_variation, GLboolean done);
+GLint get_unit_palette_index_i(Army_Type unit_variation, GLboolean done);
 
 /*! @brief Gets the integer palette index for a tile of the given weather and fog status.
  *
@@ -99,7 +100,7 @@ GLint get_tile_palette_index_i(Weather weather, GLboolean fog);
  *  @param[in] unit_variation The unit variation.
  *  @return The integer index of the palette corresponding to the property of the given variation.
  */
-GLint get_property_palette_index_i(Unit_Variation unit_variation);
+GLint get_property_palette_index_i(Army_Type unit_variation);
 
 /*! @brief Gets the integer palette index for the fog property palette row.
  *

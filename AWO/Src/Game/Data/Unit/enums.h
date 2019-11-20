@@ -3,26 +3,26 @@
 #include "Utilities/macros.h"
 
 // Unit Type
-#define FOREACH_UNIT_TYPE(UNIT) \
-    UNIT(Infantry) \
-    UNIT(Mech) \
-    UNIT(Recon) \
-    UNIT(Tank) \
-    UNIT(MdTank) \
-    UNIT(NeoTank) \
-    UNIT(APC) \
-    UNIT(Artillery) \
-    UNIT(Rockets) \
-    UNIT(Missiles) \
-    UNIT(AntiAir) \
-    UNIT(Battleship) \
-    UNIT(Cruiser) \
-    UNIT(Lander) \
-    UNIT(Sub) \
-    UNIT(Fighter) \
-    UNIT(Bomber) \
-    UNIT(BattleCopter) \
-    UNIT(TransportCopter) \
+#define FOREACH_UNIT_TYPE(UNIT_TYPE) \
+    UNIT_TYPE(Infantry) \
+    UNIT_TYPE(Mech) \
+    UNIT_TYPE(Recon) \
+    UNIT_TYPE(Tank) \
+    UNIT_TYPE(MdTank) \
+    UNIT_TYPE(NeoTank) \
+    UNIT_TYPE(APC) \
+    UNIT_TYPE(Artillery) \
+    UNIT_TYPE(Rockets) \
+    UNIT_TYPE(Missiles) \
+    UNIT_TYPE(AntiAir) \
+    UNIT_TYPE(Battleship) \
+    UNIT_TYPE(Cruiser) \
+    UNIT_TYPE(Lander) \
+    UNIT_TYPE(Sub) \
+    UNIT_TYPE(Fighter) \
+    UNIT_TYPE(Bomber) \
+    UNIT_TYPE(BattleCopter) \
+    UNIT_TYPE(TransportCopter) \
 
 typedef enum {FOREACH_UNIT_TYPE(GENERATE_ENUM)} Unit_Type;
 static const char* unit_type_str[] = {FOREACH_UNIT_TYPE(GENERATE_STRING)};
@@ -30,25 +30,6 @@ static const char* unit_type_str[] = {FOREACH_UNIT_TYPE(GENERATE_STRING)};
 #define UNIT_TYPE_FIRST Infantry
 #define UNIT_TYPE_LAST TransportCopter
 #define UNIT_TYPE_COUNT UNIT_TYPE_LAST + 1
-
-// Unit Variation
-#define FOREACH_UNIT_VAR(UNITVAR) \
-    UNITVAR(OS) \
-    UNITVAR(BM) \
-    UNITVAR(GE) \
-    UNITVAR(YC) \
-    UNITVAR(BH) \
-
-typedef enum {FOREACH_UNIT_VAR(GENERATE_ENUM)} Unit_Variation;
-static const char* unit_var_str[] = {FOREACH_UNIT_VAR(GENERATE_STRING)};
-
-#define UNIT_VAR_FIRST OS
-#define UNIT_VAR_LAST BH
-#define UNIT_VAR_COUNT UNIT_VAR_LAST + 1
-#define UNIT_VAR_NONE -1
-
-// Additional unit variations for property palettes
-#define UNIT_VAR_NEUTRAL     UNIT_VAR_LAST + 1
 
 // Unit Animation
 #define FOREACH_UNIT_ANIM(UNITANIM) \

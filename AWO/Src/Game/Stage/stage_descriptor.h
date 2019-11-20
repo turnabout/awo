@@ -33,7 +33,7 @@ typedef struct Stage_Descriptor {
     Uint8 player_count;
 
     // Array containing the army of each player.
-    Unit_Variation player_armies[MAX_PLAYER_COUNT];
+    Army_Type player_armies[MAX_PLAYER_COUNT];
 
 }Stage_Descriptor;
 
