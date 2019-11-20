@@ -41,19 +41,12 @@ void update_render_grid_pixel_high(
         value[1],
     };
 
-    // TODO
-    // render_grid->pixel_data[0] = value[0];
+    vec4* edit_position = (render_grid->pixel_data + x + (y * render_grid->width));
 
-    // (&(render_grid->pixel_data + x + (y * render_grid->width)))[2] = value[0];
-
-    memcpy(
-        ((render_grid->pixel_data + x + (y * render_grid->width))), 
-        &pixel_high, 
-        sizeof(pixel_high)
-    );
+    (*edit_position)[2] = value[0];
+    (*edit_position)[3] = value[1];
 
     render_grid->dirty = TRUE;
-
 }
 
 void update_render_grid_pixel_low(

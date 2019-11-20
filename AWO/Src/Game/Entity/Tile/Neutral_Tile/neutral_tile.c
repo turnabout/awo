@@ -40,6 +40,18 @@ Neutral_Tile* create_neutral_tile(
         tile->update_render_grid_cb = update_regular_tile_render_grid;
     }
 
+    // TODO: clean up (place outside)
+    update_tile_layer_pixel_high(
+        TILE_LAYER_0,
+        x,
+        y,
+        (vec2) {
+            get_active_tile_palette_index(1),
+            0.0f
+        }
+    );
+
+    /*
     update_tile_layer_pixel(
         TILE_LAYER_0,
         x,
@@ -51,6 +63,7 @@ Neutral_Tile* create_neutral_tile(
             0.0f
         }
     );
+*/
 
     tile->update_render_grid_cb(tile, 0);
 
