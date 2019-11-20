@@ -2,7 +2,7 @@
 
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Enums/army_type.h"
-#include "Game/Player/CO/enums.h"
+#include "Game/Data/CO/enums.h"
 
 /*! @brief Commanding Officer.
  *
@@ -12,9 +12,22 @@
 typedef struct CO {
 
     // The CO's name.
-    char name[16];
+    const char* name;
 
     // Army the CO belongs to. Determines which visuals are used for certain properties & units.
     Army_Type army;
 
 } CO;
+
+/*! @brief Creates a CO usable by a player.
+ *
+ *  @param[in] co_type The type of the CO.
+ *  @return The created CO.
+ */
+CO* create_CO(CO_Type co_type);
+
+/*! @brief Frees the memory allocated by the given CO.
+ *
+ *  @param[in] co The CO to free.
+ */
+void free_CO(CO* co);

@@ -13,10 +13,8 @@ Game_Board* create_game_board(
 
     load_game_board_stage(game_board, game_clock, tiles_data, stage_descriptor);
 
-    // game_board->tile_factory = create_tile_factory(tiles_data, game_clock, tiles_clock_sub);
     // game_board->active_tile_palette_index = get_active_tile_palette_index(0);
     // game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);
-    // game_board->game_clock = game_clock;
 
     return game_board;
 }
