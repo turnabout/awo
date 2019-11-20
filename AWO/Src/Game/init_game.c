@@ -5,6 +5,7 @@
 #include "conf.h"
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Inputs/inputs.h"
+#include "Game/Player/player.h"
 #include "Game/_game.h"
 
 Game* init_game(int window_width, int window_height)
@@ -48,6 +49,17 @@ Game* init_game(int window_width, int window_height)
     // Initialize input handling modules
     init_keys_state_module(game->window);
     init_mouse_state_module(game->window, &game->window_height);
+
+    // Set players list
+    Player_List* player_list = create_player_list(game->stage->player_count);
+
+    for (int i = 0; i < game->stage->player_count; i++) {
+        player_list->players[i] = create_player(
+            i,
+            game->stage->player_armies[i],
+            Andy
+        );
+    }
 
     // Set game board
     game->board = create_game_board(game->clock, game->tiles_data, game->stage);

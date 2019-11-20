@@ -1,5 +1,7 @@
 #pragma once
 
+#include "conf.h"
+#include "types.h"
 #include "Game/Player/player_index_enum.h"
 #include "Game/Player/CO/CO.h"
 #include "Game/Data/Unit/enums.h"
@@ -18,6 +20,16 @@ typedef struct Player {
 
 } Player;
 
+typedef struct Player_List {
+
+    // Every player belonging to this list.
+    Player* players[MAX_PLAYER_COUNT];
+
+    // Amount of players belonging to this list.
+    Uint8 player_count;
+
+} Player_List;
+
 /*! @brief Creates a player entity, representing a player during gameplay.
  *
  *  @param[in] player_index This player's index.
@@ -32,3 +44,9 @@ Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type 
  *  @param[in] player The player to free.
  */
 free_player(Player* player);
+
+/*! @brief 
+ *
+ *  @param[in] player_count
+ */
+Player_List* create_player_list(Uint8 player_count);

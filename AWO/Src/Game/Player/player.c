@@ -18,3 +18,11 @@ free_player(Player* player)
     free_CO(player->CO);
     free(player);
 }
+
+Player_List* create_player_list(Uint8 player_count)
+{
+
+    Player_List* player_list = (Player_List*)malloc(sizeof(Player_List));
+
+    return player_list;
+}
