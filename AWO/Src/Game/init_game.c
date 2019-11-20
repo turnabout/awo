@@ -51,10 +51,10 @@ Game* init_game(int window_width, int window_height)
     init_mouse_state_module(game->window, &game->window_height);
 
     // Set players list
-    Player_List* player_list = create_player_list(game->stage->player_count);
+    Players_List* players_list = create_players_list(game->stage->player_count);
 
     for (int i = 0; i < game->stage->player_count; i++) {
-        player_list->players[i] = create_player(
+        players_list->players[i] = create_player(
             i,
             game->stage->player_armies[i],
             Andy
@@ -62,7 +62,7 @@ Game* init_game(int window_width, int window_height)
     }
 
     // Set game board
-    game->board = create_game_board(game->clock, game->tiles_data, game->stage);
+    game->board = create_game_board(game->clock, game->tiles_data, game->stage, players_list);
 
     return game;
 }

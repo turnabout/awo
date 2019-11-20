@@ -2,16 +2,20 @@
 
 #include "Game/Board/_game_board.h"
 #include "Game/Data/Palette/game_palette.h"
+#include "Game/Player/player.h"
 
 Game_Board* create_game_board(
     Game_Clock* game_clock, 
     Tiles_Data* tiles_data, 
-    Stage_Descriptor* stage_descriptor
+    Stage_Descriptor* stage_descriptor,
+    Players_List* players_list
 )
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
     load_game_board_stage(game_board, game_clock, tiles_data, stage_descriptor);
+
+    game_board->players_list = players_list;
 
     // game_board->active_tile_palette_index = get_active_tile_palette_index(0);
     // game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);

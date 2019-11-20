@@ -20,7 +20,7 @@ typedef struct Player {
 
 } Player;
 
-typedef struct Player_List {
+typedef struct Players_List {
 
     // Every player belonging to this list.
     Player* players[MAX_PLAYER_COUNT];
@@ -28,7 +28,7 @@ typedef struct Player_List {
     // Amount of players belonging to this list.
     Uint8 player_count;
 
-} Player_List;
+} Players_List;
 
 /*! @brief Creates a player entity, representing a player during gameplay.
  *
@@ -45,8 +45,8 @@ Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type 
  */
 free_player(Player* player);
 
-/*! @brief 
+/*! @brief Create an (empty) list of players.
  *
- *  @param[in] player_count
+ *  @param[in] player_count Amount of players belonging to this list.
  */
-Player_List* create_player_list(Uint8 player_count);
+Players_List* create_players_list(Uint8 player_count);

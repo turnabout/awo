@@ -5,14 +5,16 @@
 typedef Tile** Tile_Row;
 
 struct Game_Board {
+
     // Contains all tiles on the game board. tiles[board_y][board_x]
     Tile_Row* tiles_grid;
 
     // Descriptor of the loaded stage.
     Stage_Descriptor* stage;
 
-    // Indices of the currently active tile and fog tile palettes.
-    // GLfloat active_tile_palette_index, active_fog_tile_palette_index;
+    // Players participating in the game.
+    Players_List* players_list;
+
 };
 
 /*! @brief Loads stage described by the given stage descriptor into the game board.
