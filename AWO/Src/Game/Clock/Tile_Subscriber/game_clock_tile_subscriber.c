@@ -59,7 +59,7 @@ void update_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* clock_subscri
 
         // Update the render grid pixels for every tile subscribed to this tick event
         for (int j = 0; j < tiles_list->tiles_count; j++) {
-            tiles_list->tiles[j]->update_render_grid(tiles_list->tiles[j], event.frame_index);
+            tiles_list->tiles[j]->update_animation(tiles_list->tiles[j], event.frame_index);
         }
     }
 }

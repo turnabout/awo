@@ -2,19 +2,27 @@
 
 #include "conf.h"
 #include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
-#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile_render_grid_update.h"
+#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile_animation_update.h"
+
+#include "Game/Data/Palette/game_palette.h"
+#include "Game/Renderer/game_renderer.h"
 
 Neutral_Tile* create_neutral_tile(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Type type,
-    Tile_Variation variation
+    Tile_Variation variation,
+    Uint8 x,
+    Uint8 y
 )
 {
     Neutral_Tile* tile = (Neutral_Tile*)malloc(sizeof(Neutral_Tile));
 
+
     tile->type = type;
     tile->variation = variation;
+    tile->x = x;
+    tile->y = y;
 
     // Get the tile's animation data & attempt to register it with the game clock module.
     Animation_Clock_Index clock_index;
@@ -30,6 +38,20 @@ Neutral_Tile* create_neutral_tile(
     } else {
         tile->update_render_grid_cb = update_regular_tile_render_grid;
     }
+
+    update_tile_layer_pixel(
+        TILE_LAYER_0,
+        x,
+        y,
+        (vec4){
+            tile->animation->frames[0].raw_top_left[0],
+            tile->animation->frames[0].raw_top_left[1],
+            get_active_tile_palette_index(0),
+            0.0f
+        }
+    );
+
+    tile->update_render_grid_cb(tile, 0);
 
     return tile;
 }

@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
-#include "Game/Entity/Tile/tile_render_grid_update.h"
+#include "Game/Entity/Tile/Property_Tile/property_tile.h"
+#include "Game/Entity/Tile/tile_animation_update_cb.h"
 
 /*! @brief Generic representation of a Tile, which can either be a Neutral tile or a Property tile.
  *
@@ -12,13 +13,16 @@ typedef struct Tile {
 
     // The type of the tile.
     // For both Neutral and Property tiles: Tile_Type
-    Tile_Type tile_type;
+    Tile_Type type;
 
     // The variation of the tile.
     // For Neutral tiles: Tile_Variation
     // For Property tiles: Player_Index (index of the player who owns this tile)
-    int tile_variation;
+    int variation;
 
-    // Callback function used to update this tile's corresponding render grid pixels.
-    tile_update_render_grid_cb update_render_grid;
+    // Function called when this tile's animation updates.
+    tile_animation_update_cb update_animation;
+
+    // Coordinates of this tile within the game board.
+    Uint8 x, y;
 } Tile;

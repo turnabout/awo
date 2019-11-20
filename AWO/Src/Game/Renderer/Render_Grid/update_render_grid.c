@@ -6,10 +6,10 @@
 // This is necessary so the fragment shader can properly receive the value.
 #define PIXEL_VALUE_PACK_DIVISOR 510.0f
 
-void update_render_grid_pixels(
+void update_render_grid_pixel(
     Render_Grid* render_grid, 
-    Point* points, 
-    Uint16 points_count, 
+    Uint8 x,
+    Uint8 y,
     vec4 value
 )
 {
@@ -20,21 +20,46 @@ void update_render_grid_pixels(
         value[3] 
     };
 
-    for (int i = 0; i < points_count; i++) {
-        memcpy(
-            (render_grid->pixel_data + points[i].x + (points[i].y * render_grid->width)), 
-            &pixel, 
-            sizeof(pixel)
-        );
-    }
+    memcpy(
+        (render_grid->pixel_data + x + (y * render_grid->width)), 
+        &pixel, 
+        sizeof(pixel)
+    );
 
     render_grid->dirty = TRUE;
 }
 
-void update_render_grid_pixels_low(
+void update_render_grid_pixel_high(
+    Render_Grid* render_grid,
+    Uint8 x,
+    Uint8 y,
+    vec2 value
+)
+{
+    GLfloat pixel_high[2] = {
+        value[0],
+        value[1],
+    };
+
+    // TODO
+    // render_grid->pixel_data[0] = value[0];
+
+    // (&(render_grid->pixel_data + x + (y * render_grid->width)))[2] = value[0];
+
+    memcpy(
+        ((render_grid->pixel_data + x + (y * render_grid->width))), 
+        &pixel_high, 
+        sizeof(pixel_high)
+    );
+
+    render_grid->dirty = TRUE;
+
+}
+
+void update_render_grid_pixel_low(
     Render_Grid* render_grid, 
-    Point* points, 
-    Uint16 points_count, 
+    Uint8 x,
+    Uint8 y,
     vec2 value
 )
 {
@@ -43,13 +68,11 @@ void update_render_grid_pixels_low(
         value[1] / PIXEL_VALUE_PACK_DIVISOR, 
     };
 
-    for (int i = 0; i < points_count; i++) {
-        memcpy(
-            (render_grid->pixel_data + points[i].x + (points[i].y * render_grid->width)), 
-            &pixel_low, 
-            sizeof(pixel_low)
-        );
-    }
+    memcpy(
+        (render_grid->pixel_data + x + (y * render_grid->width)), 
+        &pixel_low, 
+        sizeof(pixel_low)
+    );
 
     render_grid->dirty = TRUE;
 }

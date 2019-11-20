@@ -33,24 +33,31 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str);
  */
 void render_tiles_layers();
 
-/*! @brief Update a pixel's value in a tiles layer's tiles texture.
+/*! @brief Update a pixel's value in a render grid layer's tile texture.
  *
  *  @param[in] layer Which layer to update.
  *  @param[in] x X offset of the pixel to update.
  *  @param[in] y Y offset of the pixel to update.
  *  @param[in] value The value used to update with.
  */
-void update_tile_layer_pixels(
+void update_tile_layer_pixel(
     Tile_Layer_Index layer,
-    Point* points,
-    Uint16 count,
+    Uint8 x,
+    Uint8 y,
     vec4 value
 );
 
-void update_tile_layer_pixels_low(
+void update_tile_layer_pixel_high(
     Tile_Layer_Index layer,
-    Point* points,
-    Uint16 count,
+    Uint8 x,
+    Uint8 y,
+    vec2 value
+);
+
+void update_tile_layer_pixel_low(
+    Tile_Layer_Index layer,
+    Uint8 x,
+    Uint8 y,
     vec2 value
 );
 

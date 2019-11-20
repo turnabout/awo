@@ -16,10 +16,6 @@
 #define PLAYER_PROPERTIES_PALETTE_COUNT PLAYER_INDEX_COUNT + 1 // + 1 for "fog"
 #define FOG_PALETTE_INDEX               PLAYER_PROPERTIES_PALETTE_START + PLAYER_PROPERTIES_PALETTE_COUNT
 
-// Index of the texture rows reserved for the players
-// #define PLAYERS_PALETTES_INDEX_START PROP_PALETTE_COUNT + ACTIVE_TILE_PALETTE_COUNT
-// #define PLAYERS_PALETTE_COUNT PROP_PALETTE_COUNT
-
 GLfloat get_active_tile_palette_index(GLboolean fog)
 {
     return get_palette_NDC_index(get_active_tile_palette_index_i(fog));

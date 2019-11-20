@@ -10,7 +10,9 @@
 
 typedef struct Tile_Descriptor {
     Tile_Type type;
-    Tile_Variation variation;
+
+    // Variation of the tile. 
+    int variation;
 } Tile_Descriptor;
 
 typedef struct Stage_Descriptor {

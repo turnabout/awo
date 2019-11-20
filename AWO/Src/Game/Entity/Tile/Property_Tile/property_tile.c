@@ -7,18 +7,21 @@ Property_Tile* create_property_tile(
     Tiles_Data* tiles_data,
     Tile_Type tile_type,
     Player_Index player,
-    tile_update_render_grid_cb* update_render_grid_cb
+    Uint8 x,
+    Uint8 y
 )
 {
-    Property_Tile* property_tile = (Property_Tile*)malloc(sizeof(Property_Tile));
+    Property_Tile* tile = (Property_Tile*)malloc(sizeof(Property_Tile));
 
-    property_tile->type = tile_type;
-    property_tile->player = player;
+    tile->type = tile_type;
+    tile->player = player;
+    tile->x = x;
+    tile->y = y;
 
     // TODO
     // property_tile->frame = get_property_frame(tiles_data, property_type, Clear, player);
 
     // TODO: set update_render_grid_cb
 
-    return property_tile;
+    return tile;
 }

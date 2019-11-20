@@ -26,15 +26,22 @@ void render_r_grid(Render_Grid* render_grid);
 /*! @brief Updates the pixel data of the given render grid.
  *
  *  @param[in] render_grid The render grid to update.
- *  @param[in] points_array Array of points to update with the new value.
- *  @param[in] points_count Amount of points in the points array.
+ *  @param[in] x X offset of the pixel to update.
+ *  @param[in] y Y offset of the pixel to update.
  *  @param[in] value The value to update the pixels with.
  */
-void update_render_grid_pixels(
+void update_render_grid_pixel(
     Render_Grid* render_grid,
-    Point* points_array,
-    Uint16 points_count,
+    Uint8 x,
+    Uint8 y,
     vec4 value
+);
+
+void update_render_grid_pixel_high(
+    Render_Grid* render_grid,
+    Uint8 x,
+    Uint8 y,
+    vec2 value
 );
 
 /*! @brief Updates the low section of pixel data of the given render grid.
@@ -43,14 +50,14 @@ void update_render_grid_pixels(
  * by the points argument.
  *
  *  @param[in] render_grid The render grid to update.
- *  @param[in] points_array Array of points to update with the new value.
- *  @param[in] points_count Amount of points in the points array.
+ *  @param[in] x X offset of the pixel to update.
+ *  @param[in] y Y offset of the pixel to update.
  *  @param[in] value The value to update the pixels with.
  */
-void update_render_grid_pixels_low(
+void update_render_grid_pixel_low(
     Render_Grid* render_grid,
-    Point* points,
-    Uint16 points_count,
+    Uint8 x,
+    Uint8 y,
     vec2 value
 );
 

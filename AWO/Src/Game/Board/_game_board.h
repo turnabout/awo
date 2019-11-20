@@ -34,7 +34,7 @@ void load_game_board_stage(
  *  @param[in] game_board The game board.
  *  @param[in] game_clock The game clock.
  *  @param[in] tiles_data The tiles data object.
- *  @param[in] type Type of the newly added tile.
+ *  @param[in] tile_type Type of the tile to add.
  *  @param[in] variation Variation of the newly added tile.
  *  @param[in] x Game board x coordinate of the new tile.
  *  @param[in] y Game board y coordinate of the new tile.
@@ -43,8 +43,8 @@ void add_game_board_tile(
     Game_Board* game_board,
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
-    Tile_Type type,
-    Tile_Variation variation,
+    Tile_Type tile_type,
+    int tile_variation,
     Uint8 x,
     Uint8 y
 );

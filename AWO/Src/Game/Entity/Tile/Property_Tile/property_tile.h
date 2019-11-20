@@ -6,7 +6,7 @@
 #include "Game/Data/Animation/Frame/frame.h"
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/tiles_data.h"
-#include "Game/Entity/Tile/tile_render_grid_update.h"
+#include "Game/Entity/Tile/tile_animation_update_cb.h"
 
 typedef struct Property_Tile {
 
@@ -17,9 +17,13 @@ typedef struct Property_Tile {
     Unit_Variation player;
 
     // Callback function used to update this tile's corresponding render grid pixels.
-    tile_update_render_grid_cb update_render_grid;
+    tile_animation_update_cb update_render_grid;
 
-    // This property's frame.
+    // Coordinates of this tile within the game board.
+    Uint8 x, y;
+
+
+    // This property's frame data.
     Frame* frame;
 
     // This property's additional animation, if it exists.
@@ -34,7 +38,8 @@ typedef struct Property_Tile {
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] tile_type The type of this property tile.
  *  @param[in] player Index of the player this tile belongs to.
- *  @param[out] update_render_grid_cb Function used to update this property's render grid pixels.
+ *  @param[in] x The x coordinate of this tile within the game board.
+ *  @param[in] y The y coordinate of this tile within the game board.
  *  @return The created property tile.
  */
 Property_Tile* create_property_tile(
@@ -42,5 +47,6 @@ Property_Tile* create_property_tile(
     Tiles_Data* tiles_data,
     Tile_Type tile_type,
     Player_Index player,
-    tile_update_render_grid_cb* update_render_grid_cb
+    Uint8 x,
+    Uint8 y
 );

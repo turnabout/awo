@@ -17,10 +17,10 @@ void load_game_board_stage(
     }
 
     // Add the tiles from the stage descriptor
-    for (int y = 0; y < stage_descriptor->height; y++) {
-        for (int x = 0; x < stage_descriptor->width; x++) {
+    for (Uint8 y = 0; y < stage_descriptor->height; y++) {
+        for (Uint8 x = 0; x < stage_descriptor->width; x++) {
 
-            Tile_Descriptor* tile = (
+            Tile_Descriptor* tile_descriptor = (
                 (stage_descriptor->tile_descriptors + x) +
                 (stage_descriptor->width * y)
             );
@@ -29,8 +29,8 @@ void load_game_board_stage(
                 game_board, 
                 game_clock,
                 tiles_data,
-                tile->type, 
-                tile->variation, 
+                tile_descriptor->type, 
+                tile_descriptor->variation, 
                 x, 
                 y
             );
