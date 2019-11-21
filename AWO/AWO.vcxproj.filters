@@ -246,7 +246,10 @@
     <ClCompile Include="Src\Game\Player\CO\CO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Utilities\linked_list.c">
+    <ClCompile Include="Src\Utilities\Linked_List\list_entry.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Utilities\Linked_List\linked_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -443,7 +446,10 @@
     <ClInclude Include="Src\Game\Data\CO\enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utilities\linked_list.h">
+    <ClInclude Include="Src\Utilities\Linked_List\_list_entry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\Linked_List\linked_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

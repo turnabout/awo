@@ -95,7 +95,8 @@
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utilities\hex_string_to_data.c" />
-    <ClCompile Include="Src\Utilities\linked_list.c" />
+    <ClCompile Include="Src\Utilities\Linked_List\linked_list.c" />
+    <ClCompile Include="Src\Utilities\Linked_List\list_entry.c" />
     <ClCompile Include="Src\Utilities\read_file.c" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +172,8 @@
     <ClInclude Include="Src\Libraries\cJSON.h" />
     <ClInclude Include="Src\GL_Helpers\gl_helpers.h" />
     <ClInclude Include="Src\types.h" />
-    <ClInclude Include="Src\Utilities\linked_list.h" />
+    <ClInclude Include="Src\Utilities\Linked_List\linked_list.h" />
+    <ClInclude Include="Src\Utilities\Linked_List\_list_entry.h" />
     <ClInclude Include="Src\Utilities\macros.h" />
     <ClInclude Include="Src\Utilities\utilities.h" />
   </ItemGroup>
