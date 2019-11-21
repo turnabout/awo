@@ -2,8 +2,6 @@
 #include "Game/Entity/Tile/tile.h"
 #include "Game/Renderer/game_renderer.h"
 
-#include "Game/Data/Tile/tiles_data.h"
-
 void update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
 {
     update_tile_layer_pixel_low(

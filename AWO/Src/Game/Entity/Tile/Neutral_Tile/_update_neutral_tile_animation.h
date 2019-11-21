@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Game/Entity/Tile/tile.h"
-#include "Game/Entity/Tile/tile_animation_update_cb.h"
 
 /*! @brief Updates parts of the render grid occupied by the given tile.
  *

@@ -6,8 +6,7 @@
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Enums/army_type.h"
-#include "Game/Entity/Tile/tile_animation_update_cb.h"
-#include "Game/Entity/Tile/tile_fog_update_cb.h"
+#include "Game/Entity/Tile/tile_update_cb.h"
 
 typedef struct Property_Tile {
 
@@ -18,16 +17,19 @@ typedef struct Property_Tile {
     Army_Type color_army;
 
     // Callback function used to update this tile's corresponding render grid pixels.
-    tile_animation_update_cb update_render_grid;
+    update_tile_animation_cb update_render_grid;
 
     // Function called when this tile's fog status updates.
-    fog_update_cb update_fog;
+    update_fog_status_cb update_fog;
 
     // Coordinates of this tile within the game board.
     Uint8 x, y;
 
     // The army type which determines the visual style of this property.
     Army_Type visual_army;
+
+    // Data for this property.
+    Property_Type_Data* data;
 
     // This property's frame data.
     Frame* frame;

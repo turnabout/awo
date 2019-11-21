@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Entity/Tile/tile.h"
-#include "Game/Entity/Tile/tile_animation_update_cb.h"
+#include "Game/Entity/Tile/tile_update_cb.h"
 
 /*! @brief Updates the palette index this tile used based on given fog status.
  *

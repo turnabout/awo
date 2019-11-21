@@ -3,16 +3,20 @@
 #include "Game/Data/Tile/Property_Tile/_property_tiles_data.h"
 #include "Game/Data/Tile/_tiles_data.h"
 
-Frame* get_property_frame(
-    Tiles_Data* tiles_data, 
-    Property_Type property_type, 
-    Weather weather_variation, 
+Property_Type_Data* get_property_type_data(Tiles_Data* tiles_data, Property_Type property_type)
+{
+    return tiles_data->property_tiles->src[property_type];
+}
+
+Frame* get_property_type_frame(
+    Property_Type_Data* property_type_data,
+    Weather weather_variation,
     Army_Type army_variation
 )
 {
     // If given army variation doesn't exist on unit type, return data for default variation
     Army_Type used_army_variation = 
-        (army_variation < tiles_data->property_tiles->src[property_type]->army_variation_count)
+        (army_variation < property_type_data->army_variation_count)
             ? army_variation
             : ARMY_TYPE_FIRST;
 
@@ -22,7 +26,7 @@ Frame* get_property_frame(
             ? weather_variation
             : WEATHER_FIRST;
 
-    return tiles_data->property_tiles->src[property_type]->frames[used_weather][used_army_variation];
+    return property_type_data->frames[used_weather][used_army_variation];
 }
 
 void free_properties_data(Tiles_Data* tiles_data)

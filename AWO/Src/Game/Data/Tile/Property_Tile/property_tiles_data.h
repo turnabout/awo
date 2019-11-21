@@ -9,6 +9,10 @@
 
 typedef struct Tiles_Data Tiles_Data;
 
+/*! @brief Holds the data for one property type.
+ */
+typedef struct Property_Type_Data Property_Type_Data;
+
 /*! @brief Holds all of the game's data for properties.
  */
 typedef struct Property_Tiles_Data Property_Tiles_Data;
@@ -26,18 +30,24 @@ Property_Tiles_Data* create_property_tiles_data(
     int ss_height
 );
 
-/*! @brief Retrieves the frame corresponding to the given property info.
+/*! @brief Retrieves the property type data object corresponding to the given property type.
  *
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] property_type The property type of the frame to get.
+ *  @return The property type data object.
+ */
+Property_Type_Data* get_property_type_data(Tiles_Data* tiles_data, Property_Type property_type);
+
+/*! @brief Retrieves a frame in the given property type data corresponding to the given variations.
+ *
+ *  @param[in] property_type_data The property type data object of the frame to get.
  *  @param[in] weather_variation The weather variation of the frame to get.
  *  @param[in] army_variation The army variation of the frame to get.
- *  @return The frame representing the property corresponding to the given arguments.
+ *  @return The retrieved frame with the given variations.
  */
-Frame* get_property_frame(
-    Tiles_Data* tiles_data, 
-    Property_Type property_type, 
-    Weather weather_variation, 
+Frame* get_property_type_frame(
+    Property_Type_Data* property_type_data,
+    Weather weather_variation,
     Army_Type army_variation
 );
 

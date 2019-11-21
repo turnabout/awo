@@ -47,6 +47,9 @@ GLuint create_game_palette_texture(
 );
 
 GLfloat get_active_tile_palette_index(GLboolean fog);
+GLfloat get_player_unit_palette_index(Player_Index player_index, GLboolean done);
+GLfloat get_player_property_palette_index(Player_Index player_index);
+GLfloat get_fog_property_palette_index();
 
 GLuint get_active_tile_palette_index_i(GLboolean fog);
 GLuint get_player_unit_palette_index_i(Player_Index player_index, GLboolean done);
