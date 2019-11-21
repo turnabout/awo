@@ -15,11 +15,6 @@ typedef struct Tile {
     // For both Neutral and Property tiles: Tile_Type
     Tile_Type type;
 
-    // The variation of the tile.
-    // For Neutral tiles: Tile_Variation
-    // For Property tiles: Player_Index (index of the player who owns this tile)
-    int variation;
-
     // Function called when this tile's animation updates.
     update_tile_animation_cb update_animation;
 

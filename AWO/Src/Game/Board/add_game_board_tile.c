@@ -25,14 +25,13 @@ void add_game_board_tile(
 
         // The player who owns this property
         Player_Index player_index = (Player_Index)tile_variation;
-        Player* player = game_board->players_list->players[tile_variation];
 
         // Create the property tile & register it with the game board's grid
         Tile* tile = game_board->tiles_grid[y][x] = (Tile*)create_property_tile(
             game_clock,
             tiles_data,
             tile_type,
-            player->army,
+            game_board->players_list->players[player_index],
             x,
             y
         );

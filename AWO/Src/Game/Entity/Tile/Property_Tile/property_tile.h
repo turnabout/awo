@@ -7,14 +7,12 @@
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Enums/army_type.h"
 #include "Game/Entity/Tile/tile_update_cb.h"
+#include "Game/Player/player.h"
 
 typedef struct Property_Tile {
 
     // This tile's type.
     Tile_Type type;
-
-    // The army type which determines the color of this property.
-    Army_Type color_army;
 
     // Callback function used to update this tile's corresponding render grid pixels.
     update_tile_animation_cb update_render_grid;
@@ -25,8 +23,9 @@ typedef struct Property_Tile {
     // Coordinates of this tile within the game board.
     Uint8 x, y;
 
-    // The army type which determines the visual style of this property.
-    Army_Type visual_army;
+    
+    // The player who owns this property.
+    Player* player;
 
     // Data for this property.
     Property_Type_Data* data;
@@ -45,7 +44,7 @@ typedef struct Property_Tile {
  *  @param[in] game_clock The game's clock struct.
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] tile_type The type of this property tile.
- *  @param[in] color_army The color of this property tile.
+ *  @param[in] player Player who owns the newly-created property.
  *  @param[in] x The x coordinate of this tile within the game board.
  *  @param[in] y The y coordinate of this tile within the game board.
  *  @return The created property tile.
@@ -54,15 +53,14 @@ Property_Tile* create_property_tile(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Type tile_type,
-    Army_Type color_army,
+    Player* player,
     Uint8 x,
     Uint8 y
 );
 
-/*! @brief Updates a property tile's army.
+/*! @brief Updates the owner of property tile.
  *
  *  @param[in] property The property to update.
- *  @param[in] color_army The new color army for the property.
- *  @param[in] visual_army The new visual army for the property.
+ *  @param[in] player Pointer to the new player owner.
  */
-void update_property_army(Property_Tile* property, Army_Type color_army, Army_Type visual_army);
+void update_property_owner(Property_Tile* property, Player* player);

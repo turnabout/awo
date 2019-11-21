@@ -11,9 +11,6 @@ typedef struct Neutral_Tile {
     // This tile's type.
     Tile_Type type;
 
-    // This tile's variation.
-    Tile_Variation variation;
-
     // Callback function used to update this tile's corresponding render grid pixels.
     update_tile_animation_cb update_animation;
 
@@ -23,6 +20,9 @@ typedef struct Neutral_Tile {
     // Coordinates of this tile within the game board.
     Uint8 x, y;
 
+
+    // This tile's variation.
+    Tile_Variation variation;
 
     // This tile's animation.
     Animation* animation;
