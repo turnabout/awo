@@ -16,6 +16,8 @@ Linked_List* create_linked_list(void* values[], size_t values_count)
     Linked_List* list = (Linked_List*)malloc(sizeof(Linked_List));
 
     if (values_count == 0) {
+        list->head = NULL;
+        list->tail = NULL;
         return list;
     }
 
@@ -81,5 +83,5 @@ void free_linked_list(Linked_List* list)
         free(*pp);
     }
 
-    // free(list);
+    free(list);
 }

@@ -2,9 +2,11 @@
 
 #include "conf.h"
 #include "types.h"
+#include "Utilities/Linked_List/linked_list.h"
 #include "Game/Player/player_index_enum.h"
 #include "Game/Player/CO/CO.h"
 #include "Game/Data/Unit/enums.h"
+#include "Game/Entity/Tile/Property_Tile/property_tile.h"
 
 typedef struct Player {
 
@@ -17,6 +19,9 @@ typedef struct Player {
 
     // The Commanding Officer used by the player.
     CO* CO;
+
+    // List containing pointers to every property owned by this player.
+    Linked_List* properties;
 
 } Player;
 
@@ -39,14 +44,27 @@ typedef struct Players_List {
  */
 Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type player_co);
 
+/*! @brief Registers a property with a player.
+ *
+ *  @param[in] player The player getting the property registered to it.
+ *  @param[in] property The property to register.
+ */
+void register_player_property(Player* player, Property_Tile* property);
+
 /*! @brief Frees the memory allocated by the given player.
  *
  *  @param[in] player The player to free.
  */
 free_player(Player* player);
 
-/*! @brief Create an (empty) list of players.
+/*! @brief Creates an (empty) list of players.
  *
  *  @param[in] player_count Amount of players belonging to this list.
  */
 Players_List* create_players_list(Uint8 player_count);
+
+/*! @brief Frees the memory allocated by a players list, as well as all of its players.
+ *
+ *  @param[in] players_list List of players to free.
+ */
+void free_players_list(Players_List* players_list);

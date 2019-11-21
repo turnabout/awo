@@ -22,13 +22,21 @@ void add_game_board_tile(
         );
         
     } else if (tile_type >= PROPERTY_TILE_TYPE_FIRST && tile_type <= PROPERTY_TILE_TYPE_LAST) {
-        game_board->tiles_grid[y][x] = (Tile*)create_property_tile(
+
+        // The player who owns this property
+        Player* player = game_board->players_list->players[tile_variation];
+
+        // Create the property tile & register it with the game board's grid
+        Tile* tile = game_board->tiles_grid[y][x] = (Tile*)create_property_tile(
             game_clock,
             tiles_data,
             tile_type,
-            tile_variation,
+            player->army,
             x,
             y
         );
+
+        // Register the property with the player who owns it
+        register_player_property(player, (Property_Tile*)tile);
     }
 }

@@ -13,9 +13,8 @@ Game_Board* create_game_board(
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
-    load_game_board_stage(game_board, game_clock, tiles_data, stage_descriptor);
-
     game_board->players_list = players_list;
+    load_game_board_stage(game_board, game_clock, tiles_data, stage_descriptor);
 
     // game_board->active_tile_palette_index = get_active_tile_palette_index(0);
     // game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);

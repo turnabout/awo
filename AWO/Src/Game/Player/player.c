@@ -9,6 +9,7 @@ Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type 
     player->index = player_index;
     player->army = player_army;
     player->CO = create_CO(player_co);
+    player->properties = create_linked_list(NULL, 0);
 
     return player;
 }
@@ -19,10 +20,8 @@ free_player(Player* player)
     free(player);
 }
 
-Players_List* create_players_list(Uint8 player_count)
+void register_player_property(Player* player, Property_Tile* property)
 {
-
-    Players_List* players_list = (Players_List*)malloc(sizeof(Players_List));
-
-    return players_list;
+    append_linked_list_item(player->properties, (void*)property);
+    update_property_army(property, player->army, player->CO->army);
 }
