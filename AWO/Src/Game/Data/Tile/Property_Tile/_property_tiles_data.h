@@ -12,13 +12,13 @@ typedef struct Property_Type_Data {
     Uint8 army_variation_count;
 
     // The frames corresponding to this property type's different variations.
-    Frame** frames[PROPERTY_WEATHER_COUNT];
+    Frame** frames;
 
 } Property_Type_Data;
 
 struct Property_Tiles_Data
 {
     // All properties' source data.
-    // Structure goes: Property type -> Weather variation -> Army variation
-    Property_Type_Data* src[PROPERTY_TYPE_COUNT];
+    // Structure goes: Weather variation -> Property type -> Army variation
+    Property_Type_Data* src[PROPERTY_WEATHER_COUNT][PROPERTY_TYPE_COUNT];
 };

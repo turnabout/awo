@@ -30,26 +30,26 @@ Property_Tiles_Data* create_property_tiles_data(
     int ss_height
 );
 
-/*! @brief Retrieves the property type data object corresponding to the given property type.
+/*! @brief Retrieves the property type data object of a property type.
  *
  *  @param[in] tiles_data The tiles data object.
+ *  @param[in] weather_variation The weather variation of the property type data to get.
  *  @param[in] property_type The property type of the frame to get.
  *  @return The property type data object.
  */
-Property_Type_Data* get_property_type_data(Tiles_Data* tiles_data, Property_Type property_type);
+Property_Type_Data* get_property_type_data(
+    Tiles_Data* tiles_data,
+    Weather weather_variation,
+    Property_Type property_type
+);
 
 /*! @brief Retrieves a frame in the given property type data corresponding to the given variations.
  *
  *  @param[in] property_type_data The property type data object of the frame to get.
- *  @param[in] weather_variation The weather variation of the frame to get.
  *  @param[in] army_variation The army variation of the frame to get.
  *  @return The retrieved frame with the given variations.
  */
-Frame* get_property_type_frame(
-    Property_Type_Data* property_type_data,
-    Weather weather_variation,
-    Army_Type army_variation
-);
+Frame* get_property_type_frame(Property_Type_Data* property_type_data, Army_Type army_variation);
 
 /*! @brief Frees the memory occupied by the properties data object.
  *
