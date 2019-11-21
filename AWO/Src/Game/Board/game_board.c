@@ -14,10 +14,12 @@ Game_Board* create_game_board(
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
     game_board->players_list = players_list;
-    load_game_board_stage(game_board, game_clock, tiles_data, stage_descriptor);
 
-    // game_board->active_tile_palette_index = get_active_tile_palette_index(0);
-    // game_board->active_fog_tile_palette_index = get_active_tile_palette_index(1);
+    for (int i = 0; i < game_board->players_list->player_count; i++) {
+        game_board->player_properties[i] = create_linked_list(NULL, 0);
+    }
+
+    load_game_board_stage(game_board, game_clock, tiles_data, stage_descriptor);
 
     return game_board;
 }

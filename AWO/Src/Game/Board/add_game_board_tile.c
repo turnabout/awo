@@ -24,6 +24,7 @@ void add_game_board_tile(
     } else if (tile_type >= PROPERTY_TILE_TYPE_FIRST && tile_type <= PROPERTY_TILE_TYPE_LAST) {
 
         // The player who owns this property
+        Player_Index player_index = (Player_Index)tile_variation;
         Player* player = game_board->players_list->players[tile_variation];
 
         // Create the property tile & register it with the game board's grid
@@ -37,6 +38,6 @@ void add_game_board_tile(
         );
 
         // Register the property with the player who owns it
-        register_player_property(player, (Property_Tile*)tile);
+        register_player_property(game_board, player_index, (Property_Tile*)tile);
     }
 }

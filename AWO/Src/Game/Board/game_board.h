@@ -36,4 +36,3 @@ void update_game_board(Game_Board* game_board);
  *  @param[in] game_board The game board.
  */
 void free_game_board(Game_Board* game_board);
-

@@ -43,6 +43,7 @@
     <ClCompile Include="Src\Game\Board\add_game_board_tile.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
+    <ClCompile Include="Src\Game\Board\player_properties.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette_texture.c" />

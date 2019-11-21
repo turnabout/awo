@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Game/Board/game_board.h"
+#include "Game/Entity/Tile/Property_Tile/property_tile.h"
+#include "Utilities/Linked_List/linked_list.h"
 
 typedef Tile** Tile_Row;
 
@@ -14,6 +16,9 @@ struct Game_Board {
 
     // Players participating in the game.
     Players_List* players_list;
+
+    // Lists of properties belonging to each player.
+    Linked_List* player_properties[MAX_PLAYER_COUNT];
 
 };
 
@@ -49,4 +54,26 @@ void add_game_board_tile(
     int tile_variation,
     Uint8 x,
     Uint8 y
+);
+
+/*! @brief Registers a property with a player.
+ *
+ *  @param[in] player_index The index of the player receiving the property.
+ *  @param[in] property Pointer to the property to register.
+ */
+void register_player_property(
+    Game_Board* game_board, 
+    Player_Index player_index, 
+    Property_Tile* property
+);
+
+/*! @brief Unregisters a property with a player.
+ *
+ *  @param[in] player_index The index of the player losing the property.
+ *  @param[in] property Pointer to the property to register.
+ */
+void unregister_player_property(
+    Game_Board* game_board, 
+    Player_Index player_index, 
+    Property_Tile* property
 );

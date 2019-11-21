@@ -255,6 +255,9 @@
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_fog.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Board\player_properties.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
