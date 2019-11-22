@@ -108,7 +108,26 @@ Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tile
         }
 
         // Validate this tile exists
-        if (!tile_type_variation_exists(tiles_data, stage_data[data_i], stage_data[data_i + 1])) {
+        Uint8 tile_type = stage_data[data_i];
+        Uint8 tile_variation = stage_data[data_i + 1];
+
+        if (tile_type >= NEUTRAL_TILE_TYPE_FIRST && tile_type <= NEUTRAL_TILE_TYPE_LAST) {
+
+            // Validate neutral tile
+            if (!tile_type_variation_exists(tiles_data, tile_type, tile_variation)) {
+                return FALSE;
+            }
+
+        } else if (tile_type >= PROPERTY_TILE_TYPE_FIRST && tile_type <= PROPERTY_TILE_TYPE_LAST) {
+
+            // Tile variation (player index) invalid (out of bounds)
+            if (tile_variation >= player_count) {
+                return FALSE;
+            }
+
+        } else {
+
+            // Invalid tile type
             return FALSE;
         }
 
