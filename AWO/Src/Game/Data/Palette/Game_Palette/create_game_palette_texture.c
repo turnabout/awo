@@ -113,5 +113,8 @@ GLuint create_game_palette_texture(
     free(game_palette_texture_data);
     free(raw_palette_texture_data);
 
+    // Before exiting, apply the initial weather colors to the properties palettes
+    update_properties_weather_colors(texture);
+
     return texture;
 }

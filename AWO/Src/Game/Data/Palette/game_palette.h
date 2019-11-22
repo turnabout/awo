@@ -25,11 +25,11 @@
  *   8: Player 3 Units
  *   9: Player 3 Units (Done)
  *  10: Player 0 Property
- *  12: Player 1 Property
- *  14: Player 2 Property
- *  16: Player 3 Property
- *  18: Player Neutral Property
- *  19: Fog property
+ *  11: Player 1 Property
+ *  12: Player 2 Property
+ *  13: Player 3 Property
+ *  14: Player Neutral Property
+ *  15: Fog property
  */
 
 /*! @brief Creates the palette texture used during a game.
@@ -68,8 +68,14 @@ void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color);
 
 /*! @brief Updates the currently active tile palette.
  *
- * Note: The palettes texture must be bound before calling this function.
+ * Note: The game palettes texture must be bound before calling this function.
  *
  *  @param[in] weather The weather of the new active tile palette.
  */
 void update_active_tile_palette(Weather weather);
+
+/*! @brief Updates the property palettes' weather colors to the currently active tile palette's.
+ *
+ *  @param[in] game_palette_texture The game palette texture.
+ */
+void update_properties_weather_colors(GLuint game_palette_texture);

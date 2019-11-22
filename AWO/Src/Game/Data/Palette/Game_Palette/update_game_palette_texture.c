@@ -20,19 +20,10 @@ void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color)
     );
 }
 
-void update_properties_weather_colors(
-    Palette_Texture_Row* texture_data,
-    GLuint new_tile_palette_index,
-    GLuint new_fog_tile_palette_index
-)
-{
-    // TODO
-    // Grab the colors from the currently active tile palette texture and apply to all property
-    // palettes
-}
-
 void update_active_tile_palette(Weather weather)
 {
+    // TODO: redo for game palette (this code was for raw palette)
+    /*
     GLuint new_tile_palette_index = get_tile_palette_index_i(weather, FALSE);
     GLuint new_fog_tile_palette_index = get_tile_palette_index_i(weather, TRUE);
 
@@ -76,4 +67,5 @@ void update_active_tile_palette(Weather weather)
     // TODO
 
     free(texture_data);
+    */
 }
