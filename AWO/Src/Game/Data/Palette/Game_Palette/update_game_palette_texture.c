@@ -3,7 +3,7 @@
 #include "Game/Data/Palette/_palette.h"
 
 // TODO: take in a unit variation as an arg instead of a palette index
-void update_unit_palette_black_pixel(GLint palette_index, GLubyte new_color)
+void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color)
 {
     GLubyte new_color_array[4] = { new_color, new_color, new_color, 255 };
 
@@ -22,8 +22,8 @@ void update_unit_palette_black_pixel(GLint palette_index, GLubyte new_color)
 
 void update_properties_weather_colors(
     Palette_Texture_Row* texture_data,
-    GLint new_tile_palette_index,
-    GLint new_fog_tile_palette_index
+    GLuint new_tile_palette_index,
+    GLuint new_fog_tile_palette_index
 )
 {
     // TODO
@@ -33,8 +33,8 @@ void update_properties_weather_colors(
 
 void update_active_tile_palette(Weather weather)
 {
-    GLint new_tile_palette_index = get_tile_palette_index_i(weather, 0);
-    GLint new_fog_tile_palette_index = get_tile_palette_index_i(weather, 1);
+    GLuint new_tile_palette_index = get_tile_palette_index_i(weather, FALSE);
+    GLuint new_fog_tile_palette_index = get_tile_palette_index_i(weather, TRUE);
 
     // Get selected weather palette data and transfer into 
     Palette_Texture_Row* texture_data = malloc(sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT);
@@ -52,7 +52,7 @@ void update_active_tile_palette(Weather weather)
         GL_TEXTURE_2D,
         0,
         0,
-        get_active_tile_palette_index_i(0),
+        get_active_tile_palette_index_i(FALSE),
         PALETTE_TEX_WIDTH,
         1,
         GL_RGBA,
@@ -64,7 +64,7 @@ void update_active_tile_palette(Weather weather)
         GL_TEXTURE_2D,
         0,
         0,
-        get_active_tile_palette_index_i(1),
+        get_active_tile_palette_index_i(TRUE),
         PALETTE_TEX_WIDTH,
         1,
         GL_RGBA,

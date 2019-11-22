@@ -5,6 +5,7 @@
 #include <cJSON.h>
 
 #include "conf.h"
+#include "types.h"
 #include "Game/Player/player_index_enum.h"
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/enums.h"
@@ -46,13 +47,13 @@ GLuint create_game_palette_texture(
     Army_Type player_armies[MAX_PLAYER_COUNT]
 );
 
-GLfloat get_active_tile_palette_index(GLboolean fog);
-GLfloat get_player_unit_palette_index(Player_Index player_index, GLboolean done);
+GLfloat get_active_tile_palette_index(Bool fog);
+GLfloat get_player_unit_palette_index(Player_Index player_index, Bool done);
 GLfloat get_player_property_palette_index(Player_Index player_index);
 GLfloat get_fog_property_palette_index();
 
-GLuint get_active_tile_palette_index_i(GLboolean fog);
-GLuint get_player_unit_palette_index_i(Player_Index player_index, GLboolean done);
+GLuint get_active_tile_palette_index_i(Bool fog);
+GLuint get_player_unit_palette_index_i(Player_Index player_index, Bool done);
 GLuint get_player_property_palette_index_i(Player_Index player_index);
 GLuint get_fog_property_palette_index_i();
 
@@ -63,7 +64,7 @@ GLuint get_fog_property_palette_index_i();
  *  @param[in] palette_index Index of the palette to update.
  *  @param[in] new_color Color to replace the current black pixel value with.
  */
-void update_unit_palette_black_pixel(GLint palette_index, GLubyte new_color);
+void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color);
 
 /*! @brief Updates the currently active tile palette.
  *

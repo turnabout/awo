@@ -2,12 +2,12 @@
 
 #include "Game/Data/Palette/_palette.h"
 
-GLfloat get_unit_palette_index(Army_Type unit_variation, GLboolean done)
+GLfloat get_unit_palette_index(Army_Type unit_variation, Bool done)
 {
     return get_palette_NDC_index( get_unit_palette_index_i(unit_variation, done) );
 }
 
-GLfloat get_tile_palette_index(Weather weather, GLboolean fog)
+GLfloat get_tile_palette_index(Weather weather, Bool fog)
 {
     return get_palette_NDC_index( get_tile_palette_index_i(weather, fog));
 }
@@ -17,22 +17,22 @@ GLfloat get_property_palette_index(Army_Type unit_variation)
     return get_palette_NDC_index( get_property_palette_index_i(unit_variation) );
 }
 
-GLint get_unit_palette_index_i(Army_Type unit_variation, GLboolean done)
+GLuint get_unit_palette_index_i(Army_Type unit_variation, Bool done)
 {
     return (unit_variation * 2) + done;
 }
 
-GLint get_tile_palette_index_i(Weather weather, GLboolean fog)
+GLuint get_tile_palette_index_i(Weather weather, Bool fog)
 {
     return UNIT_PALETTE_COUNT + (weather * 2) + fog;
 }
 
-GLint get_property_palette_index_i(Army_Type unit_variation)
+GLuint get_property_palette_index_i(Army_Type unit_variation)
 {
     return UNIT_PALETTE_COUNT + TILE_PALETTE_COUNT + unit_variation;
 }
 
-GLint get_raw_fog_property_palette_index_i()
+GLuint get_raw_fog_property_palette_index_i()
 {
     return (UNIT_PALETTE_COUNT + TILE_PALETTE_COUNT + PROP_PALETTE_COUNT) - 1;
 }

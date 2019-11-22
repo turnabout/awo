@@ -43,7 +43,7 @@ Neutral_Tile* create_neutral_tile(
     }
 
     tile->update_animation(tile, 0);
-    tile->update_palette(tile, TRUE);
+    tile->update_palette(tile, FALSE);
 
     return tile;
 }

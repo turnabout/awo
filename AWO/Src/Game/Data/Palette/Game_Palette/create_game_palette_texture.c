@@ -34,18 +34,15 @@ GLuint create_game_palette_texture(
     size_t row_size = 4 * PALETTE_TEX_WIDTH;
 
     // Populate active tile palette
-    // printf("%d -> %d\n", get_tile_palette_index_i(active_weather, 0), get_active_tile_palette_index_i(0));
-    // printf("%d -> %d\n", get_tile_palette_index_i(active_weather, 1), get_active_tile_palette_index_i(1));
-
     memcpy(
-        &game_palette_texture_data[get_active_tile_palette_index_i(0)],
-        &raw_palette_texture_data[get_tile_palette_index_i(active_weather, 0)],
+        &game_palette_texture_data[get_active_tile_palette_index_i(FALSE)],
+        &raw_palette_texture_data[get_tile_palette_index_i(active_weather, FALSE)],
         row_size
     );
 
     memcpy(
         &game_palette_texture_data[get_active_tile_palette_index_i(1)],
-        &raw_palette_texture_data[get_tile_palette_index_i(active_weather, 1)],
+        &raw_palette_texture_data[get_tile_palette_index_i(active_weather, TRUE)],
         row_size
     );
 
@@ -58,19 +55,15 @@ GLuint create_game_palette_texture(
         }
 
         // Populate player units palettes
-        // printf("%d -> %d\n",get_unit_palette_index_i(player_army, 0) ,get_player_unit_palette_index_i(i, 0));
-        // printf("%d -> %d\n",get_unit_palette_index_i(player_army, 1) ,get_player_unit_palette_index_i(i, 1));
-        // printf("%d -> %d\n", get_player_property_palette_index_i(i), get_player_property_palette_index_i(i));
-
         memcpy(
-            &game_palette_texture_data[get_player_unit_palette_index_i(i, 0)],
-            &raw_palette_texture_data[get_unit_palette_index_i(player_army, 0)],
+            &game_palette_texture_data[get_player_unit_palette_index_i(i, FALSE)],
+            &raw_palette_texture_data[get_unit_palette_index_i(player_army, FALSE)],
             row_size
         );
 
         memcpy(
-            &game_palette_texture_data[get_player_unit_palette_index_i(i, 1)],
-            &raw_palette_texture_data[get_unit_palette_index_i(player_army, 1)],
+            &game_palette_texture_data[get_player_unit_palette_index_i(i, TRUE)],
+            &raw_palette_texture_data[get_unit_palette_index_i(player_army, TRUE)],
             row_size
         );
 
@@ -83,8 +76,6 @@ GLuint create_game_palette_texture(
     }
 
     // Populate neutral & fog property palettes
-    // printf("%d -> %d\n", get_property_palette_index_i(UNIT_VAR_NEUTRAL), get_player_property_palette_index_i(Player_Index_Neutral));
-    // printf("%d -> %d\n", get_raw_fog_property_palette_index_i(), get_fog_property_palette_index_i());
     memcpy(
         &game_palette_texture_data[get_player_property_palette_index_i(Player_Index_Neutral)],
         &raw_palette_texture_data[get_property_palette_index_i(ARMY_TYPE_NEUTRAL)],
