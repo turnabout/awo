@@ -58,9 +58,21 @@ Property_Tile* create_property_tile(
     Uint8 y
 );
 
-/*! @brief Updates the owner of property tile.
+/*! @brief Updates the owner of the property tile.
  *
  *  @param[in] property The property to update.
  *  @param[in] player Pointer to the new player owner.
  */
 void update_property_owner(Property_Tile* property, Player* player);
+
+/*! @brief Updates the weather variation of the property tile.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] property The property tile to update.
+ *  @param[in] weather Weather variation to update to.
+ */
+void update_property_weather_variation(
+    Tiles_Data* tiles_data,
+    Property_Tile* property,
+    Weather weather
+);

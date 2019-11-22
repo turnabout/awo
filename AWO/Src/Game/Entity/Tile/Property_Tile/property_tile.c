@@ -19,15 +19,13 @@ Property_Tile* create_property_tile(
     property->x = x;
     property->y = y;
 
-    update_property_owner(property, player);
-
-    /*
     property->data = get_property_type_data(
         tiles_data,
+        WEATHER_FIRST,
         (Property_Type)tile_type - PROPERTY_TILE_TYPE_FIRST
     );
-    */
 
+    update_property_owner(property, player);
 
     // TODO: base properties contain an animation which makes them update differently
     if (tile_type == Property_Base) {
@@ -44,11 +42,27 @@ Property_Tile* create_property_tile(
 void update_property_owner(Property_Tile* property, Player* player)
 {
     property->player = player;
-    /*
+
     property->frame = get_property_type_frame(
-        property->data, 
-        Clear, 
-        player->CO->army
+        property->data,
+        property->player->CO->army
     );
-    */
+}
+
+void update_property_weather_variation(
+    Tiles_Data* tiles_data, 
+    Property_Tile* property, 
+    Weather weather
+)
+{
+    property->data = get_property_type_data(
+        tiles_data,
+        weather,
+        (Property_Type)property->type - PROPERTY_TILE_TYPE_FIRST
+    );
+
+    property->frame = get_property_type_frame(
+        property->data,
+        property->player->CO->army
+    );
 }
