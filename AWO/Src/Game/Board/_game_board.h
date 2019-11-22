@@ -17,8 +17,8 @@ struct Game_Board {
     // Players participating in the game.
     Players_List* players_list;
 
-    // Lists of properties belonging to each player.
-    Linked_List* player_properties[MAX_PLAYER_COUNT];
+    // Lists of properties belonging to each player. ( + 1 for neutral player )
+    Linked_List* player_properties[MAX_PLAYER_COUNT + 1];
 
 };
 

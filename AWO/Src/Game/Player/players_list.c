@@ -6,6 +6,7 @@ Players_List* create_players_list(Uint8 player_count)
 {
 
     Players_List* players_list = (Players_List*)malloc(sizeof(Players_List));
+    players_list->player_count = player_count;
 
     return players_list;
 }

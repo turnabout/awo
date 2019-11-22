@@ -46,13 +46,11 @@ Property_Tiles_Data* create_property_tiles_data(cJSON* properties_data_JSON, int
         cJSON* property_type_JSON;
         cJSON_ArrayForEach(property_type_JSON, property_weather_var_JSON)
         {
-            /*
             data->src[weather][property_type++] = create_property_type_data(
                 property_type_JSON,
                 ss_width,
                 ss_height
             );
-            */
         }
 
         weather++;
