@@ -17,7 +17,7 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     }
 
     // Create the stage descriptor, populate & return
-    Stage_Descriptor* descriptor = (Stage_Descriptor*)malloc(sizeof(Stage_Descriptor));
+    Stage_Descriptor* stage = (Stage_Descriptor*)malloc(sizeof(Stage_Descriptor));
 
     // Process data byte array
     size_t i = 0;
@@ -25,17 +25,17 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     // Process name
     while (1) {
         if (stage_data[i] == STAGE_STRING_SEPARATOR_CHARACTER) {
-            descriptor->name[i] = '\0';
+            stage->name[i] = '\0';
             i++;
             break;
         }
 
-        descriptor->name[i] = stage_data[i];
+        stage->name[i] = stage_data[i];
         i++;
     }
 
     // Process players data
-    descriptor->player_count = 0;
+    stage->player_count = 0;
 
     while (1) {
 
@@ -45,26 +45,26 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
             break;
         }
 
-        descriptor->player_armies[descriptor->player_count] = player_army;
-        descriptor->player_count++;
+        stage->player_armies[stage->player_count] = player_army;
+        stage->player_count++;
     }
 
     // Initialize other player armies to NONE
-    for (int j = descriptor->player_count; j < MAX_PLAYER_COUNT; j++) {
-        descriptor->player_armies[j] = ARMY_TYPE_NONE;
+    for (int j = stage->player_count; j < MAX_PLAYER_COUNT; j++) {
+        stage->player_armies[j] = ARMY_TYPE_NONE;
     }
 
     // Process stage dimensions
-    descriptor->width = stage_data[i];
-    descriptor->height = stage_data[i + 1];
-    descriptor->tiles_amount = descriptor->width * descriptor->height;
+    stage->width = stage_data[i];
+    stage->height = stage_data[i + 1];
+    stage->tile_count = stage->width * stage->height;
 
     // Point index to after the separator
     i += 3;
 
     // Process stage tiles
-    descriptor->tile_descriptors = (Tile_Descriptor*)malloc(
-        sizeof(Tile_Descriptor) * descriptor->tiles_amount
+    stage->tile_descriptors = (Tile_Descriptor*)malloc(
+        sizeof(Tile_Descriptor) * stage->tile_count
     );
 
     int tile_n = 0;
@@ -77,14 +77,14 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
             break;
         }
 
-        descriptor->tile_descriptors[tile_n].type = (Tile_Type)stage_data[i];
-        descriptor->tile_descriptors[tile_n].variation = (Tile_Variation)stage_data[i + 1];
+        stage->tile_descriptors[tile_n].type = (Tile_Type)stage_data[i];
+        stage->tile_descriptors[tile_n].variation = (Tile_Variation)stage_data[i + 1];
 
         i += 2;
         tile_n++;
     }
 
-    return descriptor;
+    return stage;
 }
 
 void free_stage_descriptor(Stage_Descriptor* stage_descriptor)

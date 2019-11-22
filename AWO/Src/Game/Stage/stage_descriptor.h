@@ -6,7 +6,7 @@
 #include "Game/Data/Unit/units_data.h"
 #include "Game/Stage/stage_descriptor.h"
 
-#define STAGE_NAME_MAX_LENGTH 16
+#define STAGE_NAME_MAX_LENGTH 32
 
 /*! @brief Describes the contents of a tile within a level.
  */
@@ -33,7 +33,7 @@ typedef struct Stage_Descriptor {
     Uint8 width, height;
 
     // How many tiles are present in the stage.
-    Uint16 tiles_amount;
+    Uint16 tile_count;
 
     // Descriptors of every tile making up the stage.
     Tile_Descriptor* tile_descriptors;
@@ -53,6 +53,21 @@ typedef struct Stage_Descriptor {
  *  @return The created stage descriptor instance, or NULL if the stage string was invalid.
  */
 Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data);
+
+/*! @brief Generates a stage filled up with tiles of the given type and variation.
+ *
+ *  @param[in] type The type of the tile used to fill the stage width.
+ *  @param[in] variation The variation of the tile used to fill the stage width.
+ *  @param[in] width The width of the generated stage.
+ *  @param[in] height The height of the generated stage.
+ *  @return The generate stage.
+ */
+Stage_Descriptor* generate_filled_stage(
+    Tile_Type type,
+    Tile_Variation variation,
+    Uint8 width,
+    Uint8 height
+);
 
 /*! @brief Frees data taken up by a stage descriptor.
  *
