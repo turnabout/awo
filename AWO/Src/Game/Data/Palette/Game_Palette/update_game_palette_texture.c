@@ -20,25 +20,26 @@ void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color)
     );
 }
 
-void update_active_tile_palette(Weather weather)
+void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint raw_palette_tex)
 {
-    // TODO: redo for game palette (this code was for raw palette)
-    /*
-    GLuint new_tile_palette_index = get_tile_palette_index_i(weather, FALSE);
-    GLuint new_fog_tile_palette_index = get_tile_palette_index_i(weather, TRUE);
+    // Load the raw palette texture data
+    Palette_Texture_Row* raw_palettes_tex_data = (Palette_Texture_Row*)malloc(
+        sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
+    );
 
-    // Get selected weather palette data and transfer into 
-    Palette_Texture_Row* texture_data = malloc(sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT);
+    glBindTexture(GL_TEXTURE_2D, raw_palette_tex);
 
     glGetTexImage(
         GL_TEXTURE_2D,
         0,
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        texture_data
+        raw_palettes_tex_data
     );
 
-    // Update active tile/fog palettes with new palettes
+    glBindTexture(GL_TEXTURE_2D, game_palette_tex);
+
+    // Apply tile palette row
     glTexSubImage2D(
         GL_TEXTURE_2D,
         0,
@@ -48,9 +49,10 @@ void update_active_tile_palette(Weather weather)
         1,
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        &texture_data[new_tile_palette_index]
+        &raw_palettes_tex_data[get_tile_palette_index_i(weather, FALSE)]
     );
 
+    // Apply fog tile palette row
     glTexSubImage2D(
         GL_TEXTURE_2D,
         0,
@@ -60,12 +62,11 @@ void update_active_tile_palette(Weather weather)
         1,
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        &texture_data[new_fog_tile_palette_index]
+        &raw_palettes_tex_data[get_tile_palette_index_i(weather, TRUE)]
     );
 
-    // Update property palettes' weather colors
-    // TODO
+    free(raw_palettes_tex_data);
 
-    free(texture_data);
-    */
+    // Update properties' weather color with the new one
+    update_properties_weather_colors(game_palette_tex);
 }

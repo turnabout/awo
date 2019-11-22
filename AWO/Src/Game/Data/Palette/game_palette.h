@@ -72,7 +72,7 @@ void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color);
  *
  *  @param[in] weather The weather of the new active tile palette.
  */
-void update_active_tile_palette(Weather weather);
+void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint raw_palette_tex);
 
 /*! @brief Updates the property palettes' weather colors to the currently active tile palette's.
  *
