@@ -25,7 +25,7 @@ Bool get_data_JSON(const cJSON **data_JSON)
     return TRUE;
 }
 
-Bool init_game_data(Game* game, int stage_index)
+Bool init_game_data(Game* game)
 {
     // Load cJSON data object
     cJSON* data_JSON;
@@ -65,12 +65,21 @@ Bool init_game_data(Game* game, int stage_index)
         game->tiles_data
     );
 
-    // Attach string of the stage to load
+    // Load all default stages
     cJSON* stages_array_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "stages");
-    cJSON* stage_JSON = cJSON_GetArrayItem(stages_array_JSON, stage_index);
 
-    if ((game->stage = load_stage_descriptor(stage_JSON->valuestring, game->tiles_data)) == NULL) {
-        return FALSE;
+    for (int i = 0; i < MAX_LOADED_LEVEL_COUNT; i++) {
+        cJSON* stage_JSON = cJSON_GetArrayItem(stages_array_JSON, i);
+
+        if (stage_JSON == NULL) {
+            game->stages[i] = NULL;
+            continue;
+        }
+
+        game->stages[i] = load_stage_descriptor(
+            stage_JSON->valuestring,
+            game->tiles_data
+        );
     }
 
     // Delete parsed cJSON data object

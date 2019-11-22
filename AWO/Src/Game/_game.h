@@ -28,8 +28,8 @@ struct Game {
     // Data for all units.
     Units_Data* units_data;
 
-    // String representation of the stage to load.
-    Stage_Descriptor* stage;
+    // Initially loaded default stages.
+    Stage_Descriptor* stages[MAX_LOADED_LEVEL_COUNT];
 
     // Dimensions of the game's window.
     int window_width, window_height;
@@ -53,10 +53,9 @@ Bool init_GL(Game* game, int initial_window_width, int initial_window_height);
 /*! @brief Initializes the game data and modules using it, attaching results to the game object.
  *
  *  @param[in] game The game object.
- *  @param[in] stage_index Index of the stage string to load into the game struct.
  *  @return TRUE if successful, FALSE if an error occurred.
  */
-Bool init_game_data(Game* game, int stage_index);
+Bool init_game_data(Game* game);
 
 /*! @brief Updates the game's entities.
  *

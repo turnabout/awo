@@ -8,13 +8,22 @@
 
 #define STAGE_NAME_MAX_LENGTH 16
 
+/*! @brief Describes the contents of a tile within a level.
+ */
 typedef struct Tile_Descriptor {
+
+    // Type of the tile.
     Tile_Type type;
 
-    // Variation of the tile. 
+    // Variation of the tile.
+    // For a neutral tile: tile variation.
+    // For a property tile: owner player's index.
     int variation;
+
 } Tile_Descriptor;
 
+/*! @brief Describes the contents of a level, which can be loaded by the game board for gameplay.
+ */
 typedef struct Stage_Descriptor {
 
     // The name of the stage.

@@ -50,3 +50,6 @@
 // Min/max amount of players for a game
 #define MIN_PLAYER_COUNT 2
 #define MAX_PLAYER_COUNT 4
+
+// Levels
+#define MAX_LOADED_LEVEL_COUNT 16

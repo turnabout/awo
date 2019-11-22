@@ -11,6 +11,7 @@ int main(int argc, char** argv)
         DEFAULT_WINDOW_WIDTH,
         DEFAULT_WINDOW_HEIGHT
     )) == NULL) {
+        printf("Failed to initialize game\n");
         exit_game(game);
         return 1;
     }
