@@ -38,7 +38,7 @@ void update_base_render_grid(Tile* tile, Uint8 animation_index)
         tile->y,
         (vec2) {
             ((Property_Tile*)tile)->frame[0].raw_top_left[0],
-            ((Property_Tile*)tile)->frame[0].raw_top_left[1]
+            ((Property_Tile*)tile)->frame[0].raw_top_left[1] + DEFAULT_TILE_SIZE
         }
     );
 
@@ -48,8 +48,8 @@ void update_base_render_grid(Tile* tile, Uint8 animation_index)
         tile->x,
         tile->y,
         (vec2) {
-            ((Property_Tile*)tile)->additional_animation->frames[animation_index].raw_top_left[0],
-            ((Property_Tile*)tile)->additional_animation->frames[animation_index].raw_top_left[1] 
+            ((Property_Tile*)tile)->base_smoke->frames[animation_index].raw_top_left[0],
+            ((Property_Tile*)tile)->base_smoke->frames[animation_index].raw_top_left[1] 
         }
     );
 }

@@ -33,8 +33,8 @@ typedef struct Property_Tile {
     // This property's frame data.
     Frame* frame;
 
-    // This property's additional animation, if it exists.
-    Animation* additional_animation;
+    // Base smoke animation, for bases only.
+    Animation* base_smoke;
 
 } Property_Tile;
 

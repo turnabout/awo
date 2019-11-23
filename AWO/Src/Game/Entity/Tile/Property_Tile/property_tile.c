@@ -27,8 +27,9 @@ Property_Tile* create_property_tile(
 
     update_property_owner(property, player);
 
-    // If property is a base, register it with the game clock to update its additional animation
     if (tile_type == Property_Base) {
+
+        // Get base smoke animation, register with game clock to update it
         Animation_Clock_Index clock_index;
         Animation_Sub_Clock_Index sub_clock_index;
 
@@ -38,7 +39,7 @@ Property_Tile* create_property_tile(
             Default,
             &clock_index,
             &sub_clock_index,
-            &property->additional_animation
+            &property->base_smoke
         );
 
         // register_game_clock_tile(game_clock, (Tile*)property, clock_index, sub_clock_index);
@@ -50,8 +51,8 @@ Property_Tile* create_property_tile(
         property->update_fog = update_regular_property_fog_status;
     }
 
+    property->update_fog(property, FALSE);
     property->update_render_grid(property, 0);
-    property->update_fog(property, TRUE);
 
     return property;
 }
