@@ -8,7 +8,7 @@
 #include "Game/Player/player.h"
 #include "Game/_game.h"
 
-Bool load_level(Game* game, Stage_Descriptor* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
+Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
 {
     if (stage == NULL) {
         return FALSE;
@@ -59,7 +59,7 @@ Game* init_game(int window_width, int window_height)
     init_mouse_state_module(game->window, &game->window_height);
 
     // Load the level
-    Stage_Descriptor* stage = game->stages[1];
+    Stage* stage = game->stages[1];
     stage = generate_filled_stage(Plain, Default, 10, 10);
     stage = generate_custom_stage();
 

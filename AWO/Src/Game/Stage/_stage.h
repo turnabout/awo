@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game/Stage/stage_descriptor.h"
+#include "Game/Stage/stage.h"
 
 #define STAGE_STRING_SEPARATOR_CHARACTER 0xFF
 #define VALID_SEPARATOR_COUNT               4

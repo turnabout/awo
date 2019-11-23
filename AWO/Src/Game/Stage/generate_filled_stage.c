@@ -1,18 +1,18 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "Game/Stage/_stage_descriptor.h"
+#include "Game/Stage/_stage.h"
 #include "Game/Player/player_index_enum.h"
 #include "Utilities/utilities.h"
 
-Stage_Descriptor* generate_filled_stage(
+Stage* generate_filled_stage(
     Tile_Type type, 
     Tile_Variation variation, 
     Uint8 width,
     Uint8 height
 )
 {
-    Stage_Descriptor* stage = (Stage_Descriptor*)malloc(sizeof(Stage_Descriptor));
+    Stage* stage = (Stage*)malloc(sizeof(Stage));
 
     strcpy(stage->name, "Default stage");
 
@@ -21,8 +21,8 @@ Stage_Descriptor* generate_filled_stage(
     stage->height = height;
     stage->tile_count = width * height;
 
-    stage->tile_descriptors = (Tile_Descriptor*)malloc(
-        sizeof(Tile_Descriptor) * stage->tile_count
+    stage->tiles = (Stage_Tile*)malloc(
+        sizeof(Stage_Tile) * stage->tile_count
     );
 
     // Add some default stage players data
@@ -35,16 +35,16 @@ Stage_Descriptor* generate_filled_stage(
     stage->player_armies[1] = BM;
 
     // Add initial player HQ tiles so the stage is valid
-    stage->tile_descriptors[0].type = Property_HQ;
-    stage->tile_descriptors[0].variation = Player_Index_0;
+    stage->tiles[0].type = Property_HQ;
+    stage->tiles[0].variation = Player_Index_0;
 
-    stage->tile_descriptors[1].type = Property_HQ;
-    stage->tile_descriptors[1].variation = Player_Index_1;
+    stage->tiles[1].type = Property_HQ;
+    stage->tiles[1].variation = Player_Index_1;
 
     // Add all other tiles
     for (int i = stage->player_count; i < stage->tile_count; i++) {
-        stage->tile_descriptors[i].type = type;
-        stage->tile_descriptors[i].variation = variation;
+        stage->tiles[i].type = type;
+        stage->tiles[i].variation = variation;
     }
 
     return stage;

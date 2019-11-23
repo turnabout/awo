@@ -1,9 +1,9 @@
 #include <stdlib.h>
 
-#include "Game/Stage/_stage_descriptor.h"
+#include "Game/Stage/_stage.h"
 #include "Utilities/utilities.h"
 
-Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
+Stage* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
 {
     // Translate the hex string into a useable data bytes array & validate
     Uint8* stage_data;
@@ -17,7 +17,7 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     }
 
     // Create the stage descriptor, populate & return
-    Stage_Descriptor* stage = (Stage_Descriptor*)malloc(sizeof(Stage_Descriptor));
+    Stage* stage = (Stage*)malloc(sizeof(Stage));
 
     // Process data byte array
     size_t i = 0;
@@ -63,8 +63,8 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     i += 3;
 
     // Process stage tiles
-    stage->tile_descriptors = (Tile_Descriptor*)malloc(
-        sizeof(Tile_Descriptor) * stage->tile_count
+    stage->tiles = (Stage_Tile*)malloc(
+        sizeof(Stage_Tile) * stage->tile_count
     );
 
     int tile_n = 0;
@@ -77,8 +77,8 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
             break;
         }
 
-        stage->tile_descriptors[tile_n].type = (Tile_Type)stage_data[i];
-        stage->tile_descriptors[tile_n].variation = (Tile_Variation)stage_data[i + 1];
+        stage->tiles[tile_n].type = (Tile_Type)stage_data[i];
+        stage->tiles[tile_n].variation = (Tile_Variation)stage_data[i + 1];
 
         i += 2;
         tile_n++;
@@ -87,8 +87,8 @@ Stage_Descriptor* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     return stage;
 }
 
-void free_stage_descriptor(Stage_Descriptor* stage_descriptor)
+void free_stage_descriptor(Stage* stage_descriptor)
 {
-    free(stage_descriptor->tile_descriptors);
+    free(stage_descriptor->tiles);
     free(stage_descriptor);
 }

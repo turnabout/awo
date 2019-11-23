@@ -7,7 +7,7 @@
 Game_Board* create_game_board(
     Game_Clock* game_clock, 
     Tiles_Data* tiles_data, 
-    Stage_Descriptor* stage,
+    Stage* stage,
     CO_Type player_COs[MAX_PLAYER_COUNT]
 )
 {

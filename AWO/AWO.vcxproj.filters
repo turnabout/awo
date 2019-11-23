@@ -144,9 +144,6 @@
     <ClCompile Include="Src\Utilities\hex_string_to_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Stage\stage_descriptor.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -264,6 +261,9 @@
     <ClCompile Include="Src\Game\Stage\generate_custom_stage.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Stage\stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -339,12 +339,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Board\_game_board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Stage\stage_descriptor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Stage\_stage_descriptor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h">
@@ -459,6 +453,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_fog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Stage\stage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Stage\_stage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

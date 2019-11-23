@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Clock/game_clock.h"
-#include "Game/Stage/stage_descriptor.h"
+#include "Game/Stage/stage.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Player/player.h"
@@ -21,7 +21,7 @@ typedef struct Game_Board Game_Board;
 Game_Board* create_game_board(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
-    Stage_Descriptor* stage_descriptor,
+    Stage* stage_descriptor,
     CO_Type player_COs[MAX_PLAYER_COUNT]
 );
 

@@ -29,7 +29,7 @@ struct Game {
     Units_Data* units_data;
 
     // Initially loaded default stages.
-    Stage_Descriptor* stages[MAX_LOADED_LEVEL_COUNT];
+    Stage* stages[MAX_LOADED_LEVEL_COUNT];
 
     // Dimensions of the game's window.
     int window_width, window_height;

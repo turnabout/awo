@@ -12,7 +12,7 @@ struct Game_Board {
     Tile_Row* tiles_grid;
 
     // Descriptor of the loaded stage.
-    Stage_Descriptor* stage;
+    Stage* stage;
 
     Player* players[MAX_PLAYER_COUNT + 1];
 
@@ -35,7 +35,7 @@ void load_game_board_stage(
     Game_Board* game_board, 
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
-    Stage_Descriptor* stage_descriptor
+    Stage* stage_descriptor
 );
 
 /*! @brief Adds a new tile of the given type and variation to the game board at x/y coordinate.

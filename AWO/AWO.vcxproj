@@ -93,7 +93,7 @@
     <ClCompile Include="Src\Game\render_game.c" />
     <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Src\Game\run_game.c" />
-    <ClCompile Include="Src\Game\Stage\stage_descriptor.c" />
+    <ClCompile Include="Src\Game\Stage\stage.c" />
     <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
@@ -167,8 +167,8 @@
     <ClInclude Include="Src\Game\Renderer\Render_Grid\render_grid.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h" />
     <ClInclude Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.h" />
-    <ClInclude Include="Src\Game\Stage\stage_descriptor.h" />
-    <ClInclude Include="Src\Game\Stage\_stage_descriptor.h" />
+    <ClInclude Include="Src\Game\Stage\stage.h" />
+    <ClInclude Include="Src\Game\Stage\_stage.h" />
     <ClInclude Include="Src\Game\_game.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />

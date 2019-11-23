@@ -6,7 +6,7 @@ void load_game_board_stage(
     Game_Board* game_board, 
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
-    Stage_Descriptor* stage_descriptor
+    Stage* stage_descriptor
 )
 {
     // Allocate space for tiles
@@ -20,8 +20,8 @@ void load_game_board_stage(
     for (Uint8 y = 0; y < stage_descriptor->height; y++) {
         for (Uint8 x = 0; x < stage_descriptor->width; x++) {
 
-            Tile_Descriptor* tile_descriptor = (
-                (stage_descriptor->tile_descriptors + x) +
+            Stage_Tile* tile_descriptor = (
+                (stage_descriptor->tiles + x) +
                 (stage_descriptor->width * y)
             );
 
