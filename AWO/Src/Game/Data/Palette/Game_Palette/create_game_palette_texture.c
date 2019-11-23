@@ -85,7 +85,7 @@ GLuint create_game_palette_texture(
     );
 
     memcpy(
-        &game_palette_texture_data[ get_fog_property_palette_index_i()],
+        &game_palette_texture_data[get_fog_property_palette_index_i()],
         &raw_palette_texture_data[get_raw_fog_property_palette_index_i()],
         row_size
     );

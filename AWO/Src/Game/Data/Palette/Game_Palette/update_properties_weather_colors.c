@@ -56,14 +56,22 @@ void update_properties_weather_colors(GLuint game_palette_texture)
 
             // Apply the color to all player property palettes
             apply_property_palettes_weather_color(palette_texture_data, i, color);
+        }
 
-            // Apply the fog color to the fog property palette
+        // Apply the fog color to the fog property palette
+        if (palette_texture_data[active_fog_tile_palette_row][i][3] != 0) {
+
+            GLuint color[3] = {
+                palette_texture_data[active_fog_tile_palette_row][i][0], 
+                palette_texture_data[active_fog_tile_palette_row][i][1], 
+                palette_texture_data[active_fog_tile_palette_row][i][2]
+            };
+
             palette_texture_data[fog_property_palette_row][i][0] = color[0];
             palette_texture_data[fog_property_palette_row][i][1] = color[1];
             palette_texture_data[fog_property_palette_row][i][2] = color[2];
             palette_texture_data[fog_property_palette_row][i][3] = 255;
         }
-
     }
 
     // Save the new palette texture

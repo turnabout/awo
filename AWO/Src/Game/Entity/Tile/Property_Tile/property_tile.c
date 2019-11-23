@@ -27,17 +27,31 @@ Property_Tile* create_property_tile(
 
     update_property_owner(property, player);
 
-    // TODO: base properties contain an animation which makes them update differently
+    // If property is a base, register it with the game clock to update its additional animation
     if (tile_type == Property_Base) {
+        Animation_Clock_Index clock_index;
+        Animation_Sub_Clock_Index sub_clock_index;
+
+        gather_tile_data(
+            tiles_data,
+            Base_Smoke,
+            Default,
+            &clock_index,
+            &sub_clock_index,
+            &property->additional_animation
+        );
+
+        // register_game_clock_tile(game_clock, (Tile*)property, clock_index, sub_clock_index);
+
+        property->update_render_grid = update_base_render_grid;
+        property->update_fog = update_base_fog_status;
     } else {
+        property->update_render_grid = update_regular_property_render_grid;
+        property->update_fog = update_regular_property_fog_status;
     }
 
-    // Set update callbacks
-    property->update_render_grid = update_regular_property_render_grid;
-    property->update_fog = update_regular_property_fog_status;
-
-    property->update_render_grid(property, FALSE);
-    property->update_fog(property, FALSE);
+    property->update_render_grid(property, 0);
+    property->update_fog(property, TRUE);
 
     return property;
 }

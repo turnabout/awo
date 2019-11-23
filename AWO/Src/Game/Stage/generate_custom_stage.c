@@ -42,6 +42,17 @@ Stage_Descriptor* generate_custom_stage()
     stage->tile_descriptors[stage->tile_count - 2].type = Property_HQ;
     stage->tile_descriptors[stage->tile_count - 2].variation = Player_Index_1;
 
+    stage->tile_descriptors[0].type = Property_City;
+    stage->tile_descriptors[0].variation = Player_Index_0;
+
+    stage->tile_descriptors[1].type = Property_Airport;
+    stage->tile_descriptors[1].variation = Player_Index_0;
+
+    stage->tile_descriptors[2].type = Property_Port;
+    stage->tile_descriptors[2].variation = Player_Index_0;
+
+    stage->tile_descriptors[21].type = Property_Base;
+    stage->tile_descriptors[21].variation = Player_Index_0;
 
     return stage;
 }
