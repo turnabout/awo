@@ -8,6 +8,8 @@
 #include "Game/Player/player.h"
 #include "Game/_game.h"
 
+#include "Game/Data/Palette/raw_palette.h"
+
 Bool load_level(Game* game, Stage_Descriptor* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
 {
     if (stage == NULL) {

@@ -49,7 +49,7 @@ void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint
         1,
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        &raw_palettes_tex_data[get_tile_palette_index_i(weather, FALSE)]
+        &raw_palettes_tex_data[get_raw_tile_palette_index_i(weather, FALSE)]
     );
 
     // Apply fog tile palette row
@@ -62,7 +62,7 @@ void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint
         1,
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        &raw_palettes_tex_data[get_tile_palette_index_i(weather, TRUE)]
+        &raw_palettes_tex_data[get_raw_tile_palette_index_i(weather, TRUE)]
     );
 
     free(raw_palettes_tex_data);

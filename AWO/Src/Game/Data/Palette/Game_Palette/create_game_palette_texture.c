@@ -38,13 +38,13 @@ GLuint create_game_palette_texture(
     // Populate active tile palette
     memcpy(
         &game_palette_texture_data[get_active_tile_palette_index_i(FALSE)],
-        &raw_palette_texture_data[get_tile_palette_index_i(active_weather, FALSE)],
+        &raw_palette_texture_data[get_raw_tile_palette_index_i(active_weather, FALSE)],
         row_size
     );
 
     memcpy(
         &game_palette_texture_data[get_active_tile_palette_index_i(1)],
-        &raw_palette_texture_data[get_tile_palette_index_i(active_weather, TRUE)],
+        &raw_palette_texture_data[get_raw_tile_palette_index_i(active_weather, TRUE)],
         row_size
     );
 
@@ -59,20 +59,20 @@ GLuint create_game_palette_texture(
         // Populate player units palettes
         memcpy(
             &game_palette_texture_data[get_player_unit_palette_index_i(i, FALSE)],
-            &raw_palette_texture_data[get_unit_palette_index_i(player_army, FALSE)],
+            &raw_palette_texture_data[get_raw_unit_palette_index_i(player_army, FALSE)],
             row_size
         );
 
         memcpy(
             &game_palette_texture_data[get_player_unit_palette_index_i(i, TRUE)],
-            &raw_palette_texture_data[get_unit_palette_index_i(player_army, TRUE)],
+            &raw_palette_texture_data[get_raw_unit_palette_index_i(player_army, TRUE)],
             row_size
         );
 
         // Populate properties palettes
         memcpy(
             &game_palette_texture_data[get_player_property_palette_index_i(i)],
-            &raw_palette_texture_data[get_property_palette_index_i(player_army)],
+            &raw_palette_texture_data[get_raw_property_palette_index_i(player_army)],
             row_size
         );
     }
@@ -80,7 +80,7 @@ GLuint create_game_palette_texture(
     // Populate neutral & fog property palettes
     memcpy(
         &game_palette_texture_data[get_player_property_palette_index_i(Player_Index_Neutral)],
-        &raw_palette_texture_data[get_property_palette_index_i(ARMY_TYPE_NEUTRAL)],
+        &raw_palette_texture_data[get_raw_property_palette_index_i(ARMY_TYPE_NEUTRAL)],
         row_size
     );
 

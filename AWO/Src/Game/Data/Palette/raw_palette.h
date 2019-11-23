@@ -22,25 +22,19 @@
  *   7: Units: YC (Done)
  *   8: Units: BH
  *   9: Units: BH (Done)
- *  10: Clear (Fog)
- *  11: Clear
- *  12: Clear (Fog)
- *  13: Snow
- *  14: Snow (Fog)
- *  15: Rain
- *  16: Rain (Fog)
- *  17: Properties: OS
- *  18: Properties: OS (Fog)
- *  19: Properties: BM
- *  20: Properties: BM (Fog)
- *  21: Properties: GE
- *  22: Properties: GE (Fog)
- *  23: Properties: YC
- *  24: Properties: YC (Fog)
- *  25: Properties: BH
- *  26: Properties: BH (Fog)
- *  27: Properties: Neutral
- *  28: Properties: Neutral (Fog)
+ *  10: Clear
+ *  11: Clear (Fog)
+ *  12: Snow
+ *  13: Snow (Fog)
+ *  14: Rain
+ *  15: Rain (Fog)
+ *  16: Properties: OS
+ *  17: Properties: BM
+ *  18: Properties: GE
+ *  19: Properties: YC
+ *  20: Properties: BH
+ *  21: Properties: Neutral
+ *  22: Properties: (Fog)
  */
 
 /*! @brief Creates the main palette texture used to color swap sprites.
@@ -56,7 +50,7 @@ GLuint create_raw_palette_texture(cJSON* palette_JSON);
  *  @param[in] done Whether to get the "done" version of the unit palette.
  *  @return The index of the palette corresponding to the unit variation.
  */
-GLfloat get_unit_palette_index(Army_Type unit_variation, Bool done);
+GLfloat get_raw_unit_palette_index(Army_Type unit_variation, Bool done);
 
 /*! @brief Gets the NDC palette index for a tile of the given weather and fog status.
  *
@@ -64,7 +58,7 @@ GLfloat get_unit_palette_index(Army_Type unit_variation, Bool done);
  *  @param[in] fog Whether to get the "fog" version of the weather palette.
  *  @return The index of the palette corresponding to the weather/fog combination.
  */
-GLfloat get_tile_palette_index(Weather weather, Bool fog);
+GLfloat get_raw_tile_palette_index(Weather weather, Bool fog);
 
 /*! @brief Gets the currently active tile or fog tile palette.
  *
@@ -78,7 +72,7 @@ GLfloat get_active_tile_palette_index(GLboolean fog);
  *  @param[in] unit_variation The unit variation.
  *  @return The index of the palette corresponding to the property of the given variation.
  */
-GLfloat get_property_palette_index(Army_Type unit_variation);
+GLfloat get_raw_property_palette_index(Army_Type unit_variation);
 
 /*! @brief Gets the integer palette index for a unit of the given variation.
  *
@@ -86,7 +80,7 @@ GLfloat get_property_palette_index(Army_Type unit_variation);
  *  @param[in] done Whether to get the "done" version of the unit palette.
  *  @return The integer index of the palette corresponding to the unit variation.
  */
-GLuint get_unit_palette_index_i(Army_Type unit_variation, Bool done);
+GLuint get_raw_unit_palette_index_i(Army_Type unit_variation, Bool done);
 
 /*! @brief Gets the integer palette index for a tile of the given weather and fog status.
  *
@@ -94,14 +88,14 @@ GLuint get_unit_palette_index_i(Army_Type unit_variation, Bool done);
  *  @param[in] fog Whether to get the "fog" version of the weather palette.
  *  @return The integer index of the palette corresponding to the weather/fog combination.
  */
-GLuint get_tile_palette_index_i(Weather weather, Bool fog);
+GLuint get_raw_tile_palette_index_i(Weather weather, Bool fog);
 
 /*! @brief Gets the integer palette index for a property of the given unit variation.
  *
  *  @param[in] unit_variation The unit variation.
  *  @return The integer index of the palette corresponding to the property of the given variation.
  */
-GLuint get_property_palette_index_i(Army_Type unit_variation);
+GLuint get_raw_property_palette_index_i(Army_Type unit_variation);
 
 /*! @brief Gets the integer palette index for the fog property palette row.
  *
