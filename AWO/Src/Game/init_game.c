@@ -8,21 +8,10 @@
 #include "Game/Player/player.h"
 #include "Game/_game.h"
 
-Bool load_level(Game* game, Stage_Descriptor* stage)
+Bool load_level(Game* game, Stage_Descriptor* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
 {
     if (stage == NULL) {
         return FALSE;
-    }
-
-    // Set players list
-    Players_List* players_list = create_players_list(stage->player_count);
-
-    for (int i = 0; i < stage->player_count; i++) {
-        players_list->players[i] = create_player(
-            i,
-            stage->player_armies[i],
-            Andy
-        );
     }
 
     // Load the palette texture used by the game
@@ -51,7 +40,7 @@ Bool load_level(Game* game, Stage_Descriptor* stage)
     update_game_renderer_matrix(view, "view");
 
     // Set up game board
-    game->board = create_game_board(game->clock, game->tiles_data, stage, players_list);
+    game->board = create_game_board(game->clock, game->tiles_data, stage, player_COs);
 
     return TRUE;
 }
@@ -69,11 +58,12 @@ Game* init_game(int window_width, int window_height)
     init_keys_state_module(game->window);
     init_mouse_state_module(game->window, &game->window_height);
 
-    // Load the level & all modules necessary for rendering it
+    // Load the level
     Stage_Descriptor* stage = game->stages[1];
     stage = generate_filled_stage(Plain, Default, 10, 10);
+    CO_Type player_COs[MAX_PLAYER_COUNT] = {Andy, Eagle};
 
-    if (!load_level(game, stage)) {
+    if (!load_level(game, stage, player_COs)) {
         return NULL;
     }
 

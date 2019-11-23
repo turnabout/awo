@@ -45,11 +45,17 @@ Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type 
  */
 free_player(Player* player);
 
-/*! @brief Creates an (empty) list of players.
+/*! @brief Creates a list of players.
  *
  *  @param[in] player_count Amount of players belonging to this list.
+ *  @param[in] player_armies Array of every army used by the players, in order.
+ *  @param[in] player_COs Array of every player CO used by the players, in order.
  */
-Players_List* create_players_list(Uint8 player_count);
+Players_List* create_players_list(
+    Uint8 player_count, 
+    Army_Type player_armies[MAX_PLAYER_COUNT],
+    CO_Type player_COs[MAX_PLAYER_COUNT]
+);
 
 /*! @brief Frees the memory allocated by a players list, as well as all of its players.
  *

@@ -7,19 +7,25 @@
 Game_Board* create_game_board(
     Game_Clock* game_clock, 
     Tiles_Data* tiles_data, 
-    Stage_Descriptor* stage_descriptor,
-    Players_List* players_list
+    Stage_Descriptor* stage,
+    CO_Type player_COs[MAX_PLAYER_COUNT]
 )
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
-    game_board->players_list = players_list;
+    // Set players list
+    game_board->players_list = create_players_list(
+        stage->player_count, 
+        stage->player_armies, 
+        player_COs
+    );
 
+    // Create the players' properties lists
     for (int i = 0; i < game_board->players_list->player_count; i++) {
         game_board->player_properties[i] = create_linked_list(NULL, 0);
     }
 
-    load_game_board_stage(game_board, game_clock, tiles_data, stage_descriptor);
+    load_game_board_stage(game_board, game_clock, tiles_data, stage);
 
     return game_board;
 }

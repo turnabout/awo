@@ -15,14 +15,14 @@ typedef struct Game_Board Game_Board;
  *  @param[in] game_clock The game clock.
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] stage_descriptor Descriptor detailing the stage to load.
- *  @param[in] players_list Pre-populated list of players participating in this game board.
+ *  @param[in] player_COs Array containing every CO used by every player, in order.
  *  @return The created game board object.
  */
 Game_Board* create_game_board(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
     Stage_Descriptor* stage_descriptor,
-    Players_List* players_list
+    CO_Type player_COs[MAX_PLAYER_COUNT]
 );
 
 /*! @brief Updates the game board and its entities.
