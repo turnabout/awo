@@ -26,6 +26,10 @@ Stage_Descriptor* generate_filled_stage(
     );
 
     // Add some default stage players data
+    for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
+        stage->player_armies[i] = ARMY_TYPE_NONE;
+    }
+
     stage->player_count = 2;
     stage->player_armies[0] = OS;
     stage->player_armies[1] = BM;

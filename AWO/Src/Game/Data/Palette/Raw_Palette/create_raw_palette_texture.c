@@ -45,6 +45,7 @@ GLuint create_raw_palette_texture(cJSON* palettes_JSON)
     int palette_count = cJSON_GetArraySize(palettes_JSON);
     
     Palette_Texture_Row* palette_texture_data = malloc(sizeof(Palette_Texture_Row) * palette_count);
+    memset(palette_texture_data, 0, sizeof(Palette_Texture_Row) * palette_count);
 
     for (int i = 0; i < palette_count; i++) {
         apply_palette_colors(palette_texture_data[i], cJSON_GetArrayItem(palettes_JSON, i));

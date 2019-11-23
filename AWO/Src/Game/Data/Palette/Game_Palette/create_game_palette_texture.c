@@ -29,6 +29,8 @@ GLuint create_game_palette_texture(
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
+    memset(game_palette_texture_data, 0, sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT);
+
     // Get the size of a single row in a palette texture
     // * 4 due to an RGBA array taking up 4 bytes
     size_t row_size = 4 * PALETTE_TEX_WIDTH;

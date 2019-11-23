@@ -70,7 +70,10 @@ Game* init_game(int window_width, int window_height)
     init_mouse_state_module(game->window, &game->window_height);
 
     // Load the level & all modules necessary for rendering it
-    if (!load_level(game, game->stages[1])) {
+    Stage_Descriptor* stage = game->stages[1];
+    stage = generate_filled_stage(Plain, Default, 10, 10);
+
+    if (!load_level(game, stage)) {
         return NULL;
     }
 
