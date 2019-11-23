@@ -69,6 +69,12 @@ Stage_Descriptor* generate_filled_stage(
     Uint8 height
 );
 
+#ifdef _DEBUG
+/*! @brief Generate a custom, hardcoded stage for debug purposes.
+ */
+Stage_Descriptor* generate_custom_stage();
+#endif
+
 /*! @brief Frees data taken up by a stage descriptor.
  *
  *  @param[in] stage_descriptor The stage descriptor.

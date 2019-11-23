@@ -61,6 +61,8 @@ Game* init_game(int window_width, int window_height)
     // Load the level
     Stage_Descriptor* stage = game->stages[1];
     stage = generate_filled_stage(Plain, Default, 10, 10);
+    stage = generate_custom_stage();
+
     CO_Type player_COs[MAX_PLAYER_COUNT] = {Andy, Eagle};
 
     if (!load_level(game, stage, player_COs)) {

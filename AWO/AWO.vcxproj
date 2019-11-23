@@ -63,6 +63,7 @@
     <ClCompile Include="Src\Game\Player\player.c" />
     <ClCompile Include="Src\Game\Player\players_list.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
+    <ClCompile Include="Src\Game\Stage\generate_custom_stage.c" />
     <ClCompile Include="Src\Game\Stage\generate_filled_stage.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c" />
