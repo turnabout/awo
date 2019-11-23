@@ -20,16 +20,6 @@ typedef struct Player {
 
 } Player;
 
-typedef struct Players_List {
-
-    // Every player belonging to this list.
-    Player* players[MAX_PLAYER_COUNT];
-
-    // Amount of players belonging to this list.
-    Uint8 player_count;
-
-} Players_List;
-
 /*! @brief Creates a player entity, representing a player during gameplay.
  *
  *  @param[in] player_index This player's index.
@@ -44,21 +34,3 @@ Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type 
  *  @param[in] player The player to free.
  */
 free_player(Player* player);
-
-/*! @brief Creates a list of players.
- *
- *  @param[in] player_count Amount of players belonging to this list.
- *  @param[in] player_armies Array of every army used by the players, in order.
- *  @param[in] player_COs Array of every player CO used by the players, in order.
- */
-Players_List* create_players_list(
-    Uint8 player_count, 
-    Army_Type player_armies[MAX_PLAYER_COUNT],
-    CO_Type player_COs[MAX_PLAYER_COUNT]
-);
-
-/*! @brief Frees the memory allocated by a players list, as well as all of its players.
- *
- *  @param[in] players_list List of players to free.
- */
-void free_players_list(Players_List* players_list);

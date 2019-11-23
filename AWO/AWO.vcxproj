@@ -61,7 +61,6 @@
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_animation.c" />
     <ClCompile Include="Src\Game\Player\CO\CO.c" />
     <ClCompile Include="Src\Game\Player\player.c" />
-    <ClCompile Include="Src\Game\Player\players_list.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
     <ClCompile Include="Src\Game\Stage\generate_custom_stage.c" />
     <ClCompile Include="Src\Game\Stage\generate_filled_stage.c" />

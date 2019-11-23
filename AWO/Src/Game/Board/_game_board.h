@@ -14,8 +14,10 @@ struct Game_Board {
     // Descriptor of the loaded stage.
     Stage_Descriptor* stage;
 
-    // Players participating in the game.
-    Players_List* players_list;
+    Player* players[MAX_PLAYER_COUNT + 1];
+
+    // How many actual players (excluding 'neutral') are playing.
+    Uint8 player_count;
 
     // Lists of properties belonging to each player. ( + 1 for neutral player )
     Linked_List* player_properties[MAX_PLAYER_COUNT + 1];
@@ -61,7 +63,7 @@ void add_game_board_tile(
  *  @param[in] player_index The index of the player receiving the property.
  *  @param[in] property Pointer to the property to register.
  */
-void register_player_property(
+void register_game_board_player_property(
     Game_Board* game_board, 
     Player_Index player_index, 
     Property_Tile* property
@@ -72,7 +74,7 @@ void register_player_property(
  *  @param[in] player_index The index of the player losing the property.
  *  @param[in] property Pointer to the property to register.
  */
-void unregister_player_property(
+void unregister_game_board_player_property(
     Game_Board* game_board, 
     Player_Index player_index, 
     Property_Tile* property

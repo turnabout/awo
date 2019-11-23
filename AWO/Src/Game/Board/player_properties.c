@@ -1,6 +1,6 @@
 #include "Game/Board/_game_board.h"
 
-void register_player_property(
+void register_game_board_player_property(
     Game_Board* game_board,
     Player_Index player_index,
     Property_Tile* property
@@ -11,7 +11,7 @@ void register_player_property(
     // TODO: update the new player owner on the property
 }
 
-void unregister_player_property(
+void unregister_game_board_player_property(
     Game_Board* game_board,
     Player_Index player_index,
     Property_Tile* property

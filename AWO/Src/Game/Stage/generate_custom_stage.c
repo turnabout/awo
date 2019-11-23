@@ -52,7 +52,7 @@ Stage_Descriptor* generate_custom_stage()
     stage->tile_descriptors[2].variation = Player_Index_0;
 
     stage->tile_descriptors[21].type = Property_Base;
-    stage->tile_descriptors[21].variation = Player_Index_0;
+    stage->tile_descriptors[21].variation = Player_Index_Neutral;
 
     return stage;
 }

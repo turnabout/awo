@@ -31,12 +31,12 @@ void add_game_board_tile(
             game_clock,
             tiles_data,
             tile_type,
-            game_board->players_list->players[player_index],
+            game_board->players[player_index],
             x,
             y
         );
 
         // Register the property with the player who owns it
-        register_player_property(game_board, player_index, (Property_Tile*)tile);
+        register_game_board_player_property(game_board, player_index, (Property_Tile*)tile);
     }
 }

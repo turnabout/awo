@@ -240,9 +240,6 @@
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Player\players_list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_animation.c">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -30,6 +30,8 @@ void update_base_fog_status(Tile* tile, Bool fog)
         // grid CB so base smoke shows
         if (((Property_Tile*)tile)->player->index != Player_Index_Neutral) {
             ((Property_Tile*)tile)->update_render_grid = update_base_render_grid;
+        } else {
+            ((Property_Tile*)tile)->update_render_grid = update_regular_property_render_grid;
         }
     }
 
