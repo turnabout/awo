@@ -36,8 +36,8 @@ Property_Tile* create_property_tile(
     property->update_render_grid = update_regular_property_render_grid;
     property->update_fog = update_regular_property_fog_status;
 
-    property->update_render_grid(property, 0);
-    property->update_fog(property, 0);
+    property->update_render_grid(property, FALSE);
+    property->update_fog(property, FALSE);
 
     return property;
 }
