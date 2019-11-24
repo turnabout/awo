@@ -35,6 +35,10 @@ void render_game(Game* game)
         update_active_tile_palette(Snow, game->palette_texture, game->raw_palette_texture);
     }
 
+    if (get_key_state(KEY_1) == BUTTON_DOWN_START) {
+        update_game_palette_property_lights(game->palette_texture);
+    }
+
     // Draw main sprites
     // begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);
     // draw_game_board(game->board, game->sprite_batches[SPRITES_SPRITE_BATCH]);

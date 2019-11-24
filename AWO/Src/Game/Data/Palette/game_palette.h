@@ -79,3 +79,11 @@ void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint
  *  @param[in] game_palette_texture The game palette texture.
  */
 void update_properties_weather_colors(GLuint game_palette_texture);
+
+/*! @brief Updates the player property palettes' current property lights color.
+ *
+ * By updating the palette directly, we can simulate the lights turning on and off.
+ *
+ *  @param[in] game_palette The game palette texture.
+ */
+void update_game_palette_property_lights(GLuint game_palette);
