@@ -4,6 +4,8 @@
 typedef enum Animation_Clock_Index {
     Sea_Clock,
     River_Clock,
+    Base_Smoke_Clock,
+
     Units_Clock,
 
     // None
@@ -23,6 +25,9 @@ typedef enum Animation_Sub_Clock_Index {
 
     // River Clock
     Eight    = 0,
+
+    // Base Smoke Clock
+    Base_Smoke_Sub_Clock = 0,
 
     // Units Clock
     Pyramid_3_Frames = 0,

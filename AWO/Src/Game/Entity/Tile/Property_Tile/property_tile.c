@@ -42,7 +42,7 @@ Property_Tile* create_property_tile(
             &property->base_smoke
         );
 
-        // register_game_clock_tile(game_clock, (Tile*)property, clock_index, sub_clock_index);
+        register_game_clock_tile(game_clock, (Tile*)property, clock_index, sub_clock_index);
 
         property->update_render_grid = update_base_render_grid;
         property->update_fog = update_base_fog_status;

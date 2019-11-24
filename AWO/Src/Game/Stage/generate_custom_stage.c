@@ -52,7 +52,29 @@ Stage* generate_custom_stage()
     stage->tiles[2].variation = Player_Index_0;
 
     stage->tiles[21].type = Property_Base;
-    stage->tiles[21].variation = Player_Index_Neutral;
+    stage->tiles[21].variation = Player_Index_0;
+
+    // Sea test
+    stage->tiles[23].type = Sea;
+    stage->tiles[23].variation = TopLeft;
+    stage->tiles[24].type = Sea;
+    stage->tiles[24].variation = Top;
+    stage->tiles[25].type = Sea;
+    stage->tiles[25].variation = TopRight;
+
+    stage->tiles[33].type = Sea;
+    stage->tiles[33].variation = DirLeft;
+    stage->tiles[34].type = Sea;
+    stage->tiles[34].variation = Middle;
+    stage->tiles[35].type = Sea;
+    stage->tiles[35].variation = DirRight;
+
+    stage->tiles[43].type = Sea;
+    stage->tiles[43].variation = BottomLeft;
+    stage->tiles[44].type = Sea;
+    stage->tiles[44].variation = Bottom;
+    stage->tiles[45].type = Sea;
+    stage->tiles[45].variation = BottomRight;
 
     return stage;
 }

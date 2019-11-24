@@ -4448,6 +4448,11 @@
 						}
 					]
 				},
+				"clockData": {
+					"clock": 2,
+					"defaultSubClock": 0,
+					"varSubClocks": {}
+				},
 				"autoVars": null
 			},
 			{
@@ -7300,6 +7305,30 @@
 					5,
 					6,
 					7
+				]
+			]
+		},
+		{
+			"changingTicks": [
+				0,
+				6,
+				12,
+				18,
+				24,
+				30,
+				36,
+				42
+			],
+			"subClocks": [
+				[
+					0,
+					1,
+					2,
+					3,
+					0,
+					1,
+					2,
+					3
 				]
 			]
 		},

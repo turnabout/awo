@@ -31,6 +31,8 @@ void update_regular_property_render_grid(Tile* tile, Uint8 animation_index)
 
 void update_base_render_grid(Tile* tile, Uint8 animation_index)
 {
+    printf("%d\n", animation_index);
+
     // Draw base on lower layer
     update_tile_layer_pixel_low(
         TILE_LAYER_0,
