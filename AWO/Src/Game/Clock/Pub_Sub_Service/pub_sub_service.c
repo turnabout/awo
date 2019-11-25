@@ -27,7 +27,7 @@ void register_pub_sub_subscriber(
     service->subscriber_callbacks[animation_clock] = subscriber_callback;
 }
 
-void process_tick_event(Game_Clock_Pub_Sub_Service* service, Tick_Event* tick_event)
+void register_pub_sub_tick_event(Game_Clock_Pub_Sub_Service* service, Tick_Event* tick_event)
 {
     service->subscriber_callbacks[tick_event->clock_index](tick_event);
 }

@@ -44,22 +44,14 @@ Animation_Clock* create_animation_clock(
     return clock;
 }
 
-void update_animation_clock_children(Animation_Clock* animation_clock, Tick_Events_List* event_list)
+void update_animation_clock_children(Animation_Clock* animation_clock)
 {
     for (int i = 0; i < animation_clock->sub_clocks_count; i++) {
-        tick_animation_sub_clock(
-            animation_clock->sub_clocks[i], 
-            animation_clock->current_tick,
-            event_list
-        );
+        tick_animation_sub_clock(animation_clock->sub_clocks[i], animation_clock->current_tick);
     }
 }
 
-void update_animation_clock(
-    Animation_Clock* animation_clock,
-    int game_clock_tick,
-    Tick_Events_List* event_list
-)
+void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tick)
 {
     for (int i = 0; i < animation_clock->changing_ticks_count; i++) {
 
@@ -68,7 +60,7 @@ void update_animation_clock(
             animation_clock->current_tick = i;
 
             // Animation clock update, so update its sub-clocks
-            update_animation_clock_children(animation_clock, event_list);
+            update_animation_clock_children(animation_clock);
         }
     }
 }

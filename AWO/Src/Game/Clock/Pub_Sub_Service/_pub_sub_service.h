@@ -23,6 +23,6 @@ void register_pub_sub_subscriber(
     Animation_Clock_Index animation_clock
 );
 
-void process_tick_event(Game_Clock_Pub_Sub_Service* service, Tick_Event* tick_event);
+void register_pub_sub_tick_event(Game_Clock_Pub_Sub_Service* service, Tick_Event* tick_event);
 
 void free_pub_sub_service(Game_Clock_Pub_Sub_Service* service);

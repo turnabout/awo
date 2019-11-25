@@ -5,15 +5,11 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Clock/Tile_Subscriber/_game_clock_tile_subscriber.h"
 
-Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(
-    Tiles_Data* tiles_data, 
-    Tick_Events_List* tick_events
-)
+Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_data)
 {
     Game_Clock_Tile_Subscriber* module = (Game_Clock_Tile_Subscriber*)malloc(sizeof(Game_Clock_Tile_Subscriber));
 
     module->tiles_data = tiles_data;
-    module->tick_events = tick_events;
 
     // Allocate space for the tiles list.
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
@@ -52,6 +48,7 @@ void register_clock_subscriber_tile(
 
 void update_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* clock_subscriber)
 {
+    /*
     // Loop the current tick events
     for (int i = 0; i < clock_subscriber->tick_events->ticks_count; i++) {
         Tick_Event event = clock_subscriber->tick_events->ticks[i];
@@ -62,6 +59,7 @@ void update_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* clock_subscri
             tiles_list->tiles[j]->update_animation(tiles_list->tiles[j], event.frame_index);
         }
     }
+    */
 }
 
 void free_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* module)

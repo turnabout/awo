@@ -13,6 +13,9 @@ typedef struct Animation_Sub_Clock {
     // Index of this sub-clock.
     Animation_Sub_Clock_Index sub_clock_index;
 
+    // Event generated when this sub-clock ticks.
+    Tick_Event* tick_event;
+
     // Frame value that was stored the last time this sub clock ticked.
     Uint8 previous_tick_value;
 
@@ -33,11 +36,7 @@ Animation_Sub_Clock* create_animation_sub_clock(
 );
 
 // Updates the current tick of a sub clock depending on its animation clock's current tick
-void tick_animation_sub_clock(
-    Animation_Sub_Clock* asc, 
-    int ac_current_tick,
-    Tick_Events_List* event_list
-);
+void tick_animation_sub_clock(Animation_Sub_Clock* asc, int ac_current_tick);
 
 // Frees an animation sub clock
 void free_animation_sub_clock(Animation_Sub_Clock* asc);

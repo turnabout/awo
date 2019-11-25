@@ -19,9 +19,6 @@ typedef struct Game_Clock_Publisher {
     // Static tick counter, always pointing to 0. Given to static tiles.
     int* static_tick;
 
-    // List of current tick events.
-    Tick_Events_List* tick_events;
-
 } Game_Clock_Publisher;
 
 /*! @brief Creates the game clock publisher along with its animation clocks.
@@ -40,9 +37,8 @@ Game_Clock_Publisher* create_game_clock_publisher(
  *
  *  @param[in] publisher The game clock publisher.
  *  @param[in] delta_time Time elapsed since the last game frame.
- *  @return TRUE if the game clock publisher's tick events list was updated, FALSE if it wasn't.
  */
-Bool update_game_clock_publisher(Game_Clock_Publisher* publisher, float delta_time);
+void update_game_clock_publisher(Game_Clock_Publisher* publisher, float delta_time);
 
 /*! @brief Frees the game clock publisher's allocated memory.
  *

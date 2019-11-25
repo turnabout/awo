@@ -33,11 +33,7 @@ Animation_Clock* create_animation_clock(
 );
 
 // Updates an animation clock
-void update_animation_clock(
-    Animation_Clock* animation_clock,
-    int game_clock_tick,
-    Tick_Events_List* event_list
-);
+void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tick);
 
 // Frees an animation clock
 void free_animation_clock(Animation_Clock* ac);

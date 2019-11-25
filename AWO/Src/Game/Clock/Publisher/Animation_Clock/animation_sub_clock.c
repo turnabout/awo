@@ -12,8 +12,11 @@ Animation_Sub_Clock* create_animation_sub_clock(
     Animation_Sub_Clock* sub_clock = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));
 
     sub_clock->previous_tick_value = 0;
-    sub_clock->clock_index = clock_index;
-    sub_clock->sub_clock_index = sub_clock_index;
+
+    sub_clock->tick_event = (Tick_Event*)malloc(sizeof(Tick_Event));
+    sub_clock->tick_event->clock_index = clock_index;
+    sub_clock->tick_event->sub_clock_index = sub_clock_index;
+
     sub_clock->pub_sub_service = pub_sub_service;
 
     // Build up the sub-clock's tick array
@@ -28,21 +31,14 @@ Animation_Sub_Clock* create_animation_sub_clock(
     return sub_clock;
 }
 
-void tick_animation_sub_clock(
-    Animation_Sub_Clock* sub_clock, 
-    int ac_current_tick,
-    Tick_Events_List* event_list
-)
+void tick_animation_sub_clock(Animation_Sub_Clock* sub_clock, int ac_current_tick)
 {
     // Only register tick event if new tick value is different from the previous one
     if (sub_clock->ticks_array[ac_current_tick] != sub_clock->previous_tick_value) {
 
-        // Register tick event
-        event_list->ticks[event_list->ticks_count].clock_index = sub_clock->clock_index;
-        event_list->ticks[event_list->ticks_count].sub_clock_index = sub_clock->sub_clock_index;
-        event_list->ticks[event_list->ticks_count].frame_index = sub_clock->ticks_array[ac_current_tick];
-
-        event_list->ticks_count++;
+        // Send tick event to pub-sub service
+        sub_clock->tick_event->frame_index = sub_clock->ticks_array[ac_current_tick];
+        register_pub_sub_tick_event(sub_clock->pub_sub_service, sub_clock->tick_event);
 
         // Record the previous tick value
         sub_clock->previous_tick_value = sub_clock->ticks_array[ac_current_tick];
@@ -52,5 +48,6 @@ void tick_animation_sub_clock(
 void free_animation_sub_clock(Animation_Sub_Clock* sub_clock)
 {
     free(sub_clock->ticks_array);
+    free(sub_clock->tick_event);
     free(sub_clock);
 }

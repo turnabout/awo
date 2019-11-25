@@ -33,13 +33,9 @@ typedef struct Game_Clock_Tile_Subscriber {
 /*! @brief Creates the clock subscriber module.
  *  
  *  @param[in] tiles_data Pointer to the game's tiles data object.
- *  @param[in] tick_events Pointer to the game clock publisher's tick events list.
  *  @return The created module.
  */
-Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(
-    Tiles_Data* tiles_data,
-    Tick_Events_List* tick_events
-);
+Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_data);
 
 /*! @brief Registers the given tile with the subscriber module.
  *

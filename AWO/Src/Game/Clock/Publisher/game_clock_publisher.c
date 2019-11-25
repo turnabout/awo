@@ -33,13 +33,10 @@ Game_Clock_Publisher* create_game_clock_publisher(
         );
     }
 
-    publisher->tick_events = (Tick_Events_List*)malloc(sizeof(Tick_Events_List));
-    publisher->tick_events->ticks_count = 0;
-
     return publisher;
 }
 
-Bool update_game_clock_publisher(Game_Clock_Publisher* publisher, float delta_time)
+void update_game_clock_publisher(Game_Clock_Publisher* publisher, float delta_time)
 {
     // Add to MS accumulation, advance current tick if threshold reached
     if ((publisher->accum_time += delta_time) > GAME_CLOCK_MAX_ACCUM) {
@@ -52,20 +49,9 @@ Bool update_game_clock_publisher(Game_Clock_Publisher* publisher, float delta_ti
 
         // Update the animation clocks
         for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
-            update_animation_clock(
-                publisher->animation_clocks[i],
-                publisher->current_tick,
-                publisher->tick_events
-            );
-        }
-
-        // Return true if the tick events were updated
-        if (publisher->tick_events->ticks_count) {
-            return TRUE;
+            update_animation_clock(publisher->animation_clocks[i], publisher->current_tick);
         }
     }
-
-    return FALSE;
 }
 
 void free_game_clock_publisher(Game_Clock_Publisher* publisher)

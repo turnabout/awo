@@ -13,21 +13,22 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON, Tiles_Data* tiles_da
         game_clock->pub_sub
     );
 
-    game_clock->tile_subscriber = create_game_clock_tile_subscriber(
-        tiles_data, 
-        game_clock->publisher->tick_events
-    );
+    game_clock->tile_subscriber = create_game_clock_tile_subscriber(tiles_data);
 
     return game_clock;
 }
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
+    update_game_clock_publisher(game_clock->publisher, delta_time);
+
+    /*
     if (update_game_clock_publisher(game_clock->publisher, delta_time)) {
         update_game_clock_tile_subscriber(game_clock->tile_subscriber);
         
         game_clock->publisher->tick_events->ticks_count = 0;
     }
+    */
 }
 
 void register_game_clock_tile(
