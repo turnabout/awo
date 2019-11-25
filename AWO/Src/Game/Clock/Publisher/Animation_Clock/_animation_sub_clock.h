@@ -3,6 +3,7 @@
 #include <cJSON.h>
 
 #include "Game/Clock/Tick_Event/tick_event.h"
+#include "Game/Clock/Pub_Sub_Service/_pub_sub_service.h"
 
 typedef struct Animation_Sub_Clock {
 
@@ -18,13 +19,17 @@ typedef struct Animation_Sub_Clock {
     // Array of every possible game tick.
     Uint8* ticks_array;
 
+    // Reference to the game clock's pub-sub service
+    Game_Clock_Pub_Sub_Service* pub_sub_service;
+
 } Animation_Sub_Clock;
 
 // Creates an animation sub clock using the given JSON data describing it.
 Animation_Sub_Clock* create_animation_sub_clock(
     const cJSON* JSON,
     Animation_Clock_Index animation_clock_index,
-    Animation_Sub_Clock_Index sub_clock_index
+    Animation_Sub_Clock_Index sub_clock_index,
+    Game_Clock_Pub_Sub_Service* pub_sub_service
 );
 
 // Updates the current tick of a sub clock depending on its animation clock's current tick

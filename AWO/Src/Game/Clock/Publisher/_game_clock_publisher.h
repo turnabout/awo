@@ -3,6 +3,7 @@
 #include "types.h"
 #include "Game/Clock/enums.h"
 #include "Game/Clock/Publisher/Animation_Clock/_animation_clock.h"
+#include "Game/Clock/Pub_Sub_Service/_pub_sub_service.h"
 
 typedef struct Game_Clock_Publisher {
 
@@ -27,9 +28,13 @@ typedef struct Game_Clock_Publisher {
  *
  *  @param[in] clock_data_cJSON The data JSON object describing the game clock and its animation 
  *  clocks.
- *  @param[in] delta_time Time elapsed since the last game frame.
+ *  @param[in] pub_sub_service The pub-sub service module. Used to route clock tick events to 
+ *  subscribers.
  */
-Game_Clock_Publisher* create_game_clock_publisher(const cJSON* clock_data_JSON);
+Game_Clock_Publisher* create_game_clock_publisher(
+    const cJSON* clock_data_JSON,
+    Game_Clock_Pub_Sub_Service* pub_sub_service
+);
 
 /*! @brief Keeps the game clock publisher's current tick updated, along with its animation clocks.
  *

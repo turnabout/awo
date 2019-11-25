@@ -45,6 +45,7 @@
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
     <ClCompile Include="Src\Game\Board\player_properties.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
+    <ClCompile Include="Src\Game\Clock\Pub_Sub_Service\pub_sub_service.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette_texture.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\get_game_palette_index.c" />
@@ -121,6 +122,7 @@
     <ClInclude Include="Src\Game\Board\_game_board.h" />
     <ClInclude Include="Src\Game\Clock\enums.h" />
     <ClInclude Include="Src\Game\Clock\Publisher\_game_clock_publisher.h" />
+    <ClInclude Include="Src\Game\Clock\Pub_Sub_Service\_pub_sub_service.h" />
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
     <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_clock.h" />
     <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_sub_clock.h" />

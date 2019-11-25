@@ -7,7 +7,10 @@
 // How much time (in seconds) must be accumulated before the game clock ticks
 static const float GAME_CLOCK_MAX_ACCUM = FRAME_TIME * GAME_CLOCK_FRAMES_TO_TICK;
 
-Game_Clock_Publisher* create_game_clock_publisher(const cJSON* clock_data_JSON)
+Game_Clock_Publisher* create_game_clock_publisher(
+    const cJSON* clock_data_JSON,
+    Game_Clock_Pub_Sub_Service* pub_sub_service
+)
 {
     // Create the game clock
     Game_Clock_Publisher* publisher = (Game_Clock_Publisher*)malloc(
@@ -25,7 +28,8 @@ Game_Clock_Publisher* create_game_clock_publisher(const cJSON* clock_data_JSON)
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         publisher->animation_clocks[i] = create_animation_clock(
             cJSON_GetArrayItem(clock_data_JSON, i),
-            (Animation_Clock_Index)i
+            (Animation_Clock_Index)i,
+            pub_sub_service
         );
     }
 

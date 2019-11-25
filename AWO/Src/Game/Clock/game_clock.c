@@ -6,7 +6,12 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON, Tiles_Data* tiles_da
 {
     Game_Clock* game_clock = (Game_Clock*)malloc(sizeof(Game_Clock));
 
-    game_clock->publisher = create_game_clock_publisher(clock_data_JSON);
+    game_clock->pub_sub = create_pub_sub_service();
+
+    game_clock->publisher = create_game_clock_publisher(
+        clock_data_JSON,
+        game_clock->pub_sub
+    );
 
     game_clock->tile_subscriber = create_game_clock_tile_subscriber(
         tiles_data, 
@@ -38,5 +43,6 @@ void register_game_clock_tile(
 void free_game_clock(Game_Clock* clock)
 {
     free_game_clock_publisher(clock->publisher);
+    free_pub_sub_service(clock->pub_sub);
     free_game_clock_tile_subscriber(clock->tile_subscriber);
 }

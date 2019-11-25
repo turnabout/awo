@@ -5,7 +5,8 @@
 Animation_Sub_Clock* create_animation_sub_clock(
     const cJSON* JSON,
     Animation_Clock_Index clock_index,
-    Animation_Sub_Clock_Index sub_clock_index
+    Animation_Sub_Clock_Index sub_clock_index,
+    Game_Clock_Pub_Sub_Service* pub_sub_service
 )
 {
     Animation_Sub_Clock* sub_clock = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));
@@ -13,6 +14,7 @@ Animation_Sub_Clock* create_animation_sub_clock(
     sub_clock->previous_tick_value = 0;
     sub_clock->clock_index = clock_index;
     sub_clock->sub_clock_index = sub_clock_index;
+    sub_clock->pub_sub_service = pub_sub_service;
 
     // Build up the sub-clock's tick array
     int ticks_count = cJSON_GetArraySize(JSON);

@@ -267,6 +267,9 @@
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette_property_lights.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Clock\Pub_Sub_Service\pub_sub_service.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -462,6 +465,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Stage\_stage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Clock\Pub_Sub_Service\_pub_sub_service.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,6 +5,7 @@
 #include "Game/Clock/enums.h"
 #include "Game/Clock/Tick_Event/tick_event.h"
 #include "Game/Clock/Publisher/Animation_Clock/_animation_sub_clock.h"
+#include "Game/Clock/Pub_Sub_Service/_pub_sub_service.h"
 
 typedef struct Animation_Clock {
     // Current tick of this animation clock.
@@ -27,7 +28,8 @@ typedef struct Animation_Clock {
 // Creates an animation clock using the given JSON data describing it.
 Animation_Clock* create_animation_clock(
     const cJSON* JSON,
-    Animation_Clock_Index clock_index
+    Animation_Clock_Index clock_index,
+    Game_Clock_Pub_Sub_Service* pub_sub_service
 );
 
 // Updates an animation clock
