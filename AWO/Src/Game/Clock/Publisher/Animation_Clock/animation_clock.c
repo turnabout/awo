@@ -5,7 +5,7 @@
 Animation_Clock* create_animation_clock(
     const cJSON* JSON,
     Animation_Clock_Index clock_index,
-    Game_Clock_Pub_Sub_Service* pub_sub_service
+    Game_Clock_Pub_Sub* pub_sub_service
 )
 {
     Animation_Clock* clock = malloc(sizeof(Animation_Clock));

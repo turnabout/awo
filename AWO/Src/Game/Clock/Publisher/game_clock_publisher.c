@@ -9,7 +9,7 @@ static const float GAME_CLOCK_MAX_ACCUM = FRAME_TIME * GAME_CLOCK_FRAMES_TO_TICK
 
 Game_Clock_Publisher* create_game_clock_publisher(
     const cJSON* clock_data_JSON,
-    Game_Clock_Pub_Sub_Service* pub_sub_service
+    Game_Clock_Pub_Sub* pub_sub_service
 )
 {
     // Create the game clock

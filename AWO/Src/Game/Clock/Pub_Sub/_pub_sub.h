@@ -14,17 +14,17 @@
  */
 typedef void (*clock_subscriber_event_cb)(Tick_Event* tick_event, void* subscriber_module);
 
-typedef struct Game_Clock_Pub_Sub_Service Game_Clock_Pub_Sub_Service;
+typedef struct Game_Clock_Pub_Sub Game_Clock_Pub_Sub;
 
-Game_Clock_Pub_Sub_Service* create_pub_sub_service();
+Game_Clock_Pub_Sub* create_clock_pub_sub();
 
-void register_pub_sub_subscriber(
-    Game_Clock_Pub_Sub_Service* service,
+void register_clock_pub_sub_subscriber(
+    Game_Clock_Pub_Sub* service,
     void* subscriber_module,
     clock_subscriber_event_cb subscriber_callback,
     Animation_Clock_Index animation_clock
 );
 
-void register_pub_sub_tick_event(Game_Clock_Pub_Sub_Service* service, Tick_Event* tick_event);
+void register_clock_pub_sub_tick_event(Game_Clock_Pub_Sub* service, Tick_Event* tick_event);
 
-void free_pub_sub_service(Game_Clock_Pub_Sub_Service* service);
+void free_clock_pub_sub(Game_Clock_Pub_Sub* service);

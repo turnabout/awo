@@ -6,7 +6,7 @@ Animation_Sub_Clock* create_animation_sub_clock(
     const cJSON* JSON,
     Animation_Clock_Index clock_index,
     Animation_Sub_Clock_Index sub_clock_index,
-    Game_Clock_Pub_Sub_Service* pub_sub_service
+    Game_Clock_Pub_Sub* pub_sub_service
 )
 {
     Animation_Sub_Clock* sub_clock = (Animation_Sub_Clock*)malloc(sizeof(Animation_Sub_Clock));
@@ -38,7 +38,7 @@ void tick_animation_sub_clock(Animation_Sub_Clock* sub_clock, int ac_current_tic
 
         // Send tick event to pub-sub service
         sub_clock->tick_event->frame_index = sub_clock->ticks_array[ac_current_tick];
-        register_pub_sub_tick_event(sub_clock->pub_sub_service, sub_clock->tick_event);
+        register_clock_pub_sub_tick_event(sub_clock->pub_sub_service, sub_clock->tick_event);
 
         // Record the previous tick value
         sub_clock->previous_tick_value = sub_clock->ticks_array[ac_current_tick];

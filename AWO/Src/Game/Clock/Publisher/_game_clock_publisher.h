@@ -3,7 +3,7 @@
 #include "types.h"
 #include "Game/Clock/enums.h"
 #include "Game/Clock/Publisher/Animation_Clock/_animation_clock.h"
-#include "Game/Clock/Pub_Sub_Service/_pub_sub_service.h"
+#include "Game/Clock/Pub_Sub/_pub_sub.h"
 
 typedef struct Game_Clock_Publisher {
 
@@ -30,7 +30,7 @@ typedef struct Game_Clock_Publisher {
  */
 Game_Clock_Publisher* create_game_clock_publisher(
     const cJSON* clock_data_JSON,
-    Game_Clock_Pub_Sub_Service* pub_sub_service
+    Game_Clock_Pub_Sub* pub_sub_service
 );
 
 /*! @brief Keeps the game clock publisher's current tick updated, along with its animation clocks.

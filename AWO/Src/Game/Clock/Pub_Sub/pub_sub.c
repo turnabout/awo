@@ -1,8 +1,8 @@
 #include <stdlib.h>
 
-#include "Game/Clock/Pub_Sub_Service/_pub_sub_service.h"
+#include "Game/Clock/Pub_Sub/_pub_sub.h"
 
-struct Game_Clock_Pub_Sub_Service {
+struct Game_Clock_Pub_Sub {
 
     // List of subscriber modules registered to the pub-sub service.
     void* subscriber_modules[ANIMATION_CLOCK_COUNT];
@@ -14,10 +14,10 @@ struct Game_Clock_Pub_Sub_Service {
 
 void game_clock_pub_sub_nop(Tick_Event* tick_event, void* module){}
 
-Game_Clock_Pub_Sub_Service* create_pub_sub_service()
+Game_Clock_Pub_Sub* create_clock_pub_sub()
 {
-    Game_Clock_Pub_Sub_Service* service = (Game_Clock_Pub_Sub_Service*)malloc(
-        sizeof(Game_Clock_Pub_Sub_Service)
+    Game_Clock_Pub_Sub* service = (Game_Clock_Pub_Sub*)malloc(
+        sizeof(Game_Clock_Pub_Sub)
     );
 
     // Initialize all subscriber modules & callbacks to empty values
@@ -29,8 +29,8 @@ Game_Clock_Pub_Sub_Service* create_pub_sub_service()
     return service;
 }
 
-void register_pub_sub_subscriber(
-    Game_Clock_Pub_Sub_Service* service,
+void register_clock_pub_sub_subscriber(
+    Game_Clock_Pub_Sub* service,
     void* subscriber_module,
     clock_subscriber_event_cb subscriber_callback, 
     Animation_Clock_Index animation_clock
@@ -40,7 +40,7 @@ void register_pub_sub_subscriber(
     service->subscriber_callbacks[animation_clock] = subscriber_callback;
 }
 
-void register_pub_sub_tick_event(Game_Clock_Pub_Sub_Service* service, Tick_Event* tick_event)
+void register_clock_pub_sub_tick_event(Game_Clock_Pub_Sub* service, Tick_Event* tick_event)
 {
     service->subscriber_callbacks[tick_event->clock_index](
         tick_event,
@@ -48,7 +48,7 @@ void register_pub_sub_tick_event(Game_Clock_Pub_Sub_Service* service, Tick_Event
     );
 }
 
-void free_pub_sub_service(Game_Clock_Pub_Sub_Service* service)
+void free_clock_pub_sub(Game_Clock_Pub_Sub* service)
 {
     free(service);
 }
