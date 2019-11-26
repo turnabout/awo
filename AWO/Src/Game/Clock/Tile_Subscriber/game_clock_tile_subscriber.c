@@ -20,8 +20,6 @@ Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_
         }
     }
 
-    // Register the tile subscriber module with the clock pub-sub module on tile sub-clocks
-
     return module;
 }
 
@@ -50,20 +48,14 @@ void register_clock_subscriber_tile(
 
 void process_tile_subscriber_event(Tick_Event* tick_event, void* tile_subscriber_module)
 {
-    printf("clock_index %d -> frame -> %d\n", tick_event->clock_index, tick_event->frame_index);
+    // Get list of tiles registered to tick events of this type
+    Tiles_List* tiles_list = ((Game_Clock_Tile_Subscriber*)tile_subscriber_module)
+        ->tiles_list[tick_event->clock_index][tick_event->sub_clock_index];
 
-    /*
-    // Loop the current tick events
-    for (int i = 0; i < clock_subscriber->tick_events->ticks_count; i++) {
-        Tick_Event event = clock_subscriber->tick_events->ticks[i];
-        Tiles_List* tiles_list = clock_subscriber->tiles_list[event.clock_index][event.sub_clock_index];
-
-        // Update the render grid pixels for every tile subscribed to this tick event
-        for (int j = 0; j < tiles_list->tiles_count; j++) {
-            tiles_list->tiles[j]->update_animation(tiles_list->tiles[j], event.frame_index);
-        }
+    // Update the render grid pixels for every tile subscribed to this tick event
+    for (int j = 0; j < tiles_list->tiles_count; j++) {
+        tiles_list->tiles[j]->update_grid(tiles_list->tiles[j], tick_event->frame_index);
     }
-    */
 }
 
 void free_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* module)
