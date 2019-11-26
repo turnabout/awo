@@ -53,11 +53,12 @@ void register_clock_subscriber_tile(
     Animation_Sub_Clock_Index sub_clock_index
 );
 
-/*! @brief Update entities registered with the module, processing current tick events.
+/*! @brief Processes a tick event destined to the tile subscriber clock.
  *  
- *  @param[in] clock_subscriber The clock subscriber module.
+ *  @param[in] tick_event The tick event received.
+ *  @param[in] tile_subscriber_module The game clock tile subscriber module.
  */
-void update_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* clock_subscriber);
+void process_tile_subscriber_event(Tick_Event* tick_event, void* tile_subscriber_module);
 
 /*! @brief Frees the subscriber module.
  *  

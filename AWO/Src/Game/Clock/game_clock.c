@@ -6,14 +6,41 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON, Tiles_Data* tiles_da
 {
     Game_Clock* game_clock = (Game_Clock*)malloc(sizeof(Game_Clock));
 
+    // Create the pub-sub module responsible for linking the game clock publisher with subscribers
     game_clock->pub_sub = create_pub_sub_service();
 
+    // Create the game clock publisher which emits tick events to the pub-sub service
     game_clock->publisher = create_game_clock_publisher(
         clock_data_JSON,
         game_clock->pub_sub
     );
 
+    // Create the subscriber modules, which all subscribe to the pub-sub service and receive tick 
+    // events to be processed
+
+    // Tiles clock subscriber module
     game_clock->tile_subscriber = create_game_clock_tile_subscriber(tiles_data);
+
+    register_pub_sub_subscriber(
+        game_clock->pub_sub,
+        (void*)game_clock->tile_subscriber,
+        process_tile_subscriber_event,
+        Sea_Clock
+    );
+
+    register_pub_sub_subscriber(
+        game_clock->pub_sub,
+        (void*)game_clock->tile_subscriber,
+        process_tile_subscriber_event,
+        River_Clock
+    );
+
+    register_pub_sub_subscriber(
+        game_clock->pub_sub,
+        (void*)game_clock->tile_subscriber,
+        process_tile_subscriber_event,
+        Base_Smoke_Clock
+    );
 
     return game_clock;
 }

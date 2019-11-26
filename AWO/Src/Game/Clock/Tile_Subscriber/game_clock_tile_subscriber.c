@@ -20,6 +20,8 @@ Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_
         }
     }
 
+    // Register the tile subscriber module with the clock pub-sub module on tile sub-clocks
+
     return module;
 }
 
@@ -46,8 +48,10 @@ void register_clock_subscriber_tile(
     module->tiles_list[clock_index][sub_clock_index]->tiles[index] = tile;
 }
 
-void update_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* clock_subscriber)
+void process_tile_subscriber_event(Tick_Event* tick_event, void* tile_subscriber_module)
 {
+    printf("clock_index %d -> frame -> %d\n", tick_event->clock_index, tick_event->frame_index);
+
     /*
     // Loop the current tick events
     for (int i = 0; i < clock_subscriber->tick_events->ticks_count; i++) {
