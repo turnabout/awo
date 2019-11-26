@@ -5,15 +5,22 @@
 struct Game_Clock_Pub_Sub_Service {
 
     // List of all subscribers' callback functions.
-    clock_subscriber_event_cb subscriber_callbacks[MINIMAL_ANIMATION_SUB_CLOCK_COUNT];
+    clock_subscriber_event_cb subscriber_callbacks[ANIMATION_CLOCK_COUNT];
 
 };
+
+void game_clock_pub_sub_nop(Tick_Event* tick_event){}
 
 Game_Clock_Pub_Sub_Service* create_pub_sub_service()
 {
     Game_Clock_Pub_Sub_Service* service = (Game_Clock_Pub_Sub_Service*)malloc(
         sizeof(Game_Clock_Pub_Sub_Service)
     );
+
+    // Initialize all subscriber callbacks to empty function
+    for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+        service->subscriber_callbacks[i] = game_clock_pub_sub_nop;
+    }
 
     return service;
 }
