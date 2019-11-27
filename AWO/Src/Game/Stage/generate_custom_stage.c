@@ -5,6 +5,12 @@
 #include "Game/Player/player_index_enum.h"
 #include "Utilities/utilities.h"
 
+void set_custom_stage_value(Stage* stage, int index, int type, int variation)
+{
+    stage->tiles[index].type = type;
+    stage->tiles[index].variation = variation;
+}
+
 Stage* generate_custom_stage()
 {
     Stage* stage = (Stage*)malloc(sizeof(Stage));
@@ -36,45 +42,53 @@ Stage* generate_custom_stage()
     }
 
     // Add initial player HQ tiles so the stage is valid
-    stage->tiles[stage->tile_count - 1].type = Property_HQ;
-    stage->tiles[stage->tile_count - 1].variation = Player_Index_0;
+    set_custom_stage_value(stage, stage->tile_count - 2, Property_HQ, Player_Index_1);
 
-    stage->tiles[stage->tile_count - 2].type = Property_HQ;
-    stage->tiles[stage->tile_count - 2].variation = Player_Index_1;
+    // Some properties
+    set_custom_stage_value(stage, 0, Property_City, Player_Index_0);
+    set_custom_stage_value(stage, 1, Property_Airport, Player_Index_0);
+    set_custom_stage_value(stage, 2, Property_Port, Player_Index_0);
+    set_custom_stage_value(stage, 3, Property_HQ, Player_Index_0);
 
-    stage->tiles[0].type = Property_City;
-    stage->tiles[0].variation = Player_Index_0;
+    set_custom_stage_value(stage, 21, Property_Base, Player_Index_0);
 
-    stage->tiles[1].type = Property_Airport;
-    stage->tiles[1].variation = Player_Index_0;
+    // Sea
+    set_custom_stage_value(stage, 23, Sea, TopLeft);
+    set_custom_stage_value(stage, 24, Sea, Top);
+    set_custom_stage_value(stage, 25, Sea, TopRight);
 
-    stage->tiles[2].type = Property_Port;
-    stage->tiles[2].variation = Player_Index_0;
+    set_custom_stage_value(stage, 33, Sea, DirLeft);
+    set_custom_stage_value(stage, 34, Sea, Middle);
+    set_custom_stage_value(stage, 35, Sea, DirRight);
 
-    stage->tiles[21].type = Property_Base;
-    stage->tiles[21].variation = Player_Index_0;
+    set_custom_stage_value(stage, 43, Sea, BottomLeft);
+    set_custom_stage_value(stage, 44, Sea, Bottom);
+    set_custom_stage_value(stage, 45, Sea, BottomRight);
 
-    // Sea test
-    stage->tiles[23].type = Sea;
-    stage->tiles[23].variation = TopLeft;
-    stage->tiles[24].type = Sea;
-    stage->tiles[24].variation = Top;
-    stage->tiles[25].type = Sea;
-    stage->tiles[25].variation = TopRight;
+    // Some roads & properties
+    set_custom_stage_value(stage, 27, Road, TopLeft);
+    set_custom_stage_value(stage, 28, Road, Horizontal);
+    set_custom_stage_value(stage, 29, Road, Horizontal);
 
-    stage->tiles[33].type = Sea;
-    stage->tiles[33].variation = DirLeft;
-    stage->tiles[34].type = Sea;
-    stage->tiles[34].variation = Middle;
-    stage->tiles[35].type = Sea;
-    stage->tiles[35].variation = DirRight;
+    set_custom_stage_value(stage, 38, Forest, TopLeft);
+    set_custom_stage_value(stage, 39, Forest, TopRight);
+    set_custom_stage_value(stage, 48, Forest, BottomLeft);
+    set_custom_stage_value(stage, 49, Forest, BottomRight);
 
-    stage->tiles[43].type = Sea;
-    stage->tiles[43].variation = BottomLeft;
-    stage->tiles[44].type = Sea;
-    stage->tiles[44].variation = Bottom;
-    stage->tiles[45].type = Sea;
-    stage->tiles[45].variation = BottomRight;
+    set_custom_stage_value(stage, 37, Road, Vertical);
+    set_custom_stage_value(stage, 47, Road, Vertical);
+
+    set_custom_stage_value(stage, 53, Silo, Default);
+    set_custom_stage_value(stage, 54, Property_City, Player_Index_Neutral);
+    set_custom_stage_value(stage, 55, Road, Horizontal);
+    set_custom_stage_value(stage, 56, Road, Horizontal);
+    set_custom_stage_value(stage, 57, Road, Middle);
+    set_custom_stage_value(stage, 58, Road, Horizontal);
+    set_custom_stage_value(stage, 59, Road, Horizontal);
+
+    set_custom_stage_value(stage, 67, Road, Vertical);
+
+    set_custom_stage_value(stage, 77, Property_Base, Player_Index_1);
 
     return stage;
 }
