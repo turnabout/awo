@@ -5,6 +5,7 @@
 
 #include "Game/game.h"
 #include "Game/Board/game_board.h"
+#include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
@@ -18,6 +19,9 @@ struct Game {
 
     // The game's board, containing and updating all current on-board game entities.
     Game_Board* board;
+
+    // The game's camera, containing matrices used by the game's vertex shaders.
+    Game_Camera* camera;
 
     // The game's clock used to update and synchronize entities' animations.
     Game_Clock* clock;

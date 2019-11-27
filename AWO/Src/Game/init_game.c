@@ -14,21 +14,13 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
         return FALSE;
     }
 
-    // Load the palette texture used by the game
+    // Load components used for rendering the game
     game->palette_texture = create_game_palette_texture(
         game->raw_palette_texture, 
         Clear, 
         stage->player_armies
     );
 
-    // Set transformation matrices
-    mat4 view = GLM_MAT4_IDENTITY_INIT;
-    glm_scale(view, (vec3) { (GLfloat)DEFAULT_TILE_SIZE, (GLfloat)DEFAULT_TILE_SIZE, 1.0f });
-
-    mat4 projection = GLM_MAT4_IDENTITY_INIT;
-    glm_ortho(0.0f, (float)game->window_width, 0.0f, (float)game->window_height, -1.0f, 1.0f, projection);
-
-    // Initialize game rendering module
     init_game_renderer(
         stage->width,
         stage->height,
@@ -36,8 +28,7 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
         game->tiles_data
     );
 
-    update_game_renderer_matrix(projection, "projection");
-    update_game_renderer_matrix(view, "view");
+    game->camera = create_game_camera(game->window_width, game->window_height);
 
     // Set up game board
     game->board = create_game_board(game->clock, game->tiles_data, stage, player_COs);

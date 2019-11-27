@@ -273,6 +273,9 @@
     <ClCompile Include="Src\Game\Clock\Property_Lights_Subscriber\property_lights_subscriber.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Camera\game_camera.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -474,6 +477,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Clock\Property_Lights_Subscriber\_property_lights_subscriber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Camera\game_camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
