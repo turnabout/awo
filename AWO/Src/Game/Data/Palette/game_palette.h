@@ -85,5 +85,6 @@ void update_properties_weather_colors(GLuint game_palette_texture);
  * By updating the palette directly, we can simulate the lights turning on and off.
  *
  *  @param[in] game_palette The game palette texture.
+ *  @param[in] on Whether the lights new value should be "on".
  */
-void update_game_palette_property_lights(GLuint game_palette);
+void update_game_palette_property_lights(GLuint game_palette, Bool on);

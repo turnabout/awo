@@ -2,7 +2,11 @@
 
 #include "Game/Clock/_game_clock.h"
 
-Game_Clock* create_game_clock(const cJSON* clock_data_JSON, Tiles_Data* tiles_data)
+Game_Clock* create_game_clock(
+    const cJSON* clock_data_JSON, 
+    Tiles_Data* tiles_data,
+    GLuint* game_palette
+)
 {
     Game_Clock* game_clock = (Game_Clock*)malloc(sizeof(Game_Clock));
 
@@ -40,6 +44,18 @@ Game_Clock* create_game_clock(const cJSON* clock_data_JSON, Tiles_Data* tiles_da
         (void*)game_clock->tile_subscriber,
         process_tile_subscriber_event,
         Base_Smoke_Clock
+    );
+
+    // Property lights clock subscriber module
+    game_clock->property_lights_subscriber = create_game_clock_property_lights_subscriber(
+        game_palette
+    );
+
+    register_clock_pub_sub_subscriber(
+        game_clock->pub_sub,
+        (void*)game_clock->property_lights_subscriber,
+        process_property_light_tick_event,
+        Property_Lights_Clock
     );
 
     return game_clock;

@@ -3,8 +3,6 @@
 #define PROPERTY_AFFECTED_ROWS_AMOUNT PLAYER_INDEX_COUNT - 1 // - 1 to ignore neutral properties
 #define PROPERTY_LIGHTS_PALETTE_INDEX 111
 
-static Bool lights_on = FALSE;
-
 static GLubyte lights_on_color[PROPERTY_AFFECTED_ROWS_AMOUNT][4] = {
     { 248, 248, 112, 255 },
     { 248, 248, 112, 255 },
@@ -19,7 +17,7 @@ static GLubyte lights_off_color[PROPERTY_AFFECTED_ROWS_AMOUNT][4] = {
     { 120, 104, 120, 255 },
 };
 
-void update_game_palette_property_lights(GLuint game_palette)
+void update_game_palette_property_lights(GLuint game_palette, Bool on)
 {
     glBindTexture(GL_TEXTURE_2D, game_palette);
 
@@ -37,8 +35,6 @@ void update_game_palette_property_lights(GLuint game_palette)
 
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        (lights_on) ? lights_off_color : lights_on_color
+        (on) ? lights_on_color : lights_off_color
     );
-
-    lights_on ^= TRUE;
 }

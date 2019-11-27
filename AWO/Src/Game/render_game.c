@@ -36,7 +36,11 @@ void render_game(Game* game)
     }
 
     if (get_key_state(KEY_1) == BUTTON_DOWN_START) {
-        update_game_palette_property_lights(game->palette_texture);
+        update_game_palette_property_lights(game->palette_texture, TRUE);
+    }
+
+    if (get_key_state(KEY_2) == BUTTON_DOWN_START) {
+        update_game_palette_property_lights(game->palette_texture, FALSE);
     }
 
     // Draw main sprites

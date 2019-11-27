@@ -3,6 +3,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Clock/Publisher/_game_clock_publisher.h"
 #include "Game/Clock/Tile_Subscriber/_game_clock_tile_subscriber.h"
+#include "Game/Clock/Property_Lights_Subscriber/_property_lights_subscriber.h"
 #include "Game/Clock/Pub_Sub/_pub_sub.h"
 
 struct Game_Clock {
@@ -17,5 +18,8 @@ struct Game_Clock {
     // Game clock subscriber for tiles. Keeps tiles' animations up to date in accordance with the
     // contents of the tick events list provided by the game clock publisher.
     Game_Clock_Tile_Subscriber* tile_subscriber;
+
+    // Game clock subscriber for properties' lights.
+    Game_Clock_Property_Lights_Subscriber* property_lights_subscriber;
     
 };

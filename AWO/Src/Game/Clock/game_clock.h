@@ -1,5 +1,7 @@
 #pragma once
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <cJSON.h>
 
 #include "Game/Clock/enums.h"
@@ -16,9 +18,15 @@ typedef struct Tile Tile;
  *
  *  @param[in] clock_data_cJSON JSON describing the game clock and its animation clocks.
  *  @param[in] tiles_data The game's tiles data object.
+ *  @param[in] game_palette Reference to the game's palette object id.
+ *  Used by the property lights clock subscriber module.
  *  @return The created game clock object.
  */
-Game_Clock* create_game_clock(const cJSON* clock_data_JSON, Tiles_Data* tiles_data);
+Game_Clock* create_game_clock(
+    const cJSON* clock_data_JSON,
+    Tiles_Data* tiles_data,
+    GLuint* game_palette
+);
 
 /*! @brief Keeps the game clock's current tick updated, along with its animation clocks.
  *
