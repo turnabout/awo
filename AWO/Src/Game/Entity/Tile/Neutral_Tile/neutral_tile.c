@@ -2,7 +2,7 @@
 
 #include "conf.h"
 #include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
-#include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_animation.h"
+#include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_grid.h"
 #include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_fog.h"
 
 // TODO: clean up

@@ -58,11 +58,11 @@
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c" />
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_animation.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_grid.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_fog.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_fog.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c" />
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_animation.c" />
+    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_grid.c" />
     <ClCompile Include="Src\Game\Player\CO\CO.c" />
     <ClCompile Include="Src\Game\Player\player.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
@@ -157,11 +157,11 @@
     <ClInclude Include="Src\Game\Data\Unit\units_data.h" />
     <ClInclude Include="Src\Game\Data\Unit\_units_data.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.h" />
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_update_neutral_tile_animation.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_update_neutral_tile_grid.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_update_neutral_tile_fog.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\property_tile.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_fog.h" />
-    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_animation.h" />
+    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_grid.h" />
     <ClInclude Include="Src\Game\Entity\Tile\tile.h" />
     <ClInclude Include="Src\Game\Clock\Tile_Subscriber\_game_clock_tile_subscriber.h" />
     <ClInclude Include="Src\Game\Entity\Tile\tile_update_cb.h" />

@@ -1,7 +1,7 @@
 #include "Game/Entity/Tile/tile.h"
 #include "Game/Renderer/game_renderer.h"
 #include "Game/Data/Palette/game_palette.h"
-#include "Game/Entity/Tile/Property_Tile/_update_property_tile_animation.h"
+#include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 
 void update_regular_property_fog_status(Tile* tile, Bool fog)
 {

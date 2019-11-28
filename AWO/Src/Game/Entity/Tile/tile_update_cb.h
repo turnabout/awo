@@ -9,7 +9,7 @@
  *  @param[in] tile The tile whose corresponding render grid(s) pixels should be updated.
  *  @param[in] animation_index The animation index of the frame used to update the render grid.
  */
-typedef void (*update_tile_animation_cb)(void* tile, Uint8 animation_index);
+typedef void (*update_tile_render_grid_cb)(void* tile, Uint8 animation_index);
 
 /*! @brief Callback function used by tiles to update themselves visually based on their fog status.
  *

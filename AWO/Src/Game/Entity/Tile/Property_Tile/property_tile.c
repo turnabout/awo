@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "Game/Entity/Tile/Property_Tile/property_tile.h"
-#include "Game/Entity/Tile/Property_Tile/_update_property_tile_animation.h"
+#include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_fog.h"
 
 Property_Tile* create_property_tile(

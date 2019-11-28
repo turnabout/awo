@@ -16,7 +16,7 @@ typedef struct Tile {
     Tile_Type type;
 
     // Function called when this tile's animation updates.
-    update_tile_animation_cb update_grid;
+    update_tile_render_grid_cb update_grid;
 
     // Function called when this tile's fog status updates.
     update_fog_status_cb update_fog;
