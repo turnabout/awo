@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "Game/Clock/game_clock.h"
-#include "Game/Clock/Tile_Subscriber/_game_clock_tile_subscriber.h"
+#include "Game/Clock/Subscribers/Tiles/_game_clock_tile_subscriber.h"
 
 Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_data)
 {

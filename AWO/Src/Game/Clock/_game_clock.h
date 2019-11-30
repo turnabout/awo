@@ -2,8 +2,8 @@
 
 #include "Game/Clock/game_clock.h"
 #include "Game/Clock/Publisher/_game_clock_publisher.h"
-#include "Game/Clock/Tile_Subscriber/_game_clock_tile_subscriber.h"
-#include "Game/Clock/Property_Lights_Subscriber/_property_lights_subscriber.h"
+#include "Game/Clock/Subscribers/Tiles/_game_clock_tile_subscriber.h"
+#include "Game/Clock/Subscribers/Property_Lights/_property_lights_subscriber.h"
 #include "Game/Clock/Pub_Sub/_pub_sub.h"
 
 struct Game_Clock {

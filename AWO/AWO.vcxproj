@@ -46,7 +46,7 @@
     <ClCompile Include="Src\Game\Board\player_properties.c" />
     <ClCompile Include="Src\Game\Camera\game_camera.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
-    <ClCompile Include="Src\Game\Clock\Property_Lights_Subscriber\property_lights_subscriber.c" />
+    <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c" />
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette_texture.c" />
@@ -85,7 +85,7 @@
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Variation\tile_variation_data.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_access.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_creation.c" />
-    <ClCompile Include="Src\Game\Clock\Tile_Subscriber\game_clock_tile_subscriber.c" />
+    <ClCompile Include="Src\Game\Clock\Subscribers\Tiles\game_clock_tile_subscriber.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\init_GL.c" />
@@ -124,7 +124,7 @@
     <ClInclude Include="Src\Game\Board\_game_board.h" />
     <ClInclude Include="Src\Game\Camera\game_camera.h" />
     <ClInclude Include="Src\Game\Clock\enums.h" />
-    <ClInclude Include="Src\Game\Clock\Property_Lights_Subscriber\_property_lights_subscriber.h" />
+    <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h" />
     <ClInclude Include="Src\Game\Clock\Publisher\_game_clock_publisher.h" />
     <ClInclude Include="Src\Game\Clock\Pub_Sub\_pub_sub.h" />
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
@@ -163,7 +163,7 @@
     <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_fog.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_grid.h" />
     <ClInclude Include="Src\Game\Entity\Tile\tile.h" />
-    <ClInclude Include="Src\Game\Clock\Tile_Subscriber\_game_clock_tile_subscriber.h" />
+    <ClInclude Include="Src\Game\Clock\Subscribers\Tiles\_game_clock_tile_subscriber.h" />
     <ClInclude Include="Src\Game\Entity\Tile\tile_update_cb.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
