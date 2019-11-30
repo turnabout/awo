@@ -23,6 +23,7 @@ void render_game(Game* game)
 
     render_tiles_layers();
 
+    /*
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
         update_active_tile_palette(Clear, game->palette_texture, game->raw_palette_texture);
     }
@@ -42,6 +43,7 @@ void render_game(Game* game)
     if (get_key_state(KEY_2) == BUTTON_DOWN_START) {
         update_game_palette_property_lights(game->palette_texture, FALSE);
     }
+    */
 
     // Draw main sprites
     // begin_sprite_batch(game->sprite_batches[SPRITES_SPRITE_BATCH]);

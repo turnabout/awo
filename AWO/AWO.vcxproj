@@ -45,6 +45,7 @@
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
     <ClCompile Include="Src\Game\Board\player_properties.c" />
     <ClCompile Include="Src\Game\Camera\game_camera.c" />
+    <ClCompile Include="Src\Game\Camera\mouse_pan_mode.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
     <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c" />
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c" />
@@ -123,6 +124,7 @@
     <ClInclude Include="Src\Game\Board\game_board.h" />
     <ClInclude Include="Src\Game\Board\_game_board.h" />
     <ClInclude Include="Src\Game\Camera\game_camera.h" />
+    <ClInclude Include="Src\Game\Camera\_game_camera.h" />
     <ClInclude Include="Src\Game\Clock\enums.h" />
     <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h" />
     <ClInclude Include="Src\Game\Clock\Publisher\_game_clock_publisher.h" />

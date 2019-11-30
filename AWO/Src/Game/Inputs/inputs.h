@@ -90,6 +90,13 @@ Button_State get_mouse_button_state(Mouse_Button mouse_button);
  */
 void get_mouse_position(int* x, int* y);
 
+/*! @brief Gets the current screen position of the mouse cursor, as a float value.
+ *
+ *  @param[out] x The x position.
+ *  @param[out] y The y position.
+ */
+void get_mouse_position_f(float* x, float* y);
+
 /*! @brief Frees the memory occupied by the mouse state module.
  */
 void free_mouse_state_module();
