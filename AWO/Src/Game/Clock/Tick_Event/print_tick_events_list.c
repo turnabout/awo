@@ -49,7 +49,7 @@ void print_tick_events_list(Tick_Events_List* tick_events_list)
             "\tTick_Event { %-16s - %-16s  Frame %d}\n",
             clock_str,
             sub_clock_str,
-            tick_events_list->ticks[i].frame_index
+            tick_events_list->ticks[i].value
         );
     }
 

@@ -21,7 +21,7 @@ void process_property_light_tick_event(Tick_Event* tick_event, void* subscriber_
 {
     update_game_palette_property_lights(
         *((Game_Clock_Property_Lights_Subscriber*)subscriber_module)->game_palette,
-        tick_event->frame_index
+        tick_event->value
     );
 }
 

@@ -12,8 +12,8 @@ typedef struct Tick_Event {
     // Index of the animation sub-clock that ticked.
     Animation_Sub_Clock_Index sub_clock_index;
 
-    // New animation index of entities that process this tick event.
-    Uint8 frame_index;
+    // Value held by this tick event.
+    Uint8 value;
 
 } Tick_Event;
 

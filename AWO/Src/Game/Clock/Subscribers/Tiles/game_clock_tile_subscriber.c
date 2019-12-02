@@ -54,7 +54,7 @@ void process_tile_subscriber_event(Tick_Event* tick_event, void* tile_subscriber
 
     // Update the render grid pixels for every tile subscribed to this tick event
     for (int j = 0; j < tiles_list->tiles_count; j++) {
-        tiles_list->tiles[j]->update_grid(tiles_list->tiles[j], tick_event->frame_index);
+        tiles_list->tiles[j]->update_grid(tiles_list->tiles[j], tick_event->value);
     }
 }
 
