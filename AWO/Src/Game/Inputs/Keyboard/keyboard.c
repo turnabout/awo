@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Inputs/inputs.h"
+#include "Game/Inputs/Keyboard/keyboard.h"
 
 // Every GLFW key definition corresponding to the game keys
 static const int GAME_KEYS[] = { 
@@ -29,7 +29,7 @@ static GLFWwindow* window_instance;
 // Holds the current state of every key
 static Button_State* keys_state;
 
-void update_keys_state()
+void update_keyboard_state()
 {
     for (int i = 0; i < GAME_KEYS_COUNT; i++) {
         Button_State previous_state = keys_state[i];
@@ -40,7 +40,7 @@ void update_keys_state()
     }
 }
 
-void init_keys_state_module(GLFWwindow* window)
+void init_keyboard_module(GLFWwindow* window)
 {
     window_instance = window;
 
@@ -56,7 +56,7 @@ Button_State get_key_state(Key key)
     return keys_state[key];
 }
 
-void free_keys_state_module()
+void free_keyboard_module()
 {
     if (keys_state != NULL) {
         free(keys_state);

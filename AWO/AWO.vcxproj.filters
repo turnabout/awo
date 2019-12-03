@@ -111,12 +111,6 @@
     <ClCompile Include="Src\Game\Data\Unit\units_data_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Inputs\keys_state.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Inputs\mouse_state.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Board\game_board.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -283,6 +277,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Utilities\round_float_to_int.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Inputs\Mouse\mouse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Inputs\Keyboard\keyboard.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -492,6 +492,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Camera\_game_camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Inputs\Mouse\mouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Inputs\button_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Inputs\Keyboard\keyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

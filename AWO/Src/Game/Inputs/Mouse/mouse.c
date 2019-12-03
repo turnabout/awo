@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Inputs/inputs.h"
+#include "Game/Inputs/Mouse/mouse.h"
 
 // Every GLFW button definition corresponding to the game mouse buttons
 static const int GAME_MOUSE_BUTTONS[] = { 
@@ -13,8 +13,12 @@ static const int GAME_MOUSE_BUTTONS_COUNT = sizeof(GAME_MOUSE_BUTTONS) / sizeof(
 // Reference to the game's window
 static GLFWwindow* window_instance;
 
-// Holds the current state of every mouse button
+// Current state of every mouse button
 static Button_State* mouse_buttons_state;
+
+// Current scroll wheel state
+static int mouse_scroll_value;
+static int fetched_mouse_scroll_value;
 
 // Current mouse coordinates
 static int mouse_x = 0;
@@ -32,6 +36,9 @@ void update_mouse_buttons_state()
         mouse_buttons_state[i] = glfwGetMouseButton(window_instance, GAME_MOUSE_BUTTONS[i]) | 
                         ((previous_state & 1) ^ current_down_state) << 1;
     }
+
+    mouse_scroll_value = fetched_mouse_scroll_value;
+    fetched_mouse_scroll_value = 0;
 }
 
 void mouse_cb(GLFWwindow* window, double x, double y)
@@ -43,13 +50,20 @@ void mouse_cb(GLFWwindow* window, double x, double y)
     mouse_y = abs((int)y - *game_window_height);
 }
 
-void init_mouse_state_module(GLFWwindow* window, int* game_window_height_ptr)
+void mouse_scroll_cb(GLFWwindow* window, double x, double y)
+{
+    fetched_mouse_scroll_value = (int)y;
+}
+
+void init_mouse_module(GLFWwindow* window, int* game_window_height_ptr)
 {
     window_instance = window;
     game_window_height = game_window_height_ptr;
     glfwSetCursorPosCallback(window, mouse_cb);
+    glfwSetScrollCallback(window, mouse_scroll_cb);
 
     mouse_buttons_state = (Button_State*)malloc(sizeof(Button_State) * GAME_MOUSE_BUTTONS_COUNT);
+    mouse_scroll_value = 0;
 
     for (int i = 0; i < GAME_MOUSE_BUTTONS_COUNT; i++) {
         mouse_buttons_state[i] = 0;
@@ -61,13 +75,18 @@ Button_State get_mouse_button_state(Mouse_Button mouse_button)
     return mouse_buttons_state[mouse_button];
 }
 
+int get_mouse_scroll_value()
+{
+    return mouse_scroll_value;
+}
+
 void get_mouse_position(int* x, int* y)
 {
     *x = mouse_x;
     *y = mouse_y;
 }
 
-void free_mouse_state_module()
+void free_mouse_module()
 {
     if (mouse_buttons_state != NULL) {
         free(mouse_buttons_state);

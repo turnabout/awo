@@ -65,6 +65,8 @@
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_fog.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_grid.c" />
+    <ClCompile Include="Src\Game\Inputs\Keyboard\keyboard.c" />
+    <ClCompile Include="Src\Game\Inputs\Mouse\mouse.c" />
     <ClCompile Include="Src\Game\Player\CO\CO.c" />
     <ClCompile Include="Src\Game\Player\player.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
@@ -91,8 +93,6 @@
     <ClCompile Include="Src\Game\exit_game.c" />
     <ClCompile Include="Src\Game\init_game.c" />
     <ClCompile Include="Src\Game\init_GL.c" />
-    <ClCompile Include="Src\Game\Inputs\keys_state.c" />
-    <ClCompile Include="Src\Game\Inputs\mouse_state.c" />
     <ClCompile Include="Src\Game\Renderer\game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\get_render_grid_VAO.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\render_grid.c" />
@@ -170,7 +170,10 @@
     <ClInclude Include="Src\Game\Clock\Subscribers\Tiles\_game_clock_tile_subscriber.h" />
     <ClInclude Include="Src\Game\Entity\Tile\tile_update_cb.h" />
     <ClInclude Include="Src\Game\game.h" />
+    <ClInclude Include="Src\Game\Inputs\button_state.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
+    <ClInclude Include="Src\Game\Inputs\Keyboard\keyboard.h" />
+    <ClInclude Include="Src\Game\Inputs\Mouse\mouse.h" />
     <ClInclude Include="Src\Game\Player\CO\CO.h" />
     <ClInclude Include="Src\Game\Player\player.h" />
     <ClInclude Include="Src\Game\Player\player_index_enum.h" />
