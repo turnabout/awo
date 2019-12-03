@@ -4,11 +4,12 @@
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
+#include "conf.h"
 #include "Game/Camera/game_camera.h"
 
-#define DEFAULT_CAMERA_ZOOM 2.0f
-#define DEFAULT_CAMERA_X 0.0f
-#define DEFAULT_CAMERA_Y 0.0f
+#define DEFAULT_CAMERA_ZOOM (DEFAULT_TILE_SIZE)
+#define DEFAULT_CAMERA_X 0
+#define DEFAULT_CAMERA_Y 0
 
 struct Game_Camera {
 
@@ -25,15 +26,20 @@ struct Game_Camera {
     float zoom;
 
     // Current camera view coordinate values.
-    float x, y;
+    int x, y;
 
     // The mouse coordinate values when a mouse pan was initiated.
-    float pan_start_mouse_x, pan_start_mouse_y;
+    int pan_start_mouse_x, pan_start_mouse_y;
 
     // The camera view coordinate values when a mouse pan was initiated.
-    float pan_start_x, pan_start_y;
+    int pan_start_x, pan_start_y;
 
     // The current mouse pan offset coordinates.
-    float pan_x, pan_y;
+    int pan_x, pan_y;
 
 };
+
+void update_game_camera_view_position_to(Game_Camera* camera, int x, int y);
+void add_game_camera_view_position(Game_Camera* camera, int added_x, int added_y);
+void add_game_camera_view_zoom(Game_Camera* camera, float added_zoom);
+void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom);

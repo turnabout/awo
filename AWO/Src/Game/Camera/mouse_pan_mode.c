@@ -15,9 +15,9 @@ void camera_mouse_pan_cb(GLFWwindow* window, double x, double y)
 
 void start_camera_mouse_pan_mode(Game_Camera* camera)
 {
-    get_mouse_position_f(&camera->pan_start_mouse_x, &camera->pan_start_mouse_y);
+    get_mouse_position(&camera->pan_start_mouse_x, &camera->pan_start_mouse_y);
 
-    camera->pan_x = camera->pan_y = 0.0f;
+    camera->pan_x = camera->pan_y = 0;
 
     camera->pan_start_x = camera->x;
     camera->pan_start_y = camera->y;
@@ -25,9 +25,9 @@ void start_camera_mouse_pan_mode(Game_Camera* camera)
 
 void update_camera_mouse_pan_mode(Game_Camera* camera)
 {
-    float mouse_x, mouse_y;
+    int mouse_x, mouse_y;
 
-    get_mouse_position_f(&mouse_x, &mouse_y);
+    get_mouse_position(&mouse_x, &mouse_y);
 
     camera->pan_x = mouse_x - camera->pan_start_mouse_x;
     camera->pan_y = mouse_y - camera->pan_start_mouse_y;

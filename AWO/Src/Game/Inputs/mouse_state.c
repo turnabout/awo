@@ -67,12 +67,6 @@ void get_mouse_position(int* x, int* y)
     *y = mouse_y;
 }
 
-void get_mouse_position_f(float* x, float* y)
-{
-    *x = (float)mouse_x;
-    *y = (float)mouse_y;
-}
-
 void free_mouse_state_module()
 {
     if (mouse_buttons_state != NULL) {

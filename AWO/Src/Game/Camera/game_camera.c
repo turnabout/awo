@@ -29,39 +29,35 @@ void _refresh_game_camera(Game_Camera* camera)
     // Refresh position
     glm_translate_to(
         camera->identity,
-        (vec3) { camera->x, camera->y, 0.0f },
+        (vec3) { (float)camera->x, (float)camera->y, 0.0f },
         camera->view
     );
 
     // Refresh zoom
     glm_scale(
         camera->view,
-        (vec3) { 
-            (GLfloat)DEFAULT_TILE_SIZE * camera->zoom, 
-            (GLfloat)DEFAULT_TILE_SIZE * camera->zoom, 
-            1.0f 
-        }
+        (vec3) { camera->zoom, camera->zoom, 1.0f }
     );
 
     // Update other modules depending on the camera
     update_game_renderer_matrix(camera->view, "view");
 }
 
-void update_game_camera_view_position_to(Game_Camera* camera, float x, float y)
+void update_game_camera_view_position_to(Game_Camera* camera, int x, int y)
 {
     camera->x = x;
     camera->y = y;
     _refresh_game_camera(camera);
 }
 
-void update_game_camera_view_position(Game_Camera* camera, float added_x, float added_y)
+void add_game_camera_view_position(Game_Camera* camera, int added_x, int added_y)
 {
     camera->x += added_x;
     camera->y += added_y;
     _refresh_game_camera(camera);
 }
 
-void update_game_camera_view_zoom(Game_Camera* camera, float added_zoom)
+void add_game_camera_view_zoom(Game_Camera* camera, float added_zoom)
 {
     camera->zoom += added_zoom;
     _refresh_game_camera(camera);
