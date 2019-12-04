@@ -45,8 +45,3 @@ void zoom_game_camera(Game_Camera* camera, float zoom_value, int target_x, int t
         round_float_to_int((float)diff_y * zoom_percent_increase)
     );
 }
-
-void zoom_camera_out(Game_Camera* camera, float value, float target_x, float target_y)
-{
-    add_game_camera_view_zoom(camera, -value);
-}
