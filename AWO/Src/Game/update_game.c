@@ -49,21 +49,6 @@ void update_game(Game* game, float delta_time)
     }
 
     /*
-    if (get_key_state(KEY_UP) == BUTTON_DOWN_START) {
-        // Get mouse position
-        int mouse_x, mouse_y;
-        get_mouse_position(&mouse_x, &mouse_y);
-
-        // zoom_game_camera(game->camera, 1.0f, mouse_x, mouse_y);
-        zoom_game_camera(game->camera, 1.0f, mouse_x, mouse_y);
-    }
-
-    if (get_key_state(KEY_DOWN) == BUTTON_DOWN_START) {
-        // zoom_camera_out(game->camera, 1.0f, game->window_width / 2, game->window_height / 2);
-    }
-    */
-
-    /*
     if (get_key_state(KEY_W) == BUTTON_DOWN) {
         update_game_camera_view_position(game->camera, 0.0f, -3.0f);
     }

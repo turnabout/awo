@@ -7,10 +7,6 @@
 #include "conf.h"
 #include "Game/Camera/game_camera.h"
 
-#define DEFAULT_CAMERA_ZOOM (DEFAULT_TILE_SIZE)
-#define DEFAULT_CAMERA_X 0
-#define DEFAULT_CAMERA_Y 0
-
 struct Game_Camera {
 
     // Identity matrix reference.
@@ -41,5 +37,4 @@ struct Game_Camera {
 
 void update_game_camera_view_position_to(Game_Camera* camera, int x, int y);
 void add_game_camera_view_position(Game_Camera* camera, int added_x, int added_y);
-void add_game_camera_view_zoom(Game_Camera* camera, float added_zoom);
 void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom);
