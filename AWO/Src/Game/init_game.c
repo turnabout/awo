@@ -28,7 +28,7 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
         game->tiles_data
     );
 
-    game->camera = create_game_camera(game->window_width, game->window_height);
+    game->camera = create_game_camera(&game->window_width, &game->window_height);
 
     // Set up game board
     game->board = create_game_board(game->clock, game->tiles_data, stage, player_COs);

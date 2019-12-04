@@ -33,6 +33,9 @@ struct Game_Camera {
     // The current mouse pan offset coordinates.
     int pan_x, pan_y;
 
+    // Pointers to the window dimensions.
+    int* window_width, * window_height;
+
 };
 
 void update_game_camera_view_position_to(Game_Camera* camera, int x, int y);

@@ -5,14 +5,17 @@
 #include "Game/Camera/_game_camera.h"
 #include "Game/Renderer/game_renderer.h"
 
-Game_Camera* create_game_camera(int window_width, int window_height)
+Game_Camera* create_game_camera(int* window_width, int* window_height)
 {
     Game_Camera* camera = (Game_Camera*)malloc(sizeof(Game_Camera));
+
+    camera->window_width = window_width;
+    camera->window_height = window_height;
 
     glm_mat4_identity(camera->identity);
 
     // Set starting projection matrix
-    glm_ortho(0.0f, (float)window_width, (float)window_height, 0.0f, -1.0f, 1.0f, camera->projection);
+    glm_ortho(0.0f, (float)*window_width, (float)*window_height, 0.0f, -1.0f, 1.0f, camera->projection);
     update_game_renderer_matrix(camera->projection, "projection");
 
     // Set starting view matrix
