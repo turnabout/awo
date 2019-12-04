@@ -17,14 +17,13 @@ void update_game(Game* game, float delta_time)
 
     // Update panning
     if (control_mode == CONTROL_MODE_PAN) {
-        update_camera_mouse_pan_mode(game->camera);
 
         // End "pan" control mode
         if (
+            !update_camera_mouse_pan_mode(game->camera) ||
             get_key_state(KEY_SPACE) == BUTTON_UP || 
             get_mouse_button_state(MOUSE_BUTTON_LEFT) == BUTTON_UP
         ) {
-            end_camera_mouse_pan_mode(game->camera);
             control_mode = CONTROL_MODE_NORMAL;
         }
 

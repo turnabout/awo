@@ -16,7 +16,4 @@ void start_camera_mouse_pan_mode(Game_Camera* camera);
 
 Bool update_camera_mouse_pan_mode(Game_Camera* camera);
 
-void end_camera_mouse_pan_mode(Game_Camera* camera);
-
-
 void free_game_camera(Game_Camera* camera);

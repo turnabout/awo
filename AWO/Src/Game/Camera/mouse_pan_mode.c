@@ -29,7 +29,14 @@ Bool update_camera_mouse_pan_mode(Game_Camera* camera)
 
     get_mouse_position(&mouse_x, &mouse_y);
 
-    printf("%d, %d\n", mouse_x, mouse_y);
+    if (
+        mouse_x < 0 || 
+        mouse_y < 0 || 
+        mouse_x >* camera->window_width || 
+        mouse_y >* camera->window_height
+    ) {
+        return FALSE;
+    }
 
     camera->pan_x = mouse_x - camera->pan_start_mouse_x;
     camera->pan_y = mouse_y - camera->pan_start_mouse_y;
@@ -39,9 +46,6 @@ Bool update_camera_mouse_pan_mode(Game_Camera* camera)
         camera->pan_start_x + camera->pan_x, 
         camera->pan_start_y + camera->pan_y
     );
-    return TRUE;
-}
 
-void end_camera_mouse_pan_mode(Game_Camera* camera)
-{
+    return TRUE;
 }
