@@ -21,7 +21,7 @@ void render_game(Game* game)
         flag = 1;
     }
 
-    render_tiles_layers();
+    render_game_renderer();
 
     /*
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {

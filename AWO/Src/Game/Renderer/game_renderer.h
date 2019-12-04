@@ -31,7 +31,7 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str);
 
 /*! @brief Render the game renderer's tiles layers.
  */
-void render_tiles_layers();
+void render_game_renderer();
 
 /*! @brief Update a pixel's value in a render grid layer's tile texture.
  *

@@ -197,7 +197,7 @@ void update_tile_layer_pixel_high(
     update_render_grid_pixel_high(renderer->tile_grid_layers[layer], x, y, value);
 }
 
-void render_tiles_layers()
+void render_game_renderer()
 {
     glUseProgram(renderer->tiles_shader_program);
 
@@ -207,9 +207,8 @@ void render_tiles_layers()
     glActiveTexture(GL_TEXTURE1); 
     glBindTexture(GL_TEXTURE_2D, renderer->game_palette_texture);
 
-    for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
-        render_r_grid(renderer->tile_grid_layers[i]);
-    }
+    render_r_grid(renderer->tile_grid_layers[TILE_LAYER_0]);
+    render_r_grid(renderer->tile_grid_layers[TILE_LAYER_1]);
 }
 
 void free_game_renderer()
