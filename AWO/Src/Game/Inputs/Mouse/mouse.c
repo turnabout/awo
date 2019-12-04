@@ -17,8 +17,8 @@ static GLFWwindow* window_instance;
 static Button_State* mouse_buttons_state;
 
 // Current scroll wheel state
-static int mouse_scroll_value;
-static int fetched_mouse_scroll_value;
+static float mouse_scroll_value;
+static float fetched_mouse_scroll_value;
 
 // Current mouse coordinates
 static int mouse_x = 0;
@@ -52,7 +52,7 @@ void mouse_cb(GLFWwindow* window, double x, double y)
 
 void mouse_scroll_cb(GLFWwindow* window, double x, double y)
 {
-    fetched_mouse_scroll_value = (int)y;
+    fetched_mouse_scroll_value = (float)y;
 }
 
 void init_mouse_module(GLFWwindow* window, int* game_window_height_ptr)
@@ -75,7 +75,7 @@ Button_State get_mouse_button_state(Mouse_Button mouse_button)
     return mouse_buttons_state[mouse_button];
 }
 
-int get_mouse_scroll_value()
+float get_mouse_scroll_value()
 {
     return mouse_scroll_value;
 }

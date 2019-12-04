@@ -14,8 +14,6 @@ void zoom_game_camera(Game_Camera* camera, float zoom_value, int target_x, int t
     float zoom_increase = new_zoom - original_zoom;
     float zoom_percent_increase = zoom_increase / original_zoom;
 
-    printf("%.2f -> %.2f (%.8f increase)\n", original_zoom, new_zoom, zoom_percent_increase);
-
     // Internally update the camera's zoom
     add_game_camera_view_zoom(camera, zoom_value);
 
@@ -23,19 +21,12 @@ void zoom_game_camera(Game_Camera* camera, float zoom_value, int target_x, int t
     int diff_x = camera->x - target_x;
     int diff_y = camera->y - target_y;
 
-    // Calculate coordinates of position adjustment
-    int adjust_x = round_float_to_int((float)diff_x * zoom_percent_increase);
-    int adjust_y = round_float_to_int((float)diff_y * zoom_percent_increase);
-
-    printf("%d, %d\n", adjust_x, adjust_y);
-
-    int old_x = camera->x;
-    int old_y = camera->y;
-
-    add_game_camera_view_position(camera, adjust_x, adjust_y);
-
-    printf("adjust: {%d, %d}\n", adjust_x, adjust_y);
-    printf("{%d, %d} -> {%d, %d}\n\n", old_x, old_y, camera->x, camera->y);
+    // Calculate coordinates of position adjustment & add to camera position
+    add_game_camera_view_position(
+        camera, 
+        round_float_to_int((float)diff_x * zoom_percent_increase), 
+        round_float_to_int((float)diff_y * zoom_percent_increase)
+    );
 }
 
 void zoom_camera_out(Game_Camera* camera, float value, float target_x, float target_y)

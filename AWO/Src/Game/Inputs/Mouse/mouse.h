@@ -49,7 +49,7 @@ void get_mouse_position(int* x, int* y);
  *
  *  @return The scroll wheel value.
  */
-int get_mouse_scroll_value();
+float get_mouse_scroll_value();
 
 /*! @brief Frees the memory occupied by the mouse state module.
  */;

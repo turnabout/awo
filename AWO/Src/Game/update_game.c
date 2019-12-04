@@ -28,16 +28,27 @@ void update_game(Game* game, float delta_time)
             control_mode = CONTROL_MODE_NORMAL;
         }
 
-    } else if (
-        control_mode == CONTROL_MODE_NORMAL && 
-        get_key_state(KEY_SPACE) == BUTTON_DOWN && 
-        get_mouse_button_state(MOUSE_BUTTON_LEFT) == BUTTON_DOWN
-    ) {
+    } else if (control_mode == CONTROL_MODE_NORMAL) {
+
         // Start "pan" control mode
-        start_camera_mouse_pan_mode(game->camera);
-        control_mode = CONTROL_MODE_PAN;
+        if (get_key_state(KEY_SPACE) == BUTTON_DOWN &&
+            get_mouse_button_state(MOUSE_BUTTON_LEFT) == BUTTON_DOWN) {
+
+            start_camera_mouse_pan_mode(game->camera);
+            control_mode = CONTROL_MODE_PAN;
+        }
+
+        // Zoom at mouse coordinates if mouse wheel was scrolled
+        float scroll_value;
+
+        if (scroll_value = get_mouse_scroll_value()) {
+            int mouse_x, mouse_y;
+            get_mouse_position(&mouse_x, &mouse_y);
+            zoom_game_camera(game->camera, scroll_value, mouse_x, mouse_y);
+        }
     }
 
+    /*
     if (get_key_state(KEY_UP) == BUTTON_DOWN_START) {
         // Get mouse position
         int mouse_x, mouse_y;
@@ -50,6 +61,7 @@ void update_game(Game* game, float delta_time)
     if (get_key_state(KEY_DOWN) == BUTTON_DOWN_START) {
         // zoom_camera_out(game->camera, 1.0f, game->window_width / 2, game->window_height / 2);
     }
+    */
 
     /*
     if (get_key_state(KEY_W) == BUTTON_DOWN) {
