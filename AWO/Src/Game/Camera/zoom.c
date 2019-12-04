@@ -13,7 +13,6 @@ void zoom_game_camera(Game_Camera* camera, float zoom_value, int target_x, int t
 
     // Clamp new zoom between minimum/maximum values
     if (new_zoom <= MIN_ZOOM_VALUE || new_zoom >= MAX_ZOOM_VALUE) {
-        printf("SHOULD CLAMP\n");
 
         new_zoom = (new_zoom <= MIN_ZOOM_VALUE) ? MIN_ZOOM_VALUE : MAX_ZOOM_VALUE;
 
