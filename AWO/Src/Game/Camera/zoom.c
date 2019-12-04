@@ -19,14 +19,9 @@ void zoom_game_camera(Game_Camera* camera, float zoom_value, int target_x, int t
 
         // Don't bother updating if new clamped zoom value is same as the old one
         if (new_zoom == original_zoom) {
-            // printf("NO\n");
             return;
         }
-        else {
-        }
     }
-
-    printf("%.2f -> %.2f\n", original_zoom, new_zoom);
 
     float zoom_increase = new_zoom - original_zoom;
     float zoom_percent_increase = zoom_increase / original_zoom;

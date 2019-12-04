@@ -47,7 +47,8 @@ void mouse_cb(GLFWwindow* window, double x, double y)
 
     // Subtract the current game window tiles_height from the mouse position to get the Y coordinate 
     // relative to the lower edge instead of the upper edge.
-    mouse_y = abs((int)y - *game_window_height);
+    mouse_y = (int)y;
+    // mouse_y = abs((int)y - *game_window_height);
 }
 
 void mouse_scroll_cb(GLFWwindow* window, double x, double y)

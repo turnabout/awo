@@ -1,5 +1,7 @@
 #pragma once
 
+#include "types.h"
+
 /*! @brief The game camera module, holding the matrices used to transform vertices.
  */
 typedef struct Game_Camera Game_Camera;
@@ -12,7 +14,7 @@ void zoom_game_camera(Game_Camera* camera, float value, int target_x, int target
 // offset of the camera.
 void start_camera_mouse_pan_mode(Game_Camera* camera);
 
-void update_camera_mouse_pan_mode(Game_Camera* camera);
+Bool update_camera_mouse_pan_mode(Game_Camera* camera);
 
 void end_camera_mouse_pan_mode(Game_Camera* camera);
 

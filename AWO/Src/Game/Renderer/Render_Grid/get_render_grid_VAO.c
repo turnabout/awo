@@ -28,8 +28,8 @@ GLuint get_render_grid_VAO(GLuint width, GLuint height, GLuint vertical_offset)
 
     GLfloat left = 0.0f;
     GLfloat right = (GLfloat)width;
-    GLfloat top = (GLfloat)height + (GLfloat)vertical_offset;
-    GLfloat bottom = 0.0f + (GLfloat)vertical_offset;
+    GLfloat top = 0.0f - (GLfloat)vertical_offset;
+    GLfloat bottom = (GLfloat)height - (GLfloat)vertical_offset;
 
     GLfloat quad_vertices[4][4] = {
         // Bottom left
