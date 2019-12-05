@@ -1,6 +1,29 @@
 #include "Game/Board/_game_board.h"
 #include "Game/Entity/Tile/tile.h"
 
+
+void edit_game_board_property_tile(
+    Property_Tile* property,
+    Game_Board* game_board,
+    Game_Clock* game_clock,
+    Tiles_Data* tiles_data,
+    Tile_Type new_type,
+    Player_Index new_index
+)
+{
+    // Don't bother editing if the new index is the same as the old one
+    if (property->player->index == new_index) {
+        return;
+    }
+
+    // Unregister the property with its old player's list
+    unregister_game_board_player_property(game_board, property);
+
+    // Update the property's player index & register it with its new player owner's list
+    update_property_owner(property, game_board->players[new_index]);
+    register_game_board_player_property(game_board, property);
+}
+
 void edit_game_board_tile(
     Game_Board* game_board,
     Game_Clock* game_clock,
@@ -11,17 +34,33 @@ void edit_game_board_tile(
     Uint8 y
 )
 {
-    Tile* old_tile = game_board->tiles_grid[y][x];
+    Tile* tile = game_board->tiles_grid[y][x];
 
-    // Same tile type, only need to edit the tile's variation
-    if (old_tile->type == new_type) {
+    // Same tile type, edit the tile itself rather than delete and replace it
+    if (tile->type == new_type) {
+        if (tile->type >= NEUTRAL_TILE_TYPE_FIRST && tile->type <= NEUTRAL_TILE_TYPE_LAST) {
+            // TODO
+        } else {
+            edit_game_board_property_tile(
+                (Property_Tile*)tile,
+                game_board,
+                game_clock,
+                tiles_data,
+                new_type,
+                (Player_Index)new_variation
+            );
+        }
 
-        // TODO
         return;
     }
 
+    // If the old tile to delete is a property, unregister it from its player's list
+    if (tile->type >= PROPERTY_TILE_TYPE_FIRST && tile->type <= PROPERTY_TILE_TYPE_LAST) {
+        unregister_game_board_player_property(game_board, (Property_Tile*)tile);
+    }
+
     // New tile type, delete the old tile and replace with a new one
-    old_tile->delete(old_tile, game_clock, tiles_data);
+    tile->delete(tile, game_clock, tiles_data);
 
     add_game_board_tile(
         game_board,

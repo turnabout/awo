@@ -60,22 +60,14 @@ void add_game_board_tile(
 
 /*! @brief Registers a property with a player.
  *
- *  @param[in] player_index The index of the player receiving the property.
+ *  @param[in] game_board The game board module.
  *  @param[in] property Pointer to the property to register.
  */
-void register_game_board_player_property(
-    Game_Board* game_board, 
-    Player_Index player_index, 
-    Property_Tile* property
-);
+void register_game_board_player_property(Game_Board* game_board, Property_Tile* property);
 
 /*! @brief Unregisters a property with a player.
  *
- *  @param[in] player_index The index of the player losing the property.
- *  @param[in] property Pointer to the property to register.
+ *  @param[in] game_board The game board module.
+ *  @param[in] property Pointer to the property to unregister.
  */
-void unregister_game_board_player_property(
-    Game_Board* game_board, 
-    Player_Index player_index, 
-    Property_Tile* property
-);
+void unregister_game_board_player_property(Game_Board* game_board, Property_Tile* property);

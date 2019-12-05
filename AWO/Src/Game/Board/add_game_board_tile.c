@@ -37,6 +37,6 @@ void add_game_board_tile(
         );
 
         // Register the property with the player who owns it
-        register_game_board_player_property(game_board, player_index, (Property_Tile*)tile);
+        register_game_board_player_property(game_board, (Property_Tile*)tile);
     }
 }
