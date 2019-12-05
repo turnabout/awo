@@ -46,6 +46,11 @@ void loop_linked_list(Linked_List* list, loop_linked_list_cb cb, void* value)
 void append_linked_list_item(Linked_List* list, void* value)
 {
     list->tail = add_list_entry(list->tail, value);
+
+    // Tail is also head
+    if (list->head == NULL) {
+        list->head = list->tail;
+    }
 }
 
 // Find the tail of the linked list and store it as such.

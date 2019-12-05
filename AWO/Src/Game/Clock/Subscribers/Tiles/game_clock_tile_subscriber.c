@@ -37,6 +37,7 @@ void register_clock_subscriber_tile(
         return;
     }
 
+    /*
     // Add this tile to the tiles list it belongs to.
     int index = module->tiles_list[clock_index][sub_clock_index]->tiles_count++;
 
@@ -46,6 +47,7 @@ void register_clock_subscriber_tile(
     );
 
     module->tiles_list[clock_index][sub_clock_index]->tiles[index] = tile;
+    */
 
     // Add this tile to the tiles list it belongs to
     append_linked_list_item(module->tiles_lists[clock_index][sub_clock_index], tile);
@@ -86,6 +88,7 @@ void process_tile_subscriber_event(Tick_Event* tick_event, void* tile_subscriber
         tick_event
     );
 
+    /*
     // Get list of tiles registered to tick events of this type
     Tiles_List* tiles_list = ((Game_Clock_Tile_Subscriber*)tile_subscriber_module)
         ->tiles_list[tick_event->clock_index][tick_event->sub_clock_index];
@@ -94,6 +97,7 @@ void process_tile_subscriber_event(Tick_Event* tick_event, void* tile_subscriber
     for (int j = 0; j < tiles_list->tiles_count; j++) {
         tiles_list->tiles[j]->update_grid(tiles_list->tiles[j], tick_event->value);
     }
+    */
 }
 
 void free_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* module)
