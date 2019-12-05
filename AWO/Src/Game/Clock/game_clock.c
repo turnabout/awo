@@ -85,4 +85,5 @@ void free_game_clock(Game_Clock* clock)
     free_game_clock_publisher(clock->publisher);
     free_clock_pub_sub(clock->pub_sub);
     free_game_clock_tile_subscriber(clock->tile_subscriber);
+    free_game_clock_property_lights_subscriber(clock->property_lights_subscriber);
 }
