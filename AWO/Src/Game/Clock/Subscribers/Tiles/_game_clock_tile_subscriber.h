@@ -26,9 +26,6 @@ typedef struct Game_Clock_Tile_Subscriber {
     // List of every tile registered, sorted by which animation clock/sub-clocks they belong to.
     Linked_List* tiles_lists[ANIMATION_CLOCK_COUNT][MAX_ANIMATION_SUB_CLOCK_COUNT];
 
-    // Reference to the game's tiles data object.
-    Tiles_Data* tiles_data;
-
     // Reference to the game clock publisher's tick events list.
     Tick_Events_List* tick_events;
 
@@ -36,10 +33,9 @@ typedef struct Game_Clock_Tile_Subscriber {
 
 /*! @brief Creates the clock subscriber module.
  *  
- *  @param[in] tiles_data Pointer to the game's tiles data object.
  *  @return The created module.
  */
-Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_data);
+Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber();
 
 /*! @brief Registers the given tile with the subscriber module.
  *
@@ -51,6 +47,13 @@ Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_
  *  @param[in] sub_clock_index Index of the animation sub-clock the tile should subscribe to.
  */
 void register_clock_subscriber_tile(
+    Game_Clock_Tile_Subscriber* module,
+    Tile* tile,
+    Animation_Clock_Index clock_index,
+    Animation_Sub_Clock_Index sub_clock_index
+);
+
+void unregister_clock_subscriber_tile(
     Game_Clock_Tile_Subscriber* module,
     Tile* tile,
     Animation_Clock_Index clock_index,

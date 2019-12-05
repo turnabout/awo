@@ -5,11 +5,9 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Clock/Subscribers/Tiles/_game_clock_tile_subscriber.h"
 
-Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Tiles_Data* tiles_data)
+Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber()
 {
     Game_Clock_Tile_Subscriber* module = (Game_Clock_Tile_Subscriber*)malloc(sizeof(Game_Clock_Tile_Subscriber));
-
-    module->tiles_data = tiles_data;
 
     // Allocate space for the tiles list.
     // Initialize the lists of tiles
