@@ -455,9 +455,6 @@
     <ClInclude Include="Src\Game\Data\CO\enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utilities\Linked_List\_list_entry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Utilities\Linked_List\linked_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -504,6 +501,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Inputs\Keyboard\keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\Linked_List\list_entry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

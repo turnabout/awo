@@ -191,7 +191,7 @@
     <ClInclude Include="Src\GL_Helpers\gl_helpers.h" />
     <ClInclude Include="Src\types.h" />
     <ClInclude Include="Src\Utilities\Linked_List\linked_list.h" />
-    <ClInclude Include="Src\Utilities\Linked_List\_list_entry.h" />
+    <ClInclude Include="Src\Utilities\Linked_List\list_entry.h" />
     <ClInclude Include="Src\Utilities\macros.h" />
     <ClInclude Include="Src\Utilities\utilities.h" />
   </ItemGroup>

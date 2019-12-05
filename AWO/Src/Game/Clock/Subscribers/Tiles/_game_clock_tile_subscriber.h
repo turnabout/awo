@@ -1,16 +1,15 @@
 #pragma once
 
-#include "Utilities/Linked_List/linked_list.h"
+#include "Utilities/Linked_List/list_entry.h"
 #include "Game/Entity/Tile/tile.h"
 
+/*! @brief List of tiles with the same implementation as a generic Linked_List.
+ *  This makes it so we can use the generic list manipulation functions in the Linked_List modules
+ *  on it, while also creating and using functions specific to it.
+ */
 typedef struct Tiles_List {
-
-    // How many tiles belong to the list.
-    int tiles_count;
-
-    // Tiles belonging to the list.
-    Tile** tiles;
-
+    List_Entry* head;
+    List_Entry* tail;
 } Tiles_List;
 
 /*! @brief Clock subscriber module.
@@ -21,10 +20,7 @@ typedef struct Tiles_List {
 typedef struct Game_Clock_Tile_Subscriber {
 
     // List of every tile, sorted by which animation clock/sub-clocks they belong to.
-    Tiles_List* tiles_list[ANIMATION_CLOCK_COUNT][MAX_ANIMATION_SUB_CLOCK_COUNT];
-
-    // List of every tile registered, sorted by which animation clock/sub-clocks they belong to.
-    Linked_List* tiles_lists[ANIMATION_CLOCK_COUNT][MAX_ANIMATION_SUB_CLOCK_COUNT];
+    Tiles_List* tiles_lists[ANIMATION_CLOCK_COUNT][MAX_ANIMATION_SUB_CLOCK_COUNT];
 
     // Reference to the game clock publisher's tick events list.
     Tick_Events_List* tick_events;

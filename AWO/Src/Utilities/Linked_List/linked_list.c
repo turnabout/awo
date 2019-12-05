@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 #include "Utilities/Linked_List/linked_list.h"
-#include "Utilities/Linked_List/_list_entry.h"
+#include "Utilities/Linked_List/list_entry.h"
 
 struct Linked_List {
     List_Entry* head;
@@ -80,6 +80,10 @@ void delete_linked_list_item(Linked_List* list, void* value)
 
 void free_linked_list(Linked_List* list)
 {
+    if (list == NULL) {
+        return;
+    }
+
     List_Entry** pp = &list->head;
     List_Entry* entry;
 

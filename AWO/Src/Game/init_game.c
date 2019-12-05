@@ -57,7 +57,7 @@ Game* init_game(int window_width, int window_height)
     // Load the level
     Stage* stage = game->stages[1];
     stage = generate_filled_stage(Sea, Middle, 255, 255);
-    stage = generate_custom_stage();
+    // stage = generate_custom_stage();
 
     CO_Type player_COs[MAX_PLAYER_COUNT] = {Andy, Eagle};
 

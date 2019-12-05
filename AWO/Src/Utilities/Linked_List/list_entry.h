@@ -12,6 +12,10 @@ struct List_Entry {
  */
 List_Entry* add_list_entry(List_Entry* list_tail, void* value);
 
+/*! @brief Returns the last element in a list of entries.
+ */
+List_Entry* get_list_entry_tail(List_Entry* list_head);
+
 /*! @brief Deletes the list entry found with the given value, starting at the given list head.
  */
 void delete_list_entry(List_Entry** list_head, void* value);
