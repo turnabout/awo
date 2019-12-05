@@ -6,7 +6,7 @@ typedef struct Linked_List Linked_List;
 
 /*! @brief Callback type used to loop every element in a linked list.
  */
-typedef void (loop_linked_list_cb) (void* value);
+typedef void (loop_linked_list_cb) (void* element, void* additional_value);
 
 /*! @brief Creates a linked list from the given values.
  *
@@ -22,8 +22,9 @@ Linked_List* create_linked_list(void* values[], size_t values_count);
  *
  *  @param[in] list The linked list to loop.
  *  @param[in] cb The callback function given every value.
+ *  @param[in] value Additional value to pass to the callback.
  */
-void loop_linked_list(Linked_List* list, loop_linked_list_cb cb);
+void loop_linked_list(Linked_List* list, loop_linked_list_cb cb, void* value);
 
 /*! @brief Appends a value to a linked list.
  *

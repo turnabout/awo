@@ -17,6 +17,9 @@ typedef struct Neutral_Tile {
     // Function called when this tile's fog status updates.
     update_fog_status_cb update_palette;
 
+    // Function called to delete this tile.
+    delete_tile_cb delete;
+
     // Coordinates of this tile within the game board.
     Uint8 x, y;
 

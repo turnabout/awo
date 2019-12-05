@@ -4,6 +4,8 @@
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_fog.h"
 
+void delete_property_tile(Property_Tile* tile, Tiles_Data* tiles_data);
+
 Property_Tile* create_property_tile(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
@@ -18,6 +20,7 @@ Property_Tile* create_property_tile(
     property->type = tile_type;
     property->x = x;
     property->y = y;
+    property->delete = delete_property_tile;
 
     property->data = get_property_type_data(
         tiles_data,
@@ -83,4 +86,26 @@ void update_property_weather_variation(
         property->data,
         property->player->CO->army
     );
+}
+
+void delete_property_tile(Property_Tile* property, Tiles_Data* tiles_data)
+{
+    // TODO
+    /*
+    if (property->type == Property_Base) {
+
+        // Get base smoke animation, register with game clock to update it
+        Animation_Clock_Index clock_index;
+        Animation_Sub_Clock_Index sub_clock_index;
+
+        gather_tile_data(
+            tiles_data,
+            Base_Smoke,
+            Default,
+            &clock_index,
+            &sub_clock_index,
+            &property->base_smoke
+        );
+    }
+    */
 }

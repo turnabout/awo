@@ -9,6 +9,8 @@
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Renderer/game_renderer.h"
 
+void delete_neutral_tile(Neutral_Tile* tile, Tiles_Data* tiles_data);
+
 Neutral_Tile* create_neutral_tile(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
@@ -24,6 +26,7 @@ Neutral_Tile* create_neutral_tile(
     tile->variation = variation;
     tile->x = x;
     tile->y = y;
+    tile->delete = delete_neutral_tile;
 
     // Get the tile's animation data & attempt to register it with the game clock module.
     Animation_Clock_Index clock_index;
@@ -46,4 +49,9 @@ Neutral_Tile* create_neutral_tile(
     tile->update_palette(tile, FALSE);
 
     return tile;
+}
+
+void delete_neutral_tile(Neutral_Tile* tile, Tiles_Data* tiles_data)
+{
+    // TODO
 }

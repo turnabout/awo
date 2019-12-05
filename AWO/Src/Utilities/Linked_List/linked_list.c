@@ -33,12 +33,12 @@ Linked_List* create_linked_list(void* values[], size_t values_count)
     return list;
 }
 
-void loop_linked_list(Linked_List* list, loop_linked_list_cb cb)
+void loop_linked_list(Linked_List* list, loop_linked_list_cb cb, void* value)
 {
     List_Entry** pp = &list->head;
 
     while (*pp != NULL) {
-        cb((*pp)->value);
+        cb((*pp)->element, value);
         pp = &((*pp)->next);
     }
 }

@@ -4,7 +4,7 @@
 typedef struct List_Entry List_Entry;
 
 struct List_Entry {
-    void* value;
+    void* element;
     List_Entry* next;
 };
 

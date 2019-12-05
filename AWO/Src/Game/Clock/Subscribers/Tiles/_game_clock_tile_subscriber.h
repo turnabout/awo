@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Utilities/Linked_List/linked_list.h"
 #include "Game/Entity/Tile/tile.h"
 
 typedef struct Tiles_List {
@@ -20,7 +21,10 @@ typedef struct Tiles_List {
 typedef struct Game_Clock_Tile_Subscriber {
 
     // List of every tile, sorted by which animation clock/sub-clocks they belong to.
-    Tiles_List* tiles_list[ANIMATION_CLOCK_COUNT][MINIMAL_ANIMATION_SUB_CLOCK_COUNT];
+    Tiles_List* tiles_list[ANIMATION_CLOCK_COUNT][MAX_ANIMATION_SUB_CLOCK_COUNT];
+
+    // List of every tile registered, sorted by which animation clock/sub-clocks they belong to.
+    Linked_List* tiles_lists[ANIMATION_CLOCK_COUNT][MAX_ANIMATION_SUB_CLOCK_COUNT];
 
     // Reference to the game's tiles data object.
     Tiles_Data* tiles_data;

@@ -8,7 +8,7 @@ List_Entry* add_list_entry(List_Entry* list_tail, void* value)
 {
     List_Entry* new_entry = (List_Entry*)malloc(sizeof(List_Entry*));
 
-    new_entry->value = value;
+    new_entry->element = value;
     new_entry->next = NULL;
 
     if (list_tail) {
@@ -24,7 +24,7 @@ void delete_list_entry(List_Entry** list_head, void* value)
     List_Entry* entry;
 
     while ((entry = *pp) != NULL) {
-        if (entry->value == value) {
+        if (entry->element == value) {
             *pp = entry->next;
             free(*pp);
         } else {
