@@ -61,6 +61,7 @@
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
+    <ClCompile Include="Src\Game\Editor\editor.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_grid.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_fog.c" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Src\Game\Data\Unit\enums.h" />
     <ClInclude Include="Src\Game\Data\Unit\units_data.h" />
     <ClInclude Include="Src\Game\Data\Unit\_units_data.h" />
+    <ClInclude Include="Src\Game\Editor\editor.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_update_neutral_tile_grid.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_update_neutral_tile_fog.h" />

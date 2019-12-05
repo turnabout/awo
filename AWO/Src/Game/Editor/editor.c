@@ -1,37 +1,56 @@
-#include <SDL.h>
-#include "Game/Entities/Tile/enums.h"
-#include "Game/Editor/UI/selected_entity.h"
-#include "editor.h"
+#include <stdlib.h>
+
+#include "Game/Editor/editor.h"
+#include "Game/Inputs/inputs.h"
 
 struct Editor {
-    Game_Board* gb;
 
-    // Coordinates of previously edited tile
-    int prev_edited_tile_x;
-    int prev_edited_tile_y;
+    // Coordinates of the previously-edited tile
+    int prev_edited_tile_x, prev_edited_tile_y;
 
     // Currently selected tile
     Tile_Type selected_tile_type;
-    Tile_Var selected_tile_var;
+    int selected_tile_var;
+
+    // Reference to the game's loaded game board
+    Game_Board* game_board;
+
+    // Reference to the game clock module
+    Game_Clock* game_clock;
+
+    // Reference to the tiles data module
+    Tiles_Data* tiles_data;
+
+    // Pointer to the window dimensions
+    int* window_width, * window_height;
 
     // UI box showing the currently selected entity
-    Selected_Entity* se;
-
-    // Reference to the game's tiles data
-    Tiles_Data* td;
+    // Selected_Entity* selected_entity;
 };
 
-Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen_h)
+Editor* create_editor(
+    Game_Board* game_board, 
+    Tiles_Data* tiles_data, 
+    Game_Clock* game_clock,
+    int* window_width, 
+    int* window_height
+)
 {
     Editor* editor = malloc(sizeof(Editor));
 
-    editor->gb = gb;
-    editor->td = td;
+    editor->game_board = game_board;
+    editor->tiles_data = tiles_data;
+
     editor->selected_tile_type = River;
-    editor->selected_tile_var = -1;
-    editor->se = SE_create(screen_w, screen_h);
+    editor->selected_tile_var = TILE_VAR_NONE;
+
     editor->prev_edited_tile_x = -1;
     editor->prev_edited_tile_y = -1;
+
+    editor->window_width = window_width;
+    editor->window_height = window_height;
+
+    // editor->selected_entity = SE_create(window_width, window_height);
 
     return editor;
 }
@@ -39,6 +58,7 @@ Editor* create_editor(Game_Board* gb, Tiles_Data* td, int* screen_w, int* screen
 // Apply autovar to tile at given game board coordinates
 void apply_autovar(Editor* editor, int x, int y)
 {
+    /*
     Tile_Type middle_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
 
     // No need to apply if middle tile is out of bounds
@@ -62,11 +82,14 @@ void apply_autovar(Editor* editor, int x, int y)
         x, 
         y
     );
+    */
 }
 
 // Adds a tile to game board at the current mouse coordinates.
-void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
+void edit_tile_at_mouse(Editor* editor)
 {
+
+    /*
     // Get the board coordinates of the existant tile that was clicked
     int x, y;
     GB_get_pointer_board_coords(editor->gb, mouse->pointer, &x, &y);
@@ -98,25 +121,32 @@ void add_tile_at_mouse(Editor* editor, Mouse_State* mouse)
     // Set coordinates of previously edited tile
     editor->prev_edited_tile_x = x;
     editor->prev_edited_tile_y = y;
+    */
 }
 
-void update_editor_selected_tile_type(Editor* editor, Tile_Type type)
+void update_editor_selected_tile_type(Editor* editor, Tile_Type type, int variation)
 {
     editor->selected_tile_type = type;
 }
 
-void update_editor(Editor* editor, Mouse_State* mouse)
+void update_editor(Editor* editor)
 {
+    // int mouse_x, mouse_y;
+
+    // if (*editor->window_width)
+
+    /*
     if (mouse->in_window) {
         if (mouse_down(mouse, MOUSE_LEFT)) {
-            add_tile_at_mouse(editor, mouse);
+            edit_tile_at_mouse(editor, mouse);
         }
     }
 
     SE_update(editor->se, mouse);
+    */
 }
 
-void draw_editor(Editor* editor, SDL_Renderer* rend)
+void render_editor(Editor* editor)
 {
-    SE_draw(editor->se, rend);
+    // SE_draw(editor->se, rend);
 }
