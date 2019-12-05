@@ -15,9 +15,20 @@ typedef enum Mouse_Button {
     MOUSE_BUTTON_RIGHT,
 } Mouse_Button;
 
-#define MOUSE_BUTTON_FIRST MOUSE_BUTTON_LEFT
-#define MOUSE_BUTTON_LAST MOUSE_BUTTON_RIGHT
-#define MOUSE_BUTTON_COUNT MOUSE_BUTTON_LAST + 1
+/*! @brief The full current state of the mouse.
+ */
+typedef struct Mouse_State {
+
+    // State of the mouse buttons.
+    Button_State* buttons;
+
+    // Scroll wheel value. Negative values are an upward scroll, positive are downward.
+    float scroll;
+
+    // Coordinates of the mouse pointer.
+    int x, y;
+
+} Mouse_State;
 
 /*! @brief Initializes the module keeping the mouse's current state updated.
  *
