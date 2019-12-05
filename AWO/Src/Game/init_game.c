@@ -52,7 +52,7 @@ Game* init_game(int window_width, int window_height)
 
     // Initialize input handling modules
     init_keyboard_module(game->window);
-    init_mouse_module(game->window, &game->window_height);
+    game->mouse_state = init_mouse_module(game->window);
 
     // Load the level
     Stage* stage = game->stages[1];

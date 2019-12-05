@@ -35,6 +35,9 @@ struct Game {
     // Initially loaded default stages.
     Stage* stages[MAX_LOADED_LEVEL_COUNT];
 
+    // The mouse's state.
+    Mouse_State* mouse_state;
+
     // Dimensions of the game's window.
     int window_width, window_height;
 

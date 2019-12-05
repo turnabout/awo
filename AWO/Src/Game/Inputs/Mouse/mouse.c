@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "types.h"
 #include "Game/Inputs/Mouse/mouse.h"
 
 // Every GLFW button definition corresponding to the game mouse buttons
@@ -10,6 +11,9 @@ static const int GAME_MOUSE_BUTTONS[] = {
 
 static const int GAME_MOUSE_BUTTONS_COUNT = sizeof(GAME_MOUSE_BUTTONS) / sizeof(int);
 
+// Whether the mouse module has been initialized
+Bool initialized = FALSE;
+
 // Reference to the game's window
 static GLFWwindow* window_instance;
 
@@ -19,10 +23,44 @@ static Mouse_State* mouse_state;
 // Temporary mouse scroll value
 static float fetched_mouse_scroll_value;
 
-// Pointer to the game's tiles_height. Necessary to update the mouse's Y value.
-static int* game_window_height;
+void mouse_cursor_cb(GLFWwindow* window, double x, double y)
+{
+    mouse_state->x = (int)x;
+    mouse_state->y = (int)y;
+}
 
-void update_mouse_buttons_state()
+void mouse_scroll_cb(GLFWwindow* window, double x, double y)
+{
+    fetched_mouse_scroll_value = (float)y;
+}
+
+Mouse_State* init_mouse_module(GLFWwindow* window)
+{
+    if (initialized) {
+        return NULL;
+    }
+
+    window_instance = window;
+
+    // Set mouse callbacks
+    glfwSetCursorPosCallback(window, mouse_cursor_cb);
+    glfwSetScrollCallback(window, mouse_scroll_cb);
+
+    mouse_state = malloc(sizeof(Mouse_State));
+    
+    mouse_state->buttons = malloc(sizeof(Button_State) * GAME_MOUSE_BUTTONS_COUNT);
+    mouse_state->scroll = 0;
+
+    for (int i = 0; i < GAME_MOUSE_BUTTONS_COUNT; i++) {
+        mouse_state->buttons[i] = BUTTON_UP;
+    }
+
+    initialized = TRUE;
+
+    return mouse_state;
+}
+
+void update_mouse_module_state()
 {
     for (int i = 0; i < GAME_MOUSE_BUTTONS_COUNT; i++) {
         Button_State previous_state = mouse_state->buttons[i];
@@ -37,54 +75,11 @@ void update_mouse_buttons_state()
     fetched_mouse_scroll_value = 0;
 }
 
-void mouse_cb(GLFWwindow* window, double x, double y)
-{
-    mouse_state->x = (int)x;
-    mouse_state->y = (int)y;
-}
-
-void mouse_scroll_cb(GLFWwindow* window, double x, double y)
-{
-    fetched_mouse_scroll_value = (float)y;
-}
-
-void init_mouse_module(GLFWwindow* window, int* window_height)
-{
-    window_instance = window;
-    game_window_height = window_height;
-
-    glfwSetCursorPosCallback(window, mouse_cb);
-    glfwSetScrollCallback(window, mouse_scroll_cb);
-
-    mouse_state = malloc(sizeof(Mouse_State));
-    
-    mouse_state->buttons = malloc(sizeof(Button_State) * GAME_MOUSE_BUTTONS_COUNT);
-    mouse_state->scroll = 0;
-
-    for (int i = 0; i < GAME_MOUSE_BUTTONS_COUNT; i++) {
-        mouse_state->buttons[i] = BUTTON_UP;
-    }
-}
-
-Button_State get_mouse_button_state(Mouse_Button mouse_button)
-{
-    return mouse_state->buttons[mouse_button];
-}
-
-float get_mouse_scroll_value()
-{
-    return mouse_state->scroll;
-}
-
-void get_mouse_position(int* x, int* y)
-{
-    *x = mouse_state->x;
-    *y = mouse_state->y;
-}
-
 void free_mouse_module()
 {
     if (mouse_state != NULL) {
         free(mouse_state);
     }
+
+    initialized = FALSE;
 }

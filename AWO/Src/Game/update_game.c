@@ -8,42 +8,43 @@ static int control_mode = CONTROL_MODE_NORMAL;
 void update_game(Game* game, float delta_time)
 {
     update_keyboard_state();
-    update_mouse_buttons_state();
+    update_mouse_module_state();
 
     update_game_clock(game->clock, delta_time);
     update_game_board(game->board);
 
-    // printf("%d\n", get_mouse_scroll_value());
-
     // Update panning
     if (control_mode == CONTROL_MODE_PAN) {
+        
 
         // End "pan" control mode
         if (
-            !update_camera_mouse_pan_mode(game->camera) ||
+            !update_camera_mouse_pan_mode(game->camera, game->mouse_state) ||
             get_key_state(KEY_SPACE) == BUTTON_UP || 
-            get_mouse_button_state(MOUSE_BUTTON_LEFT) == BUTTON_UP
+            game->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_UP
         ) {
             control_mode = CONTROL_MODE_NORMAL;
         }
 
     } else if (control_mode == CONTROL_MODE_NORMAL) {
-
+    
         // Start "pan" control mode
-        if (get_key_state(KEY_SPACE) == BUTTON_DOWN &&
-            get_mouse_button_state(MOUSE_BUTTON_LEFT) == BUTTON_DOWN) {
-
-            start_camera_mouse_pan_mode(game->camera);
+        if (
+            get_key_state(KEY_SPACE) == BUTTON_DOWN &&
+            game->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN
+        ) {
+            start_camera_mouse_pan_mode(game->camera, game->mouse_state);
             control_mode = CONTROL_MODE_PAN;
         }
 
         // Zoom at mouse coordinates if mouse wheel was scrolled
-        float scroll_value;
-
-        if (scroll_value = get_mouse_scroll_value()) {
-            int mouse_x, mouse_y;
-            get_mouse_position(&mouse_x, &mouse_y);
-            zoom_game_camera(game->camera, scroll_value, mouse_x, mouse_y);
+        if (game->mouse_state->scroll) {
+            zoom_game_camera(
+                game->camera, 
+                game->mouse_state->scroll, 
+                game->mouse_state->x, 
+                game->mouse_state->y
+            );
         }
     }
 

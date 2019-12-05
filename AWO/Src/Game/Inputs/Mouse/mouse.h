@@ -33,34 +33,13 @@ typedef struct Mouse_State {
 /*! @brief Initializes the module keeping the mouse's current state updated.
  *
  *  @param[in] window The game's window.
- *  @param[in] game_window_height_ptr Pointer to the game's window tiles_height, updated when the 
- *  game is resized.
+ *  @return Pointer to the mouse state.
  */
-void init_mouse_module(GLFWwindow* window, int* game_window_height_ptr);
+Mouse_State* init_mouse_module(GLFWwindow* window);
 
 /*! @brief Updates the state of every mouse button.
  */
-void update_mouse_buttons_state();
-
-/*! @brief Gets the state of the given mouse button.
- *
- *  @param[in] mouse_button The button to check.
- *  @return The current state of the given button represented by a Button_State.
- */
-Button_State get_mouse_button_state(Mouse_Button mouse_button);
-
-/*! @brief Gets the current screen position of the mouse cursor.
- *
- *  @param[out] x The x position.
- *  @param[out] y The y position.
- */
-void get_mouse_position(int* x, int* y);
-
-/*! @brief Gets the current mouse scroll wheel value.
- *
- *  @return The scroll wheel value.
- */
-float get_mouse_scroll_value();
+void update_mouse_module_state();
 
 /*! @brief Frees the memory occupied by the mouse state module.
  */;
