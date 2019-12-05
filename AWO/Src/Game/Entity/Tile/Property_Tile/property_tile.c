@@ -4,7 +4,7 @@
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_fog.h"
 
-void delete_property_tile(Property_Tile* tile, Tiles_Data* tiles_data);
+void delete_property_tile(Neutral_Tile* property, Game_Clock* game_clock, Tiles_Data* tiles_data);
 
 Property_Tile* create_property_tile(
     Game_Clock* game_clock,
@@ -15,7 +15,7 @@ Property_Tile* create_property_tile(
     Uint8 y
 )
 {
-    Property_Tile* property = (Property_Tile*)malloc(sizeof(Property_Tile));
+    Property_Tile* property = malloc(sizeof(Property_Tile));
 
     property->type = tile_type;
     property->x = x;
@@ -32,20 +32,8 @@ Property_Tile* create_property_tile(
 
     if (tile_type == Property_Base) {
 
-        // Get base smoke animation, register with game clock to update it
-        Animation_Clock_Index clock_index;
-        Animation_Sub_Clock_Index sub_clock_index;
-
-        gather_tile_data(
-            tiles_data,
-            Base_Smoke,
-            Default,
-            &clock_index,
-            &sub_clock_index,
-            &property->base_smoke
-        );
-
-        register_game_clock_tile(game_clock, (Tile*)property, clock_index, sub_clock_index);
+        // Register game clock to update the base smoke animation
+        register_game_clock_tile(game_clock, (Tile*)property, Base_Smoke_Clock, Base_Smoke_Sub_Clock);
 
         property->update_render_grid = update_base_render_grid;
         property->update_fog = update_base_fog_status;
@@ -88,24 +76,15 @@ void update_property_weather_variation(
     );
 }
 
-void delete_property_tile(Property_Tile* property, Tiles_Data* tiles_data)
+void delete_property_tile(Neutral_Tile* property, Game_Clock* game_clock, Tiles_Data* tiles_data)
 {
-    // TODO
-    /*
-    if (property->type == Property_Base) {
-
-        // Get base smoke animation, register with game clock to update it
-        Animation_Clock_Index clock_index;
-        Animation_Sub_Clock_Index sub_clock_index;
-
-        gather_tile_data(
-            tiles_data,
-            Base_Smoke,
-            Default,
-            &clock_index,
-            &sub_clock_index,
-            &property->base_smoke
-        );
+    if (property == NULL) {
+        return;
     }
-    */
+
+    if (property->type == Property_Base) {
+        unregister_game_clock_tile(game_clock, (Tile*)property, Base_Smoke_Clock, Base_Smoke_Sub_Clock);
+    }
+
+    free(property);
 }

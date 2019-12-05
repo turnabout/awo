@@ -5,11 +5,7 @@
 #include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_grid.h"
 #include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_fog.h"
 
-// TODO: clean up
-#include "Game/Data/Palette/game_palette.h"
-#include "Game/Renderer/game_renderer.h"
-
-void delete_neutral_tile(Neutral_Tile* tile, Tiles_Data* tiles_data);
+void delete_neutral_tile(Neutral_Tile* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);
 
 Neutral_Tile* create_neutral_tile(
     Game_Clock* game_clock,
@@ -20,7 +16,7 @@ Neutral_Tile* create_neutral_tile(
     Uint8 y
 )
 {
-    Neutral_Tile* tile = (Neutral_Tile*)malloc(sizeof(Neutral_Tile));
+    Neutral_Tile* tile = malloc(sizeof(Neutral_Tile));
 
     tile->type = type;
     tile->variation = variation;
@@ -51,7 +47,26 @@ Neutral_Tile* create_neutral_tile(
     return tile;
 }
 
-void delete_neutral_tile(Neutral_Tile* tile, Tiles_Data* tiles_data)
+void delete_neutral_tile(Neutral_Tile* tile, Game_Clock* game_clock, Tiles_Data* tiles_data)
 {
-    // TODO
+    if (tile == NULL) {
+        return;
+    }
+
+    // Get the tile's animation data & attempt to register it with the game clock module.
+    Animation_Clock_Index clock_index;
+    Animation_Sub_Clock_Index sub_clock_index;
+
+    gather_tile_data(
+        tiles_data, 
+        tile->type, 
+        tile->variation, 
+        &clock_index, 
+        &sub_clock_index, 
+        &tile->animation
+    );
+
+    unregister_game_clock_tile(game_clock, (Tile*)tile, clock_index, sub_clock_index);
+
+    free(tile);
 }

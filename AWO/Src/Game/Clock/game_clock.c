@@ -80,6 +80,16 @@ void register_game_clock_tile(
     register_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
 }
 
+void unregister_game_clock_tile(
+    Game_Clock* game_clock, 
+    Tile* tile,
+    Animation_Clock_Index clock_index,
+    Animation_Sub_Clock_Index sub_clock_index
+)
+{
+    unregister_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
+}
+
 void free_game_clock(Game_Clock* clock)
 {
     free_game_clock_publisher(clock->publisher);

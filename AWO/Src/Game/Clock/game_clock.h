@@ -44,6 +44,13 @@ void register_game_clock_tile(
     Animation_Sub_Clock_Index sub_clock_index
 );
 
+void unregister_game_clock_tile(
+    Game_Clock* game_clock,
+    Tile* tile,
+    Animation_Clock_Index clock_index,
+    Animation_Sub_Clock_Index sub_clock_index
+);
+
 /*! @brief Frees the game clock's allocated memory.
  *
  *  @param[in] game_clock The game clock.

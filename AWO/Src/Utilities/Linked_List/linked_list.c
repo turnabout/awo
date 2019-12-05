@@ -84,12 +84,12 @@ void free_linked_list(Linked_List* list)
         return;
     }
 
-    List_Entry** pp = &list->head;
-    List_Entry* entry;
+    List_Entry* entry = list->head;
 
-    while ((entry = *pp) != NULL) {
-        *pp = entry->next;
-        free(*pp);
+    while (entry != NULL) {
+        List_Entry* next = entry->next;
+        free(entry);
+        entry = next;
     }
 
     free(list);
