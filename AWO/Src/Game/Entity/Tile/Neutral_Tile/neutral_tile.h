@@ -34,7 +34,7 @@ typedef struct Neutral_Tile {
 
 /*! @brief Creates a neutral tile (plain/river/etc).
  *
- *  @param[in] game_clock The game's clock struct.
+ *  @param[in] game_clock The game's clock module.
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] tile_type The type of the created tile.
  *  @param[in] tile_variation The variation of the created tile.
@@ -49,4 +49,18 @@ Neutral_Tile* create_neutral_tile(
     Tile_Variation variation,
     Uint8 x,
     Uint8 y
+);
+
+/*! @brief Edits a neutral tile's variation.
+ *
+ *  @param[in] tile The tile to edit.
+ *  @param[in] game_clock The game clock module.
+ *  @param[in] tiles_data The tiles data module.
+ *  @param[in] new_variation The new variation set to the tile.
+ */
+void edit_neutral_tile_variation(
+    Neutral_Tile* tile,
+    Game_Clock* game_clock,
+    Tiles_Data* tiles_data,
+    Tile_Variation new_variation
 );

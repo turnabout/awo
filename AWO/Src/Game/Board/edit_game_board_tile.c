@@ -1,17 +1,29 @@
 #include "Game/Board/_game_board.h"
 #include "Game/Entity/Tile/tile.h"
 
+void edit_game_board_neutral_tile(
+    Neutral_Tile* tile,
+    Game_Board* game_board,
+    Game_Clock* game_clock,
+    Tiles_Data* tiles_data,
+    Tile_Variation new_variation
+)
+{
+    // Don't bother editing if the new variation is same as old one
+    if (tile->variation == new_variation) {
+        return;
+    }
+
+    edit_neutral_tile_variation(tile, game_clock, tiles_data, new_variation);
+}
 
 void edit_game_board_property_tile(
     Property_Tile* property,
     Game_Board* game_board,
-    Game_Clock* game_clock,
-    Tiles_Data* tiles_data,
-    Tile_Type new_type,
     Player_Index new_index
 )
 {
-    // Don't bother editing if the new index is the same as the old one
+    // Don't bother editing if the new index is same as old one
     if (property->player->index == new_index) {
         return;
     }
@@ -39,14 +51,18 @@ void edit_game_board_tile(
     // Same tile type, edit the tile itself rather than delete and replace it
     if (tile->type == new_type) {
         if (tile->type >= NEUTRAL_TILE_TYPE_FIRST && tile->type <= NEUTRAL_TILE_TYPE_LAST) {
-            // TODO
+            edit_game_board_neutral_tile(
+                (Neutral_Tile*)tile,
+                game_board,
+                game_clock,
+                tiles_data,
+                (Tile_Variation)new_variation
+            );
+
         } else {
             edit_game_board_property_tile(
                 (Property_Tile*)tile,
                 game_board,
-                game_clock,
-                tiles_data,
-                new_type,
                 (Player_Index)new_variation
             );
         }
