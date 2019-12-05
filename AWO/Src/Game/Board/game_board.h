@@ -25,6 +25,26 @@ Game_Board* create_game_board(
     CO_Type player_COs[MAX_PLAYER_COUNT]
 );
 
+/*! @brief Edits type/variation of the tile at the given game board coordinates.
+ *
+ *  @param[in] game_board The game board.
+ *  @param[in] game_clock The game clock.
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] new_type New type of the tile.
+ *  @param[in] new_variation New variation of the tile.
+ *  @param[in] x Game board x coordinate of the new tile.
+ *  @param[in] y Game board y coordinate of the new tile.
+ */
+void edit_game_board_tile(
+    Game_Board* game_board,
+    Game_Clock* game_clock,
+    Tiles_Data* tiles_data,
+    Tile_Type new_type,
+    int new_variation,
+    Uint8 x,
+    Uint8 y
+);
+
 /*! @brief Updates the game board and its entities.
  *
  *  @param[in] game_board The game board.
