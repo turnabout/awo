@@ -11,7 +11,7 @@
 typedef struct Units_Data Units_Data;
 
 // Creates units data object from JSON.
-Units_Data* create_units_data(const cJSON* units_data_JSON, int ss_width, int ss_height);
+Units_Data* create_units_data(cJSON* units_data_JSON, int ss_width, int ss_height);
 
 // Gets the source animations data for a unit type & variation.
 Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Army_Type variation);

@@ -1,5 +1,6 @@
 #ifdef __EMSCRIPTEN__
 
+/*
 #include <SDL.h>
 #include "conf.h"
 #include "Game/game.h"
@@ -35,4 +36,5 @@ void EMX editor_update_tile_type(Game* game, Tile_Type type)
 {
     update_editor_selected_tile_type(game->editor, type);
 }
+*/
 #endif

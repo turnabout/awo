@@ -21,7 +21,7 @@ typedef struct Tile Tile;
  *  Used by the property lights clock subscriber module.
  *  @return The created game clock object.
  */
-Game_Clock* create_game_clock(const cJSON* clock_data_JSON, GLuint* game_palette);
+Game_Clock* create_game_clock(cJSON* clock_data_JSON, GLuint* game_palette);
 
 /*! @brief Keeps the game clock's current tick updated, along with its animation clocks.
  *

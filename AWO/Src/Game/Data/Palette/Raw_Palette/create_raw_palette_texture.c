@@ -1,10 +1,11 @@
-#pragma warning(disable: 6385)
-
 #include <stdlib.h>
 #include <string.h>
 
+#include "Utilities/macros.h"
 #include "conf.h"
 #include "Game/Data/Palette/_palette.h"
+
+PRAGMA(warning(disable: 6385))
 
 // Apply a color to the given index of the given palette texture row.
 void apply_palette_row_color(

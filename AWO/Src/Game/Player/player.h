@@ -33,4 +33,4 @@ Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type 
  *
  *  @param[in] player The player to free.
  */
-free_player(Player* player);
+void free_player(Player* player);

@@ -72,7 +72,7 @@
     TILEVAR(Used) \
 
 typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} Tile_Variation;
-static const char* tile_var_str[] = {FOREACH_TILE_VAR(GENERATE_STRING)};
+static char* tile_var_str[] = {FOREACH_TILE_VAR(GENERATE_STRING)};
 
 static Tile_Variation default_tile_vars[] = {
     Default,
@@ -90,7 +90,7 @@ static Tile_Variation default_tile_vars[] = {
 };
 
 // Short versions of each tile variation string (used in JSON file to save space)
-static const char* tile_var_str_short[] = {
+static char* tile_var_str_short[] = {
 "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
 "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
 "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7",

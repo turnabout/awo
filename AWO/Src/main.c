@@ -1,3 +1,7 @@
+#ifdef __EMSCRIPTEN__
+#include "Emscripten_Exports/emx.h"
+#endif
+
 #include <stdio.h>
 #include "conf.h"
 #include "Game/game.h"
@@ -20,5 +24,10 @@ int main(int argc, char** argv)
     exit_game(game);
 
     return 0;
+}
+#else
+int main(int argc, char** argv)
+{
+    printf("Hello world\n");
 }
 #endif

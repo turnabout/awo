@@ -1,10 +1,11 @@
-#pragma warning( disable : 6308 28182 )
-
 #include <stdlib.h>
 
+#include "Utilities/macros.h"
 #include "Utilities/Linked_List/linked_list.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Clock/Subscribers/Tiles/_game_clock_tile_subscriber.h"
+
+PRAGMA(warning( disable : 6308 28182 ))
 
 Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber()
 {

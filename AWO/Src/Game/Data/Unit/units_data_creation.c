@@ -61,7 +61,7 @@ void create_units_src_data(
     }
 }
 
-Units_Data* create_units_data(const cJSON* units_data_JSON, int ss_width, int ss_height)
+Units_Data* create_units_data(cJSON* units_data_JSON, int ss_width, int ss_height)
 {
     Units_Data* units_data = malloc(sizeof(Units_Data));
 

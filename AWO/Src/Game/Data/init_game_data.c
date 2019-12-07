@@ -7,7 +7,7 @@
 #include "Game/Data/Palette/raw_palette.h"
 #include "Game/_game.h"
 
-Bool get_data_JSON(const cJSON **data_JSON)
+Bool get_data_JSON(cJSON **data_JSON)
 {
     // Get file contents & size
     char *JSON_file_contents;

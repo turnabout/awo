@@ -2,7 +2,7 @@
 
 #include "Game/Clock/_game_clock.h"
 
-Game_Clock* create_game_clock(const cJSON* clock_data_JSON, GLuint* game_palette)
+Game_Clock* create_game_clock(cJSON* clock_data_JSON, GLuint* game_palette)
 {
     Game_Clock* game_clock = (Game_Clock*)malloc(sizeof(Game_Clock));
 

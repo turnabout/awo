@@ -5,7 +5,7 @@ OUTPUTPATH := $(AWO_GAME_OUTPUT)
 all:
 	emcc -o ./Web/index.html $(SOURCES) \
 	-ISrc \
-	-ISrc/Libraries \
+	-I../Libraries/Include \
 	-lopenal \
 	-Wall \
 	--preload-file Resources \
@@ -16,8 +16,6 @@ all:
 	-s MODULARIZE=1 \
 	-s EXPORT_NAME="AWO_EM_MODULE" \
 	-s ENVIRONMENT="web"
-
-
 
 # emcc -o $(OUTPUTPATH) $(SOURCES) \
 

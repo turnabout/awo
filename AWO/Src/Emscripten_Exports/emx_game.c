@@ -1,5 +1,6 @@
 #ifdef __EMSCRIPTEN__
 
+/*
 #include <SDL.h>
 #include "conf.h"
 #include "Game/game.h"
@@ -37,4 +38,5 @@ void EMX update_game_size(Game* game, int w, int h)
     game->w = w;
     game->h = h;
 }
+*/
 #endif

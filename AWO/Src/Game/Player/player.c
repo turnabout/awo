@@ -13,7 +13,7 @@ Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type 
     return player;
 }
 
-free_player(Player* player)
+void free_player(Player* player)
 {
     free_CO(player->CO);
     free(player);
