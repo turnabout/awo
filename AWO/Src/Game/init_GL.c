@@ -45,6 +45,7 @@ int set_GL_options(Game* game)
     glfwGetWindowSize(game->window, &game->window_width, &game->window_height);
     glViewport(0, 0, game->window_width, game->window_height);
 
+    #ifndef __EMSCRIPTEN__
     // Set initial window position
     GLFWmonitor* primary = glfwGetPrimaryMonitor();
 
@@ -56,6 +57,7 @@ int set_GL_options(Game* game)
         monitor_x + ((monitor_w / 2) - (game->window_width / 2)),
         monitor_y + ((monitor_h / 2) - (game->window_height / 2))
     );
+    #endif
 
     // Set other options
     glClearColor(

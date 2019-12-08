@@ -28,6 +28,17 @@ int main(int argc, char** argv)
 #else
 int main(int argc, char** argv)
 {
+    Game* game;
+
+    if ((game = init_game(
+        DEFAULT_WINDOW_WIDTH,
+        DEFAULT_WINDOW_HEIGHT
+    )) == NULL) {
+        printf("Failed to initialize game\n");
+        exit_game(game);
+        return 1;
+    }
+
     printf("Hello world\n");
 }
 #endif
