@@ -1,3 +1,4 @@
+/*
 #include <SDL.h>
 #include "conf.h"
 #include "Game/Entities/Tile/enums.h"
@@ -96,3 +97,4 @@ void SE_draw(Selected_Entity* se, SDL_Renderer* rend)
     SDL_SetRenderDrawColor(rend, 255, 0, 0, 255);
     SDL_RenderFillRect(rend, &se->inner_draw_rect);
 }
+*/

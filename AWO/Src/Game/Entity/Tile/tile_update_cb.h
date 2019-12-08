@@ -26,4 +26,4 @@ typedef void (*update_fog_status_cb)(void* tile, Bool fog);
  *  @param[in] game_clock Reference to the game clock module.
  *  @param[in] tiles_data Reference to the tiles data module.
  */
-typedef void(*delete_tile_cb)(void* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);
+typedef void (*delete_tile_cb)(void* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);

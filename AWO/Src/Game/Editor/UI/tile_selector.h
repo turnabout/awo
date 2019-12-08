@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include <SDL.h>
 #include "Visuals/visuals_data.h"
@@ -14,3 +15,4 @@ void tile_selector_update(Tile_Selector* selector, Mouse_State* mouse_state);
 
 // Draw the selector UI.
 void tile_selector_draw(Tile_Selector* selector, SDL_Renderer* rend, SDL_Texture* tile_tex);
+*/

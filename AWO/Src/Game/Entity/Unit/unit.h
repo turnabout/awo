@@ -1,4 +1,6 @@
+/*
 #pragma once
+
 #include <SDL.h>
 #include "Game/Clock/game_clock.h"
 #include "Visuals/Data/Units/units_data.h"
@@ -17,3 +19,4 @@ void unit_draw(Unit* u, SDL_Renderer* rend);
 
 // Free a unit's allocated memory.
 void unit_free(Unit* u);
+*/

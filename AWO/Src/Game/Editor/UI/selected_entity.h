@@ -1,3 +1,4 @@
+/*
 #pragma once
 
 #include "Game/Input_State/input_state.h"
@@ -15,3 +16,4 @@ void SE_update(Selected_Entity* se, Mouse_State* mouse);
 
 // Draw the selected entity's box.
 void SE_draw(Selected_Entity* se, SDL_Renderer* rend);
+*/

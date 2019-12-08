@@ -4,7 +4,7 @@
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_fog.h"
 
-void delete_property_tile(Neutral_Tile* property, Game_Clock* game_clock, Tiles_Data* tiles_data);
+void delete_property_tile(void* property, Game_Clock* game_clock, Tiles_Data* tiles_data);
 
 Property_Tile* create_property_tile(
     Game_Clock* game_clock,
@@ -78,14 +78,19 @@ void update_property_weather_variation(
     );
 }
 
-void delete_property_tile(Neutral_Tile* property, Game_Clock* game_clock, Tiles_Data* tiles_data)
+void delete_property_tile(void* property, Game_Clock* game_clock, Tiles_Data* tiles_data)
 {
-    if (property == NULL) {
+    if (property== NULL) {
         return;
     }
 
-    if (property->type == Property_Base) {
-        unregister_game_clock_tile(game_clock, (Tile*)property, Base_Smoke_Clock, Base_Smoke_Sub_Clock);
+    if (((Property_Tile*)property)->type == Property_Base) {
+        unregister_game_clock_tile(
+            game_clock, 
+            (Tile*)property, 
+            Base_Smoke_Clock, 
+            Base_Smoke_Sub_Clock
+        );
     }
 
     free(property);

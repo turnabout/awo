@@ -5,7 +5,7 @@
 #include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_grid.h"
 #include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_fog.h"
 
-void delete_neutral_tile(Neutral_Tile* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);
+void delete_neutral_tile(void* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);
 
 Neutral_Tile* create_neutral_tile(
     Game_Clock* game_clock,
@@ -67,7 +67,7 @@ void edit_neutral_tile_variation(
     register_game_clock_tile(game_clock, (Tile*)tile, clock_index, sub_clock_index);
 }
 
-void delete_neutral_tile(Neutral_Tile* tile, Game_Clock* game_clock, Tiles_Data* tiles_data)
+void delete_neutral_tile(void* tile, Game_Clock* game_clock, Tiles_Data* tiles_data)
 {
     if (tile == NULL) {
         return;
@@ -79,11 +79,11 @@ void delete_neutral_tile(Neutral_Tile* tile, Game_Clock* game_clock, Tiles_Data*
 
     gather_tile_data(
         tiles_data, 
-        tile->type, 
-        tile->variation, 
+        ((Neutral_Tile*)tile)->type, 
+        ((Neutral_Tile*)tile)->variation, 
         &clock_index, 
         &sub_clock_index, 
-        &tile->animation
+        &((Neutral_Tile*)tile)->animation
     );
 
     unregister_game_clock_tile(game_clock, (Tile*)tile, clock_index, sub_clock_index);

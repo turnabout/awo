@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include "conf.h"
 #include "tile_selector.h"
@@ -139,3 +140,4 @@ void tile_selector_draw(Tile_Selector* sel, SDL_Renderer* rend, SDL_Texture* til
         SDL_SetRenderDrawColor(rend, 255, 255, 255, 255);
     }
 }
+*/

@@ -3,17 +3,28 @@
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 
-void update_regular_property_fog_status(Tile* tile, Bool fog)
+void update_regular_property_fog_status(void* tile, Bool fog)
 {
     GLfloat palette_index = fog 
         ? get_fog_property_palette_index() 
         : get_player_property_palette_index(((Property_Tile*)tile)->player->index);
 
-    update_tile_layer_pixel_high( TILE_LAYER_0, tile->x, tile->y, (vec2) { palette_index, 0.0f } );
-    update_tile_layer_pixel_high( TILE_LAYER_1, tile->x, tile->y, (vec2) { palette_index, 0.0f } );
+    update_tile_layer_pixel_high( 
+        TILE_LAYER_0, 
+        ((Tile*)tile)->x, 
+        ((Tile*)tile)->y, 
+        (vec2) { palette_index, 0.0f } 
+    );
+
+    update_tile_layer_pixel_high( 
+        TILE_LAYER_1, 
+        ((Tile*)tile)->x, 
+        ((Tile*)tile)->y, 
+        (vec2) { palette_index, 0.0f } 
+    );
 }
 
-void update_base_fog_status(Tile* tile, Bool fog)
+void update_base_fog_status(void* tile, Bool fog)
 {
     GLfloat palette_index;
 
@@ -35,6 +46,17 @@ void update_base_fog_status(Tile* tile, Bool fog)
         }
     }
 
-    update_tile_layer_pixel_high( TILE_LAYER_0, tile->x, tile->y, (vec2) { palette_index, 0.0f } );
-    update_tile_layer_pixel_high( TILE_LAYER_1, tile->x, tile->y, (vec2) { palette_index, 0.0f } );
+    update_tile_layer_pixel_high( 
+        TILE_LAYER_0, 
+        ((Tile*)tile)->x, 
+        ((Tile*)tile)->y, 
+        (vec2) { palette_index, 0.0f } 
+    );
+
+    update_tile_layer_pixel_high( 
+        TILE_LAYER_1, 
+        ((Tile*)tile)->x, 
+        ((Tile*)tile)->y, 
+        (vec2) { palette_index, 0.0f } 
+    );
 }
