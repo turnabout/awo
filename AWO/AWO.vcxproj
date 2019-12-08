@@ -106,6 +106,7 @@
     <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
+    <ClCompile Include="Src\GL_Helpers\read_texture_data.c" />
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utilities\hex_string_to_data.c" />
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c" />

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "GL_Helpers/gl_helpers.h"
 #include "Game/Data/Palette/_palette.h"
 
 // TODO: take in a unit variation as an arg instead of a palette index
@@ -27,15 +28,7 @@ void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
-    glBindTexture(GL_TEXTURE_2D, raw_palette_tex);
-
-    glGetTexImage(
-        GL_TEXTURE_2D,
-        0,
-        GL_RGBA,
-        GL_UNSIGNED_BYTE,
-        raw_palettes_tex_data
-    );
+    read_texture_data(raw_palette_tex, raw_palettes_tex_data);
 
     glBindTexture(GL_TEXTURE_2D, game_palette_tex);
 

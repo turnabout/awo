@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "GL_Helpers/gl_helpers.h"
 #include "Game/Data/Palette/_palette.h"
 
 void apply_property_palettes_weather_color(
@@ -27,15 +28,7 @@ void update_properties_weather_colors(GLuint game_palette_texture)
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
-    glBindTexture(GL_TEXTURE_2D, game_palette_texture);
-
-    glGetTexImage(
-        GL_TEXTURE_2D,
-        0,
-        GL_RGBA,
-        GL_UNSIGNED_BYTE,
-        palette_texture_data
-    );
+    read_texture_data(game_palette_texture, palette_texture_data);
 
     // Apply active tile palette colors to property palettes colors
     GLuint active_tile_palette_row = get_active_tile_palette_index_i(FALSE);

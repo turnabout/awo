@@ -294,6 +294,9 @@
     <ClCompile Include="Src\Game\Editor\editor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\GL_Helpers\read_texture_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">

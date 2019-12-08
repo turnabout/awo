@@ -15,3 +15,10 @@ GLuint create_shader_program(const char* vertex_shader_path, const char* fragmen
  *  @return The texture object ID or 0 if an error occurred.
  */
 GLuint create_texture_object(const char* texture_path, int* texture_width, int* texture_height);
+
+/*! @brief Reads the data from the given texture.
+ *
+ *  @param[in] texture Texture to read the data from.
+ *  @param[out] buffer Buffer the data is read into.
+ */
+void read_texture_data(GLuint texture, void* buffer);

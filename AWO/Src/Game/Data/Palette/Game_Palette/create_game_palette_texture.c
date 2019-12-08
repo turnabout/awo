@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "GL_Helpers/gl_helpers.h"
 #include "Game/Data/Palette/_palette.h"
 
 GLuint create_game_palette_texture(
@@ -14,15 +15,7 @@ GLuint create_game_palette_texture(
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
-    glBindTexture(GL_TEXTURE_2D, raw_palette_texture);
-
-    glGetTexImage(
-        GL_TEXTURE_2D,
-        0,
-        GL_RGBA,
-        GL_UNSIGNED_BYTE,
-        raw_palette_texture_data
-    );
+    read_texture_data(raw_palette_texture, raw_palette_texture_data);
 
     // Create and populate destination the game palette texture data
     Palette_Texture_Row* game_palette_texture_data = (Palette_Texture_Row*)malloc(
