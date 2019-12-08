@@ -96,8 +96,8 @@ void init_game_renderer(
 {
     renderer = (Game_Renderer*)malloc(sizeof(Game_Renderer));
 
-    if (!init_game_renderer_shader_programs(renderer)) {
-        free_game_renderer(renderer);
+    if (!init_game_renderer_shader_programs()) {
+        free_game_renderer();
         return;
     }
 

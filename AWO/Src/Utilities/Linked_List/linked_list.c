@@ -1,10 +1,11 @@
-#pragma warning( disable: 6001 )
-
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "Utilities/macros.h"
 #include "Utilities/Linked_List/linked_list.h"
 #include "Utilities/Linked_List/list_entry.h"
+
+PRAGMA(warning( disable: 6001 ))
 
 struct Linked_List {
     List_Entry* head;

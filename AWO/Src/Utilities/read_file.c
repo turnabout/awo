@@ -14,7 +14,7 @@ char* read_file(const char* file_path)
 
     // Open the file
 #ifdef __EMSCRIPTEN__
-    if ((f_stream = fopen(file_name, "rb")) == NULL) {
+    if ((f_stream = fopen(file_path, "rb")) == NULL) {
 #else
     if ((err = fopen_s(&f_stream, file_path, "rb")) != 0) {
 #endif

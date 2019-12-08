@@ -36,11 +36,6 @@ void update_render_grid_pixel_high(
     vec2 value
 )
 {
-    GLfloat pixel_high[2] = {
-        value[0],
-        value[1],
-    };
-
     vec4* edit_position = (render_grid->pixel_data + x + (y * render_grid->width));
 
     (*edit_position)[2] = value[0];

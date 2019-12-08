@@ -13,7 +13,7 @@ GLuint check_shader_compile_errors(GLuint shader)
     if (!success) {
         char info_log[512];
         glGetShaderInfoLog(shader, 512, NULL, info_log);
-        printf(info_log);
+        printf("%s\n", info_log);
         return 0;
     }
 
@@ -28,7 +28,7 @@ GLuint check_shader_program_link_errors(GLuint shader_program)
     if (!success) {
         char info_log[512];
         glGetProgramInfoLog(shader_program, 512, NULL, info_log);
-        printf(info_log);
+        printf("%s\n", info_log);
         return 0;
     }
 
