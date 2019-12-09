@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "types.h"
 #include "conf.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Game/Renderer/game_renderer.h"
@@ -30,7 +31,7 @@ struct Game_Renderer {
     Render_Grid* tile_grid_layers[TILE_LAYER_TYPE_COUNT];
 };
 
-int init_game_renderer_shader_programs()
+Bool init_game_renderer_shader_programs()
 {
     renderer->sprites_shader_program = create_shader_program(
         SHADERS_PATH "sprite.vert",
@@ -43,16 +44,13 @@ int init_game_renderer_shader_programs()
     );
 
     if (!renderer->sprites_shader_program || !renderer->tiles_shader_program) {
-        return 0;
+        return FALSE;
     }
 
-    return 1;
+    return TRUE;
 }
 
-void init_game_renderer_uniforms(
-    int tiles_layer_width, 
-    int tiles_layer_height
-)
+void init_game_renderer_uniforms(int tiles_layer_width, int tiles_layer_height)
 {
     // Sprites shader
     glUseProgram(renderer->sprites_shader_program);
@@ -94,7 +92,7 @@ void init_game_renderer(
     Tiles_Data* tiles_data
 )
 {
-    renderer = (Game_Renderer*)malloc(sizeof(Game_Renderer));
+    renderer = malloc(sizeof(Game_Renderer));
 
     if (!init_game_renderer_shader_programs()) {
         free_game_renderer();

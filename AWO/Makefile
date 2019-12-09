@@ -14,11 +14,11 @@ all:
 	--preload-file Resources \
 	-s ENVIRONMENT="web" \
 	-s USE_WEBGL2=1 \
-	-s FULL_ES3=1 \
 	-s USE_GLFW=3 \
 	-s USE_FREETYPE=1
 
 
+# -s FULL_ES3=1 \
 
 # -s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue"]' \
 # -s MODULARIZE=1 \

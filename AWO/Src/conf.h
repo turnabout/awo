@@ -12,8 +12,13 @@
 
 #define TEXTURES_PATH RESOURCES_PATH "Textures/"
 #define DATA_PATH     RESOURCES_PATH "Data/"
-#define SHADERS_PATH  RESOURCES_PATH "Shaders/"
 #define FONTS_PATH    RESOURCES_PATH "Fonts/"
+
+#ifdef __EMSCRIPTEN__
+#define SHADERS_PATH  RESOURCES_PATH "Shaders_ES/"
+#else
+#define SHADERS_PATH  RESOURCES_PATH "Shaders/"
+#endif
 
 #define SPRITE_SHEET_PATH   TEXTURES_PATH "spritesheet.png"
 #define GAME_DATA_JSON_PATH DATA_PATH     "game_data.json"

@@ -36,10 +36,12 @@ int init_glfw(Game* game, int initial_window_width, int initial_window_height)
 
 int set_GL_options(Game* game)
 {
+    #ifndef __EMSCRIPTEN__
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    #endif
 
     // Set viewport
     glfwGetWindowSize(game->window, &game->window_width, &game->window_height);
