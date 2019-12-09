@@ -95,7 +95,7 @@ void init_game_renderer(
     renderer = malloc(sizeof(Game_Renderer));
 
     if (!init_game_renderer_shader_programs()) {
-        free_game_renderer();
+        free(renderer);
         return;
     }
 
@@ -213,10 +213,9 @@ void free_game_renderer()
 {
     if (renderer != NULL) {
 
-        // Free tiles layers
-        for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
-            free_render_grid(renderer->tile_grid_layers[i]);
-        }
+        // Free render grid layers
+        free_render_grid(renderer->tile_grid_layers[TILE_LAYER_0]);
+        free_render_grid(renderer->tile_grid_layers[TILE_LAYER_1]);
 
         free(renderer);
     }

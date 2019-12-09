@@ -74,7 +74,11 @@ void render_r_grid(Render_Grid* render_grid)
 void free_render_grid(Render_Grid* render_grid)
 {
     if (render_grid != NULL) {
-        free(render_grid->pixel_data);
+
+        if (render_grid->pixel_data != NULL) {
+            free(render_grid->pixel_data);
+        }
+
         free(render_grid);
     }
 }
