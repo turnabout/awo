@@ -105,6 +105,7 @@ void init_game_renderer(
         &renderer->sprite_sheet_width, 
         &renderer->sprite_sheet_height
     );
+
     renderer->game_palette_texture = game_palette_texture;
     init_game_renderer_uniforms(render_grid_width, render_grid_height);
 

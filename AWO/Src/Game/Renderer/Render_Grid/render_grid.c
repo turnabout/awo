@@ -16,7 +16,7 @@ void init_render_grid_texture(Render_Grid* render_grid)
     glTexImage2D(
         GL_TEXTURE_2D, 
         0, 
-        GL_RGBA, 
+        GL_RGBA32F, 
         render_grid->width, 
         render_grid->height, 
         0, 
@@ -28,7 +28,7 @@ void init_render_grid_texture(Render_Grid* render_grid)
 
 Render_Grid* create_render_grid(GLuint width, GLuint height, GLuint y_offset)
 {
-    Render_Grid* render_grid = (Render_Grid*)malloc(sizeof(Render_Grid));
+    Render_Grid* render_grid = malloc(sizeof(Render_Grid));
 
     render_grid->width = width;
     render_grid->height = height;
