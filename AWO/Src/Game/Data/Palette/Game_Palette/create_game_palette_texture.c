@@ -15,7 +15,12 @@ GLuint create_game_palette_texture(
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
-    read_texture_data(raw_palette_texture, raw_palette_texture_data);
+    read_texture_data(
+        raw_palette_texture, 
+        raw_palette_texture_data, 
+        PALETTE_TEX_WIDTH, 
+        PALETTE_TEX_HEIGHT
+    );
 
     // Create and populate destination the game palette texture data
     Palette_Texture_Row* game_palette_texture_data = (Palette_Texture_Row*)malloc(

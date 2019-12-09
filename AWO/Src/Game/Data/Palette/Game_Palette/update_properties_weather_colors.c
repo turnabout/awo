@@ -28,7 +28,12 @@ void update_properties_weather_colors(GLuint game_palette_texture)
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
-    read_texture_data(game_palette_texture, palette_texture_data);
+    read_texture_data(
+        game_palette_texture, 
+        palette_texture_data,
+        PALETTE_TEX_WIDTH,
+        PALETTE_TEX_HEIGHT
+    );
 
     // Apply active tile palette colors to property palettes colors
     GLuint active_tile_palette_row = get_active_tile_palette_index_i(FALSE);

@@ -20,5 +20,7 @@ GLuint create_texture_object(const char* texture_path, int* texture_width, int* 
  *
  *  @param[in] texture Texture to read the data from.
  *  @param[out] buffer Buffer the data is read into.
+ *  @param[in] width Width of the texture.
+ *  @param[in] height Height of the texture.
  */
-void read_texture_data(GLuint texture, void* buffer);
+void read_texture_data(GLuint texture, void* buffer, int width, int height);

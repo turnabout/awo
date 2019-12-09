@@ -28,7 +28,12 @@ void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
     );
 
-    read_texture_data(raw_palette_tex, raw_palettes_tex_data);
+    read_texture_data(
+        raw_palette_tex, 
+        raw_palettes_tex_data,
+        PALETTE_TEX_WIDTH,
+        PALETTE_TEX_HEIGHT
+    );
 
     glBindTexture(GL_TEXTURE_2D, game_palette_tex);
 
