@@ -1,6 +1,11 @@
 #include "Game/Renderer/Render_Grid/render_grid.h"
 
-GLuint get_render_grid_VAO(GLuint width, GLuint height, GLuint vertical_offset)
+GLuint get_render_grid_VAO(
+    GLuint width, 
+    GLuint height, 
+    GLuint vertical_offset, 
+    GLuint tiles_shader
+)
 {
     size_t stride = 4 * sizeof(GLfloat);
     size_t quad_size = 4 * stride;
@@ -59,11 +64,14 @@ GLuint get_render_grid_VAO(GLuint width, GLuint height, GLuint vertical_offset)
 
     glBufferData(GL_ARRAY_BUFFER, quad_size, quad_vertices, GL_DYNAMIC_DRAW);
 
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, stride, (void*)(0 * sizeof(GLfloat)));
-    glEnableVertexAttribArray(0);
+    GLint pos_attr_location = glGetAttribLocation(tiles_shader, "aPos");
+    GLint tex_coords_attr_location = glGetAttribLocation(tiles_shader, "aTexCoords");
 
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (void*)(2 * sizeof(GLfloat)));
-    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(pos_attr_location, 2, GL_FLOAT, GL_FALSE, stride, (void*)(0 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(pos_attr_location);
+
+    glVertexAttribPointer(tex_coords_attr_location, 2, GL_FLOAT, GL_FALSE, stride, (void*)(2 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(tex_coords_attr_location);
 
     return VAO;
 }

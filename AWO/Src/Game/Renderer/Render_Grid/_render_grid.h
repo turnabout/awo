@@ -25,6 +25,12 @@ struct Render_Grid {
  *  @param[in] width Width taken up by the render grid's texture.
  *  @param[in] height Height taken up by the render grid's texture.
  *  @param[in] y_offset Amount of pixels used to offset the render grid vertically.
+ *  @param[in] tiles_shader The tiles shader program.
  *  @return The tiles layers VAO.
  */
-GLuint get_render_grid_VAO(GLuint width, GLuint height, GLuint y_offset);
+GLuint get_render_grid_VAO(
+    GLuint width,
+    GLuint height,
+    GLuint vertical_offset,
+    GLuint tiles_shader
+);

@@ -13,9 +13,10 @@ typedef struct Render_Grid Render_Grid;
  *  @param[in] grid_width
  *  @param[in] grid_height
  *  @param[in] y_offset Amount of pixels used to offset the render grid vertically.
+ *  @param[in] tiles_shader The tiles shader program.
  *  @return The created render grid.
  */
-Render_Grid* create_render_grid(GLuint grid_width, GLuint grid_height, GLuint y_offset);
+Render_Grid* create_render_grid(GLuint width, GLuint height, GLuint y_offset, GLuint tiles_shader);
 
 /*! @brief Renders the given render grid.
  *

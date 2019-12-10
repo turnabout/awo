@@ -128,7 +128,8 @@ void init_game_renderer(
         renderer->tile_grid_layers[i] = create_render_grid(
             render_grid_width, 
             render_grid_height, 
-            offset_y++
+            offset_y++,
+            renderer->tiles_shader_program
         );
         
         fill_render_grid_pixels(

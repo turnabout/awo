@@ -26,7 +26,7 @@ void init_render_grid_texture(Render_Grid* render_grid)
     );
 }
 
-Render_Grid* create_render_grid(GLuint width, GLuint height, GLuint y_offset)
+Render_Grid* create_render_grid(GLuint width, GLuint height, GLuint y_offset, GLuint tiles_shader)
 {
     Render_Grid* render_grid = malloc(sizeof(Render_Grid));
 
@@ -36,7 +36,7 @@ Render_Grid* create_render_grid(GLuint width, GLuint height, GLuint y_offset)
 
     init_render_grid_texture(render_grid);
 
-    render_grid->VAO = get_render_grid_VAO(width, height, y_offset);
+    render_grid->VAO = get_render_grid_VAO(width, height, y_offset, tiles_shader);
 
     render_grid->pixel_data = malloc(sizeof(vec4) * render_grid->width * render_grid->height);
 
