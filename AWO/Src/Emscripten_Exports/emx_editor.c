@@ -18,10 +18,17 @@ const char* EMX editor_get_next_tile_type()
 
 // Gets the next tile variation data of the given tile type.
 // Stores variation value in given pointer & returns variation string.
-const char* EMX editor_get_next_tile_var(Game* game, Tile_Type tile_type, Uint8* var_val)
+const char* EMX editor_get_next_tile_var(Game* game, Tile_Type type, Uint8* var_val)
 {
-    // return TD_get_next_tile_var_data(game->td, tile_type, var_val);
-    return ""; // TODO
+    Tile_Variation variation = get_next_tile_variation(game->tiles_data, type);
+
+    *var_val = variation;
+
+    if (variation == TILE_VAR_NONE) {
+        return NULL;
+    }
+
+    return tile_var_str[variation];
 }
 
 // Updates the editor's tile type with the given one.
