@@ -3,7 +3,7 @@
 #include "Game/Stage/_stage.h"
 #include "Utilities/utilities.h"
 
-Stage* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
+Stage* load_stage(char* stage_str, Tiles_Data* tiles_data)
 {
     // Translate the hex string into a useable data bytes array & validate
     Uint8* stage_data;
@@ -17,7 +17,7 @@ Stage* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     }
 
     // Create the stage descriptor, populate & return
-    Stage* stage = (Stage*)malloc(sizeof(Stage));
+    Stage* stage = malloc(sizeof(Stage));
 
     // Process data byte array
     size_t i = 0;
@@ -63,9 +63,7 @@ Stage* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     i += 3;
 
     // Process stage tiles
-    stage->tiles = (Stage_Tile*)malloc(
-        sizeof(Stage_Tile) * stage->tile_count
-    );
+    stage->tiles = malloc(sizeof(Stage_Tile) * stage->tile_count);
 
     int tile_n = 0;
 
@@ -87,8 +85,13 @@ Stage* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data)
     return stage;
 }
 
-void free_stage_descriptor(Stage* stage_descriptor)
+void free_stage(Stage* stage)
 {
-    free(stage_descriptor->tiles);
-    free(stage_descriptor);
+    if (stage != NULL) {
+        if (stage->tiles != NULL) {
+            free(stage->tiles);
+        }
+
+        free(stage);
+    }
 }

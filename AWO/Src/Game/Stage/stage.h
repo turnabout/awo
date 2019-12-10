@@ -52,7 +52,7 @@ typedef struct Stage {
  *  @param[in] tiles_data The tiles data object. Used to validate tiles.
  *  @return The created stage descriptor instance, or NULL if the stage string was invalid.
  */
-Stage* load_stage_descriptor(char* stage_str, Tiles_Data* tiles_data);
+Stage* load_stage(char* stage_str, Tiles_Data* tiles_data);
 
 /*! @brief Generates a stage filled up with tiles of the given type and variation.
  *
@@ -77,4 +77,4 @@ Stage* generate_custom_stage();
  *
  *  @param[in] stage_descriptor The stage descriptor.
  */
-void free_stage_descriptor(Stage* stage_descriptor);
+void free_stage(Stage* stage_descriptor);

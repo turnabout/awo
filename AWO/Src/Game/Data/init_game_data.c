@@ -76,7 +76,7 @@ Bool init_game_data(Game* game)
             continue;
         }
 
-        game->stages[i] = load_stage_descriptor(
+        game->stages[i] = load_stage(
             stage_JSON->valuestring,
             game->tiles_data
         );

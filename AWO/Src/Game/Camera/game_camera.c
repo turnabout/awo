@@ -88,5 +88,7 @@ void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom)
 
 void free_game_camera(Game_Camera* camera)
 {
-    free(camera);
+    if (camera != NULL) {
+        free(camera);
+    }
 }

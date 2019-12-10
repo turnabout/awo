@@ -66,7 +66,7 @@ Game* init_game(int window_width, int window_height)
     }
 
     // Initialize the editor for the design room mode
-    game->editor = create_editor(
+    game->editor = create_game_editor(
         game->board,
         game->tiles_data,
         game->clock,
