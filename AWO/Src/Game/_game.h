@@ -75,6 +75,14 @@ Bool init_game_data(Game* game);
  */
 void update_game(Game* game, float delta_time);
 
+/*! @brief Updates the game's window dimensions.
+ *
+ *  @param[in] game The game object.
+ *  @param[in] width The new window width.
+ *  @param[in] height The new window height.
+ */
+void update_game_window_dimensions(Game* game, int width, int height);
+
 /*! @brief Renders the game's entities.
  *
  *  @param[in] game The game object.

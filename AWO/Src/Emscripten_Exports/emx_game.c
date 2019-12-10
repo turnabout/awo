@@ -26,18 +26,8 @@ void EMX run_AWO(Game* game)
 }
 
 // Updates the game's viewport dimensions.
-void EMX update_game_size(Game* game, int w, int h)
+void EMX update_game_size(Game* game, int width, int height)
 {
-    printf("New dimensions: {%d, %d}\n", w, h);
-
-    /*
-    SDL_SetWindowSize(game->win, w, h);
-    SDL_RenderSetScale(game->rend, 1.0, 1.0);
-
-    SDL_Rect new_viewport = {0, 0, w, h};
-    SDL_RenderSetViewport(game->rend, &new_viewport);
-
-    game->w = w;
-    game->h = h;
-    */
+    printf("New dimensions: {%d, %d}\n", width, height);
+    update_game_window_dimensions(game, width, height);
 }

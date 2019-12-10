@@ -107,6 +107,7 @@
     <ClCompile Include="Src\Game\run_game.c" />
     <ClCompile Include="Src\Game\Stage\stage.c" />
     <ClCompile Include="Src\Game\update_game.c" />
+    <ClCompile Include="Src\Game\update_game_window_dimensions.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\GL_Helpers\read_texture_data.c" />
