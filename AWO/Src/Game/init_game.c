@@ -70,6 +70,7 @@ Game* init_game(int window_width, int window_height)
         game->board,
         game->tiles_data,
         game->clock,
+        game->mouse_state,
         &game->window_width,
         &game->window_height
     );

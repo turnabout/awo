@@ -21,6 +21,9 @@ struct Game_Editor {
     // Reference to the tiles data module
     Tiles_Data* tiles_data;
 
+    // The mouse state module
+    Mouse_State* mouse_state;
+
     // Pointer to the window dimensions
     int* window_width, * window_height;
 
@@ -32,6 +35,7 @@ Game_Editor* create_game_editor(
     Game_Board* game_board, 
     Tiles_Data* tiles_data, 
     Game_Clock* game_clock,
+    Mouse_State* mouse_state,
     int* window_width, 
     int* window_height
 )
@@ -46,6 +50,8 @@ Game_Editor* create_game_editor(
 
     editor->prev_edited_tile_x = -1;
     editor->prev_edited_tile_y = -1;
+
+    editor->mouse_state = mouse_state;
 
     editor->window_width = window_width;
     editor->window_height = window_height;
@@ -131,6 +137,9 @@ void update_editor_selected_tile_type(Game_Editor* editor, Tile_Type type, int v
 
 void update_game_editor(Game_Editor* editor)
 {
+    if (editor->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
+        printf("editor click\n");
+    }
     // int mouse_x, mouse_y;
 
     // if (*editor->window_width)

@@ -31,7 +31,7 @@ void update_game(Game* game, float delta_time)
         // Start "pan" control mode
         if (
             get_key_state(KEY_SPACE) == BUTTON_DOWN &&
-            game->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN
+            game->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN_START
         ) {
             start_camera_mouse_pan_mode(game->camera, game->mouse_state);
             control_mode = CONTROL_MODE_PAN;
@@ -46,6 +46,10 @@ void update_game(Game* game, float delta_time)
                 game->mouse_state->y
             );
         }
+    }
+
+    if (control_mode == CONTROL_MODE_NORMAL) {
+        update_game_editor(game->editor);
     }
 
     /*
