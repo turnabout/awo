@@ -10,10 +10,10 @@ void load_game_board_stage(
 )
 {
     // Allocate space for tiles
-    game_board->tiles_grid = (Tile_Row*)malloc(sizeof(Tile_Row) * stage_descriptor->height);
+    game_board->tiles_grid = malloc(sizeof(Tile_Row) * stage_descriptor->height);
 
     for (int i = 0; i < stage_descriptor->height; i++) {
-        game_board->tiles_grid[i] = (Tile**)malloc(sizeof(Tile*) * stage_descriptor->width);
+        game_board->tiles_grid[i] = malloc(sizeof(Tile*) * stage_descriptor->width);
     }
 
     // Add the tiles from the stage descriptor

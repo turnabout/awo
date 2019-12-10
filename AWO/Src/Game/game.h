@@ -10,11 +10,17 @@ typedef struct Game Game;
  */
 Game* init_game(int window_width, int window_height);
 
-/*! @brief Starts running the game.
+/*! @brief Starts running the main game loop.
  *
  *  @param[in] game The game struct.
  */
 void run_game(Game* game);
+
+/*! @brief The game loop.
+ *
+ *  @param[in] game The game struct.
+ */
+void game_loop(void* game);
 
 /*! @brief Frees used up resources and exits the game.
  *
