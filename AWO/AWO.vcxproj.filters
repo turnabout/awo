@@ -297,6 +297,15 @@
     <ClCompile Include="Src\GL_Helpers\read_texture_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tiles_auto_var_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_type_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_var_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">

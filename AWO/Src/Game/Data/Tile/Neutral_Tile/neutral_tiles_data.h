@@ -69,6 +69,14 @@ void gather_tile_data(
     Animation** animation
 );
 
+/*! @brief Gets the next tile type.
+ *  Must be called continuously until it returns NULL.
+ *  Goes through all tile types until all have been returned.
+ *
+ *  @return The next tile type.
+ */
+Tile_Type get_next_basic_tile_type();
+
 /*! @brief Gets the next tile variation belonging to the given tile type.
  *  Must be called continuously until it returns NULL.
  *  Goes through all tile variations of the tile type until all have been returned.
@@ -78,7 +86,7 @@ void gather_tile_data(
  *  @return The next tile variation belonging to this tile type or TILE_VAR_NONE if the tile
  *          type has no more variation.
  */
-Tile_Variation get_next_tile_type_var(Tiles_Data* tiles_data, Tile_Type type);
+Tile_Variation get_next_tile_variation(Tiles_Data* tiles_data, Tile_Type type);
 
 /*! @brief Gets the next tile variation animation for the given tile type.
  *  Must be called continuously until it returns NULL.
@@ -88,7 +96,7 @@ Tile_Variation get_next_tile_type_var(Tiles_Data* tiles_data, Tile_Type type);
  *  @param[in] type The tile's type.
  *  @return The next tile's Animation object or NULL if the tile has no more animation.
  */
-Animation* get_next_tile_type_var_animation(Tiles_Data* tiles_data, Tile_Type type);
+Animation* get_next_tile_variation_animation(Tiles_Data* tiles_data, Tile_Type type);
 
 /*! @brief Gets the first (default) tile variation for a tile type.
  *
@@ -96,7 +104,7 @@ Animation* get_next_tile_type_var_animation(Tiles_Data* tiles_data, Tile_Type ty
  *  @param[in] type The tile's type.
  *  @return The default tile variation for the given tile type.
  */
-Tile_Variation get_tile_type_default_var(Tiles_Data* tiles_data, Tile_Type type);
+Tile_Variation get_default_tile_variation(Tiles_Data* tiles_data, Tile_Type type);
 
 /*! @brief Frees all memory occupied by tiles data.
  *

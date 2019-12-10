@@ -7,16 +7,13 @@
 // Gets the next basic tile type string. Must be called continuously until it returns NULL.
 const char* EMX editor_get_next_tile_type()
 {
-    // Tile type index
-    static int type_index = NEUTRAL_TILE_TYPE_BASIC_FIRST;
+    Tile_Type type = get_next_basic_tile_type();
 
-    // No more tile types to loop, reset index and return NULL to stop looping
-    if (type_index == NEUTRAL_TILE_TYPE_BASIC_LAST) {
-        type_index = NEUTRAL_TILE_TYPE_BASIC_FIRST;
+    if (type == TILE_TYPE_NONE) {
         return NULL;
     }
 
-    return tile_type_str[type_index++];
+    return tile_type_str[type];
 }
 
 // Gets the next tile variation data of the given tile type.

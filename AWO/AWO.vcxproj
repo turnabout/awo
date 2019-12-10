@@ -58,6 +58,9 @@
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette_property_lights.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_properties_weather_colors.c" />
     <ClCompile Include="Src\Game\Data\Palette\get_palette_NDC_index.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tiles_auto_var_data_access.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_type_data_access.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_var_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
