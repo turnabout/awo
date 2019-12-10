@@ -65,5 +65,14 @@ Game* init_game(int window_width, int window_height)
         return NULL;
     }
 
+    // Initialize the editor for the design room mode
+    game->editor = create_editor(
+        game->board,
+        game->tiles_data,
+        game->clock,
+        &game->window_width,
+        &game->window_height
+    );
+
     return game;
 }

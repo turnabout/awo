@@ -1,18 +1,17 @@
-#ifdef __EMSCRIPTEN__
-
-/*
-#include <SDL.h>
 #include "conf.h"
-#include "Game/game.h"
-#include "emx.h"
+#include "Emscripten_Exports/emx.h"
+#include "Game/_game.h"
 
-// Initialize AWO game.
+// Initializes the game.
 Game* EMX init_AWO(int w, int h)
 {
     Game* game;
-    Game_Arg_Weathers weathers = Game_Arg_Clear | Game_Arg_Snow | Game_Arg_Rain;
 
-    if ((game = init_game(weathers, w, h)) == NULL) {
+    if ((game = init_game(
+        DEFAULT_WINDOW_WIDTH,
+        DEFAULT_WINDOW_HEIGHT
+    )) == NULL) {
+        printf("Failed to initialize game\n");
         exit_game(game);
         return NULL;
     }
@@ -20,15 +19,18 @@ Game* EMX init_AWO(int w, int h)
     return game;
 }
 
-// Run AWO game.
+// Runs the game.
 void EMX run_AWO(Game* game)
 {
-	emscripten_set_main_loop_arg(run_game, game, FPS, 1);
+    emscripten_set_main_loop_arg(game_loop, game, FPS, 1);
 }
 
-// Updates the game's viewport size.
+// Updates the game's viewport dimensions.
 void EMX update_game_size(Game* game, int w, int h)
 {
+    printf("New dimensions: {%d, %d}\n", w, h);
+
+    /*
     SDL_SetWindowSize(game->win, w, h);
     SDL_RenderSetScale(game->rend, 1.0, 1.0);
 
@@ -37,6 +39,5 @@ void EMX update_game_size(Game* game, int w, int h)
 
     game->w = w;
     game->h = h;
+    */
 }
-*/
-#endif

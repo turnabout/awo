@@ -40,6 +40,9 @@ static const char* tile_type_str_short[] = {
 #define NEUTRAL_TILE_TYPE_LAST Land_Piece
 #define NEUTRAL_TILE_TYPE_COUNT NEUTRAL_TILE_TYPE_LAST + 1
 
+#define NEUTRAL_TILE_TYPE_BASIC_FIRST Plain
+#define NEUTRAL_TILE_TYPE_BASIC_LAST Silo
+
 #define PROPERTY_TILE_TYPE_FIRST Property_HQ
 #define PROPERTY_TILE_TYPE_LAST  Property_Port
 #define PROPERTY_TILE_TYPE_COUNT PROPERTY_TILE_TYPE_LAST + 1

@@ -2,20 +2,25 @@
 SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
 OUTPUTPATH := $(AWO_GAME_OUTPUT)
 
-# emcc -o ./Web/index.html $(SOURCES) \
-# emcc -o ./Web/index.html ./Src/main.c \
-
 all:
-	emcc -o ./Web/index.html $(SOURCES) \
+	emcc -o $(OUTPUTPATH) $(SOURCES) \
 	-Wall \
 	-ISrc \
 	-I../Libraries/Include \
 	-lopenal \
 	--preload-file Resources \
+	\
 	-s ENVIRONMENT="web" \
+	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue"]' \
+	-s MODULARIZE=1 \
+	-s EXPORT_NAME="AWO_EM_MODULE" \
+	\
 	-s USE_WEBGL2=1 \
 	-s USE_GLFW=3 \
 	-s USE_FREETYPE=1
+
+
+
 
 
 # -s FULL_ES3=1 \
@@ -24,6 +29,8 @@ all:
 # -s MODULARIZE=1 \
 # -s EXPORT_NAME="AWO_EM_MODULE" \
 
+# emcc -o ./Web/index.html $(SOURCES) \
+# emcc -o ./Web/index.html ./Src/main.c \
 
 # Old
 # emcc -o $(OUTPUTPATH) $(SOURCES) \
@@ -32,7 +39,6 @@ all:
 # emcc -o ./Web/index.html $(SOURCES) \
 # emcc -o $(OUTPUTPATH) $(SOURCES) \
 # -g4 \
-
 
 # Old SDL parameters
 # -s USE_SDL=2 \

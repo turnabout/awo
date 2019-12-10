@@ -9,6 +9,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
+#include "Game/Editor/editor.h"
 #include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
 
@@ -25,6 +26,9 @@ struct Game {
 
     // The game's clock used to update and synchronize entities' animations.
     Game_Clock* clock;
+
+    // The game's editor, used in design room mode.
+    Editor* editor;
 
     // Data for all tiles.
     Tiles_Data* tiles_data;
