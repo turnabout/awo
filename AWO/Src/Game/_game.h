@@ -9,7 +9,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
-#include "Game/Editor/editor.h"
+#include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
 
@@ -28,7 +28,7 @@ struct Game {
     Game_Clock* clock;
 
     // The game's editor, used in design room mode.
-    Editor* editor;
+    Game_Editor* editor;
 
     // Data for all tiles.
     Tiles_Data* tiles_data;

@@ -1,9 +1,9 @@
 #include <stdlib.h>
 
-#include "Game/Editor/editor.h"
+#include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
 
-struct Editor {
+struct Game_Editor {
 
     // Coordinates of the previously-edited tile
     int prev_edited_tile_x, prev_edited_tile_y;
@@ -28,7 +28,7 @@ struct Editor {
     // Selected_Entity* selected_entity;
 };
 
-Editor* create_editor(
+Game_Editor* create_game_editor(
     Game_Board* game_board, 
     Tiles_Data* tiles_data, 
     Game_Clock* game_clock,
@@ -36,7 +36,7 @@ Editor* create_editor(
     int* window_height
 )
 {
-    Editor* editor = malloc(sizeof(Editor));
+    Game_Editor* editor = malloc(sizeof(Game_Editor));
 
     editor->game_board = game_board;
     editor->tiles_data = tiles_data;
@@ -56,7 +56,7 @@ Editor* create_editor(
 }
 
 // Apply autovar to tile at given game board coordinates
-void apply_autovar(Editor* editor, int x, int y)
+void apply_autovar(Game_Editor* editor, int x, int y)
 {
     /*
     Tile_Type middle_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
@@ -86,7 +86,7 @@ void apply_autovar(Editor* editor, int x, int y)
 }
 
 // Adds a tile to game board at the current mouse coordinates.
-void edit_tile_at_mouse(Editor* editor)
+void edit_tile_at_mouse(Game_Editor* editor)
 {
 
     /*
@@ -124,12 +124,12 @@ void edit_tile_at_mouse(Editor* editor)
     */
 }
 
-void update_editor_selected_tile_type(Editor* editor, Tile_Type type, int variation)
+void update_editor_selected_tile_type(Game_Editor* editor, Tile_Type type, int variation)
 {
     editor->selected_tile_type = type;
 }
 
-void update_editor(Editor* editor)
+void update_game_editor(Game_Editor* editor)
 {
     // int mouse_x, mouse_y;
 
@@ -146,7 +146,14 @@ void update_editor(Editor* editor)
     */
 }
 
-void render_editor(Editor* editor)
+void render_game_editor(Game_Editor* editor)
 {
     // SE_draw(editor->se, rend);
+}
+
+void free_game_editor(Game_Editor* editor)
+{
+    if (editor != NULL) {
+        free(editor);
+    }
 }
