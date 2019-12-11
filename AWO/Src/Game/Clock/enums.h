@@ -1,17 +1,19 @@
 #pragma once
 
+#include "Utilities/macros.h"
+
 // Every possible animation clock's index.
-typedef enum Animation_Clock_Index {
-    Sea_Clock,
-    River_Clock,
-    Base_Smoke_Clock,
-    Property_Lights_Clock,
+#define FOREACH_ANIMATION_CLOCK_INDEX(INDEX) \
+    INDEX(Sea_Clock) \
+    INDEX(River_Clock) \
+    INDEX(Base_Smoke_Clock) \
+    INDEX(Property_Lights_Clock) \
+    INDEX(Units_Clock) \
 
-    Units_Clock,
+#define No_Clock -1
 
-    // None
-    No_Clock = -1,
-} Animation_Clock_Index;
+typedef enum {FOREACH_ANIMATION_CLOCK_INDEX(GENERATE_ENUM)} Animation_Clock_Index;
+static const char* animation_clock_str[] = {FOREACH_ANIMATION_CLOCK_INDEX(GENERATE_STRING)};
 
 #define ANIMATION_CLOCK_FIRST Sea_Clock
 #define ANIMATION_CLOCK_LAST  Units_Clock
