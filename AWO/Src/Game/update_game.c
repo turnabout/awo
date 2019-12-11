@@ -1,14 +1,31 @@
 #include "Game/_game.h"
 
+#define MODE_NORMAL 0
+#define MODE_FREEZE 1
+
 #define CONTROL_MODE_NORMAL 0
 #define CONTROL_MODE_PAN    1
 
+static int game_mode = MODE_NORMAL;
 static int control_mode = CONTROL_MODE_NORMAL;
 
 void update_game(Game* game, float delta_time)
 {
+
     update_keyboard_state();
     update_mouse_module_state();
+
+    if (game_mode == MODE_FREEZE) {
+        if (get_key_state(KEY_1) == BUTTON_DOWN_START) {
+            game_mode = MODE_NORMAL;
+        } else {
+            return;
+        }
+    }
+
+    if (get_key_state(KEY_2) == BUTTON_DOWN_START) {
+        game_mode = MODE_FREEZE;
+    }
 
     update_game_clock(game->clock, delta_time);
     update_game_board(game->board);
