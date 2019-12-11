@@ -44,6 +44,7 @@ Game_Editor* create_game_editor(
 
     editor->game_board = game_board;
     editor->tiles_data = tiles_data;
+    editor->game_clock = game_clock;
 
     editor->selected_tile_type = River;
     editor->selected_tile_var = Horizontal;
@@ -137,7 +138,7 @@ void update_editor_selected_tile_type(Game_Editor* editor, Tile_Type type, int v
 
 void update_game_editor(Game_Editor* editor, Game_Camera* camera)
 {
-    if (editor->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN_START) {
+    if (editor->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
         // Get coordinates of the clicked tile
         int tile_x = 0, tile_y = 0;
@@ -152,8 +153,24 @@ void update_game_editor(Game_Editor* editor, Game_Camera* camera)
             return;
         }
 
+        // Ensure the tile's coordinates are different from the previously edited tile's
+        if (tile_x == editor->prev_edited_tile_x && tile_y == editor->prev_edited_tile_y) {
+            return;
+        }
+
         // Update the game board tile at the given coordinates
-        printf("editor click {%d, %d}\n", tile_x, tile_y);
+        edit_game_board_tile(
+            editor->game_board,
+            editor->game_clock,
+            editor->tiles_data,
+            editor->selected_tile_type,
+            editor->selected_tile_var,
+            tile_x,
+            tile_y
+        );
+
+        editor->prev_edited_tile_x = tile_x;
+        editor->prev_edited_tile_y = tile_y;
     }
 }
 
