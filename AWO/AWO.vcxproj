@@ -47,6 +47,7 @@
     <ClCompile Include="Src\Game\Board\player_properties.c" />
     <ClCompile Include="Src\Game\Camera\focus.c" />
     <ClCompile Include="Src\Game\Camera\game_camera.c" />
+    <ClCompile Include="Src\Game\Camera\get_subject_tile_by_coordinates.c" />
     <ClCompile Include="Src\Game\Camera\mouse_pan_mode.c" />
     <ClCompile Include="Src\Game\Camera\zoom.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />

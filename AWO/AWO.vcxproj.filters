@@ -309,6 +309,9 @@
     <ClCompile Include="Src\Game\update_game_window_dimensions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Camera\get_subject_tile_by_coordinates.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">

@@ -2,6 +2,7 @@
 
 #include "Game/Board/game_board.h"
 #include "Game/Clock/game_clock.h"
+#include "Game/Camera/game_camera.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
 
@@ -22,7 +23,7 @@ Game_Editor* create_game_editor(
 void update_editor_selected_tile_type(Game_Editor* editor, Tile_Type type, int variation);
 
 // Updates the editor module.
-void update_game_editor(Game_Editor* editor);
+void update_game_editor(Game_Editor* editor, Game_Camera* camera);
 
 // Draw the editor's visual components (gridlines, hover rectangle...).
 // void render_editor(Editor* editor);

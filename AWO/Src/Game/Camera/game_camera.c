@@ -6,19 +6,13 @@
 #include "Game/Camera/_game_camera.h"
 #include "Game/Renderer/game_renderer.h"
 
-Game_Camera* create_game_camera(
-    int* window_width, 
-    int* window_height, 
-    int stage_tiles_width, 
-    int stage_tiles_height
-)
+Game_Camera* create_game_camera(int* window_width, int* window_height, Stage* stage)
 {
     Game_Camera* camera = (Game_Camera*)malloc(sizeof(Game_Camera));
 
+    camera->subject = stage;
     camera->window_width = window_width;
     camera->window_height = window_height;
-    camera->loaded_stage_tiles_width = stage_tiles_width;
-    camera->loaded_stage_tiles_height = stage_tiles_height;
 
     glm_mat4_identity(camera->identity);
 
@@ -76,13 +70,13 @@ void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom)
     camera->zoom = zoom;
     _refresh_game_camera(camera);
 
-    // Update the loaded stage's dimensions
-    camera->loaded_stage_width = round_float_to_int(
-        camera->zoom * camera->loaded_stage_tiles_width
+    // Update the dimensions of the camera subject
+    camera->subject_pixel_width = round_float_to_int(
+        camera->zoom * camera->subject->width
     );
 
-    camera->loaded_stage_height = round_float_to_int(
-        camera->zoom * camera->loaded_stage_tiles_height
+    camera->subject_pixel_height = round_float_to_int(
+        camera->zoom * camera->subject->height
     );
 }
 

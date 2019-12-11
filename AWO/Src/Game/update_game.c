@@ -49,7 +49,7 @@ void update_game(Game* game, float delta_time)
     }
 
     if (control_mode == CONTROL_MODE_NORMAL) {
-        update_game_editor(game->editor);
+        update_game_editor(game->editor, game->camera);
     }
 
     /*
