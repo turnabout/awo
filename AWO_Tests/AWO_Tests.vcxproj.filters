@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="linked_list.cpp">
+      <Filter>Tests\Utilities\Linked_List</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{a358d84c-8905-474f-a036-c7a51247e776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Utilities">
+      <UniqueIdentifier>{1a14247b-0aeb-4ed8-8fc5-fd713488c2f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Utilities\Linked_List">
+      <UniqueIdentifier>{6ff148ca-e751-4fdc-a774-efa8ee965c59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
