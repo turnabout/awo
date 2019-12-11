@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../AWO/Src/Utilities/Linked_List/linked_list.h"
+#include "Utilities/Linked_List/linked_list.h"
 
 class Linked_List_Test : public ::testing::Test {
     protected:
