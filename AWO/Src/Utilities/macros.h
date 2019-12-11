@@ -10,3 +10,7 @@
 #else
 #    define PRAGMA(PRAG)
 #endif
+
+// Transforms a macro's value into a string
+#define STRINGIFY(x) #x
+#define TOSTRING(x) STRINGIFY(x)
