@@ -8,7 +8,10 @@
  */
 
 // Resource paths
-#define RESOURCES_PATH    "Resources/"
+#ifndef RESOURCES_PATH_BASE
+#define RESOURCES_PATH_BASE ""
+#endif
+#define RESOURCES_PATH    RESOURCES_PATH_BASE "Resources/"
 
 #define TEXTURES_PATH RESOURCES_PATH "Textures/"
 #define DATA_PATH     RESOURCES_PATH "Data/"

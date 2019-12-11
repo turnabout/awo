@@ -10,4 +10,3 @@
 #else
 #    define PRAGMA(PRAG)
 #endif
-

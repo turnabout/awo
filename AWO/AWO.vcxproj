@@ -112,7 +112,6 @@
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\GL_Helpers\read_texture_data.c" />
-    <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\Utilities\hex_string_to_data.c" />
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c" />
     <ClCompile Include="Src\Utilities\Linked_List\list_entry.c" />
@@ -219,7 +218,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
