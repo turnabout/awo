@@ -16,9 +16,3 @@ typedef Uint8    Bool;
 
 #define TRUE (Uint8)1
 #define FALSE (Uint8)0
-
-/*! @brief A set of x/y coordinates.
- */
-typedef struct Point {
-    Uint8 x, y;
-} Point;
