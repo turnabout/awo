@@ -1,8 +1,8 @@
 #include "conf.h"
-#include "Emscripten_Exports/emx.h"
 #include "Game/_game.h"
 #include "Game/Editor/game_editor.h"
 #include "Game/Data/Tile/tiles_data.h"
+#include "Emscripten_Exports/emx.h"
 
 // Gets the next basic tile type string. Must be called continuously until it returns NULL.
 const char* EMX editor_get_next_tile_type()

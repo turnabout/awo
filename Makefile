@@ -1,14 +1,29 @@
-# export EMCC_DEBUG=1
-SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
+# Project directories
+AWO_DIR := AWO
+AWO_EMX_DIR := AWO_Emscripten_App
+
+# Project sources
+AWO_SOURCES := $(shell find $(AWO_DIR) -name '*.c')
+AWO_EMX_SOURCES := $(shell find $(AWO_EMX_DIR) -name '*.c')
+
+# Output path (environment variable)
 OUTPUTPATH := $(AWO_GAME_OUTPUT)
 
 all:
-	emcc -o $(OUTPUTPATH) $(SOURCES) \
+	emcc -o $(OUTPUTPATH) $(AWO_SOURCES) $(AWO_EMX_SOURCES) \
+	\
+	-D SOLUTION_DIR='""' \
+	-D SHADERS_DIR='"Shaders_ES/"' \
+	\
 	-Wall \
-	-ISrc \
-	-I../Libraries/Include \
+	\
+	-I$(AWO_DIR)/Src \
+	-I$(AWO_EMX_DIR) \
+	-ILibraries/Include \
+	\
 	-lopenal \
-	--preload-file Resources \
+	\
+	--preload-file $(AWO_DIR)/Resources \
 	\
 	-s ENVIRONMENT="web" \
 	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue"]' \
@@ -21,6 +36,16 @@ all:
 
 
 
+
+# -       -ISrc \
+# -       -I../Libraries/Include \
+# -       -lopenal \
+# -       --preload-file Resources \
+        # \
+
+#  SOLUTION_DIR=$(SolutionDir.Replace('\', '\\'));SHADERS_DIR=Shaders\\;%(PreprocessorDefinitions)
+
+#     $(SolutionDir)AWO\Src;$(SolutionDir)Libraries\Include;%(AdditionalIncludeDirectories)
 
 
 # -s FULL_ES3=1 \

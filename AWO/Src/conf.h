@@ -10,12 +10,12 @@
 #include "Utilities/macros.h"
 
 // Resource paths
-#define RESOURCES_PATH TOSTRING(SOLUTION_DIR) "AWO\\Resources\\"
+#define RESOURCES_PATH SOLUTION_DIR "AWO/Resources/"
 
-#define TEXTURES_PATH RESOURCES_PATH "Textures\\"
-#define DATA_PATH     RESOURCES_PATH "Data\\"
-#define FONTS_PATH    RESOURCES_PATH "Fonts\\"
-#define SHADERS_PATH  RESOURCES_PATH TOSTRING(SHADERS_DIR)
+#define TEXTURES_PATH RESOURCES_PATH "Textures/"
+#define DATA_PATH     RESOURCES_PATH "Data/"
+#define FONTS_PATH    RESOURCES_PATH "Fonts/"
+#define SHADERS_PATH  RESOURCES_PATH SHADERS_DIR
 
 #define SPRITE_SHEET_PATH   TEXTURES_PATH "spritesheet.png"
 #define GAME_DATA_JSON_PATH DATA_PATH     "game_data.json"
