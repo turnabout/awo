@@ -7,14 +7,22 @@ extern "C" {
 class Linked_List_Test : public ::testing::Test {
     protected:
     void SetUp() override {
-        value = 1;
+        empty_list = create_linked_list(NULL, 0);
+        filled_list = create_linked_list((void**)values, 4);
     }
 
-    // void TearDown() override {}
+    void TearDown() override {
+        free_linked_list(filled_list);
+        free_linked_list(empty_list);
+    }
 
-    int value = 0;
-    Linked_List* filled_list;
+    // List values
+    int a = 1, b = 2, c = 3, d = 4;
+    int* values[4] = {&a, &b, &c, &d};
+
+    // Lists
     Linked_List* empty_list;
+    Linked_List* filled_list;
 };
 
 void loop_empty_linked_list(void* element, void* additional_value)
