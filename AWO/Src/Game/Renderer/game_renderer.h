@@ -33,6 +33,13 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str);
  */
 void render_game_renderer();
 
+/*! @brief Clear a pixel in the game renderer's tile layers.
+ *
+ *  @param[in] x X coordinate of the pixel to clear.
+ *  @param[in] y Y coordinate of the pixel to clear.
+ */
+void clear_tile_layers_pixel(Uint8 x, Uint8 y);
+
 /*! @brief Update a pixel's value in a render grid layer's tile texture.
  *
  *  @param[in] layer Which layer to update.

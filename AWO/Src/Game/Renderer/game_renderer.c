@@ -27,6 +27,9 @@ struct Game_Renderer {
     // Texture containing palettes.
     GLuint game_palette_texture;
 
+    // Reference to the empty tile frame, used to "clear" render grid tiles.
+    Animation* empty_tile_frame;
+
     // Layers of tile grids used to render tiles.
     Render_Grid* tile_grid_layers[TILE_LAYER_TYPE_COUNT];
 };
@@ -120,8 +123,7 @@ void init_game_renderer(
     */
 
     // Get empty tile frames used to initially fill every layer
-    Animation* empty_tile_frames;
-    gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &empty_tile_frames);
+    gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &renderer->empty_tile_frame);
     Uint8 offset_y = 0;
 
     for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
@@ -135,8 +137,8 @@ void init_game_renderer(
         fill_render_grid_pixels(
             renderer->tile_grid_layers[i], 
             (vec4) { 
-                empty_tile_frames->frames[0].raw_top_left[0], 
-                empty_tile_frames->frames[0].raw_top_left[1], 
+                renderer->empty_tile_frame->frames[0].raw_top_left[0], 
+                renderer->empty_tile_frame->frames[0].raw_top_left[1], 
                 0.0,
                 0.0
             }
@@ -165,6 +167,21 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
         GL_FALSE, 
         matrix[0]
     );
+}
+
+void clear_tile_layers_pixel(Uint8 x, Uint8 y)
+{
+    for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
+        update_render_grid_pixel_low(
+            renderer->tile_grid_layers[i],
+            x,
+            y,
+            (vec2) {
+                renderer->empty_tile_frame->frames[0].raw_top_left[0],
+                renderer->empty_tile_frame->frames[0].raw_top_left[1],
+            }
+        );
+    }
 }
 
 void update_tile_layer_pixel(

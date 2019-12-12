@@ -3,6 +3,7 @@
 #include "Game/Entity/Tile/Property_Tile/property_tile.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_fog.h"
+#include "Game/Renderer/game_renderer.h"
 
 void delete_property_tile(void* property, Game_Clock* game_clock, Tiles_Data* tiles_data);
 
@@ -78,13 +79,15 @@ void update_property_weather_variation(
     );
 }
 
-void delete_property_tile(void* property, Game_Clock* game_clock, Tiles_Data* tiles_data)
+void delete_property_tile(void* property_arg , Game_Clock* game_clock, Tiles_Data* tiles_data)
 {
-    if (property== NULL) {
+    if (property_arg == NULL) {
         return;
     }
 
-    if (((Property_Tile*)property)->type == Property_Base) {
+    Property_Tile* property = (Property_Tile*)property_arg;
+
+    if (property->type == Property_Base) {
         unregister_game_clock_tile(
             game_clock, 
             (Tile*)property, 
@@ -93,5 +96,6 @@ void delete_property_tile(void* property, Game_Clock* game_clock, Tiles_Data* ti
         );
     }
 
+    clear_tile_layers_pixel(property->x, property->y);
     free(property);
 }
