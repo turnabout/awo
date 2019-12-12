@@ -1,5 +1,8 @@
 #include "pch.h"
 
+#define LIST_CONTAINS(list, expected, index) EXPECT_EQ(expected, *(int*)get_linked_list_nth_element(list, index))
+#define LIST_ITEM_NULL(list, index) EXPECT_TRUE(get_linked_list_nth_element(list, index) == NULL)
+
 extern "C" {
 #include "Utilities/Linked_List/linked_list.h"
 }
@@ -40,62 +43,55 @@ TEST_F(Linked_List_Test, create_linked_list)
     // Test the lists created in SetUp()
     loop_linked_list(empty_list, check_empty_linked_list, NULL);
 
-    EXPECT_EQ(a, *(int*)get_linked_list_nth_element(list, 0));
-    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 1));
-    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 2));
-    EXPECT_EQ(d, *(int*)get_linked_list_nth_element(list, 3));
-}
-
-TEST_F(Linked_List_Test, get_linked_list_nth_item)
-{
-    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 0), a);
-    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 1), b);
-    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 2), c);
-    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 3), d);
-    EXPECT_TRUE(get_linked_list_nth_element(list, 4) == NULL);
+    LIST_CONTAINS(list, a, 0);
+    LIST_CONTAINS(list, b, 1);
+    LIST_CONTAINS(list, c, 2);
+    LIST_CONTAINS(list, d, 3);
+    LIST_ITEM_NULL(list, 4);
 }
 
 void find_linked_list_deleted_item(void* element, void* deleted_value)
 {
     EXPECT_NE(*((int*)element), *((int*)deleted_value)) << "Element supposed to have been deleted";
 }
+
 TEST_F(Linked_List_Test, delete_linked_list_item)
 {
     // Delete first element - expected result: b-c-d
     delete_linked_list_item(list, &a);
 
-    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 0));
-    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 1));
-    EXPECT_EQ(d, *(int*)get_linked_list_nth_element(list, 2));
-    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    LIST_CONTAINS(list, b, 0);
+    LIST_CONTAINS(list, c, 1);
+    LIST_CONTAINS(list, d, 2);
+    LIST_ITEM_NULL(list, 3);
     Reset();
 
     // Delete second element - expected result: a-c-d
     delete_linked_list_item(list, &b);
 
-    EXPECT_EQ(a, *(int*)get_linked_list_nth_element(list, 0));
-    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 1));
-    EXPECT_EQ(d, *(int*)get_linked_list_nth_element(list, 2));
-    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    LIST_CONTAINS(list, a, 0);
+    LIST_CONTAINS(list, c, 1);
+    LIST_CONTAINS(list, d, 2);
+    LIST_ITEM_NULL(list, 3);
     Reset();
 
     // Delete last element - expected result: a-b-c
     delete_linked_list_item(list, &d);
 
-    EXPECT_EQ(a, *(int*)get_linked_list_nth_element(list, 0));
-    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 1));
-    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 2));
-    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    LIST_CONTAINS(list, a, 0);
+    LIST_CONTAINS(list, b, 1);
+    LIST_CONTAINS(list, c, 2);
+    LIST_ITEM_NULL(list, 3);
     Reset();
 
     // Delete first and last elements - expected result: b-c
     delete_linked_list_item(list, &a);
     delete_linked_list_item(list, &d);
 
-    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 0));
-    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 1));
-    EXPECT_TRUE(get_linked_list_nth_element(list, 2) == NULL);
-    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    LIST_CONTAINS(list, b, 0);
+    LIST_CONTAINS(list, c, 1);
+    LIST_ITEM_NULL(list, 2);
+    LIST_ITEM_NULL(list, 3);
     Reset();
 
     // Delete all elements
