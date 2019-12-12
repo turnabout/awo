@@ -54,6 +54,26 @@ TEST_F(Linked_List_Test, create_linked_list)
     free_linked_list(created_list);
 }
 
+TEST_F(Linked_List_Test, get_linked_list_nth_item)
+{
+    int* res;
+
+    res = (int*)get_linked_list_nth_element(list, 0);
+    EXPECT_EQ(*res, a);
+
+    res = (int*)get_linked_list_nth_element(list, 1);
+    EXPECT_EQ(*res, b);
+
+    res = (int*)get_linked_list_nth_element(list, 2);
+    EXPECT_EQ(*res, c);
+
+    res = (int*)get_linked_list_nth_element(list, 3);
+    EXPECT_EQ(*res, d);
+
+    res = (int*)get_linked_list_nth_element(list, 4);
+    EXPECT_TRUE(res == NULL);
+}
+
 void find_linked_list_deleted_item(void* element, void* deleted_value)
 {
     EXPECT_NE(*((int*)element), *((int*)deleted_value)) << "Element supposed to have been deleted";

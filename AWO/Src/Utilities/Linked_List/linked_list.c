@@ -73,6 +73,21 @@ void update_linked_list_tail(Linked_List* list)
     list->tail = get_list_entry_tail(list->head);
 }
 
+void* get_linked_list_nth_element(Linked_List* list, int n)
+{
+    List_Entry* entry = list->head;
+
+    for (int i = 0; entry != NULL; i++) {
+        if (i == n) {
+            return entry->element;
+        }
+
+        entry = entry->next;
+    }
+
+    return NULL;
+}
+
 void delete_linked_list_item(Linked_List* list, void* value)
 {
     delete_list_entry(&list->head, value);

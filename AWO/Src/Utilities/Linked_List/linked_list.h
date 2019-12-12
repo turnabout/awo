@@ -33,6 +33,14 @@ void loop_linked_list(Linked_List* list, loop_linked_list_cb cb, void* value);
  */
 void append_linked_list_item(Linked_List* list, void* value);
 
+/*! @brief Gets the element value currently stored at the nth index of the list.
+ *
+ *  @param[in] list The linked list.
+ *  @param[in] n Index to get the element from.
+ *  @returns The value stored at the nth index, or NULL if not found.
+ */
+void* get_linked_list_nth_element(Linked_List* list, int n);
+
 /*! @brief Deletes a value from a linked list.
  *
  *  @param[in] list The linked list.
