@@ -1,6 +1,6 @@
 #include "conf.h"
-#include "Emscripten_Exports/emx.h"
 #include "Game/_game.h"
+#include "Emscripten_Exports/emx.h"
 
 // Initializes the game.
 Game* EMX init_AWO(int w, int h)
