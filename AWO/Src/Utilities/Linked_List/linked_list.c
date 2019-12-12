@@ -59,6 +59,12 @@ void update_linked_list_tail(Linked_List* list)
 {
     List_Entry* entry = list->head;
 
+    // Head doesn't exist (list is empty)
+    if (entry == NULL) {
+        list->tail = NULL;
+        return;
+    }
+
     // Head is also tail
     if (entry->next == NULL) {
         list->tail = entry;

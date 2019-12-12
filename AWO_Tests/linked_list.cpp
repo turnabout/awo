@@ -8,11 +8,11 @@ class Linked_List_Test : public ::testing::Test {
     protected:
     void SetUp() override {
         empty_list = create_linked_list(NULL, 0);
-        filled_list = create_linked_list((void**)values, 4);
+        list = create_linked_list((void**)values, 4);
     }
 
     void TearDown() override {
-        free_linked_list(filled_list);
+        free_linked_list(list);
         free_linked_list(empty_list);
     }
 
@@ -23,7 +23,7 @@ class Linked_List_Test : public ::testing::Test {
 
     // Lists
     Linked_List* empty_list;
-    Linked_List* filled_list;
+    Linked_List* list;
 };
 
 void loop_empty_linked_list(void* element, void* additional_value)
@@ -38,20 +38,20 @@ void loop_filled_linked_list(void* element, void* elements_sum)
 TEST_F(Linked_List_Test, create_linked_list)
 {
     // Create a linked list with no values
-    Linked_List* list = create_linked_list(NULL, 0);
+    Linked_List* created_list = create_linked_list(NULL, 0);
 
-    loop_linked_list(list, loop_empty_linked_list, NULL);
-    free_linked_list(list);
+    loop_linked_list(created_list, loop_empty_linked_list, NULL);
+    free_linked_list(created_list);
 
     // Create a linked list with values
     int calculated_elements_sum = 0;
 
-    list = create_linked_list((void**)values, 4);
+    created_list = create_linked_list((void**)values, 4);
 
-    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
+    loop_linked_list(created_list, loop_filled_linked_list, &calculated_elements_sum);
 
     EXPECT_EQ(calculated_elements_sum, elements_sum);
-    free_linked_list(list);
+    free_linked_list(created_list);
 }
 
 void find_linked_list_deleted_item(void* element, void* deleted_value)
@@ -63,9 +63,9 @@ TEST_F(Linked_List_Test, delete_linked_list_item)
     // Delete first element
     int calculated_elements_sum = 0;
 
-    delete_linked_list_item(filled_list, &a);
-    loop_linked_list(filled_list, find_linked_list_deleted_item, &a);
-    loop_linked_list(filled_list, loop_filled_linked_list, &calculated_elements_sum);
+    delete_linked_list_item(list, &a);
+    loop_linked_list(list, find_linked_list_deleted_item, &a);
+    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
 
     EXPECT_EQ(calculated_elements_sum, elements_sum - a);
 
@@ -75,9 +75,9 @@ TEST_F(Linked_List_Test, delete_linked_list_item)
 
     calculated_elements_sum = 0;
 
-    delete_linked_list_item(filled_list, &b);
-    loop_linked_list(filled_list, find_linked_list_deleted_item, &b);
-    loop_linked_list(filled_list, loop_filled_linked_list, &calculated_elements_sum);
+    delete_linked_list_item(list, &b);
+    loop_linked_list(list, find_linked_list_deleted_item, &b);
+    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
 
     EXPECT_EQ(calculated_elements_sum, elements_sum - b);
 
@@ -87,9 +87,20 @@ TEST_F(Linked_List_Test, delete_linked_list_item)
 
     calculated_elements_sum = 0;
 
-    delete_linked_list_item(filled_list, &d);
-    loop_linked_list(filled_list, find_linked_list_deleted_item, &d);
-    loop_linked_list(filled_list, loop_filled_linked_list, &calculated_elements_sum);
+    delete_linked_list_item(list, &d);
+    loop_linked_list(list, find_linked_list_deleted_item, &d);
+    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
 
     EXPECT_EQ(calculated_elements_sum, elements_sum - d);
+
+    // Delete all elements
+    TearDown();
+    SetUp();
+
+    delete_linked_list_item(list, &a);
+    delete_linked_list_item(list, &b);
+    delete_linked_list_item(list, &c);
+    delete_linked_list_item(list, &d);
+
+    loop_linked_list(list, loop_empty_linked_list, NULL);
 }
