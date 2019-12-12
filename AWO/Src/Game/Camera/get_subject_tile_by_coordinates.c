@@ -14,8 +14,8 @@ Bool get_subject_tile_by_coordinates(
     if (
         abs_x < camera->x ||
         abs_y < camera->y ||
-        abs_x > camera->x + camera->subject_pixel_width ||
-        abs_y > camera->y + camera->subject_pixel_height
+        abs_x >= camera->x + (camera->subject_pixel_width) ||
+        abs_y >= camera->y + (camera->subject_pixel_height)
     ) {
         return FALSE;
     }
