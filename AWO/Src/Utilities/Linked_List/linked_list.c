@@ -14,7 +14,7 @@ struct Linked_List {
 
 Linked_List* create_linked_list(void* values[], size_t values_count)
 {
-    Linked_List* list = (Linked_List*)malloc(sizeof(Linked_List));
+    Linked_List* list = malloc(sizeof(Linked_List));
 
     if (values_count == 0) {
         list->head = NULL;
@@ -34,12 +34,12 @@ Linked_List* create_linked_list(void* values[], size_t values_count)
     return list;
 }
 
-void loop_linked_list(Linked_List* list, loop_linked_list_cb cb, void* value)
+void loop_linked_list(Linked_List* list, loop_linked_list_cb cb, void* additional_value)
 {
     List_Entry** pp = &list->head;
 
     while (*pp != NULL) {
-        cb((*pp)->element, value);
+        cb((*pp)->element, additional_value);
         pp = &((*pp)->next);
     }
 }

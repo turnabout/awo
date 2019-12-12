@@ -7,7 +7,7 @@ PRAGMA(warning( disable: 6001 ))
 
 List_Entry* add_list_entry(List_Entry* list_tail, void* value)
 {
-    List_Entry* new_entry = (List_Entry*)malloc(sizeof(List_Entry*));
+    List_Entry* new_entry = malloc(sizeof(List_Entry));
 
     new_entry->element = value;
     new_entry->next = NULL;
