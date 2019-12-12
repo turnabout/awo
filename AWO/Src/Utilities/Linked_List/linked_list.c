@@ -57,26 +57,20 @@ void append_linked_list_item(Linked_List* list, void* value)
 // Find the tail of the linked list and store it as such.
 void update_linked_list_tail(Linked_List* list)
 {
-    List_Entry* entry = list->head;
-
-    // Head doesn't exist (list is empty)
-    if (entry == NULL) {
+    // List is empty (has no head)
+    if (list->head == NULL) {
         list->tail = NULL;
         return;
     }
 
-    // Head is also tail
-    if (entry->next == NULL) {
-        list->tail = entry;
+    // List has only 1 element (head is also tail)
+    if (list->head->next == NULL) {
+        list->tail = list->head;
         return;
     }
 
-    // Travel to last node & return
-    do {
-        entry = entry->next;
-    } while (entry->next != NULL);
-
-    list->tail = entry;
+    // Get the last element linked to the head & set as tail
+    list->tail = get_list_entry_tail(list->head);
 }
 
 void delete_linked_list_item(Linked_List* list, void* value)
