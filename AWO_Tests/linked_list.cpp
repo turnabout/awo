@@ -16,62 +16,43 @@ class Linked_List_Test : public ::testing::Test {
         free_linked_list(empty_list);
     }
 
+    void Reset() {
+        TearDown();
+        SetUp();
+    }
+
     // List values
     int a = 1, b = 2, c = 3, d = 4;
     int* values[4] = {&a, &b, &c, &d};
-    int elements_sum = a + b + c + d;
 
     // Lists
     Linked_List* empty_list;
     Linked_List* list;
 };
 
-void loop_empty_linked_list(void* element, void* additional_value)
+void check_empty_linked_list(void* element, void* additional_value)
 {
-    FAIL() << "List is not empty";
+    FAIL() << "List is not empty" << std::endl;
 }
 
-void loop_filled_linked_list(void* element, void* elements_sum)
-{
-    *((int*)elements_sum) += *((int*)element);
-}
 TEST_F(Linked_List_Test, create_linked_list)
 {
-    // Create a linked list with no values
-    Linked_List* created_list = create_linked_list(NULL, 0);
+    // Test the lists created in SetUp()
+    loop_linked_list(empty_list, check_empty_linked_list, NULL);
 
-    loop_linked_list(created_list, loop_empty_linked_list, NULL);
-    free_linked_list(created_list);
-
-    // Create a linked list with values
-    int calculated_elements_sum = 0;
-
-    created_list = create_linked_list((void**)values, 4);
-
-    loop_linked_list(created_list, loop_filled_linked_list, &calculated_elements_sum);
-
-    EXPECT_EQ(calculated_elements_sum, elements_sum);
-    free_linked_list(created_list);
+    EXPECT_EQ(a, *(int*)get_linked_list_nth_element(list, 0));
+    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 1));
+    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 2));
+    EXPECT_EQ(d, *(int*)get_linked_list_nth_element(list, 3));
 }
 
 TEST_F(Linked_List_Test, get_linked_list_nth_item)
 {
-    int* res;
-
-    res = (int*)get_linked_list_nth_element(list, 0);
-    EXPECT_EQ(*res, a);
-
-    res = (int*)get_linked_list_nth_element(list, 1);
-    EXPECT_EQ(*res, b);
-
-    res = (int*)get_linked_list_nth_element(list, 2);
-    EXPECT_EQ(*res, c);
-
-    res = (int*)get_linked_list_nth_element(list, 3);
-    EXPECT_EQ(*res, d);
-
-    res = (int*)get_linked_list_nth_element(list, 4);
-    EXPECT_TRUE(res == NULL);
+    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 0), a);
+    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 1), b);
+    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 2), c);
+    EXPECT_EQ(*(int*)get_linked_list_nth_element(list, 3), d);
+    EXPECT_TRUE(get_linked_list_nth_element(list, 4) == NULL);
 }
 
 void find_linked_list_deleted_item(void* element, void* deleted_value)
@@ -80,47 +61,48 @@ void find_linked_list_deleted_item(void* element, void* deleted_value)
 }
 TEST_F(Linked_List_Test, delete_linked_list_item)
 {
-    // Delete first element
-    int calculated_elements_sum = 0;
-
+    // Delete first element - expected result: b-c-d
     delete_linked_list_item(list, &a);
-    loop_linked_list(list, find_linked_list_deleted_item, &a);
-    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
 
-    EXPECT_EQ(calculated_elements_sum, elements_sum - a);
+    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 0));
+    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 1));
+    EXPECT_EQ(d, *(int*)get_linked_list_nth_element(list, 2));
+    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    Reset();
 
-    // Delete second element
-    TearDown();
-    SetUp();
-
-    calculated_elements_sum = 0;
-
+    // Delete second element - expected result: a-c-d
     delete_linked_list_item(list, &b);
-    loop_linked_list(list, find_linked_list_deleted_item, &b);
-    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
 
-    EXPECT_EQ(calculated_elements_sum, elements_sum - b);
+    EXPECT_EQ(a, *(int*)get_linked_list_nth_element(list, 0));
+    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 1));
+    EXPECT_EQ(d, *(int*)get_linked_list_nth_element(list, 2));
+    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    Reset();
 
-    // Delete last element
-    TearDown();
-    SetUp();
-
-    calculated_elements_sum = 0;
-
+    // Delete last element - expected result: a-b-c
     delete_linked_list_item(list, &d);
-    loop_linked_list(list, find_linked_list_deleted_item, &d);
-    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
 
-    EXPECT_EQ(calculated_elements_sum, elements_sum - d);
+    EXPECT_EQ(a, *(int*)get_linked_list_nth_element(list, 0));
+    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 1));
+    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 2));
+    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    Reset();
+
+    // Delete first and last elements - expected result: b-c
+    delete_linked_list_item(list, &a);
+    delete_linked_list_item(list, &d);
+
+    EXPECT_EQ(b, *(int*)get_linked_list_nth_element(list, 0));
+    EXPECT_EQ(c, *(int*)get_linked_list_nth_element(list, 1));
+    EXPECT_TRUE(get_linked_list_nth_element(list, 2) == NULL);
+    EXPECT_TRUE(get_linked_list_nth_element(list, 3) == NULL);
+    Reset();
 
     // Delete all elements
-    TearDown();
-    SetUp();
-
     delete_linked_list_item(list, &a);
     delete_linked_list_item(list, &b);
     delete_linked_list_item(list, &c);
     delete_linked_list_item(list, &d);
 
-    loop_linked_list(list, loop_empty_linked_list, NULL);
+    loop_linked_list(list, check_empty_linked_list, NULL);
 }
