@@ -8,6 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="macros.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tests">

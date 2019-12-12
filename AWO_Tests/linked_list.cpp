@@ -19,6 +19,7 @@ class Linked_List_Test : public ::testing::Test {
     // List values
     int a = 1, b = 2, c = 3, d = 4;
     int* values[4] = {&a, &b, &c, &d};
+    int elements_sum = a + b + c + d;
 
     // Lists
     Linked_List* empty_list;
@@ -30,9 +31,9 @@ void loop_empty_linked_list(void* element, void* additional_value)
     FAIL() << "List is not empty";
 }
 
-void loop_filled_linked_list(void* element, void* calculated_sum)
+void loop_filled_linked_list(void* element, void* elements_sum)
 {
-    *((int*)calculated_sum) += *((int*)element);
+    *((int*)elements_sum) += *((int*)element);
 }
 TEST_F(Linked_List_Test, create_linked_list)
 {
@@ -43,15 +44,52 @@ TEST_F(Linked_List_Test, create_linked_list)
     free_linked_list(list);
 
     // Create a linked list with values
-    int a = 1, b = 2, c = 3, d = 4;
-    int* values[4] = {&a, &b, &c, &d};
-    int element_count = a + b + c + d;
-    int expected_element_count = 0;
+    int calculated_elements_sum = 0;
 
     list = create_linked_list((void**)values, 4);
 
-    loop_linked_list(list, loop_filled_linked_list, &expected_element_count);
+    loop_linked_list(list, loop_filled_linked_list, &calculated_elements_sum);
 
-    EXPECT_EQ(expected_element_count, element_count);
+    EXPECT_EQ(calculated_elements_sum, elements_sum);
     free_linked_list(list);
+}
+
+void find_linked_list_deleted_item(void* element, void* deleted_value)
+{
+    EXPECT_NE(*((int*)element), *((int*)deleted_value)) << "Element supposed to have been deleted";
+}
+TEST_F(Linked_List_Test, delete_linked_list_item)
+{
+    // Delete first element
+    int calculated_elements_sum = 0;
+
+    delete_linked_list_item(filled_list, &a);
+    loop_linked_list(filled_list, find_linked_list_deleted_item, &a);
+    loop_linked_list(filled_list, loop_filled_linked_list, &calculated_elements_sum);
+
+    EXPECT_EQ(calculated_elements_sum, elements_sum - a);
+
+    // Delete second element
+    TearDown();
+    SetUp();
+
+    calculated_elements_sum = 0;
+
+    delete_linked_list_item(filled_list, &b);
+    loop_linked_list(filled_list, find_linked_list_deleted_item, &b);
+    loop_linked_list(filled_list, loop_filled_linked_list, &calculated_elements_sum);
+
+    EXPECT_EQ(calculated_elements_sum, elements_sum - b);
+
+    // Delete last element
+    TearDown();
+    SetUp();
+
+    calculated_elements_sum = 0;
+
+    delete_linked_list_item(filled_list, &d);
+    loop_linked_list(filled_list, find_linked_list_deleted_item, &d);
+    loop_linked_list(filled_list, loop_filled_linked_list, &calculated_elements_sum);
+
+    EXPECT_EQ(calculated_elements_sum, elements_sum - d);
 }

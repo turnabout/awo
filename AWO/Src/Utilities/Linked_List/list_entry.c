@@ -3,7 +3,7 @@
 #include "Utilities/macros.h"
 #include "Utilities/Linked_List/list_entry.h"
 
-PRAGMA(warning( disable: 6001 ))
+PRAGMA(warning( disable: 6001 28182 ))
 
 List_Entry* add_list_entry(List_Entry* list_tail, void* value)
 {
@@ -34,15 +34,19 @@ List_Entry* get_list_entry_tail(List_Entry* list_head)
 
 void delete_list_entry(List_Entry** list_head, void* value)
 {
-    List_Entry** pp = list_head;
-    List_Entry* entry;
+    List_Entry** p = list_head;
 
-    while ((entry = *pp) != NULL) {
-        if (entry->element == value) {
-            *pp = entry->next;
-            free(*pp);
-        } else {
-            pp = &entry->next;
-        }
+    // Traverse list until element to delete was found, or entire list was looped
+    while (*p && (**p).element != value) {
+        p = &(*p)->next;
+    }
+
+    // Delete element if it was found
+    if (p) {
+        List_Entry* deleted_entry = *p;
+
+        *p = deleted_entry->next;
+        deleted_entry->next = NULL;
+        free(deleted_entry);
     }
 }
