@@ -5,7 +5,6 @@ void edit_game_board_neutral_tile(
     Neutral_Tile* tile,
     Game_Board* game_board,
     Game_Clock* game_clock,
-    Tiles_Data* tiles_data,
     Tile_Variation new_variation
 )
 {
@@ -14,11 +13,10 @@ void edit_game_board_neutral_tile(
         return;
     }
 
-    edit_neutral_tile_variation(tile, game_clock, tiles_data, new_variation);
+    edit_neutral_tile_variation(tile, game_clock, game_board->tiles_data, new_variation);
 }
 
 void edit_game_board_property_tile(
-    Tiles_Data* tiles_data,
     Property_Tile* property,
     Game_Board* game_board,
     Player_Index new_index
@@ -33,14 +31,13 @@ void edit_game_board_property_tile(
     unregister_game_board_player_property(game_board, property);
 
     // Update the property's player index & register it with its new player owner's list
-    update_property_owner(tiles_data, property, game_board->players[new_index]);
+    update_property_owner(game_board->tiles_data, property, game_board->players[new_index]);
     register_game_board_player_property(game_board, property);
 }
 
 void edit_game_board_tile(
     Game_Board* game_board,
     Game_Clock* game_clock,
-    Tiles_Data* tiles_data,
     Tile_Type new_type,
     int new_variation,
     Uint8 x,
@@ -56,13 +53,11 @@ void edit_game_board_tile(
                 (Neutral_Tile*)tile,
                 game_board,
                 game_clock,
-                tiles_data,
                 (Tile_Variation)new_variation
             );
 
         } else {
             edit_game_board_property_tile(
-                tiles_data,
                 (Property_Tile*)tile,
                 game_board,
                 (Player_Index)new_variation
@@ -78,12 +73,11 @@ void edit_game_board_tile(
     }
 
     // New tile type, delete the old tile and replace with a new one
-    tile->delete(tile, game_clock, tiles_data);
+    tile->delete(tile, game_clock, game_board->tiles_data);
 
     add_game_board_tile(
         game_board,
         game_clock,
-        tiles_data,
         new_type,
         new_variation,
         x,

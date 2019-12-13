@@ -28,7 +28,6 @@ void load_game_board_stage(
             add_game_board_tile(
                 game_board, 
                 game_clock,
-                tiles_data,
                 tile_descriptor->type, 
                 tile_descriptor->variation, 
                 x, 

@@ -11,11 +11,10 @@ typedef struct Game_Editor Game_Editor;
 
 // Create the editor module.
 Game_Editor* create_game_editor(
-    Game_Board* game_board, 
-    Tiles_Data* tiles_data, 
+    Game_Board* game_board,
     Game_Clock* game_clock,
     Mouse_State* mouse_state,
-    int* window_width, 
+    int* window_width,
     int* window_height
 );
 

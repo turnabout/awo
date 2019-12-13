@@ -7,15 +7,16 @@
 
 Game_Board* create_game_board(
     Game_Clock* game_clock,
-    Tiles_Data* tiles_data,
     Stage* stage,
     CO_Type player_COs[MAX_PLAYER_COUNT],
+    Tiles_Data* tiles_data,
     GLuint raw_palette_texture,
     GLuint game_palette_texture
 )
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
+    game_board->tiles_data = tiles_data;
     game_board->raw_palette_texture = raw_palette_texture;
     game_board->game_palette_texture = game_palette_texture;
 

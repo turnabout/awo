@@ -18,9 +18,6 @@ struct Game_Editor {
     // Reference to the game clock module
     Game_Clock* game_clock;
 
-    // Reference to the tiles data module
-    Tiles_Data* tiles_data;
-
     // The mouse state module
     Mouse_State* mouse_state;
 
@@ -33,7 +30,6 @@ struct Game_Editor {
 
 Game_Editor* create_game_editor(
     Game_Board* game_board, 
-    Tiles_Data* tiles_data, 
     Game_Clock* game_clock,
     Mouse_State* mouse_state,
     int* window_width, 
@@ -43,7 +39,6 @@ Game_Editor* create_game_editor(
     Game_Editor* editor = malloc(sizeof(Game_Editor));
 
     editor->game_board = game_board;
-    editor->tiles_data = tiles_data;
     editor->game_clock = game_clock;
 
     editor->selected_tile_type = Property_Base;
@@ -162,7 +157,6 @@ void update_game_editor(Game_Editor* editor, Game_Camera* camera)
         edit_game_board_tile(
             editor->game_board,
             editor->game_clock,
-            editor->tiles_data,
             editor->selected_tile_type,
             editor->selected_tile_var,
             tile_x,

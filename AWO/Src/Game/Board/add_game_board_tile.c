@@ -4,7 +4,6 @@
 void add_game_board_tile(
     Game_Board* game_board,
     Game_Clock* game_clock,
-    Tiles_Data* tiles_data,
     Tile_Type tile_type,
     int tile_variation,
     Uint8 x,
@@ -14,7 +13,7 @@ void add_game_board_tile(
     if (tile_type >= NEUTRAL_TILE_TYPE_FIRST && tile_type <= NEUTRAL_TILE_TYPE_LAST) {
         game_board->tiles_grid[y][x] = (Tile*)create_neutral_tile(
             game_clock,
-            tiles_data,
+            game_board->tiles_data,
             tile_type,
             tile_variation,
             x,
@@ -29,7 +28,7 @@ void add_game_board_tile(
         // Create the property tile & register it with the game board's grid
         Tile* tile = game_board->tiles_grid[y][x] = (Tile*)create_property_tile(
             game_clock,
-            tiles_data,
+            game_board->tiles_data,
             tile_type,
             game_board->players[player_index],
             x,

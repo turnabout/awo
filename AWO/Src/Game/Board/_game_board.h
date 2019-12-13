@@ -32,6 +32,9 @@ struct Game_Board {
     // Texture holding the palette data used during gameplay.
     GLuint game_palette_texture;
 
+    // The tiles data module.
+    Tiles_Data* tiles_data;
+
 };
 
 /*! @brief Loads stage described by the given stage descriptor into the game board.
@@ -52,7 +55,6 @@ void load_game_board_stage(
  *
  *  @param[in] game_board The game board.
  *  @param[in] game_clock The game clock.
- *  @param[in] tiles_data The tiles data object.
  *  @param[in] tile_type Type of the tile to add.
  *  @param[in] variation Variation of the newly added tile.
  *  @param[in] x Game board x coordinate of the new tile.
@@ -61,7 +63,6 @@ void load_game_board_stage(
 void add_game_board_tile(
     Game_Board* game_board,
     Game_Clock* game_clock,
-    Tiles_Data* tiles_data,
     Tile_Type tile_type,
     int tile_variation,
     Uint8 x,

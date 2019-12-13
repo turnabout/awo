@@ -33,9 +33,9 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
     // Set up game board
     game->board = create_game_board(
         game->clock, 
-        game->tiles_data, 
         stage, 
         player_COs,
+        game->tiles_data, 
         game->raw_palette_texture,
         game->palette_texture
     );
@@ -70,7 +70,6 @@ Game* init_game(int window_width, int window_height)
     // Initialize the editor for the design room mode
     game->editor = create_game_editor(
         game->board,
-        game->tiles_data,
         game->clock,
         game->mouse_state,
         &game->window_width,
