@@ -9,10 +9,6 @@
 
 typedef struct Tiles_Data Tiles_Data;
 
-/*! @brief Holds the data for one property type.
- */
-typedef struct Property_Type_Data Property_Type_Data;
-
 /*! @brief Holds all of the game's data for properties.
  */
 typedef struct Property_Tiles_Data Property_Tiles_Data;
@@ -30,26 +26,30 @@ Property_Tiles_Data* create_property_tiles_data(
     int ss_height
 );
 
-/*! @brief Retrieves the property type data object of a property type.
+/*! @brief Updates the current active property weather variation for tiles data.
  *
- *  @param[in] tiles_data The tiles data object.
- *  @param[in] weather_variation The weather variation of the property type data to get.
- *  @param[in] property_type The property type of the frame to get.
- *  @return The property type data object.
+ * This will update the weather variation currently used by all properties in the game.
+ *
+ *  @param[in] tiles_data The tiles data module.
+ *  @param[in] weather_variation The weather variation to update to.
  */
-Property_Type_Data* get_property_type_data(
+void update_tiles_data_active_property_weather_var(
     Tiles_Data* tiles_data,
-    Weather weather_variation,
-    Property_Type property_type
+    Weather weather_variation
 );
 
-/*! @brief Retrieves a frame in the given property type data corresponding to the given variations.
+/*! @brief Retrieves a frame for a property of the given type and army variation.
  *
- *  @param[in] property_type_data The property type data object of the frame to get.
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] property_type The property type of the frame to get.
  *  @param[in] army_variation The army variation of the frame to get.
- *  @return The retrieved frame with the given variations.
+ *  @return The retrieved frame.
  */
-Frame* get_property_type_frame(Property_Type_Data* property_type_data, Army_Type army_variation);
+Frame* get_property_type_frame(
+    Tiles_Data* tiles_data,
+    Property_Type property_type,
+    Army_Type army_variation
+);
 
 /*! @brief Frees the memory occupied by the properties data object.
  *

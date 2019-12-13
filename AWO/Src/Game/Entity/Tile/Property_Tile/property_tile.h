@@ -30,9 +30,6 @@ typedef struct Property_Tile {
     // The player who owns this property.
     Player* player;
 
-    // Data for this property.
-    Property_Type_Data* data;
-
     // This property's frame data.
     Frame* frame;
 
@@ -63,19 +60,8 @@ Property_Tile* create_property_tile(
 
 /*! @brief Updates the owner of the property tile.
  *
+ *  @param[in] tiles_data The tiles data module.
  *  @param[in] property The property to update.
- *  @param[in] player Pointer to the new player owner.
+ *  @param[in] player The new player owner.
  */
-void update_property_owner(Property_Tile* property, Player* player);
-
-/*! @brief Updates the weather variation of the property tile.
- *
- *  @param[in] tiles_data The tiles data object.
- *  @param[in] property The property tile to update.
- *  @param[in] weather Weather variation to update to.
- */
-void update_property_weather_variation(
-    Tiles_Data* tiles_data,
-    Property_Tile* property,
-    Weather weather
-);
+void update_property_owner(Tiles_Data* tiles_data, Property_Tile* property, Player* player);

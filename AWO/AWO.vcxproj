@@ -54,7 +54,7 @@
     <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c" />
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
-    <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette_texture.c" />
+    <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\get_game_palette_index.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette_property_lights.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_properties_weather_colors.c" />

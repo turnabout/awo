@@ -48,7 +48,9 @@ Game_Board* create_game_board(
 
 void update_game_board_active_weather(Game_Board* game_board, Weather weather)
 {
-    game_board->weather = weather;
+    if (weather == game_board->weather) {
+        return;
+    }
 
     // Update the palette used by tiles
     update_active_tile_palette(
@@ -57,7 +59,14 @@ void update_game_board_active_weather(Game_Board* game_board, Weather weather)
         game_board->raw_palette_texture
     );
 
-    // Update the weather variation used by property tiles
+    // Update property tiles' weather variation
+    // Only necessary if going "Clear/Rain -> Snow" or "Snow -> Clear/Rain"
+    if (weather == Snow || game_board->weather == Snow) {
+
+        printf("updating properties weather variation\n");
+    }
+
+    game_board->weather = weather;
 }
 
 void update_game_board(Game_Board* game_board)

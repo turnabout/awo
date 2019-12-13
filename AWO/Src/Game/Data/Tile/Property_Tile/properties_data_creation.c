@@ -4,13 +4,13 @@
 
 Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_w, int ss_h)
 {
-    Property_Type_Data* property_type_data = (Property_Type_Data*)malloc(
+    Property_Type_Data* property_type_data = malloc(
         sizeof(Property_Type_Data)
     );
 
     property_type_data->army_variation_count = cJSON_GetArraySize(property_type_JSON);
 
-    property_type_data->frames = (Frame**)malloc(
+    property_type_data->frames = malloc(
         sizeof(Frame*) * property_type_data->army_variation_count
     );
 
@@ -32,7 +32,7 @@ Property_Type_Data* create_property_type_data(cJSON* property_type_JSON, int ss_
 
 Property_Tiles_Data* create_property_tiles_data(cJSON* properties_data_JSON, int ss_width, int ss_height)
 {
-    Property_Tiles_Data* data = (Property_Tiles_Data*)malloc(sizeof(Property_Tiles_Data));
+    Property_Tiles_Data* data = malloc(sizeof(Property_Tiles_Data));
 
     cJSON* src_JSON = cJSON_GetObjectItemCaseSensitive(properties_data_JSON, "src");
 
