@@ -15,6 +15,7 @@ struct Game_Board {
     // Descriptor of the loaded stage.
     Stage* stage;
 
+    // All game players ( + 1 for neutral )
     Player* players[MAX_PLAYER_COUNT + 1];
 
     // How many actual players (excluding 'neutral') are playing.

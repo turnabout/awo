@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 #include "Game/Data/Tile/Property_Tile/_property_tiles_data.h"
 #include "Game/Data/Tile/_tiles_data.h"
@@ -8,16 +9,29 @@ void update_tiles_data_active_property_weather_var(
     Weather weather_variation
 )
 {
+    Property_Tiles_Data* props_data = tiles_data->property_tiles;
+
     Weather used_weather =
         (weather_variation < PROPERTY_WEATHER_COUNT)
             ? weather_variation
             : WEATHER_FIRST;
 
-    tiles_data->property_tiles->active_src = tiles_data->property_tiles->src[used_weather];
+    // Copy frames data from src to active_src
+    Property_Type_Data** from = props_data->src[used_weather];
+    Property_Type_Data** to = props_data->active_src;
 
+    for (Property_Type type = PROPERTY_TYPE_FIRST; type < PROPERTY_TYPE_COUNT; type++) {
+        for (Army_Type army_type = 0; army_type < from[type]->army_variation_count; army_type++) {
+            memcpy(
+                to[type]->frames[army_type],
+                from[type]->frames[army_type],
+                sizeof(Frame)
+            );
+        }
+    }
 }
 
-Frame* get_property_type_frame(
+Frame** get_property_type_frame(
     Tiles_Data* tiles_data, 
     Property_Type property_type, 
     Army_Type army_variation
@@ -32,7 +46,8 @@ Frame* get_property_type_frame(
             ? army_variation
             : ARMY_TYPE_FIRST;
 
-    return prop_type_data->frames[used_army_variation];
+    // return &(tiles_data->property_tiles->active_src[0][0]->frames[0]);
+    return &(prop_type_data->frames[used_army_variation]);
 }
 
 void free_properties_data(Tiles_Data* tiles_data)

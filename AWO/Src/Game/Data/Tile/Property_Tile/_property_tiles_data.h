@@ -10,21 +10,22 @@
  */
 typedef struct Property_Type_Data {
 
-    // How many army variations per weather variation of this property type exist.
+    // How many army variations exist for this property type.
     Uint8 army_variation_count;
 
     // The frames corresponding to this property type's different variations.
-    Frame** frames;
+    Frame* frames[ARMY_TYPE_COUNT];
 
 } Property_Type_Data;
 
 struct Property_Tiles_Data
 {
+
     // All properties' source data.
     // Structure goes: Weather variation -> Property type -> Army variation
     Property_Type_Data* src[PROPERTY_WEATHER_COUNT][PROPERTY_TYPE_COUNT];
 
-    // Currently used weather variation properties' source data.
-    // Points to either src[Clear][type] or src[Snow][type]
-    Property_Type_Data** active_src;
+    // Currently active weather variation properties source data.
+    Property_Type_Data* active_src[PROPERTY_TYPE_COUNT];
+
 };

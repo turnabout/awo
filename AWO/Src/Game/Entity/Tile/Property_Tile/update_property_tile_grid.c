@@ -6,15 +6,14 @@
 
 void update_regular_property_render_grid(void* tile, Uint8 animation_index)
 {
+    Frame* frame = *((Property_Tile*)tile)->frame;
+
     // Draw bottom part of property on lower layer
     update_tile_layer_pixel_low(
         TILE_LAYER_0,
         ((Tile*)tile)->x,
         ((Tile*)tile)->y,
-        (vec2) {
-            ((Property_Tile*)tile)->frame[0].raw_top_left[0],
-            ((Property_Tile*)tile)->frame[0].raw_top_left[1] + DEFAULT_TILE_SIZE
-        }
+        (vec2) { frame[0].raw_top_left[0], frame[0].raw_top_left[1] + DEFAULT_TILE_SIZE }
     );
 
     // Draw top part of property on higher layer
@@ -22,24 +21,20 @@ void update_regular_property_render_grid(void* tile, Uint8 animation_index)
         TILE_LAYER_1,
         ((Tile*)tile)->x,
         ((Tile*)tile)->y,
-        (vec2) {
-            ((Property_Tile*)tile)->frame[0].raw_top_left[0],
-            ((Property_Tile*)tile)->frame[0].raw_top_left[1]
-        }
+        (vec2) { frame[0].raw_top_left[0], frame[0].raw_top_left[1] }
     );
 }
 
 void update_base_render_grid(void* tile, Uint8 animation_index)
 {
+    Frame* frame = *((Property_Tile*)tile)->frame;
+
     // Draw base on lower layer
     update_tile_layer_pixel_low(
         TILE_LAYER_0,
         ((Tile*)tile)->x,
         ((Tile*)tile)->y,
-        (vec2) {
-            ((Property_Tile*)tile)->frame[0].raw_top_left[0],
-            ((Property_Tile*)tile)->frame[0].raw_top_left[1] + DEFAULT_TILE_SIZE
-        }
+        (vec2) { frame[0].raw_top_left[0], frame[0].raw_top_left[1] + DEFAULT_TILE_SIZE }
     );
 
     // Draw base smoke on higher layer

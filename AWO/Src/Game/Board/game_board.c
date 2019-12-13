@@ -5,6 +5,8 @@
 #include "Game/Player/player.h"
 #include "Game/Inputs/inputs.h"
 
+void update_game_board_active_weather(Game_Board* game_board, Weather weather);
+
 Game_Board* create_game_board(
     Game_Clock* game_clock,
     Stage* stage,
@@ -47,6 +49,11 @@ Game_Board* create_game_board(
     return game_board;
 }
 
+void re_render_player_properties(void* property, void* v)
+{
+    ((Property_Tile*)property)->update_render_grid(property, 0);
+}
+
 void update_game_board_active_weather(Game_Board* game_board, Weather weather)
 {
     if (weather == game_board->weather) {
@@ -63,8 +70,14 @@ void update_game_board_active_weather(Game_Board* game_board, Weather weather)
     // Update property tiles' weather variation
     // Only necessary if going "Clear/Rain -> Snow" or "Snow -> Clear/Rain"
     if (weather == Snow || game_board->weather == Snow) {
+        update_tiles_data_active_property_weather_var(game_board->tiles_data, weather);
 
-        printf("updating properties weather variation\n");
+        // Re-render all properties with their updated frame data
+        for (int i = 0; i < game_board->stage->player_count; i++) {
+            loop_linked_list(game_board->player_properties[i], re_render_player_properties, NULL);
+        }
+
+        loop_linked_list(game_board->player_properties[Player_Index_Neutral], re_render_player_properties, NULL);
     }
 
     game_board->weather = weather;

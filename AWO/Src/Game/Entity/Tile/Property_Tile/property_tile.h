@@ -31,7 +31,7 @@ typedef struct Property_Tile {
     Player* player;
 
     // This property's frame data.
-    Frame* frame;
+    Frame** frame;
 
     // Base smoke animation, for bases only.
     Animation* base_smoke;
