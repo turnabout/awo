@@ -46,8 +46,8 @@ Game_Editor* create_game_editor(
     editor->tiles_data = tiles_data;
     editor->game_clock = game_clock;
 
-    editor->selected_tile_type = River;
-    editor->selected_tile_var = Horizontal;
+    editor->selected_tile_type = Property_Base;
+    editor->selected_tile_var = Player_Index_0;
 
     editor->prev_edited_tile_x = -1;
     editor->prev_edited_tile_y = -1;

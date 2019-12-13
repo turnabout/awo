@@ -1,11 +1,33 @@
 #include <stdlib.h>
 
+#include "Game/Data/Palette/game_palette.h"
 #include "Game/Entity/Tile/Property_Tile/property_tile.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_grid.h"
 #include "Game/Entity/Tile/Property_Tile/_update_property_tile_fog.h"
 #include "Game/Renderer/game_renderer.h"
 
 void delete_property_tile(void* property, Game_Clock* game_clock, Tiles_Data* tiles_data);
+
+// Update which palette is used by the property in its render grid spot.
+// Note: overwrites the fog palette if it was used.
+void update_property_render_grid_palette(Property_Tile* property)
+{
+    GLfloat palette_index = get_player_property_palette_index((property->player->index));
+
+    update_tile_layer_pixel_high( 
+        TILE_LAYER_0, 
+        property->x, 
+        property->y, 
+        (vec2) { palette_index, 0.0f } 
+    );
+
+    update_tile_layer_pixel_high( 
+        TILE_LAYER_1, 
+        property->x, 
+        property->y, 
+        (vec2) { palette_index, 0.0f } 
+    );
+}
 
 Property_Tile* create_property_tile(
     Game_Clock* game_clock,
@@ -45,7 +67,7 @@ Property_Tile* create_property_tile(
         property->update_fog = update_regular_property_fog_status;
     }
 
-    property->update_fog(property, FALSE);
+    update_property_render_grid_palette(property);
     property->update_render_grid(property, 0);
 
     return property;
@@ -59,6 +81,8 @@ void update_property_owner(Property_Tile* property, Player* player)
         property->data,
         property->player->CO->army
     );
+
+    update_property_render_grid_palette(property);
 }
 
 void update_property_weather_variation(
