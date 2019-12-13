@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Game/Data/Enums/weather.h"
 #include "Game/Board/game_board.h"
 #include "Game/Entity/Tile/Property_Tile/property_tile.h"
 #include "Utilities/Linked_List/linked_list.h"
@@ -21,6 +22,15 @@ struct Game_Board {
 
     // Lists of properties belonging to each player. ( + 1 for neutral player )
     Linked_List* player_properties[MAX_PLAYER_COUNT + 1];
+
+    // Currently active weather.
+    Weather weather;
+
+    // Texture holding all palette data.
+    GLuint raw_palette_texture;
+
+    // Texture holding the palette data used during gameplay.
+    GLuint game_palette_texture;
 
 };
 

@@ -14,15 +14,19 @@ typedef struct Game_Board Game_Board;
  *
  *  @param[in] game_clock The game clock.
  *  @param[in] tiles_data The tiles data object.
- *  @param[in] stage_descriptor Descriptor detailing the stage to load.
+ *  @param[in] stage The stage to load.
  *  @param[in] player_COs Array containing every CO used by every player, in order.
+ *  @param[in] raw_palette_texture The texture holding all palette data.
+ *  @param[in] game_palette_texture The palette texture used for this current ongoing game.
  *  @return The created game board object.
  */
 Game_Board* create_game_board(
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
-    Stage* stage_descriptor,
-    CO_Type player_COs[MAX_PLAYER_COUNT]
+    Stage* stage,
+    CO_Type player_COs[MAX_PLAYER_COUNT],
+    GLuint raw_palette_texture,
+    GLuint game_palette_texture
 );
 
 /*! @brief Edits type/variation of the tile at the given game board coordinates.

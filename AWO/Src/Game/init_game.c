@@ -17,7 +17,7 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
     // Load components used for rendering the game
     game->palette_texture = create_game_palette_texture(
         game->raw_palette_texture, 
-        Clear, 
+        WEATHER_DEFAULT, 
         stage->player_armies
     );
 
@@ -31,14 +31,21 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
     game->camera = create_game_camera(&game->window_width, &game->window_height, stage);
 
     // Set up game board
-    game->board = create_game_board(game->clock, game->tiles_data, stage, player_COs);
+    game->board = create_game_board(
+        game->clock, 
+        game->tiles_data, 
+        stage, 
+        player_COs,
+        game->raw_palette_texture,
+        game->palette_texture
+    );
 
     return TRUE;
 }
 
 Game* init_game(int window_width, int window_height)
 {
-    Game* game = (Game*)malloc(sizeof(Game));
+    Game* game = malloc(sizeof(Game));
 
     // Initialize base game components: GLFW, GLAD and game data.
     if (!init_GL(game, window_width, window_height) || !init_game_data(game)) {

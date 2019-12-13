@@ -3,15 +3,21 @@
 #include "Game/Board/_game_board.h"
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Player/player.h"
+#include "Game/Inputs/inputs.h"
 
 Game_Board* create_game_board(
-    Game_Clock* game_clock, 
-    Tiles_Data* tiles_data, 
+    Game_Clock* game_clock,
+    Tiles_Data* tiles_data,
     Stage* stage,
-    CO_Type player_COs[MAX_PLAYER_COUNT]
+    CO_Type player_COs[MAX_PLAYER_COUNT],
+    GLuint raw_palette_texture,
+    GLuint game_palette_texture
 )
 {
     Game_Board* game_board = malloc(sizeof(Game_Board));
+
+    game_board->raw_palette_texture = raw_palette_texture;
+    game_board->game_palette_texture = game_palette_texture;
 
     // Set players
     game_board->player_count = stage->player_count;
@@ -40,8 +46,33 @@ Game_Board* create_game_board(
     return game_board;
 }
 
+void update_game_board_active_weather(Game_Board* game_board, Weather weather)
+{
+    game_board->weather = weather;
+
+    // Update the palette used by tiles
+    update_active_tile_palette(
+        weather, 
+        game_board->game_palette_texture, 
+        game_board->raw_palette_texture
+    );
+
+    // Update the weather variation used by property tiles
+}
+
 void update_game_board(Game_Board* game_board)
 {
+    if (get_key_state(KEY_3) == BUTTON_DOWN_START) {
+        update_game_board_active_weather(game_board, Clear);
+    }
+
+    if (get_key_state(KEY_4) == BUTTON_DOWN_START) {
+        update_game_board_active_weather(game_board, Snow);
+    }
+
+    if (get_key_state(KEY_5) == BUTTON_DOWN_START) {
+        update_game_board_active_weather(game_board, Rain);
+    }
 }
 
 void free_game_board(Game_Board* game_board)

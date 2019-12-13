@@ -201,9 +201,6 @@
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette_texture.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette_texture.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\get_game_palette_index.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -307,6 +304,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Camera\get_subject_tile_by_coordinates.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
