@@ -6,14 +6,14 @@
 
 Frame* create_frame(const cJSON* frame_JSON, int ss_width, int ss_height)
 {
-    Frame* frame = (Frame*)malloc(sizeof(Frame));
+    Frame* frame = malloc(sizeof(Frame));
     populate_frame(frame, frame_JSON, (float)ss_width, (float)ss_height);
 
     return frame;
 }
 
 void populate_frame(
-    Frame* frame_ptr,
+    Frame* frame,
     const cJSON* frame_JSON,
     float ss_width,
     float ss_height
@@ -31,8 +31,8 @@ void populate_frame(
                 ? cJSON_GetObjectItemCaseSensitive(frame_JSON, "h")->valueint
                 : DEFAULT_TILE_SIZE;
 
-    frame_ptr->width = w;
-    frame_ptr->height = h;
+    frame->width = w;
+    frame->height = h;
 
     vec4 top_left     = { (x    ) / ss_width, (y)     / ss_height, 0.0f, 1.0f };
     vec4 top_right    = { (x + w) / ss_width, (y)     / ss_height, 0.0f, 1.0f };
@@ -41,11 +41,16 @@ void populate_frame(
 
     vec2 raw_top_left = { x, y };
 
-    glm_vec4_copy(top_left, frame_ptr->top_left);
-    glm_vec4_copy(top_right, frame_ptr->top_right);
-    glm_vec4_copy(bottom_left, frame_ptr->bottom_left);
-    glm_vec4_copy(bottom_right, frame_ptr->bottom_right);
+    glm_vec4_copy(top_left, frame->top_left);
+    glm_vec4_copy(top_right, frame->top_right);
+    glm_vec4_copy(bottom_left, frame->bottom_left);
+    glm_vec4_copy(bottom_right, frame->bottom_right);
 
-    frame_ptr->raw_top_left[0] = raw_top_left[0];
-    frame_ptr->raw_top_left[1] = raw_top_left[1];
+    frame->raw_top_left[0] = raw_top_left[0];
+    frame->raw_top_left[1] = raw_top_left[1];
+}
+
+void free_frame(Frame* frame)
+{
+    free(frame);
 }

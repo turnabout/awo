@@ -23,7 +23,6 @@ typedef struct Frame {
     Uint8 width, height;
 } Frame;
 
-
 /*! @brief Creates a frame struct from the given frame JSON.
  *
  *  @param[in] frame_JSON JSON object describing the frame.
@@ -32,3 +31,9 @@ typedef struct Frame {
  *  @return The created Frame struct.
  */
 Frame* create_frame(const cJSON* frame_JSON, int ss_width, int ss_height);
+
+/*! @brief Frees the memory occupied by a frame.
+ *
+ *  @param[in] frame The frame to free.
+ */
+void free_frame(Frame* frame);
