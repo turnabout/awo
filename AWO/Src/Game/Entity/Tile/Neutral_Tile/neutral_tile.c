@@ -6,7 +6,7 @@
 #include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_fog.h"
 #include "Game/Renderer/game_renderer.h"
 
-void delete_neutral_tile(void* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);
+void delete_neutral_tile(Tile* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);
 
 Neutral_Tile* create_neutral_tile(
     Game_Clock* game_clock,
@@ -42,8 +42,8 @@ Neutral_Tile* create_neutral_tile(
         tile->update_palette = update_regular_tile_fog_status;
     }
 
-    tile->update_animation(tile, 0);
-    tile->update_palette(tile, FALSE);
+    tile->update_animation((Tile*)tile, 0);
+    tile->update_palette((Tile*)tile, FALSE);
 
     return tile;
 }
@@ -68,7 +68,7 @@ void edit_neutral_tile_variation(
     register_game_clock_tile(game_clock, (Tile*)tile, clock_index, sub_clock_index);
 }
 
-void delete_neutral_tile(void* tile_arg, Game_Clock* game_clock, Tiles_Data* tiles_data)
+void delete_neutral_tile(Tile* tile_arg, Game_Clock* game_clock, Tiles_Data* tiles_data)
 {
     if (tile_arg == NULL) {
         return;
@@ -81,7 +81,7 @@ void delete_neutral_tile(void* tile_arg, Game_Clock* game_clock, Tiles_Data* til
     Animation_Sub_Clock_Index sub_clock_index;
 
     gather_tile_data(tiles_data, tile->type, tile->variation, &clock_index, &sub_clock_index, NULL);
-    unregister_game_clock_tile(game_clock, (Tile*)tile, clock_index, sub_clock_index);
+    unregister_game_clock_tile(game_clock, tile_arg, clock_index, sub_clock_index);
 
     // Clear the top render grid tile layer of taller tiles
     if (tile->animation->frames->height == (DEFAULT_TILE_SIZE * 2)) {

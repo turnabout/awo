@@ -62,7 +62,7 @@ Property_Tile* create_property_tile(
     }
 
     update_property_render_grid_palette(property);
-    property->update_render_grid(property, 0);
+    property->update_render_grid((Tile*)property, 0);
 
     return property;
 }

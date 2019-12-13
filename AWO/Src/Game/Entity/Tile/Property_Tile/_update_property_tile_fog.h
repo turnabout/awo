@@ -10,7 +10,7 @@
  *  @param[in] tile The tile.
  *  @param[in] fog Whether this tile is foggy or not.
  */
-void update_regular_property_fog_status(void* tile, Bool fog);
+void update_regular_property_fog_status(Tile* tile, Bool fog);
 
 /*! @brief Updates the palette index this tile used based on given fog status.
  *
@@ -19,4 +19,4 @@ void update_regular_property_fog_status(void* tile, Bool fog);
  *  @param[in] tile The tile.
  *  @param[in] fog Whether this tile is foggy or not.
  */
-void update_base_fog_status(void* tile, Bool fog);
+void update_base_fog_status(Tile* tile, Bool fog);
