@@ -81,6 +81,7 @@
     <ClCompile Include="Src\Game\Stage\generate_custom_stage.c" />
     <ClCompile Include="Src\Game\Stage\generate_filled_stage.c" />
     <ClCompile Include="Src\Game\Stage\load_stage.c" />
+    <ClCompile Include="Src\Game\Stage\stringify_stage.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_sub_clock.c" />

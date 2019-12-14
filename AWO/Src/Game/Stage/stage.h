@@ -55,6 +55,12 @@ typedef struct Stage {
  */
 Stage* load_stage(char* stage_str, Tiles_Data* tiles_data);
 
+/*! @brief Stringifies the given stage into a string that can later be loaded.
+ *  @param[in] stage Stage to transform into a string.
+ *  @return The generated string.
+ */
+char* stringify_stage(Stage* stage);
+
 /*! @brief Generates a stage filled up with tiles of the given type and variation.
  *
  *  @param[in] type The type of the tile used to fill the stage width.
