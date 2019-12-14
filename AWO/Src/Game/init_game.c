@@ -58,6 +58,7 @@ Game* init_game(int window_width, int window_height)
 
     // Load the level
     Stage* stage = game->stages[1];
+    char* result = stringify_stage(stage);
     stage = generate_filled_stage(Sea, Middle, 255, 255);
     stage = generate_custom_stage();
 

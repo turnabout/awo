@@ -13,14 +13,35 @@ void write_stage_string_byte(char* stage_string, char byte, int* i)
     (*i) += 2;
 }
 
-void write_stage_string_name(Stage* stage, int name_char_count, char* stage_string, int* i)
+void write_stage_string_name(Stage* stage, char* stage_string, int* i, int name_char_count)
 {
     // Write the stage name
     for (int j = 0; j < name_char_count; j++) {
         write_stage_string_byte(stage_string, stage->name[j], i);
     }
 
-    // Write separator after stage name
+    write_stage_string_byte(stage_string, STAGE_STRING_SEPARATOR_CHARACTER, i);
+}
+
+void write_stage_string_player_data(Stage* stage, char* stage_string, int* i)
+{
+    // Write the player armies
+    for (int j = 0; j < stage->player_count; j++) {
+        write_stage_string_byte(stage_string, stage->player_armies[j], i);
+    }
+
+    write_stage_string_byte(stage_string, STAGE_STRING_SEPARATOR_CHARACTER, i);
+}
+
+void write_stage_string_tiles(Stage* stage, char* stage_string, int* i)
+{
+    for (Uint8 y = 0; y < stage->height; y++) {
+        for (Uint8 x = 0; x < stage->width; x++) {
+            write_stage_string_byte(stage_string, stage->tiles_grid[y][x].type, i);
+            write_stage_string_byte(stage_string, stage->tiles_grid[y][x].variation, i);
+        }
+    }
+
     write_stage_string_byte(stage_string, STAGE_STRING_SEPARATOR_CHARACTER, i);
 }
 
@@ -50,17 +71,19 @@ char* stringify_stage(Stage* stage)
     int i = 0;
 
     // Write the stage name
-    write_stage_string_name(stage, name_char_count, stage_string, &i);
-    stage_string[i] = '\0';
+    write_stage_string_name(stage, stage_string, &i, name_char_count);
 
-    // Write the player armies
+    // Write the player data
+    write_stage_string_player_data(stage, stage_string, &i);
 
     // Write the stage dimensions
+    write_stage_string_byte(stage_string, stage->width, &i);
+    write_stage_string_byte(stage_string, stage->height, &i);
+    write_stage_string_byte(stage_string, STAGE_STRING_SEPARATOR_CHARACTER, &i);
 
     // Write the stage tiles
-
-    // name                pyrs    w/h     tiles
-    // 4D79205374616765 FF 0004 FF 010A FF 000000000604060C060C060C060C060502000100 FF
+    write_stage_string_tiles(stage, stage_string, &i);
+    stage_string[i] = '\0';
 
     return stage_string;
 }
