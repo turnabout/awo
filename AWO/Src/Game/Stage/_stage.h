@@ -27,14 +27,14 @@ Stage* create_stage(
     Army_Type player_armies[MAX_PLAYER_COUNT]
 );
 
-/*! @brief Confirms the given stage data array is valid and usable for a game.
+/*! @brief Validates the given stage string data buffer is valid, can be generated into a stage.
  *
  *  @param[in] stage_data The stage data bytes array.
  *  @param[in] data_length The length of the stage data.
  *  @param[in] tiles_data The tiles data object. Used to validate tiles.
  *  @return TRUE if the data is valid, FALSE if invalid.
  */
-Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data);
+Bool validate_stage_string_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data);
 
 /*! @brief Edits the given stage's tile grid with the given type & variation.
  *

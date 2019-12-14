@@ -1,6 +1,6 @@
 #include "Game/Stage/_stage.h"
 
-Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data)
+Bool validate_stage_string_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data)
 {
     // Confirm amount of separators
     Uint8 sep_count = 0;
