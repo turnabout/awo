@@ -45,6 +45,7 @@
     <ClCompile Include="Src\Game\Board\game_board.c" />
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
     <ClCompile Include="Src\Game\Board\player_properties.c" />
+    <ClCompile Include="Src\Game\Board\update_game_board_weather.c" />
     <ClCompile Include="Src\Game\Camera\focus.c" />
     <ClCompile Include="Src\Game\Camera\game_camera.c" />
     <ClCompile Include="Src\Game\Camera\get_subject_tile_by_coordinates.c" />

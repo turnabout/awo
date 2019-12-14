@@ -81,3 +81,10 @@ void register_game_board_player_property(Game_Board* game_board, Property_Tile* 
  *  @param[in] property Pointer to the property to unregister.
  */
 void unregister_game_board_player_property(Game_Board* game_board, Property_Tile* property);
+
+/*! @brief Updates the currently active weather.
+ *
+ *  @param[in] game_board The game board module.
+ *  @param[in] weather Weather to update to.
+ */
+void update_game_board_weather(Game_Board* game_board, Weather weather);
