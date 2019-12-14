@@ -3,16 +3,6 @@
 #include "Game/Stage/_stage.h"
 #include "Utilities/utilities.h"
 
-// TODO: remove
-void allocate_stage_grid(Stage* stage)
-{
-    stage->tiles_grid = malloc(sizeof(Stage_Tile_Row) * stage->height);
-
-    for (Uint8 y = 0; y < stage->height; y++) {
-        stage->tiles_grid[y] = malloc(sizeof(Stage_Tile) * stage->width);
-    }
-}
-
 Stage* create_stage(
     char* stage_name,
     Uint8 width,
@@ -33,6 +23,11 @@ Stage* create_stage(
         }
 
         stage->name[i] = stage_name[i];
+    }
+
+    // Fill out armies with default data
+    for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
+        stage->player_armies[i] = ARMY_TYPE_NONE;
     }
 
     // Copy armies
