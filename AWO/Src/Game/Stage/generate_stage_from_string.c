@@ -41,7 +41,7 @@ void load_stage_players_data(
     }
 }
 
-Stage* load_stage(char* stage_str, Tiles_Data* tiles_data)
+Stage* generate_stage_from_string(char* stage_str, Tiles_Data* tiles_data)
 {
     // Translate the hex string into a useable data bytes array & validate
     Uint8* stage_data;

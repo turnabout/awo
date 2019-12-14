@@ -76,7 +76,7 @@ Bool init_game_data(Game* game)
             continue;
         }
 
-        game->stages[i] = load_stage(
+        game->stages[i] = generate_stage_from_string(
             stage_JSON->valuestring,
             game->tiles_data
         );

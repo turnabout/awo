@@ -53,7 +53,7 @@ typedef struct Stage {
  *  @param[in] tiles_data The tiles data object. Used to validate tiles.
  *  @return The created stage, or NULL if the stage string was invalid.
  */
-Stage* load_stage(char* stage_str, Tiles_Data* tiles_data);
+Stage* generate_stage_from_string(char* stage_str, Tiles_Data* tiles_data);
 
 /*! @brief Stringifies the given stage into a string that can later be loaded.
  *  @param[in] stage Stage to transform into a string.

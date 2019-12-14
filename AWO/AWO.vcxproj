@@ -80,7 +80,7 @@
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
     <ClCompile Include="Src\Game\Stage\generate_custom_stage.c" />
     <ClCompile Include="Src\Game\Stage\generate_filled_stage.c" />
-    <ClCompile Include="Src\Game\Stage\load_stage.c" />
+    <ClCompile Include="Src\Game\Stage\generate_stage_from_string.c" />
     <ClCompile Include="Src\Game\Stage\stringify_stage.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c" />
