@@ -135,9 +135,6 @@
     <ClCompile Include="Src\Utilities\hex_string_to_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Stage\validate_stage_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -319,6 +316,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Stage\validate_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Stage\validate_stage_string_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

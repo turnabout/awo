@@ -48,7 +48,7 @@ Stage* generate_stage_from_string(char* stage_str, Tiles_Data* tiles_data)
     size_t data_length;
  
     if ((stage_data = hex_string_to_data(stage_str, &data_length)) == NULL || 
-         !validate_stage_data(stage_data, data_length, tiles_data)
+         !validate_stage_string_data(stage_data, data_length, tiles_data)
     ) {
         return NULL;
     }

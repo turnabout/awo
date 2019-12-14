@@ -83,7 +83,7 @@
     <ClCompile Include="Src\Game\Stage\generate_stage_from_string.c" />
     <ClCompile Include="Src\Game\Stage\stringify_stage.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage.c" />
-    <ClCompile Include="Src\Game\Stage\validate_stage_data.c" />
+    <ClCompile Include="Src\Game\Stage\validate_stage_string_data.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_sub_clock.c" />
     <ClCompile Include="Src\Game\Clock\Tick_Event\print_tick_events_list.c" />
