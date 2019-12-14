@@ -3,6 +3,8 @@
 #include "Game/Stage/_stage.h"
 #include "Utilities/utilities.h"
 
+PRAGMA( warning( disable: 6001) )
+
 Stage* create_stage(
     char* stage_name,
     Uint8 width,

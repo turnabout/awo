@@ -47,7 +47,10 @@ void write_stage_string_tiles(Stage* stage, char* stage_string, int* i)
 
 char* stringify_stage(Stage* stage)
 {
-    // TODO: validate the stage before stringifying
+    // Validate the stage before stringifying
+    if (!validate_stage(stage)) {
+        return NULL;
+    }
 
     // Get stage name character count (without null-terminator)
     int name_char_count;

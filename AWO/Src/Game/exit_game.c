@@ -24,7 +24,7 @@ void exit_game(Game* game)
     free_tiles_data(game->tiles_data);
     free_units_data(game->units_data);
 
-    for (int i = 0; i < MAX_LOADED_LEVEL_COUNT; i++) {
+    for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
         free_stage(game->stages[i]);
     }
 

@@ -55,9 +55,16 @@ typedef struct Stage {
  */
 Stage* generate_stage_from_string(char* stage_str, Tiles_Data* tiles_data);
 
+/*! @brief Validates a stage is OK to play on (OK player count, property count, etc).
+ *
+ *  @param[in] stage The stage to validate.
+ *  @return Whether the stage validation passed.
+ */
+Bool validate_stage(Stage* stage);
+
 /*! @brief Stringifies the given stage into a string that can later be loaded.
  *  @param[in] stage Stage to transform into a string.
- *  @return The generated string.
+ *  @return The generated string. NULL if the stage is not valid.
  */
 char* stringify_stage(Stage* stage);
 

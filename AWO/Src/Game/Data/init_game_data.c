@@ -68,7 +68,7 @@ Bool init_game_data(Game* game)
     // Load all default stages
     cJSON* stages_array_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "stages");
 
-    for (int i = 0; i < MAX_LOADED_LEVEL_COUNT; i++) {
+    for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
         cJSON* stage_JSON = cJSON_GetArrayItem(stages_array_JSON, i);
 
         if (stage_JSON == NULL) {

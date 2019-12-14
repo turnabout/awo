@@ -37,7 +37,7 @@ struct Game {
     Units_Data* units_data;
 
     // Initially loaded default stages.
-    Stage* stages[MAX_LOADED_LEVEL_COUNT];
+    Stage* stages[MAX_LOADED_STAGE_COUNT];
 
     // The mouse's state.
     Mouse_State* mouse_state;
