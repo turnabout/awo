@@ -25,7 +25,7 @@ Stage* create_stage(
         stage->name[i] = stage_name[i];
     }
 
-    stage_name[STAGE_NAME_MAX_LENGTH] = '\0';
+    stage->name[STAGE_NAME_MAX_LENGTH - 1] = '\0';
 
     // Fill out armies with default data
     for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
