@@ -57,7 +57,6 @@ Stage* load_stage(char* stage_str, Tiles_Data* tiles_data)
     // Process stage dimensions
     stage->width = stage_data[i];
     stage->height = stage_data[i + 1];
-    stage->tile_count = stage->width * stage->height;
 
     // Point index to after the separator
     i += 3;

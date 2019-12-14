@@ -36,9 +36,6 @@ typedef struct Stage {
     // The dimensions of the stage.
     Uint8 width, height;
 
-    // How many tiles are present in the stage.
-    Uint16 tile_count;
-
     // Descriptors of every tile making up the stage.
     Stage_Tile_Row* tiles_grid;
 
