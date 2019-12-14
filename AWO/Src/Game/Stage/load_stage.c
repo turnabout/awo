@@ -15,13 +15,13 @@ void load_stage_name(Uint8* stage_data, size_t* i, char* stage_name)
     }
 }
 
-Uint8 load_stage_players_data(
+void load_stage_players_data(
     Uint8* stage_data, 
     size_t* i, 
     Army_Type player_armies[MAX_PLAYER_COUNT]
 )
 {
-    Uint8 player_count = 0;
+    Uint8 player_i = 0;
 
     // Initialize player armies to NONE
     for (int j = 0; j < MAX_PLAYER_COUNT; j++) {
@@ -37,10 +37,8 @@ Uint8 load_stage_players_data(
             break;
         }
 
-        player_armies[player_count++] = player_army;
+        player_armies[player_i++] = player_army;
     }
-
-    return player_count;
 }
 
 Stage* load_stage(char* stage_str, Tiles_Data* tiles_data)
@@ -63,14 +61,13 @@ Stage* load_stage(char* stage_str, Tiles_Data* tiles_data)
 
     // Load players data
     Army_Type player_armies[MAX_PLAYER_COUNT];
-    Uint8 player_count = load_stage_players_data(stage_data, &i, player_armies);
+    load_stage_players_data(stage_data, &i, player_armies);
 
     // Create empty stage
     Stage* stage = create_stage(
         stage_name,
         stage_data[i++], // Width
         stage_data[i++], // Height
-        player_count,
         player_armies
     );
 

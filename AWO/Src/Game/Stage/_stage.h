@@ -15,15 +15,14 @@
  *  @param[in] stage_name The name of the stage.
  *  @param[in] width The width of the stage.
  *  @param[in] height The height of the stage.
- *  @param[in] player_count Amount of players that can play on the stage.
- *  @param[in] player_armies The players' armies.
+ *  @param[in] player_armies The players' armies. If less players than the max player count, the
+ *  exceeding player armies must be set to ARMY_TYPE_NONE.
  *  @return The allocated stage.
  */
 Stage* create_stage(
     char* stage_name,
     Uint8 width,
     Uint8 height,
-    Uint8 player_count,
     Army_Type player_armies[MAX_PLAYER_COUNT]
 );
 

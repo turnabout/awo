@@ -17,7 +17,6 @@ Stage* create_stage(
     char* stage_name,
     Uint8 width,
     Uint8 height,
-    Uint8 player_count,
     Army_Type player_armies[MAX_PLAYER_COUNT]
 )
 {
@@ -25,7 +24,6 @@ Stage* create_stage(
 
     stage->width = width;
     stage->height = height;
-    stage->player_count = player_count;
 
     // Copy name
     for (int i = 0; i < STAGE_NAME_MAX_LENGTH; i++) {
@@ -38,8 +36,12 @@ Stage* create_stage(
     }
 
     // Copy armies
-    for (int i = 0; i < player_count; i++) {
-        stage->player_armies[i] = player_armies[i];
+    for (stage->player_count = 0; stage->player_count < MAX_PLAYER_COUNT; stage->player_count++) {
+        if (player_armies[stage->player_count] == ARMY_TYPE_NONE) {
+            break;
+        }
+
+        stage->player_armies[stage->player_count] = player_armies[stage->player_count];
     }
 
     // Allocate space for tile grid
