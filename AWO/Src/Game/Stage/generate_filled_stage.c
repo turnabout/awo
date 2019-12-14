@@ -12,18 +12,14 @@ Stage* generate_filled_stage(
     Uint8 height
 )
 {
-    Stage* stage = (Stage*)malloc(sizeof(Stage));
-
-    strcpy(stage->name, "Default stage");
+    Stage* stage = malloc(sizeof(Stage));
 
     // Add stage metadata
+    strcpy(stage->name, "Default stage");
     stage->width = width;
     stage->height = height;
-    stage->tile_count = width * height;
 
-    stage->tiles = (Stage_Tile*)malloc(
-        sizeof(Stage_Tile) * stage->tile_count
-    );
+    allocate_stage_grid(stage);
 
     // Add some default stage players data
     for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
@@ -34,18 +30,12 @@ Stage* generate_filled_stage(
     stage->player_armies[0] = OS;
     stage->player_armies[1] = BM;
 
-    // Add initial player HQ tiles so the stage is valid
-    stage->tiles[0].type = Property_HQ;
-    stage->tiles[0].variation = Player_Index_0;
+    // Fill entire grid with tiles of given type & variation
+    fill_stage_tiles(stage, type, variation);
 
-    stage->tiles[1].type = Property_HQ;
-    stage->tiles[1].variation = Player_Index_1;
-
-    // Add all other tiles
-    for (int i = stage->player_count; i < stage->tile_count; i++) {
-        stage->tiles[i].type = type;
-        stage->tiles[i].variation = variation;
-    }
+    // Add player HQ tiles so the stage is valid
+    edit_stage_tile(stage, 0, 0, Property_HQ, Player_Index_0);
+    edit_stage_tile(stage, 1, 0, Property_HQ, Player_Index_1);
 
     return stage;
 }

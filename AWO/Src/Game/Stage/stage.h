@@ -22,6 +22,10 @@ typedef struct Stage_Tile {
 
 } Stage_Tile;
 
+/*! @brief A row of stage tiles.
+ */
+typedef Stage_Tile* Stage_Tile_Row;
+
 /*! @brief Describes the contents of a stage, which can be loaded by the game board for gameplay.
  */
 typedef struct Stage {
@@ -36,7 +40,7 @@ typedef struct Stage {
     Uint16 tile_count;
 
     // Descriptors of every tile making up the stage.
-    Stage_Tile* tiles;
+    Stage_Tile_Row* tiles_grid;
 
     // Amount of players on this stage.
     Uint8 player_count;
@@ -68,6 +72,16 @@ Stage* generate_filled_stage(
     Uint8 width,
     Uint8 height
 );
+
+/*! @brief Edits the values of a stage tile.
+ *
+ *  @param[in] stage The stage.
+ *  @param[in] x The X coordinate of the stage tile to edit.
+ *  @param[in] y The Y coordinate of the stage tile to edit.
+ *  @param[in] type The stage tile's new type.
+ *  @param[in] variation The stage tile's new variation.
+ */
+void edit_stage_tile(Stage* stage, int x, int y, int type, int variation);
 
 /*! @brief Generate a custom, hardcoded stage for debug purposes.
  */

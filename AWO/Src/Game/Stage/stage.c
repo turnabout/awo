@@ -63,35 +63,59 @@ Stage* load_stage(char* stage_str, Tiles_Data* tiles_data)
     i += 3;
 
     // Process stage tiles
-    stage->tiles = malloc(sizeof(Stage_Tile) * stage->tile_count);
+    allocate_stage_grid(stage);
 
-    int tile_n = 0;
-
-    while (1) {
-        if (
-            stage_data[i] == STAGE_STRING_SEPARATOR_CHARACTER ||
-            stage_data[i + 1] == STAGE_STRING_SEPARATOR_CHARACTER
-            ) {
-            break;
+    for (Uint8 y = 0; y < stage->height; y++) {
+        for (Uint8 x = 0; x < stage->width; x++) {
+            edit_stage_tile(stage, x, y, stage_data[i], stage_data[i + 1]);
+            i += 2;
         }
-
-        stage->tiles[tile_n].type = (Tile_Type)stage_data[i];
-        stage->tiles[tile_n].variation = (Tile_Variation)stage_data[i + 1];
-
-        i += 2;
-        tile_n++;
     }
 
     return stage;
 }
 
+void allocate_stage_grid(Stage* stage)
+{
+    stage->tiles_grid = malloc(sizeof(Stage_Tile_Row) * stage->height);
+
+    for (Uint8 y = 0; y < stage->height; y++) {
+        stage->tiles_grid[y] = malloc(sizeof(Stage_Tile) * stage->width);
+    }
+}
+
+
+void edit_stage_tile(Stage* stage, int x, int y, int type, int variation)
+{
+    stage->tiles_grid[y][x].type = type;
+    stage->tiles_grid[y][x].variation = variation;
+}
+
+void fill_stage_tiles(Stage* stage, int type, int variation)
+{
+    for (Uint8 y = 0; y < stage->height; y++) {
+        for (Uint8 x = 0; x < stage->width; x++) {
+            edit_stage_tile(stage, x, y, type, variation);
+        }
+    }
+}
+
 void free_stage(Stage* stage)
 {
-    if (stage != NULL) {
-        if (stage->tiles != NULL) {
-            free(stage->tiles);
+    if (stage == NULL) {
+        return;
+    }
+
+    if (stage->tiles_grid != NULL) {
+
+        for (int y = 0; y < stage->height; y++) {
+            if (stage->tiles_grid[y] != NULL) {
+                free(stage->tiles_grid[y]);
+            }
         }
 
-        free(stage);
+        free(stage->tiles_grid);
     }
+
+    free(stage);
 }

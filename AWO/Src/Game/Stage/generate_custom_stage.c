@@ -5,26 +5,16 @@
 #include "Game/Player/player_index_enum.h"
 #include "Utilities/utilities.h"
 
-void set_custom_stage_value(Stage* stage, int index, int type, int variation)
-{
-    stage->tiles[index].type = type;
-    stage->tiles[index].variation = variation;
-}
-
 Stage* generate_custom_stage()
 {
-    Stage* stage = (Stage*)malloc(sizeof(Stage));
-
-    strcpy(stage->name, "Custom stage");
+    Stage* stage = malloc(sizeof(Stage));
 
     // Add stage metadata
+    strcpy(stage->name, "Custom stage");
     stage->width = 10;
     stage->height = 10;
-    stage->tile_count = stage->width * stage->height;
 
-    stage->tiles = (Stage_Tile*)malloc(
-        sizeof(Stage_Tile) * stage->tile_count
-    );
+    allocate_stage_grid(stage);
 
     // Add some default stage players data
     for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
@@ -36,59 +26,54 @@ Stage* generate_custom_stage()
     stage->player_armies[1] = GE;
 
     // Add default tiles
-    for (int i = 0; i < stage->tile_count; i++) {
-        stage->tiles[i].type = Plain;
-        stage->tiles[i].variation = Default;
-    }
-
-    // Add initial player HQ tiles so the stage is valid
-    set_custom_stage_value(stage, stage->tile_count - 2, Property_HQ, Player_Index_1);
+    fill_stage_tiles(stage, Plain, Default);
 
     // Some properties
-    set_custom_stage_value(stage, 0, Property_City, Player_Index_0);
-    set_custom_stage_value(stage, 1, Property_Airport, Player_Index_0);
-    set_custom_stage_value(stage, 2, Property_Port, Player_Index_0);
-    set_custom_stage_value(stage, 3, Property_HQ, Player_Index_0);
+    edit_stage_tile(stage, 0, 0, Property_City, Player_Index_0);
+    edit_stage_tile(stage, 1, 0, Property_Airport, Player_Index_0);
+    edit_stage_tile(stage, 2, 0, Property_Port, Player_Index_0);
+    edit_stage_tile(stage, 3, 0, Property_HQ, Player_Index_0);
+    edit_stage_tile(stage, 9, 9, Property_HQ, Player_Index_1);
 
-    set_custom_stage_value(stage, 21, Property_Base, Player_Index_0);
+    edit_stage_tile(stage, 1, 2, Property_Base, Player_Index_0);
 
     // Sea
-    set_custom_stage_value(stage, 23, Sea, TopLeft);
-    set_custom_stage_value(stage, 24, Sea, Top);
-    set_custom_stage_value(stage, 25, Sea, TopRight);
+    edit_stage_tile(stage, 3, 2, Sea, TopLeft);
+    edit_stage_tile(stage, 4, 2, Sea, Top);
+    edit_stage_tile(stage, 5, 2, Sea, TopRight);
 
-    set_custom_stage_value(stage, 33, Sea, DirLeft);
-    set_custom_stage_value(stage, 34, Sea, Middle);
-    set_custom_stage_value(stage, 35, Sea, DirRight);
+    edit_stage_tile(stage, 3, 3, Sea, DirLeft);
+    edit_stage_tile(stage, 4, 3, Sea, Middle);
+    edit_stage_tile(stage, 5, 3, Sea, DirRight);
 
-    set_custom_stage_value(stage, 43, Sea, BottomLeft);
-    set_custom_stage_value(stage, 44, Sea, Bottom);
-    set_custom_stage_value(stage, 45, Sea, BottomRight);
+    edit_stage_tile(stage, 3, 4, Sea, BottomLeft);
+    edit_stage_tile(stage, 4, 4, Sea, Bottom);
+    edit_stage_tile(stage, 5, 4, Sea, BottomRight);
 
     // Some roads & properties
-    set_custom_stage_value(stage, 27, Road, TopLeft);
-    set_custom_stage_value(stage, 28, Road, Horizontal);
-    set_custom_stage_value(stage, 29, Road, Horizontal);
+    edit_stage_tile(stage, 7, 2, Road, TopLeft);
+    edit_stage_tile(stage, 8, 2, Road, Horizontal);
+    edit_stage_tile(stage, 9, 2, Road, Horizontal);
 
-    set_custom_stage_value(stage, 38, Forest, TopLeft);
-    set_custom_stage_value(stage, 39, Forest, TopRight);
-    set_custom_stage_value(stage, 48, Forest, BottomLeft);
-    set_custom_stage_value(stage, 49, Forest, BottomRight);
+    edit_stage_tile(stage, 8, 3, Forest, TopLeft);
+    edit_stage_tile(stage, 9, 3, Forest, TopRight);
+    edit_stage_tile(stage, 8, 4, Forest, BottomLeft);
+    edit_stage_tile(stage, 9, 4, Forest, BottomRight);
 
-    set_custom_stage_value(stage, 37, Road, Vertical);
-    set_custom_stage_value(stage, 47, Road, Vertical);
+    edit_stage_tile(stage, 7, 3, Road, Vertical);
+    edit_stage_tile(stage, 7, 4, Road, Vertical);
 
-    set_custom_stage_value(stage, 53, Silo, Default);
-    set_custom_stage_value(stage, 54, Property_City, Player_Index_Neutral);
-    set_custom_stage_value(stage, 55, Road, Horizontal);
-    set_custom_stage_value(stage, 56, Road, Horizontal);
-    set_custom_stage_value(stage, 57, Road, Middle);
-    set_custom_stage_value(stage, 58, Road, Horizontal);
-    set_custom_stage_value(stage, 59, Road, Horizontal);
+    edit_stage_tile(stage, 3, 5, Silo, Default);
+    edit_stage_tile(stage, 4, 5, Property_City, Player_Index_Neutral);
+    edit_stage_tile(stage, 5, 5, Road, Horizontal);
+    edit_stage_tile(stage, 6, 5, Road, Horizontal);
+    edit_stage_tile(stage, 7, 5, Road, Middle);
+    edit_stage_tile(stage, 8, 5, Road, Horizontal);
+    edit_stage_tile(stage, 9, 5, Road, Horizontal);
 
-    set_custom_stage_value(stage, 67, Road, Vertical);
+    edit_stage_tile(stage, 7, 6, Road, Vertical);
 
-    set_custom_stage_value(stage, 77, Property_Base, Player_Index_1);
+    edit_stage_tile(stage, 7, 7, Property_Base, Player_Index_1);
 
     return stage;
 }

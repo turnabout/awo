@@ -6,35 +6,29 @@ void load_game_board_stage(
     Game_Board* game_board, 
     Game_Clock* game_clock,
     Tiles_Data* tiles_data,
-    Stage* stage_descriptor
+    Stage* stage
 )
 {
     // Allocate space for tiles
-    game_board->tiles_grid = malloc(sizeof(Tile_Row) * stage_descriptor->height);
+    game_board->tiles_grid = malloc(sizeof(Tile_Row) * stage->height);
 
-    for (int i = 0; i < stage_descriptor->height; i++) {
-        game_board->tiles_grid[i] = malloc(sizeof(Tile*) * stage_descriptor->width);
+    for (int i = 0; i < stage->height; i++) {
+        game_board->tiles_grid[i] = malloc(sizeof(Tile*) * stage->width);
     }
 
     // Add the tiles from the stage descriptor
-    for (Uint8 y = 0; y < stage_descriptor->height; y++) {
-        for (Uint8 x = 0; x < stage_descriptor->width; x++) {
-
-            Stage_Tile* tile_descriptor = (
-                (stage_descriptor->tiles + x) +
-                (stage_descriptor->width * y)
-            );
-
+    for (Uint8 y = 0; y < stage->height; y++) {
+        for (Uint8 x = 0; x < stage->width; x++) {
             add_game_board_tile(
                 game_board, 
                 game_clock,
-                tile_descriptor->type, 
-                tile_descriptor->variation, 
+                stage->tiles_grid[y][x].type,
+                stage->tiles_grid[y][x].variation,
                 x, 
                 y
             );
         }
     }
 
-    game_board->stage = stage_descriptor;
+    game_board->stage = stage;
 }
