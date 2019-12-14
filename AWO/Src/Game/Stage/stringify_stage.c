@@ -3,9 +3,9 @@
 
 #include "Game/Stage/_stage.h"
 
-void write_stage_string_byte(char* stage_string, char byte, int* i)
+void write_stage_string_byte(char* stage_string, Uint8 byte, int* i)
 {
-    static const char* hex = "0123456789ABCDEF";
+    static const Uint8* hex = "0123456789ABCDEF";
 
     stage_string[*i] = hex[(byte >> 4) & 0xF];
     stage_string[*i + 1] = hex[byte & 0xF];
