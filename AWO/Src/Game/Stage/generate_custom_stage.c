@@ -7,23 +7,12 @@
 
 Stage* generate_custom_stage()
 {
-    Stage* stage = malloc(sizeof(Stage));
-
-    // Add stage metadata
-    strcpy(stage->name, "Custom stage");
-    stage->width = 10;
-    stage->height = 10;
-
-    allocate_stage_grid(stage);
-
-    // Add some default stage players data
-    for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
-        stage->player_armies[i] = ARMY_TYPE_NONE;
-    }
-
-    stage->player_count = 2;
-    stage->player_armies[0] = OS;
-    stage->player_armies[1] = GE;
+    Stage* stage = create_stage(
+        "Custom stage",
+        10,
+        10,
+        (Army_Type[MAX_PLAYER_COUNT]){OS, GE, ARMY_TYPE_NONE, ARMY_TYPE_NONE}
+    );
 
     // Add default tiles
     fill_stage_tiles(stage, Plain, Default);

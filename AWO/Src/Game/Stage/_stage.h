@@ -42,11 +42,3 @@ Bool validate_stage_data(Uint8* stage_data, size_t data_length, Tiles_Data* tile
  *  @param[in] variation The variation to fill with.
  */
 void fill_stage_tiles(Stage* stage, int type, int variation);
-
-/*! @brief Allocates space for a stage's grid.
- *
- * @note Width/height must be set beforehand.
- *
- *  @param[in] stage The stage.
- */
-void allocate_stage_grid(Stage* stage);

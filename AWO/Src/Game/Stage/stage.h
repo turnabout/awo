@@ -47,11 +47,11 @@ typedef struct Stage {
 
 } Stage;
 
-/*! @brief Loads a stage descriptor using the given stage string.
+/*! @brief Loads a stage using the given stage string.
  *
  *  @param[in] stage_str String describing the stage.
  *  @param[in] tiles_data The tiles data object. Used to validate tiles.
- *  @return The created stage descriptor instance, or NULL if the stage string was invalid.
+ *  @return The created stage, or NULL if the stage string was invalid.
  */
 Stage* load_stage(char* stage_str, Tiles_Data* tiles_data);
 
@@ -61,7 +61,7 @@ Stage* load_stage(char* stage_str, Tiles_Data* tiles_data);
  *  @param[in] variation The variation of the tile used to fill the stage width.
  *  @param[in] width The width of the generated stage.
  *  @param[in] height The height of the generated stage.
- *  @return The generate stage.
+ *  @return The generated stage.
  */
 Stage* generate_filled_stage(
     Tile_Type type,
@@ -69,6 +69,11 @@ Stage* generate_filled_stage(
     Uint8 width,
     Uint8 height
 );
+
+/*! @brief Generate a custom, hardcoded stage for debug purposes.
+ *  @return The generated stage.
+ */
+Stage* generate_custom_stage();
 
 /*! @brief Edits the values of a stage tile.
  *
@@ -79,10 +84,6 @@ Stage* generate_filled_stage(
  *  @param[in] variation The stage tile's new variation.
  */
 void edit_stage_tile(Stage* stage, int x, int y, int type, int variation);
-
-/*! @brief Generate a custom, hardcoded stage for debug purposes.
- */
-Stage* generate_custom_stage();
 
 /*! @brief Frees data taken up by a stage descriptor.
  *
