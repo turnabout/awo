@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 
 #include "Game/Stage/_stage.h"
 #include "Utilities/utilities.h"
@@ -27,8 +26,18 @@ Stage* create_stage(
     stage->width = width;
     stage->height = height;
     stage->player_count = player_count;
-    memcpy(stage->name, stage_name, STAGE_NAME_MAX_LENGTH);
 
+    // Copy name
+    for (int i = 0; i < STAGE_NAME_MAX_LENGTH; i++) {
+        if (stage_name[i] == '\0') {
+            stage->name[i] = '\0';
+            break;
+        }
+
+        stage->name[i] = stage_name[i];
+    }
+
+    // Copy armies
     for (int i = 0; i < player_count; i++) {
         stage->player_armies[i] = player_armies[i];
     }
