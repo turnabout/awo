@@ -54,7 +54,8 @@
 #define MAX_PLAYER_COUNT 4
 
 // Stages
-#define STAGE_MAX_PROPERTIES_PER_ARMY 50
+#define HQS_PER_ARMY 1
+#define MAX_PROPERTIES_PER_PLAYER 50
 #define MAX_LOADED_STAGE_COUNT 16
 
 // Game Camera

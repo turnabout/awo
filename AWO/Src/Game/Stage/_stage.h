@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Game/Stage/stage.h"
+#include "Game/Player/player_index_enum.h"
 
 #define STAGE_STRING_SEPARATOR_CHARACTER 0xFF
 #define VALID_SEPARATOR_COUNT               4
