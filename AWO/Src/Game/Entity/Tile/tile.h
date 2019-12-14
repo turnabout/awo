@@ -27,3 +27,7 @@ typedef struct Tile {
     // Coordinates of this tile within the game board.
     Uint8 x, y;
 } Tile;
+
+/*! @brief A row of tiles.
+ */
+typedef Tile** Tile_Row;

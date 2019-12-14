@@ -2,10 +2,8 @@
 
 #include "Game/Data/Enums/weather.h"
 #include "Game/Board/game_board.h"
-#include "Game/Entity/Tile/Property_Tile/property_tile.h"
+#include "Game/Entity/Tile/tile.h"
 #include "Utilities/Linked_List/linked_list.h"
-
-typedef Tile** Tile_Row;
 
 struct Game_Board {
 
