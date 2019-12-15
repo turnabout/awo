@@ -40,12 +40,10 @@ Property_Tiles_Data* create_property_tiles_data(cJSON* properties_data_JSON, int
 {
     Property_Tiles_Data* data = malloc(sizeof(Property_Tiles_Data));
 
-    cJSON* src_JSON = cJSON_GetObjectItemCaseSensitive(properties_data_JSON, "src");
-
     // Loop weather variations
     Weather weather = WEATHER_FIRST;
     cJSON* property_weather_var_JSON;
-    cJSON_ArrayForEach(property_weather_var_JSON, src_JSON)
+    cJSON_ArrayForEach(property_weather_var_JSON, properties_data_JSON)
     {
         // Loop property types
         Property_Type property_type = PROPERTY_TYPE_FIRST;

@@ -50,9 +50,8 @@ Neutral_Tiles_Data* create_neutral_tiles_data(cJSON* tiles_data_JSON, int ss_wid
     Tile_Type tile_type = NEUTRAL_TILE_TYPE_FIRST;
 
     // Loop tile types
-    cJSON* src_JSON = cJSON_GetObjectItemCaseSensitive(tiles_data_JSON, "src");
     cJSON* tile_type_JSON;
-    cJSON_ArrayForEach(tile_type_JSON, src_JSON)
+    cJSON_ArrayForEach(tile_type_JSON, tiles_data_JSON)
     {
          tiles_data->src[tile_type++] = create_tile_type_data(
             tile_type_JSON, 
