@@ -2,26 +2,26 @@
 
 #include "Game/Data/CO/_CO_data.h"
 
-void free_CO_type_data(CO_Type_Data* CO_type_data)
+void free_CO_type_data(CO_Type_Data* co_type_data)
 {
-    if (CO_type_data != NULL) {
-        if (CO_type_data->name != NULL) {
-            free(CO_type_data->name);
+    if (co_type_data != NULL) {
+        if (co_type_data->name != NULL) {
+            free(co_type_data->name);
         }
 
-        // TODO: free frames
+        free_animation(co_type_data->frames);
 
-        free(CO_type_data);
+        free(co_type_data);
     }
 }
 
-void free_CO_data(CO_Data* CO_data)
+void free_CO_data(CO_Data* co_data)
 {
-    if (CO_data != NULL) {
-        for (CO_Type CO = CO_First; CO < CO_Count; CO++) {
-            free_CO_type_data(CO_data->COs[CO]);
+    if (co_data != NULL) {
+        for (CO_Type co = CO_FIRST; co < CO_COUNT; co++) {
+            free_CO_type_data(co_data->COs[co]);
         }
 
-        free(CO_data);
+        free(co_data);
     }
 }

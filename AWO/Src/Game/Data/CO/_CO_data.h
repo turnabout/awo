@@ -2,7 +2,7 @@
 
 #include "Game/Data/CO/CO_data.h"
 #include "Game/Data/Enums/army_type.h"
-#include "Game/Data/Animation/Frame/frame.h"
+#include "Game/Data/Animation/animation.h"
 
 typedef struct CO_Type_Data {
 
@@ -13,13 +13,13 @@ typedef struct CO_Type_Data {
     Army_Type army;
 
     // The CO's frames source.
-    Frame* frames[4];
+    Animation* frames;
 
 } CO_Type_Data;
 
 struct CO_Data {
 
     // Data for all COs.
-    CO_Type_Data* COs[CO_Count];
+    CO_Type_Data* COs[CO_COUNT];
 
 };
