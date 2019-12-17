@@ -2,6 +2,15 @@
 
 #include "Game/Data/UI/_UI_data.h"
 
+Animation* get_UI_element_frames(UI_Data* UI_data, UI_Element_Type element)
+{
+    if (element < UI_ELEMENT_FIRST || element > UI_ELEMENT_LAST) {
+        return NULL;
+    }
+
+    return UI_data->elements[element];
+}
+
 void free_UI_data(UI_Data* UI_data)
 {
     if (UI_data != NULL) {
