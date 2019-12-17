@@ -27,8 +27,13 @@ Animation* create_animation(const cJSON* animation_JSON, int ss_width, int ss_he
 
 void free_animation(Animation* animation)
 {
-    free(animation->frames);
-    free(animation);
+    if (animation != NULL) {
+        if (animation->frames != NULL) {
+            free(animation->frames);
+        }
+
+        free(animation);
+    }
 }
 
 #ifdef _DEBUG
