@@ -25,3 +25,7 @@
 
 typedef enum {FOREACH_CO_TYPE(GENERATE_ENUM)} CO_Type;
 static const char* co_type_str[] = {FOREACH_CO_TYPE(GENERATE_STRING)};
+
+#define CO_First Andy
+#define CO_Last Sturm
+#define CO_Count CO_Last + 1
