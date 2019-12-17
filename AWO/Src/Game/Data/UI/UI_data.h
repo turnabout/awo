@@ -16,3 +16,9 @@ typedef struct UI_Data UI_Data;
  *  @return The generated UI data object.
  */
 UI_Data* create_UI_data(cJSON* UI_JSON, int ss_width, int ss_height);
+
+/*! @brief Frees the memory occupeid by the UI data object.
+ *
+ *  @param[in] UI_data The UI data object to free.
+ */
+void free_UI_data(UI_Data* UI_data);

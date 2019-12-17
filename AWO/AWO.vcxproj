@@ -66,6 +66,7 @@
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
+    <ClCompile Include="Src\Game\Data\UI\UI_data_access.c" />
     <ClCompile Include="Src\Game\Data\UI\UI_data_creation.c" />
     <ClCompile Include="Src\Game\Editor\game_editor.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c" />
