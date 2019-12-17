@@ -121,7 +121,7 @@ Sprite_Batch* create_sprite_batch(
     int max_elements
 )
 {
-    Sprite_Batch* sprite_batch = (Sprite_Batch*)malloc(sizeof(Sprite_Batch));
+    Sprite_Batch* sprite_batch = malloc(sizeof(Sprite_Batch));
 
     sprite_batch->shader_program = shader_program;
     sprite_batch->sprite_sheet_texture = sprite_sheet_texture;

@@ -32,6 +32,9 @@ struct Game_Renderer {
 
     // Layers of tile grids used to render tiles.
     Render_Grid* tile_grid_layers[TILE_LAYER_TYPE_COUNT];
+
+    // Sprite batch used to draw UI elements.
+    Sprite_Batch* sprite_batch;
 };
 
 Bool init_game_renderer_shader_programs()
@@ -113,16 +116,14 @@ void init_game_renderer(
     init_game_renderer_uniforms(render_grid_width, render_grid_height);
 
     // Set sprite batches
-    /*
-    game->sprite_batches[SPRITES_SPRITE_BATCH] = create_sprite_batch(
-        sprites_shader_program,
-        sprite_sheet_texture,
-        game->palette_texture,
+    renderer->sprite_batch = create_sprite_batch(
+        renderer->sprites_shader_program,
+        renderer->sprite_sheet_texture,
+        game_palette_texture,
         MAX_SPRITE_BATCH_ELEMENTS
     );
-    */
 
-    // Get empty tile frames used to initially fill every layer
+    // Set render grids - set empty tile frames used to initially fill every layer
     gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &renderer->empty_tile_frame);
     Uint8 offset_y = 0;
 
@@ -235,6 +236,8 @@ void free_game_renderer()
         // Free render grid layers
         free_render_grid(renderer->tile_grid_layers[TILE_LAYER_0]);
         free_render_grid(renderer->tile_grid_layers[TILE_LAYER_1]);
+
+        free_sprite_batch(renderer->sprite_batch);
 
         free(renderer);
     }
