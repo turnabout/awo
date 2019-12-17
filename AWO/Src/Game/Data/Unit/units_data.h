@@ -7,7 +7,8 @@
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Animation/animation.h"
 
-// Holds all of the game's visuals data for units.
+/*! @brief Holds all of the game's data for units.
+ */
 typedef struct Units_Data Units_Data;
 
 // Creates units data object from JSON.

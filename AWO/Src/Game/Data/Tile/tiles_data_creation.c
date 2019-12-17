@@ -9,7 +9,7 @@ Tiles_Data* create_tiles_data(
     int ss_height
 )
 {
-    Tiles_Data* tiles_data = (Tiles_Data*)malloc(sizeof(Tiles_Data));
+    Tiles_Data* tiles_data = malloc(sizeof(Tiles_Data));
 
     tiles_data->neutral_tiles = create_neutral_tiles_data(neutral_tiles_JSON, ss_width, ss_height);
     tiles_data->property_tiles = create_property_tiles_data(property_tiles_JSON, ss_width, ss_height);

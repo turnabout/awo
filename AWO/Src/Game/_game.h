@@ -9,6 +9,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
+#include "Game/Data/UI/UI_data.h"
 #include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
@@ -35,6 +36,9 @@ struct Game {
 
     // Data for all units.
     Units_Data* units_data;
+
+    // Data for all UI elements.
+    UI_Data* UI_data;
 
     // Initially loaded default stages.
     Stage* stages[MAX_LOADED_STAGE_COUNT];
