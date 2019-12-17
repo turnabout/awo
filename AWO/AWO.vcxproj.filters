@@ -327,6 +327,12 @@
     <ClCompile Include="Src\Game\Data\UI\UI_data_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\CO\CO_data_creation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\CO\CO_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -555,6 +561,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\UI\_UI_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\CO\_CO_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\CO\CO_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

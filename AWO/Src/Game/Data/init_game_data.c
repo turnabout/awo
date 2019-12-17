@@ -61,6 +61,13 @@ Bool init_game_data(Game* game)
         sprite_sheet_h
     );
 
+    // Gather CO data
+    game->CO_data = create_CO_data(
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "COs"),
+        sprite_sheet_w,
+        sprite_sheet_h
+    );
+
     // Get the raw palette data and store it
     game->raw_palette_texture = create_raw_palette_texture(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "palettes")

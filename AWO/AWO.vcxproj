@@ -55,6 +55,8 @@
     <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c" />
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
+    <ClCompile Include="Src\Game\Data\CO\CO_data_access.c" />
+    <ClCompile Include="Src\Game\Data\CO\CO_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\get_game_palette_index.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette_property_lights.c" />
@@ -157,7 +159,9 @@
     <ClInclude Include="Src\Game\Data\Animation\animation.h" />
     <ClInclude Include="Src\Game\Data\Animation\Frame\frame.h" />
     <ClInclude Include="Src\Game\Data\Animation\Frame\_frame.h" />
+    <ClInclude Include="Src\Game\Data\CO\CO_data.h" />
     <ClInclude Include="Src\Game\Data\CO\enums.h" />
+    <ClInclude Include="Src\Game\Data\CO\_CO_data.h" />
     <ClInclude Include="Src\Game\Data\Enums\army_type.h" />
     <ClInclude Include="Src\Game\Data\Enums\weather.h" />
     <ClInclude Include="Src\Game\Data\Palette\game_palette.h" />
