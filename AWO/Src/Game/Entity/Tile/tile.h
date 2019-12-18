@@ -27,7 +27,3 @@ typedef struct Tile {
     Tile_Type type;
 
 } Tile;
-
-/*! @brief A row of tiles.
- */
-typedef Tile** Tile_Row;

@@ -5,6 +5,10 @@
 #include "Game/Entity/Tile/tile.h"
 #include "Utilities/Linked_List/linked_list.h"
 
+/*! @brief A row of tiles.
+ */
+typedef Tile** Tile_Row;
+
 struct Game_Board {
 
     // Reference to the game's renderer.
