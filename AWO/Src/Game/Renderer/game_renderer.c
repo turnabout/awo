@@ -35,6 +35,9 @@ struct Game_Renderer {
 
     // Sprite batch used to draw UI elements.
     Sprite_Batch* sprite_batch;
+
+    // Whether the sprite batch's 'spritebatch_begin' function was previously called.
+    Bool sprite_batch_started;
 };
 
 Bool init_game_renderer_shader_programs()
@@ -115,7 +118,7 @@ void init_game_renderer(
     renderer->game_palette_texture = game_palette_texture;
     init_game_renderer_uniforms(render_grid_width, render_grid_height);
 
-    // Set sprite batches
+    // Set sprite batch
     renderer->sprite_batch = create_sprite_batch(
         renderer->sprites_shader_program,
         renderer->sprite_sheet_texture,
@@ -149,6 +152,20 @@ void init_game_renderer(
 
 void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
 {
+    mat4 test = GLM_MAT4_IDENTITY_INIT;
+
+    // Refresh position
+    glm_translate(
+        test,
+        (vec3) { (float)560, (float)320, 0.0f }
+    );
+
+    // Refresh zoom
+    glm_scale(
+        test,
+        (vec3) { 32.0f, 32.0f, 1.0f }
+    );
+
     // Update sprites shader's given matrix
     glUseProgram(renderer->sprites_shader_program);
 
@@ -157,6 +174,13 @@ void update_game_renderer_matrix(mat4 matrix, const char* matrix_str)
         1, 
         GL_FALSE, 
         matrix[0]
+    );
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(renderer->sprites_shader_program, "view"), 
+        1, 
+        GL_FALSE, 
+        test[0]
     );
 
     // Update tiles shader's given matrix
@@ -215,8 +239,25 @@ void update_tile_layer_pixel_high(
     update_render_grid_pixel_high(renderer->tile_grid_layers[layer], x, y, value);
 }
 
+void batch_sprite(
+    vec2 dst, 
+    Frame* frame_data, 
+    GLfloat palette_index
+)
+{
+    // Begin the sprite batch if it hasn't already begun
+    if (!renderer->sprite_batch_started) {
+        begin_sprite_batch(renderer->sprite_batch);
+        renderer->sprite_batch_started = TRUE;
+    }
+
+    add_to_sprite_batch(renderer->sprite_batch, dst, frame_data, palette_index);
+}
+
 void render_game_renderer()
 {
+    /*
+    // Render the tile render grids
     glUseProgram(renderer->tiles_shader_program);
 
     glActiveTexture(GL_TEXTURE0); 
@@ -227,6 +268,18 @@ void render_game_renderer()
 
     render_r_grid(renderer->tile_grid_layers[TILE_LAYER_0]);
     render_r_grid(renderer->tile_grid_layers[TILE_LAYER_1]);
+    */
+    // Render sprite batch contents
+    glUseProgram(renderer->sprites_shader_program);
+
+    glActiveTexture(GL_TEXTURE0); 
+    glBindTexture(GL_TEXTURE_2D, renderer->sprite_sheet_texture);
+
+    glActiveTexture(GL_TEXTURE1); 
+    glBindTexture(GL_TEXTURE_2D, renderer->game_palette_texture);
+
+    end_sprite_batch(renderer->sprite_batch);
+    renderer->sprite_batch_started = FALSE;
 }
 
 void free_game_renderer()
