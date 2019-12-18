@@ -33,10 +33,6 @@ Property_Tile* create_property_tile(
         property->update_palette = update_property_palette;
     }
 
-    // TODO: call from outside
-    // update_property_render_grid_palette(property);
-    // property->update_render_grid(game_renderer, (Tile*)property, 0);
-
     return property;
 }
 
@@ -49,7 +45,4 @@ void update_property_owner(Property_Tile* property, Tiles_Data* tiles_data, Play
         (Property_Type)property->type - PROPERTY_TILE_TYPE_FIRST,
         property->player->CO->army
     );
-
-    // TODO: call from outside
-    // update_property_render_grid_palette(property);
 }

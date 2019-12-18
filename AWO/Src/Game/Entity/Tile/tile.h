@@ -8,9 +8,9 @@
  */
 typedef struct Tile {
 
-    // The type of the tile.
-    // For both Neutral and Property tiles: Tile_Type
-    Tile_Type type;
+    // `Entity` members
+    // Coordinates of this tile within the game board.
+    Uint8 x, y;
 
     // Function called when this tile's animation updates.
     update_entity_render_grid_cb update_grid;
@@ -21,8 +21,11 @@ typedef struct Tile {
     // Function called to delete this tile.
     delete_entity_cb delete;
 
-    // Coordinates of this tile within the game board.
-    Uint8 x, y;
+
+    // `Tile` members
+    // This tile's type.
+    Tile_Type type;
+
 } Tile;
 
 /*! @brief A row of tiles.

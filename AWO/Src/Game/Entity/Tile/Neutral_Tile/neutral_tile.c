@@ -27,7 +27,7 @@ Neutral_Tile* create_neutral_tile(
     register_game_clock_tile(game_clock, (Tile*)tile, clock_index, sub_clock_index);
 
     // Set the appropriate render grid update callback function
-    // Use multi-layered cb if height of frame is that of two regular-sized frames
+    // Use tall tile cb if height of frame is that of two regular-sized frames
     if (tile->animation->frames->height == (DEFAULT_TILE_SIZE * 2)) {
         tile->update_grid = update_tall_tile_render_grid;
         tile->update_palette = update_tall_tile_palette;
@@ -35,9 +35,6 @@ Neutral_Tile* create_neutral_tile(
         tile->update_grid = update_tile_render_grid;
         tile->update_palette = update_tile_palette;
     }
-
-    // tile->update_animation((Tile*)tile, 0);
-    // tile->update_palette((Tile*)tile, FALSE);
 
     return tile;
 }

@@ -8,22 +8,26 @@
 
 typedef struct Neutral_Tile {
 
-    // This tile's type.
-    Tile_Type type;
-
-    // Callback function used to update this tile's corresponding render grid pixels.
-    update_entity_render_grid_cb update_grid;
-
-    // Function called when this tile's fog status updates.
-    update_entity_palette_cb update_palette;
-
-    // Function called to delete this tile.
-    delete_entity_cb delete;
-
+    // `Entity` members
     // Coordinates of this tile within the game board.
     Uint8 x, y;
 
+    // Function called to update this property's corresponding render grid pixels.
+    update_entity_render_grid_cb update_grid;
 
+    // Function called to update this property's palette.
+    update_entity_palette_cb update_palette;
+
+    // Function called to delete this property.
+    delete_entity_cb delete;
+
+
+    // `Tile` members
+    // This tile's type.
+    Tile_Type type;
+
+
+    // `Neutral_Tile` members
     // This tile's variation.
     Tile_Variation variation;
 
