@@ -33,7 +33,11 @@ void update_game_board_weather(Game_Board* game_board, Weather weather)
             );
         }
 
-        loop_linked_list(game_board->player_properties[Player_Index_Neutral], re_render_player_properties, NULL);
+        loop_linked_list(
+            game_board->player_properties[Player_Index_Neutral], 
+            re_render_player_properties, 
+            game_board->game_renderer
+        );
     }
 
     game_board->weather = weather;
