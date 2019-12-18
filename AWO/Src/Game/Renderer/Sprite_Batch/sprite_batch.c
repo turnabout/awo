@@ -16,20 +16,22 @@
 /*! @brief Sprite batch object. Describes a sprite batch.
  */
 struct Sprite_Batch {
+
     // The VAO generated and used by this sprite batch.
     GLuint VAO;
 
-    // Program containing shaders used by this sprite batch.
-    GLuint shader_program;
+    // Shader program used by this sprite batch.
+    GLuint shader;
 
-    // IDs of the textures containing raw sprites and palette data
-    GLuint sprite_sheet_texture, raw_palette_texture;
+    // The sprite sheet and palette textures.
+    GLuint sprite_sheet_texture, palette_texture;
 
     // Amount of elements currently queued and max amount
     int elements_queued, elements_max;
 
     // Offset taken up by the sprite batch's elements
     size_t current_offset;
+
 };
 
 void init_sprite_batch_data(Sprite_Batch* sprite_batch)
@@ -123,9 +125,9 @@ Sprite_Batch* create_sprite_batch(
 {
     Sprite_Batch* sprite_batch = malloc(sizeof(Sprite_Batch));
 
-    sprite_batch->shader_program = shader_program;
+    sprite_batch->shader = shader_program;
     sprite_batch->sprite_sheet_texture = sprite_sheet_texture;
-    sprite_batch->raw_palette_texture = palette_texture;
+    sprite_batch->palette_texture = palette_texture;
     sprite_batch->elements_max = max_elements;
     sprite_batch->elements_queued = 0;
 
@@ -137,13 +139,13 @@ Sprite_Batch* create_sprite_batch(
 void begin_sprite_batch(Sprite_Batch* sprite_batch)
 {
     // Set active sprite sheet texture/shader_program program/VAO
-    glUseProgram(sprite_batch->shader_program);
+    glUseProgram(sprite_batch->shader);
 
     glActiveTexture(GL_TEXTURE0); 
     glBindTexture(GL_TEXTURE_2D, sprite_batch->sprite_sheet_texture);
 
     glActiveTexture(GL_TEXTURE1); 
-    glBindTexture(GL_TEXTURE_2D, sprite_batch->raw_palette_texture);
+    glBindTexture(GL_TEXTURE_2D, sprite_batch->palette_texture);
 
     glBindVertexArray(sprite_batch->VAO);
 
@@ -155,7 +157,7 @@ void begin_sprite_batch(Sprite_Batch* sprite_batch)
 void add_to_sprite_batch(
     Sprite_Batch* sprite_batch, 
     vec2 dst, 
-    Frame* frame_data, 
+    Frame* frame, 
     GLfloat palette_index
 )
 {
@@ -164,33 +166,29 @@ void add_to_sprite_batch(
 
         // Top left
         { 
-            dst[0], dst[1],                                   // <vec2> Destination
-            frame_data->top_left[0], frame_data->top_left[1], // <vec2> Texture
-
-            palette_index                                     // <float> Palette index
+            dst[0], dst[1],                         // <vec2> Destination
+            frame->top_left[0], frame->top_left[1], // <vec2> Texture
+            palette_index                           // <float> Palette index
         },     
 
         // Top right
         {
-            dst[0] + (float)frame_data->width, dst[1],
-            frame_data->top_right[0], frame_data->top_right[1],
-
+            dst[0] + (float)frame->width, dst[1],
+            frame->top_right[0], frame->top_right[1],
             palette_index
         },
 
         // Bottom left
         {
-            dst[0], dst[1] + (float)frame_data->height, 
-            frame_data->bottom_left[0],frame_data->bottom_left[1],
-
+            dst[0], dst[1] + (float)frame->height, 
+            frame->bottom_left[0],frame->bottom_left[1],
             palette_index
         },
 
         // Bottom right
         {
-            dst[0] + (float)frame_data->width, dst[1] + (float)frame_data->height, 
-            frame_data->bottom_right[0], frame_data->bottom_right[1],
-
+            dst[0] + (float)frame->width, dst[1] + (float)frame->height, 
+            frame->bottom_right[0], frame->bottom_right[1],
             palette_index
         }
 
