@@ -1,5 +1,7 @@
 #pragma once
 
+#include "conf.h"
+
 // Macros for generating enums and enum strings
 #define GENERATE_ENUM(ENUM) ENUM,
 #define GENERATE_STRING(STRING) #STRING,
@@ -14,3 +16,7 @@
 // Transforms a macro's value into a string
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
+
+// Macro for getting a shader's full path
+#define VERTEX_SHADER_PATH(shader)   SHADERS_PATH shader ".vert"
+#define FRAGMENT_SHADER_PATH(shader) SHADERS_PATH shader ".frag"
