@@ -75,8 +75,7 @@ Bool init_game_data(Game* game)
 
     // Create game clock
     game->clock = create_game_clock(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks"),
-        &game->palette_texture
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
     );
 
     // Load all default stages
