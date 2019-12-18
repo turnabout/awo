@@ -63,3 +63,4 @@ void end_sprite_batch(Sprite_Batch* sprite_batch);
  *  @param[in] sprite_batch The sprite batch object.
  */
 void free_sprite_batch(Sprite_Batch* sprite_batch);
+void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch);

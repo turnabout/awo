@@ -7,6 +7,9 @@
 
 struct Game_Board {
 
+    // Reference to the game's renderer.
+    Game_Renderer* game_renderer;
+
     // Contains all tiles on the game board. tiles[board_y][board_x]
     Tile_Row* tiles_grid;
 

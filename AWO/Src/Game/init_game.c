@@ -21,18 +21,30 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
         stage->player_armies
     );
 
-    init_game_renderer(
+    game->renderer = create_game_renderer(
         stage->width,
         stage->height,
         game->palette_texture,
         game->tiles_data
     );
 
-    game->camera = create_game_camera(&game->window_width, &game->window_height, stage);
+    activate_game_clock_subscribers(
+        game->clock,
+        game->renderer,
+        &game->palette_texture
+    );
+
+    game->camera = create_game_camera(
+        game->renderer, 
+        &game->window_width, 
+        &game->window_height, 
+        stage
+    );
 
     // Set up game board
     game->board = create_game_board(
         game->clock, 
+        game->renderer,
         stage, 
         player_COs,
         game->tiles_data, 

@@ -4,7 +4,7 @@
 
 #include "types.h"
 #include "Game/Data/Animation/animation.h"
-#include "Game/Clock/game_clock.h"
+#include "Game/Clock/enums.h"
 #include "Game/Data/Tile/enums.h"
 
 typedef struct Tiles_Data Tiles_Data;

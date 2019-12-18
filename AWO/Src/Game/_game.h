@@ -32,6 +32,9 @@ struct Game {
     // The game's editor, used in design room mode.
     Game_Editor* editor;
 
+    // The game's renderer. Used to render all game elements.
+    Game_Renderer* renderer;
+
     // Data for all tiles.
     Tiles_Data* tiles_data;
 

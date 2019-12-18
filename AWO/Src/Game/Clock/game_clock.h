@@ -4,24 +4,35 @@
 #include <GLFW/glfw3.h>
 #include <cJSON.h>
 
+#include "Game/Renderer/game_renderer.h"
 #include "Game/Clock/enums.h"
-#include "Game/Clock/Tick_Event/tick_event.h"
 
 /*! @brief Main game clock used for updating and keeping animations synchronized.
  */
 typedef struct Game_Clock Game_Clock;
 
-typedef struct Tiles_Data Tiles_Data;
 typedef struct Tile Tile;
 
 /*! @brief Creates the game clock along with its animation clocks.
  *
+ *  @note Call `activate_game_clock_subscribers` before using ingame.
+ *
  *  @param[in] clock_data_cJSON JSON describing the game clock and its animation clocks.
- *  @param[in] game_palette Reference to the game's palette object id.
- *  Used by the property lights clock subscriber module.
  *  @return The created game clock object.
  */
-Game_Clock* create_game_clock(cJSON* clock_data_JSON, GLuint* game_palette);
+Game_Clock* create_game_clock(cJSON* clock_data_JSON);
+
+/*! @brief Activates the game clock's subscriber modules, getting it ready for ingame usage.
+ *
+ *  @param[in] game_clock The game clock module.
+ *  @param[in] game_renderer The game renderer module.
+ *  @param[in] game_palette Reference to the game's palette object ID.
+ */
+void activate_game_clock_subscribers(
+    Game_Clock* game_clock,
+    Game_Renderer* game_renderer,
+    GLuint* game_palette
+);
 
 /*! @brief Keeps the game clock's current tick updated, along with its animation clocks.
  *

@@ -6,6 +6,7 @@
 
 Game_Board* create_game_board(
     Game_Clock* game_clock,
+    Game_Renderer* game_renderer,
     Stage* stage,
     CO_Type player_COs[MAX_PLAYER_COUNT],
     Tiles_Data* tiles_data,
@@ -18,6 +19,7 @@ Game_Board* create_game_board(
     game_board->tiles_data = tiles_data;
     game_board->raw_palette_texture = raw_palette_texture;
     game_board->game_palette_texture = game_palette_texture;
+    game_board->game_renderer = game_renderer;
 
     // Set players
     game_board->player_count = stage->player_count;

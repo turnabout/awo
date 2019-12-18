@@ -1,9 +1,9 @@
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Board/_game_board.h"
 
-void re_render_player_properties(void* property, void* v)
+void re_render_player_properties(void* property, void* game_renderer)
 {
-    ((Property_Tile*)property)->update_render_grid(property, 0);
+    ((Property_Tile*)property)->update_render_grid((Game_Renderer*)game_renderer, property, 0);
 }
 
 void update_game_board_weather(Game_Board* game_board, Weather weather)
@@ -26,7 +26,11 @@ void update_game_board_weather(Game_Board* game_board, Weather weather)
 
         // Re-render all properties with their updated frame data
         for (int i = 0; i < game_board->stage->player_count; i++) {
-            loop_linked_list(game_board->player_properties[i], re_render_player_properties, NULL);
+            loop_linked_list(
+                game_board->player_properties[i], 
+                re_render_player_properties, 
+                (void*)game_board->game_renderer
+            );
         }
 
         loop_linked_list(game_board->player_properties[Player_Index_Neutral], re_render_player_properties, NULL);

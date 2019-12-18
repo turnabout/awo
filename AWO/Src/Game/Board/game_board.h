@@ -13,6 +13,7 @@ typedef struct Game_Board Game_Board;
 /*! @brief Creates game board loaded with the given data.
  *
  *  @param[in] game_clock The game clock.
+ *  @param[in] game_renderer The game renderer.
  *  @param[in] stage The stage to load.
  *  @param[in] player_COs Array containing every CO used by every player, in order.
  *  @param[in] tiles_data The tiles data object.
@@ -22,6 +23,7 @@ typedef struct Game_Board Game_Board;
  */
 Game_Board* create_game_board(
     Game_Clock* game_clock,
+    Game_Renderer* game_renderer,
     Stage* stage,
     CO_Type player_COs[MAX_PLAYER_COUNT],
     Tiles_Data* tiles_data,

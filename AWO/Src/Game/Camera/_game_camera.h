@@ -9,6 +9,9 @@
 
 struct Game_Camera {
 
+    // Reference to the game's renderer.
+    Game_Renderer* game_renderer;
+
     // Identity matrix reference.
     mat4 identity;
 

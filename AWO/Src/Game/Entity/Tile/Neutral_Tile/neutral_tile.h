@@ -4,7 +4,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/tiles_data.h"
-#include "Game/Entity/Tile/tile_update_cb.h"
+#include "Game/Entity/entity_update_cb.h"
 
 typedef struct Neutral_Tile {
 
@@ -12,13 +12,13 @@ typedef struct Neutral_Tile {
     Tile_Type type;
 
     // Callback function used to update this tile's corresponding render grid pixels.
-    update_tile_render_grid_cb update_animation;
+    update_entity_render_grid_cb update_render_grid;
 
     // Function called when this tile's fog status updates.
-    update_fog_status_cb update_palette;
+    update_entity_palette_cb update_palette;
 
     // Function called to delete this tile.
-    delete_tile_cb delete;
+    delete_entity_cb delete;
 
     // Coordinates of this tile within the game board.
     Uint8 x, y;

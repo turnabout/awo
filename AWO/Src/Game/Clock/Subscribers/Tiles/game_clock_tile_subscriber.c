@@ -7,9 +7,11 @@
 
 PRAGMA(warning( disable : 6308 28182 ))
 
-Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber()
+Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Game_Renderer* renderer)
 {
     Game_Clock_Tile_Subscriber* module = malloc(sizeof(Game_Clock_Tile_Subscriber));
+
+    module->renderer = renderer;
 
     // Initialize the lists of tiles
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
@@ -65,7 +67,7 @@ void process_tile_subscriber_event(Tick_Event* tick_event, void* module_arg)
     List_Entry* entry = tiles_list->head;
 
     while (entry != NULL) {
-        ((Tile*)entry->element)->update_grid(entry->element, tick_event->value);
+        ((Tile*)entry->element)->update_grid(module->renderer, entry->element, tick_event->value);
         entry = entry->next;
     }
 }

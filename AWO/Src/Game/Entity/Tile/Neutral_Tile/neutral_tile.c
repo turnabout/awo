@@ -1,12 +1,6 @@
 #include <stdlib.h>
 
-#include "conf.h"
-#include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
-#include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_grid.h"
-#include "Game/Entity/Tile/Neutral_Tile/_update_neutral_tile_fog.h"
-#include "Game/Renderer/game_renderer.h"
-
-void delete_neutral_tile(Tile* tile, Game_Clock* game_clock, Tiles_Data* tiles_data);
+#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile.h"
 
 Neutral_Tile* create_neutral_tile(
     Game_Clock* game_clock,
@@ -35,15 +29,15 @@ Neutral_Tile* create_neutral_tile(
     // Set the appropriate render grid update callback function
     // Use multi-layered cb if height of frame is that of two regular-sized frames
     if (tile->animation->frames->height == (DEFAULT_TILE_SIZE * 2)) {
-        tile->update_animation = update_multi_layered_tile_render_grid;
-        tile->update_palette = update_multi_layered_tile_fog_status;
+        tile->update_render_grid = update_tall_tile_render_grid;
+        tile->update_palette = update_tall_tile_palette;
     } else {
-        tile->update_animation = update_regular_tile_render_grid;
-        tile->update_palette = update_regular_tile_fog_status;
+        tile->update_render_grid = update_tile_render_grid;
+        tile->update_palette = update_tile_palette;
     }
 
-    tile->update_animation((Tile*)tile, 0);
-    tile->update_palette((Tile*)tile, FALSE);
+    // tile->update_animation((Tile*)tile, 0);
+    // tile->update_palette((Tile*)tile, FALSE);
 
     return tile;
 }
@@ -66,27 +60,4 @@ void edit_neutral_tile_variation(
     tile->variation = new_variation;
     gather_tile_data(tiles_data, tile->type, tile->variation, &clock_index, &sub_clock_index, &tile->animation);
     register_game_clock_tile(game_clock, (Tile*)tile, clock_index, sub_clock_index);
-}
-
-void delete_neutral_tile(Tile* tile_arg, Game_Clock* game_clock, Tiles_Data* tiles_data)
-{
-    if (tile_arg == NULL) {
-        return;
-    }
-
-    Neutral_Tile* tile = (Neutral_Tile*)tile_arg;
-
-    // Get the tile's animation data & attempt to register it with the game clock module.
-    Animation_Clock_Index clock_index;
-    Animation_Sub_Clock_Index sub_clock_index;
-
-    gather_tile_data(tiles_data, tile->type, tile->variation, &clock_index, &sub_clock_index, NULL);
-    unregister_game_clock_tile(game_clock, tile_arg, clock_index, sub_clock_index);
-
-    // Clear the top render grid tile layer of taller tiles
-    if (tile->animation->frames->height == (DEFAULT_TILE_SIZE * 2)) {
-        clear_tile_layers_pixel(tile->x, tile->y);
-    }
-
-    free(tile);
 }

@@ -144,12 +144,6 @@
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -216,12 +210,6 @@
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_fog.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_fog.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Board\player_properties.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -244,12 +232,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Camera\game_camera.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_grid.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_grid.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Clock\Subscribers\Tiles\game_clock_tile_subscriber.c">
@@ -331,6 +313,39 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Data\CO\CO_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\update_game_renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\render_game_renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_grid.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_grid.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\delete_property_tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_palette.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\delete_neutral_tile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_palette.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -458,12 +473,6 @@
     <ClInclude Include="Src\Game\Data\Tile\Property_Tile\_property_tiles_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\property_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_clock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -503,15 +512,6 @@
     <ClInclude Include="Src\Utilities\Linked_List\linked_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\tile_update_cb.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_update_neutral_tile_fog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_fog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Stage\stage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -522,12 +522,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Camera\game_camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_update_neutral_tile_grid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_update_property_tile_grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Clock\Subscribers\Tiles\_game_clock_tile_subscriber.h">
@@ -569,6 +563,30 @@
     <ClInclude Include="Src\Game\Data\CO\CO_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\_game_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_property_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\property_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_neutral_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\entity_update_cb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />
@@ -579,8 +597,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Shaders\sprite.vert" />
-    <None Include="Resources\Shaders\sprite.frag" />
     <None Include="Resources\Data\game_data.json" />
     <None Include="Resources\Shaders\tiles.frag" />
     <None Include="Resources\Shaders\tiles.vert" />
@@ -588,5 +604,7 @@
     <None Include="Resources\Shaders_ES\sprite.vert" />
     <None Include="Resources\Shaders_ES\tiles.frag" />
     <None Include="Resources\Shaders_ES\tiles.vert" />
+    <None Include="Resources\Shaders\basic.vert" />
+    <None Include="Resources\Shaders\basic.frag" />
   </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ void exit_game(Game* game)
     }
 
     // Free main game modules
-    free_game_renderer();
+    free_game_renderer(game->renderer);
     free_game_camera(game->camera);
     free_game_board(game->board);
 

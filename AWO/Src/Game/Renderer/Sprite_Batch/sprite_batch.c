@@ -100,7 +100,7 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch)
     );
     glEnableVertexAttribArray(1);
 
-    // Vertex attribute for texture position
+    // Vertex attribute for palette index
     glVertexAttribPointer(
         2, 
         1, 
@@ -160,49 +160,48 @@ void add_to_sprite_batch(
 )
 {
     // Set the quad's vertices data
-    GLfloat quad_vertices[QUAD_VERTICES_AMOUNT][VERTEX_FLOAT_COUNT] = {
+    GLfloat vertices[QUAD_VERTICES_AMOUNT][VERTEX_FLOAT_COUNT] = {
 
         // Top left
         { 
-            dst[0], dst[1] + (float)frame_data->height,       // <vec2> Destination
+            dst[0], dst[1],                                   // <vec2> Destination
             frame_data->top_left[0], frame_data->top_left[1], // <vec2> Texture
+
             palette_index                                     // <float> Palette index
         },     
 
         // Top right
         {
-            dst[0] + (float)frame_data->width, dst[1] + (float)frame_data->height,
+            dst[0] + (float)frame_data->width, dst[1],
             frame_data->top_right[0], frame_data->top_right[1],
+
             palette_index
         },
 
         // Bottom left
         {
-            dst[0], dst[1], 
+            dst[0], dst[1] + (float)frame_data->height, 
             frame_data->bottom_left[0],frame_data->bottom_left[1],
+
             palette_index
         },
 
         // Bottom right
         {
-            dst[0] + (float)frame_data->width, dst[1], 
+            dst[0] + (float)frame_data->width, dst[1] + (float)frame_data->height, 
             frame_data->bottom_right[0], frame_data->bottom_right[1],
+
             palette_index
         }
 
     };
 
     // Store vertices data in previously allocated buffer
-    glBufferSubData(
-        GL_ARRAY_BUFFER, 
-        sprite_batch->current_offset, 
-        sizeof(quad_vertices), 
-        quad_vertices
-    );
+    glBufferSubData(GL_ARRAY_BUFFER, sprite_batch->current_offset, sizeof(vertices), vertices);
 
     // Update sprite batch state
     sprite_batch->elements_queued++;
-    sprite_batch->current_offset += sizeof(quad_vertices);
+    sprite_batch->current_offset += sizeof(vertices);
 }
 
 void end_sprite_batch(Sprite_Batch* sprite_batch)
@@ -221,15 +220,15 @@ void free_sprite_batch(Sprite_Batch* sprite_batch)
 void add_to_sprite_batch__test_palette(Sprite_Batch* sprite_batch)
 {
     #define LEFT   0
-    #define RIGHT  628
-    #define TOP    396
-    #define BOTTOM 0
+    #define RIGHT  300
+    #define BOTTOM 100
+    #define TOP    0
 
     GLfloat quad_vertices[QUAD_VERTICES_AMOUNT][VERTEX_FLOAT_COUNT] = {
-        {LEFT, TOP, 0.0, 0.0, 0.0}, // Top left
-        {RIGHT, TOP, 1.0, 0.0, 0.0}, // Top right
-        {LEFT, BOTTOM, 0.0, 1.0, 0.0}, // Bottom left
-        {RIGHT, BOTTOM, 1.0, 1.0, 0.0}, // Bottom right
+        {LEFT, BOTTOM, 0.0, 0.0, 0.0}, // Bot left
+        {RIGHT, BOTTOM, 1.0, 0.0, 0.0}, // Bot right
+        {LEFT, TOP, 0.0, 1.0, 0.0}, // Top left
+        {RIGHT, TOP, 1.0, 1.0, 0.0}, // Top right
     };
 
     // Store vertices data in previously allocated buffer

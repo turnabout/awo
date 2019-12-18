@@ -2,6 +2,7 @@
 
 #include "Utilities/Linked_List/list_entry.h"
 #include "Game/Entity/Tile/tile.h"
+#include "Game/Clock/Tick_Event/tick_event.h"
 
 /*! @brief List of tiles with the same implementation as a generic Linked_List.
  *  This makes it so we can use the generic list manipulation functions in the Linked_List modules
@@ -25,13 +26,17 @@ typedef struct Game_Clock_Tile_Subscriber {
     // Reference to the game clock publisher's tick events list.
     Tick_Events_List* tick_events;
 
+    // Reference to the game renderer module.
+    Game_Renderer* renderer;
+
 } Game_Clock_Tile_Subscriber;
 
 /*! @brief Creates the clock subscriber module.
  *  
+ *  @param[in] renderer Reference to the game renderer.
  *  @return The created module.
  */
-Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber();
+Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Game_Renderer* renderer);
 
 /*! @brief Registers the given tile with the subscriber module.
  *

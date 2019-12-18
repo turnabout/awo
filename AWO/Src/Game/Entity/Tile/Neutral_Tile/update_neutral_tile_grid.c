@@ -1,13 +1,13 @@
 #include "conf.h"
-#include "Game/Entity/Tile/tile.h"
-#include "Game/Renderer/game_renderer.h"
+#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile.h"
 
-void update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
+void update_tile_render_grid(Game_Renderer* renderer, void* tile, Uint8 animation_index)
 {
     update_tile_layer_pixel_low(
+        renderer,
         TILE_LAYER_0,
-        tile->x,
-        tile->y,
+        ((Neutral_Tile*)tile)->x,
+        ((Neutral_Tile*)tile)->y,
         (vec2) {
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[0],
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[1]
@@ -15,12 +15,13 @@ void update_regular_tile_render_grid(Tile* tile, Uint8 animation_index)
     );
 }
 
-void update_multi_layered_tile_render_grid(Tile* tile, Uint8 animation_index)
+void update_tall_tile_render_grid(Game_Renderer* renderer, void* tile, Uint8 animation_index)
 {
     update_tile_layer_pixel_low(
+        renderer,
         TILE_LAYER_0,
-        tile->x,
-        tile->y,
+        ((Neutral_Tile*)tile)->x,
+        ((Neutral_Tile*)tile)->y,
         (vec2) {
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[0],
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[1] 
@@ -29,9 +30,10 @@ void update_multi_layered_tile_render_grid(Tile* tile, Uint8 animation_index)
     );
 
     update_tile_layer_pixel_low(
+        renderer,
         TILE_LAYER_1,
-        tile->x,
-        tile->y,
+        ((Neutral_Tile*)tile)->x,
+        ((Neutral_Tile*)tile)->y,
         (vec2) {
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[0],
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[1] 

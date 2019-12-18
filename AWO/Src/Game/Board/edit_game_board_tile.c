@@ -73,7 +73,7 @@ void edit_game_board_tile(
     }
 
     // New tile type, delete the old tile and replace with a new one
-    tile->delete(tile, game_clock, game_board->tiles_data);
+    tile->delete(game_board->game_renderer, tile, game_clock, game_board->tiles_data);
 
     add_game_board_tile(
         game_board,

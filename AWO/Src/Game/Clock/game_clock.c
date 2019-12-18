@@ -2,9 +2,9 @@
 
 #include "Game/Clock/_game_clock.h"
 
-Game_Clock* create_game_clock(cJSON* clock_data_JSON, GLuint* game_palette)
+Game_Clock* create_game_clock(cJSON* clock_data_JSON)
 {
-    Game_Clock* game_clock = (Game_Clock*)malloc(sizeof(Game_Clock));
+    Game_Clock* game_clock = malloc(sizeof(Game_Clock));
 
     // Create the pub-sub module responsible for linking the game clock publisher with subscribers
     game_clock->pub_sub = create_clock_pub_sub();
@@ -15,11 +15,20 @@ Game_Clock* create_game_clock(cJSON* clock_data_JSON, GLuint* game_palette)
         game_clock->pub_sub
     );
 
+    return game_clock;
+}
+
+void activate_game_clock_subscribers(
+    Game_Clock* game_clock, 
+    Game_Renderer* game_renderer, 
+    GLuint* game_palette
+)
+{
     // Create the subscriber modules, which all subscribe to the pub-sub service and receive tick 
     // events to be processed
 
     // Tiles clock subscriber module
-    game_clock->tile_subscriber = create_game_clock_tile_subscriber();
+    game_clock->tile_subscriber = create_game_clock_tile_subscriber(game_renderer);
 
     register_clock_pub_sub_subscriber(
         game_clock->pub_sub,
@@ -54,20 +63,11 @@ Game_Clock* create_game_clock(cJSON* clock_data_JSON, GLuint* game_palette)
         Property_Lights_Clock
     );
 
-    return game_clock;
 }
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
     update_game_clock_publisher(game_clock->publisher, delta_time);
-
-    /*
-    if (update_game_clock_publisher(game_clock->publisher, delta_time)) {
-        update_game_clock_tile_subscriber(game_clock->tile_subscriber);
-        
-        game_clock->publisher->tick_events->ticks_count = 0;
-    }
-    */
 }
 
 void register_game_clock_tile(
