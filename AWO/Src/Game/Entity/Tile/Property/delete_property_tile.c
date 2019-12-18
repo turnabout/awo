@@ -1,4 +1,4 @@
-#include "Game/Entity/Tile/Property_Tile/_property_tile.h"
+#include "Game/Entity/Tile/Property/_property_tile.h"
 
 void delete_property_tile(
     Game_Renderer* game_renderer,

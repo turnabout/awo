@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game/Entity/Tile/Property_Tile/property_tile.h"
+#include "Game/Entity/Tile/Property/property_tile.h"
 
 /*! Properties update callbacks.
  */

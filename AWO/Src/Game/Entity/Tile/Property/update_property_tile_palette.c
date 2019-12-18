@@ -1,4 +1,4 @@
-#include "Game/Entity/Tile/Property_Tile/_property_tile.h"
+#include "Game/Entity/Tile/Property/_property_tile.h"
 #include "Game/Data/Palette/game_palette.h"
 
 void update_property_palette(Game_Renderer* renderer, void* tile, Uint8 fog)

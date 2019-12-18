@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile.h"
+#include "Game/Entity/Tile/Neutral/_neutral_tile.h"
 
 Neutral_Tile* create_neutral_tile(
     Game_Clock* game_clock,

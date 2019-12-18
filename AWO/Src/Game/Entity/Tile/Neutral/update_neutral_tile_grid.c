@@ -1,5 +1,5 @@
 #include "conf.h"
-#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile.h"
+#include "Game/Entity/Tile/Neutral/_neutral_tile.h"
 
 void update_tile_render_grid(Game_Renderer* renderer, void* tile, Uint8 animation_index)
 {

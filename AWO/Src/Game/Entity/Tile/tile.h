@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Game/Entity/entity_update_cb.h"
-#include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
-#include "Game/Entity/Tile/Property_Tile/property_tile.h"
+#include "Game/Entity/Tile/Neutral/neutral_tile.h"
+#include "Game/Entity/Tile/Property/property_tile.h"
 
 /*! @brief Generic representation of a tile, which can either be a neutral tile or a property tile.
  */

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Entity/Tile/Property_Tile/_property_tile.h"
+#include "Game/Entity/Tile/Property/_property_tile.h"
 
 Property_Tile* create_property_tile(
     Game_Clock* game_clock,

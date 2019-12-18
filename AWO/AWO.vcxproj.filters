@@ -324,28 +324,28 @@
     <ClCompile Include="Src\Game\Renderer\render_game_renderer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral\delete_neutral_tile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_grid.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral\neutral_tile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\property_tile.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral\update_neutral_tile_grid.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_grid.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Neutral\update_neutral_tile_palette.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\delete_property_tile.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Property\delete_property_tile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property_Tile\update_property_tile_palette.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Property\property_tile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\delete_neutral_tile.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Property\update_property_tile_grid.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral_Tile\update_neutral_tile_palette.c">
+    <ClCompile Include="Src\Game\Entity\Tile\Property\update_property_tile_palette.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -569,22 +569,22 @@
     <ClInclude Include="Src\Game\Renderer\_game_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\neutral_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\_property_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Property_Tile\property_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral_Tile\_neutral_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Entity\entity_update_cb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Entity\entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Neutral\_neutral_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Neutral\neutral_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Property\_property_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Entity\Tile\Property\property_tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

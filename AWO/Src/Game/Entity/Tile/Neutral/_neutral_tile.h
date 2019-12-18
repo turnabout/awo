@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game/Entity/Tile/Neutral_Tile/neutral_tile.h"
+#include "Game/Entity/Tile/Neutral/neutral_tile.h"
 
 /*! Tiles update callbacks.
  */

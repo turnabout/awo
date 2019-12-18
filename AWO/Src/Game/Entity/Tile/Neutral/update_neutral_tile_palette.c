@@ -1,5 +1,5 @@
 #include "Game/Data/Palette/game_palette.h"
-#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile.h"
+#include "Game/Entity/Tile/Neutral/_neutral_tile.h"
 
 void update_tile_palette(Game_Renderer* renderer, void* tile, Bool fog)
 {
