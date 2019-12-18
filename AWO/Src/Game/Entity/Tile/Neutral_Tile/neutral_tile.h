@@ -12,7 +12,7 @@ typedef struct Neutral_Tile {
     Tile_Type type;
 
     // Callback function used to update this tile's corresponding render grid pixels.
-    update_entity_render_grid_cb update_render_grid;
+    update_entity_render_grid_cb update_grid;
 
     // Function called when this tile's fog status updates.
     update_entity_palette_cb update_palette;

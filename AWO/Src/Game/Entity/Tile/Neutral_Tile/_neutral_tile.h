@@ -28,8 +28,8 @@ void update_tall_tile_palette(Game_Renderer* renderer, void* tile, Bool fog);
 /*! @brief Deletes a property.
  */
 void delete_neutral_tile(
-    Game_Renderer* game_renderer,
-    void* tile,
-    Game_Clock* game_clock,
-    Tiles_Data* tiles_data
+    Game_Renderer* renderer, 
+    Game_Clock* game_clock, 
+    void* tile, 
+    void* tiles_data
 );

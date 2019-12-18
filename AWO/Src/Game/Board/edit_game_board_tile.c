@@ -31,7 +31,7 @@ void edit_game_board_property_tile(
     unregister_game_board_player_property(game_board, property);
 
     // Update the property's player index & register it with its new player owner's list
-    update_property_owner(game_board->tiles_data, property, game_board->players[new_index]);
+    update_property_owner(property, game_board->tiles_data, game_board->players[new_index]);
     register_game_board_player_property(game_board, property);
 }
 
@@ -73,7 +73,7 @@ void edit_game_board_tile(
     }
 
     // New tile type, delete the old tile and replace with a new one
-    tile->delete(game_board->game_renderer, tile, game_clock, game_board->tiles_data);
+    tile->delete(game_board->game_renderer, game_clock, (void*)tile, (void*)game_board->tiles_data);
 
     add_game_board_tile(
         game_board,

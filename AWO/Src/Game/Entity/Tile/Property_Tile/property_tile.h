@@ -13,7 +13,7 @@ typedef struct Property_Tile {
     Tile_Type type;
 
     // Function called to update this property's corresponding render grid pixels.
-    update_entity_render_grid_cb update_render_grid;
+    update_entity_render_grid_cb update_grid;
 
     // Function called to update this property's palette.
     update_entity_palette_cb update_palette;

@@ -16,7 +16,7 @@ typedef struct Tile {
     update_entity_render_grid_cb update_grid;
 
     // Function called when this tile's fog status updates.
-    update_entity_palette_cb update_fog;
+    update_entity_palette_cb update_palette;
 
     // Function called to delete this tile.
     delete_entity_cb delete;

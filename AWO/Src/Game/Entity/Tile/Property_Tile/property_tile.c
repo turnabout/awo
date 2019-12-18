@@ -26,10 +26,10 @@ Property_Tile* create_property_tile(
         register_game_clock_tile(game_clock, (Tile*)property, Base_Smoke_Clock, Base_Smoke_Sub_Clock);
         gather_tile_data(tiles_data, Base_Smoke, Default, NULL, NULL, &property->base_smoke);
 
-        property->update_render_grid = update_base_render_grid;
+        property->update_grid = update_base_render_grid;
         property->update_palette = update_base_palette;
     } else {
-        property->update_render_grid = update_property_render_grid;
+        property->update_grid = update_property_render_grid;
         property->update_palette = update_property_palette;
     }
 

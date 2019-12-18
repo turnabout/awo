@@ -3,7 +3,7 @@
 
 void re_render_player_properties(void* property, void* game_renderer)
 {
-    ((Property_Tile*)property)->update_render_grid((Game_Renderer*)game_renderer, property, 0);
+    ((Property_Tile*)property)->update_grid((Game_Renderer*)game_renderer, property, 0);
 }
 
 void update_game_board_weather(Game_Board* game_board, Weather weather)
