@@ -70,6 +70,9 @@ Game* init_game(int window_width, int window_height)
     init_keyboard_module(game->window);
     game->mouse_state = init_mouse_module(game->window);
 
+    // Initialize the pointer going over hovered tiles
+    game->pointer = create_game_pointer(game->UI_data);
+
     // Load the level
     Stage* stage = game->stages[1];
     stage = generate_filled_stage(Sea, Middle, 255, 255);
