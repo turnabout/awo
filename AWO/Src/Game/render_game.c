@@ -82,6 +82,8 @@ void render_game(Game* game)
         flag = 1;
     }
 
+
+
     // begin_sprite_batch(sb);
     // add_to_sprite_batch__test_palette(sb);
     // add_to_sprite_batch(sb, (vec2) { 25.0, 25.0 }, frame, 17);
@@ -96,7 +98,12 @@ void render_game(Game* game)
     );
 
     */
-    render_game_renderer(game->renderer);
+
+    render_game_renderer_grids(game->renderer);
+
+    queue_extra(game->renderer, (vec2) { 0.0, 0.0 }, frame);
+    render_extras(game->renderer);
+
 
     /*
     if (get_key_state(KEY_A) == BUTTON_DOWN_START) {

@@ -18,7 +18,7 @@ Extras_Renderer* create_extras_renderer(GLuint sprite_sheet);
 void update_extras_renderer_view(Extras_Renderer* renderer, int x, int y, float zoom);
 void update_extras_renderer_projection(Extras_Renderer* renderer, mat4 projection);
 
-void queue_extra_render(Extras_Renderer* renderer, vec2 dst, Frame* frame);
-void render_extras(Extras_Renderer* renderer);
+void queue_extra_renderer_extra(Extras_Renderer* renderer, vec2 dst, Frame* frame);
+void render_queued_extra_renderer_extras(Extras_Renderer* renderer);
 
 void free_extras_renderer(Extras_Renderer* renderer);

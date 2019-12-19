@@ -5,12 +5,12 @@
 
 Bool init_game_renderer_shader_programs(Game_Renderer* renderer)
 {
-    renderer->tiles_shader_program = create_shader_program(
+    renderer->tiles_shader = create_shader_program(
         VERTEX_SHADER_PATH(TILES_SHADER),
         FRAGMENT_SHADER_PATH(TILES_SHADER)
     );
 
-    if (!renderer->tiles_shader_program) {
+    if (!renderer->tiles_shader) {
         return FALSE;
     }
 
@@ -26,28 +26,28 @@ void init_game_renderer_uniforms(
 )
 {
     // Initialize tiles shader uniform
-    glUseProgram(renderer->tiles_shader_program);
-    glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "sprite_sheet"), 0);
-    glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "palettes_texture"), 1);
-    glUniform1i(glGetUniformLocation(renderer->tiles_shader_program, "tiles_texture"), 2);
+    glUseProgram(renderer->tiles_shader);
+    glUniform1i(glGetUniformLocation(renderer->tiles_shader, "sprite_sheet"), 0);
+    glUniform1i(glGetUniformLocation(renderer->tiles_shader, "palettes_texture"), 1);
+    glUniform1i(glGetUniformLocation(renderer->tiles_shader, "tiles_texture"), 2);
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader_program, "sprite_sheet_width"), 
+        glGetUniformLocation(renderer->tiles_shader, "sprite_sheet_width"), 
         (GLfloat)ss_width
     );
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader_program, "sprite_sheet_height"), 
+        glGetUniformLocation(renderer->tiles_shader, "sprite_sheet_height"), 
         (GLfloat)ss_height
     );
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader_program, "quad_width"), 
+        glGetUniformLocation(renderer->tiles_shader, "quad_width"), 
         (GLfloat)(grid_width * DEFAULT_TILE_SIZE)
     );
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader_program, "quad_height"), 
+        glGetUniformLocation(renderer->tiles_shader, "quad_height"), 
         (GLfloat)(grid_height * DEFAULT_TILE_SIZE)
     );
 }
@@ -64,7 +64,7 @@ void init_game_renderer_grid(
         grid_width, 
         grid_height, 
         y_offset,
-        renderer->tiles_shader_program
+        renderer->tiles_shader
     );
 
     // Initially fill grid with empty tile

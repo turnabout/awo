@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "conf.h"
 #include "Utilities/macros.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Game/Renderer/Extras_Renderer/extras_renderer.h"
@@ -46,17 +47,22 @@ Extras_Renderer* create_extras_renderer(GLuint sprite_sheet)
 void update_extras_renderer_view(Extras_Renderer* renderer, int x, int y, float zoom)
 {
     // Update tiles shader's view matrix
-    mat4 tiles_shader_view;
+    mat4 view;
 
     glm_translate_to(
         identity,
         (vec3) { (float)x, (float)y, 0.0f },
-        tiles_shader_view
+        view
     );
 
+    // The zoom this function receives is the zoom applied to the game renderer's grids.
+    // The zoom that should be applied to extras is different: an x16 (x DEFAULT_TILE_SIZE) zoom 
+    // applied to grids is the equivalent of an x1 zoom applied to extra elements.
+    float real_zoom = zoom / (float)DEFAULT_TILE_SIZE;
+
     glm_scale(
-        tiles_shader_view,
-        (vec3) { zoom, zoom, 1.0f }
+        view,
+        (vec3) { real_zoom, real_zoom, 1.0f }
     );
 
     glUseProgram(renderer->shader);
@@ -65,7 +71,7 @@ void update_extras_renderer_view(Extras_Renderer* renderer, int x, int y, float 
         glGetUniformLocation(renderer->shader, "view"), 
         1, 
         GL_FALSE, 
-        tiles_shader_view[0]
+        view[0]
     );
 }
 
@@ -81,7 +87,7 @@ void update_extras_renderer_projection(Extras_Renderer* renderer, mat4 projectio
     );
 }
 
-void queue_extra_render(Extras_Renderer* renderer, vec2 dst, Frame* frame)
+void queue_extra_renderer_extra(Extras_Renderer* renderer, vec2 dst, Frame* frame)
 {
     if (!renderer->extra_queued) {
         renderer->extra_queued = TRUE;
@@ -91,7 +97,7 @@ void queue_extra_render(Extras_Renderer* renderer, vec2 dst, Frame* frame)
     add_to_sprite_batch(renderer->sprite_batch, dst, frame, 0);
 }
 
-void render_extras(Extras_Renderer* renderer)
+void render_queued_extra_renderer_extras(Extras_Renderer* renderer)
 {
     if (renderer->extra_queued) {
         end_sprite_batch(renderer->sprite_batch);

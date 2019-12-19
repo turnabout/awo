@@ -10,7 +10,7 @@ struct Game_Renderer {
     int sprite_sheet_width, sprite_sheet_height;
 
     // Tile shader program.
-    GLuint tiles_shader_program;
+    GLuint tiles_shader;
 
     // Texture containing the game's raw sprite sheet.
     GLuint sprite_sheet_texture;

@@ -46,7 +46,7 @@ Game_Renderer* create_game_renderer(
 
 /*! @brief Renders the game renderer's contents.
  */
-void render_game_renderer(Game_Renderer* renderer);
+void render_game_renderer_grids(Game_Renderer* renderer);
 
 /*! @brief Update the game renderer's view matrices using the given view coordinates.
  *
@@ -93,6 +93,9 @@ void clear_tile_layers_pixel(Game_Renderer* renderer, Uint8 x, Uint8 y);
 void update_tile_layer_pixel(Game_Renderer* renderer, Tile_Layer_Index layer, Uint8 x, Uint8 y, vec4 value);
 void update_tile_layer_pixel_high(Game_Renderer* renderer, Tile_Layer_Index layer, Uint8 x, Uint8 y, vec2 value);
 void update_tile_layer_pixel_low(Game_Renderer* renderer, Tile_Layer_Index layer, Uint8 x, Uint8 y, vec2 value);
+
+void queue_extra(Game_Renderer* renderer, vec2 dst, Frame* frame);
+void render_extras(Game_Renderer* renderer);
 
 /*! @brief Frees the memory occupied by the game renderer.
  *

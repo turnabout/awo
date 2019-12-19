@@ -24,18 +24,19 @@ void update_game_renderer_view_matrices(
         (vec3) { view_zoom, view_zoom, 1.0f }
     );
 
-    glUseProgram(renderer->tiles_shader_program);
+    glUseProgram(renderer->tiles_shader);
 
     glUniformMatrix4fv(
-        glGetUniformLocation(renderer->tiles_shader_program, "view"), 
+        glGetUniformLocation(renderer->tiles_shader, "view"), 
         1, 
         GL_FALSE, 
         tiles_shader_view[0]
     );
 
     // TODO: update units shader's view matrix
+
     // Update extras renderer's view matrix
-    // update_extras_renderer_view(renderer->ex, int x, int y, float zoom)
+    update_extras_renderer_view(renderer->extras_renderer, view_x, view_y, view_zoom);
 }
 
 void update_game_renderer_projection_matrices(Game_Renderer* renderer, int window_w, int window_h)
@@ -45,10 +46,10 @@ void update_game_renderer_projection_matrices(Game_Renderer* renderer, int windo
 
     glm_ortho(0.0f, (float)window_w, (float)window_h, 0.0f, -1.0f, 1.0f, projection);
 
-    glUseProgram(renderer->tiles_shader_program);
+    glUseProgram(renderer->tiles_shader);
 
     glUniformMatrix4fv(
-        glGetUniformLocation(renderer->tiles_shader_program, "projection"), 
+        glGetUniformLocation(renderer->tiles_shader, "projection"), 
         1, 
         GL_FALSE, 
         projection[0]
