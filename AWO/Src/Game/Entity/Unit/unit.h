@@ -1,22 +1,56 @@
-/*
 #pragma once
 
-#include <SDL.h>
 #include "Game/Clock/game_clock.h"
-#include "Visuals/Data/Units/units_data.h"
+#include "Game/Data/Animation/animation.h"
+#include "Game/Data/Unit/units_data.h"
+#include "Game/Entity/entity_update_cb.h"
+#include "Game/Player/player.h"
 
-// An in-game unit.
-typedef struct Unit Unit;
+/*! @brief A player-owned and player-controlled unit.
+ */
+typedef struct Unit {
 
-// Create a unit entity.
-Unit* unit_create(Game_Clock* gc, Units_Data* ud, SDL_Texture* src_texture, Unit_Type ut);
+    // `Entity` members
+    // Coordinates of this tile within the game board.
+    Uint8 x, y;
 
-// Update a unit.
-void unit_update(Unit* u);
+    // Function called when this tile's animation updates.
+    update_entity_render_grid_cb update_grid;
 
-// Draw a unit.
-void unit_draw(Unit* u, SDL_Renderer* rend);
+    // Function called when this tile's fog status updates.
+    update_entity_palette_cb update_palette;
 
-// Free a unit's allocated memory.
-void unit_free(Unit* u);
-*/
+    // Function called to delete this unit.
+    delete_entity_cb delete;
+
+
+    // `Unit` members
+    // This unit's type.
+    Unit_Type type;
+
+    // This unit's player owner.
+    Player* player;
+
+    // This unit's idle animation.
+    Animation* idle_animation;
+
+} Unit;
+
+/*! @brief Creates a unit.
+ *
+ *  @param[in] game_clock The game's clock module.
+ *  @param[in] units_data The units data object.
+ *  @param[in] type The type of the created unit.
+ *  @param[in] player The player who owns and controls this unit.
+ *  @param[in] x The x coordinate of this unit within the game board.
+ *  @param[in] y The y coordinate of this unit within the game board.
+ *  @return The created unit.
+ */
+Unit* create_unit(
+    Game_Clock* game_clock,
+    Units_Data* units_data,
+    Unit_Type type,
+    Player* player,
+    Uint8 x,
+    Uint8 y
+);

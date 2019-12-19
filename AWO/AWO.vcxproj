@@ -79,6 +79,10 @@
     <ClCompile Include="Src\Game\Entity\Tile\Property\update_property_tile_palette.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property\property_tile.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Property\update_property_tile_grid.c" />
+    <ClCompile Include="Src\Game\Entity\Unit\delete_unit.c" />
+    <ClCompile Include="Src\Game\Entity\Unit\unit.c" />
+    <ClCompile Include="Src\Game\Entity\Unit\update_unit_grid.c" />
+    <ClCompile Include="Src\Game\Entity\Unit\update_unit_palette.c" />
     <ClCompile Include="Src\Game\Inputs\Keyboard\keyboard.c" />
     <ClCompile Include="Src\Game\Inputs\Mouse\mouse.c" />
     <ClCompile Include="Src\Game\Player\CO\CO.c" />
@@ -201,6 +205,8 @@
     <ClInclude Include="Src\Game\Entity\Tile\tile.h" />
     <ClInclude Include="Src\Game\Clock\Subscribers\Tiles\_game_clock_tile_subscriber.h" />
     <ClInclude Include="Src\Game\Entity\entity_update_cb.h" />
+    <ClInclude Include="Src\Game\Entity\Unit\unit.h" />
+    <ClInclude Include="Src\Game\Entity\Unit\_unit.h" />
     <ClInclude Include="Src\Game\game.h" />
     <ClInclude Include="Src\Game\Inputs\button_state.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />

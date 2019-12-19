@@ -1,4 +1,4 @@
-#include "Game/Entity/Tile/Neutral_Tile/_neutral_tile.h"
+#include "Game/Entity/Tile/Neutral/_neutral_tile.h"
 
 void delete_neutral_tile(
     Game_Renderer* game_renderer,

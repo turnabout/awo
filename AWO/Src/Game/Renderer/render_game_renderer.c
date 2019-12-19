@@ -24,7 +24,6 @@ void render_game_renderer_grids(Game_Renderer* renderer)
 
     update_grid_shader_view_matrix(renderer, renderer->tiles_view[0]);
 
-
     render_r_grid(renderer->grid_layers[TILE_LAYER_0]);
     render_r_grid(renderer->grid_layers[TILE_LAYER_1]);
 
