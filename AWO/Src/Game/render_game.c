@@ -103,9 +103,9 @@ void render_game(Game* game)
     render_game_renderer_grids(game->renderer);
 
     // Queue extras for render
-    // render_pointer(game->pointer, game->renderer);
     // queue_extra(game->renderer, (vec2) { 85.0, 0.0 }, frame);
 
+    render_game_pointer(game->pointer, game->renderer);
     render_extras(game->renderer);
 
 

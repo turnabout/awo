@@ -30,8 +30,3 @@ Bool get_subject_tile_by_coordinates(
 
     return TRUE;
 }
-
-void get_subject_pixel_dimensions(Game_Camera* camera, int* subject_pixel_w, int* subject_pixel_h)
-{
-
-}

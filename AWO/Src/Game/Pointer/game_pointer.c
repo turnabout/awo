@@ -11,7 +11,13 @@ struct Game_Pointer {
     Bool hidden;
 
     // Current pixel coordinates of the pointer.
-    int x, y;
+    vec2 dst;
+
+    // Board coordinates of the currently hovered tile.
+    int tile_x, tile_y;
+
+    // Amount of pixels to offset the pointer position so it's centered around a tile.
+    int center_offset_px;
 };
 
 Game_Pointer* create_game_pointer(UI_Data* ui_data)
@@ -19,7 +25,12 @@ Game_Pointer* create_game_pointer(UI_Data* ui_data)
     Game_Pointer* pointer = malloc(sizeof(Game_Pointer));
 
     pointer->animation = get_UI_element_frames(ui_data, TileCursor);
-    pointer->hidden = FALSE;
+    pointer->hidden = TRUE;
+    pointer->tile_x = pointer->tile_y = -1;
+
+    // Calculate the pointer adjustment
+    int diff = pointer->animation->frames[0].width - DEFAULT_TILE_SIZE;
+    pointer->center_offset_px = diff / 2;
 
     return pointer;
 }
@@ -40,9 +51,17 @@ void update_pointer(Game_Pointer* pointer, Mouse_State* mouse, Game_Camera* came
         return;
     }
 
-    // Mouse is hovering a tile - get the absolute coordinates where we should render the pointer
-    // int board_pixel_w, board_pixel_h;
-    // get_subject_pixel_dimensions(camera, &board_pixel_w, &board_pixel_h);
+    // Exit early if the hovered tile hasn't changed
+    if (tile_x == pointer->tile_x && tile_y == pointer->tile_y) {
+        return;
+    }
+
+    pointer->tile_x = tile_x;
+    pointer->tile_y = tile_y;
+
+    // Set the absolute coordinates to render the pointer, centered around the tile
+    pointer->dst[0] = (float)((DEFAULT_TILE_SIZE * tile_x) - pointer->center_offset_px);
+    pointer->dst[1] = (float)((DEFAULT_TILE_SIZE * tile_y) - pointer->center_offset_px);
 
     pointer->hidden = FALSE;
 }
@@ -54,7 +73,9 @@ void hide_game_pointer(Game_Pointer* pointer)
 
 void render_game_pointer(Game_Pointer* pointer, Game_Renderer* renderer)
 {
-    // queue_extra(game->renderer, (vec2) { 85.0, 0.0 }, frame);
+    if (!pointer->hidden) {
+        queue_extra(renderer, pointer->dst, &pointer->animation->frames[0]);
+    }
 }
 
 void free_game_pointer(Game_Pointer* pointer)
