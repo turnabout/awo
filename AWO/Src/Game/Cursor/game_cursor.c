@@ -14,7 +14,7 @@ struct Game_Cursor {
     vec2 dst;
 
     // Board coordinates of the currently hovered tile.
-    int tile_x, tile_y;
+    int hovered_tile_x, hovered_tile_y;
 
     // Amount of pixels to offset the pointer position so it's centered around a tile.
     int center_offset_px;
@@ -26,7 +26,7 @@ Game_Cursor* create_game_cursor(UI_Data* ui_data)
 
     pointer->animation = get_UI_element_frames(ui_data, TileCursor);
     pointer->hidden = TRUE;
-    pointer->tile_x = pointer->tile_y = -1;
+    pointer->hovered_tile_x = pointer->hovered_tile_y = -1;
 
     // Calculate the pointer adjustment
     int diff = pointer->animation->frames[0].width - DEFAULT_TILE_SIZE;
@@ -47,17 +47,18 @@ void update_cursor(Game_Cursor* pointer, Mouse_State* mouse, Game_Camera* camera
         &tile_x,
         &tile_y
     )) {
+        pointer->hovered_tile_x = pointer->hovered_tile_y = -1;
         pointer->hidden = TRUE;
         return;
     }
 
     // Exit early if the hovered tile hasn't changed
-    if (tile_x == pointer->tile_x && tile_y == pointer->tile_y) {
+    if (tile_x == pointer->hovered_tile_x && tile_y == pointer->hovered_tile_y) {
         return;
     }
 
-    pointer->tile_x = tile_x;
-    pointer->tile_y = tile_y;
+    pointer->hovered_tile_x = tile_x;
+    pointer->hovered_tile_y = tile_y;
 
     // Set the absolute coordinates to render the pointer, centered around the tile
     pointer->dst[0] = (float)((DEFAULT_TILE_SIZE * tile_x) - pointer->center_offset_px);
