@@ -14,8 +14,19 @@ typedef struct Units_Data Units_Data;
 // Creates units data object from JSON.
 Units_Data* create_units_data(cJSON* units_data_JSON, int ss_width, int ss_height);
 
-// Gets the source animations data for a unit type & variation.
-Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Army_Type variation);
+/*! @brief Gets the animation for a unit type and variation.
+ *
+ *  @param[in] units_data The units data module.
+ *  @param[in] type The type of the unit.
+ *  @param[in] variation The variation of the unit.
+ *  @param[in] animation The unit animation to get.
+ */
+Animation* get_unit_animation(
+    Units_Data* units_data,
+    Unit_Type type,
+    Army_Type variation,
+    Unit_Anim animation
+);
 
 // Frees all memory occupied by units data.
 void free_units_data(Units_Data* units_data);

@@ -3,14 +3,19 @@
 
 #include "Game/Data/Unit/_units_data.h"
 
-Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Army_Type variation)
+Animation* get_unit_animation(
+    Units_Data* units_data,
+    Unit_Type type,
+    Army_Type variation,
+    Unit_Anim animation
+)
 {
     // If variation doesn't exist on unit type, return data for default variation instead
     Army_Type returned_var = (variation < units_data->src[type]->variations_count)
         ? variation
         : ARMY_TYPE_FIRST;
 
-    return units_data->src[type]->variations[returned_var];
+    return units_data->src[type]->variations[returned_var][animation];
 }
 
 void free_units_data(Units_Data* units_data)

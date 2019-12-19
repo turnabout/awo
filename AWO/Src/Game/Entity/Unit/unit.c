@@ -13,10 +13,18 @@ Unit* create_unit(
 {
     Unit* unit = malloc(sizeof(Unit));
 
-    // Gather data on this unit
-    // Animation** get_unit_animations(Units_Data* units_data, Unit_Type type, Army_Type variation)
-
+    // Set unit data
+    unit->x = x;
+    unit->y = y;
     unit->type = type;
+    unit->player = player;
+
+    unit->idle_animation = get_unit_animation(
+        units_data,
+        type,
+        player->CO->army,
+        Idle
+    );
 
     // Set callbacks
     unit->update_grid = update_unit_render_grid;
