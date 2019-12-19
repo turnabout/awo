@@ -86,11 +86,22 @@ void init_game_renderer_grid(
     );
 }
 
-void init_game_renderer_grids(Game_Renderer* renderer, int grid_width, int grid_height)
+void init_game_renderer_grids(
+    Game_Renderer* renderer, 
+    int grid_width, 
+    int grid_height, 
+    int ss_width, 
+    int ss_height
+)
 {
-    // Set tile grids
+    // Tile grids
     init_game_renderer_grid(renderer, grid_width, grid_height, TILE_LAYER_0, 0);
     init_game_renderer_grid(renderer, grid_width, grid_height, TILE_LAYER_1, 1);
+    init_grid_shader_uniforms(renderer->tiles_shader, grid_width, grid_height, ss_width, ss_height);
+
+    // Unit grids
+    init_game_renderer_grid(renderer, grid_width, grid_height, UNIT_LAYER, 2);
+    init_grid_shader_uniforms(renderer->units_shader, grid_width, grid_height, ss_width, ss_height);
 }
 
 Game_Renderer* create_game_renderer(
@@ -107,27 +118,23 @@ Game_Renderer* create_game_renderer(
     renderer->game_palette_texture = game_palette_texture;
     gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &renderer->empty_tile_frame);
 
-    // Initialize shaders managed by the game renderer itself
+    // Shaders managed by the game renderer itself
     if (!init_game_renderer_shader_programs(renderer)) {
         free(renderer);
         return NULL;
     }
 
-    // Initialize sprite sheet texture
+    // Sprite sheet texture
     int ss_width, ss_height;
     renderer->sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH, &ss_width, &ss_height);
 
-    // Initialize uniforms for shaders managed by the game renderer
-    init_grid_shader_uniforms(renderer->tiles_shader, grid_width, grid_height, ss_width, ss_height);
-    init_grid_shader_uniforms(renderer->units_shader, grid_width, grid_height, ss_width, ss_height);
+    // Render grids
+    init_game_renderer_grids(renderer, grid_width, grid_height, ss_width, ss_height);
 
-    // Initialize render grids
-    init_game_renderer_grids(renderer, grid_width, grid_height);
-
-    // Initialize extras renderer
+    // Extras renderer
     renderer->extras_renderer = create_extras_renderer(renderer->sprite_sheet_texture);
 
-    // Initialize the projection matrices
+    // Projection matrices
     update_game_renderer_projection_matrices(renderer, window_width, window_height);
 
     return renderer;
