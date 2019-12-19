@@ -4,6 +4,8 @@
 #include "Game/Player/player.h"
 #include "Game/Inputs/inputs.h"
 
+PRAGMA( warning(disable: 6001) )
+
 Game_Board* create_game_board(
     Game_Clock* game_clock,
     Game_Renderer* game_renderer,
@@ -65,12 +67,40 @@ void update_game_board(Game_Board* game_board)
 
 void free_game_board(Game_Board* game_board)
 {
-    if (game_board != NULL) {
+    if (game_board == NULL) {
+        return;
+    }
+
+    // Free tiles grid
+    if (game_board->tiles_grid != NULL) {
         for (int i = 0; i < game_board->stage->height; i++) {
-            free(game_board->tiles_grid[i]);
+            if (game_board->tiles_grid[i] != NULL) {
+                free(game_board->tiles_grid[i]);
+            }
         }
 
         free(game_board->tiles_grid);
-        free(game_board);
     }
+
+    // Free units grid
+    if (game_board->units_grid != NULL) {
+        for (int i = 0; i < game_board->stage->height; i++) {
+            if (game_board->units_grid[i] != NULL) {
+                free(game_board->units_grid[i]);
+            }
+        }
+
+        free(game_board->units_grid);
+    }
+
+    // Free players & player-owned lists
+    for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
+        free_player(game_board->players[i]);
+        free_linked_list(game_board->player_properties[i]);
+    }
+
+    // Free neutral properties list
+    free_linked_list(game_board->player_properties[MAX_PLAYER_COUNT]);
+
+    free(game_board);
 }
