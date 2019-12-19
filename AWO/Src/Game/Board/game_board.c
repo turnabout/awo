@@ -33,7 +33,9 @@ Game_Board* create_game_board(
             player_COs[i]
         );
 
+        // Set player lists
         game_board->player_properties[i] = create_linked_list(NULL, 0);
+        game_board->player_units[i] = create_linked_list(NULL, 0);
     }
 
     // Set neutral player, for holding neutral properties
@@ -97,6 +99,11 @@ void free_game_board(Game_Board* game_board)
     for (int i = 0; i < MAX_PLAYER_COUNT; i++) {
         free_player(game_board->players[i]);
         free_linked_list(game_board->player_properties[i]);
+
+        // No "neutral" player units list
+        if (i != MAX_PLAYER_COUNT) {
+            free_linked_list(game_board->player_units[i]);
+        }
     }
 
     // Free neutral properties list

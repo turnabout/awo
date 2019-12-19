@@ -37,6 +37,9 @@ struct Game_Board {
     // Lists of properties belonging to each player. ( + 1 for neutral player )
     Linked_List* player_properties[MAX_PLAYER_COUNT + 1];
 
+    // Lists of units belonging to each player.
+    Linked_List* player_units[MAX_PLAYER_COUNT];
+
     // Currently active weather.
     Weather weather;
 
@@ -86,16 +89,30 @@ void add_game_board_tile(
 /*! @brief Registers a property with a player.
  *
  *  @param[in] game_board The game board module.
- *  @param[in] property Pointer to the property to register.
+ *  @param[in] property Property to register.
  */
 void register_game_board_player_property(Game_Board* game_board, Property_Tile* property);
 
 /*! @brief Unregisters a property with a player.
  *
  *  @param[in] game_board The game board module.
- *  @param[in] property Pointer to the property to unregister.
+ *  @param[in] property Property to unregister.
  */
 void unregister_game_board_player_property(Game_Board* game_board, Property_Tile* property);
+
+/*! @brief Registers a unit with a player.
+ *
+ *  @param[in] game_board The game board module.
+ *  @param[in] property Property to register.
+ */
+void register_game_board_player_unit(Game_Board* game_board, Unit* unit);
+
+/*! @brief Unregisters a unit with a player.
+ *
+ *  @param[in] game_board The game board module.
+ *  @param[in] property Unit to unregister.
+ */
+void unregister_game_board_player_unit(Game_Board* game_board, Unit* unit);
 
 /*! @brief Updates the currently active weather.
  *

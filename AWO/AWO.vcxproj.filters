@@ -210,9 +210,6 @@
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Board\player_properties.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_properties_weather_colors.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -364,6 +361,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Entity\Unit\delete_unit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Board\player_unit_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Board\player_property_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
