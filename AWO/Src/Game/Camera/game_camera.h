@@ -36,6 +36,9 @@ Bool get_subject_tile_by_coordinates(
     int* relative_y
 );
 
+// Gets the current pixel dimensions of the camera's subject.
+void get_subject_pixel_dimensions(Game_Camera* camera, int* subject_pixel_w, int* subject_pixel_h);
+
 Bool update_camera_mouse_pan_mode(Game_Camera* camera, Mouse_State* mouse_state);
 
 void free_game_camera(Game_Camera* camera);
