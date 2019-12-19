@@ -4,7 +4,7 @@ GLuint get_render_grid_VAO(
     GLuint width, 
     GLuint height, 
     GLuint vertical_offset, 
-    GLuint tiles_shader
+    GLuint shader
 )
 {
     size_t stride = 4 * sizeof(GLfloat);
@@ -64,8 +64,8 @@ GLuint get_render_grid_VAO(
 
     glBufferData(GL_ARRAY_BUFFER, quad_size, quad_vertices, GL_DYNAMIC_DRAW);
 
-    GLint pos_attr_location = glGetAttribLocation(tiles_shader, "aPos");
-    GLint tex_coords_attr_location = glGetAttribLocation(tiles_shader, "aTexCoords");
+    GLint pos_attr_location = glGetAttribLocation(shader, "aPos");
+    GLint tex_coords_attr_location = glGetAttribLocation(shader, "aTexCoords");
 
     glVertexAttribPointer(pos_attr_location, 2, GL_FLOAT, GL_FALSE, stride, (void*)(0 * sizeof(GLfloat)));
     glEnableVertexAttribArray(pos_attr_location);

@@ -2,7 +2,7 @@
 
 void clear_tile_layers_pixel(Game_Renderer* renderer, Uint8 x, Uint8 y)
 {
-    for (int i = 0; i < TILE_LAYER_TYPE_COUNT; i++) {
+    for (int i = 0; i < TILE_LAYER_COUNT; i++) {
         update_render_grid_pixel_low(
             renderer->grid_layers[i],
             x,

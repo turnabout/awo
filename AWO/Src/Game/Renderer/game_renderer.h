@@ -23,7 +23,9 @@ typedef enum Tile_Layer_Index {
     UNIT_STATUS_LAYER,
 } Tile_Layer_Index;
 
-#define TILE_LAYER_TYPE_COUNT TILE_LAYER_1 + 1 // TODO: change when we add unit layers
+#define TILE_LAYER_COUNT 2
+#define UNIT_LAYER_COUNT 1 // TODO: update when we add unit metadata layers
+#define GRID_LAYER_COUNT TILE_LAYER_COUNT + UNIT_LAYER_COUNT
 
 /*! @brief Initializes the game's renderer module.
  *
