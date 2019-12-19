@@ -39,6 +39,7 @@ void free_game_renderer(Game_Renderer* renderer)
         free_render_grid(renderer->grid_layers[TILE_LAYER_1]);
 
         // Free extras renderer
+        free_extras_renderer(renderer->extras_renderer);
 
         free(renderer);
     }
