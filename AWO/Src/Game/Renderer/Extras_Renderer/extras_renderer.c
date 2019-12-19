@@ -43,11 +43,45 @@ Extras_Renderer* create_extras_renderer(GLuint sprite_sheet)
     return renderer;
 }
 
-void update_extras_renderer_matrices(Extras_Renderer* renderer, mat4 matrix)
+void update_extras_renderer_view(Extras_Renderer* renderer, int x, int y, float zoom)
 {
+    // Update tiles shader's view matrix
+    mat4 tiles_shader_view;
+
+    glm_translate_to(
+        identity,
+        (vec3) { (float)x, (float)y, 0.0f },
+        tiles_shader_view
+    );
+
+    glm_scale(
+        tiles_shader_view,
+        (vec3) { zoom, zoom, 1.0f }
+    );
+
+    glUseProgram(renderer->shader);
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(renderer->shader, "view"), 
+        1, 
+        GL_FALSE, 
+        tiles_shader_view[0]
+    );
 }
 
-void queue_extra_item_render(Extras_Renderer* renderer, vec2 dst, Frame* frame)
+void update_extras_renderer_projection(Extras_Renderer* renderer, mat4 projection)
+{
+    glUseProgram(renderer->shader);
+
+    glUniformMatrix4fv(
+        glGetUniformLocation(renderer->shader, "projection"), 
+        1, 
+        GL_FALSE, 
+        projection[0]
+    );
+}
+
+void queue_extra_render(Extras_Renderer* renderer, vec2 dst, Frame* frame)
 {
     if (!renderer->extra_queued) {
         renderer->extra_queued = TRUE;
@@ -57,7 +91,7 @@ void queue_extra_item_render(Extras_Renderer* renderer, vec2 dst, Frame* frame)
     add_to_sprite_batch(renderer->sprite_batch, dst, frame, 0);
 }
 
-void render_queued_extra_items(Extras_Renderer* renderer)
+void render_extras(Extras_Renderer* renderer)
 {
     if (renderer->extra_queued) {
         end_sprite_batch(renderer->sprite_batch);

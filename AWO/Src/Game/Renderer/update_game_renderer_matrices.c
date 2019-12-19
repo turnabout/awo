@@ -1,5 +1,6 @@
 #include "Game/Renderer/_game_renderer.h"
 
+// Identity matrix reference
 static mat4 identity = GLM_MAT4_IDENTITY_INIT;
 
 void update_game_renderer_view_matrices(
@@ -33,7 +34,8 @@ void update_game_renderer_view_matrices(
     );
 
     // TODO: update units shader's view matrix
-    // TODO: update extras renderer's view matrix
+    // Update extras renderer's view matrix
+    // update_extras_renderer_view(renderer->ex, int x, int y, float zoom)
 }
 
 void update_game_renderer_projection_matrices(Game_Renderer* renderer, int window_w, int window_h)
@@ -51,4 +53,9 @@ void update_game_renderer_projection_matrices(Game_Renderer* renderer, int windo
         GL_FALSE, 
         projection[0]
     );
+
+    // TODO: update units shader's projection matrix
+
+    // Update extras renderer's projection matrix
+    update_extras_renderer_projection(renderer->extras_renderer, projection);
 }

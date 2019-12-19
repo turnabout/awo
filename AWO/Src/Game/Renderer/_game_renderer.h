@@ -2,6 +2,7 @@
 
 #include "Game/Renderer/game_renderer.h"
 #include "Game/Renderer/Render_Grid/render_grid.h"
+#include "Game/Renderer/Extras_Renderer/extras_renderer.h"
 
 struct Game_Renderer {
 
@@ -23,29 +24,6 @@ struct Game_Renderer {
     // Render grid layers, used to render the main entities of the game (tiles, units, etc).
     Render_Grid* grid_layers[TILE_LAYER_TYPE_COUNT];
 
-    // View matrices applied to different render grid layers.
-    mat4 tiles_grid_layers_view, units_grid_layers_view;
-
-    // Projection matrix applied to all rendered elements.
-    mat4 projection;
+    // Module used to render extra elements on top of the grid layers.
+    Extras_Renderer* extras_renderer;
 };
-
-/*! @brief Internally initializes and returns the game renderer.
- *
- *  @param[in] grid_width Initial width of the render grids.
- *  @param[in] grid_height Initial height of the render grids.
- *  @param[in] game_palette_texture Initial palette texture used by the game.
- *  @param[in] tiles_data The tiles data module.
- */
-Game_Renderer* _init_game_renderer(
-    int grid_width,
-    int grid_height,
-    GLuint game_palette_texture,
-    Tiles_Data* tiles_data
-);
-
-/*! @brief Frees the memory occupied by the game renderer.
- *
- *  @param[in] renderer The game renderer module.
- */
-void _free_game_renderer(Game_Renderer* renderer);

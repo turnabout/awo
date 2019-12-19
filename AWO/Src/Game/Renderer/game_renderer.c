@@ -116,7 +116,8 @@ Game_Renderer* create_game_renderer(
     // Initialize render grids
     init_game_renderer_grids(renderer, grid_width, grid_height);
 
-    // TODO: initialize extras renderer
+    // Initialize extras renderer
+    renderer->extras_renderer = create_extras_renderer(renderer->sprite_sheet_texture);
 
     // Initialize the projection matrices
     update_game_renderer_projection_matrices(renderer, window_width, window_height);
