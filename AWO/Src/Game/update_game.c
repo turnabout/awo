@@ -66,9 +66,9 @@ void update_game(Game* game, float delta_time)
     }
 
     if (control_mode == CONTROL_MODE_NORMAL) {
-        update_pointer(game->pointer, game->mouse_state, game->camera);
+        update_cursor(game->pointer, game->mouse_state, game->camera);
         update_game_editor(game->editor, game->camera);
     } else {
-        hide_game_pointer(game->pointer);
+        hide_game_cursor(game->pointer);
     }
 }

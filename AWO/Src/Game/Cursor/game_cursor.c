@@ -1,8 +1,8 @@
 #include <stdlib.h>
 
-#include "Game/Pointer/game_pointer.h"
+#include "Game/Cursor/game_cursor.h"
 
-struct Game_Pointer {
+struct Game_Cursor {
 
     // The pointer's animation.
     Animation* animation;
@@ -20,9 +20,9 @@ struct Game_Pointer {
     int center_offset_px;
 };
 
-Game_Pointer* create_game_pointer(UI_Data* ui_data)
+Game_Cursor* create_game_cursor(UI_Data* ui_data)
 {
-    Game_Pointer* pointer = malloc(sizeof(Game_Pointer));
+    Game_Cursor* pointer = malloc(sizeof(Game_Cursor));
 
     pointer->animation = get_UI_element_frames(ui_data, TileCursor);
     pointer->hidden = TRUE;
@@ -35,7 +35,7 @@ Game_Pointer* create_game_pointer(UI_Data* ui_data)
     return pointer;
 }
 
-void update_pointer(Game_Pointer* pointer, Mouse_State* mouse, Game_Camera* camera)
+void update_cursor(Game_Cursor* pointer, Mouse_State* mouse, Game_Camera* camera)
 {
     int tile_x, tile_y;
 
@@ -66,19 +66,19 @@ void update_pointer(Game_Pointer* pointer, Mouse_State* mouse, Game_Camera* came
     pointer->hidden = FALSE;
 }
 
-void hide_game_pointer(Game_Pointer* pointer)
+void hide_game_cursor(Game_Cursor* pointer)
 {
     pointer->hidden = TRUE;
 }
 
-void render_game_pointer(Game_Pointer* pointer, Game_Renderer* renderer)
+void render_game_cursor(Game_Cursor* pointer, Game_Renderer* renderer)
 {
     if (!pointer->hidden) {
         queue_extra(renderer, pointer->dst, &pointer->animation->frames[0]);
     }
 }
 
-void free_game_pointer(Game_Pointer* pointer)
+void free_game_cursor(Game_Cursor* pointer)
 {
     if (pointer != NULL) {
         free(pointer);

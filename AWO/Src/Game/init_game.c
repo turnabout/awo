@@ -71,7 +71,7 @@ Game* init_game(int window_width, int window_height)
     game->mouse_state = init_mouse_module(game->window);
 
     // Initialize the pointer going over hovered tiles
-    game->pointer = create_game_pointer(game->UI_data);
+    game->pointer = create_game_cursor(game->UI_data);
 
     // Load the level
     Stage* stage = game->stages[1];

@@ -14,7 +14,7 @@ void exit_game(Game* game)
     free_game_renderer(game->renderer);
     free_game_camera(game->camera);
     free_game_board(game->board);
-    free_game_pointer(game->pointer);
+    free_game_cursor(game->pointer);
 
     // Free input modules
     free_keyboard_module();

@@ -83,7 +83,7 @@
     <ClCompile Include="Src\Game\Inputs\Mouse\mouse.c" />
     <ClCompile Include="Src\Game\Player\CO\CO.c" />
     <ClCompile Include="Src\Game\Player\player.c" />
-    <ClCompile Include="Src\Game\Pointer\game_pointer.c" />
+    <ClCompile Include="Src\Game\Cursor\game_cursor.c" />
     <ClCompile Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\render_game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
@@ -209,7 +209,7 @@
     <ClInclude Include="Src\Game\Player\CO\CO.h" />
     <ClInclude Include="Src\Game\Player\player.h" />
     <ClInclude Include="Src\Game\Player\player_index_enum.h" />
-    <ClInclude Include="Src\Game\Pointer\game_pointer.h" />
+    <ClInclude Include="Src\Game\Cursor\game_cursor.h" />
     <ClInclude Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.h" />
     <ClInclude Include="Src\Game\Renderer\game_renderer.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\render_grid.h" />

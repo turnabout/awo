@@ -351,7 +351,7 @@
     <ClCompile Include="Src\Game\Camera\get_camera_subject_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Pointer\game_pointer.c">
+    <ClCompile Include="Src\Game\Cursor\game_cursor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -593,7 +593,7 @@
     <ClInclude Include="Src\Game\Entity\Tile\Property\property_tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Pointer\game_pointer.h">
+    <ClInclude Include="Src\Game\Cursor\game_cursor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

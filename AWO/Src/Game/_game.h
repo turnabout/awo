@@ -13,7 +13,7 @@
 #include "Game/Data/CO/CO_data.h"
 #include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
-#include "Game/Pointer/game_pointer.h"
+#include "Game/Cursor/game_cursor.h"
 #include "Game/Renderer/game_renderer.h"
 
 struct Game {
@@ -55,7 +55,7 @@ struct Game {
     Mouse_State* mouse_state;
 
     // Pointer going over the currently hovered-over tile.
-    Game_Pointer* pointer;
+    Game_Cursor* pointer;
 
     // Dimensions of the game's window.
     int window_width, window_height;
