@@ -3,11 +3,16 @@
 #include "Game/Data/Enums/weather.h"
 #include "Game/Board/game_board.h"
 #include "Game/Entity/Tile/tile.h"
+#include "Game/Entity/Unit/unit.h"
 #include "Utilities/Linked_List/linked_list.h"
 
 /*! @brief A row of tiles.
  */
 typedef Tile** Tile_Row;
+
+/*! @brief A row of units.
+ */
+typedef Unit** Unit_Row;
 
 struct Game_Board {
 
@@ -16,6 +21,9 @@ struct Game_Board {
 
     // Contains all tiles on the game board. tiles[board_y][board_x]
     Tile_Row* tiles_grid;
+
+    // Contains all units on the game board. units[board_y][board_x]
+    Unit_Row* units_grid;
 
     // Descriptor of the loaded stage.
     Stage* stage;

@@ -30,5 +30,15 @@ void load_game_board_stage(
         }
     }
 
+    // Allocate space for units
+    game_board->units_grid = malloc(sizeof(Unit_Row) * stage->height);
+
+    for (int i = 0; i < stage->height; i++) {
+        game_board->units_grid[i] = malloc(sizeof(Unit*) * stage->width);
+    }
+
+    // Add the units from the stage descriptor
+    // TODO
+
     game_board->stage = stage;
 }
