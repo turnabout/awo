@@ -71,22 +71,4 @@ void update_game(Game* game, float delta_time)
     } else {
         hide_game_pointer(game->pointer);
     }
-
-    /*
-    if (get_key_state(KEY_W) == BUTTON_DOWN) {
-        update_game_camera_view_position(game->camera, 0.0f, -3.0f);
-    }
-
-    if (get_key_state(KEY_S) == BUTTON_DOWN) {
-        update_game_camera_view_position(game->camera, 0.0f, 3.0f);
-    }
-
-    if (get_key_state(KEY_A) == BUTTON_DOWN_START) {
-        update_game_camera_view_position(game->camera, 1.0f, 0.0f);
-    }
-
-    if (get_key_state(KEY_D) == BUTTON_DOWN_START) {
-        update_game_camera_view_position(game->camera, -1.0f, 0.0f);
-    }
-    */
 }
