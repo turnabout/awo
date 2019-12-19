@@ -12,15 +12,6 @@ struct Game_Camera {
     // Reference to the game's renderer.
     Game_Renderer* game_renderer;
 
-    // Identity matrix reference.
-    mat4 identity;
-
-    // The game's view matrix.
-    mat4 view;
-
-    // The game's projection matrix.
-    mat4 projection;
-
     // Current zoom value.
     float zoom;
 

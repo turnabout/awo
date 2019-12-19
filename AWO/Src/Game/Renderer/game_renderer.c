@@ -60,7 +60,7 @@ void init_game_renderer_grid(
     int y_offset
 )
 {
-    renderer->tile_grid_layers[grid_index] = create_render_grid(
+    renderer->grid_layers[grid_index] = create_render_grid(
         grid_width, 
         grid_height, 
         y_offset,
@@ -69,7 +69,7 @@ void init_game_renderer_grid(
 
     // Initially fill grid with empty tile
     fill_render_grid_pixels(
-        renderer->tile_grid_layers[grid_index], 
+        renderer->grid_layers[grid_index], 
         (vec4) { 
         renderer->empty_tile_frame->frames[0].raw_top_left[0], 
         renderer->empty_tile_frame->frames[0].raw_top_left[1], 
@@ -90,7 +90,9 @@ Game_Renderer* create_game_renderer(
     int grid_width, 
     int grid_height, 
     GLuint game_palette_texture,
-    Tiles_Data* tiles_data
+    Tiles_Data* tiles_data,
+    int window_width, 
+    int window_height
 )
 {
     Game_Renderer* renderer = malloc(sizeof(Game_Renderer));
@@ -115,6 +117,9 @@ Game_Renderer* create_game_renderer(
     init_game_renderer_grids(renderer, grid_width, grid_height);
 
     // TODO: initialize extras renderer
+
+    // Initialize the projection matrices
+    update_game_renderer_projection_matrices(renderer, window_width, window_height);
 
     return renderer;
 }

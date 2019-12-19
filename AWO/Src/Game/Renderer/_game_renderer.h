@@ -20,8 +20,14 @@ struct Game_Renderer {
     // Reference to the empty tile frame, used to "clear" render grid tiles.
     Animation* empty_tile_frame;
 
-    // Layers of tile grids used to render tiles.
-    Render_Grid* tile_grid_layers[TILE_LAYER_TYPE_COUNT];
+    // Render grid layers, used to render the main entities of the game (tiles, units, etc).
+    Render_Grid* grid_layers[TILE_LAYER_TYPE_COUNT];
+
+    // View matrices applied to different render grid layers.
+    mat4 tiles_grid_layers_view, units_grid_layers_view;
+
+    // Projection matrix applied to all rendered elements.
+    mat4 projection;
 };
 
 /*! @brief Internally initializes and returns the game renderer.

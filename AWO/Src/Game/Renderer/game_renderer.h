@@ -31,26 +31,48 @@ typedef enum Tile_Layer_Index {
  *  @param[in] grid_height Initial height of the render grids.
  *  @param[in] game_palette_texture Initial palette texture used by the game.
  *  @param[in] tiles_data The tiles data module.
+ *  @param[in] window_width The window's initial width.
+ *  @param[in] window_height The window's initial height.
  *  @returns The created game renderer module.
  */
 Game_Renderer* create_game_renderer(
-    int grid_width, 
-    int grid_height, 
+    int grid_width,
+    int grid_height,
     GLuint game_palette_texture,
-    Tiles_Data* tiles_data
+    Tiles_Data* tiles_data,
+    int window_width,
+    int window_height
 );
 
 /*! @brief Renders the game renderer's contents.
  */
 void render_game_renderer(Game_Renderer* renderer);
 
-/*! @brief Updates one of the matrices used by the game renderer to render objects.
+/*! @brief Update the game renderer's view matrices using the given view coordinates.
  *
  *  @param[in] renderer The game renderer.
- *  @param[in] matrix The new matrix.
- *  @param[in] matrix_str The string representing the matrix to update ("view"|"projection").
+ *  @param[in] view_x The view's X position.
+ *  @param[in] view_y The view's X position.
+ *  @param[in] view_zoom The view's zoom value.
  */
-void update_game_renderer_matrix(Game_Renderer* renderer, mat4 matrix, const char* matrix_str);
+void update_game_renderer_view_matrices(
+    Game_Renderer* renderer,
+    int view_x,
+    int view_y,
+    float view_zoom
+);
+
+/*! @brief Update the game renderer's projection matrices.
+ *
+ *  @param[in] renderer The game renderer.
+ *  @param[in] window_width The game window's width.
+ *  @param[in] window_height The game window's height.
+ */
+void update_game_renderer_projection_matrices(
+    Game_Renderer* renderer,
+    int window_width,
+    int window_height
+);
 
 /*! @brief Clear a pixel in the game renderer's tile layers.
  *

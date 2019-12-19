@@ -25,7 +25,9 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
         stage->width,
         stage->height,
         game->palette_texture,
-        game->tiles_data
+        game->tiles_data,
+        game->window_width,
+        game->window_height
     );
 
     activate_game_clock_subscribers(
