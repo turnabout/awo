@@ -10,46 +10,53 @@ Bool init_game_renderer_shader_programs(Game_Renderer* renderer)
         FRAGMENT_SHADER_PATH(TILES_SHADER)
     );
 
-    if (!renderer->tiles_shader) {
+    renderer->units_shader = create_shader_program(
+        VERTEX_SHADER_PATH(TILES_SHADER),
+        FRAGMENT_SHADER_PATH(TILES_SHADER)
+    );
+
+    if (!renderer->tiles_shader || !renderer->units_shader) {
         return FALSE;
     }
 
     return TRUE;
 }
 
-void init_game_renderer_uniforms(
-    Game_Renderer* renderer, 
+void init_grid_shader_uniforms(
+    GLuint shader,
     int grid_width, 
     int grid_height,
     int ss_width,
     int ss_height
 )
 {
-    // Initialize tiles shader uniform
-    glUseProgram(renderer->tiles_shader);
-    glUniform1i(glGetUniformLocation(renderer->tiles_shader, "sprite_sheet"), 0);
-    glUniform1i(glGetUniformLocation(renderer->tiles_shader, "palettes_texture"), 1);
-    glUniform1i(glGetUniformLocation(renderer->tiles_shader, "tiles_texture"), 2);
+    // Initialize tiles shader uniforms
+    glUseProgram(shader);
+    glUniform1i(glGetUniformLocation(shader, "sprite_sheet"), 0);
+    glUniform1i(glGetUniformLocation(shader, "palettes_texture"), 1);
+    glUniform1i(glGetUniformLocation(shader, "tiles_texture"), 2);
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader, "sprite_sheet_width"), 
+        glGetUniformLocation(shader, "sprite_sheet_width"), 
         (GLfloat)ss_width
     );
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader, "sprite_sheet_height"), 
+        glGetUniformLocation(shader, "sprite_sheet_height"), 
         (GLfloat)ss_height
     );
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader, "quad_width"), 
+        glGetUniformLocation(shader, "quad_width"), 
         (GLfloat)(grid_width * DEFAULT_TILE_SIZE)
     );
 
     glUniform1f(
-        glGetUniformLocation(renderer->tiles_shader, "quad_height"), 
+        glGetUniformLocation(shader, "quad_height"), 
         (GLfloat)(grid_height * DEFAULT_TILE_SIZE)
     );
+
+    // Initialize units shader uniforms
 }
 
 void init_game_renderer_grid(
@@ -111,7 +118,8 @@ Game_Renderer* create_game_renderer(
     renderer->sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH, &ss_width, &ss_height);
 
     // Initialize uniforms for shaders managed by the game renderer
-    init_game_renderer_uniforms(renderer, grid_width, grid_height, ss_width, ss_height);
+    init_grid_shader_uniforms(renderer->tiles_shader, grid_width, grid_height, ss_width, ss_height);
+    init_grid_shader_uniforms(renderer->units_shader, grid_width, grid_height, ss_width, ss_height);
 
     // Initialize render grids
     init_game_renderer_grids(renderer, grid_width, grid_height);
