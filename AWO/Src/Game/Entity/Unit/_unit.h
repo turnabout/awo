@@ -3,8 +3,6 @@
 #include "Game/Entity/Unit/unit.h"
 
 /*! @brief Updates a unit's occupied render grid pixel.
- *
- *  @note For 2-tiles tall tiles.
  */
 void update_unit_render_grid(Game_Renderer* renderer, void* unit, Uint8 animation_index);
 
