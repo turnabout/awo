@@ -2,6 +2,31 @@
 
 #include "Game/Board/_game_board.h"
 
+void allocate_tiles_grid(Game_Board* game_board, Uint8 width, Uint8 height)
+{
+    game_board->tiles_grid = malloc(sizeof(Tile_Row) * height);
+
+    for (int i = 0; i < height; i++) {
+        game_board->tiles_grid[i] = malloc(sizeof(Tile*) * width);
+    }
+}
+
+void allocate_units_grid(Game_Board* game_board, Uint8 width, Uint8 height)
+{
+    game_board->units_grid = malloc(sizeof(Unit_Row) * height);
+
+    for (int i = 0; i < height; i++) {
+        game_board->units_grid[i] = malloc(sizeof(Unit*) * width);
+    }
+
+    // Initialize all unit spots to NULL
+    for (Uint8 y = 0; y < height; y++) {
+        for (Uint8 x = 0; x < width; x++) {
+            game_board->units_grid[y][x] = NULL;
+        }
+    }
+}
+
 void load_game_board_stage(
     Game_Board* game_board, 
     Game_Clock* game_clock,
@@ -9,12 +34,9 @@ void load_game_board_stage(
     Stage* stage
 )
 {
-    // Allocate space for tiles
-    game_board->tiles_grid = malloc(sizeof(Tile_Row) * stage->height);
-
-    for (int i = 0; i < stage->height; i++) {
-        game_board->tiles_grid[i] = malloc(sizeof(Tile*) * stage->width);
-    }
+    // Allocate space for the grids
+    allocate_tiles_grid(game_board, stage->width, stage->height);
+    allocate_units_grid(game_board, stage->width, stage->height);
 
     // Add the tiles from the stage descriptor
     for (Uint8 y = 0; y < stage->height; y++) {
@@ -28,13 +50,6 @@ void load_game_board_stage(
                 y
             );
         }
-    }
-
-    // Allocate space for units
-    game_board->units_grid = malloc(sizeof(Unit_Row) * stage->height);
-
-    for (int i = 0; i < stage->height; i++) {
-        game_board->units_grid[i] = malloc(sizeof(Unit*) * stage->width);
     }
 
     // Add the units from the stage descriptor
