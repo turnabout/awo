@@ -21,14 +21,16 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
         stage->player_armies
     );
 
-    game->renderer = create_game_renderer(
+    if ((game->renderer = create_game_renderer(
         stage->width,
         stage->height,
         game->palette_texture,
         game->tiles_data,
         game->window_width,
         game->window_height
-    );
+    )) == NULL) {
+        return FALSE;
+    }
 
     activate_game_clock_subscribers(
         game->clock,
