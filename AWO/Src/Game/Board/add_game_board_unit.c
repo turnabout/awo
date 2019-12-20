@@ -29,7 +29,10 @@ void add_game_board_unit(
     // TODO
 
     // Confirm the player will not exceed the max amount of units per player
-    // TODO
+    if (get_linked_list_count(game_board->player_units[owner_index]) >= MAX_UNITS_PER_PLAYER) {
+        // TODO: display message to player
+        return;
+    }
 
     // Add the unit
     unit = game_board->units_grid[y][x] = create_unit(
