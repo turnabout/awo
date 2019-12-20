@@ -31,7 +31,7 @@ Game_Camera* create_game_camera(
     return camera;
 }
 
-void inline send_game_camera_updated_values(Game_Camera* camera)
+static void inline send_game_camera_updated_values(Game_Camera* camera)
 {
     update_game_renderer_view_matrices(
         camera->game_renderer,

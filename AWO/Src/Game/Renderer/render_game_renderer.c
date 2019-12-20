@@ -1,6 +1,6 @@
 #include "Game/Renderer/_game_renderer.h"
 
-void inline update_grid_shader_view_matrix(Game_Renderer* renderer, float* value)
+static void inline update_grid_shader_view_matrix(Game_Renderer* renderer, float* value)
 {
 
     glUniformMatrix4fv(

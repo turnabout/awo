@@ -1,3 +1,5 @@
+#include <stddef.h>
+
 #include "Utilities/utilities.h"
 #include "Game/Stage/_stage.h"
 
@@ -64,12 +66,10 @@ Stage* generate_stage_from_string(char* stage_str, Tiles_Data* tiles_data)
     load_stage_players_data(stage_data, &i, player_armies);
 
     // Create empty stage
-    Stage* stage = create_stage(
-        stage_name,
-        stage_data[i++], // Width
-        stage_data[i++], // Height
-        player_armies
-    );
+    Uint8 width = stage_data[i++];
+    Uint8 height = stage_data[i++];
+
+    Stage* stage = create_stage(stage_name, width, height, player_armies);
 
     i++; // Point index after the separator
 
