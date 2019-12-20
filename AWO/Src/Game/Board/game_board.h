@@ -49,6 +49,26 @@ void edit_game_board_tile(
     Uint8 y
 );
 
+/*! @brief Adds a unit to the game board.
+ *
+ *  @param[in] game_board The game board.
+ *  @param[in] game_clock The game clock.
+ *  @param[in] units_data The units data module.
+ *  @param[in] type The type of the unit to add.
+ *  @param[in] owner_index The index of the player who owns the unit.
+ *  @param[in] x Game board x coordinate of the new tile.
+ *  @param[in] y Game board y coordinate of the new tile.
+ */
+void add_game_board_unit(
+    Game_Board* game_board,
+    Game_Clock* game_clock,
+    Units_Data* units_data,
+    Unit_Type type,
+    Player_Index owner_index,
+    Uint8 x,
+    Uint8 y
+);
+
 /*! @brief Updates the game board and its entities.
  *
  *  @param[in] game_board The game board.

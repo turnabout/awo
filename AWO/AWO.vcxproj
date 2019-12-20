@@ -41,6 +41,7 @@
     <ClCompile Include="Libs\glad.c" />
     <ClCompile Include="Libs\stb_image.c" />
     <ClCompile Include="Src\Game\Board\add_game_board_tile.c" />
+    <ClCompile Include="Src\Game\Board\add_game_board_unit.c" />
     <ClCompile Include="Src\Game\Board\edit_game_board_tile.c" />
     <ClCompile Include="Src\Game\Board\game_board.c" />
     <ClCompile Include="Src\Game\Board\load_game_board_stage.c" />
