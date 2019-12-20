@@ -8,8 +8,8 @@
 Bool init_game_renderer_shader_programs(Game_Renderer* renderer)
 {
     renderer->grid_shader = create_shader_program(
-        VERTEX_SHADER_PATH(TILES_SHADER),
-        FRAGMENT_SHADER_PATH(TILES_SHADER)
+        VERTEX_SHADER_PATH(GRID_SHADER),
+        FRAGMENT_SHADER_PATH(GRID_SHADER)
     );
 
     if (!renderer->grid_shader) {

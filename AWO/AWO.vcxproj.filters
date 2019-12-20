@@ -628,13 +628,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Data\game_data.json" />
-    <None Include="Resources\Shaders\tiles.frag" />
-    <None Include="Resources\Shaders\tiles.vert" />
     <None Include="Resources\Shaders_ES\sprite.frag" />
     <None Include="Resources\Shaders_ES\sprite.vert" />
-    <None Include="Resources\Shaders_ES\tiles.frag" />
-    <None Include="Resources\Shaders_ES\tiles.vert" />
     <None Include="Resources\Shaders\basic.vert" />
     <None Include="Resources\Shaders\basic.frag" />
+    <None Include="Resources\Shaders\grid.frag" />
+    <None Include="Resources\Shaders\grid.vert" />
+    <None Include="Resources\Shaders_ES\grid.frag" />
+    <None Include="Resources\Shaders_ES\grid.vert" />
   </ItemGroup>
 </Project>

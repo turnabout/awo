@@ -17,7 +17,7 @@
 #define FONTS_PATH    RESOURCES_PATH "Fonts/"
 #define SHADERS_PATH  RESOURCES_PATH SHADERS_DIR
 
-#define TILES_SHADER "tiles"
+#define GRID_SHADER "grid"
 #define BASIC_SHADER "basic"
 
 #define SPRITE_SHEET_PATH   TEXTURES_PATH "spritesheet.png"
