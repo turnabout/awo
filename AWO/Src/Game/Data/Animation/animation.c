@@ -44,16 +44,22 @@ void print_animation(Animation* animation)
     for (int i = 0; i < animation->count; i++) {
         printf("\t{\n");
         printf("\tTop left\n\t");
-        glm_vec3_print(animation->frames->top_left, stdout);
+        glm_vec3_print(animation->frames[i].top_left, stdout);
 
         printf("\tTop right\n\t");
-        glm_vec3_print(animation->frames->top_right, stdout);
+        glm_vec3_print(animation->frames[i].top_right, stdout);
 
         printf("\tBottom left\n\t");
-        glm_vec3_print(animation->frames->bottom_left, stdout);
+        glm_vec3_print(animation->frames[i].bottom_left, stdout);
 
         printf("\tBottom right\n\t");
-        glm_vec3_print(animation->frames->bottom_right, stdout);
+        glm_vec3_print(animation->frames[i].bottom_right, stdout);
+
+        printf(
+            "\t(Raw top left): (%d, %d)\n", 
+            (int)animation->frames[i].raw_top_left[0],
+            (int)animation->frames[i].raw_top_left[1]
+        );
         
         printf(
             "\t(Dimensions): %d | %d\n", 
