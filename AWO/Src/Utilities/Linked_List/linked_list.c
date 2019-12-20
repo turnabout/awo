@@ -17,6 +17,8 @@ Linked_List* create_linked_list(void* values[], size_t values_count)
 {
     Linked_List* list = malloc(sizeof(Linked_List));
 
+    list->count = values_count;
+
     if (values_count == 0) {
         list->head = NULL;
         list->tail = NULL;
@@ -31,7 +33,6 @@ Linked_List* create_linked_list(void* values[], size_t values_count)
     }
 
     list->tail = list_entry;
-    list->count = values_count;
 
     return list;
 }
