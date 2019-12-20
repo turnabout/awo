@@ -48,6 +48,6 @@ void add_game_board_unit(
     register_game_board_player_unit(game_board, (Unit*)unit);
 
     // Make initial call to the unit's render grid & palette update functions
-    // unit->update_grid(game_board->game_renderer, (void*)unit, 0);
-    // unit->update_palette(game_board->game_renderer, (void*)unit, 0);
+    unit->update_grid(game_board->game_renderer, (void*)unit, 0);
+    unit->update_palette(game_board->game_renderer, (void*)unit, 0);
 }
