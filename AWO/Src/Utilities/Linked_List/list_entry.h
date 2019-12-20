@@ -1,6 +1,8 @@
 #pragma once
 #include <stdlib.h>
 
+#include "types.h"
+
 typedef struct List_Entry List_Entry;
 
 struct List_Entry {
@@ -17,5 +19,6 @@ List_Entry* add_list_entry(List_Entry* list_tail, void* value);
 List_Entry* get_list_entry_tail(List_Entry* list_head);
 
 /*! @brief Deletes the list entry found with the given value, starting at the given list head.
+ *  @return TRUE if the list entry was found and delete, FALSE if it wasn't.
  */
-void delete_list_entry(List_Entry** list_head, void* value);
+Bool delete_list_entry(List_Entry** list_head, void* value);

@@ -10,6 +10,7 @@ PRAGMA(warning( disable: 6001 ))
 struct Linked_List {
     List_Entry* head;
     List_Entry* tail;
+    int count;
 };
 
 Linked_List* create_linked_list(void* values[], size_t values_count)
@@ -30,6 +31,7 @@ Linked_List* create_linked_list(void* values[], size_t values_count)
     }
 
     list->tail = list_entry;
+    list->count = values_count;
 
     return list;
 }
@@ -52,6 +54,8 @@ void append_linked_list_item(Linked_List* list, void* value)
     if (list->head == NULL) {
         list->head = list->tail;
     }
+
+    list->count++;
 }
 
 // Find the tail of the linked list and store it as such.
@@ -90,8 +94,15 @@ void* get_linked_list_nth_element(Linked_List* list, int n)
 
 void delete_linked_list_item(Linked_List* list, void* value)
 {
-    delete_list_entry(&list->head, value);
-    update_linked_list_tail(list);
+    if (delete_list_entry(&list->head, value)) {
+        list->count--;
+        update_linked_list_tail(list);
+    }
+}
+
+int get_linked_list_count(Linked_List* list)
+{
+    return list->count;
 }
 
 void free_linked_list(Linked_List* list)

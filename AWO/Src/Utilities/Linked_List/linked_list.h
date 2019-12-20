@@ -37,9 +37,16 @@ void append_linked_list_item(Linked_List* list, void* value);
  *
  *  @param[in] list The linked list.
  *  @param[in] n Index to get the element from.
- *  @returns The value stored at the nth index, or NULL if not found.
+ *  @return The value stored at the nth index, or NULL if not found.
  */
 void* get_linked_list_nth_element(Linked_List* list, int n);
+
+/*! @brief Gets the count of elements stored in a list.
+ *
+ *  @param[in] list The linked list.
+ *  @return The count of elements stored in given list.
+ */
+int get_linked_list_count(Linked_List* list);
 
 /*! @brief Deletes a value from a linked list.
  *
