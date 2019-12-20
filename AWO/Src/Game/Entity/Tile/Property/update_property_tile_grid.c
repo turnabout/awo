@@ -1,5 +1,5 @@
 #include "conf.h"
-#include "Game/ENtity/Tile/Property/_property_tile.h"
+#include "Game/Entity/Tile/Property/_property_tile.h"
 
 void update_property_render_grid(Game_Renderer* renderer, void* tile, Uint8 animation_index)
 {
