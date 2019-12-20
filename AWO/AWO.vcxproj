@@ -147,8 +147,8 @@
     <None Include="Resources\Shaders\basic.frag" />
     <None Include="Resources\Shaders\grid.frag" />
     <None Include="Resources\Shaders\grid.vert" />
-    <None Include="Resources\Shaders_ES\sprite.frag" />
-    <None Include="Resources\Shaders_ES\sprite.vert" />
+    <None Include="Resources\Shaders_ES\basic.frag" />
+    <None Include="Resources\Shaders_ES\basic.vert" />
     <None Include="Resources\Shaders_ES\grid.frag" />
     <None Include="Resources\Shaders_ES\grid.vert" />
   </ItemGroup>
