@@ -80,8 +80,6 @@ Game* init_game(int window_width, int window_height)
     stage = generate_filled_stage(Sea, Middle, 255, 255);
     stage = generate_custom_stage();
 
-    char* result = stringify_stage(stage);
-
     CO_Type player_COs[MAX_PLAYER_COUNT] = {Andy, Eagle};
 
     if (!load_level(game, stage, player_COs)) {
