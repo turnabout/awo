@@ -35,7 +35,7 @@ struct Game_Editor {
     Game_Editor_Mode mode;
 
     // Current callback function used to update entities
-    Editor_Set_Cb update_cb;
+    Editor_Set_Cb selected_entity_update_cb;
 
     // References to tiles & units data
     Tiles_Data* tiles_data;
