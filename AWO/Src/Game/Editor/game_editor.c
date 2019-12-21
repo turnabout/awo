@@ -6,7 +6,8 @@ Game_Editor* create_game_editor(int* window_width, int* window_height)
 {
     Game_Editor* editor = malloc(sizeof(Game_Editor));
 
-    editor->mode = GAME_EDITOR_MODE_NEUTRAL;
+    editor->mode = Editor_Mode_Neutral;
+    editor->update_cb = NULL;
 
     editor->selected_entity_type = TILE_TYPE_NONE;
     editor->selected_entity_var = TILE_VAR_NONE;
@@ -14,39 +15,13 @@ Game_Editor* create_game_editor(int* window_width, int* window_height)
     editor->entity_x = -1;
     editor->entity_y = -1;
 
+    // Start with default edited type of neutral tile
+    // TODO: remove, should be set from outside
+    update_editor_entity_type(editor, Editor_Entity_Type_Neutral_Tile);
+
     // editor->selected_entity = SE_create(window_width, window_height);
 
     return editor;
-}
-
-// Apply autovar to tile at given game board coordinates
-void apply_autovar(Game_Editor* editor, int x, int y)
-{
-    /*
-    Tile_Type middle_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
-
-    // No need to apply if middle tile is out of bounds
-    if (middle_tile_type == OOB) {
-        return;
-    }
-
-    GB_edit_tile(
-        editor->gb, 
-        middle_tile_type, 
-
-        TD_get_tile_auto_var(
-            editor->td,
-            middle_tile_type,
-            GB_get_tile_type_at_coords(editor->gb, x, y - 1),
-            GB_get_tile_type_at_coords(editor->gb, x + 1, y),
-            GB_get_tile_type_at_coords(editor->gb, x, y + 1),
-            GB_get_tile_type_at_coords(editor->gb, x - 1, y)
-        ),
-
-        x, 
-        y
-    );
-    */
 }
 
 void update_editor_selected_entity(Game_Editor* editor, int type, int variation)
@@ -54,6 +29,25 @@ void update_editor_selected_entity(Game_Editor* editor, int type, int variation)
     printf("updating tile to: %s, %s\n", tile_type_str[type], tile_var_str[variation]);
     editor->selected_entity_type = type;
     editor->selected_entity_var = variation;
+}
+
+void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_type)
+{
+    switch (new_type) {
+    case Editor_Entity_Type_Neutral_Tile:
+        editor->update_cb = update_neutral_tile_entity;
+        break;
+    case Editor_Entity_Type_Property_Tile:
+        editor->update_cb = update_property_tile_entity;
+        break;
+    case Editor_Entity_Type_Unit:
+        editor->update_cb = update_unit_entity;
+        break;
+
+    default:
+        // TODO: error
+        break;
+    }
 }
 
 void update_game_editor(
@@ -65,12 +59,12 @@ void update_game_editor(
     Mouse_State* mouse_state
 )
 {
-    // Exit early if no entity type is selected
-    if (editor->selected_entity_type == TILE_TYPE_NONE) {
-        return;
-    }
-
     if (mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
+
+        // Exit early if no entity type is selected or not update callback is set
+        if (editor->selected_entity_type == TILE_TYPE_NONE || editor->update_cb == NULL) {
+            return;
+        }
 
         // Get coordinates of the clicked entity
         int entity_x = 0, entity_y = 0;
@@ -87,7 +81,7 @@ void update_game_editor(
 
         // If the mouse was already held down on this grid tile, don't bother editing
         if (
-            editor->mode == GAME_EDITOR_MODE_DRAGGING &&
+            editor->mode == Editor_Mode_Dragging &&
             entity_x == editor->entity_x && 
             entity_y == editor->entity_y
         ) {
@@ -123,12 +117,12 @@ void update_game_editor(
         // TODO
 
         // Set editor mode as dragging
-        editor->mode = GAME_EDITOR_MODE_DRAGGING;
+        editor->mode = Editor_Mode_Dragging;
 
-    } else if (editor->mode == GAME_EDITOR_MODE_DRAGGING) {
+    } else if (editor->mode == Editor_Mode_Dragging) {
 
         // No longer dragging, reset editor mode
-        editor->mode = GAME_EDITOR_MODE_NEUTRAL;
+        editor->mode = Editor_Mode_Neutral;
     }
 }
 

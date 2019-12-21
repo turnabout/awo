@@ -6,6 +6,14 @@
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
 
+/*! @brief Every possible entity type the game editor can edit.
+ */
+typedef enum Game_Editor_Entity_Type {
+    Editor_Entity_Type_Neutral_Tile,
+    Editor_Entity_Type_Property_Tile,
+    Editor_Entity_Type_Unit,
+} Game_Editor_Entity_Type;
+
 /*! @brief The game editor module. Edits entities in the game board in design room mode according
  *  to user input.
  */
@@ -21,6 +29,13 @@ typedef struct Game_Editor Game_Editor;
  *  @return The created game editor module.
  */
 Game_Editor* create_game_editor(int* window_width, int* window_height);
+
+/*! @brief Updates the entity type currently being edited by the game editor.
+ *
+ *  @param[in] editor The game editor module.
+ *  @param[in] new_type The new type of entity the module should edit.
+ */
+void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_type);
 
 /*! @brief Updates the game editor's selected entity type and variation.
  *
