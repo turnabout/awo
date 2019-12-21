@@ -199,6 +199,7 @@
     <ClInclude Include="Src\Game\Data\Unit\units_data.h" />
     <ClInclude Include="Src\Game\Data\Unit\_units_data.h" />
     <ClInclude Include="Src\Game\Editor\game_editor.h" />
+    <ClInclude Include="Src\Game\Editor\_game_editor.h" />
     <ClInclude Include="Src\Game\Entity\entity.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral\neutral_tile.h" />
     <ClInclude Include="Src\Game\Entity\Tile\Neutral\_neutral_tile.h" />

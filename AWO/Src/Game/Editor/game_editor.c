@@ -1,26 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Editor/game_editor.h"
-
-typedef enum Game_Editor_Mode {
-    GAME_EDITOR_MODE_NEUTRAL,
-    GAME_EDITOR_MODE_DRAGGING,
-} Game_Editor_Mode;
-
-struct Game_Editor {
-
-    // Coordinates of the entity we're currently editing (and previously did)
-    int entity_x, entity_y;
-
-    // Currently selected tile type & variation
-    int selected_entity_type, selected_entity_var;
-
-    // Current mode
-    Game_Editor_Mode mode;
-
-    // UI box showing the currently selected entity
-    // Selected_Entity* selected_entity;
-};
+#include "Game/Editor/_game_editor.h"
 
 Game_Editor* create_game_editor(int* window_width, int* window_height)
 {
@@ -69,7 +49,7 @@ void apply_autovar(Game_Editor* editor, int x, int y)
     */
 }
 
-void update_editor_selected_tile_type(Game_Editor* editor, int type, int variation)
+void update_editor_selected_entity(Game_Editor* editor, int type, int variation)
 {
     printf("updating tile to: %s, %s\n", tile_type_str[type], tile_var_str[variation]);
     editor->selected_entity_type = type;

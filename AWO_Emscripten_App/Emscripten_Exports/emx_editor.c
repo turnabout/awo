@@ -34,5 +34,5 @@ const char* EMX editor_get_next_tile_var(Game* game, Tile_Type type, Uint8* var_
 // Updates the editor's tile type with the given one.
 void EMX editor_update_selected_tile(Game* game, Tile_Type type, int variation)
 {
-    update_editor_selected_tile_type(game->editor, type, variation);
+    update_editor_selected_entity(game->editor, type, variation);
 }
