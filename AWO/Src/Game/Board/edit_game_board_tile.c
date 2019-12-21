@@ -14,6 +14,7 @@ void edit_game_board_neutral_tile(
     }
 
     edit_neutral_tile_variation(tile, game_clock, game_board->tiles_data, new_variation);
+    tile->update_grid(game_board->game_renderer, (void*)tile, 0);
 }
 
 void edit_game_board_property_tile(
@@ -33,6 +34,7 @@ void edit_game_board_property_tile(
     // Update the property's player index & register it with its new player owner's list
     update_property_owner(property, game_board->tiles_data, game_board->players[new_index]);
     property->update_palette(game_board->game_renderer, (void*)property, 0);
+    property->update_grid(game_board->game_renderer, (void*)property, 0);
     register_game_board_player_property(game_board, property);
 }
 
