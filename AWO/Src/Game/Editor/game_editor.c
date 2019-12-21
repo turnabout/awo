@@ -3,14 +3,22 @@
 #include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
 
+typedef enum Game_Editor_Mode {
+    GAME_EDITOR_MODE_NEUTRAL,
+    GAME_EDITOR_MODE_DRAGGING,
+} Game_Editor_Mode;
+
 struct Game_Editor {
 
-    // Coordinates of the previously-edited tile
-    int prev_edited_tile_x, prev_edited_tile_y;
+    // Coordinates of the previously-edited entity
+    int prev_entity_x, prev_entity_y;
 
-    // Currently selected tile
+    // Currently selected tile type & variation
     Tile_Type selected_tile_type;
     int selected_tile_var;
+
+    // Current mode
+    Game_Editor_Mode mode;
 
     // Reference to the game's loaded game board
     Game_Board* game_board;
@@ -41,11 +49,13 @@ Game_Editor* create_game_editor(
     editor->game_board = game_board;
     editor->game_clock = game_clock;
 
+    editor->mode = GAME_EDITOR_MODE_NEUTRAL;
+
     editor->selected_tile_type = TILE_TYPE_NONE;
     editor->selected_tile_var = TILE_VAR_NONE;
 
-    editor->prev_edited_tile_x = -1;
-    editor->prev_edited_tile_y = -1;
+    editor->prev_entity_x = -1;
+    editor->prev_entity_y = -1;
 
     editor->mouse_state = mouse_state;
 
@@ -135,46 +145,43 @@ void update_editor_selected_tile_type(Game_Editor* editor, Tile_Type type, int v
 
 void update_game_editor(Game_Editor* editor, Game_Camera* camera)
 {
-    // Exit early if no tile type is selected
+    // Exit early if no entity type is selected
     if (editor->selected_tile_type == TILE_TYPE_NONE) {
         return;
     }
 
     if (editor->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
-        // Get coordinates of the clicked tile
-        int tile_x = 0, tile_y = 0;
+        // Get coordinates of the clicked entity
+        int entity_x = 0, entity_y = 0;
 
-        if (!get_subject_tile_by_coordinates(
+        if (!get_subject_grid_coordinates(
             camera,
             editor->mouse_state->x,
             editor->mouse_state->y,
-            &tile_x,
-            &tile_y
+            &entity_x,
+            &entity_y
         )) {
             return;
         }
 
-        // Ensure the tile's coordinates are different from the previously edited tile's
-        if (tile_x == editor->prev_edited_tile_x && tile_y == editor->prev_edited_tile_y) {
+        // If the mouse was already held down on this grid tile, don't bother editing
+        if (
+            editor->mode == GAME_EDITOR_MODE_DRAGGING &&
+            entity_x == editor->prev_entity_x && 
+            entity_y == editor->prev_entity_y
+        ) {
             return;
         }
+
+        // Edit the entity at these coordinates
+        // TODO: move into callback
 
         // If no variation, invalid if property
         int applied_variation = editor->selected_tile_var;
 
-        // Different logic if no selected tile variation
+        // If no variation selected, use auto-vars to determine the variation to use
         if (applied_variation == TILE_VAR_NONE) {
-
-            // If selected tile is a property, invalid
-            if (
-                editor->selected_tile_type >= PROPERTY_TILE_TYPE_FIRST &&
-                editor->selected_tile_type <= PROPERTY_TILE_TYPE_LAST
-            ) {
-                return;
-            }
-
-            // If selected tile is a neutral tile, use autovar to determine the variation
             // TODO
             return;
         }
@@ -185,15 +192,23 @@ void update_game_editor(Game_Editor* editor, Game_Camera* camera)
             editor->game_clock,
             editor->selected_tile_type,
             applied_variation,
-            tile_x,
-            tile_y
+            entity_x,
+            entity_y
         );
 
-        editor->prev_edited_tile_x = tile_x;
-        editor->prev_edited_tile_y = tile_y;
+        editor->prev_entity_x = entity_x;
+        editor->prev_entity_y = entity_y;
 
-        // If no selected tile variation, apply autovar to surrounding tiles
+        // If there was no selected tile variation, apply autovar to surrounding tiles
         // TODO
+
+        // Set editor mode as dragging
+        editor->mode = GAME_EDITOR_MODE_DRAGGING;
+
+    } else if (editor->mode == GAME_EDITOR_MODE_DRAGGING) {
+
+        // No longer dragging, reset editor mode
+        editor->mode = GAME_EDITOR_MODE_NEUTRAL;
     }
 }
 

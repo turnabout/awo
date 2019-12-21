@@ -40,7 +40,7 @@ void update_cursor(Game_Cursor* pointer, Mouse_State* mouse, Game_Camera* camera
     int tile_x, tile_y;
 
     // Exit early if mouse is not hovering a grid tile
-    if (!get_subject_tile_by_coordinates(
+    if (!get_subject_grid_coordinates(
         camera,
         mouse->x,
         mouse->y,

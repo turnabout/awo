@@ -2,7 +2,7 @@
 
 #include "Game/Camera/_game_camera.h"
 
-Bool get_subject_tile_by_coordinates(
+Bool get_subject_grid_coordinates(
     Game_Camera* camera, 
     int abs_x, 
     int abs_y, 

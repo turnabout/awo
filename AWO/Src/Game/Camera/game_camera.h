@@ -25,10 +25,10 @@ void start_camera_mouse_pan_mode(Game_Camera* camera, Mouse_State* mouse_state);
 // Centers the camera on the given point.
 void focus_camera(Game_Camera* camera, int target_x, int target_y);
 
-// Gets the camera subject tile present at the given absolute screen coordinates, if any.
-// Returns the tile's x/y relative coordinates.
-// Both set to -1 if no tile was found at the given absolute coordinates.
-Bool get_subject_tile_by_coordinates(
+// Gets the grid coordinates of the subject at the given absolute screen coordinates.
+// Returns the grid's x/y relative coordinates.
+// Both set to -1 if no grid tile was found at the given absolute coordinates.
+Bool get_subject_grid_coordinates(
     Game_Camera* camera,
     int abs_x,
     int abs_y,
