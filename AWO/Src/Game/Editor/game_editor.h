@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Game/Board/game_board.h"
-#include "Game/Clock/game_clock.h"
 #include "Game/Camera/game_camera.h"
+#include "Game/Clock/game_clock.h"
+#include "Game/Data/Tile/tiles_data.h"
+#include "Game/Data/Unit/units_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
 
 /*! @brief Every possible entity type the game editor can edit.
@@ -22,11 +24,18 @@ typedef struct Game_Editor Game_Editor;
  * @note Used in "design room" game mode to fully edit the stage currently loaded by the game 
  * board.
  *
+ *  @param[in] tiles_data
+ *  @param[in] units_data
  *  @param[in] window_width Pointer to the game window's width.
  *  @param[in] window_height Pointer to the game window's height.
  *  @return The created game editor module.
  */
-Game_Editor* create_game_editor(int* window_width, int* window_height);
+Game_Editor* create_game_editor(
+    Tiles_Data* tiles_data,
+    Units_Data* units_data,
+    int* window_width,
+    int* window_height
+);
 
 /*! @brief Updates the entity type currently being edited by the game editor.
  *

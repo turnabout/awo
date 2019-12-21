@@ -2,7 +2,12 @@
 
 #include "Game/Editor/_game_editor.h"
 
-Game_Editor* create_game_editor(int* window_width, int* window_height)
+Game_Editor* create_game_editor(
+    Tiles_Data* tiles_data,
+    Units_Data* units_data,
+    int* window_width, 
+    int* window_height
+)
 {
     Game_Editor* editor = malloc(sizeof(Game_Editor));
 

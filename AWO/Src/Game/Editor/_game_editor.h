@@ -37,6 +37,10 @@ struct Game_Editor {
     // Current callback function used to update entities
     Editor_Set_Cb update_cb;
 
+    // References to tiles & units data
+    Tiles_Data* tiles_data;
+    Units_Data* units_data;
+
     // UI box showing the currently selected entity
     // Selected_Entity* selected_entity;
 };
