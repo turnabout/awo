@@ -12,8 +12,8 @@ Game_Editor* create_game_editor(
     Game_Editor* editor = malloc(sizeof(Game_Editor));
 
     editor->mode = Editor_Mode_Neutral;
-    editor->update_cb = NULL;
 
+    editor->selected_entity_update_cb = NULL;
     editor->selected_entity_type = SELECTED_ENTITY_TYPE_NONE;
     editor->selected_entity_var = SELECTED_ENTITY_VAR_NONE;
 
@@ -22,42 +22,35 @@ Game_Editor* create_game_editor(
 
     // Start with default editing values
     // TODO: remove, should be set from outside
-    update_editor_entity_type(editor, Editor_Entity_Type_Tile);
-    editor->selected_entity_type = Plain;
-    editor->selected_entity_var = Default;
+    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Plain, Default);
 
     // editor->selected_entity = SE_create(window_width, window_height);
 
     return editor;
 }
 
-void update_editor_selected_entity(Game_Editor* editor, int type, int variation)
+void update_editor_selected_entity(
+    Game_Editor* editor, 
+    Game_Editor_Entity_Kind kind, 
+    int type, 
+    int variation
+)
 {
-    printf("updating tile to: %s, %s\n", tile_type_str[type], tile_var_str[variation]);
-    editor->selected_entity_type = type;
-    editor->selected_entity_var = variation;
-}
-
-void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_type)
-{
-    switch (new_type) {
-
-    case Editor_Entity_Type_Tile:
-        editor->update_cb = set_editor_tile_entity;
-        break;
-
-    case Editor_Entity_Type_Unit:
-        editor->update_cb = set_editor_unit_entity;
-        break;
-
-    default:
+    // Set the kind of entity that should now be selected
+    if (kind == Editor_Entity_Type_Tile) {
+        editor->selected_entity_update_cb = set_editor_tile_entity;
+    } else if (kind == Editor_Entity_Type_Unit) {
+        editor->selected_entity_update_cb = set_editor_unit_entity;
+    } else {
         // TODO: error
-        break;
+        editor->selected_entity_type = SELECTED_ENTITY_TYPE_NONE;
+        editor->selected_entity_var = SELECTED_ENTITY_VAR_NONE;
+        return;
     }
 
-    // Unset the selected entity type/variation
-    editor->selected_entity_type = SELECTED_ENTITY_TYPE_NONE;
-    editor->selected_entity_var = SELECTED_ENTITY_TYPE_NONE;
+    // Set the selected entity's type and variation
+    editor->selected_entity_type = type;
+    editor->selected_entity_var = variation;
 }
 
 void update_game_editor(
@@ -74,7 +67,7 @@ void update_game_editor(
         // Exit early if no entity type is selected or not update callback is set
         if (
             editor->selected_entity_type == SELECTED_ENTITY_TYPE_NONE || 
-            editor->update_cb == NULL
+            editor->selected_entity_update_cb == NULL
         ) {
             return;
         }
@@ -105,7 +98,7 @@ void update_game_editor(
         editor->entity_x = entity_x;
         editor->entity_y = entity_y;
 
-        editor->update_cb(editor, game_board, game_clock);
+        editor->selected_entity_update_cb(editor, game_board, game_clock);
         editor->mode = Editor_Mode_Dragging;
 
     } else if (editor->mode == Editor_Mode_Dragging) {

@@ -12,7 +12,7 @@
 typedef enum Game_Editor_Entity_Type {
     Editor_Entity_Type_Tile,
     Editor_Entity_Type_Unit,
-} Game_Editor_Entity_Type;
+} Game_Editor_Entity_Kind;
 
 /*! @brief The game editor module. Edits entities in the game board in design room mode according
  *  to user input.
@@ -37,22 +37,21 @@ Game_Editor* create_game_editor(
     int* window_height
 );
 
-/*! @brief Updates the entity type currently being edited by the game editor.
+/*! @brief Updates the game editor's selected entity.
+ *
+ * @note All following entity edit operations will use the entity set here.
  *
  *  @param[in] editor The game editor module.
- *  @param[in] new_type The new type of entity the module should edit.
- */
-void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_type);
-
-/*! @brief Updates the game editor's selected entity type and variation.
- *
- * @note All entity edit operations will use the given type and variation.
- *
- *  @param[in] editor The game editor module.
+ *  @param[in] kind The kind of entity the game editor should update. Either tiles or units.
  *  @param[in] type The new type of the game editor's selected entity.
  *  @param[in] variation The new variation of the game editor's selected entity.
  */
-void update_editor_selected_entity(Game_Editor* editor, int type, int variation);
+void update_editor_selected_entity(
+    Game_Editor* editor,
+    Game_Editor_Entity_Kind kind,
+    int type,
+    int variation
+);
 
 /*! @brief Updates the game editor.
  *
