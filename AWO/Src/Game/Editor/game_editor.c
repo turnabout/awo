@@ -9,17 +9,16 @@ Game_Editor* create_game_editor(int* window_width, int* window_height)
     editor->mode = Editor_Mode_Neutral;
     editor->update_cb = NULL;
 
-    editor->selected_entity_type = TILE_TYPE_NONE;
-    editor->selected_entity_var = TILE_VAR_NONE;
+    editor->selected_entity_type = SELECTED_ENTITY_TYPE_NONE;
+    editor->selected_entity_var = SELECTED_ENTITY_VAR_NONE;
 
+    editor->entity_x = ENTITY_COORDINATE_NONE;
+    editor->entity_y = ENTITY_COORDINATE_NONE;
+
+    // Start with default editing values
+    // TODO: remove, should be set from outside
     editor->selected_entity_type = Plain;
     editor->selected_entity_var = Default;
-
-    editor->entity_x = -1;
-    editor->entity_y = -1;
-
-    // Start with default edited type of neutral tile
-    // TODO: remove, should be set from outside
     update_editor_entity_type(editor, Editor_Entity_Type_Neutral_Tile);
 
     // editor->selected_entity = SE_create(window_width, window_height);
@@ -37,12 +36,15 @@ void update_editor_selected_entity(Game_Editor* editor, int type, int variation)
 void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_type)
 {
     switch (new_type) {
+
     case Editor_Entity_Type_Neutral_Tile:
         editor->update_cb = set_neutral_tile_entity;
         break;
+
     case Editor_Entity_Type_Property_Tile:
         editor->update_cb = set_property_tile_entity;
         break;
+
     case Editor_Entity_Type_Unit:
         editor->update_cb = set_unit_entity;
         break;
@@ -51,6 +53,10 @@ void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_
         // TODO: error
         break;
     }
+
+    // Unset the selected entity type/variation
+    editor->selected_entity_type = SELECTED_ENTITY_TYPE_NONE;
+    editor->selected_entity_var = SELECTED_ENTITY_TYPE_NONE;
 }
 
 void update_game_editor(
@@ -65,7 +71,10 @@ void update_game_editor(
     if (mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
         // Exit early if no entity type is selected or not update callback is set
-        if (editor->selected_entity_type == TILE_TYPE_NONE || editor->update_cb == NULL) {
+        if (
+            editor->selected_entity_type == SELECTED_ENTITY_TYPE_NONE || 
+            editor->update_cb == NULL
+        ) {
             return;
         }
 

@@ -2,6 +2,13 @@
 
 #include "Game/Editor/game_editor.h"
 
+// Selected entity type/variation set as this value when unset
+#define SELECTED_ENTITY_TYPE_NONE -1
+#define SELECTED_ENTITY_VAR_NONE -1
+
+// Entity coordinates set as this value when unset
+#define ENTITY_COORDINATE_NONE -1
+
 /*! @brief Callback used by the game editor to edit an entity.
  */
 typedef void (*Editor_Set_Cb)(
