@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
 #include "Game/Editor/game_editor.h"
-#include "Game/Inputs/inputs.h"
 
 typedef enum Game_Editor_Mode {
     GAME_EDITOR_MODE_NEUTRAL,
@@ -10,7 +9,7 @@ typedef enum Game_Editor_Mode {
 
 struct Game_Editor {
 
-    // Coordinates of the previously-edited entity
+    // Coordinates of the entity we're currently editing (and previously did)
     int entity_x, entity_y;
 
     // Currently selected tile type & variation
@@ -19,29 +18,13 @@ struct Game_Editor {
     // Current mode
     Game_Editor_Mode mode;
 
-    // Reference to the game's loaded game board
-    Game_Board* game_board;
-
-    // Reference to the game clock module
-    Game_Clock* game_clock;
-
-    // The mouse state module
-    Mouse_State* mouse_state;
-
     // UI box showing the currently selected entity
     // Selected_Entity* selected_entity;
 };
 
-Game_Editor* create_game_editor(
-    Game_Board* game_board, 
-    Game_Clock* game_clock,
-    Mouse_State* mouse_state
-)
+Game_Editor* create_game_editor(int* window_width, int* window_height)
 {
     Game_Editor* editor = malloc(sizeof(Game_Editor));
-
-    editor->game_board = game_board;
-    editor->game_clock = game_clock;
 
     editor->mode = GAME_EDITOR_MODE_NEUTRAL;
 
@@ -50,8 +33,6 @@ Game_Editor* create_game_editor(
 
     editor->entity_x = -1;
     editor->entity_y = -1;
-
-    editor->mouse_state = mouse_state;
 
     // editor->selected_entity = SE_create(window_width, window_height);
 
@@ -95,22 +76,29 @@ void update_editor_selected_tile_type(Game_Editor* editor, int type, int variati
     editor->selected_entity_var = variation;
 }
 
-void update_game_editor(Game_Editor* editor, Game_Camera* camera)
+void update_game_editor(
+    Game_Editor* editor, 
+    Game_Renderer* game_renderer,
+    Game_Camera* game_camera,
+    Game_Board* game_board,
+    Game_Clock* game_clock,
+    Mouse_State* mouse_state
+)
 {
     // Exit early if no entity type is selected
     if (editor->selected_entity_type == TILE_TYPE_NONE) {
         return;
     }
 
-    if (editor->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
+    if (mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
         // Get coordinates of the clicked entity
         int entity_x = 0, entity_y = 0;
 
         if (!get_subject_grid_coordinates(
-            camera,
-            editor->mouse_state->x,
-            editor->mouse_state->y,
+            game_camera,
+            mouse_state->x,
+            mouse_state->y,
             &entity_x,
             &entity_y
         )) {
@@ -140,8 +128,8 @@ void update_game_editor(Game_Editor* editor, Game_Camera* camera)
 
         // Update the game board tile at the given coordinates
         edit_game_board_tile(
-            editor->game_board,
-            editor->game_clock,
+            game_board,
+            game_clock,
             editor->selected_entity_type,
             applied_variation,
             entity_x,

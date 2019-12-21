@@ -87,13 +87,7 @@ Game* init_game(int window_width, int window_height)
     }
 
     // Initialize the editor for the design room mode
-    game->editor = create_game_editor(
-        game->board,
-        game->clock,
-        game->mouse_state,
-        &game->window_width,
-        &game->window_height
-    );
+    game->editor = create_game_editor(&game->window_width, &game->window_height);
 
     return game;
 }
