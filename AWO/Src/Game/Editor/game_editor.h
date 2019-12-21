@@ -19,7 +19,7 @@ Game_Editor* create_game_editor(
 );
 
 // Updates the editor module's selected tile type/variation.
-void update_editor_selected_tile_type(Game_Editor* editor, Tile_Type type, int variation);
+void update_editor_selected_tile_type(Game_Editor* editor, int type, int variation);
 
 // Updates the editor module.
 void update_game_editor(Game_Editor* editor, Game_Camera* camera);
