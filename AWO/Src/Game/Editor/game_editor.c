@@ -41,8 +41,8 @@ Game_Editor* create_game_editor(
     editor->game_board = game_board;
     editor->game_clock = game_clock;
 
-    editor->selected_tile_type = Property_Base;
-    editor->selected_tile_var = Player_Index_0;
+    editor->selected_tile_type = TILE_TYPE_NONE;
+    editor->selected_tile_var = TILE_VAR_NONE;
 
     editor->prev_edited_tile_x = -1;
     editor->prev_edited_tile_y = -1;
@@ -128,11 +128,18 @@ void edit_tile_at_mouse(Game_Editor* editor)
 
 void update_editor_selected_tile_type(Game_Editor* editor, Tile_Type type, int variation)
 {
+    printf("updating tile to: %s, %s\n", tile_type_str[type], tile_var_str[variation]);
     editor->selected_tile_type = type;
+    editor->selected_tile_var = variation;
 }
 
 void update_game_editor(Game_Editor* editor, Game_Camera* camera)
 {
+    // Exit early if no tile type is selected
+    if (editor->selected_tile_type == TILE_TYPE_NONE) {
+        return;
+    }
+
     if (editor->mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
         // Get coordinates of the clicked tile
@@ -153,18 +160,40 @@ void update_game_editor(Game_Editor* editor, Game_Camera* camera)
             return;
         }
 
+        // If no variation, invalid if property
+        int applied_variation = editor->selected_tile_var;
+
+        // Different logic if no selected tile variation
+        if (applied_variation == TILE_VAR_NONE) {
+
+            // If selected tile is a property, invalid
+            if (
+                editor->selected_tile_type >= PROPERTY_TILE_TYPE_FIRST &&
+                editor->selected_tile_type <= PROPERTY_TILE_TYPE_LAST
+            ) {
+                return;
+            }
+
+            // If selected tile is a neutral tile, use autovar to determine the variation
+            // TODO
+            return;
+        }
+
         // Update the game board tile at the given coordinates
         edit_game_board_tile(
             editor->game_board,
             editor->game_clock,
             editor->selected_tile_type,
-            editor->selected_tile_var,
+            applied_variation,
             tile_x,
             tile_y
         );
 
         editor->prev_edited_tile_x = tile_x;
         editor->prev_edited_tile_y = tile_y;
+
+        // If no selected tile variation, apply autovar to surrounding tiles
+        // TODO
     }
 }
 
