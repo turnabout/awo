@@ -17,9 +17,9 @@ Game_Editor* create_game_editor(int* window_width, int* window_height)
 
     // Start with default editing values
     // TODO: remove, should be set from outside
+    update_editor_entity_type(editor, Editor_Entity_Type_Tile);
     editor->selected_entity_type = Plain;
     editor->selected_entity_var = Default;
-    update_editor_entity_type(editor, Editor_Entity_Type_Neutral_Tile);
 
     // editor->selected_entity = SE_create(window_width, window_height);
 
@@ -37,16 +37,12 @@ void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_
 {
     switch (new_type) {
 
-    case Editor_Entity_Type_Neutral_Tile:
-        editor->update_cb = set_neutral_tile_entity;
-        break;
-
-    case Editor_Entity_Type_Property_Tile:
-        editor->update_cb = set_property_tile_entity;
+    case Editor_Entity_Type_Tile:
+        editor->update_cb = set_editor_tile_entity;
         break;
 
     case Editor_Entity_Type_Unit:
-        editor->update_cb = set_unit_entity;
+        editor->update_cb = set_editor_unit_entity;
         break;
 
     default:

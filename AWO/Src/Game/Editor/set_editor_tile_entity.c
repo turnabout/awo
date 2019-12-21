@@ -1,17 +1,27 @@
 #include "Game/Editor/_game_editor.h"
 
-void set_neutral_tile_entity(
+void set_editor_tile_entity(
     Game_Editor* editor,
     Game_Board* game_board,
     Game_Clock* game_clock
 )
 {
-    // If no variation, invalid if property
     int applied_variation = editor->selected_entity_var;
 
-    // If no variation selected, use auto-vars to determine the variation to use
-    if (applied_variation == TILE_VAR_NONE) {
+    // If no variation selected
+    if (applied_variation == SELECTED_ENTITY_VAR_NONE) {
+
+        // Property tiles: no variation is invalid
+        if (
+            editor->selected_entity_type >= PROPERTY_TILE_TYPE_FIRST &&
+            editor->selected_entity_type >= PROPERTY_TILE_TYPE_LAST
+        ) {
+            return;
+        }
+
+        // Neutral tiles: use auto-vars to determine the variation to use
         // TODO
+
         return;
     }
 
