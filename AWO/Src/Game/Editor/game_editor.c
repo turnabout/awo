@@ -12,6 +12,9 @@ Game_Editor* create_game_editor(int* window_width, int* window_height)
     editor->selected_entity_type = TILE_TYPE_NONE;
     editor->selected_entity_var = TILE_VAR_NONE;
 
+    editor->selected_entity_type = Plain;
+    editor->selected_entity_var = Default;
+
     editor->entity_x = -1;
     editor->entity_y = -1;
 
@@ -35,13 +38,13 @@ void update_editor_entity_type(Game_Editor* editor, Game_Editor_Entity_Type new_
 {
     switch (new_type) {
     case Editor_Entity_Type_Neutral_Tile:
-        editor->update_cb = update_neutral_tile_entity;
+        editor->update_cb = set_neutral_tile_entity;
         break;
     case Editor_Entity_Type_Property_Tile:
-        editor->update_cb = update_property_tile_entity;
+        editor->update_cb = set_property_tile_entity;
         break;
     case Editor_Entity_Type_Unit:
-        editor->update_cb = update_unit_entity;
+        editor->update_cb = set_unit_entity;
         break;
 
     default:
@@ -89,34 +92,7 @@ void update_game_editor(
         }
 
         // Edit the entity at these coordinates
-        // TODO: move into callback
-
-        // If no variation, invalid if property
-        int applied_variation = editor->selected_entity_var;
-
-        // If no variation selected, use auto-vars to determine the variation to use
-        if (applied_variation == TILE_VAR_NONE) {
-            // TODO
-            return;
-        }
-
-        // Update the game board tile at the given coordinates
-        edit_game_board_tile(
-            game_board,
-            game_clock,
-            editor->selected_entity_type,
-            applied_variation,
-            entity_x,
-            entity_y
-        );
-
-        editor->entity_x = entity_x;
-        editor->entity_y = entity_y;
-
-        // Apply autovar to surrounding tiles
-        // TODO
-
-        // Set editor mode as dragging
+        editor->update_cb(editor, game_board, game_clock);
         editor->mode = Editor_Mode_Dragging;
 
     } else if (editor->mode == Editor_Mode_Dragging) {

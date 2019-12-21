@@ -372,16 +372,16 @@
     <ClCompile Include="Src\Game\Board\add_game_board_unit.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Editor\update_neutral_tile_entity.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\update_property_tile_entity.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\update_unit_entity.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Editor\apply_autovars.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Editor\set_unit_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Editor\set_neutral_tile_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Editor\set_property_tile_entity.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

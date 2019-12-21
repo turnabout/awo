@@ -74,9 +74,9 @@
     <ClCompile Include="Src\Game\Data\UI\UI_data_creation.c" />
     <ClCompile Include="Src\Game\Editor\apply_autovars.c" />
     <ClCompile Include="Src\Game\Editor\game_editor.c" />
-    <ClCompile Include="Src\Game\Editor\update_neutral_tile_entity.c" />
-    <ClCompile Include="Src\Game\Editor\update_property_tile_entity.c" />
-    <ClCompile Include="Src\Game\Editor\update_unit_entity.c" />
+    <ClCompile Include="Src\Game\Editor\set_neutral_tile_entity.c" />
+    <ClCompile Include="Src\Game\Editor\set_property_tile_entity.c" />
+    <ClCompile Include="Src\Game\Editor\set_unit_entity.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral\delete_neutral_tile.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral\neutral_tile.c" />
     <ClCompile Include="Src\Game\Entity\Tile\Neutral\update_neutral_tile_grid.c" />

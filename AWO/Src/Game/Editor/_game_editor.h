@@ -4,7 +4,11 @@
 
 /*! @brief Callback used by the game editor to edit an entity.
  */
-typedef void (*Editor_Update_Cb)(Game_Editor* editor);
+typedef void (*Editor_Set_Cb)(
+    Game_Editor* editor, 
+    Game_Board* game_board,
+    Game_Clock* game_clock
+);
 
 /*! @brief Every possible mode for the game editor.
  */
@@ -28,15 +32,15 @@ struct Game_Editor {
     Game_Editor_Mode mode;
 
     // Current callback function used to update entities
-    Editor_Update_Cb update_cb;
+    Editor_Set_Cb update_cb;
 
     // UI box showing the currently selected entity
     // Selected_Entity* selected_entity;
 };
 
-void update_unit_entity(Game_Editor* editor);
-void update_neutral_tile_entity(Game_Editor* editor);
-void update_property_tile_entity(Game_Editor* editor);
+void set_unit_entity(Game_Editor* editor, Game_Board* game_board, Game_Clock* game_clock);
+void set_neutral_tile_entity(Game_Editor* editor, Game_Board* game_board, Game_Clock* game_clock);
+void set_property_tile_entity(Game_Editor* editor, Game_Board* game_board, Game_Clock* game_clock);
 
 /*! @brief Apply auto-var to the tile entity at the given x/y coordinates.
  */

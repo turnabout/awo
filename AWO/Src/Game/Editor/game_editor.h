@@ -3,7 +3,6 @@
 #include "Game/Board/game_board.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Camera/game_camera.h"
-#include "Game/Data/Tile/tiles_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
 
 /*! @brief Every possible entity type the game editor can edit.
