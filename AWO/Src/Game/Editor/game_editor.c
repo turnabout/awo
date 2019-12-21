@@ -92,6 +92,9 @@ void update_game_editor(
         }
 
         // Edit the entity at these coordinates
+        editor->entity_x = entity_x;
+        editor->entity_y = entity_y;
+
         editor->update_cb(editor, game_board, game_clock);
         editor->mode = Editor_Mode_Dragging;
 
