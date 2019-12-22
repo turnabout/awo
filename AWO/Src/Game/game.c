@@ -8,6 +8,7 @@
 #include "Game/Player/player.h"
 #include "Game/_game.h"
 
+/*
 Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
 {
     if (stage == NULL) {
@@ -58,16 +59,20 @@ Bool load_level(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
 
     return TRUE;
 }
+*/
 
-Game* init_game(int window_width, int window_height)
+Game* create_game(int window_width, int window_height)
 {
     Game* game = malloc(sizeof(Game));
 
     // Initialize base game components: GLFW, GLAD and game data.
-    if (!init_GL(game, window_width, window_height) || !init_game_data(game)) {
+    if (
+        !init_GL(game, window_width, window_height) || 
+        (game->data = create_game_data()) == NULL) {
         return NULL;
     }
 
+    /*
     // Initialize input handling modules
     init_keyboard_module(game->window);
     game->mouse_state = init_mouse_module(game->window);
@@ -93,6 +98,7 @@ Game* init_game(int window_width, int window_height)
         &game->window_width, 
         &game->window_height
     );
+    */
 
     return game;
 }

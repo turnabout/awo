@@ -7,20 +7,26 @@
 #include "Game/Board/game_board.h"
 #include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
-#include "Game/Data/Clock/clock_data.h"
-#include "Game/Data/Tile/tiles_data.h"
-#include "Game/Data/Unit/units_data.h"
-#include "Game/Data/UI/UI_data.h"
-#include "Game/Data/CO/CO_data.h"
+#include "Game/Cursor/game_cursor.h"
+#include "Game/Data/game_data.h"
 #include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
-#include "Game/Cursor/game_cursor.h"
 #include "Game/Renderer/game_renderer.h"
 
 struct Game {
 
     // Handle to the game's window.
     GLFWwindow* window;
+
+    // Field holding all game data.
+    Game_Data* data;
+
+    // Dimensions of the game's window.
+    int window_width, window_height;
+
+
+    // Texture holding the palette data used during gameplay.
+    GLuint palette_texture;
 
     // The game's board, containing and updating all current on-board game entities.
     Game_Board* board;
@@ -37,41 +43,12 @@ struct Game {
     // The game's renderer. Used to render all game elements.
     Game_Renderer* renderer;
 
-    // Data for all tiles.
-    Tiles_Data* tiles_data;
-
-    // Data for all units.
-    Units_Data* units_data;
-
-    // Data for all UI elements.
-    UI_Data* UI_data;
-
-    // Data for all COs.
-    CO_Data* CO_data;
-
-    // Data for clocks used for animations among other things.
-    Clock_Data* clock_data;
-
-    // Initially loaded default stages.
-    Stage* stages[MAX_LOADED_STAGE_COUNT];
-
     // The mouse's state.
     Mouse_State* mouse_state;
 
     // Pointer going over the currently hovered-over tile.
     Game_Cursor* pointer;
 
-    // Dimensions of the game's window.
-    int window_width, window_height;
-
-    // Texture holding all palette data.
-    GLuint raw_palette_texture;
-
-    // Texture holding the palette data used during gameplay.
-    GLuint palette_texture;
-
-    // Holds the sprite sheet's texture
-    GLuint sprite_sheet_texture;
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.

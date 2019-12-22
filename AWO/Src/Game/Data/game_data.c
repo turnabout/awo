@@ -99,11 +99,21 @@ Game_Data* create_game_data()
     return data;
 }
 
-void free_game_data(Game_Data* game_data)
+void free_game_data(Game_Data* data)
 {
-    if (game_data == NULL) {
+    if (data == NULL) {
         return;
     }
 
-    free(game_data);
+    free_tiles_data(data->tiles_data);
+    free_units_data(data->units_data);
+    free_UI_data(data->UI_data);
+    free_CO_data(data->CO_data);
+    free_clock_data(data->clock_data);
+
+    for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
+        free_stage(data->stages[i]);
+    }
+
+    free(data);
 }

@@ -61,7 +61,6 @@
     <ClCompile Include="Src\Game\Data\CO\CO_data_access.c" />
     <ClCompile Include="Src\Game\Data\CO\CO_data_creation.c" />
     <ClCompile Include="Src\Game\Data\game_data.c" />
-    <ClCompile Include="Src\Game\Data\init_game_data.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\create_game_palette.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\get_game_palette_index.c" />
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette_property_lights.c" />
@@ -124,7 +123,7 @@
     <ClCompile Include="Src\Game\Data\Unit\units_data_creation.c" />
     <ClCompile Include="Src\Game\Clock\Subscribers\Tiles\game_clock_tile_subscriber.c" />
     <ClCompile Include="Src\Game\exit_game.c" />
-    <ClCompile Include="Src\Game\init_game.c" />
+    <ClCompile Include="Src\Game\game.c" />
     <ClCompile Include="Src\Game\init_GL.c" />
     <ClCompile Include="Src\Game\Renderer\game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\get_render_grid_VAO.c" />

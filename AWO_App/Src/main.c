@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 {
     Game* game;
 
-    if ((game = init_game(
+    if ((game = create_game(
         DEFAULT_WINDOW_WIDTH,
         DEFAULT_WINDOW_HEIGHT
     )) == NULL) {

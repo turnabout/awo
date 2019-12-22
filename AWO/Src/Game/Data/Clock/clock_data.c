@@ -3,6 +3,8 @@
 #include "types.h"
 #include "Game/Data/Clock/clock_data.h"
 
+PRAGMA( warning(disable: 6001) );
+
 typedef struct Animation_Clock_Data {
 
     // Changing ticks

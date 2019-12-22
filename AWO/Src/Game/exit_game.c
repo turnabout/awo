@@ -22,17 +22,8 @@ void exit_game(Game* game)
 
     // Free game data modules
     free_game_clock(game->clock);
-    free_tiles_data(game->tiles_data);
-    free_units_data(game->units_data);
-    free_UI_data(game->UI_data);
-    free_CO_data(game->CO_data);
-    free_clock_data(game->clock_data);
 
-    for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
-        free_stage(game->stages[i]);
-    }
-
-    // Free additional modules
+    // Free optional modules
     free_game_editor(game->editor);
 
     free(game);

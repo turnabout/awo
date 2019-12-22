@@ -8,7 +8,7 @@ typedef struct Game Game;
  *  @param[in] window_height The window's initial tiles_height, in pixels.
  *  @return The game struct if successful, NULL if an error occurred.
  */
-Game* init_game(int window_width, int window_height);
+Game* create_game(int window_width, int window_height);
 
 /*! @brief Starts running the main game loop.
  *

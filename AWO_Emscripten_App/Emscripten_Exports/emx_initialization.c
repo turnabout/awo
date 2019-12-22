@@ -9,7 +9,7 @@ Game* EMX init_AWO(int w, int h)
 {
     Game* game;
 
-    if ((game = init_game(
+    if ((game = create_game(
         DEFAULT_WINDOW_WIDTH,
         DEFAULT_WINDOW_HEIGHT
     )) == NULL) {

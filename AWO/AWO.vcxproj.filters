@@ -78,9 +78,6 @@
     <ClCompile Include="Libs\cglm\vec4.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\init_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\exit_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -384,7 +381,7 @@
     <ClCompile Include="Src\Game\Data\game_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\init_game_data.c">
+    <ClCompile Include="Src\Game\game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
