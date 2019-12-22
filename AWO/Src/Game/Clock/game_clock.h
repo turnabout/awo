@@ -5,7 +5,7 @@
 #include <cJSON.h>
 
 #include "Game/Renderer/game_renderer.h"
-#include "Game/Clock/enums.h"
+#include "Game/Data/Clock/clock_data.h"
 
 /*! @brief Main game clock used for updating and keeping animations synchronized.
  */

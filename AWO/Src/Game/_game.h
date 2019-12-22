@@ -7,6 +7,7 @@
 #include "Game/Board/game_board.h"
 #include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
+#include "Game/Data/Clock/clock_data.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
 #include "Game/Data/UI/UI_data.h"
@@ -47,6 +48,9 @@ struct Game {
 
     // Data for all COs.
     CO_Data* CO_data;
+
+    // Data for clocks used for animations among other things.
+    Clock_Data* clock_data;
 
     // Initially loaded default stages.
     Stage* stages[MAX_LOADED_STAGE_COUNT];

@@ -26,6 +26,7 @@ void exit_game(Game* game)
     free_units_data(game->units_data);
     free_UI_data(game->UI_data);
     free_CO_data(game->CO_data);
+    free_clock_data(game->clock_data);
 
     for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
         free_stage(game->stages[i]);

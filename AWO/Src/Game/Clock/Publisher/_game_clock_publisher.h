@@ -1,7 +1,7 @@
 #pragma once
 
 #include "types.h"
-#include "Game/Clock/enums.h"
+#include "Game/Clock/game_clock.h"
 #include "Game/Clock/Publisher/Animation_Clock/_animation_clock.h"
 #include "Game/Clock/Pub_Sub/_pub_sub.h"
 

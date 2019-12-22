@@ -2,7 +2,7 @@
 
 #include <cJSON.h>
 
-#include "Game/Clock/enums.h"
+#include "Game/Clock/game_clock.h"
 #include "Game/Clock/Tick_Event/tick_event.h"
 #include "Game/Clock/Publisher/Animation_Clock/_animation_sub_clock.h"
 #include "Game/Clock/Pub_Sub/_pub_sub.h"

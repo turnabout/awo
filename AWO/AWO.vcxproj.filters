@@ -381,6 +381,9 @@
     <ClCompile Include="Src\Game\Editor\set_editor_tile_entity.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\Clock\clock_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -512,9 +515,6 @@
     <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_sub_clock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Clock\enums.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Clock\Publisher\_game_clock_publisher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -630,6 +630,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Editor\_game_editor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Clock\clock_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Clock\enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
