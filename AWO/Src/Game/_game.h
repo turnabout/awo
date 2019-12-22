@@ -65,6 +65,9 @@ struct Game {
 
     // Texture holding the palette data used during gameplay.
     GLuint palette_texture;
+
+    // Holds the sprite sheet's texture
+    GLuint sprite_sheet_texture;
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.

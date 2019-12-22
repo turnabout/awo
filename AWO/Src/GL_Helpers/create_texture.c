@@ -2,11 +2,12 @@
 #include <GLFW/glfw3.h>
 #include <stb_image.h>
 
-GLuint create_texture_object(const char* tex_path, int* width, int* height)
+GLuint create_texture_object(const char* tex_path, int* width_out, int* height_out)
 {
     // Load texture image
     GLint channels_amount;
-    unsigned char* data = stbi_load(tex_path, width, height, &channels_amount, 0);
+    int width, height;
+    unsigned char* data = stbi_load(tex_path, &width, &height, &channels_amount, 0);
 
     if (!data) {
         printf("Failed to load texture image at %s\n", tex_path);
@@ -32,10 +33,18 @@ GLuint create_texture_object(const char* tex_path, int* width, int* height)
         ? GL_RGBA
         : GL_RGB;
 
-    glTexImage2D(GL_TEXTURE_2D, 0, format, *width, *height, 0, format, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 
     // Free the image memory
     stbi_image_free(data);
+
+    if (width_out != NULL) {
+        *width_out = width;
+    }
+
+    if (height_out != NULL) {
+        *height_out = width;
+    }
 
     return texture;
 }

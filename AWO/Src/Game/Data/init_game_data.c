@@ -3,6 +3,7 @@
 #include <cglm/cglm.h>
 
 #include "conf.h"
+#include "GL_Helpers/gl_helpers.h"
 #include "Utilities/utilities.h"
 #include "Game/Data/Palette/raw_palette.h"
 #include "Game/_game.h"
@@ -97,6 +98,9 @@ Bool init_game_data(Game* game)
 
     // Delete parsed cJSON data object
     cJSON_Delete(data_JSON);
+
+    // Store sprite sheet texture on game
+    game->sprite_sheet_texture = create_texture_object(SPRITE_SHEET_PATH, NULL, NULL);
 
     return TRUE;
 }
