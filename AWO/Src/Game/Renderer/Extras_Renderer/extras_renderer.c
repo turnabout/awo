@@ -58,7 +58,7 @@ void update_extras_renderer_view(Extras_Renderer* renderer, int x, int y, float 
     // The zoom this function receives is the zoom applied to the game renderer's grids.
     // The zoom that should be applied to extras is different: an x16 (x DEFAULT_TILE_SIZE) zoom 
     // applied to grids is the equivalent of an x1 zoom applied to extra elements.
-    float real_zoom = zoom / (float)DEFAULT_TILE_SIZE;
+    float real_zoom = zoom / (float)DEFAULT_ENTITY_SIZE;
 
     glm_scale(
         view,

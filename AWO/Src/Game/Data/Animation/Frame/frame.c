@@ -25,11 +25,11 @@ void populate_frame(
 
     Uint8 w = (cJSON_HasObjectItem(frame_JSON, "w"))
                 ? cJSON_GetObjectItemCaseSensitive(frame_JSON, "w")->valueint
-                : DEFAULT_TILE_SIZE;
+                : DEFAULT_ENTITY_SIZE;
 
     Uint8 h = (cJSON_HasObjectItem(frame_JSON, "h"))
                 ? cJSON_GetObjectItemCaseSensitive(frame_JSON, "h")->valueint
-                : DEFAULT_TILE_SIZE;
+                : DEFAULT_ENTITY_SIZE;
 
     frame->width = w;
     frame->height = h;

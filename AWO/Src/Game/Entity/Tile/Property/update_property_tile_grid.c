@@ -11,7 +11,7 @@ void update_property_render_grid(Game_Renderer* renderer, void* tile, Uint8 anim
         TILE_LAYER_0,
         ((Property_Tile*)tile)->x,
         ((Property_Tile*)tile)->y,
-        (vec2) { frame[0].raw_top_left[0], frame[0].raw_top_left[1] + DEFAULT_TILE_SIZE }
+        (vec2) { frame[0].raw_top_left[0], frame[0].raw_top_left[1] + DEFAULT_ENTITY_SIZE }
     );
 
     // Draw top part of property on higher layer
@@ -34,7 +34,7 @@ void update_base_render_grid(Game_Renderer* renderer, void* tile, Uint8 animatio
         TILE_LAYER_0,
         ((Property_Tile*)tile)->x,
         ((Property_Tile*)tile)->y,
-        (vec2) { frame[0].raw_top_left[0], frame[0].raw_top_left[1] + DEFAULT_TILE_SIZE }
+        (vec2) { frame[0].raw_top_left[0], frame[0].raw_top_left[1] + DEFAULT_ENTITY_SIZE }
     );
 
     // Draw base smoke on higher layer

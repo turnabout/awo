@@ -29,7 +29,7 @@ Game_Cursor* create_game_cursor(UI_Data* ui_data)
     pointer->hovered_tile_x = pointer->hovered_tile_y = -1;
 
     // Calculate the pointer adjustment
-    int diff = pointer->animation->frames[0].width - DEFAULT_TILE_SIZE;
+    int diff = pointer->animation->frames[0].width - DEFAULT_ENTITY_SIZE;
     pointer->center_offset_px = diff / 2;
 
     return pointer;
@@ -61,8 +61,8 @@ void update_cursor(Game_Cursor* pointer, Mouse_State* mouse, Game_Camera* camera
     pointer->hovered_tile_y = tile_y;
 
     // Set the absolute coordinates to render the pointer, centered around the tile
-    pointer->dst[0] = (float)((DEFAULT_TILE_SIZE * tile_x) - pointer->center_offset_px);
-    pointer->dst[1] = (float)((DEFAULT_TILE_SIZE * tile_y) - pointer->center_offset_px);
+    pointer->dst[0] = (float)((DEFAULT_ENTITY_SIZE * tile_x) - pointer->center_offset_px);
+    pointer->dst[1] = (float)((DEFAULT_ENTITY_SIZE * tile_y) - pointer->center_offset_px);
 
     pointer->hidden = FALSE;
 }

@@ -44,12 +44,12 @@ void init_grid_shader_uniforms(
 
     glUniform1f(
         glGetUniformLocation(renderer->grid_shader, "quad_width"), 
-        (GLfloat)(grid_width * DEFAULT_TILE_SIZE)
+        (GLfloat)(grid_width * DEFAULT_ENTITY_SIZE)
     );
 
     glUniform1f(
         glGetUniformLocation(renderer->grid_shader, "quad_height"), 
-        (GLfloat)(grid_height * DEFAULT_TILE_SIZE)
+        (GLfloat)(grid_height * DEFAULT_ENTITY_SIZE)
     );
 }
 

@@ -21,7 +21,7 @@ void delete_neutral_tile(
     unregister_game_clock_tile(game_clock, tile_arg, clock_index, sub_clock_index);
 
     // Clear the top render grid tile layer of taller tiles
-    if (tile->animation->frames->height == (DEFAULT_TILE_SIZE * 2)) {
+    if (tile->animation->frames->height == (DEFAULT_ENTITY_SIZE * 2)) {
         clear_tile_layers_pixel(game_renderer, tile->x, tile->y);
     }
 

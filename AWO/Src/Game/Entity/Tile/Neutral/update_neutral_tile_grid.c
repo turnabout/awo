@@ -25,7 +25,7 @@ void update_tall_tile_render_grid(Game_Renderer* renderer, void* tile, Uint8 ani
         (vec2) {
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[0],
             ((Neutral_Tile*)tile)->animation->frames[animation_index].raw_top_left[1] 
-                + DEFAULT_TILE_SIZE
+                + DEFAULT_ENTITY_SIZE
         }
     );
 
