@@ -1,12 +1,9 @@
 #include <stdlib.h>
-#include <cJSON.h>
-#include <cglm/cglm.h>
 
 #include "conf.h"
-#include "GL_Helpers/gl_helpers.h"
 #include "Utilities/utilities.h"
-#include "Game/Data/Palette/raw_palette.h"
-#include "Game/_game.h"
+#include "GL_Helpers/gl_helpers.h"
+#include "Game/Data/game_data.h"
 
 Bool get_data_JSON(cJSON **data_JSON)
 {
@@ -26,8 +23,14 @@ Bool get_data_JSON(cJSON **data_JSON)
     return TRUE;
 }
 
-Bool init_game_data(Game* game)
+Game_Data* create_game_data()
 {
+    Game_Data* data = malloc(sizeof(Game_Data));
+
+    // Store sprite sheet texture on game
+    int ss_texture_w, ss_texture_h;
+    data->sprite_sheet = create_texture_object(SPRITE_SHEET_PATH, &ss_texture_w, &ss_texture_h);
+
     // Load cJSON data object
     cJSON* data_JSON;
 
@@ -35,53 +38,43 @@ Bool init_game_data(Game* game)
         return FALSE;
     }
 
-    // Get the sprite sheet's dimensions
-    cJSON* ss_dimensions_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "ssDimensions");
-    int sprite_sheet_w = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "width")->valueint;
-    int sprite_sheet_h = cJSON_GetObjectItemCaseSensitive(ss_dimensions_JSON, "height")->valueint;
-
     // Gather tiles data
-    game->tiles_data = create_tiles_data(
+    data->tiles_data = create_tiles_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
         cJSON_GetObjectItemCaseSensitive(data_JSON, "properties"),
-        sprite_sheet_w,
-        sprite_sheet_h
+        ss_texture_w,
+        ss_texture_h
     );
 
     // Gather units data
-    game->units_data = create_units_data(
+    data->units_data = create_units_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "units"),
-        sprite_sheet_w,
-        sprite_sheet_h
+        ss_texture_w,
+        ss_texture_h
     );
 
     // Gather UI data
-    game->UI_data = create_UI_data(
+    data->UI_data = create_UI_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "ui"),
-        sprite_sheet_w,
-        sprite_sheet_h
+        ss_texture_w,
+        ss_texture_h
     );
 
     // Gather CO data
-    game->CO_data = create_CO_data(
+    data->CO_data = create_CO_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "COs"),
-        sprite_sheet_w,
-        sprite_sheet_h
+        ss_texture_w,
+        ss_texture_h
     );
 
     // Gather clock data
-    game->clock_data = create_clock_data(
+    data->clock_data = create_clock_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
     );
 
     // Get the raw palette data and store it
-    game->raw_palette_texture = create_raw_palette_texture(
+    data->raw_palette = create_raw_palette_texture(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "palettes")
-    );
-
-    // Create game clock
-    game->clock = create_game_clock(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
     );
 
     // Load all default stages
@@ -91,18 +84,26 @@ Bool init_game_data(Game* game)
         cJSON* stage_JSON = cJSON_GetArrayItem(stages_array_JSON, i);
 
         if (stage_JSON == NULL) {
-            game->stages[i] = NULL;
+            data->stages[i] = NULL;
             continue;
         }
 
-        game->stages[i] = generate_stage_from_string(
+        data->stages[i] = generate_stage_from_string(
             stage_JSON->valuestring,
-            game->tiles_data
+            data->tiles_data
         );
     }
 
     // Delete parsed cJSON data object
     cJSON_Delete(data_JSON);
+    return data;
+}
 
-    return TRUE;
+void free_game_data(Game_Data* game_data)
+{
+    if (game_data == NULL) {
+        return;
+    }
+
+    free(game_data);
 }

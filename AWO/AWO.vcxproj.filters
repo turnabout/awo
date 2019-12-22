@@ -99,9 +99,6 @@
     <ClCompile Include="Src\Game\Data\Animation\animation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\init_game_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Unit\units_data_creation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -384,6 +381,12 @@
     <ClCompile Include="Src\Game\Data\Clock\clock_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\game_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\init_game_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -636,6 +639,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\Clock\enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\game_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
