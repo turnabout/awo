@@ -159,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\definitions.h" />
-    <ClInclude Include="Include\game_state_update.h" />
+    <ClInclude Include="Include\initialization.h" />
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
@@ -218,7 +218,7 @@
     <ClInclude Include="Src\Game\Entity\entity_update_cb.h" />
     <ClInclude Include="Src\Game\Entity\Unit\unit.h" />
     <ClInclude Include="Src\Game\Entity\Unit\_unit.h" />
-    <ClInclude Include="Include\game.h" />
+    <ClInclude Include="Include\AWO.h" />
     <ClInclude Include="Src\Game\Inputs\button_state.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
     <ClInclude Include="Src\Game\Inputs\Keyboard\keyboard.h" />

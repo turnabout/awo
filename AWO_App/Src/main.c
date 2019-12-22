@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "conf.h"
-#include "game.h"
+#include "AWO.h"
 
 int main(int argc, char** argv)
 {

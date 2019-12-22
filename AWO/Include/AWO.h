@@ -1,7 +1,7 @@
 #pragma once
 
 #include "definitions.h"
-#include "game_state_update.h"
+#include "initialization.h"
 
 /*! @brief Creates the game instance.
  *

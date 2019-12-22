@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "game.h"
+#include "AWO.h"
 #include "Game/Board/game_board.h"
 #include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
