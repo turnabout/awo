@@ -158,6 +158,8 @@
     <None Include="Resources\Shaders_ES\grid.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\definitions.h" />
+    <ClInclude Include="Include\game_state_update.h" />
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />

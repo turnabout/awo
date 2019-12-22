@@ -641,6 +641,12 @@
     <ClInclude Include="Include\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Include\definitions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\game_state_update.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />
