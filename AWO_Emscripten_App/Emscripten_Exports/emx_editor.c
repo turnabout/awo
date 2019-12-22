@@ -1,4 +1,7 @@
+#include <stdlib.h>
+
 #include "conf.h"
+#include "types.h"
 #include "Game/_game.h"
 #include "Game/Editor/game_editor.h"
 #include "Game/Data/Tile/tiles_data.h"
@@ -40,4 +43,34 @@ void EMX editor_update_selected_tile(
 )
 {
     update_editor_selected_entity(game->editor, kind, type, variation);
+}
+
+Uint8* EMX testy(Game* game, int* len_out)
+{
+    int width = 20;
+    int height = 20;
+    int len = (width * height) * 4;
+    Uint8* out = malloc(sizeof(Uint8) * len);
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            out[((x * 4) + (y * width * 4)) + 0] = 50;
+            out[((x * 4) + (y * width * 4)) + 1] = 0;
+            out[((x * 4) + (y * width * 4)) + 2] = 0;
+            out[((x * 4) + (y * width * 4)) + 3] = 255;
+        }
+
+    }
+
+    for (int i = 0; i < len; i++) {
+        // printf("out[%d] = %d\n", i, out[i]);
+    }
+
+    out[0] = 0;
+    out[1] = 255;
+    out[2] = 0;
+    out[3] = 255;
+
+    *len_out = len;
+    return out;
 }
