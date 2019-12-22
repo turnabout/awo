@@ -37,8 +37,8 @@
 #define GAME_CLOCK_FRAMES_TO_TICK  2 // How many frames it takes it tick the game clock
 #define GAME_CLOCK_TICK_MAX       45 // Game clock's maximum tick value before resetting
 
-// Default size of a tile (pixels)
-#define DEFAULT_TILE_SIZE 16
+// Default size of an entity (pixels)
+#define DEFAULT_ENTITY_SIZE 16
 
 // Default dimensions of game board (tiles)
 #define DEFAULT_GAME_BOARD_WIDTH  5
@@ -63,7 +63,7 @@
 #define MAX_UNITS_PER_PLAYER 50
 
 // Game Camera
-#define DEFAULT_CAMERA_ZOOM (DEFAULT_TILE_SIZE * 2)
+#define DEFAULT_CAMERA_ZOOM (DEFAULT_ENTITY_SIZE * 2)
 #define DEFAULT_CAMERA_X 0
 #define DEFAULT_CAMERA_Y 0
 
