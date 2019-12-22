@@ -45,6 +45,7 @@ GLuint create_empty_texture_object(int width, int height)
     // Create the texture
     GLuint texture;
     glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
 
     // Initialize with no data
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
