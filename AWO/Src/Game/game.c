@@ -72,6 +72,8 @@ Game* create_game(int window_width, int window_height)
         return NULL;
     }
 
+    game->state = Game_Initialized;
+
     /*
     // Initialize input handling modules
     init_keyboard_module(game->window);

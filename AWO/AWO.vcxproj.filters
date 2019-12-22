@@ -407,9 +407,6 @@
     <ClInclude Include="Libs\cglm\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\_game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -639,6 +636,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\game_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

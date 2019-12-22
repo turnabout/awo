@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Game/game.h"
+#include "game.h"
 #include "Game/Board/game_board.h"
 #include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
@@ -13,8 +13,12 @@
 #include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
 
+typedef struct Game Game;
+typedef enum Game_State Game_State;
+
 struct Game {
 
+    // 1. Game_Initialized fields
     // Handle to the game's window.
     GLFWwindow* window;
 
@@ -24,9 +28,15 @@ struct Game {
     // Dimensions of the game's window.
     int window_width, window_height;
 
+    // Current game's state.
+    Game_State state;
 
+    // 2. Game_Prepared fields
     // Texture holding the palette data used during gameplay.
     GLuint palette_texture;
+
+    // The game's editor, used in design room mode.
+    Game_Editor* editor;
 
     // The game's board, containing and updating all current on-board game entities.
     Game_Board* board;
@@ -36,9 +46,6 @@ struct Game {
 
     // The game's clock used to update and synchronize entities' animations.
     Game_Clock* clock;
-
-    // The game's editor, used in design room mode.
-    Game_Editor* editor;
 
     // The game's renderer. Used to render all game elements.
     Game_Renderer* renderer;
@@ -60,27 +67,12 @@ struct Game {
  */
 Bool init_GL(Game* game, int initial_window_width, int initial_window_height);
 
-/*! @brief Initializes the game data and modules using it, attaching results to the game object.
- *
- *  @param[in] game The game object.
- *  @return TRUE if successful, FALSE if an error occurred.
- */
-Bool init_game_data(Game* game);
-
 /*! @brief Updates the game's entities.
  *
  *  @param[in] game The game object.
  *  @param[in] delta_time Elapsed seconds since last frame.
  */
 void update_game(Game* game, float delta_time);
-
-/*! @brief Updates the game's window dimensions.
- *
- *  @param[in] game The game object.
- *  @param[in] width The new window width.
- *  @param[in] height The new window height.
- */
-void update_game_window_dimensions(Game* game, int width, int height);
 
 /*! @brief Renders the game's entities.
  *

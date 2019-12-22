@@ -14,7 +14,7 @@ Game* EMX init_AWO(int w, int h)
         DEFAULT_WINDOW_HEIGHT
     )) == NULL) {
         printf("Failed to initialize game\n");
-        exit_game(game);
+        free_game(game);
         return NULL;
     }
 

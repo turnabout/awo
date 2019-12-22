@@ -2,7 +2,7 @@
 
 #include "Game/_game.h"
 
-void exit_game(Game* game)
+void free_game(Game* game)
 {
     glfwTerminate();
 

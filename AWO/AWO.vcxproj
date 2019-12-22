@@ -216,7 +216,7 @@
     <ClInclude Include="Src\Game\Entity\entity_update_cb.h" />
     <ClInclude Include="Src\Game\Entity\Unit\unit.h" />
     <ClInclude Include="Src\Game\Entity\Unit\_unit.h" />
-    <ClInclude Include="Src\Game\game.h" />
+    <ClInclude Include="Include\game.h" />
     <ClInclude Include="Src\Game\Inputs\button_state.h" />
     <ClInclude Include="Src\Game\Inputs\inputs.h" />
     <ClInclude Include="Src\Game\Inputs\Keyboard\keyboard.h" />
