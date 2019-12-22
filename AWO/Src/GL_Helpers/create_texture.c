@@ -43,7 +43,7 @@ GLuint create_texture_object(const char* tex_path, int* width_out, int* height_o
     }
 
     if (height_out != NULL) {
-        *height_out = width;
+        *height_out = height;
     }
 
     return texture;
