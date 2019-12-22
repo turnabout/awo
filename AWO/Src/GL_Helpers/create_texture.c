@@ -39,3 +39,18 @@ GLuint create_texture_object(const char* tex_path, int* width, int* height)
 
     return texture;
 }
+
+GLuint create_empty_texture_object(int width, int height)
+{
+    // Create the texture
+    GLuint texture;
+    glGenTextures(1, &texture);
+
+    // Initialize with no data
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    return texture;
+}
