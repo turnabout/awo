@@ -9,16 +9,15 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Cursor/game_cursor.h"
 #include "Game/Data/game_data.h"
+#include "Game/Data/Palette/game_palette.h"
 #include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
 
 typedef struct Game Game;
-typedef enum Game_State Game_State;
 
 struct Game {
 
-    // 1. Game_Initialized fields
     // Handle to the game's window.
     GLFWwindow* window;
 
@@ -28,10 +27,7 @@ struct Game {
     // Dimensions of the game's window.
     int window_width, window_height;
 
-    // Current game's state.
-    Game_State state;
 
-    // 2. Game_Prepared fields
     // Texture holding the palette data used during gameplay.
     GLuint palette_texture;
 
@@ -66,6 +62,27 @@ struct Game {
  *  @return TRUE if successful, FALSE if an error occurred.
  */
 Bool init_GL(Game* game, int initial_window_width, int initial_window_height);
+
+/*! @brief Prepares the game for gameplay.
+ *
+ * Loads the game board using the given stage and player COs data & also sets components vital to
+ * gameplay.
+ *
+ *  @param[in] game The game object.
+ *  @param[in] stage The stage to load.
+ *  @param[in] player_COs The players' COs.
+ *  @return TRUE if successful, FALSE if an error occurred.
+ */
+Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]);
+
+/*! @brief Undoes the steps done in `prepare_game`.
+ *
+ * Frees memory used by components initialized during `prepare_game`. Should be used after the
+ * game loop is done running.
+ *
+ *  @param[in] game The game object.
+ */
+void unprepare_game(Game* game);
 
 /*! @brief Updates the game's entities.
  *

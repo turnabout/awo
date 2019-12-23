@@ -16,6 +16,10 @@ Game_Board* create_game_board(
     GLuint game_palette_texture
 )
 {
+    if (!validate_stage(stage)) {
+        return NULL;
+    }
+
     Game_Board* game_board = malloc(sizeof(Game_Board));
 
     game_board->tiles_data = tiles_data;

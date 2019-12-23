@@ -1,7 +1,10 @@
 #include "Game/_game.h"
 
-static float delta_time = 0.0f;      // Time between current frame and last frame.
-static float last_frame_time = 0.0f; // Time of last frame.
+// Time between current frame and last frame.
+static float delta_time = 0.0f;
+
+// Time of last frame.
+static float last_frame_time = 0.0f;
 
 void game_loop(void* game)
 {
@@ -17,17 +20,4 @@ void game_loop(void* game)
     render_game((Game*)game);
 
     glfwSwapBuffers(((Game*)game)->window);
-}
-
-void run_game(Game* game)
-{
-    // Use vSync
-    glfwSwapInterval(1);
-
-    // Reset the GLFW timer before starting the game loop
-    glfwSetTime(0);
-
-    while (!glfwWindowShouldClose(game->window)) {
-        game_loop(game);
-    }
 }

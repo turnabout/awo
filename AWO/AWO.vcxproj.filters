@@ -78,12 +78,6 @@
     <ClCompile Include="Libs\cglm\vec4.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\exit_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\run_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -381,7 +375,25 @@
     <ClCompile Include="Src\Game\Data\game_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\game.c">
+    <ClCompile Include="Src\Game\API\Initialization\free_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Initialization\run_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Initialization\game_loop.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Initialization\create_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Initialization\prepare_design_room_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\prepare_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\unprepare_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -645,6 +657,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\AWO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
