@@ -143,6 +143,7 @@
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\GL_Helpers\read_texture_data.c" />
+    <ClCompile Include="Src\GL_Helpers\Texture_Reader\texture_reader.c" />
     <ClCompile Include="Src\Utilities\hex_string_to_data.c" />
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c" />
     <ClCompile Include="Src\Utilities\Linked_List\list_entry.c" />
@@ -243,6 +244,7 @@
     <ClInclude Include="Src\Game\Stage\stage.h" />
     <ClInclude Include="Src\Game\Stage\_stage.h" />
     <ClInclude Include="Src\Game\_game.h" />
+    <ClInclude Include="Src\GL_Helpers\Texture_Reader\texture_reader.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />
     <ClInclude Include="Src\Libraries\cJSON.h" />

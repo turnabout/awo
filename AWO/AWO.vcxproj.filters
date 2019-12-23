@@ -402,6 +402,9 @@
     <ClCompile Include="Src\API\Game_Data\API_entity_visuals_reader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\GL_Helpers\Texture_Reader\texture_reader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -666,6 +669,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\emx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GL_Helpers\Texture_Reader\texture_reader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
