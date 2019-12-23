@@ -10,6 +10,14 @@
  */
 AWO* create_game(int window_width, int window_height);
 
+/*! @brief Updates AWO's game window dimensions.
+ *
+ *  @param[in] game The game object.
+ *  @param[in] width The new window width.
+ *  @param[in] height The new window height.
+ */
+void update_game_window_dimensions(AWO* game, int width, int height);
+
 /*! @brief Prepares game for "design room" (stage editor) mode.
  *
  *  @param[in] game The game.

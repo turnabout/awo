@@ -261,9 +261,6 @@
     <ClCompile Include="Src\Game\Editor\game_editor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\update_game_window_dimensions.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -375,25 +372,28 @@
     <ClCompile Include="Src\Game\Data\game_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Initialization\free_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\API\Initialization\run_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\API\Initialization\game_loop.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\API\Initialization\create_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\API\Initialization\prepare_design_room_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\prepare_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Initialization\unprepare_game.c">
+    <ClCompile Include="Src\Game\API\Game\create_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Game\free_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Game\game_loop.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Game\prepare_design_room_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Game\run_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Game\unprepare_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\API\Game\update_game_window_dimensions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -653,13 +653,13 @@
     <ClInclude Include="Include\definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\initialization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Include\AWO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\editor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
