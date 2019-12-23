@@ -20,10 +20,6 @@ Game_Clock_Publisher* create_game_clock_publisher(
     publisher->current_tick = 0;
     publisher->accum_time = 0.0f;
 
-    // Add static tick
-    publisher->static_tick = malloc(sizeof(int));
-    *publisher->static_tick = 0;
-
     // Create the game clock's animation clocks
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         publisher->animation_clocks[i] = create_animation_clock(
@@ -57,7 +53,6 @@ void update_game_clock_publisher(Game_Clock_Publisher* publisher, float delta_ti
 void free_game_clock_publisher(Game_Clock_Publisher* publisher)
 {
     if (publisher != NULL) {
-        free(publisher->static_tick);
 
         // Free all attached animation clocks
         for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {

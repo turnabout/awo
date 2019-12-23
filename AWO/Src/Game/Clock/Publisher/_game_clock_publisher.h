@@ -16,9 +16,6 @@ typedef struct Game_Clock_Publisher {
     // Animation clocks attached to game clock.
     Animation_Clock* animation_clocks[ANIMATION_CLOCK_COUNT];
 
-    // Static tick counter, always pointing to 0. Given to static tiles.
-    int* static_tick;
-
 } Game_Clock_Publisher;
 
 /*! @brief Creates the game clock publisher along with its animation clocks.
