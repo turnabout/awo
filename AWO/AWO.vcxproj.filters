@@ -399,6 +399,9 @@
     <ClCompile Include="Src\API\Game_Data\tiles_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\API\Game_Data\API_entity_visuals_reader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
