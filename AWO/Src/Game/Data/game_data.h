@@ -34,6 +34,9 @@ typedef struct Game_Data {
     // Holds the game's sprite sheet's texture.
     GLuint sprite_sheet;
 
+    // The game's sprite sheet's dimensions.
+    int sprite_sheet_width, sprite_sheet_height;
+
 } Game_Data;
 
 Game_Data* create_game_data();
