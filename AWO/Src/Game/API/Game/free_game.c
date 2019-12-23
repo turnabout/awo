@@ -10,21 +10,10 @@ void free_game(Game* game)
         return;
     }
 
-    // Free main game modules
-    free_game_renderer(game->renderer);
-    free_game_camera(game->camera);
-    free_game_board(game->board);
-    free_game_cursor(game->pointer);
-
-    // Free input modules
+    free_game_data(game->data);
     free_keyboard_module();
-    free_mouse_module();
-
-    // Free game data modules
-    free_game_clock(game->clock);
-
-    // Free optional modules
-    free_game_editor(game->editor);
+    free_mouse_module(game->mouse_state);
+    free_game_cursor(game->pointer);
 
     free(game);
 }

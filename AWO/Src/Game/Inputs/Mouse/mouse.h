@@ -42,5 +42,7 @@ Mouse_State* init_mouse_module(GLFWwindow* window);
 void update_mouse_module_state();
 
 /*! @brief Frees the memory occupied by the mouse state module.
- */;
-void free_mouse_module();
+ *
+ *  @param[in] state The mouse state module to free.
+ */
+void free_mouse_module(Mouse_State* state);

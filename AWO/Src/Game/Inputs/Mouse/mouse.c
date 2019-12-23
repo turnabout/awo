@@ -75,10 +75,10 @@ void update_mouse_module_state()
     fetched_mouse_scroll_value = 0;
 }
 
-void free_mouse_module()
+void free_mouse_module(Mouse_State* state)
 {
-    if (mouse_state != NULL) {
-        free(mouse_state);
+    if (state != NULL) {
+        free(state);
     }
 
     initialized = FALSE;

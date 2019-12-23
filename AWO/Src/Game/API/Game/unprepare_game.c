@@ -6,4 +6,5 @@ void unprepare_game(Game* game)
     free_game_clock(game->clock);
     free_game_camera(game->camera);
     free_game_board(game->board);
+    free_game_editor(game->editor);
 }
