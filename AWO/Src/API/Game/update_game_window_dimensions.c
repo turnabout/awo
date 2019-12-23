@@ -1,6 +1,7 @@
+#include "emx.h"
 #include "Game/_game.h"
 
-void update_game_window_dimensions(Game* game, int width, int height)
+void EMX update_game_window_dimensions(Game* game, int width, int height)
 {
 
     glfwSetWindowSize(game->window, width, height);

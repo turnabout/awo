@@ -1,8 +1,9 @@
 #include <stdlib.h>
 
+#include "emx.h"
 #include "Game/_game.h"
 
-Game* create_game(int window_width, int window_height)
+Game* EMX create_game(int window_width, int window_height)
 {
     Game* game = malloc(sizeof(Game));
 

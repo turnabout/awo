@@ -1,6 +1,7 @@
+#include "emx.h"
 #include "Game/_game.h"
 
-int prepare_design_room_game(Game* game)
+int EMX prepare_design_room_game(Game* game)
 {
     game->editor = create_game_editor(
         game->data->tiles,

@@ -662,6 +662,9 @@
     <ClInclude Include="Include\game_editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\emx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />

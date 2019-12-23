@@ -1,8 +1,9 @@
 #include <stdlib.h>
 
+#include "emx.h"
 #include "Game/_game.h"
 
-void free_game(Game* game)
+void EMX free_game(Game* game)
 {
     glfwTerminate();
 

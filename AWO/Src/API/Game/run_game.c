@@ -1,4 +1,5 @@
 #include "conf.h"
+#include "emx.h"
 #include "Game/_game.h"
 
 // Time between current frame and last frame.
@@ -23,7 +24,7 @@ void game_loop(void* game)
     glfwSwapBuffers(((Game*)game)->window);
 }
 
-void run_game(Game* game)
+void EMX run_game(Game* game)
 {
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);

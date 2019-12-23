@@ -168,6 +168,7 @@
     <ClInclude Include="Include\game_data.h" />
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
+    <ClInclude Include="Src\emx.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
     <ClInclude Include="Src\Game\Board\_game_board.h" />
     <ClInclude Include="Src\Game\Camera\game_camera.h" />

@@ -1,6 +1,7 @@
+#include "emx.h"
 #include "Game/_game.h"
 
-void update_game_editor_selected_entity(
+void EMX update_game_editor_selected_entity(
     Game* game, 
     Game_Editor_Entity_Kind kind, 
     int type, 

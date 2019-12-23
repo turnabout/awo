@@ -1,6 +1,7 @@
+#include "emx.h"
 #include "Game/_game.h"
 
-void unprepare_game(Game* game)
+void EMX unprepare_game(Game* game)
 {
     free_game_board(game->board);
     free_game_camera(game->camera);
