@@ -9,8 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AWO_Tests", "AWO_Tests\AWO_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AWO_App", "AWO_App\AWO_App.vcxproj", "{25017EF9-C511-4AFD-9F40-35F751FDE784}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AWO_Emscripten_App", "AWO_Emscripten_App\AWO_Emscripten_App.vcxproj", "{8E5853F5-BE60-47EA-97DE-F8F599C777A5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -43,10 +41,6 @@ Global
 		{25017EF9-C511-4AFD-9F40-35F751FDE784}.Release|x64.Build.0 = Release|x64
 		{25017EF9-C511-4AFD-9F40-35F751FDE784}.Release|x86.ActiveCfg = Release|Win32
 		{25017EF9-C511-4AFD-9F40-35F751FDE784}.Release|x86.Build.0 = Release|Win32
-		{8E5853F5-BE60-47EA-97DE-F8F599C777A5}.Debug|x64.ActiveCfg = Debug|x64
-		{8E5853F5-BE60-47EA-97DE-F8F599C777A5}.Debug|x86.ActiveCfg = Debug|Win32
-		{8E5853F5-BE60-47EA-97DE-F8F599C777A5}.Release|x64.ActiveCfg = Release|x64
-		{8E5853F5-BE60-47EA-97DE-F8F599C777A5}.Release|x86.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
