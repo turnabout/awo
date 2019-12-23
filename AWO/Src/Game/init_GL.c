@@ -8,7 +8,7 @@ void glfw_error_cb(int err_int, const char* err_str)
     printf("GLFW Error: %s\n", err_str);
 }
 
-int init_glfw(Game* game, int initial_window_width, int initial_window_height)
+int init_glfw(Game* game)
 {
     // Initialize GLFW
     glfwSetErrorCallback(glfw_error_cb);
@@ -16,8 +16,8 @@ int init_glfw(Game* game, int initial_window_width, int initial_window_height)
 
     // Get GLFW window
     GLFWwindow* window = glfwCreateWindow(
-        initial_window_width, 
-        initial_window_height, 
+        game->window_width, 
+        game->window_height, 
         DEFAULT_WINDOW_TITLE, 
         NULL, 
         NULL
@@ -44,7 +44,6 @@ int set_GL_options(Game* game)
     #endif
 
     // Set viewport
-    glfwGetWindowSize(game->window, &game->window_width, &game->window_height);
     glViewport(0, 0, game->window_width, game->window_height);
 
     #ifndef __EMSCRIPTEN__
@@ -75,10 +74,10 @@ int set_GL_options(Game* game)
     return 1;
 }
 
-Bool init_GL(Game* game, int initial_window_width, int initial_window_height)
+Bool init_GL(Game* game)
 {
     if (
-        init_glfw(game, initial_window_width, initial_window_height) && 
+        init_glfw(game) && 
         gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) && 
         set_GL_options(game)
     ) {

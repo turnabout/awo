@@ -7,13 +7,11 @@ Game* create_game(int window_width, int window_height)
     Game* game = malloc(sizeof(Game));
 
     // Set default window dimension values if none given
-    if (!window_width || !window_height) {
-        window_width = DEFAULT_WINDOW_WIDTH;
-        window_height = DEFAULT_WINDOW_HEIGHT;
-    }
+    game->window_width = (window_width) ? window_width : DEFAULT_WINDOW_WIDTH;
+    game->window_height = (window_height) ? window_height : DEFAULT_WINDOW_HEIGHT;
 
     // Initialize base GL game components (GLFW/GLAD/)
-    if (!init_GL(game, window_width, window_height)) {
+    if (!init_GL(game)) {
         free_game(game);
         return NULL;
     }
