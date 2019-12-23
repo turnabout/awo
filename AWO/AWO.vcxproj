@@ -42,7 +42,6 @@
     <ClCompile Include="Libs\stb_image.c" />
     <ClCompile Include="Src\API\Game_Data\tiles_data.c" />
     <ClCompile Include="Src\API\Game_Editor\update_game_editor_selected_entity.c" />
-    <ClCompile Include="Src\API\Game\game_loop.c" />
     <ClCompile Include="Src\API\Game\prepare_design_room_game.c" />
     <ClCompile Include="Src\Game\Board\add_game_board_tile.c" />
     <ClCompile Include="Src\Game\Board\add_game_board_unit.c" />

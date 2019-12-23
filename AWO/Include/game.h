@@ -42,12 +42,6 @@ void unprepare_game(Game* game);
  */
 void run_game(Game* game);
 
-/*! @brief Direct reference to the game loop.
- *
- *  @param[in] game The game, typecasted to void*.
- */
-void game_loop(void* game);
-
 /*! @brief Frees all resources taken up by the game and kills it.
  *
  *  @note Expects game state to be `Game_Initialized`.
