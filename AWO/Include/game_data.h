@@ -9,7 +9,7 @@
  *  @param[out] type Filled in with the neutral tile type's value.
  *  @return The tile type's string.
  */
-const char* get_next_game_tile_type_data(int* type);
+const char* get_next_game_tile_type(int* type);
 
 /*! @brief Gets the next neutral tile variation for a type.
  *
@@ -20,4 +20,4 @@ const char* get_next_game_tile_type_data(int* type);
  *  @param[out] var Filled in with the neutral tile variation's value.
  *  @return The tile variation's string.
  */
-const char* get_next_game_tile_var_data(Game* game, int type, char* var);
+const char* get_next_game_tile_var(Game* game, int type, char* var);
