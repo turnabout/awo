@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "AWO.h"
+#include "AWO/Include/game.h"
 
 int main(int argc, char** argv)
 {
-    AWO* game;
+    Game* game;
 
     if ((game = create_game(0, 0)) == NULL) {
         printf("Failed to initialize game\n");

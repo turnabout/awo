@@ -1,6 +1,8 @@
 #pragma once
 
-#include "definitions.h"
+/*! @brief Game instance.
+ */
+typedef struct Game Game;
 
 /*! @brief Creates the game instance.
  *
@@ -8,7 +10,7 @@
  *  @param[in] window_height The window's initial tiles_height, in pixels.
  *  @return The created game instance with state of `Game_Initialized`, NULL if an error occurred.
  */
-AWO* create_game(int window_width, int window_height);
+Game* create_game(int window_width, int window_height);
 
 /*! @brief Updates AWO's game window dimensions.
  *
@@ -16,14 +18,14 @@ AWO* create_game(int window_width, int window_height);
  *  @param[in] width The new window width.
  *  @param[in] height The new window height.
  */
-void update_game_window_dimensions(AWO* game, int width, int height);
+void update_game_window_dimensions(Game* game, int width, int height);
 
 /*! @brief Prepares game for "design room" (stage editor) mode.
  *
  *  @param[in] game The game.
  *  @return 1 if the game was successfully prepared, 0 if an error occurred.
  */
-int prepare_design_room_game(AWO* game);
+int prepare_design_room_game(Game* game);
 
 /*! @brief Undoes the steps done in game preparation.
  *
@@ -32,13 +34,13 @@ int prepare_design_room_game(AWO* game);
  *
  *  @param[in] game The game object.
  */
-void unprepare_game(AWO* game);
+void unprepare_game(Game* game);
 
 /*! @brief Runs the main game loop until `glfwWindowShouldClose` evaluates false.
  *
  *  @param[in] game The game.
  */
-void run_game(AWO* game);
+void run_game(Game* game);
 
 /*! @brief Direct reference to the game loop.
  *
@@ -52,4 +54,4 @@ void game_loop(void* game);
  *
  *  @param[in] game The game instance to free.
  */
-void free_game(AWO* game);
+void free_game(Game* game);

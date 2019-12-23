@@ -1,18 +1,12 @@
 #pragma once
 
+#include "Include/game_editor.h"
 #include "Game/Board/game_board.h"
 #include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
-
-/*! @brief Every possible entity type the game editor can edit.
- */
-typedef enum Game_Editor_Entity_Type {
-    Editor_Entity_Type_Tile,
-    Editor_Entity_Type_Unit,
-} Game_Editor_Entity_Kind;
 
 /*! @brief The game editor module. Edits entities in the game board in design room mode according
  *  to user input.

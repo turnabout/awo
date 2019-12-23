@@ -396,6 +396,9 @@
     <ClCompile Include="Src\Game\API\Game\update_game_window_dimensions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\API\Editor\update_game_editor_selected_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -650,16 +653,13 @@
     <ClInclude Include="Src\Game\Data\game_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\definitions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\AWO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\editor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Include\game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\game_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\game_editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
