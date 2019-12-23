@@ -375,28 +375,28 @@
     <ClCompile Include="Src\Game\prepare_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Game\create_game.c">
+    <ClCompile Include="Src\API\Game\create_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Game\free_game.c">
+    <ClCompile Include="Src\API\Game\free_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Game\game_loop.c">
+    <ClCompile Include="Src\API\Game\game_loop.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Game\prepare_design_room_game.c">
+    <ClCompile Include="Src\API\Game\prepare_design_room_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Game\run_game.c">
+    <ClCompile Include="Src\API\Game\run_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Game\unprepare_game.c">
+    <ClCompile Include="Src\API\Game\unprepare_game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Game\update_game_window_dimensions.c">
+    <ClCompile Include="Src\API\Game\update_game_window_dimensions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\API\Editor\update_game_editor_selected_entity.c">
+    <ClCompile Include="Src\API\Game_Editor\update_game_editor_selected_entity.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
