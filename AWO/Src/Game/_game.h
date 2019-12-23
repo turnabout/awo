@@ -50,7 +50,7 @@ struct Game {
     Mouse_State* mouse_state;
 
     // Pointer going over the currently hovered-over tile.
-    Game_Cursor* pointer;
+    Game_Cursor* cursor;
 
 };
 

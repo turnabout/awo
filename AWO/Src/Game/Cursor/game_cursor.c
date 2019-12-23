@@ -4,38 +4,38 @@
 
 struct Game_Cursor {
 
-    // The pointer's animation.
+    // The cursor's animation.
     Animation* animation;
 
-    // Whether the game pointer should be hidden.
+    // Whether the game cursor should be hidden.
     Bool hidden;
 
-    // Current pixel coordinates of the pointer.
+    // Current pixel coordinates of the cursor.
     vec2 dst;
 
     // Board coordinates of the currently hovered tile.
     int hovered_tile_x, hovered_tile_y;
 
-    // Amount of pixels to offset the pointer position so it's centered around a tile.
+    // Amount of pixels to offset the cursor position so it's centered around a tile.
     int center_offset_px;
 };
 
 Game_Cursor* create_game_cursor(UI_Data* ui_data)
 {
-    Game_Cursor* pointer = malloc(sizeof(Game_Cursor));
+    Game_Cursor* cursor = malloc(sizeof(Game_Cursor));
 
-    pointer->animation = get_UI_element_frames(ui_data, TileCursor);
-    pointer->hidden = TRUE;
-    pointer->hovered_tile_x = pointer->hovered_tile_y = -1;
+    cursor->animation = get_UI_element_frames(ui_data, TileCursor);
+    cursor->hidden = TRUE;
+    cursor->hovered_tile_x = cursor->hovered_tile_y = -1;
 
-    // Calculate the pointer adjustment
-    int diff = pointer->animation->frames[0].width - DEFAULT_ENTITY_SIZE;
-    pointer->center_offset_px = diff / 2;
+    // Calculate the cursor adjustment
+    int diff = cursor->animation->frames[0].width - DEFAULT_ENTITY_SIZE;
+    cursor->center_offset_px = diff / 2;
 
-    return pointer;
+    return cursor;
 }
 
-void update_cursor(Game_Cursor* pointer, Mouse_State* mouse, Game_Camera* camera)
+void update_cursor(Game_Cursor* cursor, Mouse_State* mouse, Game_Camera* camera)
 {
     int tile_x, tile_y;
 
@@ -47,41 +47,41 @@ void update_cursor(Game_Cursor* pointer, Mouse_State* mouse, Game_Camera* camera
         &tile_x,
         &tile_y
     )) {
-        pointer->hovered_tile_x = pointer->hovered_tile_y = -1;
-        pointer->hidden = TRUE;
+        cursor->hovered_tile_x = cursor->hovered_tile_y = -1;
+        cursor->hidden = TRUE;
         return;
     }
 
     // Exit early if the hovered tile hasn't changed
-    if (tile_x == pointer->hovered_tile_x && tile_y == pointer->hovered_tile_y) {
+    if (tile_x == cursor->hovered_tile_x && tile_y == cursor->hovered_tile_y) {
         return;
     }
 
-    pointer->hovered_tile_x = tile_x;
-    pointer->hovered_tile_y = tile_y;
+    cursor->hovered_tile_x = tile_x;
+    cursor->hovered_tile_y = tile_y;
 
-    // Set the absolute coordinates to render the pointer, centered around the tile
-    pointer->dst[0] = (float)((DEFAULT_ENTITY_SIZE * tile_x) - pointer->center_offset_px);
-    pointer->dst[1] = (float)((DEFAULT_ENTITY_SIZE * tile_y) - pointer->center_offset_px);
+    // Set the absolute coordinates to render the cursor, centered around the tile
+    cursor->dst[0] = (float)((DEFAULT_ENTITY_SIZE * tile_x) - cursor->center_offset_px);
+    cursor->dst[1] = (float)((DEFAULT_ENTITY_SIZE * tile_y) - cursor->center_offset_px);
 
-    pointer->hidden = FALSE;
+    cursor->hidden = FALSE;
 }
 
-void hide_game_cursor(Game_Cursor* pointer)
+void hide_game_cursor(Game_Cursor* cursor)
 {
-    pointer->hidden = TRUE;
+    cursor->hidden = TRUE;
 }
 
-void render_game_cursor(Game_Cursor* pointer, Game_Renderer* renderer)
+void render_game_cursor(Game_Cursor* cursor, Game_Renderer* renderer)
 {
-    if (!pointer->hidden) {
-        queue_extra(renderer, pointer->dst, &pointer->animation->frames[0]);
+    if (!cursor->hidden) {
+        queue_extra(renderer, cursor->dst, &cursor->animation->frames[0]);
     }
 }
 
-void free_game_cursor(Game_Cursor* pointer)
+void free_game_cursor(Game_Cursor* cursor)
 {
-    if (pointer != NULL) {
-        free(pointer);
+    if (cursor != NULL) {
+        free(cursor);
     }
 }

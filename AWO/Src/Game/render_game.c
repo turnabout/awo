@@ -9,7 +9,7 @@ void render_game(Game* game)
     render_game_renderer_grids(game->renderer);
 
     // Queue extras for render
-    render_game_cursor(game->pointer, game->renderer);
+    render_game_cursor(game->cursor, game->renderer);
 
     render_extras(game->renderer);
 }

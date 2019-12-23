@@ -13,7 +13,7 @@ void free_game(Game* game)
     free_game_data(game->data);
     free_keyboard_module();
     free_mouse_module(game->mouse_state);
-    free_game_cursor(game->pointer);
+    free_game_cursor(game->cursor);
 
     free(game);
 }

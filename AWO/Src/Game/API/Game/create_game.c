@@ -26,13 +26,13 @@ Game* create_game(int window_width, int window_height)
     game->mouse_state = init_mouse_module(game->window);
 
     // Initialize the game tile cursor module
-    game->pointer = create_game_cursor(game->data->UI_data);
+    game->cursor = create_game_cursor(game->data->UI_data);
 
     // Check all modules were initialized properly
     if (
         game->data == NULL || 
         game->mouse_state == NULL || 
-        game->pointer == NULL
+        game->cursor == NULL
     ) {
         free_game(game);
         return NULL;
