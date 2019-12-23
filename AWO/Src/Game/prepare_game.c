@@ -18,7 +18,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
         stage->width,
         stage->height,
         game->palette_texture,
-        game->data->tiles_data,
+        game->data->tiles,
         game->window_width,
         game->window_height
     );
@@ -57,7 +57,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
         game->renderer,
         stage, 
         player_COs,
-        game->data->tiles_data, 
+        game->data->tiles, 
         game->data->raw_palette,
         game->palette_texture
     );

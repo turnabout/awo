@@ -3,8 +3,8 @@
 int prepare_design_room_game(Game* game)
 {
     game->editor = create_game_editor(
-        game->data->tiles_data,
-        game->data->units_data,
+        game->data->tiles,
+        game->data->units,
         &game->window_width,
         &game->window_height
     );

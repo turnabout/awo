@@ -11,19 +11,19 @@
 typedef struct Game_Data {
 
     // Data for clocks used for animations among other things.
-    Clock_Data* clock_data;
+    Clock_Data* clock;
 
     // Data for all COs.
-    CO_Data* CO_data;
+    CO_Data* CO;
 
     // Data for all tiles.
-    Tiles_Data* tiles_data;
+    Tiles_Data* tiles;
 
     // Data for all units.
-    Units_Data* units_data;
+    Units_Data* units;
 
     // Data for all UI elements.
-    UI_Data* UI_data;
+    UI_Data* UI;
 
     // Initially loaded default stages.
     Stage* stages[MAX_LOADED_STAGE_COUNT];

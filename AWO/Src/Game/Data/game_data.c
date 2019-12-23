@@ -39,7 +39,7 @@ Game_Data* create_game_data()
     }
 
     // Gather tiles data
-    data->tiles_data = create_tiles_data(
+    data->tiles = create_tiles_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
         cJSON_GetObjectItemCaseSensitive(data_JSON, "properties"),
         ss_texture_w,
@@ -47,28 +47,28 @@ Game_Data* create_game_data()
     );
 
     // Gather units data
-    data->units_data = create_units_data(
+    data->units = create_units_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "units"),
         ss_texture_w,
         ss_texture_h
     );
 
     // Gather UI data
-    data->UI_data = create_UI_data(
+    data->UI = create_UI_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "ui"),
         ss_texture_w,
         ss_texture_h
     );
 
     // Gather CO data
-    data->CO_data = create_CO_data(
+    data->CO = create_CO_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "COs"),
         ss_texture_w,
         ss_texture_h
     );
 
     // Gather clock data
-    data->clock_data = create_clock_data(
+    data->clock = create_clock_data(
         cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
     );
 
@@ -90,7 +90,7 @@ Game_Data* create_game_data()
 
         data->stages[i] = generate_stage_from_string(
             stage_JSON->valuestring,
-            data->tiles_data
+            data->tiles
         );
     }
 
@@ -105,11 +105,11 @@ void free_game_data(Game_Data* data)
         return;
     }
 
-    free_tiles_data(data->tiles_data);
-    free_units_data(data->units_data);
-    free_UI_data(data->UI_data);
-    free_CO_data(data->CO_data);
-    free_clock_data(data->clock_data);
+    free_tiles_data(data->tiles);
+    free_units_data(data->units);
+    free_UI_data(data->UI);
+    free_CO_data(data->CO);
+    free_clock_data(data->clock);
 
     for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
         free_stage(data->stages[i]);
