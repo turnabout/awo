@@ -13,7 +13,10 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    run_game(game);
+    if (prepare_design_room_game(game)) {
+        run_game(game);
+    }
+
     free_game(game);
 
     return 0;

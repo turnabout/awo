@@ -10,10 +10,18 @@ void free_game(Game* game)
         return;
     }
 
-    free_game_data(game->data);
-    free_keyboard_module();
-    free_mouse_module(game->mouse_state);
+    // Ensure game is "unprepared"
+    unprepare_game(game);
+
     free_game_cursor(game->cursor);
+    free_game_data(game->data);
+    free_mouse_module(game->mouse_state);
+
+    free_keyboard_module();
+
+    game->cursor = NULL;
+    game->data = NULL;
+    game->mouse_state = NULL;
 
     free(game);
 }

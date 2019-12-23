@@ -35,6 +35,14 @@ Game* create_game(int window_width, int window_height)
         free_game(game);
         return NULL;
     }
+    
+    // Initialize all other game struct members
+    game->board = NULL;
+    game->camera = NULL;
+    game->clock = NULL;
+    game->editor = NULL;
+    game->renderer = NULL;
+    game->palette_texture = 0;
 
     return game;
 }

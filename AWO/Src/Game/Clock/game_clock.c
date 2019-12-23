@@ -67,7 +67,8 @@ void activate_game_clock_subscribers(
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
-    update_game_clock_publisher(game_clock->publisher, delta_time);
+    // TODO
+    // update_game_clock_publisher(game_clock->publisher, delta_time);
 }
 
 void register_game_clock_tile(
@@ -77,7 +78,8 @@ void register_game_clock_tile(
     Animation_Sub_Clock_Index sub_clock_index
 )
 {
-    register_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
+    // TODO
+    // register_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
 }
 
 void unregister_game_clock_tile(
@@ -87,11 +89,16 @@ void unregister_game_clock_tile(
     Animation_Sub_Clock_Index sub_clock_index
 )
 {
-    unregister_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
+    // TODO
+    // unregister_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
 }
 
 void free_game_clock(Game_Clock* clock)
 {
+    if (clock == NULL) {
+        return;
+    }
+
     free_game_clock_publisher(clock->publisher);
     free_clock_pub_sub(clock->pub_sub);
     free_game_clock_tile_subscriber(clock->tile_subscriber);

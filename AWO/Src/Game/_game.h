@@ -28,40 +28,38 @@ struct Game {
     int window_width, window_height;
 
 
-    // Texture holding the palette data used during gameplay.
-    GLuint palette_texture;
-
-    // The game's editor, used in design room mode.
-    Game_Editor* editor;
-
     // The game's board, containing and updating all current on-board game entities.
     Game_Board* board;
 
     // The game's camera, containing matrices used by the game's vertex shaders.
     Game_Camera* camera;
 
+    // Pointer going over the currently hovered-over tile.
+    Game_Cursor* cursor;
+
     // The game's clock used to update and synchronize entities' animations.
     Game_Clock* clock;
 
-    // The game's renderer. Used to render all game elements.
-    Game_Renderer* renderer;
+    // The game's editor, used in design room mode.
+    Game_Editor* editor;
 
     // The mouse's state.
     Mouse_State* mouse_state;
 
-    // Pointer going over the currently hovered-over tile.
-    Game_Cursor* cursor;
+    // The game's renderer. Used to render all game elements.
+    Game_Renderer* renderer;
+
+    // Texture holding the palette data used during gameplay.
+    GLuint palette_texture;
 
 };
 
 /*! @brief Initializes OpenGL and GLFW and sets related options.
  *
  *  @param[in] game The game object.
- *  @param[in] initial_window_width The initial game window's tiles_width.
- *  @param[in] initial_window_height The initial game window's tiles_height.
  *  @return TRUE if successful, FALSE if an error occurred.
  */
-Bool init_GL(Game* game, int initial_window_width, int initial_window_height);
+Bool init_GL(Game* game);
 
 /*! @brief Prepares the game for gameplay.
  *

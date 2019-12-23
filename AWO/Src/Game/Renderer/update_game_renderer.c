@@ -43,4 +43,6 @@ void free_game_renderer(Game_Renderer* renderer)
 
         free(renderer);
     }
+
+    renderer = NULL;
 }

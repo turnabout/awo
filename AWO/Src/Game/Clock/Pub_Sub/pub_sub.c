@@ -50,5 +50,7 @@ void process_clock_pub_sub_tick_event(Game_Clock_Pub_Sub* pub_sub, Tick_Event* t
 
 void free_clock_pub_sub(Game_Clock_Pub_Sub* pub_sub)
 {
-    free(pub_sub);
+    if (pub_sub != NULL) {
+        free(pub_sub);
+    }
 }

@@ -27,5 +27,7 @@ void process_property_light_tick_event(Tick_Event* tick_event, void* subscriber_
 
 void free_game_clock_property_lights_subscriber(Game_Clock_Property_Lights_Subscriber* subscriber)
 {
-    free(subscriber);
+    if (subscriber != NULL) {
+        free(subscriber);
+    }
 }
