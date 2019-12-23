@@ -17,6 +17,15 @@ AWO* create_game(int window_width, int window_height);
  */
 int prepare_design_room_game(AWO* game);
 
+/*! @brief Undoes the steps done in game preparation.
+ *
+ * @note Frees memory used by components initialized during game preparation. Should be used after 
+ * the game loop is done running.
+ *
+ *  @param[in] game The game object.
+ */
+void unprepare_game(AWO* game);
+
 /*! @brief Runs the main game loop until `glfwWindowShouldClose` evaluates false.
  *
  *  @param[in] game The game.

@@ -75,15 +75,6 @@ Bool init_GL(Game* game, int initial_window_width, int initial_window_height);
  */
 Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]);
 
-/*! @brief Undoes the steps done in `prepare_game`.
- *
- * Frees memory used by components initialized during `prepare_game`. Should be used after the
- * game loop is done running.
- *
- *  @param[in] game The game object.
- */
-void unprepare_game(Game* game);
-
 /*! @brief Updates the game's entities.
  *
  *  @param[in] game The game object.

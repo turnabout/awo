@@ -135,7 +135,7 @@
     <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Src\Game\API\Initialization\run_game.c" />
     <ClCompile Include="Src\Game\Stage\stage.c" />
-    <ClCompile Include="Src\Game\unprepare_game.c" />
+    <ClCompile Include="Src\Game\API\Initialization\unprepare_game.c" />
     <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\Game\update_game_window_dimensions.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />

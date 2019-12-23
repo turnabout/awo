@@ -29,11 +29,14 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     }
 
     // Clock
+    // TODO
+    /*
     activate_game_clock_subscribers(
         game->clock,
         game->renderer,
         &game->palette_texture
     );
+    */
 
     // Camera
     game->camera = create_game_camera(
