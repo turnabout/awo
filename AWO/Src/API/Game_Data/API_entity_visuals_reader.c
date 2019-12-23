@@ -3,12 +3,12 @@
 #include "emx.h"
 #include "Include/game_data.h"
 
-char* EMX test_entity_visuals_reader(Game* game, int* len_out)
+unsigned char* EMX test_entity_visuals_reader(Game* game, int* len_out)
 {
     int width = 20;
     int height = 20;
     int len = (width * height) * 4;
-    char* out = malloc(sizeof(char) * len);
+    unsigned char* out = malloc(sizeof(char) * len);
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {

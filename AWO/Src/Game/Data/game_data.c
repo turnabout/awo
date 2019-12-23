@@ -35,7 +35,7 @@ Game_Data* create_game_data()
     cJSON* data_JSON;
 
     if (!get_data_JSON(&data_JSON)) {
-        return FALSE;
+        return NULL;
     }
 
     // Gather tiles data
