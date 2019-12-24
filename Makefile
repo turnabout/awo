@@ -28,6 +28,7 @@ all:
 	-s MODULARIZE=1 \
 	-s EXPORT_NAME="AWO_EM_MODULE" \
 	-s ALLOW_MEMORY_GROWTH=1 \
+	--no-heap-copy \
 	\
 	-s USE_WEBGL2=1 \
 	-s USE_GLFW=3 \
