@@ -3,6 +3,59 @@
 #include "emx.h"
 #include "Game/_game.h"
 #include "GL_Helpers/Texture_Reader/texture_reader.h"
+#include "Game/Data/Entity_Texture_Reader/entity_texture_reader.h"
+
+Entity_Texture_Reader* EMX create_game_entity_visuals_reader(Game* game)
+{
+    return create_entity_texture_reader(
+        game->data->tiles,
+        game->data->units,
+        game->data->raw_palette,
+        game->data->sprite_sheet,
+        game->data->sprite_sheet_width,
+        game->data->sprite_sheet_height
+    );
+}
+
+unsigned char* EMX read_game_entity_texture(
+    Entity_Texture_Reader* reader,
+    Entity_Kind kind,
+    int type,
+    int variation,
+    int palette_variation,
+    int* texture_width,
+    int* texture_height
+)
+{
+    if (kind == Entity_Kind_Neutral_Tile) {
+
+        return read_neutral_tile_texture(
+            reader,
+            type,
+            variation,
+            palette_variation,
+            texture_width,
+            texture_height
+        );
+
+    } else if (kind == Entity_Kind_Property) {
+        // TODO
+        printf("Property texture reading not implemented\n");
+        return NULL;
+    } else if (kind == Entity_Kind_Unit) {
+        // TODO
+        printf("Unit texture reading not implemented\n");
+        return NULL;
+    } else {
+        // TODO: error
+        return NULL;
+    }
+}
+
+void EMX free_game_entity_visuals_reader(Entity_Texture_Reader* reader)
+{
+    free_entity_texture_reader(reader);
+}
 
 unsigned char* EMX test_entity_visuals_reader(Game* game, int* width_out, int* height_out)
 {
