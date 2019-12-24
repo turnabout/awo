@@ -27,6 +27,7 @@ all:
 	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue"]' \
 	-s MODULARIZE=1 \
 	-s EXPORT_NAME="AWO_EM_MODULE" \
+	-s ALLOW_MEMORY_GROWTH=1 \
 	\
 	-s USE_WEBGL2=1 \
 	-s USE_GLFW=3 \
