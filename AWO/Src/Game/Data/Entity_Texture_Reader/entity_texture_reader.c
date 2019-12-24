@@ -77,7 +77,7 @@ void apply_entity_texture_reader_palette(
             int looped_pixel_loc = (x * 4) + (y * line_size);
 
             // Don't bother with transparent pixels
-            if (texture_buffer[looped_pixel_loc + 4] == 0) {
+            if (texture_buffer[looped_pixel_loc + 3] == 0) {
                 continue;
             }
 
