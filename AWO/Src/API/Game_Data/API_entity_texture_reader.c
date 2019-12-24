@@ -5,7 +5,7 @@
 #include "GL_Helpers/Texture_Reader/texture_reader.h"
 #include "Game/Data/Entity_Texture_Reader/entity_texture_reader.h"
 
-Entity_Texture_Reader* EMX create_game_entity_visuals_reader(Game* game)
+Entity_Texture_Reader* EMX create_game_entity_texture_reader(Game* game)
 {
     return create_entity_texture_reader(
         game->data->tiles,

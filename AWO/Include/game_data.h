@@ -40,7 +40,7 @@ const char* get_next_game_tile_var(Game* game, int type, char* var);
  *  @param[in] game The game instance.
  *  @return Handle to the created entity texture reader.
  */
-Entity_Texture_Reader* create_game_entity_visuals_reader(Game* game);
+Entity_Texture_Reader* create_game_entity_texture_reader(Game* game);
 
 /*! @brief Reads the texture data from a game entity.
  *
