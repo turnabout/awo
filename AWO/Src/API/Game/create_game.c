@@ -2,6 +2,7 @@
 
 #include "emx.h"
 #include "Game/_game.h"
+#include "GL_Helpers/Texture_Reader/texture_reader.h"
 
 Game* EMX create_game(int window_width, int window_height)
 {

@@ -13,6 +13,9 @@ struct Texture_Reader {
     // Buffer containing the data for the texture.
     Uint8* texture_buffer;
 
+    // Size of a line in the loaded texture
+    int texture_line_size;
+
 };
 
 Texture_Reader* create_texture_reader(GLuint texture, int texture_w, int texture_h)
@@ -22,52 +25,46 @@ Texture_Reader* create_texture_reader(GLuint texture, int texture_w, int texture
     reader->texture_buffer = malloc(sizeof(Uint8) * 4 * texture_w * texture_h);
     reader->texture_w = texture_w;
     reader->texture_h = texture_h;
+    reader->texture_line_size = texture_w * 4;
 
     read_texture_data(texture, reader->texture_buffer, texture_w, texture_h);
 
     return reader;
 }
 
-Uint8* read_texture_src_data(Texture_Reader* reader, int x, int y, int w, int h)
+Uint8* read_texture_src_data(Texture_Reader* reader, int src_x, int src_y, int src_w, int src_h)
 {
-    // Buffer containing texture data for the source we want
-    Uint8* source_buffer = malloc((sizeof(Uint8) * 4) * w * h);
+    // Buffer containing texture data for the desired source
+    Uint8* out_buffer = malloc((sizeof(Uint8) * 4) * src_w * src_h);
 
     // Ensure given section coordinates don't go outside the sprite sheet boundaries
-    if ((x + w) >= reader->texture_w || (y + h) >= reader->texture_h) {
+    if ((src_x + src_w) >= reader->texture_w || (src_y + src_h) >= reader->texture_h) {
         // TODO: Error
         return NULL;
     }
 
-    // Copy reader texture data to the section buffer
-    for (int looped_y = y; looped_y < (y + h); looped_y++) {
+    // Size of a copied line in bytes
+    int line_size = (src_w * 4);
+
+    // Copy texture data to the source buffer, line by line
+    for (int y = 0; y < src_w; y++) {
+
+        // Gets the location to copy from the texture
+        // First line: Y location 
+        // Second line: X location
+        int texture_buffer_location = (
+            ((src_y + y) * reader->texture_line_size) + 
+            (src_x * 4)
+        );
 
         memcpy(
-            (void*)&source_buffer[(y * w * 4)],
-            (void*)&reader->texture_buffer[(x * 4) + (y * w * 4)],
-            (w * 4)
+            (void*)&out_buffer[(y * line_size)],
+            (void*)&reader->texture_buffer[texture_buffer_location],
+            line_size
         );
     }
 
-    // Test
-    /*
-    for (int in_y = 0; in_y < w; in_y++) {
-        for (int in_x = 0; in_x < h; in_x++) {
-            printf(
-                "[%d, %d]: [%d, %d, %d, %d]", 
-                in_x, 
-                in_y,
-                source_buffer[((x * 4) + (y * w * 4)) + 0],
-                source_buffer[((x * 4) + (y * w * 4)) + 1],
-                source_buffer[((x * 4) + (y * w * 4)) + 2],
-                source_buffer[((x * 4) + (y * w * 4)) + 3]
-            );
-        }
-        printf("\n");
-    }
-    */
-
-    return source_buffer;
+    return out_buffer;
 }
 
 void free_texture_reader(Texture_Reader* texture_reader)

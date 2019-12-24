@@ -1,10 +1,31 @@
 #include <stdlib.h>
 
 #include "emx.h"
-#include "Include/game_data.h"
+#include "Game/_game.h"
+#include "GL_Helpers/Texture_Reader/texture_reader.h"
 
-unsigned char* EMX test_entity_visuals_reader(Game* game, int* len_out)
+unsigned char* EMX test_entity_visuals_reader(Game* game, int* width_out, int* height_out)
 {
+    Texture_Reader* reader = create_texture_reader(
+        game->data->sprite_sheet,
+        game->data->sprite_sheet_width,
+        game->data->sprite_sheet_height
+    );
+
+    int width = 16;
+    int height = 16;
+    int x = 0;
+    int y = 0;
+    unsigned char* buf = read_texture_src_data(reader, x, y, width, height);
+
+    free_texture_reader(reader);
+
+    *width_out = width;
+    *height_out = height;
+
+    return buf;
+
+    /*
     int width = 20;
     int height = 20;
     int len = (width * height) * 4;
@@ -29,6 +50,8 @@ unsigned char* EMX test_entity_visuals_reader(Game* game, int* len_out)
     out[2] = 0;
     out[3] = 255;
 
-    *len_out = len;
+    *width_out = width;
+    *height_out = height;
     return out;
+    */
 }
