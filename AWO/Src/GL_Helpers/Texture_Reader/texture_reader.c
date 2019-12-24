@@ -47,7 +47,7 @@ Uint8* read_texture_src_data(Texture_Reader* reader, int src_x, int src_y, int s
     int line_size = (src_w * 4);
 
     // Copy texture data to the source buffer, line by line
-    for (int y = 0; y < src_w; y++) {
+    for (int y = 0; y < src_h; y++) {
 
         // Gets the location to copy from the texture
         // First line: Y location 
