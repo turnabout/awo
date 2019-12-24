@@ -14,7 +14,16 @@ typedef struct Texture_Reader Texture_Reader;
  */
 Texture_Reader* create_texture_reader(GLuint texture, int texture_w, int texture_h);
 
-void read_texture_src_data(Texture_Reader* texture_reader, int x, int y, int w, int h);
+/*! @brief Reads data at coordinates from the texture loaded in the texture reader.
+ *
+ *  @param[in] reader The texture reader to read from.
+ *  @param[in] x The source X coordinate of the texture to read from.
+ *  @param[in] y The source Y coordinate of the texture to read from.
+ *  @param[in] w The source width of the data to read.
+ *  @param[in] h The source height of the data to read.
+ *  @return Buffer filled with the texture pixel data.
+ */
+Uint8* read_texture_src_data(Texture_Reader* reader, int x, int y, int w, int h);
 
 /*! @brief Frees the texture reader.
  *
