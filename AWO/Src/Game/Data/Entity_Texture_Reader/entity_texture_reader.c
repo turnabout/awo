@@ -6,6 +6,9 @@
 #include "Game/Data/Palette/raw_palette.h"
 #include "Game/Data/Entity_Texture_Reader/entity_texture_reader.h"
 
+// Maximum amount of palettes that can be applied to an entity texture
+#define MAX_APPLIED_PALETTE_COUNT 2
+
 struct Entity_Texture_Reader {
 
     // Reference to the game's tiles data module.
@@ -50,17 +53,23 @@ Entity_Texture_Reader* create_entity_texture_reader(
     return reader;
 }
 
-// TODO: apply multiple palettes instead of just one
 void apply_entity_texture_reader_palette(
     Entity_Texture_Reader* reader,
     Uint8* texture_buffer,
     int texture_w,
     int texture_h,
-    GLuint applied_palette_row
+    GLuint applied_palette_rows[MAX_APPLIED_PALETTE_COUNT],
+    int palette_count
 )
 {
     int line_size = texture_w * 4;
-    int palette_line_loc = (applied_palette_row * PALETTE_TEX_WIDTH * 4);
+
+    // Store locations of the given palette lines
+    int palette_line_locs[MAX_APPLIED_PALETTE_COUNT];
+
+    for (int i = 0; i < palette_count; i++) {
+        palette_line_locs[i] = (applied_palette_rows[i] * PALETTE_TEX_WIDTH * 4);
+    }
 
     for (int y = 0; y < texture_h; y++) {
 
@@ -75,32 +84,24 @@ void apply_entity_texture_reader_palette(
             // Get value of this pixel
             Uint8 red = texture_buffer[looped_pixel_loc + 0];
 
-            // Use value to get location of palette pixel
-            int palette_pixel_loc = (red * 4) + palette_line_loc;
+            // Apply given palettes to this pixel
+            for (int i = 0; i < palette_count; i++) {
 
-            // Don't apply this palette pixel if its alpha is transparent
-            if (reader->palette_data[palette_pixel_loc + 3] == 0) {
-                continue;
+                // Use value to get location of palette pixel
+                int palette_pixel_loc = (red * 4) + palette_line_locs[i];
+
+                // Don't apply this palette pixel if its alpha is transparent
+                if (reader->palette_data[palette_pixel_loc + 3] == 0) {
+                    continue;
+                }
+
+                // Apply palette color to the looped pixel
+                memcpy(
+                    &texture_buffer[looped_pixel_loc],
+                    &reader->palette_data[palette_pixel_loc],
+                    4
+                );
             }
-
-            // Apply palette color to the looped pixel
-            memcpy(
-                &texture_buffer[looped_pixel_loc],
-                &reader->palette_data[palette_pixel_loc],
-                4
-            );
-
-            /*
-            printf(
-                "[%d, %d] [%d, %d, %d, %d]\n", 
-                y, 
-                x, 
-                reader->palette_data[palette_pixel_loc + 0],
-                reader->palette_data[palette_pixel_loc + 1],
-                reader->palette_data[palette_pixel_loc + 2],
-                reader->palette_data[palette_pixel_loc + 3]
-            );
-            */
         }
     }
 }
@@ -133,7 +134,8 @@ Uint8* read_neutral_tile_texture(
         texture_buffer, 
         texture_w, 
         texture_h,
-        get_raw_tile_palette_index_i(weather, FALSE)
+        (GLuint[MAX_APPLIED_PALETTE_COUNT]) { get_raw_tile_palette_index_i(weather, FALSE) },
+        1
     );
 
     *texture_w_out = tiles_anim->frames[0].width;
