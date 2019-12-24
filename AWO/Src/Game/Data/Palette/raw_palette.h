@@ -9,6 +9,7 @@
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Enums/weather.h"
 #include "Game/Data/Enums/army_type.h"
+#include "Game/Data/Palette/palette.h"
 
 /*! Texture containing every row of palette data that can be used by the game.
  *  Structure:

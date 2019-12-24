@@ -1,7 +1,6 @@
 #pragma once
 
-#define PALETTE_TEX_WIDTH  256
-#define PALETTE_TEX_HEIGHT  32
+#include "Game/Data/Palette/palette.h"
 
 // Counts of every different types of palettes
 #define UNIT_PALETTE_COUNT (ARMY_TYPE_COUNT) * (2) // 2 of each unit variation (normal / done)

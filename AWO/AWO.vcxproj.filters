@@ -405,6 +405,9 @@
     <ClCompile Include="Src\GL_Helpers\Texture_Reader\texture_reader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\Entity_Texture_Reader\entity_texture_reader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -672,6 +675,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\GL_Helpers\Texture_Reader\texture_reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Entity_Texture_Reader\entity_texture_reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Palette\palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

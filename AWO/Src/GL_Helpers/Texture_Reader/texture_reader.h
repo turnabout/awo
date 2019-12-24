@@ -3,6 +3,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "types.h"
+
 /*! @brief Module used to read sections of a texture loaded into GL.
  */
 typedef struct Texture_Reader Texture_Reader;
