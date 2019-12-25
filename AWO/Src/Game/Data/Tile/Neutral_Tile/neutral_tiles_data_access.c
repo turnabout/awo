@@ -7,24 +7,13 @@ void gather_tile_data(
     Tiles_Data* tiles_data, 
     Tile_Type type, 
     Tile_Variation var,
-    Animation_Clock_Index* clock,
-    Animation_Sub_Clock_Index* sub_clock,
     Animation** animation
 )
 {
     Tile_Type_Data* tile_type_data = tiles_data->neutral_tiles->src[type];
 
-    // Fill in clock tile_var_index
-    if (clock != NULL) {
-        *clock = tile_type_data->clock;
-    }
-
     // Fill in sub-clock tile_var_index & return animation pointer
     Tile_Variation_Data* tile_var_data = get_tile_variation_data(tiles_data, type, var);
-
-    if (sub_clock != NULL) {
-        *sub_clock = tile_var_data->sub_clock;
-    }
 
     if (animation != NULL) {
         *animation = tile_var_data->animation;
@@ -45,6 +34,8 @@ void free_tiles_data(Tiles_Data* tiles_data)
 #ifdef _DEBUG
 void print_tile_type(Tiles_Data* td, Tile_Type type)
 {
+    // TODO cleanup
+    /*
     Tile_Type_Data* tile_data = td->neutral_tiles->src[type];
 
     printf("===============\n%s (%d)\n===============\n", tile_type_str[type], type);
@@ -59,7 +50,7 @@ void print_tile_type(Tiles_Data* td, Tile_Type type)
 
         print_animation(tile_var->animation);
     }
-
+    */
 }
 
 void print_tiles_data(Tiles_Data* td)

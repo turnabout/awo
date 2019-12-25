@@ -7,6 +7,8 @@ PRAGMA( warning(disable: 6001) );
 
 typedef struct Animation_Clock_Data {
 
+
+
     // Changing ticks
     int* changing_ticks;
     int changing_ticks_count;
@@ -26,6 +28,7 @@ struct Clock_Data {
 
 Animation_Clock_Data* create_animation_clock_data(cJSON* JSON)
 {
+    /*
     Animation_Clock_Data* data = malloc(sizeof(Animation_Clock_Data));
 
     // Store changing ticks data
@@ -55,6 +58,8 @@ Animation_Clock_Data* create_animation_clock_data(cJSON* JSON)
     }
 
     return data;
+    */
+    return NULL;
 }
 
 Clock_Data* create_clock_data(cJSON* JSON)
@@ -80,6 +85,7 @@ void free_clock_data(Clock_Data* clock_data)
             continue;
         }
 
+        /*
         Animation_Clock_Data* anim_clock = clock_data->clocks[i];
 
         // Free animation clock's sub-clocks
@@ -95,8 +101,10 @@ void free_clock_data(Clock_Data* clock_data)
         if (anim_clock->sub_clocks_tick_arrays != NULL) {
             free(anim_clock->sub_clocks_tick_arrays);
         }
+        */
 
-        free(anim_clock);
+
+        free(clock_data->clocks[i]);
     }
 
     free(clock_data);

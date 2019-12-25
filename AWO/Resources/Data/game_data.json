@@ -3010,11 +3010,6 @@
 					}
 				]
 			},
-			"clockData": {
-				"clock": 1,
-				"defaultSubClock": 0,
-				"varSubClocks": {}
-			},
 			"autoVars": [
 				{
 					"tileVar": "M",
@@ -3486,14 +3481,6 @@
 					}
 				]
 			},
-			"clockData": {
-				"clock": 0,
-				"defaultSubClock": 0,
-				"varSubClocks": {
-					"E": 1,
-					"I": 1
-				}
-			},
 			"autoVars": [
 				{
 					"tileVar": "M",
@@ -3661,11 +3648,6 @@
 						"y": 240
 					}
 				]
-			},
-			"clockData": {
-				"clock": 0,
-				"defaultSubClock": 0,
-				"varSubClocks": {}
 			},
 			"autoVars": null
 		},
@@ -4296,20 +4278,6 @@
 					}
 				]
 			},
-			"clockData": {
-				"clock": 0,
-				"defaultSubClock": 1,
-				"varSubClocks": {
-					"1": 0,
-					"4": 0,
-					"7": 0,
-					"F": 0,
-					"n": 1,
-					"o": 0,
-					"p": 0,
-					"y": 0
-				}
-			},
 			"autoVars": null
 		},
 		{
@@ -4445,11 +4413,6 @@
 						"y": 208
 					}
 				]
-			},
-			"clockData": {
-				"clock": 2,
-				"defaultSubClock": 0,
-				"varSubClocks": {}
 			},
 			"autoVars": null
 		},
@@ -7824,145 +7787,76 @@
 			]
 		}
 	],
-	"animationClocks": [
+	"clocks": [
 		{
-			"changingTicks": [
+			"frames": [
 				0,
-				5,
-				6,
-				11,
-				12,
 				18,
-				19,
-				31,
-				32,
-				38,
-				39,
-				45
-			],
-			"subClocks": [
-				[
-					0,
-					1,
-					1,
-					2,
-					2,
-					3,
-					3,
-					2,
-					2,
-					1,
-					1,
-					0
-				],
-				[
-					0,
-					0,
-					1,
-					1,
-					2,
-					2,
-					3,
-					3,
-					2,
-					2,
-					1,
-					1
-				],
-				[
-					0,
-					1,
-					2,
-					3,
-					4,
-					5,
-					6,
-					7,
-					4,
-					8,
-					2,
-					9
-				]
-			]
-		},
-		{
-			"changingTicks": [
-				0,
-				6,
-				12,
-				18,
-				24,
-				30,
 				36,
-				41
+				54,
+				72,
+				90,
+				107,
+				108
 			],
-			"subClocks": [
-				[
-					0,
-					1,
-					2,
-					3,
-					4,
-					5,
-					6,
-					7
-				]
-			]
-		},
-		{
-			"changingTicks": [
+			"values": [
 				0,
-				6,
-				12,
-				18,
-				24,
-				30,
-				36,
-				42
-			],
-			"subClocks": [
-				[
-					0,
-					1,
-					2,
-					3,
-					0,
-					1,
-					2,
-					3
-				]
+				1,
+				2,
+				3,
+				2,
+				1,
+				0
 			]
 		},
 		{
-			"changingTicks": [
+			"frames": [
 				0,
-				15
+				17,
+				35,
+				53,
+				71,
+				89,
+				108
 			],
-			"subClocks": [
-				[
-					0,
-					1
-				]
+			"values": [
+				0,
+				1,
+				2,
+				3,
+				2,
+				1
 			]
 		},
 		{
-			"changingTicks": [
+			"frames": [
 				0,
 				9,
 				18,
 				27,
 				36,
-				45
+				45,
+				54,
+				63,
+				72,
+				81,
+				90,
+				99,
+				108
 			],
-			"subClocks": [
-				[
-					2,
-					1,
-					0,
-					0,
-					1,
-					2
-				]
+			"values": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				4,
+				8,
+				2,
+				9
 			]
 		}
 	],

@@ -1,4 +1,5 @@
 #pragma once
+/*
 
 #include <cJSON.h>
 
@@ -40,3 +41,4 @@ void tick_animation_sub_clock(Animation_Sub_Clock* asc, int ac_current_tick);
 
 // Frees an animation sub clock
 void free_animation_sub_clock(Animation_Sub_Clock* asc);
+*/

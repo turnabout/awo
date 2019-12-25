@@ -30,6 +30,7 @@ void activate_game_clock_subscribers(
     // Tiles clock subscriber module
     game_clock->tile_subscriber = create_game_clock_tile_subscriber(game_renderer);
 
+    /*
     register_clock_pub_sub_subscriber(
         game_clock->pub_sub,
         (void*)game_clock->tile_subscriber,
@@ -62,7 +63,7 @@ void activate_game_clock_subscribers(
         process_property_light_tick_event,
         Property_Lights_Clock
     );
-
+*/
 }
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)
@@ -74,8 +75,7 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
 void register_game_clock_tile(
     Game_Clock* game_clock, 
     Tile* tile,
-    Animation_Clock_Index clock_index,
-    Animation_Sub_Clock_Index sub_clock_index
+    Animation_Clock_Index clock_index
 )
 {
     // TODO
@@ -85,8 +85,7 @@ void register_game_clock_tile(
 void unregister_game_clock_tile(
     Game_Clock* game_clock, 
     Tile* tile,
-    Animation_Clock_Index clock_index,
-    Animation_Sub_Clock_Index sub_clock_index
+    Animation_Clock_Index clock_index
 )
 {
     // TODO

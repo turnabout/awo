@@ -111,7 +111,7 @@ Game_Renderer* create_game_renderer(
     Game_Renderer* renderer = malloc(sizeof(Game_Renderer));
 
     renderer->game_palette_texture = game_palette_texture;
-    gather_tile_data(tiles_data, Empty, Default, NULL, NULL, &renderer->empty_tile_frame);
+    gather_tile_data(tiles_data, Empty, Default, &renderer->empty_tile_frame);
 
     // Shaders managed by the game renderer itself
     if (!init_game_renderer_shader_programs(renderer)) {

@@ -56,16 +56,12 @@ Tile_Variation get_tile_auto_var(
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] type The tile's type.
  *  @param[in] variation The tile variation.
- *  @param[out] clock_index Filled with the tile's animation clock index.
- *  @param[out] sub_clock_index Filled with the tile's sub-clock index.
  *  @param[out] animation Filled with the tile's Animation object.
  */
 void gather_tile_data(
     Tiles_Data* tiles_data,
     Tile_Type type,
     Tile_Variation var,
-    Animation_Clock_Index* clock,
-    Animation_Sub_Clock_Index* sub_clock,
     Animation** animation
 );
 

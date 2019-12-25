@@ -10,8 +10,8 @@
 // A tile variation's visual data
 typedef struct Tile_Variation_Data
 {
-    // Index to animation sub clock used by this tile variation to update its animation.
-    Animation_Sub_Clock_Index sub_clock; 
+    // Index to the clock used by this tile variation to update its animation.
+    Animation_Clock_Index clock;
 
     // This tile variation's animation.
     Animation* animation;

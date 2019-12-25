@@ -11,6 +11,7 @@ Animation_Clock* create_animation_clock(
     Animation_Clock* clock = malloc(sizeof(Animation_Clock));
 
     // Set changing ticks
+    /*
     const cJSON* changing_ticks_JSON = cJSON_GetObjectItemCaseSensitive(JSON, "changingTicks");
 
     clock->current_tick = 0;
@@ -40,19 +41,23 @@ Animation_Clock* create_animation_clock(
     // Reset to first sub-clock pointer
     clock->sub_clocks -= sub_clocks_count;
     clock->sub_clocks_count = sub_clocks_count;
+    */
 
     return clock;
 }
 
 void update_animation_clock_children(Animation_Clock* animation_clock)
 {
+    /*
     for (int i = 0; i < animation_clock->sub_clocks_count; i++) {
         tick_animation_sub_clock(animation_clock->sub_clocks[i], animation_clock->current_tick);
     }
+    */
 }
 
 void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tick)
 {
+    /*
     for (int i = 0; i < animation_clock->changing_ticks_count; i++) {
 
         // Update tick if a game clock tick is found amongst changing ticks
@@ -63,15 +68,18 @@ void update_animation_clock(Animation_Clock* animation_clock, int game_clock_tic
             update_animation_clock_children(animation_clock);
         }
     }
+    */
 }
 
-void free_animation_clock(Animation_Clock* ac)
+void free_animation_clock(Animation_Clock* clock)
 {
-    for (int i = 0; i < ac->sub_clocks_count; i++) {
-        free_animation_sub_clock(ac->sub_clocks[i]);
+    /*
+    for (int i = 0; i < clock->sub_clocks_count; i++) {
+        free_animation_sub_clock(clock->sub_clocks[i]);
     }
 
-    free(ac->changing_ticks);
-    free(ac->sub_clocks);
-    free(ac);
+    free(clock->changing_ticks);
+    free(clock->sub_clocks);
+    free(clock);
+    */
 }

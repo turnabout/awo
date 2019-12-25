@@ -30,15 +30,6 @@ Tile_Type_Data* create_tile_type_data(
         "clockData"
     );
 
-    tile_type_data->clock = (cJSON_HasObjectItem(tile_type_JSON, "clockData"))
-
-        ? tile_type_data->clock = cJSON_GetObjectItemCaseSensitive(
-            tile_type_clock_data_JSON,
-            "clock"
-        )->valueint
-
-        : No_Clock;
-
     // Loop tile variations
     cJSON* tile_variation_JSON;
     cJSON_ArrayForEach(tile_variation_JSON, tile_vars_JSON)

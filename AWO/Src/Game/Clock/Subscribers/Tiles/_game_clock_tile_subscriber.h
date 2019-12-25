@@ -20,8 +20,8 @@ typedef struct Tiles_List {
  */
 typedef struct Game_Clock_Tile_Subscriber {
 
-    // List of every tile, sorted by which animation clock/sub-clocks they belong to.
-    Tiles_List* tiles_lists[ANIMATION_CLOCK_COUNT][MAX_ANIMATION_SUB_CLOCK_COUNT];
+    // List of every tile, sorted by which clock they belong to.
+    Tiles_List* tiles_lists[ANIMATION_CLOCK_COUNT];
 
     // Reference to the game clock publisher's tick events list.
     Tick_Events_List* tick_events;
@@ -50,15 +50,13 @@ Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Game_Renderer* ren
 void register_clock_subscriber_tile(
     Game_Clock_Tile_Subscriber* module,
     Tile* tile,
-    Animation_Clock_Index clock_index,
-    Animation_Sub_Clock_Index sub_clock_index
+    Animation_Clock_Index clock_index
 );
 
 void unregister_clock_subscriber_tile(
     Game_Clock_Tile_Subscriber* module,
     Tile* tile,
-    Animation_Clock_Index clock_index,
-    Animation_Sub_Clock_Index sub_clock_index
+    Animation_Clock_Index clock_index
 );
 
 /*! @brief Processes a tick event destined to the tile subscriber clock.

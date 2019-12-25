@@ -8,20 +8,21 @@
 #include "Game/Clock/Pub_Sub/_pub_sub.h"
 
 typedef struct Animation_Clock {
+    int temp;
     // Current tick of this animation clock.
-    int current_tick;
+    // int current_tick;
 
     // Array of every game tick that updates this animation clock.
-    int* changing_ticks;
+    // int* changing_ticks;
 
     // Amount of changing ticks.
-    int changing_ticks_count;
+    // int changing_ticks_count;
 
     // Pointers to sub-clocks subscribed to this animation clock.
-    Animation_Sub_Clock** sub_clocks;
+    // Animation_Sub_Clock** sub_clocks;
 
     // Amount of sub-clocks subscribed to this animation clock.
-    int sub_clocks_count;
+    // int sub_clocks_count;
 
 } Animation_Clock;
 

@@ -9,9 +9,6 @@ typedef struct Tick_Event {
     // Index of the animation clock that ticked.
     Animation_Clock_Index clock_index;
 
-    // Index of the animation sub-clock that ticked.
-    Animation_Sub_Clock_Index sub_clock_index;
-
     // Value held by this tick event.
     Uint8 value;
 
@@ -21,7 +18,7 @@ typedef struct Tick_Event {
 typedef struct Tick_Events_List {
 
     // List of ticks.
-    Tick_Event ticks[ANIMATION_SUB_CLOCK_COUNT];
+    Tick_Event ticks[ANIMATION_CLOCK_COUNT];
 
     // Amount of ticks.
     Uint8 ticks_count;

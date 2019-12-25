@@ -113,7 +113,6 @@
     <ClCompile Include="Src\Game\Stage\validate_stage.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_string_data.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c" />
-    <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_sub_clock.c" />
     <ClCompile Include="Src\Game\Clock\Tick_Event\print_tick_events_list.c" />
     <ClCompile Include="Src\Game\Clock\Publisher\game_clock_publisher.c" />
     <ClCompile Include="Src\Game\Data\Animation\animation.c" />
@@ -181,7 +180,6 @@
     <ClInclude Include="Src\Game\Clock\Pub_Sub\_pub_sub.h" />
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
     <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_clock.h" />
-    <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_sub_clock.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
     <ClInclude Include="Src\Game\Clock\_game_clock.h" />
     <ClInclude Include="Src\Game\Data\Animation\animation.h" />

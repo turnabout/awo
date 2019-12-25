@@ -72,7 +72,7 @@ Game_Data* create_game_data()
 
     // Gather clock data
     data->clock = create_clock_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "animationClocks")
+        cJSON_GetObjectItemCaseSensitive(data_JSON, "clocks")
     );
 
     // Get the raw palette data and store it

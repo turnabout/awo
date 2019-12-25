@@ -2,11 +2,13 @@
 
 #include "Game/Data/Tile/Neutral_Tile/Type/Variation/_tile_variation_data.h"
 
-Animation_Sub_Clock_Index get_tile_variation_clock_index(
+Animation_Clock_Index get_tile_variation_clock_index(
     char* tile_variation_string, 
     cJSON* tile_type_JSON
 )
 {
+    // TODO: arrange
+    /*
     // Get clock data for this tile type
     cJSON* tile_type_clock_data_JSON = cJSON_GetObjectItemCaseSensitive(
         tile_type_JSON, 
@@ -33,8 +35,9 @@ Animation_Sub_Clock_Index get_tile_variation_clock_index(
             "varSubClocks"
         )->valueint;
     }
+    */
 
-    return No_Sub_Clock;
+    return 0;
 }
 
 Tile_Variation_Data* create_tile_variation_data(
@@ -46,7 +49,8 @@ Tile_Variation_Data* create_tile_variation_data(
 {
     Tile_Variation_Data* tile_variation_data = malloc(sizeof(Tile_Variation_Data));
 
-    tile_variation_data->sub_clock = get_tile_variation_clock_index(
+    // TODO: arrange
+    tile_variation_data->clock = get_tile_variation_clock_index(
         tile_variation_string,
         tile_type_JSON
     );

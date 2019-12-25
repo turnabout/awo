@@ -116,7 +116,7 @@ Uint8* read_neutral_tile_texture(
 )
 {
     Animation* tiles_anim;
-    gather_tile_data(reader->tiles_data, type, variation, NULL, NULL, &tiles_anim);
+    gather_tile_data(reader->tiles_data, type, variation, &tiles_anim);
 
     int texture_w = tiles_anim->frames[0].width;
     int texture_h = tiles_anim->frames[0].height;
