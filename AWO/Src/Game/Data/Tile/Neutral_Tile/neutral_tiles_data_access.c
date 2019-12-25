@@ -7,6 +7,7 @@ void gather_tile_data(
     Tiles_Data* tiles_data, 
     Tile_Type type, 
     Tile_Variation var,
+    Animation_Clock_Index* clock,
     Animation** animation
 )
 {
@@ -17,6 +18,10 @@ void gather_tile_data(
 
     if (animation != NULL) {
         *animation = tile_var_data->animation;
+    }
+
+    if (clock != NULL) {
+        *clock = tile_var_data->clock;
     }
 }
 

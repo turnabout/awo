@@ -22,7 +22,7 @@ Neutral_Tile* create_neutral_tile(
     // Get the tile's animation data & attempt to register it with the game clock module.
     // Animation_Clock_Index clock_index;
 
-    gather_tile_data(tiles_data, type, variation, &tile->animation);
+    gather_tile_data(tiles_data, type, variation, NULL, &tile->animation);
     // register_game_clock_tile(game_clock, (Tile*)tile, clock_index);
 
     // Set the appropriate render grid update callback function
