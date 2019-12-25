@@ -31,9 +31,9 @@ Stage* generate_custom_stage()
     edit_stage_tile(stage, 4, 2, Sea, Top);
     edit_stage_tile(stage, 5, 2, Sea, TopRight);
 
-    edit_stage_tile(stage, 3, 3, Sea, DirLeft);
+    edit_stage_tile(stage, 3, 3, Sea, Left);
     edit_stage_tile(stage, 4, 3, Sea, Middle);
-    edit_stage_tile(stage, 5, 3, Sea, DirRight);
+    edit_stage_tile(stage, 5, 3, Sea, Right);
 
     edit_stage_tile(stage, 3, 4, Sea, BottomLeft);
     edit_stage_tile(stage, 4, 4, Sea, Bottom);

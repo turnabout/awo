@@ -23,7 +23,7 @@ Unit* create_unit(
         units_data,
         type,
         player->CO->army,
-        Idle
+        Unit_Idle
     );
 
     // Set callbacks

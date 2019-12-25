@@ -10,8 +10,8 @@
     TILEVAR(VerticalEnd) \
     TILEVAR(Top) \
     TILEVAR(Bottom) \
-    TILEVAR(DirLeft) \
-    TILEVAR(DirRight) \
+    TILEVAR(Left) \
+    TILEVAR(Right) \
     TILEVAR(TopLeft) \
     TILEVAR(TopRight) \
     TILEVAR(BottomLeft) \
