@@ -11,6 +11,23 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
         game_clock->sub_clocks[i] = create_sub_clock(clock_data, i);
     }
 
+    /*
+    update_sub_clock(game_clock->sub_clocks[2], 1);
+    update_sub_clock(game_clock->sub_clocks[2], 1);
+    update_sub_clock(game_clock->sub_clocks[2], 7);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 18);
+    update_sub_clock(game_clock->sub_clocks[2], 9);
+    update_sub_clock(game_clock->sub_clocks[2], 10);
+    */
+    update_sub_clock(game_clock->sub_clocks[2], 109);
+
     // Create the pub-sub module responsible for linking the game clock publisher with subscribers
     game_clock->pub_sub = create_clock_pub_sub();
 
@@ -110,7 +127,7 @@ void free_game_clock(Game_Clock* game_clock)
     }
 
     // free_game_clock_publisher(game_clock->publisher);
-    free_clock_pub_sub(game_clock->pub_sub);
-    free_game_clock_tile_subscriber(game_clock->tile_subscriber);
-    free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);
+    // free_clock_pub_sub(game_clock->pub_sub);
+    // free_game_clock_tile_subscriber(game_clock->tile_subscriber);
+    // free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);
 }

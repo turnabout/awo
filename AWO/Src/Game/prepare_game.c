@@ -29,6 +29,8 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     }
 
     // Clock
+    game->clock = create_game_clock(game->data->clock);
+
     // TODO
     /*
     activate_game_clock_subscribers(

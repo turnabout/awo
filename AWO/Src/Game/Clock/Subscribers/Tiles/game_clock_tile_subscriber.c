@@ -74,9 +74,11 @@ void free_game_clock_tile_subscriber(Game_Clock_Tile_Subscriber* module)
         return;
     }
 
+    /*
     for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         free_linked_list((Linked_List*)module->tiles_lists[i]);
     }
+    */
 
-    free(module);
+    // free(module);
 }

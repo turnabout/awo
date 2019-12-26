@@ -21,5 +21,5 @@ typedef enum {FOREACH_ANIMATION_CLOCK_INDEX(GENERATE_ENUM)} Animation_Clock_Inde
 static const char* animation_clock_str[] = {FOREACH_ANIMATION_CLOCK_INDEX(GENERATE_STRING)};
 
 #define ANIMATION_CLOCK_FIRST Sea_Clock_0
-#define ANIMATION_CLOCK_LAST  Sea_Clock_1
+#define ANIMATION_CLOCK_LAST  Sea_Clock_2
 #define ANIMATION_CLOCK_COUNT ANIMATION_CLOCK_LAST + 1
