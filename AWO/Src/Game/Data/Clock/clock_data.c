@@ -1,6 +1,5 @@
 #include <stdlib.h>
 
-#include "types.h"
 #include "Game/Data/Clock/clock_data.h"
 
 PRAGMA( warning(disable: 6001) );
@@ -19,6 +18,29 @@ typedef struct Animation_Clock_Data {
 struct Clock_Data {
     Animation_Clock_Data* clocks[ANIMATION_CLOCK_COUNT];
 };
+
+void gather_animation_clock_data(
+    Clock_Data* clock_data,
+    Animation_Clock_Index index, 
+    Uint8** frames, 
+    Uint8** values, 
+    Uint8* value_count
+)
+{
+    Animation_Clock_Data* data = clock_data->clocks[index];
+
+    if (frames != NULL) {
+        *frames = data->frames;
+    }
+
+    if (values != NULL) {
+        *values = data->values;
+    }
+
+    if (value_count != NULL) {
+        *value_count = data->value_count;
+    }
+}
 
 Animation_Clock_Data* create_animation_clock_data(cJSON* clock_JSON)
 {
