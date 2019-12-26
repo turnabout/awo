@@ -60,7 +60,7 @@
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
     <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c" />
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c" />
-    <ClCompile Include="Src\Game\Clock\Timer\pub_clock.c" />
+    <ClCompile Include="Src\Game\Clock\Timer\clock_timer.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
     <ClCompile Include="Src\Game\Data\Clock\clock_data.c" />
     <ClCompile Include="Src\Game\Data\CO\CO_data_access.c" />
@@ -176,7 +176,7 @@
     <ClInclude Include="Src\Game\Camera\_game_camera.h" />
     <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h" />
     <ClInclude Include="Src\Game\Clock\Pub_Sub\_pub_sub.h" />
-    <ClInclude Include="Src\Game\Clock\Timer\pub_clock.h" />
+    <ClInclude Include="Src\Game\Clock\Timer\clock_timer.h" />
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
     <ClInclude Include="Src\Game\Clock\_game_clock.h" />

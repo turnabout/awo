@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Clock/Timer/pub_clock.h"
+#include "Game/Clock/Timer/clock_timer.h"
 #include "Game/Clock/Tick_Event/tick_event.h"
 
 struct Clock_Timer {

@@ -399,7 +399,7 @@
     <ClCompile Include="Src\API\Game_Data\API_entity_texture_reader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Timer\pub_clock.c">
+    <ClCompile Include="Src\Game\Clock\Timer\clock_timer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -668,7 +668,7 @@
     <ClInclude Include="Src\Game\Data\Palette\palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Timer\pub_clock.h">
+    <ClInclude Include="Src\Game\Clock\Timer\clock_timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
