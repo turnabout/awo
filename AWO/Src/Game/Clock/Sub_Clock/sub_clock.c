@@ -66,7 +66,7 @@ Sub_Clock* create_sub_clock(
 static inline void emit_sub_clock_tick_event(Sub_Clock* clock, Uint8 value)
 {
     clock->event->value = value;
-    printf("Emitting value %d\n", value);
+    process_clock_pub_sub_tick_event(clock->pub_sub, clock->event);
 }
 
 static inline void reset_sub_clock(Sub_Clock* clock, Uint8 excess_frames)
