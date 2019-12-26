@@ -6,6 +6,10 @@ Game_Clock* create_game_clock(cJSON* clock_data_JSON)
 {
     Game_Clock* game_clock = malloc(sizeof(Game_Clock));
 
+    // Create the sub-clocks array (publishers)
+
+
+
     // Create the pub-sub module responsible for linking the game clock publisher with subscribers
     game_clock->pub_sub = create_clock_pub_sub();
 
