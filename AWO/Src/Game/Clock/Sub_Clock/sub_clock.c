@@ -23,9 +23,16 @@ struct Sub_Clock {
     // Tick event emitted on tick
     Tick_Event* event;
 
+    // Reference to the game clock pub-sub service
+    Game_Clock_Pub_Sub* pub_sub;
+
 };
 
-Sub_Clock* create_sub_clock(Clock_Data* clock_data, Animation_Clock_Index index)
+Sub_Clock* create_sub_clock(
+    Clock_Data* clock_data, 
+    Animation_Clock_Index index, 
+    Game_Clock_Pub_Sub* pub_sub
+)
 {
     Sub_Clock* clock = malloc(sizeof(Sub_Clock));
 

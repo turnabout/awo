@@ -12,9 +12,14 @@ typedef struct Sub_Clock Sub_Clock;
  *
  *  @param[in] clock_data Reference to the clock data module.
  *  @param[in] index Index of the sub-clock to create.
+ *  @param[in] pub_sub Reference to the game clock pub-sub service.
  *  @return The created sub-clock module.
  */
-Sub_Clock* create_sub_clock(Clock_Data* clock_data, Animation_Clock_Index index);
+Sub_Clock* create_sub_clock(
+    Clock_Data* clock_data,
+    Animation_Clock_Index index,
+    Game_Clock_Pub_Sub* pub_sub
+);
 
 /*! @brief Updates the sub-clock by passing it the count of frames since last time it was updated.
  *

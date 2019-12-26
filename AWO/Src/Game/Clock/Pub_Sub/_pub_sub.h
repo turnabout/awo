@@ -27,13 +27,15 @@ Game_Clock_Pub_Sub* create_clock_pub_sub();
  * @param[in] pub_sub The pub-sub module.
  * @param[in] subscriber_module Subscriber module to register with the pub-sub module.
  * @param[in] subscriber_callback Function called to send tick events to the subscriber.
- * @param[in] clock_index Clock index of the tick events the subscriber should receive.
+ * @param[in] clocks The clocks from which the subscriber should receive tick events.
+ * @param[in] clock_count The count of clocks passed to the function.
  */
-void register_clock_pub_sub_subscriber(
+void register_clocks_pub_sub_subscriber(
     Game_Clock_Pub_Sub* pub_sub,
     void* subscriber_module,
     clock_subscriber_event_cb subscriber_callback,
-    Animation_Clock_Index clock_index
+    Animation_Clock_Index clocks[ANIMATION_CLOCK_COUNT],
+    int clock_count
 );
 
 /*! @brief Processes a tick event with the pub-sub module.

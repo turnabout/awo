@@ -29,15 +29,18 @@ Game_Clock_Pub_Sub* create_clock_pub_sub()
     return pub_sub;
 }
 
-void register_clock_pub_sub_subscriber(
+void register_clocks_pub_sub_subscriber(
     Game_Clock_Pub_Sub* pub_sub,
     void* subscriber_module,
     clock_subscriber_event_cb subscriber_callback, 
-    Animation_Clock_Index animation_clock
+    Animation_Clock_Index clocks[ANIMATION_CLOCK_COUNT],
+    int clocks_count
 )
 {
-    pub_sub->subscriber_modules[animation_clock] = subscriber_module;
-    pub_sub->subscriber_callbacks[animation_clock] = subscriber_callback;
+    for (int i = 0; i < clocks_count; i++) {
+        pub_sub->subscriber_modules[clocks[i]] = subscriber_module;
+        pub_sub->subscriber_callbacks[clocks[i]] = subscriber_callback;
+    }
 }
 
 void process_clock_pub_sub_tick_event(Game_Clock_Pub_Sub* pub_sub, Tick_Event* tick_event)
