@@ -57,7 +57,7 @@ void process_tile_subscriber_event(Tick_Event* tick_event, void* module_arg)
 
     // Get list of tiles registered to tick events of this type
     Tiles_List* tiles_list = ((Game_Clock_Tile_Subscriber*)module)
-        ->tiles_lists[tick_event->clock_index];
+        ->tiles_lists[tick_event->timer_index];
 
     // Loop every tile entry & update the render grid pixels for every tile in the list
     List_Entry* entry = tiles_list->head;

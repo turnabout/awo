@@ -45,9 +45,9 @@ void register_clocks_pub_sub_subscriber(
 
 void process_clock_pub_sub_tick_event(Game_Clock_Pub_Sub* pub_sub, Tick_Event* tick_event)
 {
-    pub_sub->subscriber_callbacks[tick_event->clock_index](
+    pub_sub->subscriber_callbacks[tick_event->timer_index](
         tick_event,
-        pub_sub->subscriber_modules[tick_event->clock_index]
+        pub_sub->subscriber_modules[tick_event->timer_index]
     );
 }
 

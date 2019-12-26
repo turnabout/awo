@@ -6,7 +6,7 @@
 /*! @brief A sub-clock working under the game clock. Registers to the clock pub-sub service and 
  *  emits tick events to it to be processed.
  */
-typedef struct Sub_Clock Sub_Clock;
+typedef struct Clock_Timer Clock_Timer;
 
 /*! @brief Creates a sub-clock module.
  *
@@ -15,7 +15,7 @@ typedef struct Sub_Clock Sub_Clock;
  *  @param[in] pub_sub Reference to the game clock pub-sub service.
  *  @return The created sub-clock module.
  */
-Sub_Clock* create_sub_clock(
+Clock_Timer* create_clock_timer(
     Clock_Data* clock_data,
     Animation_Clock_Index index,
     Game_Clock_Pub_Sub* pub_sub
@@ -26,10 +26,10 @@ Sub_Clock* create_sub_clock(
  *  @param[in] clock The sub-clock to update.
  *  @param[in] passed_frames The amount of game frames that passed since the last update.
  */
-void update_sub_clock(Sub_Clock* clock, Uint8 passed_frames);
+void update_timer(Clock_Timer* clock, Uint8 passed_frames);
 
 /*! @brief Frees a sub-clock module.
  *
  *  @param[in] clock The sub-clock module to free.
  */
-void free_sub_clock(Sub_Clock* clock);
+void free_clock_timer(Clock_Timer* clock);

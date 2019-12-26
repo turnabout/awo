@@ -5,12 +5,12 @@
 #include "Game/Clock/Subscribers/Property_Lights/_property_lights_subscriber.h"
 #include "Game/Clock/Tick_Event/tick_event.h"
 #include "Game/Clock/Pub_Sub/_pub_sub.h"
-#include "Game/Clock/Sub_Clock/sub_clock.h"
+#include "Game/Clock/Timer/pub_clock.h"
 
 struct Game_Clock {
 
-    // Array of all sub-clocks belonging to the game clock module.
-    Sub_Clock* sub_clocks[ANIMATION_CLOCK_COUNT];
+    // Array of all publisher timer clocks belonging to the game clock module.
+    Clock_Timer* timers[ANIMATION_CLOCK_COUNT];
 
     // Links the game clock publishers and subscribers.
     Game_Clock_Pub_Sub* pub_sub;

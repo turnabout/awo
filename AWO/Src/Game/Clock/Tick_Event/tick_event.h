@@ -7,7 +7,7 @@
 typedef struct Tick_Event {
 
     // Index of the animation clock that ticked.
-    Animation_Clock_Index clock_index;
+    Animation_Clock_Index timer_index;
 
     // Value held by this tick event.
     Uint8 value;
