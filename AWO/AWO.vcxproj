@@ -113,9 +113,7 @@
     <ClCompile Include="Src\Game\Stage\stringify_stage.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage.c" />
     <ClCompile Include="Src\Game\Stage\validate_stage_string_data.c" />
-    <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c" />
     <ClCompile Include="Src\Game\Clock\Tick_Event\print_tick_events_list.c" />
-    <ClCompile Include="Src\Game\Clock\Publisher\game_clock_publisher.c" />
     <ClCompile Include="Src\Game\Data\Animation\animation.c" />
     <ClCompile Include="Src\Game\Data\Palette\Raw_Palette\create_raw_palette_texture.c" />
     <ClCompile Include="Src\Game\Data\Palette\Raw_Palette\get_raw_palette_index.c" />
@@ -177,11 +175,9 @@
     <ClInclude Include="Src\Game\Camera\game_camera.h" />
     <ClInclude Include="Src\Game\Camera\_game_camera.h" />
     <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h" />
-    <ClInclude Include="Src\Game\Clock\Publisher\_game_clock_publisher.h" />
     <ClInclude Include="Src\Game\Clock\Pub_Sub\_pub_sub.h" />
     <ClInclude Include="Src\Game\Clock\Sub_Clock\sub_clock.h" />
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
-    <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_clock.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
     <ClInclude Include="Src\Game\Clock\_game_clock.h" />
     <ClInclude Include="Src\Game\Data\Animation\animation.h" />

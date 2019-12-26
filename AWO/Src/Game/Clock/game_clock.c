@@ -31,14 +31,6 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
     */
     // update_sub_clock(game_clock->sub_clocks[2], 109);
 
-    // Create the game clock publisher which emits tick events to the pub-sub service
-    /*
-    game_clock->publisher = create_game_clock_publisher(
-        clock_data_JSON,
-        game_clock->pub_sub
-    );
-    */
-
     return game_clock;
 }
 
@@ -83,7 +75,6 @@ void activate_game_clock_subscribers(
 void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
     // TODO
-    // update_game_clock_publisher(game_clock->publisher, delta_time);
 }
 
 void register_game_clock_tile(
@@ -116,7 +107,6 @@ void free_game_clock(Game_Clock* game_clock)
         free_sub_clock(game_clock->sub_clocks[i]);
     }
 
-    // free_game_clock_publisher(game_clock->publisher);
     // free_clock_pub_sub(game_clock->pub_sub);
     // free_game_clock_tile_subscriber(game_clock->tile_subscriber);
     // free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);

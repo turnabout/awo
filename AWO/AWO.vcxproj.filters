@@ -156,12 +156,6 @@
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Publisher\Animation_Clock\animation_clock.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Publisher\game_clock_publisher.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Clock\Tick_Event\print_tick_events_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -528,12 +522,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\Tile\Property_Tile\_property_tiles_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Publisher\Animation_Clock\_animation_clock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Publisher\_game_clock_publisher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Clock\game_clock.h">
