@@ -19,7 +19,7 @@ struct Clock_Data {
     Animation_Clock_Data* clocks[ANIMATION_CLOCK_COUNT];
 };
 
-void gather_animation_clock_data(
+void gather_clock_data(
     Clock_Data* clock_data,
     Animation_Clock_Index index, 
     Uint8** frames, 

@@ -2,22 +2,25 @@
 
 #include "Game/Clock/_game_clock.h"
 
-Game_Clock* create_game_clock(cJSON* clock_data_JSON)
+Game_Clock* create_game_clock(Clock_Data* clock_data)
 {
     Game_Clock* game_clock = malloc(sizeof(Game_Clock));
 
     // Create the sub-clocks array (publishers)
-
-
+    for (Animation_Clock_Index i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+        game_clock->sub_clocks[i] = create_sub_clock(clock_data, i);
+    }
 
     // Create the pub-sub module responsible for linking the game clock publisher with subscribers
     game_clock->pub_sub = create_clock_pub_sub();
 
     // Create the game clock publisher which emits tick events to the pub-sub service
+    /*
     game_clock->publisher = create_game_clock_publisher(
         clock_data_JSON,
         game_clock->pub_sub
     );
+    */
 
     return game_clock;
 }
@@ -96,14 +99,18 @@ void unregister_game_clock_tile(
     // unregister_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
 }
 
-void free_game_clock(Game_Clock* clock)
+void free_game_clock(Game_Clock* game_clock)
 {
-    if (clock == NULL) {
+    if (game_clock == NULL) {
         return;
     }
 
-    free_game_clock_publisher(clock->publisher);
-    free_clock_pub_sub(clock->pub_sub);
-    free_game_clock_tile_subscriber(clock->tile_subscriber);
-    free_game_clock_property_lights_subscriber(clock->property_lights_subscriber);
+    for (Animation_Clock_Index i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+        free_sub_clock(game_clock->sub_clocks[i]);
+    }
+
+    // free_game_clock_publisher(game_clock->publisher);
+    free_clock_pub_sub(game_clock->pub_sub);
+    free_game_clock_tile_subscriber(game_clock->tile_subscriber);
+    free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);
 }

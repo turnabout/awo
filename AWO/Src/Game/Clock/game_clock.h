@@ -17,10 +17,10 @@ typedef struct Tile Tile;
  *
  *  @note Call `activate_game_clock_subscribers` before using ingame.
  *
- *  @param[in] clock_data_cJSON JSON describing the game clock and its animation clocks.
+ *  @param[in] clock_data The clock data module describing the game's clocks.
  *  @return The created game clock object.
  */
-Game_Clock* create_game_clock(cJSON* clock_data_JSON);
+Game_Clock* create_game_clock(Clock_Data* clock_data);
 
 /*! @brief Activates the game clock's subscriber modules, getting it ready for ingame usage.
  *
