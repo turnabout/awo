@@ -2,7 +2,7 @@
 
 #include "Game/Data/Tile/Neutral_Tile/Type/Variation/_tile_variation_data.h"
 
-Animation_Clock_Index get_tile_variation_clock_index(
+Clock_Index get_tile_variation_clock_index(
     char* tile_variation_string, 
     cJSON* tile_type_JSON
 )

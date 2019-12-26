@@ -11,7 +11,7 @@ Clock_Data* create_clock_data(cJSON* clock_data_JSON);
 
 void gather_clock_data(
     Clock_Data* clock_data,
-    Animation_Clock_Index index,
+    Clock_Index index,
     Uint8** frames,
     Uint8** values,
     Uint8* value_count

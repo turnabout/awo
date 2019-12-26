@@ -14,7 +14,7 @@ void delete_neutral_tile(
     Neutral_Tile* tile = tile_arg;
 
     // Get the tile's animation data & attempt to register it with the game clock module.
-    Animation_Clock_Index clock_index;
+    Clock_Index clock_index;
 
     gather_tile_data(tiles_data, tile->type, tile->variation, &clock_index, NULL);
     unregister_game_clock_tile(game_clock, tile_arg, clock_index);

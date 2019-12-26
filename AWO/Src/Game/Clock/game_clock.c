@@ -13,7 +13,7 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
     game_clock->pub_sub = create_clock_pub_sub();
 
     // Create the timers array (publishers)
-    for (Animation_Clock_Index i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+    for (Clock_Index i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         game_clock->timers[i] = create_clock_timer(clock_data, i, game_clock->pub_sub);
     }
 
@@ -38,7 +38,7 @@ void activate_game_clock_subscribers(
         game_clock->pub_sub,
         (void*)game_clock->tile_subscriber,
         process_tile_subscriber_event,
-        (Animation_Clock_Index[ANIMATION_CLOCK_COUNT]) {
+        (Clock_Index[ANIMATION_CLOCK_COUNT]) {
             Sea_Clock_0,
             Sea_Clock_1,
             Sea_Clock_2
@@ -81,7 +81,7 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
 void register_game_clock_tile(
     Game_Clock* game_clock, 
     Tile* tile,
-    Animation_Clock_Index clock_index
+    Clock_Index clock_index
 )
 {
     // TODO
@@ -91,7 +91,7 @@ void register_game_clock_tile(
 void unregister_game_clock_tile(
     Game_Clock* game_clock, 
     Tile* tile,
-    Animation_Clock_Index clock_index
+    Clock_Index clock_index
 )
 {
     // TODO
@@ -104,7 +104,7 @@ void free_game_clock(Game_Clock* game_clock)
         return;
     }
 
-    for (Animation_Clock_Index i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+    for (Clock_Index i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         free_clock_timer(game_clock->timers[i]);
     }
 

@@ -30,7 +30,7 @@ struct Clock_Timer {
 
 Clock_Timer* create_clock_timer(
     Clock_Data* clock_data, 
-    Animation_Clock_Index index, 
+    Clock_Index index, 
     Game_Clock_Pub_Sub* pub_sub
 )
 {

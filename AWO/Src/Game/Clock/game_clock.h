@@ -51,13 +51,13 @@ void update_game_clock(Game_Clock* game_clock, float delta_time);
 void register_game_clock_tile(
     Game_Clock* game_clock, 
     Tile* tile,
-    Animation_Clock_Index clock_index
+    Clock_Index clock_index
 );
 
 void unregister_game_clock_tile(
     Game_Clock* game_clock,
     Tile* tile,
-    Animation_Clock_Index clock_index
+    Clock_Index clock_index
 );
 
 /*! @brief Frees the game clock's allocated memory.

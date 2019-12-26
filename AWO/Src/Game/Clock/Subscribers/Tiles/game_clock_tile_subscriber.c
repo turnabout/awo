@@ -24,7 +24,7 @@ Game_Clock_Tile_Subscriber* create_game_clock_tile_subscriber(Game_Renderer* ren
 void register_clock_subscriber_tile(
     Game_Clock_Tile_Subscriber* module, 
     Tile* tile,
-    Animation_Clock_Index clock_index
+    Clock_Index clock_index
 )
 {
     // No need to register the tile if no clock or sub clock
@@ -39,7 +39,7 @@ void register_clock_subscriber_tile(
 void unregister_clock_subscriber_tile(
     Game_Clock_Tile_Subscriber* module, 
     Tile* tile,
-    Animation_Clock_Index clock_index
+    Clock_Index clock_index
 )
 {
     // Can't unregister the tile if no clock or sub clock

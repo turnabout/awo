@@ -63,7 +63,7 @@ void gather_tile_data(
     Tiles_Data* tiles_data,
     Tile_Type type,
     Tile_Variation variation,
-    Animation_Clock_Index* clock,
+    Clock_Index* clock,
     Animation** animation
 );
 

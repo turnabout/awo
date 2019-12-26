@@ -33,7 +33,7 @@ void register_clocks_pub_sub_subscriber(
     Game_Clock_Pub_Sub* pub_sub,
     void* subscriber_module,
     clock_subscriber_event_cb subscriber_callback, 
-    Animation_Clock_Index clocks[ANIMATION_CLOCK_COUNT],
+    Clock_Index clocks[ANIMATION_CLOCK_COUNT],
     int clocks_count
 )
 {
