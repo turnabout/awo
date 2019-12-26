@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Game/Data/Clock/clock_data.h"
-#include "Game/Clock/Pub_Sub/_pub_sub.h"
+#include "Game/Clock/Pub_Sub/pub_sub.h"
 
 /*! @brief A sub-clock working under the game clock. Registers to the clock pub-sub service and 
  *  emits tick events to it to be processed.

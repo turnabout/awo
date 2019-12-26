@@ -2,7 +2,7 @@
 
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Clock/Subscribers/Property_Lights/_property_lights_subscriber.h"
-#include "Game/Clock/Pub_Sub/_pub_sub.h"
+#include "Game/Clock/Pub_Sub/pub_sub.h"
 
 Game_Clock_Property_Lights_Subscriber* create_game_clock_property_lights_subscriber(
     GLuint* game_palette

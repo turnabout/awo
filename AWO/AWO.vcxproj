@@ -175,7 +175,7 @@
     <ClInclude Include="Src\Game\Camera\game_camera.h" />
     <ClInclude Include="Src\Game\Camera\_game_camera.h" />
     <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h" />
-    <ClInclude Include="Src\Game\Clock\Pub_Sub\_pub_sub.h" />
+    <ClInclude Include="Src\Game\Clock\Pub_Sub\pub_sub.h" />
     <ClInclude Include="Src\Game\Clock\Timer\clock_timer.h" />
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />

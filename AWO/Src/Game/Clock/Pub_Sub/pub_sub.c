@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Clock/Pub_Sub/_pub_sub.h"
+#include "Game/Clock/Pub_Sub/pub_sub.h"
 
 struct Game_Clock_Pub_Sub {
 
