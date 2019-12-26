@@ -21,5 +21,11 @@ struct Game_Clock {
 
     // Game clock subscriber for properties' lights.
     Game_Clock_Property_Lights_Subscriber* property_lights_subscriber;
-    
+
+    // Count of passed frames since the game clock started updating
+    int frame_count;
+
+    // Amount of time accumulated in milliseconds
+    float accum_time;
+
 };

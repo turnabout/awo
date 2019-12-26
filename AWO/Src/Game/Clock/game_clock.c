@@ -6,6 +6,9 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
 {
     Game_Clock* game_clock = malloc(sizeof(Game_Clock));
 
+    game_clock->frame_count = 0;
+    game_clock->accum_time = 0;
+
     // Create the pub-sub module responsible for linking the game clock publisher with subscribers
     game_clock->pub_sub = create_clock_pub_sub();
 
@@ -16,8 +19,6 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
 
     game_clock->tile_subscriber = NULL;
     game_clock->property_lights_subscriber = NULL;
-
-    // update_sub_clock(game_clock->sub_clocks[2], 109);
 
     return game_clock;
 }
@@ -62,7 +63,19 @@ void activate_game_clock_subscribers(
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)
 {
-    // TODO
+
+    // Reached time for a frame
+    if ((game_clock->accum_time += delta_time) >= FRAME_TIME) {
+
+        // Get frame count
+        float frame_count = game_clock->accum_time / FRAME_TIME;
+
+        for (int i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
+            update_timer(game_clock->timers[i], (int)frame_count);
+        }
+
+        game_clock->accum_time -= (int)frame_count * FRAME_TIME;
+    }
 }
 
 void register_game_clock_tile(

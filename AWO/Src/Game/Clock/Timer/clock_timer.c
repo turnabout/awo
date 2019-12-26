@@ -58,7 +58,7 @@ Clock_Timer* create_clock_timer(
     // Set the starting target frame index
     timer->target_frame_index = 1;
 
-    printf("First target frame count is %d\n", timer->frames[timer->target_frame_index]);
+    // printf("First target frame count is %d\n", timer->frames[timer->target_frame_index]);
 
     return timer;
 }
@@ -66,12 +66,12 @@ Clock_Timer* create_clock_timer(
 static inline void emit_clock_tick_event(Clock_Timer* timer, Uint8 value)
 {
     timer->event->value = value;
-    process_clock_pub_sub_tick_event(timer->pub_sub, timer->event);
+    // process_clock_pub_sub_tick_event(timer->pub_sub, timer->event);
 }
 
 static inline void reset_timer(Clock_Timer* timer, Uint8 excess_frames)
 {
-    printf("Resetting frame counter to %d\n", excess_frames);
+    // printf("Resetting frame counter to %d\n", excess_frames);
 
     // Reset frame counter to the amount of excess frames when max value was reached
     timer->frame_counter = excess_frames;
@@ -85,13 +85,13 @@ static inline void reset_timer(Clock_Timer* timer, Uint8 excess_frames)
 
 void update_timer(Clock_Timer* timer, Uint8 passed_frames)
 {
-    printf("%d + %d = %d\n", timer->frame_counter, passed_frames, timer->frame_counter + passed_frames);
+    // printf("%d + %d = %d\n", timer->frame_counter, passed_frames, timer->frame_counter + passed_frames);
 
     timer->frame_counter += passed_frames;
 
     // Frame counter reached the target frame count
     while (timer->frame_counter >= timer->frames[timer->target_frame_index]) {
-        printf("Target reached: %d >= %d\n", timer->frame_counter, timer->frames[timer->target_frame_index]);
+        // printf("Target reached: %d >= %d\n", timer->frame_counter, timer->frames[timer->target_frame_index]);
 
         // Reached max value, reset the timer
         if ((timer->target_frame_index) >= timer->max_target_frame_index) {

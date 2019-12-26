@@ -31,11 +31,7 @@
 
 // Game speed
 #define FPS 60
-#define FRAME_TIME 1.0f / FPS
-
-// Game clock
-#define GAME_CLOCK_FRAMES_TO_TICK  2 // How many frames it takes it tick the game clock
-#define GAME_CLOCK_TICK_MAX       45 // Game clock's maximum tick value before resetting
+#define FRAME_TIME 0.01666666666f
 
 // Default size of an entity (pixels)
 #define DEFAULT_ENTITY_SIZE 16
