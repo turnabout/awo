@@ -34,9 +34,11 @@ Game_Clock* create_game_clock(
         (Clock_Index[ANIMATION_CLOCK_COUNT]) {
             Sea_Clock_0,
             Sea_Clock_1,
-            Sea_Clock_2
+            Sea_Clock_2,
+            River_Clock,
+            Smoke_Clock
         },
-        3
+        5
     );
 
     // Property lights clock subscriber module

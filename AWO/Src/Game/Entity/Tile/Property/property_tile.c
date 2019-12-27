@@ -23,7 +23,7 @@ Property_Tile* create_property_tile(
     if (tile_type == Property_Base) {
 
         // Register game clock to update the base smoke animation
-        // register_game_clock_tile(game_clock, (Tile*)property, Base_Smoke_Clock, Base_Smoke_Sub_Clock);
+        register_game_clock_tile(game_clock, (Tile*)property, Smoke_Clock);
         gather_tile_data(tiles_data, Base_Smoke, Default, NULL, &property->base_smoke);
 
         property->update_grid = update_base_render_grid;

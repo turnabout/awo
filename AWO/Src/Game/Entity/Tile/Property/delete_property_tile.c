@@ -15,14 +15,11 @@ void delete_property_tile(
 
     if (property->type == Property_Base) {
 
-        /*
         unregister_game_clock_tile(
             game_clock, 
             (Tile*)property, 
-            Base_Smoke_Clock, 
-            Base_Smoke_Sub_Clock
+            Smoke_Clock
         );
-        */
     }
 
     clear_tile_layers_pixel(game_renderer, property->x, property->y);
