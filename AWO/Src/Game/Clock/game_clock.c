@@ -109,6 +109,6 @@ void free_game_clock(Game_Clock* game_clock)
     }
 
     free_clock_pub_sub(game_clock->pub_sub);
-    // free_game_clock_tile_subscriber(game_clock->tile_subscriber);
-    // free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);
+    free_game_clock_tile_subscriber(game_clock->tile_subscriber);
+    free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);
 }

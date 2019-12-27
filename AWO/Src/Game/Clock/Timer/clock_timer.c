@@ -109,6 +109,10 @@ void update_timer(Clock_Timer* timer, Uint8 passed_frames)
 void free_clock_timer(Clock_Timer* timer)
 {
     if (timer != NULL) {
+        if (timer->event != NULL) {
+            free(timer->event);
+        }
+
         free(timer);
     }
 }
