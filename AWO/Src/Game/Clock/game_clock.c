@@ -80,8 +80,7 @@ void register_game_clock_tile(
     Clock_Index clock_index
 )
 {
-    // TODO
-    // register_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
+    register_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index);
 }
 
 void unregister_game_clock_tile(
@@ -90,8 +89,7 @@ void unregister_game_clock_tile(
     Clock_Index clock_index
 )
 {
-    // TODO
-    // unregister_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index, sub_clock_index);
+    unregister_clock_subscriber_tile(game_clock->tile_subscriber, tile, clock_index);
 }
 
 void free_game_clock(Game_Clock* game_clock)
