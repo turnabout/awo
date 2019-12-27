@@ -7,6 +7,8 @@
     CLOCK(Sea_Clock_0) \
     CLOCK(Sea_Clock_1) \
     CLOCK(Sea_Clock_2) \
+    CLOCK(River_Clock) \
+    CLOCK(Smoke_Clock) \
     CLOCK(Property_Lights_Clock) \
 
 #define No_Clock -1
