@@ -43,7 +43,7 @@ Game* EMX create_game(int window_width, int window_height)
     game->clock = NULL;
     game->editor = NULL;
     game->renderer = NULL;
-    game->palette_texture = 0;
+    game->palette = 0;
 
     return game;
 }

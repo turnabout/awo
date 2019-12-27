@@ -7,7 +7,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     }
 
     // Prepare components used for rendering the game
-    game->palette_texture = create_game_palette_texture(
+    game->palette = create_game_palette_texture(
         game->data->raw_palette, 
         WEATHER_DEFAULT, 
         stage->player_armies
@@ -17,7 +17,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     game->renderer = create_game_renderer(
         stage->width,
         stage->height,
-        game->palette_texture,
+        game->palette,
         game->data->tiles,
         game->window_width,
         game->window_height
@@ -29,16 +29,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     }
 
     // Clock
-    game->clock = create_game_clock(game->data->clock);
-
-    // TODO
-    /*
-    activate_game_clock_subscribers(
-        game->clock,
-        game->renderer,
-        &game->palette_texture
-    );
-    */
+    game->clock = create_game_clock(game->data->clock, game->renderer, &game->palette);
 
     // Camera
     game->camera = create_game_camera(
@@ -61,7 +52,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
         player_COs,
         game->data->tiles, 
         game->data->raw_palette,
-        game->palette_texture
+        game->palette
     );
 
     if (game->board == NULL) {

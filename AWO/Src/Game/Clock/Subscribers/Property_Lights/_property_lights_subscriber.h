@@ -5,12 +5,7 @@
 
 #include "Game/Clock/Tick_Event/tick_event.h"
 
-typedef struct Game_Clock_Property_Lights_Subscriber {
-
-    // Pointer to the game palette's object id.
-    GLuint* game_palette;
-
-} Game_Clock_Property_Lights_Subscriber;
+typedef struct Game_Clock_Property_Lights_Subscriber Game_Clock_Property_Lights_Subscriber; 
 
 Game_Clock_Property_Lights_Subscriber* create_game_clock_property_lights_subscriber(
     GLuint* game_palette

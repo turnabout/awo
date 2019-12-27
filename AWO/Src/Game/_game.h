@@ -50,7 +50,7 @@ struct Game {
     Game_Renderer* renderer;
 
     // Texture holding the palette data used during gameplay.
-    GLuint palette_texture;
+    GLuint palette;
 
 };
 

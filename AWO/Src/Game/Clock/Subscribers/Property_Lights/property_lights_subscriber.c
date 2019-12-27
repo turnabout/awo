@@ -4,11 +4,18 @@
 #include "Game/Clock/Subscribers/Property_Lights/_property_lights_subscriber.h"
 #include "Game/Clock/Pub_Sub/pub_sub.h"
 
+struct Game_Clock_Property_Lights_Subscriber {
+
+    // Pointer to the game palette's object id.
+    GLuint* game_palette;
+
+};
+
 Game_Clock_Property_Lights_Subscriber* create_game_clock_property_lights_subscriber(
     GLuint* game_palette
 )
 {
-    Game_Clock_Property_Lights_Subscriber* subscriber = (Game_Clock_Property_Lights_Subscriber*)malloc(
+    Game_Clock_Property_Lights_Subscriber* subscriber = malloc(
         sizeof(Game_Clock_Property_Lights_Subscriber)
     );
 

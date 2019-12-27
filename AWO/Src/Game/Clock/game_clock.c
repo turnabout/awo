@@ -2,7 +2,11 @@
 
 #include "Game/Clock/_game_clock.h"
 
-Game_Clock* create_game_clock(Clock_Data* clock_data)
+Game_Clock* create_game_clock(
+    Clock_Data* clock_data,
+    Game_Renderer* game_renderer, 
+    GLuint* game_palette
+)
 {
     Game_Clock* game_clock = malloc(sizeof(Game_Clock));
 
@@ -20,18 +24,7 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
     game_clock->tile_subscriber = NULL;
     game_clock->property_lights_subscriber = NULL;
 
-    return game_clock;
-}
-
-void activate_game_clock_subscribers(
-    Game_Clock* game_clock, 
-    Game_Renderer* game_renderer, 
-    GLuint* game_palette
-)
-{
-    // Create the subscriber modules which subscribe to the pub-sub service and receive tick events
-
-    // Tiles clock subscriber module
+    // Create the subscriber modules - Tiles clock subscriber module
     game_clock->tile_subscriber = create_game_clock_tile_subscriber(game_renderer);
 
     register_clocks_pub_sub_subscriber(
@@ -43,22 +36,25 @@ void activate_game_clock_subscribers(
             Sea_Clock_1,
             Sea_Clock_2
         },
-        1
+        3
     );
 
-    /*
     // Property lights clock subscriber module
     game_clock->property_lights_subscriber = create_game_clock_property_lights_subscriber(
         game_palette
     );
 
-    register_clock_pub_sub_subscriber(
+    register_clocks_pub_sub_subscriber(
         game_clock->pub_sub,
         (void*)game_clock->property_lights_subscriber,
         process_property_light_tick_event,
-        Property_Lights_Clock
+        (Clock_Index[ANIMATION_CLOCK_COUNT]) {
+            Property_Lights_Clock
+        },
+        1
     );
-*/
+
+    return game_clock;
 }
 
 void update_game_clock(Game_Clock* game_clock, float delta_time)

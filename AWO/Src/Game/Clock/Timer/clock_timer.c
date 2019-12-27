@@ -36,6 +36,8 @@ Clock_Timer* create_clock_timer(
 {
     Clock_Timer* timer = malloc(sizeof(Clock_Timer));
 
+    timer->pub_sub = pub_sub;
+
     // Gather data for this timer
     Uint8 value_count;
 
@@ -66,7 +68,7 @@ Clock_Timer* create_clock_timer(
 static inline void emit_clock_tick_event(Clock_Timer* timer, Uint8 value)
 {
     timer->event->value = value;
-    // process_clock_pub_sub_tick_event(timer->pub_sub, timer->event);
+    process_clock_pub_sub_tick_event(timer->pub_sub, timer->event);
 }
 
 static inline void reset_timer(Clock_Timer* timer, Uint8 excess_frames)
