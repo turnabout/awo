@@ -54,7 +54,7 @@ Clock_Timer* create_clock_timer(
 
     // Set the tick event
     timer->event = malloc(sizeof(Tick_Event));
-    timer->event->timer_index = index;
+    timer->event->clock_index = index;
     timer->event->value = 0;
 
     // Set the starting target frame index

@@ -6,8 +6,8 @@
 // Event generated whenever an animation sub-clock ticks.
 typedef struct Tick_Event {
 
-    // Index of the animation clock that ticked.
-    Clock_Index timer_index;
+    // Index of the clock that ticked.
+    Clock_Index clock_index;
 
     // Value held by this tick event.
     Uint8 value;

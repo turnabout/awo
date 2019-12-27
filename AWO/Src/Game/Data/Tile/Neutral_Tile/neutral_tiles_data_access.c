@@ -11,8 +11,6 @@ void gather_tile_data(
     Animation** animation
 )
 {
-    Tile_Type_Data* tile_type_data = tiles_data->neutral_tiles->src[type];
-
     // Fill in sub-clock tile_var_index & return animation pointer
     Tile_Variation_Data* tile_var_data = get_tile_variation_data(tiles_data, type, var);
 
