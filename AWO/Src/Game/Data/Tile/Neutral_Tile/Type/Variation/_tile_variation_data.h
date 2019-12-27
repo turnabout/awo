@@ -19,14 +19,12 @@ typedef struct Tile_Variation_Data
 
 /*! @brief Creates tile variation data from the given JSON.
  *
- *  @param[in] tile_variation_string Short string representing the tile variation.
- *  @param[in] tile_type_JSON The JSON object of this tile variation's tile type.
+ *  @param[in] tile_var_JSON The JSON object of this tile variation.
  *  @param[in] ss_width The tiles_width of the game's sprite sheet.
  *  @param[in] ss_height The tiles_height of the game's sprite sheet.
  */
 Tile_Variation_Data* create_tile_variation_data(
-    char* tile_variation_string,
-    cJSON* tile_type_JSON,
+    cJSON* tile_var_JSON,
     int ss_width,
     int ss_height
 );

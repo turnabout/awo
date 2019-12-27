@@ -24,12 +24,6 @@ Tile_Type_Data* create_tile_type_data(
     tile_type_data->vars_count = cJSON_GetArraySize(tile_vars_JSON);
     Tile_Variation* vars_list = malloc(sizeof(Tile_Type_Data) * tile_type_data->vars_count);
 
-    // Get the animation clock index belonging to this tile type
-    cJSON* tile_type_clock_data_JSON = cJSON_GetObjectItemCaseSensitive(
-        tile_type_JSON, 
-        "clockData"
-    );
-
     // Loop tile variations
     cJSON* tile_variation_JSON;
     cJSON_ArrayForEach(tile_variation_JSON, tile_vars_JSON)
@@ -43,16 +37,15 @@ Tile_Type_Data* create_tile_type_data(
         vars_list++;
 
         // Get short string representing this tile variation
-        char* tile_variation_string = tile_var_str_short[*tile_variation];
+        char* tile_var_short_str = tile_var_str_short[*tile_variation];
 
         // Add populated tile variation to hashmap
         hashmap_put(
             tile_type_data->vars_map, 
-            tile_variation_string, 
+            tile_var_short_str, 
 
             create_tile_variation_data(
-                tile_variation_string,
-                tile_type_JSON,
+                cJSON_GetObjectItemCaseSensitive(tile_vars_JSON, tile_var_short_str),
                 ss_width,
                 ss_height
             )
