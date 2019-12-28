@@ -52,4 +52,4 @@ void set_editor_property_entity(Game_Editor* editor, Game_Board* board, Game_Clo
 
 /*! @brief Apply auto-var to the tile entity at the given x/y coordinates.
  */
-void apply_autovar(Game_Editor* editor, Game_Board* board, Uint8 x, Uint8 y);
+void apply_autovar(Game_Editor* editor, Game_Board* board, Game_Clock* clock, Uint8 x, Uint8 y);

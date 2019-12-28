@@ -402,6 +402,12 @@
     <ClCompile Include="Src\Game\Clock\Timer\clock_timer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Board\get_game_board_tile_type.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Editor\set_editor_property_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">

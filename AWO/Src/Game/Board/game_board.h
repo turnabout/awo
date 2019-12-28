@@ -69,6 +69,14 @@ void add_game_board_unit(
     Uint8 y
 );
 
+/*! @brief Gets the type of the tile at the given board coordinates.
+ *
+ *  @param[in] game_board The game board.
+ *  @param[in] x Game board x coordinate of the tile to get type from.
+ *  @param[in] y Game board y coordinate of the tile to get type from.
+ */
+Tile_Type get_game_board_tile_type(Game_Board* game_board, Uint8 x, Uint8 y);
+
 /*! @brief Updates the game board and its entities.
  *
  *  @param[in] game_board The game board.

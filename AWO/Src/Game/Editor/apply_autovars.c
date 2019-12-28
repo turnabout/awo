@@ -1,30 +1,30 @@
 #include "Game/Editor/_game_editor.h"
 
-void apply_autovar(Game_Editor* editor, Uint8 x, Uint8 y)
+void apply_autovar(Game_Editor* editor, Game_Board* board, Game_Clock* clock, Uint8 x, Uint8 y)
 {
-    /*
-    Tile_Type middle_tile_type = GB_get_tile_type_at_coords(editor->gb, x, y);
 
-    // No need to apply if middle tile is out of bounds
+    Tile_Type middle_tile_type = get_game_board_tile_type(board, x, y);
+
+    // Don't apply if middle tile is out of bounds
     if (middle_tile_type == OOB) {
         return;
     }
 
-    GB_edit_tile(
-        editor->gb, 
-        middle_tile_type, 
+    edit_game_board_tile(
+        board,
+        clock,
+        middle_tile_type,
 
-        TD_get_tile_auto_var(
-            editor->td,
+        get_tile_auto_var(
+            editor->tiles_data,
             middle_tile_type,
-            GB_get_tile_type_at_coords(editor->gb, x, y - 1),
-            GB_get_tile_type_at_coords(editor->gb, x + 1, y),
-            GB_get_tile_type_at_coords(editor->gb, x, y + 1),
-            GB_get_tile_type_at_coords(editor->gb, x - 1, y)
+            get_game_board_tile_type(board, x,     y - 1),
+            get_game_board_tile_type(board, x + 1, y),
+            get_game_board_tile_type(board, x,     y + 1),
+            get_game_board_tile_type(board, x - 1, y)
         ),
 
-        x, 
+        x,
         y
     );
-    */
 }
