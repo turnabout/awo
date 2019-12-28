@@ -20,6 +20,9 @@ Game_Editor* create_game_editor(
     editor->entity_x = ENTITY_COORDINATE_NONE;
     editor->entity_y = ENTITY_COORDINATE_NONE;
 
+    editor->tiles_data = tiles_data;
+    editor->units_data = units_data;
+
     // Start with default editing values
     // TODO: remove, should be set from outside
     update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Plain, SELECTED_ENTITY_VAR_NONE);
