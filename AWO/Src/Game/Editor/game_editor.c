@@ -22,7 +22,7 @@ Game_Editor* create_game_editor(
 
     // Start with default editing values
     // TODO: remove, should be set from outside
-    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Plain, Default);
+    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Plain, SELECTED_ENTITY_VAR_NONE);
 
     // editor->selected_entity = SE_create(window_width, window_height);
 
@@ -38,7 +38,14 @@ void update_editor_selected_entity(
 {
     // Set the kind of entity that should now be selected
     if (kind == Editor_Entity_Type_Tile) {
-        editor->selected_entity_update_cb = set_editor_tile_entity;
+
+        if (type >= PROPERTY_TILE_TYPE_FIRST || type <= PROPERTY_TILE_TYPE_LAST) {
+
+            editor->selected_entity_update_cb = set_editor_tile_entity;
+        } else {
+            editor->selected_entity_update_cb = set_editor_property_entity;
+        }
+
     } else if (kind == Editor_Entity_Type_Unit) {
         editor->selected_entity_update_cb = set_editor_unit_entity;
     } else {

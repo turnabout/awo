@@ -45,9 +45,11 @@ struct Game_Editor {
     // Selected_Entity* selected_entity;
 };
 
-void set_editor_unit_entity(Game_Editor* editor, Game_Board* game_board, Game_Clock* game_clock);
-void set_editor_tile_entity(Game_Editor* editor, Game_Board* game_board, Game_Clock* game_clock);
+void set_editor_unit_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock);
+void set_editor_tile_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock);
+
+void set_editor_property_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock);
 
 /*! @brief Apply auto-var to the tile entity at the given x/y coordinates.
  */
-void apply_autovar(Game_Editor* editor, Uint8 x, Uint8 y);
+void apply_autovar(Game_Editor* editor, Game_Board* board, Uint8 x, Uint8 y);
