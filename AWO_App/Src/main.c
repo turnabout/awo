@@ -3,6 +3,10 @@
 
 #include "AWO/Include/game.h"
 
+void game_run_callback(Game* game)
+{
+}
+
 int main(int argc, char** argv)
 {
     Game* game;
@@ -14,7 +18,7 @@ int main(int argc, char** argv)
     }
 
     if (prepare_design_room_game(game)) {
-        run_game(game);
+        run_game(game, game_run_callback);
     }
 
     free_game(game);

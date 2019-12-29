@@ -24,7 +24,7 @@ void game_loop(void* game)
     glfwSwapBuffers(((Game*)game)->window);
 }
 
-void EMX run_game(Game* game)
+void EMX run_game(Game* game, void (*callback)(Game*))
 {
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);
@@ -36,6 +36,7 @@ void EMX run_game(Game* game)
     glfwSetTime(0);
 
     while (!glfwWindowShouldClose(game->window)) {
+        callback(game);
         game_loop(game);
     }
     #endif
