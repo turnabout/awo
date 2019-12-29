@@ -5,8 +5,12 @@ void apply_autovar(Game_Editor* editor, Game_Board* board, Game_Clock* clock, Ui
 
     Tile_Type middle_tile_type = get_game_board_tile_type(board, x, y);
 
-    // Don't apply if middle tile is out of bounds
-    if (middle_tile_type == OOB) {
+    // Don't apply if middle tile is a property OR is out of bounds
+    if (
+        middle_tile_type >= PROPERTY_TILE_TYPE_FIRST || 
+        middle_tile_type >= PROPERTY_TILE_TYPE_LAST ||
+        middle_tile_type == OOB
+    ) {
         return;
     }
 
