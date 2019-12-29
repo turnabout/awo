@@ -4,6 +4,8 @@
 
 #include "AWO/Include/game.h"
 
+#define COLOR_PAIR_AUTO_COMPLETE 1
+
 void game_run_callback(Game* game)
 {
     // Read for character input, exit if none was found
@@ -12,18 +14,39 @@ void game_run_callback(Game* game)
         return;
     }
 
+
+    attron(A_BOLD);
+    attron(COLOR_PAIR(COLOR_PAIR_AUTO_COMPLETE));
+    printw("Entered: ");
+    attroff(A_BOLD);
+    attroff(COLOR_PAIR(COLOR_PAIR_AUTO_COMPLETE));
+    printw("%c\n", c);
+
     refresh();
+}
+
+void initialize_curses()
+{
+    initscr();
+
+    // Process additional inputs (arrow keys, F keys, etc)
+    keypad(stdscr, TRUE);
+
+    // Don't automatically echo back user input
+    noecho();
+
+    // Make Curses' `getch` immediately return ERR if no input is waiting
+    nodelay(stdscr, TRUE);
+
+    // Initialize colors
+    start_color();
+    init_pair(COLOR_PAIR_AUTO_COMPLETE, COLOR_BLACK, COLOR_WHITE);
 }
 
 int main(int argc, char** argv)
 {
-    // Initialize PDCurses
-    initscr();
-
-    keypad(stdscr, TRUE);
-
-    // Make PDCurses' `getch` immediately return ERR if no input is waiting
-    nodelay(stdscr, TRUE);
+    // Initialize Curses for terminal functionality
+    initialize_curses();
 
     // Initialize game & run
     Game* game;
