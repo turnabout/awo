@@ -31,5 +31,8 @@ void set_editor_tile_entity(Game_Editor* editor, Game_Board* board, Game_Clock* 
     // Apply auto-vars to new tile & its surrounding tiles
     apply_autovar(editor, board, clock, editor->entity_x, editor->entity_y);
 
-    // TODO: apply to surrounding tiles
+    apply_autovar(editor, board, clock, editor->entity_x - 1, editor->entity_y);
+    apply_autovar(editor, board, clock, editor->entity_x + 1, editor->entity_y);
+    apply_autovar(editor, board, clock, editor->entity_x,     editor->entity_y - 1);
+    apply_autovar(editor, board, clock, editor->entity_x,     editor->entity_y + 1);
 }
