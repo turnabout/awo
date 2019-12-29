@@ -4,8 +4,6 @@
 
 #include "AWO/Include/game.h"
 
-static WINDOW* curses_win;
-
 void game_run_callback(Game* game)
 {
     // Read for character input, exit if none was found
@@ -20,10 +18,12 @@ void game_run_callback(Game* game)
 int main(int argc, char** argv)
 {
     // Initialize PDCurses
-    curses_win = initscr();
+    initscr();
+
+    keypad(stdscr, TRUE);
 
     // Make PDCurses' `getch` immediately return ERR if no input is waiting
-    nodelay(curses_win, TRUE);
+    nodelay(stdscr, TRUE);
 
     // Initialize game & run
     Game* game;
