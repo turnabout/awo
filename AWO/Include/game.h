@@ -57,6 +57,13 @@ void unprepare_game(Game* game);
  */
 void run_game(Game* game, void (*callback)(Game*));
 
+/*! @brief Gets the game's current state.
+ *
+ *  @param[in] game The game.
+ *  @return The game's currently active state.
+ */
+Game_State get_game_state(Game* game);
+
 /*! @brief Frees all resources taken up by the game and kills it.
  *
  *  @note Expects game state to be `Game_Initialized`.

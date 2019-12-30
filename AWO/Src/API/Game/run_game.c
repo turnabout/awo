@@ -42,4 +42,6 @@ void EMX run_game(Game* game, void (*callback)(Game*))
         game_loop(game);
     }
     #endif
+
+    game->state = Game_Prepared;
 }

@@ -40,6 +40,7 @@
     <ClCompile Include="Libs\c_hashmap.c" />
     <ClCompile Include="Libs\glad.c" />
     <ClCompile Include="Libs\stb_image.c" />
+    <ClCompile Include="Src\API\Game\get_game_state.c" />
     <ClCompile Include="Src\API\Game_Data\API_entity_texture_reader.c" />
     <ClCompile Include="Src\API\Game_Data\tiles_data.c" />
     <ClCompile Include="Src\API\Game_Editor\update_game_editor_selected_entity.c" />
