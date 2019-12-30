@@ -6,6 +6,6 @@ typedef struct Console Console;
 
 Console* create_console();
 
-void update_console(Console* console, Game* game);
+void run_console(Console* console);
 
 void free_console(Console* console);

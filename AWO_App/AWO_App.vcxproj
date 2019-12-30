@@ -152,6 +152,7 @@
     <ClCompile Include="Src\Console\Command\command.c" />
     <ClCompile Include="Src\Console\Command\command_list.c" />
     <ClCompile Include="Src\Console\console.c" />
+    <ClCompile Include="Src\Console\Functions\init.c" />
     <ClCompile Include="Src\main.c" />
   </ItemGroup>
   <ItemGroup>

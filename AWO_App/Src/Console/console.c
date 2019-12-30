@@ -14,8 +14,8 @@ void initialize_curses()
     // Don't automatically echo back user input
     noecho();
 
-    // Make Curses' `getch` immediately return ERR if no input is waiting
-    nodelay(stdscr, TRUE);
+    // Don't use nodelay mode initially
+    nodelay(stdscr, FALSE);
 
     // Initialize colors
     start_color();
@@ -52,7 +52,7 @@ Console* create_console()
         {
             "init", 
             { Command_Arg_Int, Command_Arg_None },
-            NULL
+            init
         },
         {
             "run", 
@@ -81,13 +81,22 @@ Console* create_console()
     return console;
 }
 
-void update_console(Console* console, Game* game)
+void process_console_command(Console* console)
+{
+}
+
+int update_console(Console* console)
 {
     int c = getch();
 
-    // No character entered, exit right away
+    // No character entered (for nodelay mode), exit right away
     if (c == ERR) {
-        return;
+        return 0;
+    }
+
+    // Escape, return negative result (for delay mode)
+    if (c == ESCAPE) {
+        return 0;
     }
 
     // Process symbol character
@@ -95,7 +104,7 @@ void update_console(Console* console, Game* game)
 
         // Ignore if command max length has been reached
         if (console->user_command_char_count >= COMMAND_MAX_LENGTH) {
-            return;
+            return 1;
         }
 
         // Add character to current user command
@@ -105,7 +114,7 @@ void update_console(Console* console, Game* game)
         // Print updated command
         print_console_entered_command(console);
 
-        return;
+        return 1;
     }
 
     // Process keypad characters
@@ -118,7 +127,7 @@ void update_console(Console* console, Game* game)
     case BACKSPACE:
         // Ignore if not a single character to delete
         if (console->user_command_char_count == 0) {
-            return;
+            return 1;
         }
 
         // Remove character from current user command
@@ -132,6 +141,14 @@ void update_console(Console* console, Game* game)
         break;
     case KEY_DOWN:
         break;
+    }
+
+    return 1;
+}
+
+void run_console(Console* console)
+{
+    while (update_console(console)) {
     }
 }
 

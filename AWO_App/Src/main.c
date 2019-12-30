@@ -1,19 +1,18 @@
 #include <stdio.h>
 
-#include "AWO/Include/game.h"
 #include "Console/console.h"
-
-static Console* console;
-
-void game_run_callback(Game* game)
-{
-    update_console(console, game);
-}
 
 int main(int argc, char** argv)
 {
-    console = create_console();
+    Console* console = create_console();
 
+    if (console != NULL) {
+        run_console(console);
+    }
+
+    free_console(console);
+
+    /*
     // Initialize game & run
     Game* game;
 
@@ -28,7 +27,7 @@ int main(int argc, char** argv)
     }
 
     free_game(game);
-    free_console(console);
+    */
 
     return 0;
 }

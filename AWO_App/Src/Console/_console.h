@@ -10,6 +10,7 @@
 #define NEW_LINE  10
 #define SPACE     32
 #define BACKSPACE  8
+#define ESCAPE    27
 
 // First and last valid symbol (letter/number/space/extra) characters
 #define FIRST_SYMBOL_CHARACTER SPACE
@@ -29,4 +30,10 @@ struct Console {
     // List of every command that can be used with the console
     Command_List* command_list;
 
+    // Reference to the game
+    Game* game;
+
 };
+
+// List of command functions
+void init(Console* console);
