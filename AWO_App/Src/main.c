@@ -3,6 +3,7 @@
 #include <curses.h>
 
 #include "AWO/Include/game.h"
+#include "Command/command.h"
 
 #define COLOR_PAIR_AUTO_COMPLETE 1
 
@@ -23,6 +24,12 @@ void game_run_callback(Game* game)
     printw("%c\n", c);
 
     refresh();
+
+}
+
+void nop_test()
+{
+
 }
 
 void initialize_curses()
@@ -45,6 +52,18 @@ void initialize_curses()
 
 int main(int argc, char** argv)
 {
+
+    create_command(
+        "aaa",
+        (Command_Arg_Type[COMMAND_ARG_MAX_COUNT]) { 
+            Command_Arg_None,
+            Command_Arg_None,
+            Command_Arg_None
+        },
+        nop_test
+    );
+
+    /*
     // Initialize Curses for terminal functionality
     initialize_curses();
 
@@ -63,6 +82,7 @@ int main(int argc, char** argv)
 
     free_game(game);
     endwin();
+*/
 
     return 0;
 }
