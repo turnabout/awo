@@ -83,6 +83,46 @@ Console* create_console()
 
 void process_console_command(Console* console)
 {
+    // Exit early if user command is empty
+    if (console->user_command_char_count == 0) {
+        return;
+    }
+
+    // Translate the user-entered command string into usable chunks
+    char* chunks[1 + CMD_ARG_MAX_COUNT];
+    int chunk_count = 0;
+    int next_chunk_start = 0;
+
+    for (int i = 0; i < COMMAND_MAX_LENGTH; i++) {
+        if (console->user_command[i] == '\0') {
+
+            if (i > 0) {
+                chunks[chunk_count++] = &(console->user_command[next_chunk_start]);
+            }
+
+            break;
+        }
+
+        if (console->user_command[i] == ' ') {
+            chunks[chunk_count++] = &(console->user_command[next_chunk_start]);
+            next_chunk_start = i + 1;
+            console->user_command[i] = '\0';
+        }
+    }
+
+    // Reset the user command
+    console->user_command[0] = '\0';
+    console->user_command_char_count = 0;
+    
+    // Test
+    mvprintw(1, 0, "Chunk count: %d", chunk_count);
+
+    for (int i = 0; i < chunk_count; i++) {
+        mvprintw(2 + i, 0, "%s", chunks[i]);
+    }
+
+    // Use the chunks to try and fetch an actual command corresponding to it
+    // Command* command;
 }
 
 int update_console(Console* console)
@@ -121,7 +161,7 @@ int update_console(Console* console)
     switch (c) {
     case NEW_LINE:
         // Attempt to process the entered user command
-        // process_console_command();
+        process_console_command(console);
         break;
 
     case BACKSPACE:
