@@ -1,144 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <curses.h>
 
 #include "AWO/Include/game.h"
-#include "Command/command_list.h"
+#include "Console/console.h"
 
-#define COLOR_PAIR_AUTO_COMPLETE 1
-
-// Max character length of a command
-#define COMMAND_MAX_LENGTH 32
-
-// Special keypad characters
-#define NEW_LINE  10
-#define SPACE     32
-#define BACKSPACE  8
-
-// First and last valid symbol (letter/number/space/extra) characters
-#define FIRST_SYMBOL_CHARACTER SPACE
-#define LAST_SYMBOL_CHARACTER 'z'
-
-// User's currently-entered command
-static char user_command[COMMAND_MAX_LENGTH + 1] = "";
-static int user_command_char_count = 0;
-
-void print_prompt()
-{
-    mvprintw(0, 0, ">");
-    refresh();
-}
-
-void print_entered_command()
-{
-    clear();
-    print_prompt();
-    mvprintw(0, 2, user_command);
-    refresh();
-}
+static Console* console;
 
 void game_run_callback(Game* game)
 {
-    int c = getch();
-
-    // No character entered, exit right away
-    if (c == ERR) {
-        return;
-    }
-
-    // Process symbol character
-    if (c >= FIRST_SYMBOL_CHARACTER && c <= LAST_SYMBOL_CHARACTER) {
-
-        // Ignore if command max length has been reached
-        if (user_command_char_count >= COMMAND_MAX_LENGTH) {
-            return;
-        }
-
-        // Add character to current user command
-        user_command[user_command_char_count++] = c;
-        user_command[user_command_char_count] = '\0';
-
-        // Print updated command
-        print_entered_command();
-
-        return;
-    }
-
-    // Process keypad characters
-    switch (c) {
-    case BACKSPACE:
-        // Ignore if not a single character to delete
-        if (user_command_char_count == 0) {
-            return;
-        }
-
-        // Remove character from current user command
-        user_command[--user_command_char_count] = '\0';
-
-        // Print updated command
-        print_entered_command();
-
-        break;
-    case KEY_UP:
-        break;
-    case KEY_DOWN:
-        break;
-    }
-}
-
-void nop_test()
-{
-
-}
-
-void initialize_curses()
-{
-    initscr();
-
-    // Process additional inputs (arrow keys, F keys, etc)
-    keypad(stdscr, TRUE);
-
-    // Don't automatically echo back user input
-    noecho();
-
-    // Make Curses' `getch` immediately return ERR if no input is waiting
-    nodelay(stdscr, TRUE);
-
-    // Initialize colors
-    start_color();
-    init_pair(COLOR_PAIR_AUTO_COMPLETE, COLOR_BLACK, COLOR_WHITE);
+    update_console(console, game);
 }
 
 int main(int argc, char** argv)
 {
-    // Initialize list of commands that can be used through the commandline
-    Command_List* list = create_commands_list((Command_Descriptor [MAX_CMD_COUNT]){
-        {
-            "init", 
-            { Command_Arg_Int, Command_Arg_None },
-            nop_test
-        },
-        {
-            "run", 
-            { Command_Arg_None },
-            nop_test
-        },
-        {
-            "exit", 
-            { Command_Arg_None },
-            nop_test
-        },
-        ""
-    });
-
-    if (list == NULL) {
-        printf("Error creating list of commands\n");
-        return;
-    }
-
-    // Initialize Curses for terminal functionality
-    initialize_curses();
-    print_prompt();
+    console = create_console();
 
     // Initialize game & run
     Game* game;
@@ -154,8 +28,7 @@ int main(int argc, char** argv)
     }
 
     free_game(game);
-    endwin();
-    free_command_list(list);
+    free_console(console);
 
     return 0;
 }

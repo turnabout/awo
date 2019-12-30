@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Command/command.h"
+#include "Console/Command/command.h"
 
 #pragma warning(disable: 6011 )
 #pragma warning(disable: 6387 )

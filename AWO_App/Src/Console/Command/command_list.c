@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <c_hashmap.h>
 
-#include "Command/command_list.h"
-#include "Command/command.h"
+#include "Console/Command/command_list.h"
+#include "Console/Command/command.h"
 
 #pragma warning(disable: 6011 )
 

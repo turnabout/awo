@@ -10,19 +10,24 @@
     <ClCompile Include="Src\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Command\command.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Libs\c_hashmap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Command\command_list.c">
+    <ClCompile Include="Src\Console\console.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Console\Command\command.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Console\Command\command_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Command\command.h" />
-    <ClInclude Include="Src\Command\command_list.h" />
-    <ClInclude Include="Src\Command\command_descriptor.h" />
+    <ClInclude Include="Src\Console\console.h" />
+    <ClInclude Include="Src\Console\_console.h" />
+    <ClInclude Include="Src\Console\Command\command.h" />
+    <ClInclude Include="Src\Console\Command\command_descriptor.h" />
+    <ClInclude Include="Src\Console\Command\command_list.h" />
   </ItemGroup>
 </Project>
