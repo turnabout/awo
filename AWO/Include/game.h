@@ -4,6 +4,20 @@
  */
 typedef struct Game Game;
 
+/*! @brief Every possible state for the game.
+ */
+typedef enum Game_State {
+
+    // The game instance is created, but not prepared for gameplay.
+    Game_Created,
+
+    // The game is prepared for gameplay.
+    Game_Prepared,
+
+    // The game is currently running.
+    Game_Running,
+} Game_State;
+
 /*! @brief Creates the game instance.
  *
  *  @param[in] window_width The window's initial tiles_width, in pixels.

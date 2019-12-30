@@ -60,5 +60,6 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
         return FALSE;
     }
 
+    game->state = Game_Prepared;
     return TRUE;
 }

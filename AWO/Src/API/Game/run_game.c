@@ -26,6 +26,8 @@ void game_loop(void* game)
 
 void EMX run_game(Game* game, void (*callback)(Game*))
 {
+    game->state = Game_Running;
+
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);
     #else

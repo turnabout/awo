@@ -44,6 +44,7 @@ Game* EMX create_game(int window_width, int window_height)
     game->editor = NULL;
     game->renderer = NULL;
     game->palette = 0;
+    game->state = Game_Created;
 
     return game;
 }

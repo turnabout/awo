@@ -18,6 +18,9 @@ typedef struct Game Game;
 
 struct Game {
 
+    // The game's current state.
+    Game_State state;
+
     // Handle to the game's window.
     GLFWwindow* window;
 
