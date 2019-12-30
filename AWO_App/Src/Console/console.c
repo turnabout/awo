@@ -93,7 +93,7 @@ void process_console_command(Console* console)
     int chunk_count = 0;
     int next_chunk_start = 0;
 
-    for (int i = 0; i < COMMAND_MAX_LENGTH; i++) {
+    for (int i = 0; i <= COMMAND_MAX_LENGTH; i++) {
         if (console->user_command[i] == '\0') {
 
             if (i > 0) {
@@ -109,10 +109,6 @@ void process_console_command(Console* console)
             console->user_command[i] = '\0';
         }
     }
-
-    // Reset the user command
-    console->user_command[0] = '\0';
-    console->user_command_char_count = 0;
     
     // Test
     mvprintw(1, 0, "Chunk count: %d", chunk_count);
@@ -123,6 +119,10 @@ void process_console_command(Console* console)
 
     // Use the chunks to try and fetch an actual command corresponding to it
     // Command* command;
+
+    // Reset the user command
+    console->user_command[0] = '\0';
+    console->user_command_char_count = 0;
 }
 
 int update_console(Console* console)
