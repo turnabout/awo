@@ -148,7 +148,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Libs\c_hashmap.c" />
     <ClCompile Include="Src\Command\command.c" />
+    <ClCompile Include="Src\Command\command_list.c" />
     <ClCompile Include="Src\main.c" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Command\command.h" />
+    <ClInclude Include="Src\Command\command_descriptor.h" />
+    <ClInclude Include="Src\Command\command_list.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,8 +13,16 @@
     <ClCompile Include="Src\Command\command.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libs\c_hashmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Command\command_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Command\command.h" />
+    <ClInclude Include="Src\Command\command_list.h" />
+    <ClInclude Include="Src\Command\command_descriptor.h" />
   </ItemGroup>
 </Project>

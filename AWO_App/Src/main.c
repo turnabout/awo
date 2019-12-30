@@ -3,7 +3,7 @@
 #include <curses.h>
 
 #include "AWO/Include/game.h"
-#include "Command/command.h"
+#include "Command/command_list.h"
 
 #define COLOR_PAIR_AUTO_COMPLETE 1
 
@@ -52,16 +52,30 @@ void initialize_curses()
 
 int main(int argc, char** argv)
 {
-
-    create_command(
-        "aaa",
-        (Command_Arg_Type[COMMAND_ARG_MAX_COUNT]) { 
-            Command_Arg_None,
-            Command_Arg_None,
-            Command_Arg_None
+    // Initialize list of commands that can be used through the commandline
+    Command_List* list = create_commands_list((Command_Descriptor [MAX_CMD_COUNT]){
+        {
+            "init", 
+            { Command_Arg_Int, Command_Arg_None },
+            nop_test
         },
-        nop_test
-    );
+        {
+            "run", 
+            { Command_Arg_None },
+            nop_test
+        },
+        {
+            "exit", 
+            { Command_Arg_None },
+            nop_test
+        },
+        ""
+    });
+
+    if (list == NULL) {
+        printf("Error creating list of commands\n");
+        return;
+    }
 
     /*
     // Initialize Curses for terminal functionality
@@ -83,6 +97,7 @@ int main(int argc, char** argv)
     free_game(game);
     endwin();
 */
+    free_command_list(list);
 
     return 0;
 }

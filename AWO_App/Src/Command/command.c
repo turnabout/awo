@@ -6,41 +6,53 @@
 #pragma warning(disable: 6011 )
 #pragma warning(disable: 6387 )
 
-Command* create_command(
-    const char* name,
-    Command_Arg_Type arg_types[COMMAND_ARG_MAX_COUNT],
-    void* function
-)
+struct Command {
+
+    // The name of this command.
+    char name[CMD_NAME_MAX_LENGTH];
+
+    // The count of commands.
+    int arg_count;
+
+    // The type of the command's arguments.
+    Command_Arg_Type arg_types[CMD_ARG_MAX_COUNT];
+
+    // Function that should be called by this command.
+    void* function;
+
+};
+
+Command* create_command(Command_Descriptor descriptor)
 {
     Command* command = malloc(sizeof(Command));
 
-    command->function = function;
+    command->function = descriptor.function;
 
     // Set name
-    command->name = malloc((sizeof(char) * strlen(name)) + 1);
-    strcpy_s(command->name, strlen(name) + 1, name);
+    strcpy_s(command->name, strlen(descriptor.name) + 1, descriptor.name);
 
     // Gather command argument data
-    for (int i = 0; i < COMMAND_ARG_MAX_COUNT; i++) {
-        if (arg_types[i] == Command_Arg_None || i == COMMAND_ARG_MAX_COUNT) {
+    for (int i = 0; i < CMD_ARG_MAX_COUNT; i++) {
+        if (descriptor.arg_types[i] == Command_Arg_None || i == CMD_ARG_MAX_COUNT) {
             command->arg_count = i;
             break;
         }
 
-        command->arg_types[i] = arg_types[i];
+        command->arg_types[i] = descriptor.arg_types[i];
     }
 
     return command;
+}
+
+char* get_command_name(Command* command)
+{
+    return command->name;
 }
 
 void free_command(Command* command)
 {
     if (command == NULL) {
         return;
-    }
-
-    if (command->name != NULL) {
-        free(command->name);
     }
 
     free(command);
