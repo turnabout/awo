@@ -10,5 +10,11 @@
     <ClCompile Include="Src\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Command\command.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Command\command.h" />
   </ItemGroup>
 </Project>
