@@ -6,8 +6,12 @@
 #include "Command/command_list.h"
 
 #define COLOR_PAIR_AUTO_COMPLETE 1
+
+// Max character length of a command
 #define COMMAND_MAX_LENGTH 32
 
+// Special keypad characters
+#define NEW_LINE  10
 #define SPACE     32
 #define BACKSPACE  8
 
@@ -15,6 +19,7 @@
 #define FIRST_SYMBOL_CHARACTER SPACE
 #define LAST_SYMBOL_CHARACTER 'z'
 
+// User's currently-entered command
 static char user_command[COMMAND_MAX_LENGTH + 1] = "";
 static int user_command_char_count = 0;
 
@@ -26,6 +31,7 @@ void print_prompt()
 
 void print_entered_command()
 {
+    clear();
     print_prompt();
     mvprintw(0, 2, user_command);
     refresh();
@@ -61,6 +67,17 @@ void game_run_callback(Game* game)
     // Process keypad characters
     switch (c) {
     case BACKSPACE:
+        // Ignore if not a single character to delete
+        if (user_command_char_count == 0) {
+            return;
+        }
+
+        // Remove character from current user command
+        user_command[--user_command_char_count] = '\0';
+
+        // Print updated command
+        print_entered_command();
+
         break;
     case KEY_UP:
         break;
