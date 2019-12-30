@@ -6,25 +6,67 @@
 #include "Command/command_list.h"
 
 #define COLOR_PAIR_AUTO_COMPLETE 1
+#define COMMAND_MAX_LENGTH 32
+
+#define SPACE     32
+#define BACKSPACE  8
+
+// First and last valid symbol (letter/number/space/extra) characters
+#define FIRST_SYMBOL_CHARACTER SPACE
+#define LAST_SYMBOL_CHARACTER 'z'
+
+static char user_command[COMMAND_MAX_LENGTH + 1] = "";
+static int user_command_char_count = 0;
+
+void print_prompt()
+{
+    mvprintw(0, 0, ">");
+    refresh();
+}
+
+void print_entered_command()
+{
+    print_prompt();
+    mvprintw(0, 2, user_command);
+    refresh();
+}
 
 void game_run_callback(Game* game)
 {
-    // Read for character input, exit if none was found
-    char c;
-    if ((c = getch()) == ERR) {
+    int c = getch();
+
+    // No character entered, exit right away
+    if (c == ERR) {
         return;
     }
 
+    // Process symbol character
+    if (c >= FIRST_SYMBOL_CHARACTER && c <= LAST_SYMBOL_CHARACTER) {
 
-    attron(A_BOLD);
-    attron(COLOR_PAIR(COLOR_PAIR_AUTO_COMPLETE));
-    printw("Entered: ");
-    attroff(A_BOLD);
-    attroff(COLOR_PAIR(COLOR_PAIR_AUTO_COMPLETE));
-    printw("%c\n", c);
+        // Ignore if command max length has been reached
+        if (user_command_char_count >= COMMAND_MAX_LENGTH) {
+            return;
+        }
 
-    refresh();
+        // Add character to current user command
+        user_command[user_command_char_count++] = c;
+        user_command[user_command_char_count] = '\0';
 
+        // Print updated command
+        print_entered_command();
+
+        return;
+    }
+
+    // Process keypad characters
+    switch (c) {
+    case BACKSPACE:
+        break;
+    case KEY_UP:
+        break;
+    case KEY_DOWN:
+        break;
+    }
 }
 
 void nop_test()
@@ -77,9 +119,9 @@ int main(int argc, char** argv)
         return;
     }
 
-    /*
     // Initialize Curses for terminal functionality
     initialize_curses();
+    print_prompt();
 
     // Initialize game & run
     Game* game;
@@ -96,7 +138,6 @@ int main(int argc, char** argv)
 
     free_game(game);
     endwin();
-*/
     free_command_list(list);
 
     return 0;
