@@ -103,14 +103,9 @@ int load_command_arguments(Command* command, char* args_raw[CMD_ARG_MAX_COUNT])
     return 1;
 }
 
-int execute_command_function(Command* command, void* module, char* args_raw[CMD_ARG_MAX_COUNT])
+int execute_command_function(Command* command, void* module)
 {
-    if (!load_command_arguments(command, args_raw)) {
-        return 0;
-    }
-
-    command->function(module, command->loaded_args);
-    return 1;
+    return command->function(module, command->loaded_args);
 }
 
 char* get_command_name(Command* command)

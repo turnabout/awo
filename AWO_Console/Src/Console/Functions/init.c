@@ -7,7 +7,7 @@
 #define DEFAULT_WINDOW_W 500
 #define DEFAULT_WINDOW_H 500
 
-void init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
+int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game was already set
     if (console->game != NULL) {
@@ -17,7 +17,7 @@ void init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
             "Error: game window already set"
         );
 
-        return;
+        return CMD_Ret_Error;
     }
 
     // Unpack the payload's values
@@ -34,4 +34,6 @@ void init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     console->game = create_game(window_w, window_h);
     focus_console_window();
+
+    return CMD_Ret_OK;
 }

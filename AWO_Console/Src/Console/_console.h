@@ -56,7 +56,7 @@ struct Console {
 };
 
 int update_console(Console* console);
-void process_console_command(Console* console);
+int process_console_command(Console* console);
 
 void empty_console_messages(Console* console);
 
@@ -73,16 +73,22 @@ void reset_console_user_command(Console* console);
  *  @param[in] window_width (Command_Arg_Int) The game's initial window width.
  *  @param[in] window_height (Command_Arg_Int) The game's initial window height.
  */
-void init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+int init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
 
 /*! @brief Runs the game in design room mode.
  *
  *  @param[in] console The console module.
  */
-void rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+int rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+
+/*! @brief Stops and frees the currently running game instance.
+ *
+ *  @param[in] console The console module.
+ */
+int free_console_game(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
 
 /*! @brief Clears the console's list of messages.
  *
  *  @param[in] console The console module.
  */
-void cls(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+int cls(Console* console, void* payload[CMD_ARG_MAX_COUNT]);

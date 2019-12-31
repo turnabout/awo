@@ -2,11 +2,11 @@
 
 #include "Console/_console.h"
 
-void process_console_command(Console* console)
+int process_console_command(Console* console)
 {
     // Exit early if user command is empty
     if (console->user_command_char_count == 0) {
-        return;
+        return CMD_Ret_Error;
     }
 
     // Translate the user-entered command string into usable chunks
@@ -39,7 +39,7 @@ void process_console_command(Console* console)
     // Error processing chunks
     if (chunks[0] == NULL) {
         add_console_message(console, COLOR_PAIR_ERROR, "Error processing command");
-        return;
+        return CMD_Ret_Error;
     }
 
     // Attempt to get the command
@@ -55,7 +55,7 @@ void process_console_command(Console* console)
         );
 
         reset_console_user_command(console);
-        return;
+        return CMD_Ret_Error;
     }
 
     // Confirm the command's arguments
@@ -73,17 +73,17 @@ void process_console_command(Console* console)
         );
 
         reset_console_user_command(console);
-        return;
+        return CMD_Ret_Error;
     }
 
-    // Execute command
+    // Attempt to load the arguments into the command
     char* command_args_raw[CMD_ARG_MAX_COUNT];
 
     for (int i = 0; i < command_arg_count; i++) {
         command_args_raw[i] = chunks[1 + i];
     }
 
-    if (!execute_command_function(command, (void*)console, command_args_raw)) {
+    if (!load_command_arguments(command, command_args_raw)) {
         add_console_message(
             console, 
             COLOR_PAIR_ERROR, 
@@ -91,6 +91,5 @@ void process_console_command(Console* console)
         );
     }
 
-    // Went through with no error
-    reset_console_user_command(console);
+    return execute_command_function(command, (void*)console);
 }

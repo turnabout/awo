@@ -53,9 +53,9 @@ Console* create_console()
             rundr
         },
         {
-            "exit", 
+            "free", 
             { Command_Arg_None },
-            NULL
+            free_console_game
         },
         {
             "cls", 
@@ -85,12 +85,12 @@ int update_console(Console* console)
 
     // No character entered (for nodelay mode), exit right away
     if (c == ERR) {
-        return 0;
+        return CMD_Ret_Error;
     }
 
     // Escape, return negative result (for delay mode)
     if (c == ESCAPE) {
-        return 0;
+        return CMD_Ret_Exit;
     }
 
     // Process symbol character
@@ -98,7 +98,7 @@ int update_console(Console* console)
 
         // Ignore if command max length has been reached
         if (console->user_command_char_count >= COMMAND_MAX_LENGTH) {
-            return 1;
+            return CMD_Ret_OK;
         }
 
         // Add character to current user command
@@ -108,20 +108,23 @@ int update_console(Console* console)
         // Print updated command
         print_console_entered_command(console);
 
-        return 1;
+        return CMD_Ret_OK;
     }
 
     // Process keypad characters
+    int res;
+
     switch (c) {
     case NEW_LINE:
         // Attempt to process the entered user command
-        process_console_command(console);
-        break;
+        res = process_console_command(console);
+        reset_console_user_command(console);
+        return res;
 
     case BACKSPACE:
         // Ignore if not a single character to delete
         if (console->user_command_char_count == 0) {
-            return 1;
+            return CMD_Ret_OK;
         }
 
         // Remove character from current user command
@@ -136,13 +139,12 @@ int update_console(Console* console)
         break;
     }
 
-    return 1;
+    return CMD_Ret_OK;
 }
 
 void run_console(Console* console)
 {
-    while (update_console(console)) {
-    }
+    while (update_console(console) != CMD_Ret_Exit);
 }
 
 void free_console(Console* console)
