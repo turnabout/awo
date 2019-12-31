@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AWO", "AWO\AWO.vcxproj", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AWO_Tests", "AWO_Tests\AWO_Tests.vcxproj", "{D7F3667D-F3A0-45AA-8EF9-4FDFE6B2B0A0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AWO_App", "AWO_App\AWO_App.vcxproj", "{25017EF9-C511-4AFD-9F40-35F751FDE784}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AWO_Console", "AWO_Console\AWO_Console.vcxproj", "{25017EF9-C511-4AFD-9F40-35F751FDE784}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
