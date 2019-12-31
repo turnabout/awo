@@ -48,5 +48,14 @@ struct Console {
 
 };
 
-// List of command functions
+int update_console(Console* console);
+void process_console_command(Console* console);
+
+
+// Console output functions
+void print_console_entered_command(Console* console);
+void print_console_message(Console* console, int color_pair, char* format, ...);
+void reset_console_user_command(Console* console);
+
+// Console command functions
 void init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);

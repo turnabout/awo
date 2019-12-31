@@ -11,7 +11,7 @@ Game* EMX create_game(int window_width, int window_height)
     game->window_width = (window_width) ? window_width : DEFAULT_WINDOW_WIDTH;
     game->window_height = (window_height) ? window_height : DEFAULT_WINDOW_HEIGHT;
 
-    // Initialize base GL game components (GLFW/GLAD/)
+    // Initialize base GL game components (GLFW/GLAD)
     if (!init_GL(game)) {
         free_game(game);
         return NULL;
