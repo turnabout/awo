@@ -17,9 +17,10 @@
 #define LAST_SYMBOL_CHARACTER 'z'
 
 // Curses color pairs
-#define COLOR_PAIR_NONE  -1
-#define COLOR_PAIR_INFO   1
-#define COLOR_PAIR_ERROR  2
+#define COLOR_PAIR_NONE    -1
+#define COLOR_PAIR_INFO     1
+#define COLOR_PAIR_ERROR    2
+#define COLOR_PAIR_WARNING  3
 
 // Positions in the console
 #define USER_PROMPT_Y 0
@@ -48,4 +49,4 @@ struct Console {
 };
 
 // List of command functions
-void init(Console* console);
+void init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);

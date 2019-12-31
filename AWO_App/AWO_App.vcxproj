@@ -154,6 +154,7 @@
     <ClCompile Include="Src\Console\console.c" />
     <ClCompile Include="Src\Console\Functions\init.c" />
     <ClCompile Include="Src\main.c" />
+    <ClCompile Include="Src\Utilities\str_is_int.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AWO\AWO.vcxproj">
@@ -166,6 +167,7 @@
     <ClInclude Include="Src\Console\Command\command_list.h" />
     <ClInclude Include="Src\Console\console.h" />
     <ClInclude Include="Src\Console\_console.h" />
+    <ClInclude Include="Src\Utilities\utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

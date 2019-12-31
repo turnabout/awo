@@ -25,6 +25,7 @@ void initialize_curses()
     start_color();
     init_pair(COLOR_PAIR_INFO, COLOR_CYAN, COLOR_BLACK);
     init_pair(COLOR_PAIR_ERROR, COLOR_RED, COLOR_BLACK);
+    init_pair(COLOR_PAIR_WARNING, COLOR_YELLOW, COLOR_BLACK);
 }
 
 void print_console_entered_command(Console* console)
@@ -53,12 +54,13 @@ Console* create_console()
 
     console->user_command_char_count = 0;
     console->user_command[0] = '\0';
+    console->game = NULL;
 
     // Initialize list of commands that can be used through the console
     console->command_list = create_commands_list((Command_Descriptor [MAX_CMD_COUNT]){
         {
             "init", 
-            { Command_Arg_Int, Command_Arg_None },
+            { Command_Arg_Int, Command_Arg_Int, Command_Arg_None },
             init
         },
         {
@@ -180,12 +182,41 @@ void process_console_command(Console* console)
         );
 
         reset_console_user_command(console);
-
         return;
     }
 
     // Confirm the command's arguments
-    // TODO
+    int user_arg_count = chunk_count - 1;
+    int command_arg_count = get_command_arg_count(command);
+
+    // Error: Not enough arguments
+    if (user_arg_count < command_arg_count) {
+        print_console_message(
+            console, 
+            COLOR_PAIR_ERROR, 
+            "Error: expected %d arguments, got %d", 
+            command_arg_count,
+            user_arg_count
+        );
+
+        reset_console_user_command(console);
+        return;
+    }
+
+    // Execute command
+    char* command_args_raw[CMD_ARG_MAX_COUNT];
+
+    for (int i = 0; i < command_arg_count; i++) {
+        command_args_raw[i] = chunks[1 + i];
+    }
+
+    if (!execute_command_function(command, (void*)console, command_args_raw)) {
+        print_console_message(
+            console, 
+            COLOR_PAIR_ERROR, 
+            "Error: incorrect argument types given"
+        );
+    }
 
     reset_console_user_command(console);
 }
@@ -262,6 +293,10 @@ void free_console(Console* console)
 
     if (console == NULL) {
         return;
+    }
+
+    if (console->game != NULL) {
+        free_game(console->game);
     }
 
     free(console);

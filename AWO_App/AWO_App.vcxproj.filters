@@ -25,6 +25,9 @@
     <ClCompile Include="Src\Console\Functions\init.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Utilities\str_is_int.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Console\console.h" />
@@ -32,5 +35,6 @@
     <ClInclude Include="Src\Console\Command\command.h" />
     <ClInclude Include="Src\Console\Command\command_descriptor.h" />
     <ClInclude Include="Src\Console\Command\command_list.h" />
+    <ClInclude Include="Src\Utilities\utilities.h" />
   </ItemGroup>
 </Project>
