@@ -17,14 +17,18 @@ void initialize_curses()
     // Don't use nodelay mode initially
     nodelay(stdscr, FALSE);
 
+    // Hide cursor
+    curs_set(0);
+
     // Initialize colors
     start_color();
-    init_pair(COLOR_PAIR_AUTO_COMPLETE, COLOR_BLACK, COLOR_WHITE);
+    init_pair(COLOR_PAIR_INFO, COLOR_CYAN, COLOR_BLACK);
+    init_pair(COLOR_PAIR_ERROR, COLOR_RED, COLOR_BLACK);
 }
 
 void print_console_prompt(Console* console)
 {
-    mvprintw(0, 0, ">");
+    mvprintw(USER_PROMPT_Y, USER_PROMPT_X, ">");
     refresh();
 }
 
@@ -32,7 +36,7 @@ void print_console_entered_command(Console* console)
 {
     clear();
     print_console_prompt(console);
-    mvprintw(0, 2, console->user_command);
+    mvprintw(USER_CMD_Y, USER_CMD_X, console->user_command);
     refresh();
 }
 
@@ -81,6 +85,27 @@ Console* create_console()
     return console;
 }
 
+void print_console_message(Console* console, int color_pair, char* format, ...)
+{
+    char msg[1000];
+
+    va_list a_ptr;
+
+    va_start(a_ptr, format);
+    vsprintf_s(msg, 1000, format, a_ptr);
+    va_end(a_ptr);
+
+    if (color_pair != COLOR_PAIR_NONE) {
+        attron(COLOR_PAIR(color_pair));
+    }
+
+    mvprintw(MSG_CMD_Y, MSG_CMD_X, msg);
+
+    if (color_pair != COLOR_PAIR_NONE) {
+        attroff(COLOR_PAIR(color_pair));
+    }
+}
+
 void process_console_command(Console* console)
 {
     // Exit early if user command is empty
@@ -92,6 +117,11 @@ void process_console_command(Console* console)
     char* chunks[1 + CMD_ARG_MAX_COUNT];
     int chunk_count = 0;
     int next_chunk_start = 0;
+
+    // Initialize all possible chunks to NULL
+    for (int i = 0; i <= CMD_ARG_MAX_COUNT; i++) {
+        chunks[i] = NULL;
+    }
 
     for (int i = 0; i <= COMMAND_MAX_LENGTH; i++) {
         if (console->user_command[i] == '\0') {
@@ -110,15 +140,29 @@ void process_console_command(Console* console)
         }
     }
     
-    // Test
-    mvprintw(1, 0, "Chunk count: %d", chunk_count);
-
-    for (int i = 0; i < chunk_count; i++) {
-        mvprintw(2 + i, 0, "%s", chunks[i]);
+    // Use the chunks to try and fetch an actual command corresponding to it
+    if (chunks[0] == NULL) {
+        // Error processing chunks
     }
 
-    // Use the chunks to try and fetch an actual command corresponding to it
-    // Command* command;
+    // Get the command
+    Command* command = get_command_by_name(console->command_list, chunks[0]);
+
+    // Error: Command not found
+    if (command == NULL) {
+        clear();
+        print_console_prompt(console);
+
+        print_console_message(
+            console, 
+            COLOR_PAIR_ERROR, 
+            "Error: command '%s' does not exist", 
+            chunks[0]
+        );
+    }
+
+    // Confirm the command's arguments
+    // TODO
 
     // Reset the user command
     console->user_command[0] = '\0';

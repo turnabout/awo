@@ -17,7 +17,19 @@
 #define LAST_SYMBOL_CHARACTER 'z'
 
 // Curses color pairs
-#define COLOR_PAIR_AUTO_COMPLETE 1
+#define COLOR_PAIR_NONE  -1
+#define COLOR_PAIR_INFO   1
+#define COLOR_PAIR_ERROR  2
+
+// Positions in the console
+#define USER_PROMPT_Y 0
+#define USER_PROMPT_X 0
+
+#define USER_CMD_Y 0
+#define USER_CMD_X 2
+
+#define MSG_CMD_Y 2
+#define MSG_CMD_X 0
 
 struct Console {
 
