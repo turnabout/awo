@@ -48,7 +48,7 @@ Console* create_console()
             init
         },
         {
-            "run", 
+            "run_dr", 
             { Command_Arg_None },
             NULL
         },

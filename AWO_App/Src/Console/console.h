@@ -1,7 +1,5 @@
 #pragma once
 
-#include "AWO/Include/game.h"
-
 typedef struct Console Console;
 
 Console* create_console();

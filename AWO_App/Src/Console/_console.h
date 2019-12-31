@@ -1,5 +1,7 @@
 #pragma once
 
+#include <AWO/Include/game.h>
+
 #include "Console/console.h"
 #include "Console/Command/command_list.h"
 
@@ -57,5 +59,10 @@ void print_console_entered_command(Console* console);
 void print_console_message(Console* console, int color_pair, char* format, ...);
 void reset_console_user_command(Console* console);
 
-// Console command functions
+/*! @brief Creates the game and stores its initialized instance in the console.
+ *
+ *  @param[in] console The console module.
+ *  @param[in] window_width (Command_Arg_Int) The game's initial window width.
+ *  @param[in] window_height (Command_Arg_Int) The game's initial window height.
+ */
 void init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
