@@ -38,6 +38,7 @@ Console* create_console()
     console->user_command_char_count = 0;
     console->user_command[0] = '\0';
     console->game = NULL;
+    console->message_count = 0;
 
     // Initialize list of commands that can be used through the console
     console->command_list = create_commands_list((Command_Descriptor [MAX_CMD_COUNT]){

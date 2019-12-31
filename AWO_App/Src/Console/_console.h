@@ -5,6 +5,7 @@
 
 #include "Console/console.h"
 #include "Console/Command/command_list.h"
+#include "Console/Message/message.h"
 
 // Max character length of a command
 #define COMMAND_MAX_LENGTH 32
@@ -19,11 +20,8 @@
 #define FIRST_SYMBOL_CHARACTER SPACE
 #define LAST_SYMBOL_CHARACTER 'z'
 
-// Curses color pairs
-#define COLOR_PAIR_NONE    -1
-#define COLOR_PAIR_INFO     1
-#define COLOR_PAIR_ERROR    2
-#define COLOR_PAIR_WARNING  3
+// Max amount of messages the console can display at once
+#define MSG_COUNT_MAX  10
 
 // Positions in the console
 #define USER_PROMPT_Y 0
@@ -45,6 +43,12 @@ struct Console {
 
     // List of every command that can be used with the console
     Command_List* command_list;
+
+    // List of every displayed messages
+    Message* messages[MSG_COUNT_MAX];
+
+    // Current count of displayed messages
+    int message_count;
 
     // Reference to the game
     Game* game;

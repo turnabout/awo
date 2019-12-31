@@ -34,26 +34,25 @@ void print_console_entered_command(Console* console)
 
 void print_console_message(Console* console, int color_pair, char* format, ...)
 {
-    char msg[1000];
+    // If the message count has reached the limit, remove older one and offset all others
+    if (console->message_count >= MSG_COUNT_MAX) {
+        return;
+    }
+
+    // Set the message's string
+    char message_str[MSG_MAX_LENGTH];
 
     va_list a_ptr;
 
     va_start(a_ptr, format);
-    vsprintf_s(msg, 1000, format, a_ptr);
+    vsprintf_s(message_str, MSG_MAX_LENGTH, format, a_ptr);
     va_end(a_ptr);
 
-    // Clear previous contents
-    move(MSG_Y, MSG_X);
-    clrtoeol();
+    // Add the new message
+    console->messages[console->message_count++] = create_message(message_str, color_pair);
 
-    // Print new contents
-    if (color_pair != COLOR_PAIR_NONE) {
-        attron(COLOR_PAIR(color_pair));
-    }
-
-    mvprintw(MSG_Y, MSG_X, msg);
-
-    if (color_pair != COLOR_PAIR_NONE) {
-        attroff(COLOR_PAIR(color_pair));
+    // Print all messages
+    for (int i = 0; i < console->message_count; i++) {
+        print_message(console->messages[i], MSG_Y + i, MSG_X);
     }
 }

@@ -40,6 +40,9 @@
     <ClCompile Include="Src\Console\Functions\rundr.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Console\Message\message.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Console\console.h" />
@@ -48,5 +51,6 @@
     <ClInclude Include="Src\Console\Command\command_descriptor.h" />
     <ClInclude Include="Src\Console\Command\command_list.h" />
     <ClInclude Include="Src\Utilities\utilities.h" />
+    <ClInclude Include="Src\Console\Message\message.h" />
   </ItemGroup>
 </Project>
