@@ -28,8 +28,8 @@
 #define USER_CMD_Y 0
 #define USER_CMD_X 2
 
-#define MSG_CMD_Y 2
-#define MSG_CMD_X 0
+#define MSG_Y 2
+#define MSG_X 0
 
 struct Console {
 

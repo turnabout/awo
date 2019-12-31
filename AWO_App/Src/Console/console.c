@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <curses.h>
 
 #include "Console/_console.h"
@@ -26,17 +27,19 @@ void initialize_curses()
     init_pair(COLOR_PAIR_ERROR, COLOR_RED, COLOR_BLACK);
 }
 
-void print_console_prompt(Console* console)
-{
-    mvprintw(USER_PROMPT_Y, USER_PROMPT_X, ">");
-    refresh();
-}
-
 void print_console_entered_command(Console* console)
 {
-    clear();
-    print_console_prompt(console);
+    // Clear previous contents
+    move(USER_CMD_Y, USER_CMD_X);
+    clrtoeol();
+    
+    // Print the prompt
+    mvprintw(USER_PROMPT_Y, USER_PROMPT_X, ">");
+    refresh();
+
+    // Print the user command
     mvprintw(USER_CMD_Y, USER_CMD_X, console->user_command);
+    mvprintw(USER_CMD_Y, USER_CMD_X + console->user_command_char_count, "_");
     refresh();
 }
 
@@ -80,9 +83,22 @@ Console* create_console()
     // Initialize Curses library for facilitating terminal usage
     initialize_curses();
 
-    print_console_prompt(console);
+    print_console_entered_command(console);
 
     return console;
+}
+
+static inline reset_console_user_command(Console* console)
+{
+    console->user_command[0] = '\0';
+    console->user_command_char_count = 0;
+
+    // Clear previous contents
+    move(USER_CMD_Y, USER_CMD_X);
+    clrtoeol();
+
+    // Re-print the now-empty user command
+    print_console_entered_command(console);
 }
 
 void print_console_message(Console* console, int color_pair, char* format, ...)
@@ -95,11 +111,16 @@ void print_console_message(Console* console, int color_pair, char* format, ...)
     vsprintf_s(msg, 1000, format, a_ptr);
     va_end(a_ptr);
 
+    // Clear previous contents
+    move(MSG_Y, MSG_X);
+    clrtoeol();
+
+    // Print new contents
     if (color_pair != COLOR_PAIR_NONE) {
         attron(COLOR_PAIR(color_pair));
     }
 
-    mvprintw(MSG_CMD_Y, MSG_CMD_X, msg);
+    mvprintw(MSG_Y, MSG_X, msg);
 
     if (color_pair != COLOR_PAIR_NONE) {
         attroff(COLOR_PAIR(color_pair));
@@ -140,33 +161,33 @@ void process_console_command(Console* console)
         }
     }
     
-    // Use the chunks to try and fetch an actual command corresponding to it
+    // Error processing chunks
     if (chunks[0] == NULL) {
-        // Error processing chunks
+        print_console_message(console, COLOR_PAIR_ERROR, "Error processing command");
+        return;
     }
 
-    // Get the command
+    // Attempt to get the command
     Command* command = get_command_by_name(console->command_list, chunks[0]);
 
     // Error: Command not found
     if (command == NULL) {
-        clear();
-        print_console_prompt(console);
-
         print_console_message(
             console, 
             COLOR_PAIR_ERROR, 
             "Error: command '%s' does not exist", 
             chunks[0]
         );
+
+        reset_console_user_command(console);
+
+        return;
     }
 
     // Confirm the command's arguments
     // TODO
 
-    // Reset the user command
-    console->user_command[0] = '\0';
-    console->user_command_char_count = 0;
+    reset_console_user_command(console);
 }
 
 int update_console(Console* console)
@@ -219,7 +240,6 @@ int update_console(Console* console)
 
         // Print updated command
         print_console_entered_command(console);
-
         break;
     case KEY_UP:
         break;
