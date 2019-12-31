@@ -6,6 +6,14 @@
 Game* EMX create_game(int window_width, int window_height)
 {
     Game* game = malloc(sizeof(Game));
+    
+    // Set all struct members not to be initialized in this step
+    game->board = NULL;
+    game->camera = NULL;
+    game->clock = NULL;
+    game->editor = NULL;
+    game->renderer = NULL;
+    game->palette = 0;
 
     // Set default window dimension values if none given
     game->window_width = (window_width) ? window_width : DEFAULT_WINDOW_WIDTH;
@@ -36,15 +44,7 @@ Game* EMX create_game(int window_width, int window_height)
         free_game(game);
         return NULL;
     }
-    
-    // Initialize all other game struct members
-    game->board = NULL;
-    game->camera = NULL;
-    game->clock = NULL;
-    game->editor = NULL;
-    game->renderer = NULL;
-    game->palette = 0;
-    game->state = Game_Created;
 
+    game->state = Game_Created;
     return game;
 }
