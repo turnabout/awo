@@ -57,6 +57,11 @@ Console* create_console()
             { Command_Arg_None },
             NULL
         },
+        {
+            "cls", 
+            { Command_Arg_None },
+            cls
+        },
         ""
     });
 

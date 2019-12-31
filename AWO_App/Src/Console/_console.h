@@ -79,3 +79,9 @@ void init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
  *  @param[in] console The console module.
  */
 void rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+
+/*! @brief Clears the console's list of messages.
+ *
+ *  @param[in] console The console module.
+ */
+void cls(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
