@@ -92,6 +92,5 @@ void process_console_command(Console* console)
     }
 
     // Went through with no error
-    add_console_message(console, COLOR_PAIR_NONE, "");
     reset_console_user_command(console);
 }

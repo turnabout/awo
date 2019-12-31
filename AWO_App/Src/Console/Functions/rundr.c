@@ -7,13 +7,22 @@ void rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game hasn't been set or isn't in the right state
     if (console->game == NULL) {
-        // add_console_message()
-        // TODO: error
+        add_console_message(
+            console,
+            COLOR_PAIR_ERROR,
+            "Error: game must be created: run `init`"
+        );
         return;
     }
 
     if (get_game_state(console->game) != Game_Created) {
-        // TODO: error
+        add_console_message(
+            console,
+            COLOR_PAIR_ERROR,
+            "Error: game state must be %d, was %d",
+            Game_Created,
+            get_game_state(console->game)
+        );
         return;
     }
 
