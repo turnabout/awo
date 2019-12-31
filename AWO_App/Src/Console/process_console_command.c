@@ -38,7 +38,7 @@ void process_console_command(Console* console)
     
     // Error processing chunks
     if (chunks[0] == NULL) {
-        print_console_messages(console, COLOR_PAIR_ERROR, "Error processing command");
+        add_console_message(console, COLOR_PAIR_ERROR, "Error processing command");
         return;
     }
 
@@ -47,7 +47,7 @@ void process_console_command(Console* console)
 
     // Error: Command not found
     if (command == NULL) {
-        print_console_messages(
+        add_console_message(
             console, 
             COLOR_PAIR_ERROR, 
             "Error: command '%s' does not exist", 
@@ -64,7 +64,7 @@ void process_console_command(Console* console)
 
     // Error: Not enough arguments
     if (user_arg_count < command_arg_count) {
-        print_console_messages(
+        add_console_message(
             console, 
             COLOR_PAIR_ERROR, 
             "Error: expected %d arguments, got %d", 
@@ -84,7 +84,7 @@ void process_console_command(Console* console)
     }
 
     if (!execute_command_function(command, (void*)console, command_args_raw)) {
-        print_console_messages(
+        add_console_message(
             console, 
             COLOR_PAIR_ERROR, 
             "Error: incorrect argument types given"
@@ -92,6 +92,6 @@ void process_console_command(Console* console)
     }
 
     // Went through with no error
-    print_console_messages(console, COLOR_PAIR_NONE, "");
+    add_console_message(console, COLOR_PAIR_NONE, "");
     reset_console_user_command(console);
 }

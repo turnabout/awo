@@ -7,11 +7,12 @@ void rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game hasn't been set or isn't in the right state
     if (console->game == NULL) {
+        // add_console_message()
         // TODO: error
         return;
     }
 
-    if (get_game_state(console->game) != Game_Prepared) {
+    if (get_game_state(console->game) != Game_Created) {
         // TODO: error
         return;
     }
