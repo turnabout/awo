@@ -32,11 +32,20 @@ void print_console_entered_command(Console* console)
     refresh();
 }
 
-void print_console_message(Console* console, int color_pair, char* format, ...)
+void print_console_messages(Console* console, int color_pair, char* format, ...)
 {
-    // If the message count has reached the limit, remove older one and offset all others
+    // Check if the message count has reached the limit
     if (console->message_count >= MSG_COUNT_MAX) {
-        return;
+
+        // Remove oldest message
+        free_message(console->messages[0]);
+
+        // Offset other messages
+        for (int i = 1; i < MSG_COUNT_MAX; i++) {
+            console->messages[i - 1] = console->messages[i];
+        }
+
+        console->message_count--;
     }
 
     // Set the message's string
@@ -55,4 +64,13 @@ void print_console_message(Console* console, int color_pair, char* format, ...)
     for (int i = 0; i < console->message_count; i++) {
         print_message(console->messages[i], MSG_Y + i, MSG_X);
     }
+}
+
+void empty_console_messages(Console* console)
+{
+    for (int i = 0; i < console->message_count; i++) {
+        free_message(console->messages[i]);
+    }
+
+    console->message_count = 0;
 }

@@ -148,6 +148,10 @@ void free_console(Console* console)
         return;
     }
 
+    // Empty the messages list
+    empty_console_messages(console);
+
+    // Free the game if it existed
     if (console->game != NULL) {
         free_game(console->game);
     }

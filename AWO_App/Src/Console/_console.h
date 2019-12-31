@@ -58,10 +58,12 @@ struct Console {
 int update_console(Console* console);
 void process_console_command(Console* console);
 
+void empty_console_messages(Console* console);
+
 
 // Console output functions
 void print_console_entered_command(Console* console);
-void print_console_message(Console* console, int color_pair, char* format, ...);
+void print_console_messages(Console* console, int color_pair, char* format, ...);
 void reset_console_user_command(Console* console);
 
 /*! @brief Creates the game and stores its initialized instance in the console.
