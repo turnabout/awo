@@ -15,7 +15,7 @@ int init_glfw(Game* game)
     glfwInit();
 
     // Get GLFW window
-    GLFWwindow* window = glfwCreateWindow(
+    game->window = glfwCreateWindow(
         game->window_width, 
         game->window_height, 
         DEFAULT_WINDOW_TITLE, 
@@ -23,13 +23,12 @@ int init_glfw(Game* game)
         NULL
     );
 
-    if (window == NULL) {
+    if (game->window == NULL) {
         printf("Failed to create GLFW window\n");
         return 0;
     }
 
-    glfwMakeContextCurrent(window);
-    game->window = window;
+    glfwMakeContextCurrent(game->window);
 
     return 1;
 }
