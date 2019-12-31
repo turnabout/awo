@@ -1,5 +1,6 @@
 #pragma once
 
+#include <curses.h>
 #include <AWO/Include/game.h>
 
 #include "Console/console.h"
@@ -66,3 +67,9 @@ void reset_console_user_command(Console* console);
  *  @param[in] window_height (Command_Arg_Int) The game's initial window height.
  */
 void init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+
+/*! @brief Runs the game in design room mode.
+ *
+ *  @param[in] console The console module.
+ */
+void rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);

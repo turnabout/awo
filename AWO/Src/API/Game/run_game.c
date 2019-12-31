@@ -24,7 +24,7 @@ void game_loop(void* game)
     glfwSwapBuffers(((Game*)game)->window);
 }
 
-void EMX run_game(Game* game, void (*callback)(Game*))
+void EMX run_game(Game* game, void (*callback)(void*), void* cb_value)
 {
     game->state = Game_Running;
 
@@ -38,7 +38,7 @@ void EMX run_game(Game* game, void (*callback)(Game*))
     glfwSetTime(0);
 
     while (!glfwWindowShouldClose(game->window)) {
-        callback(game);
+        callback(cb_value);
         game_loop(game);
     }
     #endif

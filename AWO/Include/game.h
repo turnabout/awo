@@ -54,8 +54,9 @@ void unprepare_game(Game* game);
  *
  *  @param[in] game The game.
  *  @param[in] callback A function called every frame before the game loop.
+ *  @param[in] cb_value Value passed to the callback.
  */
-void run_game(Game* game, void (*callback)(Game*));
+void run_game(Game* game, void (*callback)(void*), void* cb_value);
 
 /*! @brief Gets the game's current state.
  *

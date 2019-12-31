@@ -3,10 +3,10 @@
 
 #include "Console/_console.h"
 
-void run_dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
+void rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game hasn't been set or isn't in the right state
-    if (console->game != NULL) {
+    if (console->game == NULL) {
         // TODO: error
         return;
     }
@@ -16,7 +16,10 @@ void run_dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
         return;
     }
 
+    // Activate Curses nodelay mode so update_console becomes nonblocking
+    nodelay(stdscr, TRUE);
+
     // Start running the game, use console update function as passed-callback so we can keep 
-    // processing user commands while the game runs
-    // run_game(console->game, update_console, (void*)console);
+    // processing user commands while the game runs.
+    run_game(console->game, update_console, (void*)console);
 }

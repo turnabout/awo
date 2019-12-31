@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <curses.h>
 
 #include "Console/_console.h"
 
@@ -48,9 +47,9 @@ Console* create_console()
             init
         },
         {
-            "run_dr", 
+            "rundr", 
             { Command_Arg_None },
-            NULL
+            rundr
         },
         {
             "exit", 
