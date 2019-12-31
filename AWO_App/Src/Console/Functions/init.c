@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "Utilities/utilities.h"
 #include "Console/_console.h"
 
 #define DEFAULT_WINDOW_W 500
@@ -18,4 +19,5 @@ void init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     int window_h = (payload[1] != NULL) ? *((int*)payload[1]) : DEFAULT_WINDOW_H;
 
     console->game = create_game(window_w, window_h);
+    focus_console_window();
 }

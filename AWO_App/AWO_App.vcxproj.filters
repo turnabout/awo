@@ -34,6 +34,9 @@
     <ClCompile Include="Src\Console\console_output.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Console\focus_console_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Console\console.h" />
