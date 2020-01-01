@@ -33,7 +33,7 @@ void push_msg(char* format, ...)
     message->label = Plain_Message;
 
     // Copy string into message
-    int format_len = strlen(format);
+    int format_len = strlen(format) + 1;
     int copied_len = (format_len < GAME_MSG_MAX_LEN) ? format_len : GAME_MSG_MAX_LEN;
 
     va_list a_ptr;
@@ -41,6 +41,8 @@ void push_msg(char* format, ...)
     va_start(a_ptr, format);
     vsprintf_s(message->str, copied_len, format, a_ptr);
     va_end(a_ptr);
+
+    message->str[copied_len - 1] = '\0';
 
     // Store message in message service's list
     append_linked_list_item(list, (void*)message);
@@ -61,7 +63,7 @@ void push_msg_l(Game_Message_Label label, char* format, ...)
     message->label = label;
 
     // Copy string into message
-    int format_len = strlen(format);
+    int format_len = strlen(format) + 1;
     int copied_len = (format_len < GAME_MSG_MAX_LEN) ? format_len : GAME_MSG_MAX_LEN;
 
     va_list a_ptr;
@@ -69,6 +71,8 @@ void push_msg_l(Game_Message_Label label, char* format, ...)
     va_start(a_ptr, format);
     vsprintf_s(message->str, copied_len, format, a_ptr);
     va_end(a_ptr);
+
+    message->str[copied_len - 1] = '\0';
 
     // Store message in message service's list
     append_linked_list_item(list, (void*)message);
