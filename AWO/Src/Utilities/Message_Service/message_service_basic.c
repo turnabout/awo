@@ -13,7 +13,7 @@ void push_msg(char* format, ...)
     va_list a_ptr;
 
     va_start(a_ptr, format);
-    printf(format, a_ptr);
+    printf("%s\n", format, a_ptr);
     va_end(a_ptr);
 }
 
@@ -22,7 +22,7 @@ void push_msg_l(Game_Message_Label label, char* format, ...)
     va_list a_ptr;
 
     va_start(a_ptr, format);
-    printf(format, a_ptr);
+    printf("%s\n", format, a_ptr);
     va_end(a_ptr);
 }
 
