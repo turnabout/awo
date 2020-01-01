@@ -39,6 +39,25 @@ void print_console_messages(Console* console)
     }
 }
 
+void add_console_game_message(Console* console, Game_Message* message)
+{
+    int color_pair = COLOR_PAIR_NONE;
+
+    switch (message->label) {
+    case Error_Msg:
+        color_pair = COLOR_PAIR_ERROR;
+        break;
+    case Warning_Msg:
+        color_pair = COLOR_PAIR_WARNING;
+        break;
+    case Info_Msg:
+        color_pair = COLOR_PAIR_INFO;
+        break;
+    }
+
+    add_console_message(console, color_pair, message->str);
+}
+
 void add_console_message(Console* console, int color_pair, char* format, ...)
 {
     // Check if the message count has reached the limit

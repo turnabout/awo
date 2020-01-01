@@ -2,6 +2,7 @@
 
 #include <curses.h>
 #include <AWO/Include/game.h>
+#include <AWO/Include/game_message.h>
 
 #include "Console/console.h"
 #include "Console/Command/command_list.h"
@@ -56,12 +57,14 @@ struct Console {
 };
 
 int update_console(Console* console);
+int update_running_game_console(Console* console);
 int process_console_command(Console* console);
 
 void empty_console_messages(Console* console);
 
 
 // Console output functions
+void add_console_game_message(Console* console, Game_Message* message);
 void add_console_message(Console* console, int color_pair, char* format, ...);
 void print_console_entered_command(Console* console);
 void print_console_messages(Console* console);

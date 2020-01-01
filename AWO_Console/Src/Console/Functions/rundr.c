@@ -36,7 +36,7 @@ int rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Start running the game, use console update function as passed-callback so we can keep 
     // processing user commands while the game runs.
-    run_game(console->game, update_console, (void*)console);
+    run_game(console->game, update_running_game_console, (void*)console);
 
     // Deactivate Curses nodelay mode so update_console goes back to blocking
     nodelay(stdscr, FALSE);

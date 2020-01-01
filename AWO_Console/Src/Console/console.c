@@ -79,6 +79,19 @@ Console* create_console()
     return console;
 }
 
+int update_running_game_console(Console* console)
+{
+    // Print any game message to the console
+    Game_Message* msg;
+
+    while ((msg = get_next_game_message()) != NULL) {
+        add_console_game_message(console, msg);
+        free(msg);
+    }
+
+    return update_console(console);
+}
+
 int update_console(Console* console)
 {
     int c = getch();
