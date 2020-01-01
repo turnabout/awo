@@ -15,21 +15,12 @@ int rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
         return CMD_Ret_Error;
     }
 
-    if (get_game_state(console->game) != Game_Initialized) {
-        add_console_message(
-            console,
-            COLOR_PAIR_ERROR,
-            "Error: game state must be %d, was %d",
-            Game_Initialized,
-            get_game_state(console->game)
-        );
+    // Prepare the game for design room mode
+    if (!prepare_design_room_game(console->game)) {
         return CMD_Ret_Error;
     }
 
     reset_console_user_command(console);
-
-    // Clear the user command message
-    prepare_design_room_game(console->game);
 
     // Activate Curses nodelay mode so update_console becomes nonblocking
     nodelay(stdscr, TRUE);

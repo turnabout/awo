@@ -33,6 +33,13 @@ int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     );
 
     console->game = create_game(window_w, window_h);
+
+    // Ensure the game was created successfully
+    if (get_game_state(console->game) == Game_Unusable) {
+        free_game(console->game);
+        return CMD_Ret_Error;
+    }
+
     focus_console_window();
 
     return CMD_Ret_OK;

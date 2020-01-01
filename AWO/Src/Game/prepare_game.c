@@ -2,7 +2,15 @@
 
 Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
 {
+    // Confirm the game state is valid
+    if (game->state != Game_Initialized) {
+        printe("Error: game state must be %d, was %d", Game_Initialized, game->state);
+        return FALSE;
+    }
+
+    // Confirm stage was set
     if (stage == NULL) {
+        printe("Error loading game stage");
         return FALSE;
     }
 
@@ -24,6 +32,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     );
 
     if (game->renderer == NULL) {
+        printe("Error preparing game renderer");
         unprepare_game(game);
         return FALSE;
     }
@@ -40,6 +49,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     );
 
     if (game->camera == NULL) {
+        printe("Error preparing game camera");
         unprepare_game(game);
         return FALSE;
     }
@@ -56,6 +66,7 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     );
 
     if (game->board == NULL) {
+        printe("Error preparing game");
         unprepare_game(game);
         return FALSE;
     }
