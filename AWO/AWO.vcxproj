@@ -45,6 +45,7 @@
     <ClCompile Include="Src\API\Game_Data\tiles_data.c" />
     <ClCompile Include="Src\API\Game_Editor\update_game_editor_selected_entity.c" />
     <ClCompile Include="Src\API\Game\prepare_design_room_game.c" />
+    <ClCompile Include="Src\API\Game_Message\get_next_game_message.c" />
     <ClCompile Include="Src\Game\Board\add_game_board_tile.c" />
     <ClCompile Include="Src\Game\Board\add_game_board_unit.c" />
     <ClCompile Include="Src\Game\Board\edit_game_board_tile.c" />
@@ -149,6 +150,7 @@
     <ClCompile Include="Src\Utilities\hex_string_to_data.c" />
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c" />
     <ClCompile Include="Src\Utilities\Linked_List\list_entry.c" />
+    <ClCompile Include="Src\Utilities\Message_Service\message_service.c" />
     <ClCompile Include="Src\Utilities\read_file.c" />
     <ClCompile Include="Src\Utilities\round_float_to_int.c" />
   </ItemGroup>
@@ -170,6 +172,7 @@
     <ClInclude Include="Include\game_editor.h" />
     <ClInclude Include="Include\game.h" />
     <ClInclude Include="Include\game_data.h" />
+    <ClInclude Include="Include\game_message.h" />
     <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\emx.h" />
@@ -255,6 +258,7 @@
     <ClInclude Include="Src\Utilities\Linked_List\linked_list.h" />
     <ClInclude Include="Src\Utilities\Linked_List\list_entry.h" />
     <ClInclude Include="Src\Utilities\macros.h" />
+    <ClInclude Include="Src\Utilities\Message_Service\message_service.h" />
     <ClInclude Include="Src\Utilities\utilities.h" />
   </ItemGroup>
   <ItemGroup>

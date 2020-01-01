@@ -48,7 +48,7 @@ void unregister_clock_subscriber_tile(
     }
 
     // Delete this tile from the tiles list it belongs to
-    delete_linked_list_item((Linked_List*)module->tiles_lists[clock_index], tile);
+    delete_linked_list_item((Linked_List*)module->tiles_lists[clock_index], tile, TRUE);
 }
 
 void process_tile_subscriber_event(Tick_Event* tick_event, void* module_arg)

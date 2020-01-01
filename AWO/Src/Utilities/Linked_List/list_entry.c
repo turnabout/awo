@@ -32,7 +32,7 @@ List_Entry* get_list_entry_tail(List_Entry* list_head)
     }
 }
 
-Bool delete_list_entry(List_Entry** list_head, void* value)
+Bool delete_list_entry(List_Entry** list_head, void* value, Bool free_data)
 {
     List_Entry** p = list_head;
 
@@ -47,7 +47,11 @@ Bool delete_list_entry(List_Entry** list_head, void* value)
 
         *p = deleted_entry->next;
         deleted_entry->next = NULL;
-        free(deleted_entry);
+
+        if (free_data) {
+            free(deleted_entry);
+        }
+
         return TRUE;
     }
 

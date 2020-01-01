@@ -8,8 +8,13 @@ typedef struct Game Game;
  */
 typedef enum Game_State {
 
-    // The game instance is created, but not prepared for gameplay.
-    Game_Created,
+    // The game instance was created, but was not fully initialized, meaning an error happened 
+    // during its initialization. Any accumulated error messages should be processed through 
+    // `get_next_game_message`, then the game should be freed via `free_game`.
+    Game_Unusable,
+
+    // The game instance is initialized, but not prepared for gameplay.
+    Game_Initialized,
 
     // The game is prepared for gameplay.
     Game_Prepared,

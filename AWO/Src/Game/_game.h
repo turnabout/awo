@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Include/game.h"
+#include "Utilities/Message_Service/message_service.h"
 #include "Game/Board/game_board.h"
 #include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"

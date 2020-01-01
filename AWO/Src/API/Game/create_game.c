@@ -6,6 +6,17 @@
 Game* EMX create_game(int window_width, int window_height)
 {
     Game* game = malloc(sizeof(Game));
+
+    game->state = Game_Unusable;
+
+    // Initialize the message service, so messages can be logged
+    start_message_service();
+
+    push_msg("Herro %d", 5);
+
+    Game_Message* bla = pop_msg();
+
+    free(bla);
     
     // Set all struct members not to be initialized in this step
     game->board = NULL;
@@ -45,6 +56,6 @@ Game* EMX create_game(int window_width, int window_height)
         return NULL;
     }
 
-    game->state = Game_Created;
+    game->state = Game_Initialized;
     return game;
 }

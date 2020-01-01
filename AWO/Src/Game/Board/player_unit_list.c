@@ -12,6 +12,7 @@ void unregister_game_board_player_unit(Game_Board* game_board, Unit* unit)
 {
     delete_linked_list_item(
         game_board->player_units[unit->player->index], 
-        (void*)unit
+        (void*)unit,
+        TRUE
     );
 }

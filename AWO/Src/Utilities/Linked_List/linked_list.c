@@ -17,9 +17,13 @@ Linked_List* create_linked_list(void* values[], size_t values_count)
 {
     Linked_List* list = malloc(sizeof(Linked_List));
 
+    if (list == NULL) {
+        return NULL;
+    }
+
     list->count = values_count;
 
-    if (values_count == 0) {
+    if (values_count == 0 || values == NULL) {
         list->head = NULL;
         list->tail = NULL;
         return list;
@@ -93,9 +97,9 @@ void* get_linked_list_nth_element(Linked_List* list, int n)
     return NULL;
 }
 
-void delete_linked_list_item(Linked_List* list, void* value)
+void delete_linked_list_item(Linked_List* list, void* value, Bool free_data)
 {
-    if (delete_list_entry(&list->head, value)) {
+    if (delete_list_entry(&list->head, value, free_data)) {
         list->count--;
         update_linked_list_tail(list);
     }

@@ -5,17 +5,15 @@
 
 void EMX free_game(Game* game)
 {
+    end_message_service();
+    glfwTerminate();
+
     if (game == NULL) {
-        glfwTerminate();
         return;
     }
 
     // Ensure game is "unprepared"
     unprepare_game(game);
-
-    if (game->window != NULL) {
-        glfwDestroyWindow(game->window);
-    }
 
     free_game_cursor(game->cursor);
     free_game_data(game->data);

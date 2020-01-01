@@ -1,5 +1,7 @@
 #pragma once
 
+#include "types.h"
+
 /*! @brief Singly-linked list holding generic pointers as values.
  */
 typedef struct Linked_List Linked_List;
@@ -52,8 +54,9 @@ int get_linked_list_count(Linked_List* list);
  *
  *  @param[in] list The linked list.
  *  @param[in] value The value to remove from the list.
+ *  @param[in] free_data Whether the value should be freed on top of being removed from the list.
  */
-void delete_linked_list_item(Linked_List* list, void* value);
+void delete_linked_list_item(Linked_List* list, void* value, Bool free_data);
 
 /*! @brief Frees the memory occupied by the linked list and its contents.
  *

@@ -120,31 +120,31 @@ TEST_F(Linked_List_Test, append_linked_list_item)
 TEST_F(Linked_List_Test, delete_linked_list_item)
 {
     // Delete first element - expected: b-c-d
-    delete_linked_list_item(list, &a);
+    delete_linked_list_item(list, &a, TRUE);
     EXPECT_LIST_CONTENTS(list, 3, _ARR({b, c, d}));
     Reset();
 
     // Delete second element - expected: a-c-d
-    delete_linked_list_item(list, &b);
+    delete_linked_list_item(list, &b, TRUE);
     EXPECT_LIST_CONTENTS(list, 3, _ARR({a, c, d}));
     Reset();
 
     // Delete last element - expected: a-b-c
-    delete_linked_list_item(list, &d);
+    delete_linked_list_item(list, &d, TRUE);
     EXPECT_LIST_CONTENTS(list, 3, _ARR({a, b, c}));
     Reset();
 
     // Delete first and last elements - expected: b-c
-    delete_linked_list_item(list, &a);
-    delete_linked_list_item(list, &d);
+    delete_linked_list_item(list, &a, TRUE);
+    delete_linked_list_item(list, &d, TRUE);
     EXPECT_LIST_CONTENTS(list, 2, _ARR({b, c}));
     Reset();
 
     // Delete all elements
-    delete_linked_list_item(list, &a);
-    delete_linked_list_item(list, &b);
-    delete_linked_list_item(list, &c);
-    delete_linked_list_item(list, &d);
+    delete_linked_list_item(list, &a, TRUE);
+    delete_linked_list_item(list, &b, TRUE);
+    delete_linked_list_item(list, &c, TRUE);
+    delete_linked_list_item(list, &d, TRUE);
     expect_list_empty(list);
 }
 
@@ -162,8 +162,8 @@ TEST_F(Linked_List_Test, append_delete_linked_list_item)
     EXPECT_LIST_CONTENTS(empty_list, 5, _ARR({f, a, b, c, d}));
 
     // Delete b/d - Expected: f-a-c
-    delete_linked_list_item(empty_list, &b);
-    delete_linked_list_item(empty_list, &d);
+    delete_linked_list_item(empty_list, &b, TRUE);
+    delete_linked_list_item(empty_list, &d, TRUE);
 
     EXPECT_LIST_CONTENTS(empty_list, 3, _ARR({f, a, c}));
 
@@ -174,8 +174,8 @@ TEST_F(Linked_List_Test, append_delete_linked_list_item)
     EXPECT_LIST_CONTENTS(empty_list, 5, _ARR({f, a, c, d, b}));
 
     // Delete f/b - Expected: a-c-d
-    delete_linked_list_item(empty_list, &f);
-    delete_linked_list_item(empty_list, &b);
+    delete_linked_list_item(empty_list, &f, TRUE);
+    delete_linked_list_item(empty_list, &b, TRUE);
 
     EXPECT_LIST_CONTENTS(empty_list, 3, _ARR({a, c, d}));
 }

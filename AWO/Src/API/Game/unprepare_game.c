@@ -14,5 +14,5 @@ void EMX unprepare_game(Game* game)
     game->clock = NULL;
     game->editor = NULL;
     game->renderer = NULL;
-    game->state = Game_Created;
+    game->state = Game_Initialized;
 }

@@ -14,6 +14,7 @@ void unregister_game_board_player_property(Game_Board* game_board, Property_Tile
 {
     delete_linked_list_item(
         game_board->player_properties[property->player->index], 
-        (void*)property
+        (void*)property,
+        TRUE
     );
 }
