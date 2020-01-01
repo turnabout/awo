@@ -5,10 +5,10 @@
 /*! @brief Different labels the game message can have.
  */
 typedef enum Game_Message_Label {
-    Error_Message,
-    Plain_Message,
-    Warning_Message,
-    Info_Message,
+    Error_Msg,
+    Plain_Msg,
+    Warning_Msg,
+    Info_Msg,
 } Game_Message_Label;
 
 /*! @brief A message output by the game.
