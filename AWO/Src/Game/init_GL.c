@@ -5,16 +5,28 @@
 
 void glfw_error_cb(int err_int, const char* err_str)
 {
-    printf("GLFW Error: %s\n", err_str);
+    printe("GLFW Error: %s", err_str);
 }
 
-int init_glfw(Game* game)
+Bool init_glfw(Game* game)
 {
     // Initialize GLFW
-    glfwSetErrorCallback(glfw_error_cb);
-    glfwInit();
+    if (glfwInit() == GLFW_FALSE) {
+        printe("Failed to create GLFW window");
+        return FALSE;
+    }
 
-    // Get GLFW window
+    // Set GLFW error callback
+    glfwSetErrorCallback(glfw_error_cb);
+
+    //Set GLFW window
+    #ifndef __EMSCRIPTEN__
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    #endif
+
     game->window = glfwCreateWindow(
         game->window_width, 
         game->window_height, 
@@ -24,24 +36,17 @@ int init_glfw(Game* game)
     );
 
     if (game->window == NULL) {
-        printf("Failed to create GLFW window\n");
-        return 0;
+        printe("Failed to create GLFW window");
+        return FALSE;
     }
 
     glfwMakeContextCurrent(game->window);
 
-    return 1;
+    return TRUE;
 }
 
-int set_GL_options(Game* game)
+Bool set_GL_options(Game* game)
 {
-    #ifndef __EMSCRIPTEN__
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-    #endif
-
     // Set viewport
     glViewport(0, 0, game->window_width, game->window_height);
 
@@ -70,7 +75,7 @@ int set_GL_options(Game* game)
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    return 1;
+    return TRUE;
 }
 
 Bool init_GL(Game* game)

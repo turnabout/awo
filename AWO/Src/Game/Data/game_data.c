@@ -2,6 +2,7 @@
 
 #include "conf.h"
 #include "Utilities/utilities.h"
+#include "Utilities/Message_Service/message_service.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Game/Data/game_data.h"
 
@@ -38,6 +39,7 @@ Game_Data* create_game_data()
     cJSON* data_JSON;
 
     if (!get_data_JSON(&data_JSON)) {
+        printe("Error getting data JSON");
         return NULL;
     }
 

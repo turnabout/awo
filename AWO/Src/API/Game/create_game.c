@@ -11,12 +11,6 @@ Game* EMX create_game(int window_width, int window_height)
 
     // Initialize the message service, so messages can be logged
     start_message_service();
-
-    push_msg("Herro %d", 5);
-
-    Game_Message* bla = pop_msg();
-
-    free(bla);
     
     // Set all struct members not to be initialized in this step
     game->board = NULL;
@@ -32,8 +26,8 @@ Game* EMX create_game(int window_width, int window_height)
 
     // Initialize base GL game components (GLFW/GLAD)
     if (!init_GL(game)) {
-        free_game(game);
-        return NULL;
+        printe("Error initializing GL");
+        return game;
     }
 
     // Initialize game data
@@ -52,8 +46,8 @@ Game* EMX create_game(int window_width, int window_height)
         game->mouse_state == NULL || 
         game->cursor == NULL
     ) {
-        free_game(game);
-        return NULL;
+        printe("Error initializing game modules");
+        return game;
     }
 
     game->state = Game_Initialized;
