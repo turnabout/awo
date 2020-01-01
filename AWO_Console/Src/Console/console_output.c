@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <curses.h>
 
 #include "Console/_console.h"
@@ -88,6 +89,17 @@ void add_console_message(Console* console, int color_pair, char* format, ...)
 
     // Print all messages
     print_console_messages(console);
+}
+
+void process_console_game_messages(Console* console)
+{
+    // Print any game message to the console
+    Game_Message* msg;
+
+    while ((msg = get_next_game_message()) != NULL) {
+        add_console_game_message(console, msg);
+        free(msg);
+    }
 }
 
 void empty_console_messages(Console* console)

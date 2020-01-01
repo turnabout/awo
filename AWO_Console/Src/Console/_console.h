@@ -64,7 +64,9 @@ void empty_console_messages(Console* console);
 
 
 // Console output functions
-void add_console_game_message(Console* console, Game_Message* message);
+
+// Process all game messages present in the game's messages stack
+void process_console_game_messages(Console* console);
 void add_console_message(Console* console, int color_pair, char* format, ...);
 void print_console_entered_command(Console* console);
 void print_console_messages(Console* console);

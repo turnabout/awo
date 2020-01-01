@@ -17,6 +17,7 @@ int rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Prepare the game for design room mode
     if (!prepare_design_room_game(console->game)) {
+        process_console_game_messages(console);
         return CMD_Ret_Error;
     }
 
