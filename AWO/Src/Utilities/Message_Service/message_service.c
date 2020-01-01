@@ -1,3 +1,4 @@
+#ifndef __EMSCRIPTEN__
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -96,3 +97,5 @@ void end_message_service()
 
     free_linked_list(list);
 }
+
+#endif

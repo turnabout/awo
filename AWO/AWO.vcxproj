@@ -151,6 +151,7 @@
     <ClCompile Include="Src\Utilities\Linked_List\linked_list.c" />
     <ClCompile Include="Src\Utilities\Linked_List\list_entry.c" />
     <ClCompile Include="Src\Utilities\Message_Service\message_service.c" />
+    <ClCompile Include="Src\Utilities\Message_Service\message_service_basic.c" />
     <ClCompile Include="Src\Utilities\read_file.c" />
     <ClCompile Include="Src\Utilities\round_float_to_int.c" />
   </ItemGroup>

@@ -417,6 +417,9 @@
     <ClCompile Include="Src\Utilities\Message_Service\message_service.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Utilities\Message_Service\message_service_basic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
