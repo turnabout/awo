@@ -88,3 +88,7 @@ static char* tile_var_str_short[] = {
 #define TILE_VAR_NONE -1
 
 #define TILE_VAR_DEFAULT Default
+
+// Validate neutral tile variation
+#define neutral_tile_var_exists(var) \
+var >= TILE_VAR_FIRST && var <= TILE_VAR_LAST

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 
+#include "Utilities/Message_Service/message_service.h"
 #include "Game/Editor/_game_editor.h"
 
 Game_Editor* create_game_editor(
@@ -42,17 +43,35 @@ void update_editor_selected_entity(
     // Set the kind of entity that should now be selected
     if (kind == Editor_Entity_Type_Tile) {
 
-        if (type >= PROPERTY_TILE_TYPE_FIRST || type <= PROPERTY_TILE_TYPE_LAST) {
+        // Validate tile type & set appropriate callback
+        if (is_tile_type_neutral(type)) {
+
+            if (variation != SELECTED_ENTITY_VAR_NONE && !neutral_tile_var_exists(variation)) {
+                printe("Game editor: invalid neutral tile variation given: '%d'", variation);
+            }
 
             editor->selected_entity_update_cb = set_editor_tile_entity;
-        } else {
+
+        } else if (is_tile_type_property(type)) {
+
+            // TODO: validate the given variation (player index) is valid
+
             editor->selected_entity_update_cb = set_editor_property_entity;
+        } else {
+
+            // Invalid tile type
+            printe("Game editor: invalid tile type given: '%d'", type);
+            editor->selected_entity_type = SELECTED_ENTITY_TYPE_NONE;
+            editor->selected_entity_var = SELECTED_ENTITY_VAR_NONE;
+            return;
         }
 
     } else if (kind == Editor_Entity_Type_Unit) {
         editor->selected_entity_update_cb = set_editor_unit_entity;
     } else {
-        // TODO: error
+
+        // Invalid entity kind
+        printe("Game editor: invalid entity kind given: '%d'", kind);
         editor->selected_entity_type = SELECTED_ENTITY_TYPE_NONE;
         editor->selected_entity_var = SELECTED_ENTITY_VAR_NONE;
         return;

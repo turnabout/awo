@@ -15,3 +15,7 @@ typedef enum Player_Index {
 #define REAL_PLAYER_INDEX_FIRST Player_Index_0
 #define REAL_PLAYER_INDEX_LAST  Player_Index_3
 #define REAL_PLAYER_INDEX_COUNT REAL_PLAYER_INDEX_LAST + 1
+
+// Validate a player index exists
+#define player_index_exists(index)\
+index >= PLAYER_INDEX_FIRST && index <= PLAYER_INDEX_LAST
