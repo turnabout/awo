@@ -24,19 +24,12 @@ int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     int window_w = (payload[0] != NULL) ? *((int*)payload[0]) : DEFAULT_WINDOW_W;
     int window_h = (payload[1] != NULL) ? *((int*)payload[1]) : DEFAULT_WINDOW_H;
 
-    add_console_message(
-        console,
-        COLOR_PAIR_INFO,
-        "Creating game window with dimensions %d,%d",
-        window_w,
-        window_h
-    );
-
+    // Create the game & print any messages that happened during creation
     console->game = create_game(window_w, window_h);
+    process_console_game_messages(console);
 
     // Ensure the game was created successfully
     if (get_game_state(console->game) == Game_Unusable) {
-        process_console_game_messages(console);
         free_game(console->game);
         return CMD_Ret_Error;
     }

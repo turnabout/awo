@@ -39,10 +39,8 @@ void push_msg(Game_Message_Label label, char* format, ...)
     va_list a_ptr;
 
     va_start(a_ptr, format);
-    vsprintf_s(message->str, copied_len, format, a_ptr);
+    vsnprintf(message->str, GAME_MSG_MAX_LEN, format, a_ptr);
     va_end(a_ptr);
-
-    message->str[copied_len - 1] = '\0';
 
     // Store message in message service's list
     append_linked_list_item(list, (void*)message);
