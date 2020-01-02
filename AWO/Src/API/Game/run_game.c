@@ -28,6 +28,10 @@ void EMX run_game(Game* game, int (*callback)(void*), void* cb_value)
 {
     game->state = Game_Running;
 
+    // Reset static values
+    delta_time = 0.0f;
+    last_frame_time = 0.0f;
+
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);
     #else
