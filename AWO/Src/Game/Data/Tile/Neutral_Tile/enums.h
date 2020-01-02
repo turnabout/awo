@@ -74,21 +74,6 @@
 typedef enum {FOREACH_TILE_VAR(GENERATE_ENUM)} Tile_Variation;
 static char* tile_var_str[] = {FOREACH_TILE_VAR(GENERATE_STRING)};
 
-static Tile_Variation default_tile_vars[] = {
-    Default,
-    Default,
-    Default,
-    Horizontal,
-    Horizontal,
-    Horizontal,
-    Middle,
-    Default,
-    TopConnectedFull,
-    Horizontal,
-    HorizontalClosed,
-    Default,
-};
-
 // Short versions of each tile variation string (used in JSON file to save space)
 static char* tile_var_str_short[] = {
 "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
