@@ -3,7 +3,6 @@
 
 void read_texture_data(GLuint texture, void* buffer, int width, int height)
 {
-    #ifdef __EMSCRIPTEN__
     GLuint FBO;
 
     glGenFramebuffers(1, &FBO);
@@ -14,16 +13,4 @@ void read_texture_data(GLuint texture, void* buffer, int width, int height)
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glDeleteFramebuffers(1, &FBO);
-
-    #else
-    glBindTexture(GL_TEXTURE_2D, texture);
-
-    glGetTexImage(
-        GL_TEXTURE_2D,
-        0,
-        GL_RGBA,
-        GL_UNSIGNED_BYTE,
-        buffer
-    );
-    #endif
 }
