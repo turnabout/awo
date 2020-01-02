@@ -75,17 +75,27 @@ void add_console_message(Console* console, int color_pair, char* format, ...)
         console->message_count--;
     }
 
-    // Set the message's string
-    char message_str[MSG_MAX_LENGTH];
-
+    // Write the formatted message into a temporary buffer
     va_list a_ptr;
 
     va_start(a_ptr, format);
-    vsprintf_s(message_str, MSG_MAX_LENGTH, format, a_ptr);
+
+    size_t msg_len = vsnprintf(NULL, 0, format, a_ptr) + 1;
+    char* msg_buffer = malloc(msg_len);
+
+    if (msg_buffer == NULL) {
+        return;
+    }
+
+    vsprintf_s(msg_buffer, msg_len, format, a_ptr);
+
     va_end(a_ptr);
 
     // Add the new message
-    console->messages[console->message_count++] = create_message(message_str, color_pair);
+    console->messages[console->message_count++] = create_message(msg_buffer, color_pair);
+
+    // Free temporary message buffer
+    free(msg_buffer);
 
     // Print all messages
     print_console_messages(console);
