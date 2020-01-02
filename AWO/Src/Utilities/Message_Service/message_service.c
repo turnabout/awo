@@ -68,6 +68,7 @@ void end_message_service()
     }
 
     free_linked_list(list);
+    list = NULL;
 }
 
 #endif
