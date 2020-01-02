@@ -1,7 +1,5 @@
 #pragma once
 
-#define GAME_MSG_MAX_LEN 500
-
 /*! @brief Different labels the game message can have.
  */
 typedef enum Game_Message_Label {
@@ -19,11 +17,19 @@ typedef struct Game_Message {
     Game_Message_Label label;
 
     // This game message's actual message string.
-    char str[GAME_MSG_MAX_LEN];
+    char* str;
 
 } Game_Message;
 
 /*! @brief Gets the next game message on the game's stack of messages.
+ *
+ *  @note Messages retrieved through this function must be freed using `free_game_message`.
+ * 
  *  @return The next game message available, or NULL if none are found.
  */
 Game_Message* get_next_game_message();
+
+/*! @brief Frees memory allocated by the given game message.
+ *  @param message The game message to free.
+ */
+void free_game_message(Game_Message* message);

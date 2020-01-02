@@ -420,6 +420,9 @@
     <ClCompile Include="Src\Utilities\Message_Service\message_service_basic.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\API\Game_Message\free_game_message.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">

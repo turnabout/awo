@@ -33,13 +33,18 @@ void push_msg(Game_Message_Label label, char* format, ...)
     message->label = label;
 
     // Copy string into message
-    int format_len = strlen(format) + 1;
-    int copied_len = (format_len < GAME_MSG_MAX_LEN) ? format_len : GAME_MSG_MAX_LEN;
-
     va_list a_ptr;
 
     va_start(a_ptr, format);
-    vsnprintf(message->str, GAME_MSG_MAX_LEN, format, a_ptr);
+
+    // Get length to allocate for message buffer (+ 1 for null terminator)
+    size_t msg_len = vsnprintf(NULL, 0, format, a_ptr) + 1;
+    message->str = malloc(msg_len);
+
+    // Write to the message string buffer
+    vsprintf_s(message->str, msg_len, format, a_ptr);
+    message->str[msg_len - 1] = '\0';
+
     va_end(a_ptr);
 
     // Store message in message service's list
