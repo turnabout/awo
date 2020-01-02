@@ -48,6 +48,11 @@ Console* create_console()
             init
         },
         {
+            "dr", 
+            { Command_Arg_None },
+            dr
+        },
+        {
             "rundr", 
             { Command_Arg_None },
             rundr

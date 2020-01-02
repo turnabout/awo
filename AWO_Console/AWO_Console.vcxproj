@@ -155,6 +155,7 @@
     <ClCompile Include="Src\Console\console.c" />
     <ClCompile Include="Src\Console\console_output.c" />
     <ClCompile Include="Src\Console\Functions\cls.c" />
+    <ClCompile Include="Src\Console\Functions\dr.c" />
     <ClCompile Include="Src\Console\Functions\free.c" />
     <ClCompile Include="Src\Console\Message\message.c" />
     <ClCompile Include="Src\Utilities\focus_console_window.c" />
@@ -162,6 +163,7 @@
     <ClCompile Include="Src\Console\Functions\rundr.c" />
     <ClCompile Include="Src\Console\process_console_command.c" />
     <ClCompile Include="Src\main.c" />
+    <ClCompile Include="Src\Utilities\move_console_window.c" />
     <ClCompile Include="Src\Utilities\str_is_int.c" />
   </ItemGroup>
   <ItemGroup>

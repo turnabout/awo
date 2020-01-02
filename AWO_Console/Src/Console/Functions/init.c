@@ -31,6 +31,7 @@ int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     // Ensure the game was created successfully
     if (get_game_state(console->game) == Game_Unusable) {
         free_game(console->game);
+        console->game = NULL;
         return CMD_Ret_Error;
     }
 

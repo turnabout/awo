@@ -80,6 +80,12 @@ void reset_console_user_command(Console* console);
  */
 int init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
 
+/*! @brief Sets up and runs the game in design room mode.
+ *
+ *  @param[in] console The console module.
+ */
+int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+
 /*! @brief Runs the game in design room mode.
  *
  *  @param[in] console The console module.
