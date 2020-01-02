@@ -58,7 +58,9 @@ void unprepare_game(Game* game);
 /*! @brief Runs the main game loop until `glfwWindowShouldClose` evaluates false.
  *
  *  @param[in] game The game.
- *  @param[in] callback A function called every frame before the game loop.
+ *  @param[in] callback A function called every frame before the game loop. Should return -1 as a 
+ *  signal to stop the game from running, or any other value to keep it running.
+ *  
  *  @param[in] cb_value Value passed to the callback.
  */
 void run_game(Game* game, int (*callback)(void*), void* cb_value);
