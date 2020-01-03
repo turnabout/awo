@@ -46,17 +46,15 @@ void update_editor_selected_entity(
         // Validate tile type & set appropriate callback
         if (is_tile_type_neutral(type)) {
 
-            if (variation != SELECTED_ENTITY_VAR_NONE && !neutral_tile_var_exists(variation)) {
-                printe("Game editor: invalid neutral tile variation given: '%d'", variation);
-            }
-
             editor->selected_entity_update_cb = set_editor_tile_entity;
+            editor->selected_entity_var = SELECTED_ENTITY_VAR_NONE;
 
         } else if (is_tile_type_property(type)) {
 
             // TODO: validate the given variation (player index) is valid
 
             editor->selected_entity_update_cb = set_editor_property_entity;
+            editor->selected_entity_var = variation;
         } else {
 
             // Invalid tile type
@@ -77,9 +75,8 @@ void update_editor_selected_entity(
         return;
     }
 
-    // Set the selected entity's type and variation
+    // Set the selected entity's type
     editor->selected_entity_type = type;
-    editor->selected_entity_var = variation;
 }
 
 void update_game_editor(

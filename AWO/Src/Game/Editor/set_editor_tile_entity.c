@@ -17,7 +17,6 @@ void set_editor_tile_entity(Game_Editor* editor, Game_Board* board, Game_Clock* 
         return;
     }
 
-
     // No specific variation selected, first apply the type & its default variation
     edit_game_board_tile(
         board,
