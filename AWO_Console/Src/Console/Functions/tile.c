@@ -28,13 +28,12 @@ int update_editor_tile(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Unpack payload values
     int tile_type = (payload[0] != NULL) ? *((int*)payload[0]) : -1;
-    int tile_var = (payload[1] != NULL) ? *((int*)payload[1]) : -1;
 
     update_game_editor_selected_entity(
         console->game,
         Editor_Entity_Type_Tile,
         tile_type,
-        tile_var
+        -1
     );
 
     return CMD_Ret_OK;

@@ -54,8 +54,8 @@ Console* create_console()
             dr
         },
         {
-            "upedtile",
-            { Command_Arg_Int, Command_Arg_Int },
+            "tile",
+            { Command_Arg_Int },
             update_editor_tile
         },
         {
