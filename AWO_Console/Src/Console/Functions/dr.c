@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <AWO/Include/game.h>
 
+#include "Utilities/utilities.h"
 #include "Console/_console.h"
 
 int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
@@ -41,6 +42,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Activate Curses nodelay mode so update_console becomes nonblocking
     nodelay(stdscr, TRUE);
+    focus_console_window();
 
     // Start running the game, use console update function as passed-callback so we can keep 
     // processing user commands while the game runs.
