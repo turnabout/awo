@@ -54,11 +54,6 @@ Console* create_console()
             dr
         },
         {
-            "rundr", 
-            { Command_Arg_None },
-            rundr
-        },
-        {
             "free", 
             { Command_Arg_None },
             free_console_game

@@ -87,12 +87,6 @@ int init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
  */
 int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
 
-/*! @brief Runs the game in design room mode.
- *
- *  @param[in] console The console module.
- */
-int rundr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
-
 /*! @brief Stops and frees the currently running game instance.
  *
  *  @param[in] console The console module.
