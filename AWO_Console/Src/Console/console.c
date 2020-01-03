@@ -54,6 +54,11 @@ Console* create_console()
             dr
         },
         {
+            "upedtile",
+            { Command_Arg_Int, Command_Arg_Int },
+            update_editor_tile
+        },
+        {
             "free", 
             { Command_Arg_None },
             free_console_game

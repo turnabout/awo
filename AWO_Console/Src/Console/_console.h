@@ -73,6 +73,14 @@ void print_console_entered_command(Console* console);
 void print_console_messages(Console* console);
 void reset_console_user_command(Console* console);
 
+/*! @brief Updates the active game editor entity to given tile type/variation.
+ *
+ *  @param[in] console The console module.
+ *  @param[in] type The tile type to update the active editor entity to.
+ *  @param[in] variation The tile variation to update the active editor entity to.
+ */
+int update_editor_tile(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+
 /*! @brief Creates the game and stores its initialized instance in the console.
  *
  *  @param[in] console The console module.
