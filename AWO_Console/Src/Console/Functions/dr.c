@@ -19,15 +19,15 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     console->game = create_game(500, 500);
     process_console_game_messages(console);
 
+    // Tile the console and game windows
+    tile_console(console);
+
     // Check if an error happened during creation
     if (get_game_state(console->game) == Game_Unusable) {
         free_game(console->game);
         console->game = NULL;
         return CMD_Ret_Error;
     }
-
-    // Tile the console and game windows
-
 
     // Prepare the game for design room mode
     if (!prepare_design_room_game(console->game)) {

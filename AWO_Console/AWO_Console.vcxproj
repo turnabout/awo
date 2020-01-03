@@ -158,6 +158,7 @@
     <ClCompile Include="Src\Console\Functions\dr.c" />
     <ClCompile Include="Src\Console\Functions\free.c" />
     <ClCompile Include="Src\Console\Message\message.c" />
+    <ClCompile Include="Src\Console\tile_console.c" />
     <ClCompile Include="Src\Utilities\focus_console_window.c" />
     <ClCompile Include="Src\Console\Functions\init.c" />
     <ClCompile Include="Src\Console\Functions\rundr.c" />

@@ -62,6 +62,7 @@ int process_console_command(Console* console);
 
 void empty_console_messages(Console* console);
 
+void tile_console(Console* console);
 
 // Console output functions
 
