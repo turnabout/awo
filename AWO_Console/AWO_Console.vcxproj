@@ -164,7 +164,6 @@
     <ClCompile Include="Src\Console\Functions\rundr.c" />
     <ClCompile Include="Src\Console\process_console_command.c" />
     <ClCompile Include="Src\main.c" />
-    <ClCompile Include="Src\Utilities\move_console_window.c" />
     <ClCompile Include="Src\Utilities\str_is_int.c" />
   </ItemGroup>
   <ItemGroup>

@@ -1,3 +1,4 @@
+#include <curses.h>
 #include <stdio.h>
 #include <AWO/Include/game.h>
 
@@ -21,6 +22,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Tile the console and game windows
     tile_console(console);
+    curs_set(0);
 
     // Check if an error happened during creation
     if (get_game_state(console->game) == Game_Unusable) {

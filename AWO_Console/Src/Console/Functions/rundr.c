@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <curses.h>
 #include <AWO/Include/game.h>
 
 #include "Console/_console.h"

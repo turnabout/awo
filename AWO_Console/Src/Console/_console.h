@@ -1,6 +1,5 @@
 #pragma once
 
-#include <curses.h>
 #include <AWO/Include/game.h>
 #include <AWO/Include/game_message.h>
 
@@ -62,6 +61,7 @@ int process_console_command(Console* console);
 
 void empty_console_messages(Console* console);
 
+// Tile the console and game windows together
 void tile_console(Console* console);
 
 // Console output functions
