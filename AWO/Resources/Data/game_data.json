@@ -2126,7 +2126,8 @@
 						4294967295
 					]
 				}
-			]
+			],
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -2370,7 +2371,8 @@
 						4294967295
 					]
 				}
-			]
+			],
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -2393,7 +2395,8 @@
 					]
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -2542,7 +2545,8 @@
 					]
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -2609,6 +2613,90 @@
 						4294967295
 					]
 				}
+			],
+			"placementRules": [
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 1019423
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 448
+					},
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 480
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 480
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 480
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 480
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 32
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 32
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 32
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 32
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				]
 			]
 		},
 		{
@@ -3323,6 +3411,105 @@
 						4294967295
 					]
 				}
+			],
+			"placementRules": [
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 464
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 32
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 32
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 32
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 32
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 32
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 32
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 32
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 32
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 32
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 1048640
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 1048640
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 1048640
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 1048640
+					}
+				]
 			]
 		},
 		{
@@ -3833,7 +4020,8 @@
 						1019423
 					]
 				}
-			]
+			],
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -3859,7 +4047,38 @@
 					"clock": 0
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": [
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 1019455
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 1019455
+					}
+				]
+			]
 		},
 		{
 			"vars": {
@@ -4668,7 +4887,104 @@
 					"clock": 1
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": [
+				[
+					{
+						"offsetX": 0,
+						"offsetY": 0,
+						"tiles": 1019583
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 1049024
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 1049024
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 1049024
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 1049024
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 1049024
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 1049024
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 1019455
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 1049024
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 1049024
+					}
+				],
+				[
+					{
+						"offsetX": 0,
+						"offsetY": -1,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": -1,
+						"offsetY": 0,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": 1,
+						"offsetY": 0,
+						"tiles": 1019455
+					},
+					{
+						"offsetX": 0,
+						"offsetY": 1,
+						"tiles": 1019455
+					}
+				]
+			]
 		},
 		{
 			"vars": {
@@ -4753,7 +5069,8 @@
 					]
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -4790,7 +5107,8 @@
 					]
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -4813,7 +5131,8 @@
 					]
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -4839,7 +5158,8 @@
 					"clock": 4
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -4852,7 +5172,8 @@
 					]
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		},
 		{
 			"vars": {
@@ -4969,7 +5290,8 @@
 					]
 				}
 			},
-			"autoVars": null
+			"autoVars": null,
+			"placementRules": null
 		}
 	],
 	"properties": [

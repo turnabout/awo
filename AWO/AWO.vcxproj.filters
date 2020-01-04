@@ -423,6 +423,9 @@
     <ClCompile Include="Src\API\Game_Message\free_game_message.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -696,6 +699,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Utilities\Message_Service\message_service.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
