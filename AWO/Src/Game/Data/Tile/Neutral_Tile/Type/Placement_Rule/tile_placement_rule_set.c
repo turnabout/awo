@@ -10,6 +10,8 @@ Tile_Placement_Rule_Set* create_tile_placement_rule_set(cJSON* JSON)
         return NULL;
     }
 
+    rule_set->rules = NULL;
+
     // Get the count of rules in this set
     rule_set->rule_count = cJSON_GetArraySize(JSON);
 

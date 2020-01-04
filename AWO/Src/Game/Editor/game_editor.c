@@ -26,7 +26,7 @@ Game_Editor* create_game_editor(
 
     // Start with default editing values
     // TODO: remove, should be set from outside
-    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Sea, SELECTED_ENTITY_VAR_NONE);
+    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Bridge, SELECTED_ENTITY_VAR_NONE);
 
     // editor->selected_entity = SE_create(window_width, window_height);
 
@@ -48,6 +48,7 @@ void update_editor_selected_entity(
 
             editor->selected_entity_update_cb = set_editor_tile_entity;
             editor->selected_entity_var = SELECTED_ENTITY_VAR_NONE;
+            editor->placement_rules = get_tile_placement_rules(editor->tiles_data, type);
 
         } else if (is_tile_type_property(type)) {
 

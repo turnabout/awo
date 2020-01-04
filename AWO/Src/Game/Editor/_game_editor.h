@@ -41,6 +41,9 @@ struct Game_Editor {
     Tiles_Data* tiles_data;
     Units_Data* units_data;
 
+    // Placement rules for the currently-selected (neutral) tile.
+    Tile_Placement_Rule_Set* placement_rules;
+
     // UI box showing the currently selected entity
     // Selected_Entity* selected_entity;
 };
