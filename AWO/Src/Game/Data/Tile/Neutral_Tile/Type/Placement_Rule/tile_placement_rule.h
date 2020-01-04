@@ -20,7 +20,7 @@ typedef struct Tile_Placement_Rule_Component {
 typedef struct Tile_Placement_Rule {
 
     // Amount of components making up this rule.
-    Uint8 components_count;
+    Uint8 component_count;
 
     // Array of components making up this rule.
     Tile_Placement_Rule_Component* components;

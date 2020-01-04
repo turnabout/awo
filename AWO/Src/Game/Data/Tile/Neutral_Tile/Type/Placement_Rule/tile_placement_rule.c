@@ -11,15 +11,15 @@ Tile_Placement_Rule* create_tile_placement_rule(cJSON* JSON)
     }
 
     // Get amount of components
-    int rule_component_count = cJSON_GetArraySize(JSON);
+    rule->component_count = cJSON_GetArraySize(JSON);
 
-    if (rule_component_count < 1) {
+    if (rule->component_count < 1) {
         free_tile_placement_rule(rule);
         return NULL;
     }
 
     // Allocate space for components
-    rule->components = malloc(sizeof(Tile_Placement_Rule_Component) * rule_component_count);
+    rule->components = malloc(sizeof(Tile_Placement_Rule_Component) * rule->component_count);
 
     if (rule->components == NULL) {
         free_tile_placement_rule(rule);
@@ -27,7 +27,7 @@ Tile_Placement_Rule* create_tile_placement_rule(cJSON* JSON)
     }
 
     // Set all components' values
-    for (int i = 0; i < rule_component_count; i++) {
+    for (int i = 0; i < rule->component_count; i++) {
         cJSON* component_JSON = cJSON_GetArrayItem(JSON, i);
 
         rule->components[i].offset_x = cJSON_GetObjectItem(component_JSON, "offsetX")->valueint;
