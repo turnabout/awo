@@ -5,21 +5,36 @@
 #include <cglm/types.h>
 
 #include "Game/Data/Tile/Neutral_Tile/Type/Auto_Var/_tile_auto_var_data.h"
+#include "Game/Data/Tile/Neutral_Tile/Type/Placement_Rule/tile_placement_rule.h"
 #include "Game/Data/Tile/enums.h"
 #include "Game/Data/Clock/clock_data.h"
 
 // A single tile's visual data.
 typedef struct Tile_Type_Data
 {
-    map_t vars_map;              // Map holding every variation (Tile_Variation_Data)
+    // Map holding every variation of this tile type's data (Tile_Variation_Data).
+    map_t vars_map;
 
-    int vars_count;              // How many variations this tile has
-    Tile_Variation* vars_list;   // List of every variation this tile has
+    // Amount of variations this tile type has.
+    int vars_count;
 
-    int auto_vars_count;         // Amount of auto vars_map this tile has
+    // List of every variation this tile type has
+    Tile_Variation* vars_list;
 
-    Auto_Var_Data* auto_vars;    // List of auto vars_map used to autoselect this tile's variation 
-                                 // when placing it in editor mode.
+    // Amount of auto-vars this tile type has.
+    int auto_vars_count;
+
+    // List of auto-vars, used to automatically determine this tile's variation when placing it in
+    // design room mode.
+    Auto_Var_Data* auto_vars;
+
+    // Amount of tile placement rules this tile type has.
+    int placement_rule_count;
+
+    // This tile's placement rules. Used to block the placement of this tile in design room mode
+    // when surrounded by certain tiles.
+    Tile_Placement_Rule** placement_rules;
+
 } Tile_Type_Data;
 
 /*! @brief Creates tile type data from the given JSON.
