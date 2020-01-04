@@ -159,6 +159,19 @@ void run_console(Console* console)
     while (update_console(console) != CMD_Ret_Exit);
 }
 
+void send_console_command(Console* console, char* user_command)
+{
+    int i;
+    for (i = 0; (user_command[i] != '\0' || i >= CMD_NAME_MAX_LENGTH); i++) {
+        console->user_command[i] = user_command[i];
+    }
+
+    console->user_command[i] = '\0';
+    console->user_command_char_count = i;
+
+    process_console_command(console);
+}
+
 void free_console(Console* console)
 {
     endwin();
