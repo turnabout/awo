@@ -81,6 +81,7 @@
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_type_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_var_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule_set.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c" />
     <ClCompile Include="Src\Game\Data\Tile\tiles_data_creation.c" />
@@ -208,6 +209,7 @@
     <ClInclude Include="Src\Game\Data\Palette\_palette.h" />
     <ClInclude Include="Src\Game\Data\Tile\enums.h" />
     <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule.h" />
+    <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\_tile_placement_rule.h" />
     <ClInclude Include="Src\Game\Data\Tile\Property_Tile\enums.h" />
     <ClInclude Include="Src\Game\Data\Tile\Property_Tile\property_tiles_data.h" />
     <ClInclude Include="Src\Game\Data\Tile\Property_Tile\_property_tiles_data.h" />

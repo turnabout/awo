@@ -27,15 +27,27 @@ typedef struct Tile_Placement_Rule {
 
 } Tile_Placement_Rule;
 
-/*! @brief Creates a tile placement rule.
- *
- *  @param[in] JSON The JSON object representing this tile placement rule.
- *  @return The allocated tile placement rule.
+/*! @brief An array of tile placement rules.
  */
-Tile_Placement_Rule* create_tile_placement_rule(cJSON* JSON);
+typedef struct Tile_Placement_Rule_Set {
 
-/*! @brief Frees an allocated tile placement rule.
+    // Amount of components making up this rule.
+    Uint8 rule_count;
+
+    // Array of components making up this rule.
+    Tile_Placement_Rule** rules;
+
+} Tile_Placement_Rule_Set;
+
+/*! @brief Creates a set of tile placement rules.
  *
- *  @param[in] rule The rule to free.
+ *  @param[in] JSON The JSON object representing this tile placement rule set.
+ *  @return The allocated tile placement rule set.
  */
-void free_tile_placement_rule(Tile_Placement_Rule* rule);
+Tile_Placement_Rule_Set* create_tile_placement_rule_set(cJSON* JSON);
+
+/*! @brief Frees a set of tile placement rules.
+ *
+ *  @param[in] rule_set The rule set to free.
+ */
+void free_tile_placement_rule_set(Tile_Placement_Rule_Set* rule_set);

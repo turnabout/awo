@@ -74,21 +74,9 @@ Tile_Type_Data* create_tile_type_data(
         &data->auto_vars_count
     );
 
-    // Get tile placement rules
-    cJSON* placement_rules_JSON = cJSON_GetObjectItem(tile_type_JSON, "placementRules");
-    data->placement_rule_count = cJSON_GetArraySize(placement_rules_JSON);
-
-    if (data->placement_rule_count < 1) {
-        data->placement_rules = NULL;
-    } else {
-        data->placement_rules = malloc(sizeof(Tile_Placement_Rule*) * data->placement_rule_count);
-    }
-
-    for (int i = 0; i < data->placement_rule_count; i++) {
-        data->placement_rules[i] = create_tile_placement_rule(
-            cJSON_GetArrayItem(placement_rules_JSON, i)
-        );
-    }
+    data->placement_rules = create_tile_placement_rule_set(
+        cJSON_GetObjectItem(tile_type_JSON, "placementRules")
+    );
 
     return data;
 }
@@ -115,12 +103,7 @@ void free_tile_type_data(Tile_Type_Data* data)
 
     hashmap_free(data->vars_map);
 
-    // Free placement rules & other data
-    for (int i = 0; i < data->placement_rule_count; i++) {
-        free_tile_placement_rule(data->placement_rules[i]);
-    }
-
-    free(data->placement_rules);
+    free_tile_placement_rule_set(data->placement_rules);
     free(data->auto_vars);
     free(data);
 }

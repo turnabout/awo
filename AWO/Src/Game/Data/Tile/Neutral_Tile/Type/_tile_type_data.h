@@ -28,12 +28,9 @@ typedef struct Tile_Type_Data
     // design room mode.
     Auto_Var_Data* auto_vars;
 
-    // Amount of tile placement rules this tile type has.
-    int placement_rule_count;
-
     // This tile's placement rules. Used to block the placement of this tile in design room mode
     // when surrounded by certain tiles.
-    Tile_Placement_Rule** placement_rules;
+    Tile_Placement_Rule_Set* placement_rules;
 
 } Tile_Type_Data;
 

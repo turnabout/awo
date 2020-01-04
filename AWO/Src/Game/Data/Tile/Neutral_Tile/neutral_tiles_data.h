@@ -109,10 +109,9 @@ Tile_Variation get_default_tile_variation(Tiles_Data* tiles_data, Tile_Type type
  *
  *  @param[in] tiles_data The tiles data object.
  *  @param[in] type The tile's type.
- *  @param[out] count The amount of tile placement rules for the given tile type.
  *  @return Array of Tile_Placement_Rule pointers belonging to this tile type. NULL if count is 0.
  */
-Tile_Placement_Rule** get_tile_placement_rules(Tiles_Data* tiles_data, Tile_Type type, int* count);
+Tile_Placement_Rule_Set* get_tile_placement_rules(Tiles_Data* tiles_data, Tile_Type type);
 
 /*! @brief Frees all memory occupied by tiles data.
  *
