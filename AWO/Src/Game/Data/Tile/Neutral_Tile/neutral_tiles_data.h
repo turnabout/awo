@@ -6,6 +6,7 @@
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Clock/enums.h"
 #include "Game/Data/Tile/enums.h"
+#include "Game/Data/Tile/Neutral_Tile/Type/Placement_Rule/tile_placement_rule.h"
 
 typedef struct Tiles_Data Tiles_Data;
 
@@ -103,6 +104,15 @@ Animation* get_next_tile_variation_animation(Tiles_Data* tiles_data, Tile_Type t
  *  @return The default tile variation for the given tile type.
  */
 Tile_Variation get_default_tile_variation(Tiles_Data* tiles_data, Tile_Type type);
+
+/*! @brief Gets the tile placement rules for the given tile type.
+ *
+ *  @param[in] tiles_data The tiles data object.
+ *  @param[in] type The tile's type.
+ *  @param[out] count The amount of tile placement rules for the given tile type.
+ *  @return Array of Tile_Placement_Rule pointers belonging to this tile type. NULL if count is 0.
+ */
+Tile_Placement_Rule** get_tile_placement_rules(Tiles_Data* tiles_data, Tile_Type type, int* count);
 
 /*! @brief Frees all memory occupied by tiles data.
  *
