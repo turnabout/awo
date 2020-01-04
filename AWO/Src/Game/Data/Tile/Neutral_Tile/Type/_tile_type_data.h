@@ -16,7 +16,7 @@ typedef struct Tile_Type_Data
     map_t vars_map;
 
     // Amount of variations this tile type has.
-    int vars_count;
+    int var_count;
 
     // List of every variation this tile type has
     Tile_Variation* vars_list;

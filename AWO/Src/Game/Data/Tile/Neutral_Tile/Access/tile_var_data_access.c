@@ -10,7 +10,7 @@ Tile_Variation get_next_tile_variation(Tiles_Data* tiles_data, Tile_Type type)
     Tile_Type_Data* tile = tiles_data->neutral_tiles->src[type];
 
     // No tile_type_data variation at given tile_var_index, reset it and return NULL
-    if (index == tile->vars_count) {
+    if (index == tile->var_count) {
         index = 0;
         return TILE_VAR_NONE;
     }

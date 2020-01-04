@@ -16,46 +16,56 @@ Tile_Type_Data* create_tile_type_data(
     // Initialize tile data
     Tile_Type_Data* data = malloc(sizeof(Tile_Type_Data));
 
+    if (data == NULL) {
+        return NULL;
+    }
+
+    // Get tile variations data
     data->vars_map = hashmap_new();
 
-    // Get amount of variations and initialize list of variations
-    cJSON* tile_vars_JSON = cJSON_GetObjectItemCaseSensitive(tile_type_JSON, "vars");
+    // Get amount of variations
+    cJSON* tile_vars_JSON = cJSON_GetObjectItem(tile_type_JSON, "vars");
 
-    data->vars_count = cJSON_GetArraySize(tile_vars_JSON);
-    Tile_Variation* vars_list = malloc(sizeof(Tile_Type_Data) * data->vars_count);
+    data->var_count = cJSON_GetArraySize(tile_vars_JSON);
+
+    if (data->var_count < 1) {
+        free_tile_type_data(data);
+        return NULL;
+    }
+
+    //  Initialize list of variations
+    data->vars_list = malloc(sizeof(Tile_Variation) * data->var_count);
 
     // Loop tile variations
-    cJSON* tile_variation_JSON;
-    cJSON_ArrayForEach(tile_variation_JSON, tile_vars_JSON)
-    {
+    for (int i = 0; i < data->var_count; i++) {
+        cJSON* tile_variation_JSON = cJSON_GetArrayItem(tile_vars_JSON, i);
+
         // Get which tile variation this JSON object represents
         Tile_Variation* tile_variation;
-        hashmap_get(variations_list_hashmap, tile_variation_JSON->string, (void**)(&tile_variation));
 
-        // Store on this tile data's vars list
-        *vars_list = *tile_variation;
-        vars_list++;
+        hashmap_get(
+            variations_list_hashmap, 
+            tile_variation_JSON->string, 
+            (void**)(&tile_variation)
+        );
 
-        // Get short string representing this tile variation
-        char* tile_var_short_str = tile_var_str_short[*tile_variation];
+        data->vars_list[i] = *tile_variation;
 
         // Add populated tile variation to hashmap
         hashmap_put(
             data->vars_map, 
-            tile_var_short_str, 
+            tile_var_str_short[*tile_variation], 
 
             create_tile_variation_data(
-                cJSON_GetObjectItemCaseSensitive(tile_vars_JSON, tile_var_short_str),
+                cJSON_GetObjectItemCaseSensitive(
+                    tile_vars_JSON, 
+                    tile_var_str_short[*tile_variation]
+                ),
                 ss_width,
                 ss_height
             )
         );
     }
-
-    // Reset variations list pointer to its start
-    vars_list -= data->vars_count;
-
-    data->vars_list = vars_list;
     
     // Get auto-var data
     data->auto_vars = create_tile_auto_var_data(
@@ -89,8 +99,8 @@ void free_tile_type_data(Tile_Type_Data* data)
         return;
     }
 
-    // Free every tile variation data object attached to this tile type
-    for (int i = 0; i < data->vars_count; i++) {
+    // Free tile variations data
+    for (int i = 0; i < data->var_count; i++) {
         Tile_Variation tile_variation = data->vars_list[i];
         Tile_Variation_Data* tile_variation_data;
 
@@ -103,18 +113,14 @@ void free_tile_type_data(Tile_Type_Data* data)
         free_tile_variation_data(tile_variation_data);
     }
 
-    // Free the hashmap itself
-    free(data->vars_map);
+    hashmap_free(data->vars_map);
 
-    // Free auto-var data
-    free(data->auto_vars);
-
-    // Free placement rules
+    // Free placement rules & other data
     for (int i = 0; i < data->placement_rule_count; i++) {
         free_tile_placement_rule(data->placement_rules[i]);
     }
 
     free(data->placement_rules);
-
+    free(data->auto_vars);
     free(data);
 }
