@@ -24,6 +24,8 @@ Game_Editor* create_game_editor(
     editor->tiles_data = tiles_data;
     editor->units_data = units_data;
 
+    editor->hovered_x = editor->hovered_y = -1;
+
     // Start with default editing values
     // TODO: remove, should be set from outside
     update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Bridge, SELECTED_ENTITY_VAR_NONE);
@@ -81,14 +83,30 @@ void update_editor_selected_entity(
 }
 
 void update_game_editor(
-    Game_Editor* editor, 
+    Game_Editor* editor,
     Game_Renderer* game_renderer,
-    Game_Camera* game_camera,
     Game_Board* game_board,
     Game_Clock* game_clock,
+    Game_Cursor* game_cursor,
     Mouse_State* mouse_state
 )
 {
+    // Check if hovered tile changed
+    if (
+        editor->hovered_x != game_cursor->hovered_x || 
+        editor->hovered_y != game_cursor->hovered_y
+    ) {
+        // Check whether the currently selected entity is placeable at the hovered coordinates
+        if (editor->hovered_x != -1 && editor->hovered_y != -1) {
+            // TODO
+        }
+
+        // Save currently hovered tile
+        editor->hovered_x = game_cursor->hovered_x;
+        editor->hovered_y = game_cursor->hovered_y;
+    }
+
+    // Check if we should attempt to edit
     if (mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
         // Exit early if no entity type is selected or not update callback is set
@@ -99,31 +117,18 @@ void update_game_editor(
             return;
         }
 
-        // Get coordinates of the clicked entity
-        int entity_x = 0, entity_y = 0;
-
-        if (!get_subject_grid_coordinates(
-            game_camera,
-            mouse_state->x,
-            mouse_state->y,
-            &entity_x,
-            &entity_y
-        )) {
-            return;
-        }
-
         // If the mouse was already held down on this grid tile, don't bother editing
         if (
             editor->mode == Editor_Mode_Dragging &&
-            entity_x == editor->entity_x && 
-            entity_y == editor->entity_y
+            editor->hovered_x == editor->entity_x && 
+            editor->hovered_y == editor->entity_y
         ) {
             return;
         }
 
         // Edit the entity at these coordinates
-        editor->entity_x = entity_x;
-        editor->entity_y = entity_y;
+        editor->entity_x = editor->hovered_x;
+        editor->entity_y = editor->hovered_y;
 
         editor->selected_entity_update_cb(editor, game_board, game_clock);
         editor->mode = Editor_Mode_Dragging;

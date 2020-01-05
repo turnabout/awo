@@ -4,6 +4,7 @@
 #include "Game/Board/game_board.h"
 #include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
+#include "Game/Cursor/game_cursor.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
@@ -53,17 +54,17 @@ void update_editor_selected_entity(
  *
  *  @param[in] editor The game editor module.
  *  @param[in] game_renderer The game renderer module.
- *  @param[in] game_camera The game camera module.
  *  @param[in] game_board The game board module.
  *  @param[in] game_clock The game clock module.
+ *  @param[in] game_cursor The game cursor module. Used to keep track of currently hovered tile.
  *  @param[in] mouse_state The current mouse state.
  */
 void update_game_editor(
     Game_Editor* editor,
     Game_Renderer* game_renderer,
-    Game_Camera* game_camera,
     Game_Board* game_board,
     Game_Clock* game_clock,
+    Game_Cursor* game_cursor,
     Mouse_State* mouse_state
 );
 

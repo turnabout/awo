@@ -6,9 +6,13 @@ Game_Cursor* create_game_cursor(UI_Data* ui_data)
 {
     Game_Cursor* cursor = malloc(sizeof(Game_Cursor));
 
+    if (cursor == NULL) {
+        return NULL;
+    }
+
     cursor->animation = get_UI_element_frames(ui_data, TileCursor);
-    cursor->hidden = TRUE;
-    cursor->hovered_tile_x = cursor->hovered_tile_y = -1;
+    cursor->shown = FALSE;
+    cursor->hovered_x = cursor->hovered_y = -1;
 
     // Calculate the cursor adjustment
     int diff = cursor->animation->frames[0].width - DEFAULT_ENTITY_SIZE;
@@ -29,34 +33,29 @@ void update_cursor(Game_Cursor* cursor, Mouse_State* mouse, Game_Camera* camera)
         &tile_x,
         &tile_y
     )) {
-        cursor->hovered_tile_x = cursor->hovered_tile_y = -1;
-        cursor->hidden = TRUE;
+        cursor->hovered_x = cursor->hovered_y = -1;
+        cursor->shown = FALSE;
         return;
     }
 
     // Exit early if the hovered tile hasn't changed
-    if (tile_x == cursor->hovered_tile_x && tile_y == cursor->hovered_tile_y) {
+    if (tile_x == cursor->hovered_x && tile_y == cursor->hovered_y) {
         return;
     }
 
-    cursor->hovered_tile_x = tile_x;
-    cursor->hovered_tile_y = tile_y;
+    cursor->hovered_x = tile_x;
+    cursor->hovered_y = tile_y;
 
     // Set the absolute coordinates to render the cursor, centered around the tile
     cursor->dst[0] = (float)((DEFAULT_ENTITY_SIZE * tile_x) - cursor->center_offset_px);
     cursor->dst[1] = (float)((DEFAULT_ENTITY_SIZE * tile_y) - cursor->center_offset_px);
 
-    cursor->hidden = FALSE;
-}
-
-void hide_game_cursor(Game_Cursor* cursor)
-{
-    cursor->hidden = TRUE;
+    cursor->shown = TRUE;
 }
 
 void render_game_cursor(Game_Cursor* cursor, Game_Renderer* renderer)
 {
-    if (!cursor->hidden) {
+    if (cursor->shown) {
         queue_extra(renderer, cursor->dst, &cursor->animation->frames[0]);
     }
 }

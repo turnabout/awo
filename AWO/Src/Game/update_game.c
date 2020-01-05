@@ -71,13 +71,10 @@ void update_game(Game* game, float delta_time)
         update_game_editor(
             game->editor, 
             game->renderer,
-            game->camera,
             game->board,
             game->clock,
+            game->cursor,
             game->mouse_state
         );
-
-    } else {
-        hide_game_cursor(game->cursor);
     }
 }

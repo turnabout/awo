@@ -1,5 +1,6 @@
 #pragma once
 
+#include "types.h"
 #include "Game/Data/UI/UI_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
 #include "Game/Camera/game_camera.h"
@@ -12,14 +13,14 @@ typedef struct Game_Cursor {
     // The cursor's animation.
     Animation* animation;
 
-    // Whether the game cursor should be hidden.
-    Bool hidden;
+    // Whether the game cursor should be shown.
+    Bool shown;
 
     // Current pixel coordinates of the cursor.
     vec2 dst;
 
     // Board coordinates of the currently hovered tile.
-    int hovered_tile_x, hovered_tile_y;
+    Uint8 hovered_x, hovered_y;
 
     // Amount of pixels to offset the cursor position so it's centered around a tile.
     int center_offset_px;
@@ -28,5 +29,4 @@ typedef struct Game_Cursor {
 Game_Cursor* create_game_cursor(UI_Data* ui_data);
 void update_cursor(Game_Cursor* pointer, Mouse_State* mouse, Game_Camera* camera);
 void render_game_cursor(Game_Cursor* pointer, Game_Renderer* renderer);
-void hide_game_cursor(Game_Cursor* pointer);
 void free_game_cursor(Game_Cursor* pointer);
