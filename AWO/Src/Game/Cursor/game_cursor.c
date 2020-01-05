@@ -2,24 +2,6 @@
 
 #include "Game/Cursor/game_cursor.h"
 
-struct Game_Cursor {
-
-    // The cursor's animation.
-    Animation* animation;
-
-    // Whether the game cursor should be hidden.
-    Bool hidden;
-
-    // Current pixel coordinates of the cursor.
-    vec2 dst;
-
-    // Board coordinates of the currently hovered tile.
-    int hovered_tile_x, hovered_tile_y;
-
-    // Amount of pixels to offset the cursor position so it's centered around a tile.
-    int center_offset_px;
-};
-
 Game_Cursor* create_game_cursor(UI_Data* ui_data)
 {
     Game_Cursor* cursor = malloc(sizeof(Game_Cursor));

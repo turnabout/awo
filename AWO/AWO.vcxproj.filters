@@ -138,9 +138,6 @@
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_creation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Auto_Var\tile_auto_var_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Variation\tile_variation_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -430,6 +427,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule_set.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_auto_var_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
