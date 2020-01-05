@@ -99,7 +99,7 @@ void update_game_editor(
         editor->hovered_y != game_cursor->hovered_y
     ) {
         // Check whether the currently selected entity is placeable at the hovered coordinates
-        if (editor->hovered_x != -1 && editor->hovered_y != -1) {
+        if (game_cursor->hovered_x != -1 && game_cursor->hovered_y != -1) {
 
             editor->entity_placeable = (editor->placement_rules == NULL)
                 ? TRUE
@@ -110,8 +110,10 @@ void update_game_editor(
                     editor->hovered_y
                 );
 
-            printm("Placeable: %d", editor->entity_placeable);
+            // printm("Placeable: %d", editor->entity_placeable);
 
+        } else {
+            editor->entity_placeable = FALSE;
         }
 
         // Save currently hovered tile

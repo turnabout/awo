@@ -21,7 +21,7 @@
 #define LAST_SYMBOL_CHARACTER 'z'
 
 // Max amount of messages the console can display at once
-#define MSG_COUNT_MAX  10
+#define MSG_COUNT_MAX  30
 
 // Positions in the console
 #define USER_PROMPT_Y 0

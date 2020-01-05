@@ -26,7 +26,7 @@ typedef enum Game_Editor_Mode {
 struct Game_Editor {
 
     // Coordinates of the entity we're currently editing (and previously did)
-    Uint8 entity_x, entity_y;
+    int entity_x, entity_y;
 
     // Currently selected tile type & variation
     int selected_entity_type, selected_entity_var;
@@ -45,7 +45,7 @@ struct Game_Editor {
     Tile_Placement_Rule_Set* placement_rules;
 
     // Game board coordinates currently hovered.
-    Uint8 hovered_x, hovered_y;
+    int hovered_x, hovered_y;
 
     // Whether the currently selected entity can be placed at the currently hovered coordinates
     Bool entity_placeable;

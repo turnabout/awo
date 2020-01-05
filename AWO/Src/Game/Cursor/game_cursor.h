@@ -1,6 +1,5 @@
 #pragma once
 
-#include "types.h"
 #include "Game/Data/UI/UI_data.h"
 #include "Game/Inputs/Mouse/mouse.h"
 #include "Game/Camera/game_camera.h"
@@ -20,7 +19,7 @@ typedef struct Game_Cursor {
     vec2 dst;
 
     // Board coordinates of the currently hovered tile.
-    Uint8 hovered_x, hovered_y;
+    int hovered_x, hovered_y;
 
     // Amount of pixels to offset the cursor position so it's centered around a tile.
     int center_offset_px;
