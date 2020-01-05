@@ -429,7 +429,7 @@
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule_set.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_auto_var_data.c">
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Auto_Var\tile_auto_var_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -80,6 +80,7 @@
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_placement_rules_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_type_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Access\tile_var_data_access.c" />
+    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Auto_Var\tile_auto_var_data.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_placement_rule_set.c" />
     <ClCompile Include="Src\Game\Data\Tile\Property_Tile\properties_data_access.c" />
@@ -128,7 +129,6 @@
     <ClCompile Include="Src\Game\Data\Palette\Game_Palette\update_game_palette.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\neutral_tiles_data_access.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\neutral_tiles_data_creation.c" />
-    <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\tile_auto_var_data.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\tile_type_data.c" />
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Variation\tile_variation_data.c" />
     <ClCompile Include="Src\Game\Data\Unit\units_data_access.c" />
