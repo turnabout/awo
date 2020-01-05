@@ -26,6 +26,8 @@ Game_Editor* create_game_editor(
 
     editor->hovered_x = editor->hovered_y = -1;
 
+    editor->entity_placeable = TRUE;
+
     // Start with default editing values
     // TODO: remove, should be set from outside
     update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Bridge, SELECTED_ENTITY_VAR_NONE);
@@ -98,7 +100,18 @@ void update_game_editor(
     ) {
         // Check whether the currently selected entity is placeable at the hovered coordinates
         if (editor->hovered_x != -1 && editor->hovered_y != -1) {
-            // TODO
+
+            editor->entity_placeable = (editor->placement_rules == NULL)
+                ? TRUE
+                : check_tile_placement_rules(
+                    editor->placement_rules,
+                    game_board,
+                    editor->hovered_x,
+                    editor->hovered_y
+                );
+
+            printm("Placeable: %d", editor->entity_placeable);
+
         }
 
         // Save currently hovered tile
@@ -109,8 +122,9 @@ void update_game_editor(
     // Check if we should attempt to edit
     if (mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
-        // Exit early if no entity type is selected or not update callback is set
+        // Exit early if no entity cannot be placed
         if (
+            editor->entity_placeable == FALSE ||
             editor->selected_entity_type == SELECTED_ENTITY_TYPE_NONE || 
             editor->selected_entity_update_cb == NULL
         ) {

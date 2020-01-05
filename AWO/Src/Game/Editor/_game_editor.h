@@ -47,6 +47,9 @@ struct Game_Editor {
     // Game board coordinates currently hovered.
     Uint8 hovered_x, hovered_y;
 
+    // Whether the currently selected entity can be placed at the currently hovered coordinates
+    Bool entity_placeable;
+
     // UI box showing the currently selected entity
     // Selected_Entity* selected_entity;
 };
@@ -59,3 +62,12 @@ void set_editor_property_entity(Game_Editor* editor, Game_Board* board, Game_Clo
 /*! @brief Apply auto-var to the tile entity at the given x/y coordinates.
  */
 void apply_autovar(Game_Editor* editor, Game_Board* board, Game_Clock* clock, Uint8 x, Uint8 y);
+
+/*! @brief Checks whether the tile placement rules pass at the given game board coordinates.
+ */
+Bool check_tile_placement_rules(
+    Tile_Placement_Rule_Set* rules,
+    Game_Board* game_board,
+    Uint8 x,
+    Uint8 y
+);

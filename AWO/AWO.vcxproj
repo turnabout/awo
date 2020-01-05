@@ -90,6 +90,7 @@
     <ClCompile Include="Src\Game\Data\UI\UI_data_creation.c" />
     <ClCompile Include="Src\Game\Editor\apply_autovars.c" />
     <ClCompile Include="Src\Game\Editor\game_editor.c" />
+    <ClCompile Include="Src\Game\Editor\check_tile_placement_rules.c" />
     <ClCompile Include="Src\Game\Editor\set_editor_property_entity.c" />
     <ClCompile Include="Src\Game\Editor\set_editor_tile_entity.c" />
     <ClCompile Include="Src\Game\Editor\set_editor_unit_entity.c" />
