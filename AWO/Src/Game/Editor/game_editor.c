@@ -121,10 +121,18 @@ void update_game_editor(
         editor->hovered_y = game_cursor->hovered_y;
     }
 
+    // Update game cursor style based on whether entity is placeable
+    update_cursor_style(
+        game_cursor, 
+        (editor->entity_placeable) 
+            ? Game_Cursor_Regular_Style 
+            : Game_Cursor_X_Style
+    );
+
     // Check if we should attempt to edit
     if (mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {
 
-        // Exit early if no entity cannot be placed
+        // Exit early if entity cannot be placed
         if (
             editor->entity_placeable == FALSE ||
             editor->selected_entity_type == SELECTED_ENTITY_TYPE_NONE || 
