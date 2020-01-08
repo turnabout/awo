@@ -7,10 +7,10 @@
 typedef struct Tile_Placement_Rule_Component {
 
     // The X offset of the tile this component applies to.
-    Uint8 offset_x;
+    Sint8 offset_x;
 
     // The Y offset of the tile this component applies to.
-    Uint8 offset_y;
+    Sint8 offset_y;
 
     // Bit-field representing the tile types that are blocked by this rule.
     Uint32 blocked_tiles;

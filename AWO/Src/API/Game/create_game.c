@@ -50,8 +50,6 @@ Game* EMX create_game(int window_width, int window_height)
         return game;
     }
 
-    printi("Creating game window with dimensions %d,%d", window_width, window_height);
-
     game->state = Game_Initialized;
     return game;
 }

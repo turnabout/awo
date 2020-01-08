@@ -30,7 +30,7 @@ Game_Editor* create_game_editor(
 
     // Start with default editing values
     // TODO: remove, should be set from outside
-    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Bridge, SELECTED_ENTITY_VAR_NONE);
+    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Shore, SELECTED_ENTITY_VAR_NONE);
 
     // editor->selected_entity = SE_create(window_width, window_height);
 
@@ -89,45 +89,33 @@ void update_game_editor(
     Game_Renderer* game_renderer,
     Game_Board* game_board,
     Game_Clock* game_clock,
-    Game_Cursor* game_cursor,
+    Game_Cursor* cursor,
     Mouse_State* mouse_state
 )
 {
     // Check if hovered tile changed
-    if (
-        editor->hovered_x != game_cursor->hovered_x || 
-        editor->hovered_y != game_cursor->hovered_y
-    ) {
-        // Check whether the currently selected entity is placeable at the hovered coordinates
-        if (game_cursor->hovered_x != -1 && game_cursor->hovered_y != -1) {
+    if (editor->hovered_x != cursor->hovered_x || editor->hovered_y != cursor->hovered_y) {
 
-            editor->entity_placeable = (editor->placement_rules == NULL)
-                ? TRUE
-                : check_tile_placement_rules(
-                    editor->placement_rules,
-                    game_board,
-                    editor->hovered_x,
-                    editor->hovered_y
-                );
+        // Update whether the selected tile is placeable at new hovered coordinates
+        editor->entity_placeable = is_editor_tile_placeable(
+            editor->placement_rules,
+            game_board,
+            cursor->hovered_x,
+            cursor->hovered_y
+        );
 
-            // printm("Placeable: %d", editor->entity_placeable);
-
-        } else {
-            editor->entity_placeable = FALSE;
-        }
+        // Update game cursor style based on whether entity is placeable
+        update_cursor_style(
+            cursor, 
+            (editor->entity_placeable) 
+                ? Game_Cursor_Regular_Style 
+                : Game_Cursor_X_Style
+        );
 
         // Save currently hovered tile
-        editor->hovered_x = game_cursor->hovered_x;
-        editor->hovered_y = game_cursor->hovered_y;
+        editor->hovered_x = cursor->hovered_x;
+        editor->hovered_y = cursor->hovered_y;
     }
-
-    // Update game cursor style based on whether entity is placeable
-    update_cursor_style(
-        game_cursor, 
-        (editor->entity_placeable) 
-            ? Game_Cursor_Regular_Style 
-            : Game_Cursor_X_Style
-    );
 
     // Check if we should attempt to edit
     if (mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN) {

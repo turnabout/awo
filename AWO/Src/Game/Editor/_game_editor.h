@@ -65,9 +65,9 @@ void apply_autovar(Game_Editor* editor, Game_Board* board, Game_Clock* clock, Ui
 
 /*! @brief Checks whether the tile placement rules pass at the given game board coordinates.
  */
-Bool check_tile_placement_rules(
-    Tile_Placement_Rule_Set* rules,
+Bool is_editor_tile_placeable(
+    Tile_Placement_Rule_Set* rule_set,
     Game_Board* game_board,
-    Uint8 x,
-    Uint8 y
+    int x,
+    int y
 );

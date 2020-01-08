@@ -432,7 +432,7 @@
     <ClCompile Include="Src\Game\Data\Tile\Neutral_Tile\Type\Auto_Var\tile_auto_var_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Editor\check_tile_placement_rules.c">
+    <ClCompile Include="Src\Game\Editor\is_editor_tile_placeable.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

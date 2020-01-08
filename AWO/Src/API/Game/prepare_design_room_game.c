@@ -16,8 +16,8 @@ int EMX prepare_design_room_game(Game* game)
 
     return prepare_game(
         game, 
-        // generate_custom_stage(),
-        generate_filled_stage(Plain, Default, 10, 10),
+        generate_custom_stage(),
+        // generate_filled_stage(Plain, Default, 10, 10),
         (CO_Type[MAX_PLAYER_COUNT]) { Andy, Olaf }
     );
 }
