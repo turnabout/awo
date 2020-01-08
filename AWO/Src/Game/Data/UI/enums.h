@@ -5,6 +5,7 @@
 // UI element enum
 #define FOREACH_UI_ELEMENT(ELEMENT) \
     ELEMENT(TileCursor) \
+    ELEMENT(TileCursorX) \
     ELEMENT(StarSm) \
     ELEMENT(StarLg) \
 

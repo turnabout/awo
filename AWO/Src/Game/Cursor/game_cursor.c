@@ -10,12 +10,15 @@ Game_Cursor* create_game_cursor(UI_Data* ui_data)
         return NULL;
     }
 
-    cursor->animation = get_UI_element_frames(ui_data, TileCursor);
+    cursor->animation_regular = get_UI_element_frames(ui_data, TileCursor);
+    cursor->animation_x = get_UI_element_frames(ui_data, TileCursorX);
+    cursor->active_animation = cursor->animation_regular;
+
     cursor->shown = FALSE;
     cursor->hovered_x = cursor->hovered_y = -1;
 
     // Calculate the cursor adjustment
-    int diff = cursor->animation->frames[0].width - DEFAULT_ENTITY_SIZE;
+    int diff = cursor->animation_regular->frames[0].width - DEFAULT_ENTITY_SIZE;
     cursor->center_offset_px = diff / 2;
 
     return cursor;
@@ -53,10 +56,22 @@ void update_cursor(Game_Cursor* cursor, Mouse_State* mouse, Game_Camera* camera)
     cursor->shown = TRUE;
 }
 
+void update_cursor_style(Game_Cursor* cursor, Game_Cursor_Style style)
+{
+    switch (style) {
+    case Game_Cursor_Regular_Style:
+        cursor->active_animation = cursor->animation_regular;
+        break;
+    case Game_Cursor_X_Style:
+        cursor->active_animation = cursor->animation_x;
+        break;
+    }
+}
+
 void render_game_cursor(Game_Cursor* cursor, Game_Renderer* renderer)
 {
     if (cursor->shown) {
-        queue_extra(renderer, cursor->dst, &cursor->animation->frames[0]);
+        queue_extra(renderer, cursor->dst, &cursor->active_animation->frames[0]);
     }
 }
 
