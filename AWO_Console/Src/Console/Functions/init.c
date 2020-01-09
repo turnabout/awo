@@ -11,12 +11,7 @@ int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game was already set
     if (console->game != NULL) {
-        add_console_message(
-            console,
-            COLOR_PAIR_ERROR,
-            "Error: game window already set"
-        );
-
+        cprinte(console, "Error: game window already set");
         return CMD_Ret_Error;
     }
 

@@ -9,11 +9,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game has already been initialized
     if (console->game != NULL) {
-        add_console_message(
-            console,
-            COLOR_PAIR_ERROR,
-            "Error: Game has already been initialized"
-        );
+        cprinte(console, "Error: Game has already been initialized");
         return CMD_Ret_Error;
     }
 

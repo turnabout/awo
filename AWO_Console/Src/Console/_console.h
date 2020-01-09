@@ -33,6 +33,12 @@
 #define MSG_Y 2
 #define MSG_X 0
 
+// Macro shortcuts for printing console messages with color pairs
+#define cprinte(console, format, ...) add_console_message(console, COLOR_PAIR_ERROR, format, ##__VA_ARGS__)
+#define cprinti(console, format, ...) add_console_message(console, COLOR_PAIR_INFO, format, ##__VA_ARGS__)
+#define cprintw(console, format, ...) add_console_message(console, COLOR_PAIR_WARNING, format, ##__VA_ARGS__)
+#define cprintm(console, format, ...) add_console_message(console, COLOR_PAIR_NONE, format, ##__VA_ARGS__)
+
 struct Console {
 
     // User's currently-entered command
@@ -68,10 +74,11 @@ void tile_console(Console* console);
 
 // Process all game messages present in the game's messages stack
 void process_console_game_messages(Console* console);
-void add_console_message(Console* console, int color_pair, char* format, ...);
 void print_console_entered_command(Console* console);
 void print_console_messages(Console* console);
 void reset_console_user_command(Console* console);
+
+void add_console_message(Console* console, int color_pair, char* format, ...);
 
 /*! @brief Updates the active game editor entity to given tile type/variation.
  *
