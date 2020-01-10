@@ -30,7 +30,7 @@ Game_Editor* create_game_editor(
 
     // Start with default editing values
     // TODO: remove, should be set from outside
-    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Shore, SELECTED_ENTITY_VAR_NONE);
+    update_editor_selected_entity(editor, Editor_Entity_Type_Tile, Sea, SELECTED_ENTITY_VAR_NONE);
 
     // editor->selected_entity = SE_create(window_width, window_height);
 

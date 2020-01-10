@@ -45,8 +45,6 @@ Bool is_editor_tile_placeable(
 
         // If all of the rule components evaluate to true, the tile is not placeable
         if (!rule_ok) {
-            printw("Rule index %d blocked", i);
-
             return FALSE;
         }
     }
