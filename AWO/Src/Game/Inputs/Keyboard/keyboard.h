@@ -25,6 +25,7 @@ typedef enum Key {
     KEY_DOWN,
     KEY_LEFT,
     KEY_RIGHT,
+    KEY_LEFT_ALT,
 } Key;
 
 /*! @brief Initializes the module keeping keys' current state updated.

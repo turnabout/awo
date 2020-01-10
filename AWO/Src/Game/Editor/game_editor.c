@@ -69,6 +69,8 @@ void update_editor_selected_entity(
             return;
         }
 
+        printi("Updating selection to tile: %s", tile_type_str[type]);
+
     } else if (kind == Editor_Entity_Type_Unit) {
         editor->selected_entity_update_cb = set_editor_unit_entity;
     } else {
@@ -149,6 +151,25 @@ void update_game_editor(
 
         // No longer dragging, reset editor mode
         editor->mode = Editor_Mode_Neutral;
+
+    } else if (
+        mouse_state->buttons[MOUSE_BUTTON_LEFT] == BUTTON_DOWN_START && 
+        get_key_state(KEY_LEFT_ALT) == BUTTON_DOWN
+    ) {
+
+        // Alt + click on tile, attempt to update selected tile to hovered one
+        if (editor->hovered_x != -1 && editor->hovered_y != -1) {
+            update_editor_selected_entity(
+                editor,
+                Entity_Kind_Neutral_Tile,
+                get_game_board_tile_type(
+                    game_board, 
+                    editor->hovered_x, 
+                    editor->hovered_y
+                ),
+                TILE_VAR_NONE
+            );
+        }
     }
 }
 

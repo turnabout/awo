@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "Utilities/Message_Service/message_service.h"
 #include "Game/Data/Tile/_tiles_data.h"
 
 Tile_Variation get_tile_auto_var(
@@ -30,7 +31,7 @@ Tile_Variation get_tile_auto_var(
     }
 
     #ifdef _DEBUG
-    printf("default...\n");
+    printm("default...");
     #endif
 
     return get_default_tile_variation(tiles_data, middle_tile);
