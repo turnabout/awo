@@ -35,6 +35,12 @@ Game_Editor_Controller* create_game_editor_controller(
     }
 
     // Process other modules
+    controller->palette = create_game_palette_texture(
+        game_data->raw_palette, 
+        WEATHER_DEFAULT, 
+        stage->player_armies
+    );
+
     controller->camera = create_game_camera(
         window_width, 
         window_height, 
@@ -43,7 +49,7 @@ Game_Editor_Controller* create_game_editor_controller(
     );
 
     // controller->stage_renderer = create_stage_renderer();
-    // controller->clock = create_game_clock(game_data->clock);
+    controller->clock = create_game_clock(game_data->clock);
 
     // Error if any of the modules were NULL
     if (

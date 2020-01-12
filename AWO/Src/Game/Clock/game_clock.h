@@ -16,15 +16,9 @@ typedef struct Tile Tile;
 /*! @brief Creates the game clock along with its animation clocks.
  *
  *  @param[in] clock_data The clock data module describing the game's clocks.
- *  @param[in] game_renderer The game renderer module.
- *  @param[in] game_palette Pointer to the game's palette object ID.
  *  @return The created game clock object.
  */
-Game_Clock* create_game_clock(
-    Clock_Data* clock_data,
-    Game_Renderer* game_renderer,
-    GLuint* game_palette
-);
+Game_Clock* create_game_clock(Clock_Data* clock_data);
 
 /*! @brief Keeps the game clock's current tick updated, along with its animation clocks.
  *

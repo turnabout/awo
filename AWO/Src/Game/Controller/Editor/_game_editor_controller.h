@@ -5,6 +5,7 @@
 #include "Game/Clock/game_clock.h"
 #include "Game/Renderer/Stage_Renderer/stage_renderer.h"
 #include "Game/Renderer/Extras_Renderer/extras_renderer.h"
+#include "Game/Data/Palette/game_palette.h"
 
 struct Game_Editor_Controller {
 
@@ -22,5 +23,8 @@ struct Game_Editor_Controller {
 
     // Module used to render extra elements.
     Extras_Renderer* extras_renderer;
+
+    // The game palette used for this game.
+    GLuint palette;
 
 };

@@ -2,11 +2,7 @@
 
 #include "Game/Clock/_game_clock.h"
 
-Game_Clock* create_game_clock(
-    Clock_Data* clock_data,
-    Game_Renderer* game_renderer, 
-    GLuint* game_palette
-)
+Game_Clock* create_game_clock(Clock_Data* clock_data)
 {
     Game_Clock* game_clock = malloc(sizeof(Game_Clock));
 
@@ -21,6 +17,7 @@ Game_Clock* create_game_clock(
         game_clock->timers[i] = create_clock_timer(clock_data, i, game_clock->pub_sub);
     }
 
+    /*
     game_clock->tile_subscriber = NULL;
     game_clock->property_lights_subscriber = NULL;
 
@@ -55,6 +52,7 @@ Game_Clock* create_game_clock(
         },
         1
     );
+    */
 
     return game_clock;
 }
@@ -105,6 +103,6 @@ void free_game_clock(Game_Clock* game_clock)
     }
 
     free_clock_pub_sub(game_clock->pub_sub);
-    free_game_clock_tile_subscriber(game_clock->tile_subscriber);
-    free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);
+    // free_game_clock_tile_subscriber(game_clock->tile_subscriber);
+    // free_game_clock_property_lights_subscriber(game_clock->property_lights_subscriber);
 }
