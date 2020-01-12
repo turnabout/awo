@@ -117,6 +117,7 @@
     <ClCompile Include="Src\Game\Renderer\render_game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
     <ClCompile Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.c" />
+    <ClCompile Include="Src\Game\Renderer\Stage_Renderer\update_stage_renderer_matrices.c" />
     <ClCompile Include="Src\Game\Renderer\update_game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\update_game_renderer_matrices.c" />
     <ClCompile Include="Src\Game\Stage\generate_custom_stage.c" />
@@ -150,6 +151,7 @@
     <ClCompile Include="Src\API\Game\unprepare_game.c" />
     <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\API\Game\update_game_window_dimensions.c" />
+    <ClCompile Include="Src\GL_Helpers\create_projection_matrix.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />
     <ClCompile Include="Src\GL_Helpers\read_texture_data.c" />

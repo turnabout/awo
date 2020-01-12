@@ -2,6 +2,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <cglm/cglm.h>
 
 // Creates a shader_program program, using the given paths to the vertex and fragment shaders.
 // Returns the shader_program program ID or 0 if unsuccessful.
@@ -32,3 +33,11 @@ GLuint create_empty_texture_object(int width, int height);
  *  @param[in] height Height of the texture.
  */
 void read_texture_data(GLuint texture, void* buffer, int width, int height);
+
+/*! @brief Creates a projection matrix using the given window dimensions.
+ *
+ *  @param[in] window_width Width of the window.
+ *  @param[in] window_height Height of the window.
+ *  @param[out] projection Destination of the generated projection matrix.
+ */
+void create_projection_matrix(int window_width, int window_height, mat4 projection);

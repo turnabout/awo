@@ -441,6 +441,12 @@
     <ClCompile Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\Stage_Renderer\update_stage_renderer_matrices.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GL_Helpers\create_projection_matrix.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
