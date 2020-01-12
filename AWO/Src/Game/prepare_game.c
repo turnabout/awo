@@ -13,6 +13,12 @@ int prepare_game(
         return FALSE;
     }
 
+    // Validate the given stage
+    if (stage != NULL && !validate_stage(stage)) {
+        printe("prepare_game: Given stage was invalid");
+        return FALSE;
+    }
+
     switch (mode) {
 
     case Design_Room_Mode:

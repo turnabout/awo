@@ -16,8 +16,6 @@ void EMX unprepare_game(Game* game)
 
     game->mode = No_Game_Mode;
 
-    // free_game_editor_controller
-
     /*
     free_game_board(game->board);
     free_game_camera(game->camera);
