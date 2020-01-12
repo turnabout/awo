@@ -30,8 +30,8 @@ struct Game_Camera {
     // Pointers to the window dimensions.
     int* window_width, * window_height;
 
-    // The camera's subject (the game's currently loaded stage).
-    Stage* subject;
+    // The camera's subject dimensions (at 1x zoom).
+    int subject_width, subject_height;
 
     // Actual visible dimensions of the camera's subject (currently loaded stage), in pixels.
     int subject_pixel_width, subject_pixel_height;

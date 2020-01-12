@@ -6,18 +6,18 @@
 #include "Game/Camera/_game_camera.h"
 
 Game_Camera* create_game_camera(
-    Game_Renderer* game_renderer, 
     int* window_width, 
-    int* window_height, 
-    Stage* stage
+    int* window_height,
+    int subject_width,
+    int subject_height
 )
 {
     Game_Camera* camera = malloc(sizeof(Game_Camera));
 
-    camera->game_renderer = game_renderer;
     camera->window_width = window_width;
     camera->window_height = window_height;
-    camera->subject = stage;
+    camera->subject_width = subject_width;
+    camera->subject_height = subject_height;
 
     // Set starting view matrix
     camera->x = DEFAULT_CAMERA_X;
@@ -62,11 +62,11 @@ void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom)
 
     // Update the dimensions of the camera subject
     camera->subject_pixel_width = round_float_to_int(
-        camera->zoom * camera->subject->width
+        camera->zoom * camera->subject_width
     );
 
     camera->subject_pixel_height = round_float_to_int(
-        camera->zoom * camera->subject->height
+        camera->zoom * camera->subject_height
     );
 }
 

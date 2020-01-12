@@ -10,10 +10,10 @@
 typedef struct Game_Camera Game_Camera;
 
 Game_Camera* create_game_camera(
-    Game_Renderer* game_renderer,
     int* window_width,
     int* window_height,
-    Stage* stage
+    int subject_width,
+    int subject_height
 );
 
 void zoom_game_camera(Game_Camera* camera, float value, int target_x, int target_y);
