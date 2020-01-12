@@ -29,7 +29,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     }
 
     // Prepare the game for design room mode
-    if (!prepare_design_room_game(console->game)) {
+    if (!prepare_game(console->game, Design_Room_Mode, NULL, NULL)) {
         process_console_game_messages(console);
         return CMD_Ret_Error;
     }

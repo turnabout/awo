@@ -46,10 +46,6 @@
 #define GAME_CLEAR_COLOR_B 239
 #define GAME_CLEAR_COLOR_A 255
 
-// Min/max amount of players for a game
-#define MIN_PLAYER_COUNT 2
-#define MAX_PLAYER_COUNT 4
-
 // Stages
 #define HQS_PER_ARMY 1
 #define MAX_PROPERTIES_PER_PLAYER 50

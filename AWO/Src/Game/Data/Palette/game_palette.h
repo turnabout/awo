@@ -6,6 +6,7 @@
 
 #include "conf.h"
 #include "types.h"
+#include "Include/game.h"
 #include "Game/Player/player_index_enum.h"
 #include "Game/Data/Unit/enums.h"
 #include "Game/Data/Tile/enums.h"

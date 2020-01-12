@@ -65,6 +65,7 @@
     <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c" />
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c" />
     <ClCompile Include="Src\Game\Clock\Timer\clock_timer.c" />
+    <ClCompile Include="Src\Game\Controller\Editor\game_editor_controller.c" />
     <ClCompile Include="Src\Game\Data\Animation\Frame\frame.c" />
     <ClCompile Include="Src\Game\Data\Clock\clock_data.c" />
     <ClCompile Include="Src\Game\Data\CO\CO_data_access.c" />
@@ -115,6 +116,7 @@
     <ClCompile Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\render_game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
+    <ClCompile Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\update_game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\update_game_renderer_matrices.c" />
     <ClCompile Include="Src\Game\Stage\generate_custom_stage.c" />
@@ -192,6 +194,9 @@
     <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h" />
     <ClInclude Include="Src\Game\Clock\game_clock.h" />
     <ClInclude Include="Src\Game\Clock\_game_clock.h" />
+    <ClInclude Include="Src\Game\Controller\Editor\game_editor_controller.h" />
+    <ClInclude Include="Src\Game\Controller\Editor\_game_editor_controller.h" />
+    <ClInclude Include="Src\Game\Controller\game_controller.h" />
     <ClInclude Include="Src\Game\Data\Animation\animation.h" />
     <ClInclude Include="Src\Game\Data\Animation\Frame\frame.h" />
     <ClInclude Include="Src\Game\Data\Animation\Frame\_frame.h" />
@@ -253,6 +258,8 @@
     <ClInclude Include="Src\Game\Renderer\Render_Grid\render_grid.h" />
     <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h" />
     <ClInclude Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.h" />
+    <ClInclude Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.h" />
+    <ClInclude Include="Src\Game\Renderer\Stage_Renderer\_stage_renderer.h" />
     <ClInclude Include="Src\Game\Renderer\_game_renderer.h" />
     <ClInclude Include="Src\Game\Stage\stage.h" />
     <ClInclude Include="Src\Game\Stage\_stage.h" />

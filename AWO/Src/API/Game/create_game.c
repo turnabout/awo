@@ -18,7 +18,9 @@ Game* EMX create_game(int window_width, int window_height)
     game->clock = NULL;
     game->editor = NULL;
     game->renderer = NULL;
+    game->controller = NULL;
     game->palette = 0;
+    game->mode = No_Game_Mode;
 
     // Set default window dimension values if none given
     game->window_width = (window_width) ? window_width : DEFAULT_WINDOW_WIDTH;
@@ -38,7 +40,7 @@ Game* EMX create_game(int window_width, int window_height)
     game->mouse_state = init_mouse_module(game->window);
 
     // Initialize the game tile cursor module
-    game->cursor = create_game_cursor(game->data->UI);
+    // game->cursor = create_game_cursor(game->data->UI);
 
     // Check all modules were initialized properly
     if (

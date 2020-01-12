@@ -1,6 +1,11 @@
 #include "Game/_game.h"
 
-Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT])
+int prepare_game(
+    Game* game, 
+    Game_Mode mode,
+    Stage* stage, 
+    int player_COs[MAX_PLAYER_COUNT]
+)
 {
     // Confirm the game state is valid
     if (game->state != Game_Initialized) {
@@ -8,12 +13,35 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
         return FALSE;
     }
 
-    // Confirm stage was set
-    if (stage == NULL) {
-        printe("Error loading game stage");
+    switch (mode) {
+
+    case Design_Room_Mode:
+        game->controller = (Game_Controller*)create_game_editor_controller(
+            game->data,
+            stage,
+            &(game->window_width),
+            &(game->window_height)
+        );
+
+        break;
+
+    case Gameplay_Mode:
+        printe("prepare_game: Game mode %d not yet supported", Gameplay_Mode);
+        return FALSE;
+
+    default:
+        printe("prepare_game: Invalid game mode");
         return FALSE;
     }
 
+    if (game->controller == NULL) {
+        return FALSE;
+    }
+
+    game->mode = mode;
+    return TRUE;
+
+    /*
     // Prepare components used for rendering the game
     game->palette = create_game_palette_texture(
         game->data->raw_palette, 
@@ -72,5 +100,5 @@ Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]
     }
 
     game->state = Game_Prepared;
-    return TRUE;
+    */
 }

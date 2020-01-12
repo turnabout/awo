@@ -18,8 +18,11 @@ void game_loop(void* game)
     glfwPollEvents();
 
     glClear(GL_COLOR_BUFFER_BIT);
-    update_game((Game*)game, delta_time);
-    render_game((Game*)game);
+    ((Game*)game)->controller->update(((Game*)game)->controller, delta_time);
+    ((Game*)game)->controller->render(((Game*)game)->controller);
+
+    // update_game((Game*)game, delta_time);
+    // render_game((Game*)game);
 
     glfwSwapBuffers(((Game*)game)->window);
 }

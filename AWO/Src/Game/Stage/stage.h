@@ -2,9 +2,9 @@
 
 #include "types.h"
 #include "conf.h"
+#include "Include/game.h"
 #include "Game/Data/Tile/tiles_data.h"
 #include "Game/Data/Unit/units_data.h"
-#include "Game/Stage/stage.h"
 
 #define STAGE_NAME_MAX_LENGTH 32
 

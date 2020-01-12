@@ -14,6 +14,7 @@
 #include "Game/Editor/game_editor.h"
 #include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
+#include "Game/Controller/game_controller.h"
 
 typedef struct Game Game;
 
@@ -22,14 +23,20 @@ struct Game {
     // The game's current state.
     Game_State state;
 
+    // The game's current mode.
+    Game_Mode mode;
+
+    // Collection of all game data modules.
+    Game_Data* data;
+
     // Handle to the game's window.
     GLFWwindow* window;
 
-    // Field holding all game data.
-    Game_Data* data;
-
     // Dimensions of the game's window.
     int window_width, window_height;
+
+    // Current controller used to update & render the game.
+    Game_Controller* controller;
 
 
     // The game's board, containing and updating all current on-board game entities.
@@ -75,7 +82,7 @@ Bool init_GL(Game* game);
  *  @param[in] player_COs The players' COs.
  *  @return TRUE if successful, FALSE if an error occurred.
  */
-Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]);
+//Bool prepare_game(Game* game, Stage* stage, CO_Type player_COs[MAX_PLAYER_COUNT]);
 
 /*! @brief Updates the game's entities.
  *

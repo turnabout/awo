@@ -3,6 +3,7 @@
 
 int EMX prepare_design_room_game(Game* game)
 {
+    /*
     game->editor = create_game_editor(
         game->data->tiles,
         game->data->units,
@@ -20,4 +21,7 @@ int EMX prepare_design_room_game(Game* game)
         generate_filled_stage(Plain, Default, 10, 10),
         (CO_Type[MAX_PLAYER_COUNT]) { Andy, Olaf }
     );
+    */
+
+    return 0;
 }

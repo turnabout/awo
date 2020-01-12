@@ -435,6 +435,12 @@
     <ClCompile Include="Src\Game\Editor\is_editor_tile_placeable.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Game\Controller\Editor\game_editor_controller.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -714,6 +720,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Data\Tile\Neutral_Tile\Type\Placement_Rule\_tile_placement_rule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Controller\Editor\game_editor_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Controller\Editor\_game_editor_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Renderer\Stage_Renderer\_stage_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game\Controller\game_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
