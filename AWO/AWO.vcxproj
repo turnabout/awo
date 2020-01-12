@@ -107,6 +107,7 @@
     <ClCompile Include="Src\Game\Entity\Unit\unit.c" />
     <ClCompile Include="Src\Game\Entity\Unit\update_unit_grid.c" />
     <ClCompile Include="Src\Game\Entity\Unit\update_unit_palette.c" />
+    <ClCompile Include="Src\Game\init_game_rendering.c" />
     <ClCompile Include="Src\Game\Inputs\Keyboard\keyboard.c" />
     <ClCompile Include="Src\Game\Inputs\Mouse\mouse.c" />
     <ClCompile Include="Src\Game\prepare_game.c" />
@@ -140,7 +141,6 @@
     <ClCompile Include="Src\Game\Clock\Subscribers\Tiles\game_clock_tile_subscriber.c" />
     <ClCompile Include="Src\API\Game\free_game.c" />
     <ClCompile Include="Src\API\Game\create_game.c" />
-    <ClCompile Include="Src\Game\init_GL.c" />
     <ClCompile Include="Src\Game\Renderer\game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\get_render_grid_VAO.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\render_grid.c" />
@@ -151,6 +151,7 @@
     <ClCompile Include="Src\API\Game\unprepare_game.c" />
     <ClCompile Include="Src\Game\update_game.c" />
     <ClCompile Include="Src\API\Game\update_game_window_dimensions.c" />
+    <ClCompile Include="Src\GL_Helpers\create_glfw_window.c" />
     <ClCompile Include="Src\GL_Helpers\create_projection_matrix.c" />
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c" />
     <ClCompile Include="Src\GL_Helpers\create_texture.c" />

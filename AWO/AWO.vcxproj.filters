@@ -111,9 +111,6 @@
     <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\init_GL.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Renderer\Render_Grid\get_render_grid_VAO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -445,6 +442,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\GL_Helpers\create_projection_matrix.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GL_Helpers\create_glfw_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game\init_game_rendering.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
