@@ -29,6 +29,8 @@ void game_loop(void* game)
 
 void EMX run_game(Game* game, int (*callback)(void*), void* cb_value)
 {
+    printw("Hello");
+    /*
     game->state = Game_Running;
 
     // Reset static values
@@ -53,4 +55,5 @@ void EMX run_game(Game* game, int (*callback)(void*), void* cb_value)
     #endif
 
     game->state = Game_Prepared;
+    */
 }

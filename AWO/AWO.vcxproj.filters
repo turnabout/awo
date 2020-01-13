@@ -15,69 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Libs\cJSON.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\c_hashmap.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\stb_image.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\affine.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\bezier.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\box.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\cam.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\curve.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\ease.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\euler.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\frustum.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\io.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\mat3.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\mat4.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\plane.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\project.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\quat.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\sphere.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\vec3.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\cglm\vec4.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\GL_Helpers\create_shader_program.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -450,6 +387,9 @@
     <ClCompile Include="Src\Game\init_game_rendering.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\GL_Helpers\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\conf.h">
@@ -468,9 +408,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Libraries\SDL_FontCache.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\cglm\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\_game.h">

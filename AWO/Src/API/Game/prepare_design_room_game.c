@@ -3,6 +3,13 @@
 
 int EMX prepare_design_room_game(Game* game)
 {
+    game->controller = (Game_Controller*)create_game_editor_controller(
+        game->data,
+        generate_filled_stage(Plain, Default, 25, 25),
+        &(game->window_width),
+        &(game->window_height)
+    );
+
     /*
     game->editor = create_game_editor(
         game->data->tiles,
@@ -23,5 +30,5 @@ int EMX prepare_design_room_game(Game* game)
     );
     */
 
-    return 0;
+    return TRUE;
 }

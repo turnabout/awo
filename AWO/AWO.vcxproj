@@ -19,27 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Libs\cglm\affine.c" />
-    <ClCompile Include="Libs\cglm\bezier.c" />
-    <ClCompile Include="Libs\cglm\box.c" />
-    <ClCompile Include="Libs\cglm\cam.c" />
-    <ClCompile Include="Libs\cglm\curve.c" />
-    <ClCompile Include="Libs\cglm\ease.c" />
-    <ClCompile Include="Libs\cglm\euler.c" />
-    <ClCompile Include="Libs\cglm\frustum.c" />
-    <ClCompile Include="Libs\cglm\io.c" />
-    <ClCompile Include="Libs\cglm\mat3.c" />
-    <ClCompile Include="Libs\cglm\mat4.c" />
-    <ClCompile Include="Libs\cglm\plane.c" />
-    <ClCompile Include="Libs\cglm\project.c" />
-    <ClCompile Include="Libs\cglm\quat.c" />
-    <ClCompile Include="Libs\cglm\sphere.c" />
-    <ClCompile Include="Libs\cglm\vec3.c" />
-    <ClCompile Include="Libs\cglm\vec4.c" />
-    <ClCompile Include="Libs\cJSON.c" />
-    <ClCompile Include="Libs\c_hashmap.c" />
-    <ClCompile Include="Libs\glad.c" />
-    <ClCompile Include="Libs\stb_image.c" />
+    <ClCompile Include="Src\GL_Helpers\glad.c" />
     <ClCompile Include="Src\API\Game\get_game_state.c" />
     <ClCompile Include="Src\API\Game_Data\API_entity_texture_reader.c" />
     <ClCompile Include="Src\API\Game_Data\tiles_data.c" />
@@ -184,7 +164,6 @@
     <ClInclude Include="Include\game.h" />
     <ClInclude Include="Include\game_data.h" />
     <ClInclude Include="Include\game_message.h" />
-    <ClInclude Include="Libs\cglm\config.h" />
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\emx.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
@@ -356,7 +335,7 @@
       <IgnoreSpecificDefaultLibraries>msvcrtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d  "$(SolutionDir)\Libraries\Libs\*.dll" "$(TargetDir)"</Command>
+      <Command>xcopy /y /d  "$(SolutionDir)\External\Libs\*.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

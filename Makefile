@@ -3,6 +3,7 @@ AWO_DIR := AWO
 
 # Project sources
 AWO_SOURCES := $(shell find $(AWO_DIR) -name '*.c')
+CGLM_SOURCES := $(shell find cglm_input -name '*.c')
 
 # Output path (environment variable)
 OUTPUTPATH := $(AWO_GAME_OUTPUT)
@@ -17,7 +18,7 @@ all:
 	\
 	-I$(AWO_DIR)/Src \
 	-I$(AWO_DIR) \
-	-ILibraries/Include \
+	-IExternal/Include \
 	\
 	-lopenal \
 	\
@@ -32,4 +33,24 @@ all:
 	\
 	-s USE_WEBGL2=1 \
 	-s USE_GLFW=3 \
-	-s USE_FREETYPE=1
+	-s USE_FREETYPE=1 \
+	-LLibraries/Libs_Emscripten \
+	-lc_hashmap
+	#-print-search-dirs
+
+hashmap:
+	emcc -o External/Libs_Emscripten/c_hashmap.bc External/Libs_Emscripten/c_hashmap.c \
+	-I$(AWO_DIR)/Src \
+	-I$(AWO_DIR) \
+	-IExternal/Include
+
+cglm:
+	emcc -o External/Libs_Emscripten/cglm.bc $(CGLM_SOURCES) \
+	-IExternal/Include
+
+
+test:
+	emcc -o test.bc External/test.c \
+	-IExternal/Include
+	emcc -o Web/index.html test.bc External/Libs_Emscripten/c_hashmap.bc External/Libs_Emscripten/cglm.bc \
+	-IExternal/Include
