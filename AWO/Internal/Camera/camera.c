@@ -1,18 +1,15 @@
 #include <stdlib.h>
-#include <cglm/cglm.h>
 
-#include "conf.h"
-#include "Utilities/utilities.h"
-#include "Game/Camera/_game_camera.h"
+#include "Camera/_camera.h"
 
-Game_Camera* create_game_camera(
+Camera* create_game_camera(
     int* window_width, 
     int* window_height,
     int subject_width,
     int subject_height
 )
 {
-    Game_Camera* camera = malloc(sizeof(Game_Camera));
+    Camera* camera = malloc(sizeof(Camera));
 
     camera->window_width = window_width;
     camera->window_height = window_height;
@@ -31,31 +28,33 @@ Game_Camera* create_game_camera(
     return camera;
 }
 
-static void inline send_game_camera_updated_values(Game_Camera* camera)
+static void inline send_game_camera_updated_values(Camera* camera)
 {
+    /*
     update_game_renderer_view_matrices(
         camera->game_renderer,
         camera->x,
         camera->y,
         camera->zoom
     );
+    */
 }
 
-void update_game_camera_view_position_to(Game_Camera* camera, int x, int y)
+void update_game_camera_view_position_to(Camera* camera, int x, int y)
 {
     camera->x = x;
     camera->y = y;
     send_game_camera_updated_values(camera);
 }
 
-void add_game_camera_view_position(Game_Camera* camera, int added_x, int added_y)
+void add_game_camera_view_position(Camera* camera, int added_x, int added_y)
 {
     camera->x += added_x;
     camera->y += added_y;
     send_game_camera_updated_values(camera);
 }
 
-void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom)
+void update_game_camera_view_zoom_to(Camera* camera, float zoom)
 {
     camera->zoom = zoom;
     send_game_camera_updated_values(camera);
@@ -70,7 +69,7 @@ void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom)
     );
 }
 
-void free_game_camera(Game_Camera* camera)
+void free_game_camera(Camera* camera)
 {
     if (camera != NULL) {
         free(camera);

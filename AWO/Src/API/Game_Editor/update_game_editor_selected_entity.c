@@ -8,5 +8,5 @@ void EMX update_game_editor_selected_entity(
     int variation
 )
 {
-    update_editor_selected_entity(game->editor, kind, type, variation);
+    // update_editor_selected_entity(game->editor, kind, type, variation);
 }

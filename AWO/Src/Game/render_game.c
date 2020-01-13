@@ -5,6 +5,7 @@
 
 void render_game(Game* game)
 {
+    /*
     // Render the main grids
     render_game_renderer_grids(game->renderer);
 
@@ -12,4 +13,5 @@ void render_game(Game* game)
     render_game_cursor(game->cursor, game->renderer);
 
     render_extras(game->renderer);
+    */
 }

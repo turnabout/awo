@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Camera/camera.h"
 #include "Game/Controller/Editor/game_editor_controller.h"
-#include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Renderer/Stage_Renderer/stage_renderer.h"
 #include "Game/Renderer/Extras_Renderer/extras_renderer.h"
@@ -13,7 +13,7 @@ struct Game_Editor_Controller {
     Stage* stage;
 
     // The game camera module.
-    Game_Camera* camera;
+    Camera* camera;
 
     // The game clock module.
     Game_Clock* clock;

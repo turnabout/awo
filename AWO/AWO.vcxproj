@@ -36,11 +36,9 @@
     <ClCompile Include="Src\Game\Board\player_property_list.c" />
     <ClCompile Include="Src\Game\Board\player_unit_list.c" />
     <ClCompile Include="Src\Game\Board\update_game_board_weather.c" />
-    <ClCompile Include="Src\Game\Camera\focus.c" />
-    <ClCompile Include="Src\Game\Camera\game_camera.c" />
-    <ClCompile Include="Src\Game\Camera\get_camera_subject_data.c" />
-    <ClCompile Include="Src\Game\Camera\mouse_pan_mode.c" />
-    <ClCompile Include="Src\Game\Camera\zoom.c" />
+    <ClCompile Include="Internal\Camera\focus.c" />
+    <ClCompile Include="Internal\Camera\camera.c" />
+    <ClCompile Include="Internal\Camera\zoom.c" />
     <ClCompile Include="Src\Game\Clock\game_clock.c" />
     <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c" />
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c" />
@@ -93,7 +91,6 @@
     <ClCompile Include="Src\Game\prepare_game.c" />
     <ClCompile Include="Src\Game\Player\CO\CO.c" />
     <ClCompile Include="Src\Game\Player\player.c" />
-    <ClCompile Include="Src\Game\Cursor\game_cursor.c" />
     <ClCompile Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\render_game_renderer.c" />
     <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c" />
@@ -143,7 +140,7 @@
     <ClCompile Include="Src\Utilities\Message_Service\message_service.c" />
     <ClCompile Include="Src\Utilities\Message_Service\message_service_basic.c" />
     <ClCompile Include="Src\Utilities\read_file.c" />
-    <ClCompile Include="Src\Utilities\round_float_to_int.c" />
+    <ClCompile Include="Internal\Utilities\round_float_to_int.c" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\spritesheet.png" />
@@ -164,12 +161,16 @@
     <ClInclude Include="Include\game.h" />
     <ClInclude Include="Include\game_data.h" />
     <ClInclude Include="Include\game_message.h" />
+    <ClInclude Include="Internal\Config\config.h" />
+    <ClInclude Include="Internal\Utilities\Headers\macros.h" />
+    <ClInclude Include="Internal\Utilities\Headers\types.h" />
+    <ClInclude Include="Internal\Utilities\utilities.h" />
     <ClInclude Include="Src\conf.h" />
     <ClInclude Include="Src\emx.h" />
     <ClInclude Include="Src\Game\Board\game_board.h" />
     <ClInclude Include="Src\Game\Board\_game_board.h" />
-    <ClInclude Include="Src\Game\Camera\game_camera.h" />
-    <ClInclude Include="Src\Game\Camera\_game_camera.h" />
+    <ClInclude Include="Internal\Camera\camera.h" />
+    <ClInclude Include="Internal\Camera\_camera.h" />
     <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h" />
     <ClInclude Include="Src\Game\Clock\Pub_Sub\pub_sub.h" />
     <ClInclude Include="Src\Game\Clock\Timer\clock_timer.h" />
@@ -322,7 +323,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Internal;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>6011;6386;6387;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>

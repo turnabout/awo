@@ -1,16 +1,11 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
-#include "conf.h"
-#include "Game/Camera/game_camera.h"
+#include "Camera/camera.h"
+#include "Utilities/utilities.h"
 
-struct Game_Camera {
-
-    // Reference to the game's renderer.
-    Game_Renderer* game_renderer;
+struct Camera {
 
     // Current zoom value.
     float zoom;
@@ -38,6 +33,6 @@ struct Game_Camera {
 
 };
 
-void update_game_camera_view_position_to(Game_Camera* camera, int x, int y);
-void add_game_camera_view_position(Game_Camera* camera, int added_x, int added_y);
-void update_game_camera_view_zoom_to(Game_Camera* camera, float zoom);
+void update_game_camera_view_position_to(Camera* camera, int x, int y);
+void add_game_camera_view_position(Camera* camera, int added_x, int added_y);
+void update_game_camera_view_zoom_to(Camera* camera, float zoom);

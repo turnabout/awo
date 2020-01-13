@@ -1,6 +1,6 @@
-#include "Game/Camera/_game_camera.h"
+#include "Camera/_camera.h"
 
-void focus_camera(Game_Camera* camera, int target_x, int target_y)
+void focus_camera(Camera* camera, int target_x, int target_y)
 {
     update_game_camera_view_position_to(
         camera, 

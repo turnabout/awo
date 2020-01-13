@@ -11,6 +11,7 @@ static int control_mode = CONTROL_MODE_NORMAL;
 
 void update_game(Game* game, float delta_time)
 {
+    /*
 
     update_keyboard_state();
     update_mouse_module_state();
@@ -77,4 +78,5 @@ void update_game(Game* game, float delta_time)
             game->mouse_state
         );
     }
+    */
 }

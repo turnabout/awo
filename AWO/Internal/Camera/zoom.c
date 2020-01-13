@@ -1,11 +1,8 @@
 #include <stdlib.h>
 
-#include "conf.h"
-#include "Utilities/utilities.h"
-#include "Game/Camera/_game_camera.h"
-#include "Game/Inputs/inputs.h"
+#include "Camera/_camera.h"
 
-void zoom_game_camera(Game_Camera* camera, float zoom_value, int target_x, int target_y)
+void zoom_game_camera(Camera* camera, float zoom_value, int target_x, int target_y)
 {
     // Get percentage increase of zoom
     float original_zoom = camera->zoom;

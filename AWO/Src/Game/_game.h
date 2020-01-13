@@ -5,15 +5,15 @@
 
 #include "Include/game.h"
 #include "Utilities/Message_Service/message_service.h"
+
 #include "Game/Board/game_board.h"
-#include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Cursor/game_cursor.h"
 #include "Game/Data/game_data.h"
 #include "Game/Data/Palette/game_palette.h"
 #include "Game/Editor/game_editor.h"
-#include "Game/Inputs/inputs.h"
 #include "Game/Renderer/game_renderer.h"
+#include "Game/Inputs/inputs.h"
 #include "Game/Controller/game_controller.h"
 
 struct Game {
@@ -37,6 +37,7 @@ struct Game {
     Game_Controller* controller;
 
 
+    /*
     // The game's board, containing and updating all current on-board game entities.
     Game_Board* board;
 
@@ -60,6 +61,7 @@ struct Game {
 
     // Texture holding the palette data used during gameplay.
     GLuint palette;
+    */
 
 };
 

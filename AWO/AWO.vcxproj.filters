@@ -138,31 +138,16 @@
     <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Camera\game_camera.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Clock\Subscribers\Tiles\game_clock_tile_subscriber.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Game\Camera\mouse_pan_mode.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Camera\zoom.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utilities\round_float_to_int.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Game\Inputs\Mouse\mouse.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Inputs\Keyboard\keyboard.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Camera\focus.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Board\edit_game_board_tile.c">
@@ -250,12 +235,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Renderer\update_game_renderer_matrices.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Camera\get_camera_subject_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Cursor\game_cursor.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game\Entity\Unit\update_unit_grid.c">
@@ -388,6 +367,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\GL_Helpers\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Camera\focus.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Camera\zoom.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Camera\camera.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Utilities\round_float_to_int.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -542,16 +533,10 @@
     <ClInclude Include="Src\Game\Stage\_stage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Game\Camera\game_camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Game\Clock\Subscribers\Tiles\_game_clock_tile_subscriber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Camera\_game_camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Inputs\Mouse\mouse.h">
@@ -681,6 +666,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game\Controller\game_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Config\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Camera\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Camera\_camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Utilities\utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Utilities\Headers\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Utilities\Headers\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

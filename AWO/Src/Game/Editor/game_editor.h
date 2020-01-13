@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Include/game_editor.h"
+#include "Internal/Camera/camera.h"
 #include "Game/Board/game_board.h"
-#include "Game/Camera/game_camera.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Cursor/game_cursor.h"
 #include "Game/Data/Tile/tiles_data.h"

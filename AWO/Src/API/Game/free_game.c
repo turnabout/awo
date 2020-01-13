@@ -15,6 +15,7 @@ void EMX free_game(Game* game)
     // Ensure game is "unprepared"
     unprepare_game(game);
 
+    /*
     free_game_cursor(game->cursor);
     free_game_data(game->data);
     free_mouse_module(game->mouse_state);
@@ -24,6 +25,7 @@ void EMX free_game(Game* game)
     game->cursor = NULL;
     game->data = NULL;
     game->mouse_state = NULL;
+    */
 
     free(game);
 }
