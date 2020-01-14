@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 #include "GL_Helpers/gl_helpers.h"
-#include "GL_Helpers/Texture_Reader/texture_reader.h"
-#include "Game/Data/Palette/raw_palette.h"
-#include "Game/Data/Entity_Texture_Reader/entity_texture_reader.h"
+#include "Game_Data/game_data.h"
+#include "Texture_Reader/texture_reader.h"
+#include "Entity_Texture_Reader/entity_texture_reader.h"
 
 // Maximum amount of palettes that can be applied to an entity texture
 #define MAX_APPLIED_PALETTE_COUNT 2
@@ -12,10 +12,10 @@
 struct Entity_Texture_Reader {
 
     // Reference to the game's tiles data module.
-    Tiles_Data* tiles_data;
+    Tile_Data* tile_data;
 
     // Reference to the game's units data module.
-    Units_Data* units_data;
+    Unit_Data* unit_data;
 
     // Buffer containing the data from the raw game palette.
     Uint8* palette_data;
@@ -26,8 +26,8 @@ struct Entity_Texture_Reader {
 };
 
 Entity_Texture_Reader* create_entity_texture_reader(
-    Tiles_Data* tiles_data,
-    Units_Data* units_data,
+    Tile_Data* tile_data,
+    Unit_Data* unit_data,
     GLuint game_raw_palette,
     GLuint sprite_sheet,
     int sprite_sheet_w,
@@ -36,8 +36,8 @@ Entity_Texture_Reader* create_entity_texture_reader(
 {
     Entity_Texture_Reader* reader = malloc(sizeof(Entity_Texture_Reader));
 
-    reader->tiles_data = tiles_data;
-    reader->units_data = units_data;
+    reader->tile_data = tile_data;
+    reader->unit_data = unit_data;
 
     reader->texture_reader = create_texture_reader(sprite_sheet, sprite_sheet_w, sprite_sheet_h);
 
@@ -116,7 +116,7 @@ Uint8* read_neutral_tile_texture(
 )
 {
     Animation* tiles_anim;
-    gather_tile_data(reader->tiles_data, type, variation, NULL, &tiles_anim);
+    gather_tile_data(reader->tile_data, type, variation, NULL, &tiles_anim);
 
     int texture_w = tiles_anim->frames[0].width;
     int texture_h = tiles_anim->frames[0].height;

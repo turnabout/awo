@@ -10,7 +10,7 @@
 
 /*! @brief Holds all of the game's data for properties.
  */
-typedef struct Property_Tiles_Data Property_Tiles_Data;
+typedef struct Property_Tiles_Data Property_Data;
 
 /*! @brief Creates the properties data object.
  *
@@ -19,7 +19,7 @@ typedef struct Property_Tiles_Data Property_Tiles_Data;
  *  @param[in] ss_height The tiles_height of the game's sprite sheet.
  *  @return The generated properties data object.
  */
-Property_Tiles_Data* create_property_tiles_data(
+Property_Data* create_property_tiles_data(
     cJSON* properties_data_JSON,
     int ss_width,
     int ss_height
@@ -33,7 +33,7 @@ Property_Tiles_Data* create_property_tiles_data(
  *  @param[in] weather_variation The weather variation to update to.
  */
 void update_tiles_data_active_property_weather_var(
-    Property_Tiles_Data* property_data, 
+    Property_Data* property_data, 
     Weather weather
 );
 
@@ -45,7 +45,7 @@ void update_tiles_data_active_property_weather_var(
  *  @return Pointer to the retrieved frame pointer.
  */
 Frame** get_property_type_frame(
-    Tiles_Data* tiles_data,
+    Tile_Data* tiles_data,
     Property_Type property_type,
     Army_Type army_variation
 );
@@ -54,4 +54,4 @@ Frame** get_property_type_frame(
  *
  *  @param[in] tiles_data The tiles data object.
  */
-void free_properties_data(Tiles_Data* tiles_data);
+void free_properties_data(Property_Data* property_data);

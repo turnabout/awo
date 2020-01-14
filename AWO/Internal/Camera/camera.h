@@ -2,7 +2,7 @@
 
 #include "types.h"
 #include "Game/Inputs/inputs.h"
-#include "Game/Stage/stage.h"
+#include "Stage/stage.h"
 #include "Game/Renderer/game_renderer.h"
 
 /*! @brief The camera module used for keeping track of the game's pan coordinates & zoom level.

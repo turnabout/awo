@@ -4,7 +4,7 @@
 #include "Game_Data/Unit_Data/_unit_data.h"
 
 Animation* get_unit_animation(
-    Units_Data* units_data,
+    Unit_Data* units_data,
     Unit_Type type,
     Army_Type variation,
     Unit_Anim animation
@@ -46,7 +46,7 @@ void free_unit_type_data(Unit_Type_Data* type_data)
     free(type_data);
 }
 
-void free_units_data(Units_Data* units_data)
+void free_units_data(Unit_Data* units_data)
 {
     if (units_data == NULL) {
         return;
@@ -79,7 +79,7 @@ void print_unit_type_data(Unit_Type_Data* unit_type_data)
     */
 }
 
-void print_units_data(Units_Data* units_data)
+void print_units_data(Unit_Data* units_data)
 {
     /*
     for (Unit_Type type = UNIT_TYPE_FIRST; type <= UNIT_TYPE_LAST; type++) {

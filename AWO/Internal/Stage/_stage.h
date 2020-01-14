@@ -34,7 +34,7 @@ Stage* create_stage(
  *  @param[in] tiles_data The tiles data object. Used to validate tiles.
  *  @return TRUE if the data is valid, FALSE if invalid.
  */
-Bool validate_stage_string_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data);
+Bool validate_stage_string_data(Uint8* stage_data, size_t data_length, Tile_Data* tiles_data);
 
 /*! @brief Edits the given stage's tile grid with the given type & variation.
  *

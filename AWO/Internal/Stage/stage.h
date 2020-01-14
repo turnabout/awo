@@ -52,7 +52,7 @@ typedef struct Stage {
  *  @param[in] tiles_data The tiles data object. Used to validate tiles.
  *  @return The created stage, or NULL if the stage string was invalid.
  */
-Stage* generate_stage_from_string(char* stage_str, Tiles_Data* tiles_data);
+Stage* generate_stage_from_string(char* stage_str, Tile_Data* tiles_data);
 
 /*! @brief Validates a stage is OK to play on (OK player count, property count, etc).
  *

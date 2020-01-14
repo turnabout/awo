@@ -14,7 +14,7 @@ typedef struct Tiles_Data
     // Data for every tile type.
     Tile_Type_Data* src[NEUTRAL_TILE_TYPE_COUNT];
 
-} Tiles_Data;
+} Tile_Data;
 
 /*! @brief Creates the tile data module.
  *
@@ -23,10 +23,10 @@ typedef struct Tiles_Data
  *  @param[in] ss_height The height of the game's sprite sheet.
  *  @return The generated tile data object.
  */
-Tiles_Data* create_tile_data(cJSON* tiles_data_JSON, int ss_width, int ss_height);
+Tile_Data* create_tile_data(cJSON* tiles_data_JSON, int ss_width, int ss_height);
 
 /*! @brief Frees all memory occupied by the tile data module.
  *
  *  @param[in] tiles_data The tiles data object.
  */
-void free_tile_data(Tiles_Data* tiles_data);
+void free_tile_data(Tile_Data* tiles_data);

@@ -20,8 +20,8 @@ typedef struct Entity_Texture_Reader Entity_Texture_Reader;
  *  @return The created entity texture reader.
  */
 Entity_Texture_Reader* create_entity_texture_reader(
-    Tiles_Data* tiles_data,
-    Units_Data* units_data,
+    Tile_Data* tiles_data,
+    Unit_Data* units_data,
     GLuint game_raw_palette,
     GLuint sprite_sheet,
     int sprite_sheet_w,

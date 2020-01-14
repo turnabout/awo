@@ -61,9 +61,9 @@ Unit_Type_Data* create_unit_type_data(cJSON* unit_type_JSON, int ss_width, int s
     return type_data;
 }
 
-Units_Data* create_units_data(cJSON* units_data_JSON, int ss_width, int ss_height)
+Unit_Data* create_unit_data(cJSON* units_data_JSON, int ss_width, int ss_height)
 {
-    Units_Data* units_data = malloc(sizeof(Units_Data));
+    Unit_Data* units_data = malloc(sizeof(Unit_Data));
 
     if (units_data == NULL) {
         return NULL;

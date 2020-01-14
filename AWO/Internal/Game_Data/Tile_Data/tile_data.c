@@ -40,9 +40,9 @@ void free_variations_list_hashmap(map_t variations_list_hashmap)
     hashmap_free(variations_list_hashmap);
 }
 
-Tiles_Data* create_tile_data(cJSON* tiles_data_JSON, int ss_width, int ss_height)
+Tile_Data* create_tile_data(cJSON* tiles_data_JSON, int ss_width, int ss_height)
 {
-    Tiles_Data* tiles_data = malloc(sizeof(Tiles_Data));
+    Tile_Data* tiles_data = malloc(sizeof(Tile_Data));
     map_t variations_list_hashmap = create_variations_list_hashmap();
 
     // Gather all data from JSON
@@ -66,7 +66,7 @@ Tiles_Data* create_tile_data(cJSON* tiles_data_JSON, int ss_width, int ss_height
     return tiles_data;
 }
 
-void free_tile_data(Tiles_Data* tiles_data)
+void free_tile_data(Tile_Data* tiles_data)
 {
     if (tiles_data != NULL) {
         for (Tile_Type type = NEUTRAL_TILE_TYPE_FIRST; type < NEUTRAL_TILE_TYPE_COUNT; type++) {

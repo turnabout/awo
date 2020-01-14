@@ -36,13 +36,13 @@ Property_Type_Data* create_property_type_data(
     return property_type_data;
 }
 
-Property_Tiles_Data* create_property_tiles_data(
+Property_Data* create_property_tiles_data(
     cJSON* properties_data_JSON, 
     int ss_width, 
     int ss_height
 )
 {
-    Property_Tiles_Data* data = malloc(sizeof(Property_Tiles_Data));
+    Property_Data* data = malloc(sizeof(Property_Data));
 
     // Loop weather variations
     Weather weather = WEATHER_FIRST;
@@ -90,7 +90,7 @@ void free_property_type_data(Property_Type_Data* prop_type_data)
     free(prop_type_data);
 }
 
-void free_properties_data(Property_Tiles_Data* property_data)
+void free_properties_data(Property_Data* property_data)
 {
     if (property_data == NULL) {
         return;

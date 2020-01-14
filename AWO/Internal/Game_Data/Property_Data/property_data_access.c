@@ -4,7 +4,7 @@
 #include "Game_Data/Property_Data/_property_data.h"
 
 void update_tiles_data_active_property_weather_var(
-    Property_Tiles_Data* property_data,
+    Property_Data* property_data,
     Weather weather_variation
 )
 {
@@ -29,7 +29,7 @@ void update_tiles_data_active_property_weather_var(
 }
 
 Frame** get_property_type_frame(
-    Property_Tiles_Data* property_data,
+    Property_Data* property_data,
     Property_Type property_type, 
     Army_Type army_variation
 )

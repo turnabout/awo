@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "types.h"
+#include "Config/config.h"
 #include "GL_Helpers/gl_helpers.h"
-#include "GL_Helpers/Texture_Reader/texture_reader.h"
+#include "Texture_Reader/texture_reader.h"
 
 struct Texture_Reader {
 
@@ -22,10 +22,19 @@ Texture_Reader* create_texture_reader(GLuint texture, int texture_w, int texture
 {
     Texture_Reader* reader = malloc(sizeof(Texture_Reader));
 
-    reader->texture_buffer = malloc(sizeof(Uint8) * 4 * texture_w * texture_h);
+    if (reader == NULL) {
+        return NULL;
+    }
+
     reader->texture_w = texture_w;
     reader->texture_h = texture_h;
     reader->texture_line_size = texture_w * 4;
+    reader->texture_buffer = malloc(sizeof(Uint8) * 4 * texture_w * texture_h);
+
+    if (reader->texture_buffer == NULL) {
+        free_texture_reader(reader);
+        return NULL;
+    }
 
     read_texture_data(texture, reader->texture_buffer, texture_w, texture_h);
 

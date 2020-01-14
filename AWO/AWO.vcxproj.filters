@@ -144,6 +144,27 @@
     <ClCompile Include="Internal\Player\player.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Internal\Texture_Reader\texture_reader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\GL_Helpers\create_glfw_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\GL_Helpers\create_projection_matrix.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\GL_Helpers\create_shader_program.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\GL_Helpers\create_texture.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\GL_Helpers\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\GL_Helpers\read_texture_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -321,6 +342,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Player\player_index_enum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Texture_Reader\texture_reader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\GL_Helpers\gl_helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

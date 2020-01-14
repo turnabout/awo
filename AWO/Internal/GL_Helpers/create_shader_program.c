@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
+#include "GL_Helpers/gl_helpers.h"
 #include "Utilities/utilities.h"
 
 GLuint check_shader_compile_errors(GLuint shader)

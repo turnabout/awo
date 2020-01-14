@@ -3,6 +3,7 @@
 #include "Config/config.h"
 #include "Utilities/utilities.h"
 #include "Game_Data/game_data.h"
+#include "GL_Helpers/gl_helpers.h"
 
 Bool get_data_JSON(cJSON **data_JSON)
 {
@@ -42,58 +43,63 @@ Game_Data* create_game_data()
     }
 
     // Gather tiles data
-    data->tiles = create_tiles_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "tiles"),
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "properties"),
+    data->tile = create_tile_data(
+        cJSON_GetObjectItem(data_JSON, "tiles"),
+        data->sprite_sheet_width,
+        data->sprite_sheet_height
+    );
+
+    data->property = create_property_tiles_data(
+        cJSON_GetObjectItem(data_JSON, "properties"),
         data->sprite_sheet_width,
         data->sprite_sheet_height
     );
 
     // Gather units data
-    data->units = create_units_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "units"),
+    data->unit = create_unit_data(
+        cJSON_GetObjectItem(data_JSON, "units"),
         data->sprite_sheet_width,
         data->sprite_sheet_height
     );
 
     // Gather UI data
     data->UI = create_UI_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "ui"),
+        cJSON_GetObjectItem(data_JSON, "ui"),
         data->sprite_sheet_width,
         data->sprite_sheet_height
     );
 
     // Gather CO data
     data->CO = create_CO_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "COs"),
+        cJSON_GetObjectItem(data_JSON, "COs"),
         data->sprite_sheet_width,
         data->sprite_sheet_height
     );
 
     // Gather clock data
     data->clock = create_clock_data(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "clocks")
+        cJSON_GetObjectItem(data_JSON, "clocks")
     );
 
     // Get the raw palette data and store it
-    data->raw_palette = create_raw_palette_texture(
-        cJSON_GetObjectItemCaseSensitive(data_JSON, "palettes")
+    data->palette = create_palette_data(
+        cJSON_GetObjectItem(data_JSON, "palettes")
     );
 
     // Load all default stages
-    cJSON* stages_array_JSON = cJSON_GetObjectItemCaseSensitive(data_JSON, "stages");
+    cJSON* stages_array_JSON = cJSON_GetObjectItem(data_JSON, "stages");
 
     for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
         cJSON* stage_JSON = cJSON_GetArrayItem(stages_array_JSON, i);
 
         if (stage_JSON == NULL) {
-            data->stages[i] = NULL;
+            data->default_stages[i] = NULL;
             continue;
         }
 
-        data->stages[i] = generate_stage_from_string(
+        data->default_stages[i] = generate_stage_from_string(
             stage_JSON->valuestring,
-            data->tiles
+            data->tile
         );
     }
 
@@ -108,14 +114,14 @@ void free_game_data(Game_Data* data)
         return;
     }
 
-    free_tile_data(data->tiles);
-    free_units_data(data->units);
+    free_tile_data(data->tile);
+    free_units_data(data->unit);
     free_UI_data(data->UI);
     free_CO_data(data->CO);
     free_clock_data(data->clock);
 
     for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
-        free_stage(data->stages[i]);
+        free_stage(data->default_stages[i]);
     }
 
     free(data);

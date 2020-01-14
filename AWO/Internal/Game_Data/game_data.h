@@ -6,9 +6,10 @@
 #include "Game_Data/Palette_Data/palette_data.h"
 #include "Game_Data/Unit_Data/unit_data.h"
 #include "Game_Data/Tile_Data/tile_data.h"
+#include "Game_Data/Property_Data/property_data.h"
 #include "Game_Data/UI_Data/UI_data.h"
 #include "Game_Data/CO_Data/CO_data.h"
-// #include "Stage/stage.h"
+#include "Stage/stage.h"
 
 typedef struct Game_Data {
 
@@ -19,16 +20,19 @@ typedef struct Game_Data {
     CO_Data* CO;
 
     // Data for all tiles.
-    Tiles_Data* tiles;
+    Tile_Data* tile;
+
+    // Data for all properties.
+    Property_Data* property;
 
     // Data for all units.
-    Units_Data* units;
+    Unit_Data* unit;
 
     // Data for all UI elements.
     UI_Data* UI;
 
     // Default stages.
-    // Stage* stages[MAX_LOADED_STAGE_COUNT];
+    Stage* default_stages[MAX_LOADED_STAGE_COUNT];
 
     // For for all all palettes.
     Palette_Data* palette;

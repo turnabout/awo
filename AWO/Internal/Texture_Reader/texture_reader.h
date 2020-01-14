@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "types.h"
+#include "Utilities/utilities.h"
 
 /*! @brief Module used to read sections of a texture loaded into GL.
  */
