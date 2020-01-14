@@ -11,9 +11,6 @@
 typedef struct Tile_Variation_Data
 {
 
-    // The tile variation this data object describes.
-    Tile_Variation variation;
-
     // Index to the clock used by this tile variation to update its animation.
     Clock_Index clock;
 

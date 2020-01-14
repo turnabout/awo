@@ -30,11 +30,3 @@ Tiles_Data* create_tile_data(cJSON* tiles_data_JSON, int ss_width, int ss_height
  *  @param[in] tiles_data The tiles data object.
  */
 void free_tile_data(Tiles_Data* tiles_data);
-
-#ifdef _DEBUG
-/*! @brief Prints all contents stored in tiles data.
- *
- *  @param[in] tiles_data The tiles data object.
- */
-void print_tiles_data(Tiles_Data* tiles_data);
-#endif

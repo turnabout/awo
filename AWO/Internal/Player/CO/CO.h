@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Game/Data/Unit/enums.h"
-#include "Game/Data/Enums/army_type.h"
-#include "Game/Data/CO/enums.h"
+#include "Game_Data/Headers/army_types.h"
+#include "Game_Data/Unit_Data/unit_data.h"
+#include "Game_Data/CO_Data/CO_data.h"
 
 /*! @brief Commanding Officer.
  *

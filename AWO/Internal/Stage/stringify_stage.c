@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Game/Stage/_stage.h"
+#include "Stage/_stage.h"
 
 void write_stage_string_byte(char* stage_string, Uint8 byte, int* i)
 {

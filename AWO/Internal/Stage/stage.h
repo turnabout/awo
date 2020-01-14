@@ -1,10 +1,9 @@
 #pragma once
 
-#include "types.h"
-#include "conf.h"
-#include "Include/game.h"
-#include "Game/Data/Tile/tiles_data.h"
-#include "Game/Data/Unit/units_data.h"
+#include "Config/config.h"
+#include "Utilities/utilities.h"
+#include "Game_Data/Tile_Data/tile_data.h"
+#include "Game_Data/Unit_Data/unit_data.h"
 
 #define STAGE_NAME_MAX_LENGTH 32
 

@@ -1,9 +1,7 @@
 #include <stdlib.h>
 
-#include "Game/Stage/_stage.h"
 #include "Utilities/utilities.h"
-
-PRAGMA( warning( disable: 6001) )
+#include "Stage/_stage.h"
 
 Stage* create_stage(
     char* stage_name,
@@ -14,8 +12,14 @@ Stage* create_stage(
 {
     Stage* stage = malloc(sizeof(Stage));
 
+    if (stage == NULL) {
+        return NULL;
+    }
+
     stage->width = width;
     stage->height = height;
+    stage->tiles_grid = NULL;
+    stage->player_count = 0;
 
     // Copy name
     for (int i = 0; i < STAGE_NAME_MAX_LENGTH; i++) {
@@ -45,6 +49,11 @@ Stage* create_stage(
 
     // Allocate space for tile grid
     stage->tiles_grid = malloc(sizeof(Stage_Tile_Row) * stage->height);
+
+    if (stage->tiles_grid == NULL) {
+        free_stage(stage);
+        return NULL;
+    }
 
     for (Uint8 y = 0; y < stage->height; y++) {
         stage->tiles_grid[y] = malloc(sizeof(Stage_Tile) * stage->width);

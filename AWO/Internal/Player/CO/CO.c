@@ -1,10 +1,14 @@
 #include <stdlib.h>
 
-#include "Game/Player/CO/CO.h"
+#include "Player/CO/CO.h"
 
 CO* create_CO(CO_Type co_type)
 {
-    CO* co = (CO*)malloc(sizeof(CO));
+    CO* co = malloc(sizeof(CO));
+
+    if (co == NULL) {
+        return NULL;
+    }
 
     co->name = co_type_str[co_type];
 

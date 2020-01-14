@@ -10,6 +10,14 @@
  */
 Tile_Variation get_default_tile_variation(Tile_Type_Data* tile_type_data);
 
+/*! @brief Gets the the tile variation data object corresponding to a tile variation.
+ *
+ *  @param[in] tile_type_data The data object of the tile type from which to get the tile var data.
+ *  @param[in] var The tile variation for which to get the data.
+ *  @return The fetched tile variation data object, or NULL if it doesn't exist.
+ */
+Tile_Variation_Data* get_tile_variation_data(Tile_Type_Data* tile_type_data, Tile_Variation var);
+
 /*! @brief Gets the next tile variation belonging to the given tile type.
  *  Must be called continuously until it returns NULL.
  *  Goes through all tile variations of the tile type until all have been returned.

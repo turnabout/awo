@@ -49,6 +49,10 @@
 // Units
 #define MAX_UNITS_PER_PLAYER 50
 
+// Min/max amount of players for a game
+#define MIN_PLAYER_COUNT 2
+#define MAX_PLAYER_COUNT 4
+
 // Game Camera
 #define DEFAULT_CAMERA_ZOOM (DEFAULT_ENTITY_SIZE * 2)
 #define DEFAULT_CAMERA_X 0

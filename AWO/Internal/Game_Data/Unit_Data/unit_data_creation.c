@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game_Data/Unit/_units_data.h"
+#include "Game_Data/Unit_Data/_unit_data.h"
 
 Unit_Type_Data* create_unit_type_data(cJSON* unit_type_JSON, int ss_width, int ss_height)
 {

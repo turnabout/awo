@@ -108,7 +108,7 @@ void free_game_data(Game_Data* data)
         return;
     }
 
-    free_tiles_data(data->tiles);
+    free_tile_data(data->tiles);
     free_units_data(data->units);
     free_UI_data(data->UI);
     free_CO_data(data->CO);

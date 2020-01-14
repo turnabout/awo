@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Player/player.h"
+#include "Player/player.h"
 
 Player* create_player(Player_Index player_index, Army_Type player_army, CO_Type player_co)
 {

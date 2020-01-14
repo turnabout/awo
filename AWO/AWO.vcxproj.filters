@@ -15,261 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\GL_Helpers\create_shader_program.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utilities\read_file.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\GL_Helpers\create_texture.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\game_board.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\render_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\update_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\game_renderer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\Render_Grid\get_render_grid_VAO.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\Render_Grid\render_grid.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utilities\hex_string_to_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\load_game_board_stage.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\Render_Grid\update_render_grid.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Tick_Event\print_tick_events_list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Clock\game_clock.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\add_game_board_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Player\player.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Player\CO\CO.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utilities\Linked_List\list_entry.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utilities\Linked_List\linked_list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Stage\generate_filled_stage.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Stage\generate_custom_stage.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Stage\stage.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Pub_Sub\pub_sub.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Subscribers\Tiles\game_clock_tile_subscriber.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Subscribers\Property_Lights\property_lights_subscriber.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Inputs\Mouse\mouse.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Inputs\Keyboard\keyboard.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\edit_game_board_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\GL_Helpers\read_texture_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\game_editor.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\update_game_board_weather.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Stage\stringify_stage.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Stage\generate_stage_from_string.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Stage\validate_stage.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Stage\validate_stage_string_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\update_game_renderer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\render_game_renderer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral\delete_neutral_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral\neutral_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral\update_neutral_tile_grid.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Neutral\update_neutral_tile_palette.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property\delete_property_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property\property_tile.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property\update_property_tile_grid.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Tile\Property\update_property_tile_palette.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\update_game_renderer_matrices.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Unit\update_unit_grid.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Unit\update_unit_palette.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Unit\unit.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Entity\Unit\delete_unit.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\player_unit_list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\player_property_list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\add_game_board_unit.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\apply_autovars.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\set_editor_unit_entity.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\set_editor_tile_entity.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\prepare_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game\create_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game\free_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game\prepare_design_room_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game\run_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game\unprepare_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game\update_game_window_dimensions.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game_Editor\update_game_editor_selected_entity.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game_Data\tiles_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\GL_Helpers\Texture_Reader\texture_reader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game_Data\API_entity_texture_reader.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Clock\Timer\clock_timer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Board\get_game_board_tile_type.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\set_editor_property_entity.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game\get_game_state.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game_Message\get_next_game_message.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utilities\Message_Service\message_service.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Utilities\Message_Service\message_service_basic.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\API\Game_Message\free_game_message.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Editor\is_editor_tile_placeable.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Controller\Editor\game_editor_controller.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\Renderer\Stage_Renderer\update_stage_renderer_matrices.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\GL_Helpers\create_projection_matrix.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\GL_Helpers\create_glfw_window.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Game\init_game_rendering.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\GL_Helpers\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Internal\Camera\focus.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -301,12 +46,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Internal\Game_Data\Clock_Data\clock_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Unit_Data\units_data_access.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Unit_Data\units_data_creation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Internal\Game_Data\CO_Data\CO_data_access.c">
@@ -348,10 +87,10 @@
     <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\tile_type_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_data_access.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_data.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Variation_Data\tile_variation_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Auto_Var\tile_auto_var.c">
@@ -363,153 +102,57 @@
     <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Placement_Rule\tile_placement_rule_set.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Variation_Data\tile_variation_data.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\tile_variation_data_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_placement_rule_access.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\tile_placement_rule_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_variation_data_access.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\tile_auto_var_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_auto_var_access.c">
+    <ClCompile Include="Internal\Game_Data\Unit_Data\unit_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Game_Data\Unit_Data\unit_data_creation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Stage\generate_custom_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Stage\generate_filled_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Stage\generate_stage_from_string.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Stage\stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Stage\stringify_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Stage\validate_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Stage\validate_stage_string_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Player\CO\CO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Player\player.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\conf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Libraries\cJSON.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Libraries\c_hashmap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Utilities\macros.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utilities\utilities.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Libraries\SDL_FontCache.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\_game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\GL_Helpers\gl_helpers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Inputs\inputs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Board\game_board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\game_renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\Sprite_Batch\sprite_batch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\_game_clock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Tick_Event\tick_event.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\Render_Grid\render_grid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Board\_game_board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\Render_Grid\_render_grid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\game_clock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Player\player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Player\player_index_enum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Player\CO\CO.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utilities\Linked_List\linked_list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Stage\stage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Stage\_stage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Subscribers\Tiles\_game_clock_tile_subscriber.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Subscribers\Property_Lights\_property_lights_subscriber.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Inputs\Mouse\mouse.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Inputs\button_state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Inputs\Keyboard\keyboard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utilities\Linked_List\list_entry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Editor\game_editor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\Extras_Renderer\extras_renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\_game_renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\entity_update_cb.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral\_neutral_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Neutral\neutral_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Property\_property_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Tile\Property\property_tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Cursor\game_cursor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Unit\unit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Entity\Unit\_unit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Editor\_game_editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\game.h">
@@ -521,37 +164,7 @@
     <ClInclude Include="Include\game_editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\emx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\GL_Helpers\Texture_Reader\texture_reader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Timer\clock_timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Clock\Pub_Sub\pub_sub.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Include\game_message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Utilities\Message_Service\message_service.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Controller\Editor\game_editor_controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Controller\Editor\_game_editor_controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\Stage_Renderer\stage_renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Renderer\Stage_Renderer\_stage_renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Game\Controller\game_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Config\config.h">
@@ -608,12 +221,6 @@
     <ClInclude Include="Internal\Game_Data\Unit_Data\Headers\unit_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Unit_Data\_units_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Unit_Data\units_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Internal\Game_Data\CO_Data\Headers\CO_frame_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -644,12 +251,6 @@
     <ClInclude Include="Internal\Game_Data\UI_Data\Headers\UI_elements.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_variations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Internal\Game_Data\Property_Data\Headers\property_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -662,10 +263,31 @@
     <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\tile_type_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\_tile_data.h">
+    <ClInclude Include="Internal\Game_Data\Tile_Data\tile_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\tile_data.h">
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\_tile_type_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Headers\tile_auto_var_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Headers\tile_placement_rule_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Headers\tile_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Headers\tile_variation_data_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Variation_Data\Header\tile_variations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Variation_Data\tile_variation_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Auto_Var\tile_auto_var.h">
@@ -677,22 +299,28 @@
     <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Placement_Rule\tile_placement_rule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_data_access.h">
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Headers\tile_type_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_placement_rule_access.h">
+    <ClInclude Include="Internal\Game_Data\Unit_Data\_unit_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_variation_data_access.h">
+    <ClInclude Include="Internal\Game_Data\Unit_Data\unit_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_auto_var_access.h">
+    <ClInclude Include="Internal\Stage\_stage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\macros.h">
+    <ClInclude Include="Internal\Stage\stage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Variation_Data\tile_variation_data.h">
+    <ClInclude Include="Internal\Player\CO\CO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Player\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Player\player_index_enum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

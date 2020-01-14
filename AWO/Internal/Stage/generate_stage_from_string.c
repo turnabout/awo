@@ -1,7 +1,7 @@
 #include <stddef.h>
 
 #include "Utilities/utilities.h"
-#include "Game/Stage/_stage.h"
+#include "Stage/_stage.h"
 
 void load_stage_name(Uint8* stage_data, size_t* i, char* stage_name)
 {
