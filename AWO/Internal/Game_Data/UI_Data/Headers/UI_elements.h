@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Utilities/macros.h"
+#include "Utilities/utilities.h"
 
-// UI element enum
 #define FOREACH_UI_ELEMENT(ELEMENT) \
     ELEMENT(TileCursor) \
     ELEMENT(TileCursorX) \

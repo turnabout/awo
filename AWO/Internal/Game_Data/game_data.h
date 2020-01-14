@@ -2,13 +2,13 @@
 
 #include "Game_Data/Animation/animation.h"
 #include "Game_Data/Frame/frame.h"
-#include "Game_Data/Clock/clock_data.h"
-#include "Game_Data/Palette/raw_palette.h"
-#include "Game_Data/Units_Data/units_data.h"
-#include "Game_Data/Tiles_Data/tiles_data.h"
+#include "Game_Data/Clock_Data/clock_data.h"
+#include "Game_Data/Palette_Data/palette_data.h"
+#include "Game_Data/Unit_Data/units_data.h"
+#include "Game_Data/Tile_Data/tiles_data.h"
 #include "Game_Data/UI_Data/UI_data.h"
-#include "Game_Data/COs_Data/COs_data.h"
-#include "Stage/stage.h"
+#include "Game_Data/CO_Data/CO_data.h"
+// #include "Stage/stage.h"
 
 typedef struct Game_Data {
 
@@ -27,11 +27,11 @@ typedef struct Game_Data {
     // Data for all UI elements.
     UI_Data* UI;
 
-    // Initially loaded default stages.
-    Stage* stages[MAX_LOADED_STAGE_COUNT];
+    // Default stages.
+    // Stage* stages[MAX_LOADED_STAGE_COUNT];
 
-    // Texture holding all palette data.
-    GLuint raw_palette;
+    // For for all all palettes.
+    Palette_Data* palette;
 
     // Holds the game's sprite sheet's texture.
     GLuint sprite_sheet;

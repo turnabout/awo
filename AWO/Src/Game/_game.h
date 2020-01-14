@@ -4,16 +4,10 @@
 #include <GLFW/glfw3.h>
 
 #include "Include/game.h"
-#include "Utilities/Message_Service/message_service.h"
 
 #include "Game/Board/game_board.h"
 #include "Game/Clock/game_clock.h"
-#include "Game/Cursor/game_cursor.h"
-#include "Game/Data/game_data.h"
-#include "Game/Data/Palette/game_palette.h"
-#include "Game/Editor/game_editor.h"
-#include "Game/Renderer/game_renderer.h"
-#include "Game/Inputs/inputs.h"
+#include "Game_Data/game_data.h"
 #include "Game/Controller/game_controller.h"
 
 struct Game {

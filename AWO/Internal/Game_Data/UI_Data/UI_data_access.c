@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Data/UI/_UI_data.h"
+#include "Game_Data/UI_Data/_UI_data.h"
 
 Animation* get_UI_element_frames(UI_Data* UI_data, UI_Element_Type element)
 {

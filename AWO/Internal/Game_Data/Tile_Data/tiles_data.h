@@ -2,8 +2,8 @@
 
 #include <cJSON.h>
 
-#include "Game/Data/Tile/Neutral_Tile/neutral_tiles_data.h"
-#include "Game/Data/Tile/Property_Tile/property_tiles_data.h"
+#include "Game_Data/Tile_Data/Neutral_Tile/neutral_tiles_data.h"
+#include "Game_Data/Tile_Data/Property_Tile/property_tiles_data.h"
 
 typedef struct Tiles_Data Tiles_Data;
 

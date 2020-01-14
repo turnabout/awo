@@ -2,8 +2,8 @@
 
 #include <cJSON.h>
 
-#include "Game/Data/Animation/animation.h"
-#include "Game/Data/UI/enums.h"
+#include "Game_Data/Animation/animation.h"
+#include "Headers/UI_elements.h"
 
 /*! @brief Holds all of the game's data for UI elements.
  */
