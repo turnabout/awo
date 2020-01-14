@@ -1,15 +1,13 @@
+#pragma once
+
 #include <stdlib.h>
 #include <string.h>
 
-#include "Utilities/macros.h"
-#include "conf.h"
 #include "Game_Data/Palette_Data/_palette_data.h"
-
-PRAGMA(warning(disable: 6385))
 
 // Apply a color to the given index of the given palette texture row.
 void apply_palette_row_color(
-    Palette_Texture_Row palette_texture_row,
+    Palette_Data_Row palette_texture_row,
     int palette_index,
     GLubyte color[4]
 )
@@ -21,7 +19,7 @@ void apply_palette_row_color(
 }
 
 // Apply palette colors in the JSON object to the given palette texture row.
-void apply_palette_colors(Palette_Texture_Row palette_texture_row, cJSON* palette_JSON)
+void apply_palette_colors(Palette_Data_Row palette_texture_row, cJSON* palette_JSON)
 {
     // Apply colors from the palette
     cJSON* palette_item_JSON;
@@ -41,23 +39,37 @@ void apply_palette_colors(Palette_Texture_Row palette_texture_row, cJSON* palett
     }
 }
 
-GLuint create_raw_palette_texture(cJSON* palettes_JSON)
+Palette_Data* create_palette_data(cJSON* palette_JSON)
 {
-    int palette_count = cJSON_GetArraySize(palettes_JSON);
-    
-    Palette_Texture_Row* palette_texture_data = malloc(sizeof(Palette_Texture_Row) * palette_count);
-    memset(palette_texture_data, 0, sizeof(Palette_Texture_Row) * palette_count);
+    Palette_Data* palette_data = malloc(sizeof(Palette_Data));
 
-    for (int i = 0; i < palette_count; i++) {
-        apply_palette_colors(palette_texture_data[i], cJSON_GetArrayItem(palettes_JSON, i));
+    if (palette_data == NULL) {
+        return NULL;
     }
 
-    init_palette_NDC_indexes();
+    palette_data->buffer = NULL;
+    // palette_data->texture = 0;
+
+    // Allocate memory for the palette data rows & fill out using JSON data
+    int palette_count = cJSON_GetArraySize(palette_JSON);
+
+    palette_data->buffer = malloc(sizeof(Palette_Data_Row) * palette_count);
+
+    if (palette_data->buffer == NULL) {
+        free_palette_data(palette_data);
+        return NULL;
+    }
+
+    memset(palette_data->buffer, 0, sizeof(Palette_Data_Row) * palette_count);
+
+    for (int i = 0; i < palette_count; i++) {
+        apply_palette_colors(palette_data->buffer[i], cJSON_GetArrayItem(palette_JSON, i));
+    }
 
     // Create the texture
-    GLuint texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
+    /*
+    glGenTextures(1, &palette_data->texture);
+    glBindTexture(GL_TEXTURE_2D, palette_data->texture);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -75,8 +87,20 @@ GLuint create_raw_palette_texture(cJSON* palettes_JSON)
         GL_UNSIGNED_BYTE, 
         palette_texture_data
     );
+    */
 
-    free(palette_texture_data);
+    return palette_data;
+}
 
-    return texture;
+void free_palette_data(Palette_Data* palette_data)
+{
+    if (palette_data == NULL) {
+        return;
+    }
+
+    if (palette_data->buffer != NULL) {
+        free(palette_data->buffer);
+    }
+
+    free(palette_data);
 }

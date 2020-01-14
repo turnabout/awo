@@ -1,6 +1,6 @@
 #include <cglm/cglm.h>
 
-#include "Game/Data/Palette/_palette.h"
+#include "Game_Data/Palette_Data/_palette_data.h"
 
 // Array of every palette indexes NDC y values.
 static GLfloat palette_NDC_indexes[PALETTE_TEX_HEIGHT];
