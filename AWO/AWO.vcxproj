@@ -49,8 +49,8 @@
     <ClCompile Include="Internal\GL_Helpers\read_texture_data.c" />
     <ClCompile Include="Internal\Linked_List\linked_list.c" />
     <ClCompile Include="Internal\Linked_List\list_entry.c" />
-    <ClCompile Include="Internal\Message_Service\message_service.c" />
-    <ClCompile Include="Internal\Message_Service\message_service_basic.c" />
+    <ClCompile Include="Libs\Game_Message\game_message.c" />
+    <ClCompile Include="Libs\Game_Message\game_message_simple.c" />
     <ClCompile Include="Internal\Palette\Game_Palette\create_game_palette.c" />
     <ClCompile Include="Internal\Palette\Game_Palette\get_game_palette_index.c" />
     <ClCompile Include="Internal\Palette\Game_Palette\update_game_palette_property_lights.c" />
@@ -94,7 +94,7 @@
     <ClInclude Include="Include\game_editor.h" />
     <ClInclude Include="Include\game.h" />
     <ClInclude Include="Include\game_data.h" />
-    <ClInclude Include="Include\game_message.h" />
+    <ClInclude Include="Include\Game_Message\game_message.h" />
     <ClInclude Include="Internal\Config\config.h" />
     <ClInclude Include="Internal\Game_Data\CO_Data\Headers\CO_frame_types.h" />
     <ClInclude Include="Internal\Game_Data\Headers\army_types.h" />
@@ -120,7 +120,7 @@
     <ClInclude Include="Internal\GL_Helpers\gl_helpers.h" />
     <ClInclude Include="Internal\Linked_List\linked_list.h" />
     <ClInclude Include="Internal\Linked_List\list_entry.h" />
-    <ClInclude Include="Internal\Message_Service\message_service.h" />
+    <ClInclude Include="Libs\Game_Message\game_message.h" />
     <ClInclude Include="Internal\Player\CO\CO.h" />
     <ClInclude Include="Internal\Player\player.h" />
     <ClInclude Include="Internal\Player\player_index_enum.h" />
@@ -221,7 +221,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Internal;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)Internal;$(ProjectDir)Libs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>6011;6386;6387;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>

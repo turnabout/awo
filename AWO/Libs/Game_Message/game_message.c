@@ -5,23 +5,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Linked_List/linked_list.h"
-#include "Message_Service/message_service.h"
+#include "Game_Message/game_message.h"
 
-static Linked_List* list = NULL;
+// Function handling game messages
+static Game_Message_CB message_callback = NULL;
 
-void start_message_service()
+void set_game_message_callback(Game_Message_CB callback)
 {
-    if (list != NULL) {
-        return;
-    }
-
-    list = create_linked_list(NULL, 0);
+    message_callback = callback;
 }
 
 void push_msg(Game_Message_Label label, char* format, ...)
 {
-    if (list == NULL) {
+    if (message_callback == NULL) {
         return;
     }
 
@@ -42,39 +38,21 @@ void push_msg(Game_Message_Label label, char* format, ...)
     size_t msg_len = vsnprintf(NULL, 0, format, a_ptr) + 1;
     message->str = malloc(msg_len);
 
+    if (message->str == NULL) {
+        free(message->str);
+        free(message);
+        return;
+    }
+
     // Write to the message string buffer
     vsprintf_s(message->str, msg_len, format, a_ptr);
     message->str[msg_len - 1] = '\0';
 
     va_end(a_ptr);
 
-    // Store message in message service's list
-    append_linked_list_item(list, (void*)message);
-}
-
-Game_Message* pop_msg()
-{
-    if (list == NULL) {
-        return NULL;
-    }
-
-    Game_Message* message = get_linked_list_nth_element(list, 0);
-
-    if (message != NULL) {
-        delete_linked_list_item(list, (void*)message, FALSE);
-    }
-
-    return message;
-}
-
-void end_message_service()
-{
-    if (list == NULL) {
-        return;
-    }
-
-    free_linked_list(list);
-    list = NULL;
+    // Send the message to the set message callback
+    message_callback(message);
+    free(message);
 }
 
 #endif

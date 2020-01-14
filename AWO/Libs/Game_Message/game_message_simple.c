@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "Message_Service/message_service.h"
+#include "Game_Message/game_message.h"
 
 void start_message_service()
 {

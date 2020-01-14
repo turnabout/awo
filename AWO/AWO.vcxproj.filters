@@ -177,10 +177,10 @@
     <ClCompile Include="Internal\Linked_List\list_entry.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Message_Service\message_service.c">
+    <ClCompile Include="Libs\Game_Message\game_message.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Message_Service\message_service_basic.c">
+    <ClCompile Include="Libs\Game_Message\game_message_simple.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -201,9 +201,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\game_editor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\game_message.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Config\config.h">
@@ -377,7 +374,10 @@
     <ClInclude Include="Internal\Linked_List\list_entry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Message_Service\message_service.h">
+    <ClInclude Include="Include\Game_Message\game_message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Game_Message\game_message.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "Include/game_message.h"
+#include "Include/Game_Message/game_message.h"
 
 // Macro shortcuts for pushing messages with different labels
 #define printe(format, ...) push_msg(Error_Msg, format, ##__VA_ARGS__)

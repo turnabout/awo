@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "types.h"
+#include "Utilities/utilities.h"
 
 /*! @brief Reads a string of following hexadecimal characters and translates it into a data array.
  *
