@@ -1,9 +1,6 @@
 #include <stdlib.h>
 
-#include "Utilities/macros.h"
-#include "Utilities/Linked_List/list_entry.h"
-
-PRAGMA(warning( disable: 6001 28182 ))
+#include "Linked_List/list_entry.h"
 
 List_Entry* add_list_entry(List_Entry* list_tail, void* value)
 {

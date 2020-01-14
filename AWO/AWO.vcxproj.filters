@@ -165,6 +165,24 @@
     <ClCompile Include="Internal\GL_Helpers\read_texture_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Internal\Utilities\read_file.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Utilities\hex_string_to_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Linked_List\linked_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Linked_List\list_entry.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Message_Service\message_service.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Message_Service\message_service_basic.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -348,6 +366,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\GL_Helpers\gl_helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Utilities\Headers\emx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Linked_List\linked_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Linked_List\list_entry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Message_Service\message_service.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

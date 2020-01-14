@@ -47,6 +47,10 @@
     <ClCompile Include="Internal\GL_Helpers\create_texture.c" />
     <ClCompile Include="Internal\GL_Helpers\glad.c" />
     <ClCompile Include="Internal\GL_Helpers\read_texture_data.c" />
+    <ClCompile Include="Internal\Linked_List\linked_list.c" />
+    <ClCompile Include="Internal\Linked_List\list_entry.c" />
+    <ClCompile Include="Internal\Message_Service\message_service.c" />
+    <ClCompile Include="Internal\Message_Service\message_service_basic.c" />
     <ClCompile Include="Internal\Palette\Game_Palette\create_game_palette.c" />
     <ClCompile Include="Internal\Palette\Game_Palette\get_game_palette_index.c" />
     <ClCompile Include="Internal\Palette\Game_Palette\update_game_palette_property_lights.c" />
@@ -68,6 +72,8 @@
     <ClCompile Include="Internal\Stage\validate_stage.c" />
     <ClCompile Include="Internal\Stage\validate_stage_string_data.c" />
     <ClCompile Include="Internal\Texture_Reader\texture_reader.c" />
+    <ClCompile Include="Internal\Utilities\hex_string_to_data.c" />
+    <ClCompile Include="Internal\Utilities\read_file.c" />
     <ClCompile Include="Internal\Utilities\round_float_to_int.c" />
   </ItemGroup>
   <ItemGroup>
@@ -112,12 +118,16 @@
     <ClInclude Include="Internal\Game_Data\Property_Data\property_data.h" />
     <ClInclude Include="Internal\Game_Data\Property_Data\_property_data.h" />
     <ClInclude Include="Internal\GL_Helpers\gl_helpers.h" />
+    <ClInclude Include="Internal\Linked_List\linked_list.h" />
+    <ClInclude Include="Internal\Linked_List\list_entry.h" />
+    <ClInclude Include="Internal\Message_Service\message_service.h" />
     <ClInclude Include="Internal\Player\CO\CO.h" />
     <ClInclude Include="Internal\Player\player.h" />
     <ClInclude Include="Internal\Player\player_index_enum.h" />
     <ClInclude Include="Internal\Stage\stage.h" />
     <ClInclude Include="Internal\Stage\_stage.h" />
     <ClInclude Include="Internal\Texture_Reader\texture_reader.h" />
+    <ClInclude Include="Internal\Utilities\Headers\emx.h" />
     <ClInclude Include="Internal\Utilities\Headers\macros.h" />
     <ClInclude Include="Internal\Utilities\Headers\types.h" />
     <ClInclude Include="Internal\Utilities\utilities.h" />

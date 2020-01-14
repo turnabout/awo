@@ -1,11 +1,12 @@
 #ifndef __EMSCRIPTEN__
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "Utilities/Linked_List/linked_list.h"
-#include "Utilities/Message_Service/message_service.h"
+#include "Linked_List/linked_list.h"
+#include "Message_Service/message_service.h"
 
 static Linked_List* list = NULL;
 

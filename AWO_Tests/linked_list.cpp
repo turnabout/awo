@@ -6,7 +6,8 @@
     expect_list_contents(list, UNIQUE_NAME(base), vals_count);
 
 extern "C" {
-#include "Utilities/Linked_List/linked_list.h"
+// TODO: fix path
+#include "../Internal/Linked_List/linked_list.h"
 }
 
 class Linked_List_Test : public ::testing::Test {

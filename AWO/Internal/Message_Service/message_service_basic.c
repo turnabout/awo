@@ -1,8 +1,9 @@
 #ifdef __EMSCRIPTEN__
+
 #include <stdio.h>
 #include <stdarg.h>
 
-#include "Utilities/Message_Service/message_service.h"
+#include "Message_Service/message_service.h"
 
 void start_message_service()
 {

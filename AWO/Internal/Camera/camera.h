@@ -1,6 +1,5 @@
 #pragma once
 
-#include "types.h"
 #include "Game/Inputs/inputs.h"
 #include "Stage/stage.h"
 #include "Game/Renderer/game_renderer.h"
