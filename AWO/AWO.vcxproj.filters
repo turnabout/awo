@@ -345,18 +345,6 @@
     <ClCompile Include="Internal\Game_Data\Property_Data\property_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Access\tile_placement_rules_access.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Access\tile_type_data_access.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Access\tile_var_data_access.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Access\tiles_auto_var_data_access.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\tile_type_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -366,16 +354,25 @@
     <ClCompile Include="Internal\Game_Data\Tile_Data\tile_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Auto_Var_Data\tile_auto_var_data.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Auto_Var\tile_auto_var.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Placement_Rule_Data\tile_placement_rule.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Placement_Rule\tile_placement_rule.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Placement_Rule_Data\tile_placement_rule_set.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Placement_Rule\tile_placement_rule_set.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Variation_Data\tile_variation_data.c">
+    <ClCompile Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Variation_Data\tile_variation_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_placement_rule_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_variation_data_access.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Game_Data\Tile_Data\tile_auto_var_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -671,16 +668,31 @@
     <ClInclude Include="Internal\Game_Data\Tile_Data\tile_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Auto_Var_Data\_tile_auto_var_data.h">
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Auto_Var\tile_auto_var.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Placement_Rule_Data\_tile_placement_rule.h">
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Placement_Rule\_tile_placement_rule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Placement_Rule_Data\tile_placement_rule.h">
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Placement_Rule\tile_placement_rule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Variation_Data\_tile_variation_data.h">
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_data_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_placement_rule_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_variation_data_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\tile_auto_var_access.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Headers\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Game_Data\Tile_Data\Tile_Type_Data\Tile_Variation_Data\tile_variation_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

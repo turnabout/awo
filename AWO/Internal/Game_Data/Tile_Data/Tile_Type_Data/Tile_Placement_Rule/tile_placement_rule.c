@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Data/Tile/Neutral_Tile/Type/Placement_Rule/_tile_placement_rule.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Placement_Rule/_tile_placement_rule.h"
 
 Tile_Placement_Rule* create_tile_placement_rule(cJSON* JSON)
 {

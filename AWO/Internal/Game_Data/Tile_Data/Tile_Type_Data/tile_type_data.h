@@ -3,37 +3,15 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Game_Data/Clock_Data/clock_data.h"
-#include "Game_Data/Tile_Data/Headers/tile_types.h"
-#include "Game_Data/Tile_Data/Headers/tile_variations.h"
+#include "Headers/tile_type_data.h"
+#include "Headers/tile_types.h"
+#include "Headers/tile_auto_var_access.h"
+#include "Headers/tile_placement_rule_access.h"
+#include "Headers/tile_variation_data_access.h"
+
 #include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Variation_Data/tile_variation_data.h"
 #include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Auto_Var/tile_auto_var.h"
 #include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Placement_Rule/tile_placement_rule.h"
-
-// A single tile's visual data.
-typedef struct Tile_Type_Data
-{
-    // Map holding every variation of this tile type's data (Tile_Variation_Data).
-    map_t vars_map;
-
-    // Amount of variations this tile type has.
-    int var_count;
-
-    // List of every variation this tile type has
-    Tile_Variation* vars_list;
-
-    // Amount of auto-vars this tile type has.
-    int auto_vars_count;
-
-    // List of auto-vars, used to automatically determine this tile's variation when placing it in
-    // design room mode.
-    Auto_Var_Data* auto_vars;
-
-    // This tile's placement rules. Used to block the placement of this tile in design room mode
-    // when surrounded by certain tiles.
-    Tile_Placement_Rule_Set* placement_rules;
-
-} Tile_Type_Data;
 
 /*! @brief Creates tile type data from the given JSON.
  *

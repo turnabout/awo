@@ -3,13 +3,17 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Game_Data/Tile_Data/Headers/tile_variations.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Variation_Data/tile_variation_data.h"
 
-typedef struct Auto_Var
+typedef struct Auto_Var_Data
 {
-    Tile_Variation tile_var; // The variation selected by this auto tile_var
-    int adjacent_tiles[4];   // Array pointing out which adjacent tiles are acceptable for this 
-                             // auto tile_var to be selected.
+
+    // The variation selected by this auto-var.
+    Tile_Variation tile_var;
+
+    // Array listing the acceptable adjacent tiles for this auto-var to be selected.
+    int adjacent_tiles[4];
+
 } Auto_Var_Data;
 
 typedef enum Auto_Var_Adjacent_Tile {

@@ -1,9 +1,8 @@
 #include <stdlib.h>
 #include <cJSON.h>
 #include <c_hashmap.h>
-#include <cglm/cglm.h>
 
-#include "Game/Data/Tile/_tiles_data.h"
+#include "Game_Data/Tile_Data/tile_data.h"
 
 // Creates hashmap containing all variations, using short strings as keys.
 // This is so we can get tile variations corresponding to short strings fetched from the JSON data.
@@ -41,9 +40,9 @@ void free_variations_list_hashmap(map_t variations_list_hashmap)
     hashmap_free(variations_list_hashmap);
 }
 
-Neutral_Tiles_Data* create_neutral_tiles_data(cJSON* tiles_data_JSON, int ss_width, int ss_height)
+Tiles_Data* create_tile_data(cJSON* tiles_data_JSON, int ss_width, int ss_height)
 {
-    Neutral_Tiles_Data* tiles_data = malloc(sizeof(Neutral_Tiles_Data));
+    Tiles_Data* tiles_data = malloc(sizeof(Tiles_Data));
     map_t variations_list_hashmap = create_variations_list_hashmap();
 
     // Gather all data from JSON
@@ -65,4 +64,15 @@ Neutral_Tiles_Data* create_neutral_tiles_data(cJSON* tiles_data_JSON, int ss_wid
     free_variations_list_hashmap(variations_list_hashmap);
 
     return tiles_data;
+}
+
+void free_tile_data(Tiles_Data* tiles_data)
+{
+    if (tiles_data != NULL) {
+        for (Tile_Type type = NEUTRAL_TILE_TYPE_FIRST; type < NEUTRAL_TILE_TYPE_COUNT; type++) {
+            free_tile_type_data(tiles_data->src[type]);
+        }
+
+        free(tiles_data);
+    }
 }

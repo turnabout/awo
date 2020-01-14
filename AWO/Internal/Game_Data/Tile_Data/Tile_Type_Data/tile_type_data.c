@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/_tile_type_data.h"
 
 Tile_Type_Data* create_tile_type_data(
     cJSON* tile_type_JSON, 

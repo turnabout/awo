@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Data/Tile/Neutral_Tile/Type/Variation/_tile_variation_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Variation_Data/tile_variation_data.h"
 
 Tile_Variation_Data* create_tile_variation_data(
     cJSON* tile_var_JSON,
@@ -26,6 +26,10 @@ Tile_Variation_Data* create_tile_variation_data(
 
 void free_tile_variation_data(Tile_Variation_Data* tile_variation_data)
 {
+    if (tile_variation_data == NULL) {
+        return;
+    }
+
     free_animation(tile_variation_data->animation);
     free(tile_variation_data);
 }

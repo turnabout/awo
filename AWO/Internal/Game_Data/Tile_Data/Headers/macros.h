@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game_Data/Tile_Data/Headers/tile_types.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
 
 // Check if a tile type is neutral
 #define is_tile_type_neutral(type) \

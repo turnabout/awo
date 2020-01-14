@@ -2,7 +2,7 @@
 
 #include <cJSON.h>
 
-#include "types.h"
+#include "Utilities/utilities.h"
 
 typedef struct Tile_Placement_Rule_Component {
 

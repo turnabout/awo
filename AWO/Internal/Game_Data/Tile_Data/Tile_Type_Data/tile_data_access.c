@@ -23,17 +23,6 @@ void gather_tile_data(
     }
 }
 
-void free_tiles_data(Tiles_Data* tiles_data)
-{
-    if (tiles_data != NULL) {
-        for (Tile_Type type = NEUTRAL_TILE_TYPE_FIRST; type < NEUTRAL_TILE_TYPE_COUNT; type++) {
-            free_tile_type_data(tiles_data->neutral_tiles->src[type]);
-        }
-
-        free(tiles_data);
-    }
-}
-
 #ifdef _DEBUG
 void print_tile_type(Tiles_Data* td, Tile_Type type)
 {

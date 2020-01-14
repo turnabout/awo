@@ -35,7 +35,7 @@ Entity_Texture_Reader* create_entity_texture_reader(
  *  @param[in] variation The variation of the tile to read.
  *  @param[in] weather The weather palette to apply to the tile.
  *  @param[out] texture_w Filled in with the width of the read texture.
- *  @param[out] texture_h Filled in with the width of the read texture.
+ *  @param[out] texture_h Filled in with the height of the read texture.
  */
 Uint8* read_neutral_tile_texture(
     Entity_Texture_Reader* reader,
