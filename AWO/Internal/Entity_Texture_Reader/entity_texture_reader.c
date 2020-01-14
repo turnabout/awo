@@ -11,57 +11,50 @@
 
 struct Entity_Texture_Reader {
 
-    // Reference to the game's tiles data module.
-    Tile_Data* tile_data;
-
-    // Reference to the game's units data module.
-    Unit_Data* unit_data;
-
-    // Buffer containing the data from the raw game palette.
-    Uint8* palette_data;
+    // Reference to the game data module.
+    Game_Data* game_data;
 
     // The texture reader used to retrieve the texture for single entities.
     Texture_Reader* texture_reader;
 
 };
 
-Entity_Texture_Reader* create_entity_texture_reader(
-    Tile_Data* tile_data,
-    Unit_Data* unit_data,
-    GLuint game_raw_palette,
-    GLuint sprite_sheet,
-    int sprite_sheet_w,
-    int sprite_sheet_h
-)
+Entity_Texture_Reader* create_entity_texture_reader(Game_Data* game_data)
 {
     Entity_Texture_Reader* reader = malloc(sizeof(Entity_Texture_Reader));
 
-    reader->tile_data = tile_data;
-    reader->unit_data = unit_data;
+    if (reader == NULL) {
+        return NULL;
+    }
 
-    reader->texture_reader = create_texture_reader(sprite_sheet, sprite_sheet_w, sprite_sheet_h);
+    reader->game_data = game_data;
+    reader->texture_reader = NULL;
 
-    reader->palette_data = malloc(PALETTE_TEX_WIDTH * PALETTE_TEX_HEIGHT * 4);
-
-    read_texture_data(
-        game_raw_palette,
-        (void*)reader->palette_data,
-        PALETTE_TEX_WIDTH,
-        PALETTE_TEX_HEIGHT
+    reader->texture_reader = create_texture_reader(
+        game_data->sprite_sheet,
+        game_data->sprite_sheet_width,
+        game_data->sprite_sheet_height
     );
+
+    if (reader->texture_reader == NULL) {
+        free_entity_texture_reader(reader);
+        return NULL;
+    }
 
     return reader;
 }
 
+// TODO: adjust to use new Palette_Data module
 void apply_entity_texture_reader_palette(
     Entity_Texture_Reader* reader,
-    Uint8* texture_buffer,
+    Uint8* result_texture_buffer,
     int texture_w,
     int texture_h,
     GLuint applied_palette_rows[MAX_APPLIED_PALETTE_COUNT],
     int palette_count
 )
 {
+    /*
     int line_size = texture_w * 4;
 
     // Store locations of the given palette lines
@@ -77,12 +70,12 @@ void apply_entity_texture_reader_palette(
             int looped_pixel_loc = (x * 4) + (y * line_size);
 
             // Don't bother with transparent pixels
-            if (texture_buffer[looped_pixel_loc + 3] == 0) {
+            if (result_texture_buffer[looped_pixel_loc + 3] == 0) {
                 continue;
             }
 
             // Get value of this pixel
-            Uint8 red = texture_buffer[looped_pixel_loc + 0];
+            Uint8 red = result_texture_buffer[looped_pixel_loc + 0];
 
             // Apply given palettes to this pixel
             for (int i = 0; i < palette_count; i++) {
@@ -97,13 +90,14 @@ void apply_entity_texture_reader_palette(
 
                 // Apply palette color to the looped pixel
                 memcpy(
-                    &texture_buffer[looped_pixel_loc],
+                    &result_texture_buffer[looped_pixel_loc],
                     &reader->palette_data[palette_pixel_loc],
                     4
                 );
             }
         }
     }
+    */
 }
 
 Uint8* read_neutral_tile_texture(
@@ -115,20 +109,23 @@ Uint8* read_neutral_tile_texture(
     int* texture_h_out
 )
 {
-    Animation* tiles_anim;
-    gather_tile_data(reader->tile_data, type, variation, NULL, &tiles_anim);
+    Tile_Variation_Data* tile_data = get_tile_variation_data(
+        reader->game_data->tile->src[type],
+        variation
+    );
 
-    int texture_w = tiles_anim->frames[0].width;
-    int texture_h = tiles_anim->frames[0].height;
+    int texture_w = tile_data->animation->frames[0].width;
+    int texture_h = tile_data->animation->frames[0].height;
 
     Uint8* texture_buffer = read_texture_src_data(
         reader->texture_reader,
-        (int)tiles_anim->frames[0].raw_top_left[0],
-        (int)tiles_anim->frames[0].raw_top_left[1],
+        (int)tile_data->animation->frames[0].raw_top_left[0],
+        (int)tile_data->animation->frames[0].raw_top_left[1],
         texture_w,
         texture_h
     );
 
+    /*
     apply_entity_texture_reader_palette(
         reader, 
         texture_buffer, 
@@ -137,9 +134,10 @@ Uint8* read_neutral_tile_texture(
         (GLuint[MAX_APPLIED_PALETTE_COUNT]) { get_raw_tile_palette_index_i(weather, FALSE) },
         1
     );
+    */
 
-    *texture_w_out = tiles_anim->frames[0].width;
-    *texture_h_out = tiles_anim->frames[0].height;
+    *texture_w_out = tile_data->animation->frames[0].width;
+    *texture_h_out = tile_data->animation->frames[0].height;
 
     return texture_buffer;
 }
@@ -148,10 +146,6 @@ void free_entity_texture_reader(Entity_Texture_Reader* reader)
 {
     if (reader == NULL) {
         return;
-    }
-
-    if (reader->palette_data != NULL) {
-        free(reader->palette_data);
     }
 
     free_texture_reader(reader->texture_reader);

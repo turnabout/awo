@@ -11,22 +11,10 @@ typedef struct Entity_Texture_Reader Entity_Texture_Reader;
 
 /*! @brief Creates an entity texture reader.
  *
- *  @param[in] tiles_data Reference to the game's tiles data module.
- *  @param[in] units_data Reference to the game's units data module.
- *  @param[in] game_raw_palette The game's raw palette texture.
- *  @param[in] sprite_sheet The game's sprite sheet texture.
- *  @param[in] sprite_sheet_w Sprite sheet's width.
- *  @param[in] sprite_sheet_h Sprite sheet's height.
+ *  @param[in] game_data Reference to the game data module.
  *  @return The created entity texture reader.
  */
-Entity_Texture_Reader* create_entity_texture_reader(
-    Tile_Data* tiles_data,
-    Unit_Data* units_data,
-    GLuint game_raw_palette,
-    GLuint sprite_sheet,
-    int sprite_sheet_w,
-    int sprite_sheet_h
-);
+Entity_Texture_Reader* create_entity_texture_reader(Game_Data* game_data);
 
 /*! @brief Reads the texture of a neutral tile and returns its pixel data in a new buffer.
  *
