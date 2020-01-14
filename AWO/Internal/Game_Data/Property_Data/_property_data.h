@@ -1,10 +1,6 @@
 #pragma once
 
-#include "Game/Data/Animation/Frame/frame.h"
-#include "Game/Data/Tile/Property_Tile/property_tiles_data.h"
-#include "Game/Data/Tile/enums.h"
-#include "Game/Data/Enums/weather.h"
-#include "Game/Data/Unit/enums.h"
+#include "Game_Data/Property_Data/property_data.h"
 
 /*! @brief Holds the data for one property type (city/base/etc).
  */

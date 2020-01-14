@@ -2,12 +2,11 @@
 
 #include <cJSON.h>
 
-#include "Game/Data/Unit/enums.h"
-#include "Game/Data/Tile/Property_Tile/enums.h"
-#include "Game/Data/Enums/weather.h"
-#include "Game/Data/Enums/army_type.h"
-
-typedef struct Tiles_Data Tiles_Data;
+#include "Game_Data/Tile_Data/tile_data.h"
+#include "Game_Data/Frame/frame.h"
+#include "Game_Data/Headers/army_types.h"
+#include "Game_Data/Headers/weather.h"
+#include "Headers/property_types.h"
 
 /*! @brief Holds all of the game's data for properties.
  */
@@ -21,8 +20,8 @@ typedef struct Property_Tiles_Data Property_Tiles_Data;
  *  @return The generated properties data object.
  */
 Property_Tiles_Data* create_property_tiles_data(
-    cJSON* properties_data_JSON, 
-    int ss_width, 
+    cJSON* properties_data_JSON,
+    int ss_width,
     int ss_height
 );
 
@@ -30,12 +29,12 @@ Property_Tiles_Data* create_property_tiles_data(
  *
  * This will update the weather variation currently used by all properties in the game.
  *
- *  @param[in] tiles_data The tiles data module.
+ *  @param[in] property_data The property data module.
  *  @param[in] weather_variation The weather variation to update to.
  */
 void update_tiles_data_active_property_weather_var(
-    Tiles_Data* tiles_data,
-    Weather weather_variation
+    Property_Tiles_Data* property_data, 
+    Weather weather
 );
 
 /*! @brief Retrieves a frame for a property of the given type and army variation.

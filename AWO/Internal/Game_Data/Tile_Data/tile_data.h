@@ -3,10 +3,10 @@
 #include <cJSON.h>
 
 #include "types.h"
-#include "Game/Data/Animation/animation.h"
-#include "Game/Data/Clock/enums.h"
-#include "Game/Data/Tile/enums.h"
-#include "Game/Data/Tile/Neutral_Tile/Type/Placement_Rule/tile_placement_rule.h"
+#include "Game_Data/Animation/animation.h"
+#include "Game_Data/Clock_Data/clock_data.h"
+#include "Game_Data/Tile_Data/enums.h"
+#include "Game_Data/Tile_Data/Neutral_Tile/Type/Placement_Rule/tile_placement_rule.h"
 
 typedef struct Tiles_Data Tiles_Data;
 

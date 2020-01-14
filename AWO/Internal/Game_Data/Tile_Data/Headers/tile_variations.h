@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Utilities/macros.h"
+#include "Utilities/utilities.h"
 
-// Tile Variation
 #define FOREACH_TILE_VAR(TILEVAR) \
     TILEVAR(Default) \
     TILEVAR(Horizontal) \

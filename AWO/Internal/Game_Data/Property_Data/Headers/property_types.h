@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Utilities/macros.h"
+#include "Utilities/utilities.h"
 
 // Property Type
 #define FOREACH_PROPERTY_TYPE(PROPERTY_TYPE) \

@@ -2,9 +2,6 @@
 
 #include "Utilities/macros.h"
 
-#include "Game/Data/Tile/Neutral_Tile/enums.h"
-#include "Game/Data/Tile/Property_Tile/enums.h"
-
 // All possible tiles
 #define FOREACH_TILE_TYPE(TILE) \
     TILE(Plain) \

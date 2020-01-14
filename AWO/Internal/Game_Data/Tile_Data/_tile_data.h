@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Game/Data/Tile/Neutral_Tile/Type/_tile_type_data.h"
-#include "Game/Data/Tile/Neutral_Tile/Type/Variation/_tile_variation_data.h"
-#include "Game/Data/Tile/Neutral_Tile/neutral_tiles_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/_tile_type_data.h"
+#include "Game_Data/Tile_Data/Type/Variation/_tile_variation_data.h"
+#include "Game_Data/Tile_Data/neutral_tiles_data.h"
 
 struct Neutral_Tiles_Data
 {
