@@ -30,9 +30,9 @@ void zoom_game_camera(Camera* camera, float zoom_value, int target_x, int target
     int diff_y = camera->y - target_y;
 
     // Calculate coordinates of position adjustment & add to camera position
-    add_game_camera_view_position(
+    update_game_camera_view_position_to(
         camera, 
-        round_float_to_int((float)diff_x * zoom_percent_increase), 
-        round_float_to_int((float)diff_y * zoom_percent_increase)
+        camera->x + round_float_to_int((float)diff_x * zoom_percent_increase), 
+        camera->y + round_float_to_int((float)diff_y * zoom_percent_increase)
     );
 }

@@ -47,13 +47,6 @@ void update_game_camera_view_position_to(Camera* camera, int x, int y)
     send_game_camera_updated_values(camera);
 }
 
-void add_game_camera_view_position(Camera* camera, int added_x, int added_y)
-{
-    camera->x += added_x;
-    camera->y += added_y;
-    send_game_camera_updated_values(camera);
-}
-
 void update_game_camera_view_zoom_to(Camera* camera, float zoom)
 {
     camera->zoom = zoom;

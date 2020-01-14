@@ -34,5 +34,4 @@ struct Camera {
 };
 
 void update_game_camera_view_position_to(Camera* camera, int x, int y);
-void add_game_camera_view_position(Camera* camera, int added_x, int added_y);
 void update_game_camera_view_zoom_to(Camera* camera, float zoom);
