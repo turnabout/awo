@@ -1,8 +1,10 @@
 #pragma once
 
-#include "Game_Data/Tile_Data/Tile_Type_Data/_tile_type_data.h"
-#include "Game_Data/Tile_Data/Type/Variation/_tile_variation_data.h"
-#include "Game_Data/Tile_Data/neutral_tiles_data.h"
+#include "Game_Data/Tile_Data/tile_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Variation_Data/tile_variation_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Auto_Var/tile_auto_var.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Placement_Rule/tile_placement_rule.h"
 
 struct Neutral_Tiles_Data
 {
@@ -17,7 +19,7 @@ struct Neutral_Tiles_Data
  *  @return The corresponding tile variation data object, or NULL if none was found.
  */
 Tile_Variation_Data* get_tile_variation_data(
-    Tiles_Data* tiles_data,
+    Neutral_Tiles_Data* tiles_data,
     Tile_Type type,
     Tile_Variation variation
 );

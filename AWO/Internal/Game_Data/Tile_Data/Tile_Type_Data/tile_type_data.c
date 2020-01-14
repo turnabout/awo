@@ -1,10 +1,6 @@
 #include <stdlib.h>
 
-#include "Utilities/macros.h"
-#include "Game/Data/Tile/Neutral_Tile/Type/_tile_type_data.h"
-#include "Game/Data/Tile/Neutral_Tile/Type/Variation/_tile_variation_data.h"
-
-PRAGMA(warning (disable: 4090))
+#include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
 
 Tile_Type_Data* create_tile_type_data(
     cJSON* tile_type_JSON, 
@@ -69,7 +65,7 @@ Tile_Type_Data* create_tile_type_data(
     
     // Get auto-var data
     data->auto_vars = create_tile_auto_var_data(
-        cJSON_GetObjectItemCaseSensitive(tile_type_JSON, "autoVars"),
+        cJSON_GetObjectItem(tile_type_JSON, "autoVars"),
         &variations_list_hashmap,
         &data->auto_vars_count
     );

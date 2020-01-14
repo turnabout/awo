@@ -1,7 +1,7 @@
 #include <c_hashmap.h>
 
-#include "Game/Data/Tile/_tiles_data.h"
-#include "Game/Data/Tile/Neutral_Tile/Type/Variation/_tile_variation_data.h"
+#include "Game_Data/Tile_Data/_tile_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Variation_Data/tile_variation_data.h"
 
 Tile_Variation get_next_tile_variation(Tiles_Data* tiles_data, Tile_Type type)
 {

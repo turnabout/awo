@@ -3,7 +3,7 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Game/Data/Tile/enums.h"
+#include "Game_Data/Tile_Data/Headers/tile_variations.h"
 
 typedef struct Auto_Var
 {

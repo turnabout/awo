@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Utilities/macros.h"
+#include "Utilities/utilities.h"
 
-// All possible tiles
 #define FOREACH_TILE_TYPE(TILE) \
     TILE(Plain) \
     TILE(Forest) \
@@ -45,11 +44,3 @@ static const char* tile_type_str_short[] = {
 #define PROPERTY_TILE_TYPE_COUNT PROPERTY_TILE_TYPE_LAST + 1
 
 #define TILE_TYPE_NONE -1
-
-// Check if a tile type is neutral
-#define is_tile_type_neutral(type) \
-type >= NEUTRAL_TILE_TYPE_FIRST && type <= NEUTRAL_TILE_TYPE_LAST
-
-// Check if a tile type is a property
-#define is_tile_type_property(type) \
-type >= PROPERTY_TILE_TYPE_FIRST && type <= PROPERTY_TILE_TYPE_LAST

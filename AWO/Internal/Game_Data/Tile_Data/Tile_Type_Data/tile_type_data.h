@@ -2,12 +2,13 @@
 
 #include <cJSON.h>
 #include <c_hashmap.h>
-#include <cglm/types.h>
 
-#include "Game/Data/Tile/Neutral_Tile/Type/Auto_Var/_tile_auto_var_data.h"
-#include "Game/Data/Tile/Neutral_Tile/Type/Placement_Rule/tile_placement_rule.h"
-#include "Game/Data/Tile/enums.h"
-#include "Game/Data/Clock/clock_data.h"
+#include "Game_Data/Clock_Data/clock_data.h"
+#include "Game_Data/Tile_Data/Headers/tile_types.h"
+#include "Game_Data/Tile_Data/Headers/tile_variations.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Variation_Data/tile_variation_data.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Auto_Var/tile_auto_var.h"
+#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Placement_Rule/tile_placement_rule.h"
 
 // A single tile's visual data.
 typedef struct Tile_Type_Data
