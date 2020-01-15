@@ -21,7 +21,6 @@ int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Create the game & print any messages that happened during creation
     console->game = create_game(window_w, window_h);
-    process_console_game_messages(console);
 
     // Ensure the game was created successfully
     if (get_game_state(console->game) == Game_Unusable) {

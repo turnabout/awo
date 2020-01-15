@@ -10,9 +10,13 @@
 // Function handling game messages
 static Game_Message_CB message_callback = NULL;
 
-void set_game_message_callback(Game_Message_CB callback)
+// Custom, externally-defined generic value passed to the function handling game messages
+static void* message_callback_module = NULL;
+
+void set_game_message_callback(Game_Message_CB callback, void* callback_module)
 {
     message_callback = callback;
+    message_callback_module = callback_module;
 }
 
 void push_msg(Game_Message_Label label, char* format, ...)
@@ -51,7 +55,7 @@ void push_msg(Game_Message_Label label, char* format, ...)
     va_end(a_ptr);
 
     // Send the message to the set message callback
-    message_callback(message);
+    message_callback(message, message_callback_module);
     free(message);
 }
 

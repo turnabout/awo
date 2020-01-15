@@ -1,7 +1,7 @@
 #pragma once
 
 #include <AWO/Include/game.h>
-#include <AWO/Include/game_message.h>
+#include <AWO/Include/Game_Message/game_message.h>
 
 #include "Console/console.h"
 #include "Console/Command/command_list.h"
@@ -62,7 +62,6 @@ struct Console {
 };
 
 int update_console(Console* console);
-int update_running_game_console(Console* console);
 int process_console_command(Console* console);
 
 void empty_console_messages(Console* console);
@@ -72,8 +71,6 @@ void tile_console(Console* console);
 
 // Console output functions
 
-// Process all game messages present in the game's messages stack
-void process_console_game_messages(Console* console);
 void print_console_entered_command(Console* console);
 void print_console_messages(Console* console);
 void reset_console_user_command(Console* console);

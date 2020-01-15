@@ -28,6 +28,10 @@ void initialize_curses()
     init_pair(COLOR_PAIR_WARNING, COLOR_YELLOW, COLOR_BLACK);
 }
 
+void console_game_message_cb(Console* console, Game_Message* message)
+{
+}
+
 Console* create_console()
 {
     Console* console = malloc(sizeof(Console));
@@ -82,13 +86,10 @@ Console* create_console()
 
     print_console_entered_command(console);
 
-    return console;
-}
+    // Set callback for handling messages emitted by the game
+    set_game_message_callback(console_game_message_cb, (void*)console);
 
-int update_running_game_console(Console* console)
-{
-    process_console_game_messages(console);
-    return update_console(console);
+    return console;
 }
 
 int update_console(Console* console)

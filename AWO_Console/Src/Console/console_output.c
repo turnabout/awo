@@ -101,17 +101,6 @@ void add_console_message(Console* console, int color_pair, char* format, ...)
     print_console_messages(console);
 }
 
-void process_console_game_messages(Console* console)
-{
-    // Print any game message to the console
-    Game_Message* msg;
-
-    while ((msg = get_next_game_message()) != NULL) {
-        add_console_game_message(console, msg);
-        free(msg);
-    }
-}
-
 void empty_console_messages(Console* console)
 {
     for (int i = 0; i < console->message_count; i++) {

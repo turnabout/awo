@@ -15,7 +15,6 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Create the game & print any messages sent during creation
     console->game = create_game(500, 500);
-    process_console_game_messages(console);
 
     // Tile the console and game windows
     tile_console(console);
@@ -30,7 +29,6 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Prepare the game for design room mode
     if (!prepare_game(console->game, Design_Room_Mode, NULL, NULL)) {
-        process_console_game_messages(console);
         return CMD_Ret_Error;
     }
 
@@ -42,7 +40,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Start running the game, use console update function as passed-callback so we can keep 
     // processing user commands while the game runs.
-    run_game(console->game, update_running_game_console, (void*)console);
+    run_game(console->game, update_console, (void*)console);
 
     // Deactivate Curses nodelay mode so update_console goes back to blocking
     nodelay(stdscr, FALSE);
