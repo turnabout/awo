@@ -127,7 +127,7 @@
     <ClInclude Include="Internal\Stage\stage.h" />
     <ClInclude Include="Internal\Stage\_stage.h" />
     <ClInclude Include="Internal\Texture_Reader\texture_reader.h" />
-    <ClInclude Include="Internal\Utilities\Headers\emx.h" />
+    <ClInclude Include="Include\emx.h" />
     <ClInclude Include="Internal\Utilities\Headers\macros.h" />
     <ClInclude Include="Internal\Utilities\Headers\types.h" />
     <ClInclude Include="Internal\Utilities\utilities.h" />

@@ -365,9 +365,6 @@
     <ClInclude Include="Internal\GL_Helpers\gl_helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Utilities\Headers\emx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Internal\Linked_List\linked_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -378,6 +375,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Game_Message\game_message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\emx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

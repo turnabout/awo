@@ -2,7 +2,6 @@
 
 #include "Headers/macros.h"
 #include "Headers/types.h"
-#include "Headers/emx.h"
 
 /*! @brief Reads a file and returns its contents in allocated memory.
  *
