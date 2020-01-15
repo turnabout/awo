@@ -17,9 +17,6 @@ Game* EMX create_game(int window_width, int window_height)
 
     /*
     Game* game = malloc(sizeof(Game));
-
-    // Initialize the message service, so messages can be logged
-    start_message_service();
     
     game->state = Game_Unusable;
     game->mode = No_Game_Mode;

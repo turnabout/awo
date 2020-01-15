@@ -30,8 +30,8 @@ typedef void (*Game_Message_CB)(Game_Message*);
 
 /*! @brief Sets the callback handling messages emitted by the game.
  *
- *  @param[in] animation_json The JSON representing this animation and its frames.
- *  @param[in] ss_width The tiles_width of the sprite sheet this animation comes from.
- *  @param[in] ss_height The tiles_height of the sprite sheet this animation comes from.
+ *  @note Set callback to NULL to disable game messages.
+ *
+ *  @param[in] callback New function called when a game message is emitted.
  */
 void set_game_message_callback(Game_Message_CB callback);
