@@ -3,7 +3,6 @@
 
 #include "Stage/_stage.h"
 #include "Player/player_index_enum.h"
-#include "Utilities/utilities.h"
 
 Stage* generate_custom_stage()
 {

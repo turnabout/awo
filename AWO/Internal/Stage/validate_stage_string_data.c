@@ -1,6 +1,6 @@
-#include "Game/Stage/_stage.h"
+#include "Stage/_stage.h"
 
-Bool validate_stage_string_data(Uint8* stage_data, size_t data_length, Tiles_Data* tiles_data)
+Bool validate_stage_string_data(Uint8* stage_data, size_t data_length, Tile_Data* tile_data)
 {
     // Confirm amount of separators
     Uint8 sep_count = 0;
@@ -114,7 +114,7 @@ Bool validate_stage_string_data(Uint8* stage_data, size_t data_length, Tiles_Dat
         if (type >= NEUTRAL_TILE_TYPE_FIRST && type <= NEUTRAL_TILE_TYPE_LAST) {
 
             // Validate neutral tile
-            if (!tile_type_variation_exists(tiles_data, type, variation)) {
+            if (!tile_type_variation_exists(tile_data, type, variation)) {
                 return FALSE;
             }
 

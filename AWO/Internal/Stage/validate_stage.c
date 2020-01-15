@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-#include "Game/Stage/_stage.h"
+#include "Stage/_stage.h"
 
-PRAGMA( warning( disable: 6385 ) )
+// PRAGMA( warning( disable: 6385 ) )
 
 Bool validate_stage_tiles(Stage* stage)
 {
