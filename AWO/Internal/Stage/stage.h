@@ -2,8 +2,9 @@
 
 #include "Config/config.h"
 #include "Utilities/utilities.h"
-#include "Game_Data/Tile_Data/tile_data.h"
 #include "Game_Data/Unit_Data/unit_data.h"
+#include "Game_Data/Tile_Data/tile_data.h"
+#include "Game_Data/Property_Data/property_data.h"
 
 #define STAGE_NAME_MAX_LENGTH 32
 

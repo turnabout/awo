@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Auto_Var/tile_auto_var.h"
+#include "Game_Data/Tile_Data/Tile_Auto_Var/_tile_auto_var.h"
 
 Auto_Var_Data* create_tile_auto_var_data(
     cJSON* auto_var_JSON,

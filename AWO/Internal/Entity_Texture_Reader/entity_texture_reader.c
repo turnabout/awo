@@ -109,18 +109,16 @@ Uint8* read_neutral_tile_texture(
     int* texture_h_out
 )
 {
-    Tile_Variation_Data* tile_data = get_tile_variation_data(
-        reader->game_data->tile->src[type],
-        variation
-    );
+    Animation* animation;
+    gather_tile_data(reader->game_data->tile, type, variation, NULL, &animation);
 
-    int texture_w = tile_data->animation->frames[0].width;
-    int texture_h = tile_data->animation->frames[0].height;
+    int texture_w = animation->frames[0].width;
+    int texture_h = animation->frames[0].height;
 
     Uint8* texture_buffer = read_texture_src_data(
         reader->texture_reader,
-        (int)tile_data->animation->frames[0].raw_top_left[0],
-        (int)tile_data->animation->frames[0].raw_top_left[1],
+        (int)animation->frames[0].raw_top_left[0],
+        (int)animation->frames[0].raw_top_left[1],
         texture_w,
         texture_h
     );
@@ -136,8 +134,8 @@ Uint8* read_neutral_tile_texture(
     );
     */
 
-    *texture_w_out = tile_data->animation->frames[0].width;
-    *texture_h_out = tile_data->animation->frames[0].height;
+    *texture_w_out = animation->frames[0].width;
+    *texture_h_out = animation->frames[0].height;
 
     return texture_buffer;
 }

@@ -2,7 +2,12 @@
 
 #include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
 
+#include "Game_Data/Tile_Data/Tile_Variation_Data/tile_variation_data.h"
+#include "Game_Data/Tile_Data/Tile_Auto_Var/tile_auto_var.h"
+#include "Game_Data/Tile_Data/Tile_Placement_Rule/tile_placement_rule.h"
+
 struct Tile_Type_Data {
+
     // Map holding every variation of this tile type's data (Tile_Variation_Data).
     map_t vars_map;
 

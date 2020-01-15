@@ -2,7 +2,6 @@
 
 #include "Stage/stage.h"
 #include "Player/player_index_enum.h"
-#include "Game_Data/game_data.h"
 #include "Utilities/utilities.h"
 
 #define STAGE_STRING_SEPARATOR_CHARACTER 0xFF

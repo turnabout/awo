@@ -5,16 +5,10 @@
 #include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
 
 #include "Headers/macros.h"
-
-/*! @brief Holds all of the game's data for regular tiles.
- */
-typedef struct Tiles_Data
-{
-
-    // Data for every tile type.
-    Tile_Type_Data* src[NEUTRAL_TILE_TYPE_COUNT];
-
-} Tile_Data;
+#include "Headers/types.h"
+#include "Headers/tile_auto_var_access.h"
+#include "Headers/tile_placement_rule_access.h"
+#include "Headers/tile_variation_data_access.h"
 
 /*! @brief Creates the tile data module.
  *

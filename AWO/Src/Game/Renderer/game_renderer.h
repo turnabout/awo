@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
-#include "Game/Data/Tile/tiles_data.h"
+#include "Game_Data/Tile_Data/tile_data.h"
 
 typedef struct Game_Renderer Game_Renderer;
 
@@ -41,7 +41,7 @@ Game_Renderer* create_game_renderer(
     int grid_width,
     int grid_height,
     GLuint game_palette_texture,
-    Tiles_Data* tiles_data,
+    Tile_Data* tiles_data,
     int window_width,
     int window_height
 );

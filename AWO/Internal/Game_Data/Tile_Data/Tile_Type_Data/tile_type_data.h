@@ -3,15 +3,11 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Headers/tile_type_data.h"
 #include "Headers/tile_types.h"
-#include "Headers/tile_auto_var_access.h"
-#include "Headers/tile_placement_rule_access.h"
-#include "Headers/tile_variation_data_access.h"
 
-#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Variation_Data/tile_variation_data.h"
-#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Auto_Var/tile_auto_var.h"
-#include "Game_Data/Tile_Data/Tile_Type_Data/Tile_Placement_Rule/tile_placement_rule.h"
+/*! @brief A single tile type's visual data.
+ */
+typedef struct Tile_Type_Data Tile_Type_Data;
 
 /*! @brief Creates tile type data from the given JSON.
  *

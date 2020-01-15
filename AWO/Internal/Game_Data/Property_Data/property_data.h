@@ -39,13 +39,13 @@ void update_tiles_data_active_property_weather_var(
 
 /*! @brief Retrieves a frame for a property of the given type and army variation.
  *
- *  @param[in] tiles_data The tiles data object.
+ *  @param[in] property_data The property data object.
  *  @param[in] property_type The property type of the frame to get.
  *  @param[in] army_variation The army variation of the frame to get.
  *  @return Pointer to the retrieved frame pointer.
  */
 Frame** get_property_type_frame(
-    Tile_Data* tiles_data,
+    Property_Data* property_data,
     Property_Type property_type,
     Army_Type army_variation
 );

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Stage/stage.h"
 #include "Game_Data/Animation/animation.h"
 #include "Game_Data/Frame/frame.h"
 #include "Game_Data/Clock_Data/clock_data.h"
@@ -9,7 +10,8 @@
 #include "Game_Data/Property_Data/property_data.h"
 #include "Game_Data/UI_Data/UI_data.h"
 #include "Game_Data/CO_Data/CO_data.h"
-#include "Stage/stage.h"
+#include "Headers/army_types.h"
+#include "Headers/weather.h"
 
 typedef struct Game_Data {
 
