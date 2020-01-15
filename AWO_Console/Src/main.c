@@ -1,7 +1,8 @@
 #include <stdio.h>
 
+#include "AWO/Include/Game/game.h"
+
 #include "Console/console.h"
-#include "AWO/Include/game.h"
 
 int main(int argc, char** argv)
 {

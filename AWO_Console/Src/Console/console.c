@@ -30,6 +30,7 @@ void initialize_curses()
 
 void console_game_message_cb(Console* console, Game_Message* message)
 {
+    add_console_message(console, message->label, message->str);
 }
 
 Console* create_console()

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <AWO/Include/game.h>
+#include <AWO/Include/Game/game.h>
 #include <AWO/Include/Game_Message/game_message.h>
 
 #include "Console/console.h"

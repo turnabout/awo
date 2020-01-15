@@ -49,6 +49,11 @@
     <ClCompile Include="Internal\GL_Helpers\read_texture_data.c" />
     <ClCompile Include="Internal\Linked_List\linked_list.c" />
     <ClCompile Include="Internal\Linked_List\list_entry.c" />
+    <ClCompile Include="Libs\Game\game.c" />
+    <ClCompile Include="Libs\Game\init_game_rendering.c" />
+    <ClCompile Include="Libs\Game\prepare_design_room_game.c" />
+    <ClCompile Include="Libs\Game\run_game.c" />
+    <ClCompile Include="Libs\Game\unprepare_game.c" />
     <ClCompile Include="Libs\Game_Message\game_message.c" />
     <ClCompile Include="Libs\Game_Message\game_message_simple.c" />
     <ClCompile Include="Internal\Palette\palette.c" />
@@ -91,9 +96,10 @@
     <None Include="Resources\Shaders_ES\grid.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\game_editor.h" />
-    <ClInclude Include="Include\game.h" />
-    <ClInclude Include="Include\game_data.h" />
+    <ClInclude Include="Include\Entity_Texture_Reader\entity_texture_reader.h" />
+    <ClInclude Include="Include\Game_Controller\game_editor_controller.h" />
+    <ClInclude Include="Include\Game\game.h" />
+    <ClInclude Include="Include\Game_Data\game_data.h" />
     <ClInclude Include="Include\Game_Message\game_message.h" />
     <ClInclude Include="Internal\Config\config.h" />
     <ClInclude Include="Internal\Game_Data\CO_Data\Headers\CO_frame_types.h" />
@@ -126,6 +132,8 @@
     <ClInclude Include="Internal\Palette\Headers\palette_index.h" />
     <ClInclude Include="Internal\Palette\Headers\update_palette.h" />
     <ClInclude Include="Internal\Palette\_palette.h" />
+    <ClInclude Include="Libs\Game\game.h" />
+    <ClInclude Include="Libs\Game\_game.h" />
     <ClInclude Include="Libs\Game_Message\game_message.h" />
     <ClInclude Include="Internal\Player\CO\CO.h" />
     <ClInclude Include="Internal\Player\player.h" />

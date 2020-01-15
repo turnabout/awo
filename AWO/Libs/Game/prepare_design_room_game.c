@@ -1,6 +1,7 @@
 #include "Game/_game.h"
 
-int prepare_game(
+/*
+int EMX prepare_design_room_game(
     Game* game, 
     Game_Mode mode,
     Stage* stage, 
@@ -47,7 +48,6 @@ int prepare_game(
     game->mode = mode;
     return TRUE;
 
-    /*
     // Prepare components used for rendering the game
     game->palette = create_game_palette_texture(
         game->data->raw_palette, 
@@ -106,5 +106,37 @@ int prepare_game(
     }
 
     game->state = Game_Prepared;
-    */
 }
+*/
+
+/*
+int EMX prepare_design_room_game(Game* game)
+{
+    game->controller = (Game_Controller*)create_game_editor_controller(
+        game->data,
+        generate_filled_stage(Plain, Default, 25, 25),
+        &(game->window_width),
+        &(game->window_height)
+    );
+
+    game->editor = create_game_editor(
+        game->data->tiles,
+        game->data->units,
+        &game->window_width,
+        &game->window_height
+    );
+
+    if (game->editor == NULL) {
+        return FALSE;
+    }
+
+    return prepare_game(
+        game, 
+        // generate_custom_stage(),
+        generate_filled_stage(Plain, Default, 10, 10),
+        (CO_Type[MAX_PLAYER_COUNT]) { Andy, Olaf }
+    );
+
+    return TRUE;
+}
+*/

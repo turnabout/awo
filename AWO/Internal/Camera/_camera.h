@@ -4,6 +4,15 @@
 
 #include "Camera/camera.h"
 #include "Utilities/utilities.h"
+#include "Config/config.h"
+
+// Game Camera
+#define DEFAULT_CAMERA_ZOOM (DEFAULT_ENTITY_SIZE * 2)
+#define DEFAULT_CAMERA_X 0
+#define DEFAULT_CAMERA_Y 0
+
+#define MIN_ZOOM_VALUE 16.0f
+#define MAX_ZOOM_VALUE 40.0f
 
 struct Camera {
 

@@ -1,6 +1,5 @@
 #include <curses.h>
 #include <stdio.h>
-#include <AWO/Include/game.h>
 
 #include "Utilities/utilities.h"
 #include "Console/_console.h"
@@ -28,9 +27,11 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     }
 
     // Prepare the game for design room mode
+    /*
     if (!prepare_game(console->game, Design_Room_Mode, NULL, NULL)) {
         return CMD_Ret_Error;
     }
+    */
 
     reset_console_user_command(console);
 

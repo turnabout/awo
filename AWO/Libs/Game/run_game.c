@@ -1,5 +1,3 @@
-#include "conf.h"
-#include "emx.h"
 #include "Game/_game.h"
 
 // Time between current frame and last frame.
@@ -10,6 +8,7 @@ static float last_frame_time = 0.0f;
 
 void game_loop(void* game)
 {
+    /*
     // Update delta time
     float current_frame_time = (float)glfwGetTime();
     delta_time = current_frame_time - last_frame_time;
@@ -25,6 +24,7 @@ void game_loop(void* game)
     // render_game((Game*)game);
 
     glfwSwapBuffers(((Game*)game)->window);
+    */
 }
 
 void EMX run_game(Game* game, int (*callback)(void*), void* cb_value)

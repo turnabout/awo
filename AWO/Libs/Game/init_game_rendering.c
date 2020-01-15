@@ -1,5 +1,4 @@
 #include "Game/_game.h"
-#include "GL_Helpers/gl_helpers.h"
 
 void glfw_error_cb(int err_int, const char* err_str)
 {
