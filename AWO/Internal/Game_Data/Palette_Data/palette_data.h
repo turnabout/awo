@@ -67,6 +67,13 @@ Palette_Data_Row* get_palette_data_property_row(Palette_Data* palette_data, Army
  */
 Palette_Data_Row* get_palette_data_fog_property_row(Palette_Data* palette_data);
 
+/*! @brief Gets the NDC (Normalized Device Coordinate) palette index corresponding to palette row.
+ *
+ * @param palette_row Which palette row to get the NDC index value for.
+ * @return The NDC palette index.
+ */
+GLfloat get_palette_NDC_index(GLuint palette_row);
+
 /*! @brief Frees a created palette data module.
  *
  *  @param[in] palette_data The palette data module to free.

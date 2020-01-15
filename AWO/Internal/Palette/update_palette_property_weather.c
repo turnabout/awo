@@ -1,10 +1,9 @@
 #include <stdlib.h>
 
-#include "GL_Helpers/gl_helpers.h"
-#include "Game/Data/Palette/_palette.h"
+#include "Palette/_palette.h"
 
 void apply_property_palettes_weather_color(
-    Palette_Texture_Row* palette_texture_data, 
+    Palette_Data_Row* palette_texture_data, 
     Uint8 color_index,
     GLuint color[3]
 )
@@ -24,8 +23,8 @@ void apply_property_palettes_weather_color(
 void update_properties_weather_colors(GLuint game_palette_texture)
 {
     // Load the game's palette texture data
-    Palette_Texture_Row* palette_texture_data = (Palette_Texture_Row*)malloc(
-        sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
+    Palette_Data_Row* palette_texture_data = malloc(
+        sizeof(Palette_Data_Row) * PALETTE_TEX_HEIGHT
     );
 
     read_texture_data(

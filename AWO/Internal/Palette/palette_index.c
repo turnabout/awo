@@ -1,6 +1,4 @@
-#include <cglm/cglm.h>
-
-#include "Game/Data/Palette/_palette.h"
+#include "Palette/_palette.h"
 
 // Currently active tile palette
 #define ACTIVE_TILE_PALETTE_INDEX     0

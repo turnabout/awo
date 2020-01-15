@@ -89,6 +89,9 @@ Palette_Data* create_palette_data(cJSON* palette_JSON)
     );
     */
 
+    // Initialize the palette NDC indexes so other modules can fetch them properly later on
+    init_palette_NDC_indexes();
+
     return palette_data;
 }
 

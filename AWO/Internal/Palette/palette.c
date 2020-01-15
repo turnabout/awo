@@ -1,8 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "GL_Helpers/gl_helpers.h"
-#include "Game/Data/Palette/_palette.h"
+#include "Palette/_palette.h"
 
 GLuint create_game_palette_texture(
     GLuint raw_palette_texture, 
@@ -10,6 +9,7 @@ GLuint create_game_palette_texture(
     Army_Type player_armies[MAX_PLAYER_COUNT]
 )
 {
+    /*
     // Get the raw palette texture data
     Palette_Texture_Row* raw_palette_texture_data = malloc(
         sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
@@ -117,4 +117,6 @@ GLuint create_game_palette_texture(
     update_properties_weather_colors(texture);
 
     return texture;
+    */
+    return 0;
 }

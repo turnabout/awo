@@ -38,3 +38,12 @@ struct Palette_Data {
     Palette_Data_Row* buffer;
 
 };
+
+/*! @brief Initializes Normalized Device Coordinate palette indexes.
+ *
+ *  The NDC palette indexes are used by game entities to index into the palette texture when
+ *  rendering. This initializes those values based on the amount of generated palette rows in
+ *  create_palette_texture, and makes it so get_palette_index functions can return proper palette
+ *  texture Normalized Device Coordinates.
+ */
+void init_palette_NDC_indexes();

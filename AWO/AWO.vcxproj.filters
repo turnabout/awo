@@ -54,25 +54,7 @@
     <ClCompile Include="Internal\Game_Data\CO_Data\CO_data_creation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Palette\Game_Palette\create_game_palette.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Palette\Game_Palette\get_game_palette_index.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Palette\Game_Palette\update_game_palette.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Palette\Game_Palette\update_game_palette_property_lights.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Palette\Game_Palette\update_properties_weather_colors.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Internal\Game_Data\Palette_Data\palette_data.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Internal\Game_Data\Palette_Data\palette_NDC_index.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Internal\Game_Data\Palette_Data\palette_data_access.c">
@@ -183,6 +165,24 @@
     <ClCompile Include="Internal\Game_Data\Tile_Data\tile_variation_data_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Internal\Palette\palette.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Palette\palette_index.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Palette\update_palette.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Palette\update_palette_property_lights.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Palette\update_palette_property_weather.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Game_Data\Palette_Data\palette_NDC_index.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -216,9 +216,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Utilities\Headers\macros.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Internal\Utilities\Headers\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Game_Data\Animation\animation.h">
@@ -273,15 +270,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Game_Data\Palette_Data\_palette_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Internal\Palette\_palette.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Internal\Palette\palette.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Internal\Palette\game_palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Game_Data\UI_Data\Headers\UI_elements.h">
@@ -387,6 +375,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Game_Data\Tile_Data\_tile_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Palette\_palette.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Palette\palette.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Palette\Headers\palette_index.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Palette\Headers\update_palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

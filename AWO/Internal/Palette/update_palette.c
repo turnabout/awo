@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
-#include "GL_Helpers/gl_helpers.h"
-#include "Game/Data/Palette/_palette.h"
+#include "Palette/_palette.h"
 
 // TODO: take in a unit variation as an arg instead of a palette index
 void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color)
@@ -23,9 +22,11 @@ void update_unit_palette_black_pixel(GLuint palette_index, GLubyte new_color)
 
 void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint raw_palette_tex)
 {
+    // TODO: update using new palette data module
+    /*
     // Load the raw palette texture data
-    Palette_Texture_Row* raw_palettes_tex_data = malloc(
-        sizeof(Palette_Texture_Row) * PALETTE_TEX_HEIGHT
+    Palette_Data_Row* raw_palettes_tex_data = malloc(
+        sizeof(Palette_Data_Row) * PALETTE_TEX_HEIGHT
     );
 
     read_texture_data(
@@ -67,4 +68,5 @@ void update_active_tile_palette(Weather weather, GLuint game_palette_tex, GLuint
 
     // Update properties' weather color with the new one
     update_properties_weather_colors(game_palette_tex);
+    */
 }

@@ -1,4 +1,4 @@
-#include "Game/Data/Palette/game_palette.h"
+#include "Palette/palette.h"
 
 #define PROPERTY_AFFECTED_ROWS_AMOUNT PLAYER_INDEX_COUNT - 1 // - 1 to ignore neutral properties
 #define PROPERTY_LIGHTS_PALETTE_INDEX 111

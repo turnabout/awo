@@ -1,29 +1,25 @@
 #pragma once
 
-#include "Game/Data/Palette/palette.h"
+#include <cglm/cglm.h>
+#include "GL_Helpers/gl_helpers.h"
+#include "Palette/palette.h"
 
-// Counts of every different types of palettes
-#define UNIT_PALETTE_COUNT (ARMY_TYPE_COUNT) * (2) // 2 of each unit variation (normal / done)
-#define TILE_PALETTE_COUNT (WEATHER_COUNT)  * (2)  // 2 of each tile variation (normal / foggy)
-#define PROP_PALETTE_COUNT ARMY_TYPE_COUNT + 2     // + 2 is neutral & fogged
-
-#include "Game/Data/Palette/raw_palette.h"
-#include "Game/Data/Palette/game_palette.h"
-
-typedef GLubyte Palette_Texture_Row[PALETTE_TEX_WIDTH][4];
-
-/*! @brief Initializes Normalized Device Coordinate palette indexes.
- *
- *  The NDC palette indexes are used by game entities to index into the palette texture when 
- *  rendering. This initializes those values based on the amount of generated palette rows in
- *  create_palette_texture, and makes it so get_palette_index functions can return proper palette
- *  texture Normalized Device Coordinates.
+/*!
+ *  Internal palette structure:
+ *   0: Active Tile
+ *   1: Active Tile (Fog)
+ *   2: Player 0 Units
+ *   3: Player 0 Units (Done)
+ *   4: Player 1 Units
+ *   5: Player 1 Units (Done)
+ *   6: Player 2 Units
+ *   7: Player 2 Units (Done)
+ *   8: Player 3 Units
+ *   9: Player 3 Units (Done)
+ *  10: Player 0 Property
+ *  11: Player 1 Property
+ *  12: Player 2 Property
+ *  13: Player 3 Property
+ *  14: Player Neutral Property
+ *  15: Fog property
  */
-void init_palette_NDC_indexes();
-
-/*! @brief Gets the NDC palette index at the given row.
- *
- * @param palette_row Which palette row to get the NDC index value of.
- * @return The Normalized Device Coordinate palette index.
- */
-GLfloat get_palette_NDC_index(GLuint palette_row);
