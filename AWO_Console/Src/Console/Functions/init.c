@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <AWO/Include/game.h>
+#include <AWO/Include/Game/game.h>
 
 #include "Utilities/utilities.h"
 #include "Console/_console.h"

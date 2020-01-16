@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 
 #include "Config/config.h"
 #include "Utilities/utilities.h"
@@ -86,7 +87,7 @@ Game_Data* create_game_data()
         cJSON_GetObjectItem(data_JSON, "palettes")
     );
 
-    // Load all default stages
+    // Get all default stages strings
     cJSON* stages_array_JSON = cJSON_GetObjectItem(data_JSON, "stages");
 
     for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
@@ -97,10 +98,9 @@ Game_Data* create_game_data()
             continue;
         }
 
-        data->default_stages[i] = generate_stage_from_string(
-            stage_JSON->valuestring,
-            data->tile
-        );
+        size_t stage_str_len = strlen(stage_JSON->valuestring) + 1;
+        data->default_stages[i] = malloc(stage_str_len);
+        strcpy_s(data->default_stages[i], stage_str_len, stage_JSON->valuestring);
     }
 
     // Delete parsed cJSON data object
@@ -121,7 +121,7 @@ void free_game_data(Game_Data* data)
     free_clock_data(data->clock);
 
     for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
-        free_stage(data->default_stages[i]);
+        free(data->default_stages[i]);
     }
 
     free(data);

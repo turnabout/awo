@@ -7,7 +7,7 @@
     <ClCompile>
       <PreprocessorDefinitions>SOLUTION_DIR="$(SolutionDir.Replace('\', '/'))";SHADERS_DIR="Shaders/";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)AWO\Src;$(SolutionDir)External\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)AWO;$(SolutionDir)External\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)External\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

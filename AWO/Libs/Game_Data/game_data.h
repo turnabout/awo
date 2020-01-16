@@ -34,7 +34,7 @@ typedef struct Game_Data {
     UI_Data* UI;
 
     // Default stages.
-    Stage* default_stages[MAX_LOADED_STAGE_COUNT];
+    char* default_stages[MAX_LOADED_STAGE_COUNT];
 
     // For for all all palettes.
     Palette_Data* palette;
