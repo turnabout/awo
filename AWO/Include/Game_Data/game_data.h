@@ -1,35 +1,56 @@
 #pragma once
 
-/*! @brief Module used to retrieve texture data for individual entities, with palettes applied.
- *  Can be used to get pixel data from AWO game entities.
- */
-typedef struct Entity_Texture_Reader Entity_Texture_Reader;
+#include "clock_data.h"
+#include "CO_data.h"
+#include "tile_data.h"
+#include "property_data.h"
+#include "unit_data.h"
+#include "UI_data.h"
+#include "palette_data.h"
+#include "weather.h"
+#include "army_types.h"
 
-/*! @brief Every existing kind of game entity.
- */
-typedef enum Entity_Kind {
+#define MAX_LOADED_STAGE_COUNT 16
 
-    // Neutral (non-property) tile
-    Entity_Kind_Neutral_Tile,
+typedef struct Game_Data {
 
-    // Property tile
-    Entity_Kind_Property,
+    // Data for clocks used for animations among other things.
+    Clock_Data* clock;
 
-    // Unit
-    Entity_Kind_Unit,
+    // Data for all COs.
+    CO_Data* CO;
 
-} Entity_Kind;
+    // Data for all tiles.
+    Tile_Data* tile;
 
-/*! @brief Gets the next neutral tile type.
- *
- *  @note Must be called continuously until it returns NULL.
- *
- *  @param[out] type Filled in with the neutral tile type's value.
- *  @return The tile type's string.
- */
-const char* get_next_game_tile_type(int* type);
+    // Data for all properties.
+    Property_Data* property;
 
-/*! @brief Gets the next neutral tile variation for a type.
+    // Data for all units.
+    Unit_Data* unit;
+
+    // Data for all UI elements.
+    UI_Data* UI;
+
+    // For for all all palettes.
+    Palette_Data* palette;
+
+    // Default stages.
+    char* default_stages[MAX_LOADED_STAGE_COUNT];
+
+    // Holds the game's sprite sheet's texture.
+    unsigned int sprite_sheet;
+
+    // The game's sprite sheet's dimensions.
+    int sprite_sheet_width, sprite_sheet_height;
+
+} Game_Data;
+
+
+
+
+// TODO: move into appropriate tile module
+/*! @brief Gets the next tile variation for a neutral tile type.
  *
  *  @note Must be called continuously until it returns NULL.
  *
@@ -38,4 +59,4 @@ const char* get_next_game_tile_type(int* type);
  *  @param[out] var Filled in with the neutral tile variation's value.
  *  @return The tile variation's string.
  */
-// const char* get_next_game_tile_var(Game* game, int type, char* var);
+// Tile_Variation get_next_game_tile_var(Game* game, Tile_Type type);

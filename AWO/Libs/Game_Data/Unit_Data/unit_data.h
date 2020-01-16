@@ -3,13 +3,8 @@
 #include <cJSON.h>
 #include <cglm/types.h>
 
-#include "Game_Data/Headers/army_types.h"
 #include "Game_Data/Animation/animation.h"
-#include "Headers/unit_types.h"
-
-/*! @brief Holds all of the game's data for units.
- */
-typedef struct Units_Data Unit_Data;
+#include "Include/Game_Data/game_data.h"
 
 // Creates units data object from JSON.
 Unit_Data* create_unit_data(cJSON* units_data_JSON, int ss_width, int ss_height);

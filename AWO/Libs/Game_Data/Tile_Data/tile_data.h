@@ -2,10 +2,9 @@
 
 #include <cJSON.h>
 
-#include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
+#include "Include/Game_Data/game_data.h"
 
 #include "Headers/macros.h"
-#include "Headers/types.h"
 #include "Headers/tile_auto_var_access.h"
 #include "Headers/tile_placement_rule_access.h"
 #include "Headers/tile_variation_data_access.h"

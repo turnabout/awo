@@ -323,19 +323,10 @@
     <ClInclude Include="Libs\Game_Data\Frame\frame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Game_Data\Headers\army_types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\Game_Data\Headers\weather.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Libs\Game_Data\Palette_Data\_palette_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Game_Data\Palette_Data\palette_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\Game_Data\Property_Data\Headers\property_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Game_Data\Property_Data\_property_data.h">
@@ -356,9 +347,6 @@
     <ClInclude Include="Libs\Game_Data\Tile_Data\Headers\tile_variation_data_access.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Game_Data\Tile_Data\Headers\types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Libs\Game_Data\Tile_Data\Tile_Auto_Var\_tile_auto_var.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -371,16 +359,10 @@
     <ClInclude Include="Libs\Game_Data\Tile_Data\Tile_Placement_Rule\tile_placement_rule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Game_Data\Tile_Data\Tile_Type_Data\Headers\tile_types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Libs\Game_Data\Tile_Data\Tile_Type_Data\_tile_type_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Game_Data\Tile_Data\Tile_Type_Data\tile_type_data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\Game_Data\Tile_Data\Tile_Variation_Data\Header\tile_variations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Game_Data\Tile_Data\Tile_Variation_Data\_tile_variation_data.h">
@@ -404,9 +386,6 @@
     <ClInclude Include="Libs\Game_Data\UI_Data\UI_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Game_Data\Unit_Data\Headers\unit_types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Libs\Game_Data\Unit_Data\_unit_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -414,6 +393,48 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Game_Data\game_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\army_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\weather.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\clock_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\CO_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\palette_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\property_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\property_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\tile_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\tile_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\tile_variations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\UI_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\unit_animations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\unit_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\unit_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

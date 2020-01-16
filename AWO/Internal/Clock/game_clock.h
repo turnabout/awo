@@ -4,7 +4,6 @@
 #include <GLFW/glfw3.h>
 #include <cJSON.h>
 
-#include "Game/Renderer/game_renderer.h"
 #include "Game/Data/Clock/clock_data.h"
 
 /*! @brief Main game clock used for updating and keeping animations synchronized.

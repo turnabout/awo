@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Game_Data/Headers/army_types.h"
 #include "Game_Data/CO_Data/CO_data.h"
 #include "Game_Data/Animation/animation.h"
 

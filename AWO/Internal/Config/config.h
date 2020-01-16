@@ -44,7 +44,6 @@
 // Stages
 #define HQS_PER_ARMY 1
 #define MAX_PROPERTIES_PER_PLAYER 50
-#define MAX_LOADED_STAGE_COUNT 16
 
 // Units
 #define MAX_UNITS_PER_PLAYER 50

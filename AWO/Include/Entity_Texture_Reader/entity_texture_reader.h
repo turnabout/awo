@@ -7,6 +7,21 @@
  */
 typedef struct Entity_Texture_Reader Entity_Texture_Reader;
 
+/*! @brief Every existing kind of game entity.
+ */
+typedef enum Entity_Kind {
+
+    // Neutral (non-property) tile
+    Entity_Kind_Neutral_Tile,
+
+    // Property tile
+    Entity_Kind_Property,
+
+    // Unit
+    Entity_Kind_Unit,
+
+} Entity_Kind;
+
 /*! @brief Creates an entity texture reader.
  *
  *  @param[in] game_data Reference to the game data module.

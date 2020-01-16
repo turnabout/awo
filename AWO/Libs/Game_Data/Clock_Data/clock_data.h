@@ -4,8 +4,7 @@
 
 #include "Utilities/utilities.h"
 #include "Headers/clock_types.h"
-
-typedef struct Clock_Data Clock_Data;
+#include "Include/Game_Data/game_data.h"
 
 Clock_Data* create_clock_data(cJSON* clock_data_JSON);
 

@@ -2,7 +2,6 @@
 
 #include "Utilities/utilities.h"
 
-// Every possible animation clock's index.
 #define FOREACH_ANIMATION_CLOCK_INDEX(CLOCK) \
     CLOCK(Sea_Clock_0) \
     CLOCK(Sea_Clock_1) \

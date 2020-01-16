@@ -3,7 +3,7 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Headers/tile_types.h"
+#include "Include/Game_Data/game_data.h"
 
 /*! @brief A single tile type's visual data.
  */

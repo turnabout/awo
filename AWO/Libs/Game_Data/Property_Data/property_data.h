@@ -2,15 +2,8 @@
 
 #include <cJSON.h>
 
-#include "Game_Data/Tile_Data/tile_data.h"
+#include "Include/Game_Data/game_data.h"
 #include "Game_Data/Frame/frame.h"
-#include "Game_Data/Headers/army_types.h"
-#include "Game_Data/Headers/weather.h"
-#include "Headers/property_types.h"
-
-/*! @brief Holds all of the game's data for properties.
- */
-typedef struct Property_Tiles_Data Property_Data;
 
 /*! @brief Creates the properties data object.
  *

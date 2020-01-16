@@ -3,10 +3,7 @@
 #include <cJSON.h>
 
 #include "Game_Data/CO_Data/Headers/CO_types.h"
-
-/*! @brief Holds all of the game's data for COs.
- */
-typedef struct CO_Data CO_Data;
+#include "Include/Game_Data/game_data.h"
 
 /*! @brief Creates the CO data object, containing data for all COs.
  *

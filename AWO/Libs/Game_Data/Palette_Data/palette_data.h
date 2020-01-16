@@ -4,9 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <cJSON.h>
 
-#include "Game_Data/Headers/army_types.h"
-#include "Game_Data/Headers/weather.h"
-#include "Game_Data/Unit_Data/unit_data.h"
+#include "Include/Game_Data/game_data.h"
 
 #define PALETTE_TEX_WIDTH  256
 #define PALETTE_TEX_HEIGHT  32
@@ -15,13 +13,6 @@
 #define UNIT_PALETTE_COUNT (ARMY_TYPE_COUNT) * (2) // 2 of each unit variation (normal / done)
 #define TILE_PALETTE_COUNT (WEATHER_COUNT)  * (2)  // 2 of each tile variation (normal / foggy)
 #define PROP_PALETTE_COUNT ARMY_TYPE_COUNT + 2     // + 2 is neutral & fogged
-
-/*! @brief Module containing all palette data that can be used by the game.
- *
- *  Contains all palette data usable by the game.
- *  The palette is stored both in an actual texture and in an allocated buffer.
- */
-typedef struct Palette_Data Palette_Data;
 
 /*! @brief A row of palette data.
  */

@@ -3,8 +3,6 @@
 #include <cJSON.h>
 #include <cglm/types.h>
 
-#include "Header/tile_variations.h"
-
 // A tile variation's visual data
 typedef struct Tile_Variation_Data Tile_Variation_Data;
 
