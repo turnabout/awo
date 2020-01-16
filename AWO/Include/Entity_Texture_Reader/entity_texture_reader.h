@@ -7,21 +7,6 @@
  */
 typedef struct Entity_Texture_Reader Entity_Texture_Reader;
 
-/*! @brief Every existing kind of game entity.
- */
-typedef enum Entity_Kind {
-
-    // Neutral (non-property) tile
-    Entity_Kind_Neutral_Tile,
-
-    // Property tile
-    Entity_Kind_Property,
-
-    // Unit
-    Entity_Kind_Unit,
-
-} Entity_Kind;
-
 /*! @brief Creates an entity texture reader.
  *
  *  @param[in] game_data Reference to the game data module.
@@ -38,7 +23,6 @@ Entity_Texture_Reader* create_entity_texture_reader(Game_Data* game_data);
  *  @param[out] texture_w Filled in with the width of the read texture.
  *  @param[out] texture_h Filled in with the height of the read texture.
  */
-/*
 Uint8* read_neutral_tile_texture(
     Entity_Texture_Reader* reader,
     Tile_Type type,
@@ -47,7 +31,6 @@ Uint8* read_neutral_tile_texture(
     int* texture_w,
     int* texture_h
 );
-*/
 
 /*! @brief Frees an entity texture reader's memory.
  *
