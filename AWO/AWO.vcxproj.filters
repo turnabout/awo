@@ -192,7 +192,7 @@
     <ClCompile Include="Libs\Game_Data\game_data.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libs\Game_Renderer\game_renderer.c">
+    <ClCompile Include="Libs\Game_Window\game_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -434,10 +434,13 @@
     <ClInclude Include="Include\Game\game_editor_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Game_Renderer\_game_renderer.h">
+    <ClInclude Include="Libs\Game_Window\_game_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Game_Renderer\game_renderer.h">
+    <ClInclude Include="Libs\Game_Window\game_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Window\game_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

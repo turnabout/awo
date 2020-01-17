@@ -49,15 +49,6 @@ typedef enum Game_Mode {
  */
 Game* create_game(int window_width, int window_height);
 
-/*! @brief Undoes the steps done in game preparation.
- *
- * @note Frees memory used by components initialized during game preparation. Should be used after 
- * the game loop is done running.
- *
- *  @param[in] game The game object.
- */
-void unprepare_game(Game* game);
-
 /*! @brief Begins running the main game loop.
  *
  *  @note The game must be prepared through one of the "prepare" functions before it can start 
@@ -85,13 +76,13 @@ Game_Mode get_game_mode(Game* game);
  */
 Game_State get_game_state(Game* game);
 
-/*! @brief Updates AWO's game window dimensions.
+/*! @brief Updates the dimensions of the game's rendered space (window).
  *
  *  @param[in] game The game object.
- *  @param[in] width The new window width.
- *  @param[in] height The new window height.
+ *  @param[in] width The new width.
+ *  @param[in] height The new height.
  */
-void update_game_window_dimensions(Game* game, int width, int height);
+void update_game_dimensions(Game* game, int width, int height);
 
 /*! @brief Frees all resources taken up by the game and kills it.
  *

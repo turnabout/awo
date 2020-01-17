@@ -78,7 +78,7 @@
     <ClCompile Include="Internal\Utilities\hex_string_to_data.c" />
     <ClCompile Include="Internal\Utilities\read_file.c" />
     <ClCompile Include="Internal\Utilities\round_float_to_int.c" />
-    <ClCompile Include="Libs\Game_Renderer\game_renderer.c" />
+    <ClCompile Include="Libs\Game_Window\game_window.c" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\spritesheet.png" />
@@ -109,6 +109,7 @@
     <ClInclude Include="Include\Game_Data\unit_data.h" />
     <ClInclude Include="Include\Game_Data\weather.h" />
     <ClInclude Include="Include\Game_Message\game_message.h" />
+    <ClInclude Include="Include\Game_Window\game_window.h" />
     <ClInclude Include="Internal\Config\config.h" />
     <ClInclude Include="Libs\Game_Data\CO_Data\Headers\CO_frame_types.h" />
     <ClInclude Include="Libs\Game_Data\Palette_Data\palette_data.h" />
@@ -171,8 +172,8 @@
     <ClInclude Include="Include\Game_Data\unit_types.h" />
     <ClInclude Include="Libs\Game_Data\Unit_Data\unit_data.h" />
     <ClInclude Include="Libs\Game_Data\Unit_Data\_unit_data.h" />
-    <ClInclude Include="Libs\Game_Renderer\game_renderer.h" />
-    <ClInclude Include="Libs\Game_Renderer\_game_renderer.h" />
+    <ClInclude Include="Libs\Game_Window\game_window.h" />
+    <ClInclude Include="Libs\Game_Window\_game_window.h" />
     <ClInclude Include="Src\Libraries\c_hashmap.h" />
     <ClInclude Include="Src\Libraries\SDL_FontCache.h" />
     <ClInclude Include="Src\Libraries\cJSON.h" />

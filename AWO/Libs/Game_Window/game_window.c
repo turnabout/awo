@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game_Renderer/_game_renderer.h"
+#include "Game_Window/_game_window.h"
 #include "Config/config.h"
 
 void glfw_error_cb(int err_int, const char* err_str)
@@ -51,60 +51,60 @@ GLFWwindow* create_glfw_window(int width, int height, char* title)
         return NULL;
     }
 
-
     glfwMakeContextCurrent(window);
 
     return window;
 }
 
-Game_Renderer* create_game_renderer(int window_width, int window_height)
+Game_Window* create_game_window(int window_width, int window_height)
 {
-    Game_Renderer* game_renderer = malloc(sizeof(Game_Renderer));
+    Game_Window* game_window = malloc(sizeof(Game_Window));
 
-    if (game_renderer == NULL) {
+    if (game_window == NULL) {
         return NULL;
     }
 
     // Init GLFW
     if (!init_glfw()) {
-        free_game_renderer(game_renderer);
+        free_game_window(game_window);
         return NULL;
     }
 
-    // Create window
-    game_renderer->window = create_glfw_window(window_width, window_height, DEFAULT_WINDOW_TITLE);
+    // Create GLFW window
+    game_window->glfw_window = create_glfw_window(window_width, window_height, DEFAULT_WINDOW_TITLE);
 
-    if (game_renderer->window == NULL) {
+    if (game_window->glfw_window == NULL) {
         printe("Failed to create game window.");
 
-        free_game_renderer(game_renderer);
+        free_game_window(game_window);
         return NULL;
     }
 
-    update_game_renderer_window_dimensions(game_renderer, window_width, window_height);
+    update_game_window_dimensions(game_window, window_width, window_height);
 
-    return game_renderer;
+    return game_window;
 }
 
-void update_game_renderer_window_dimensions(Game_Renderer* game_renderer, int width, int height)
+void update_game_window_dimensions(Game_Window* game_window, int width, int height)
 {
-    game_renderer->width = width;
-    game_renderer->height = height;
-    glViewport(0, 0, game_renderer->width, game_renderer->height);
+    glfwSetWindowSize(game_window->glfw_window, width, height);
+    game_window->width = width;
+    game_window->height = height;
+    glViewport(0, 0, game_window->width, game_window->height);
 }
 
-void get_game_renderer_dimensions_ptrs(Game_Renderer* game_renderer, int** width, int** height)
+void get_game_window_dimensions_ptrs(Game_Window* game_window, int** width, int** height)
 {
-    if (game_renderer == NULL) {
+    if (game_window == NULL) {
         *width = NULL;
         *height = NULL;
     }
 
-    *width = &game_renderer->width;
-    *height = &game_renderer->height;
+    *width = &game_window->width;
+    *height = &game_window->height;
 }
 
-void free_game_renderer(Game_Renderer* game_window)
+void free_game_window(Game_Window* game_window)
 {
     glfwTerminate();
 
