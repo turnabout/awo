@@ -8,6 +8,7 @@
 #include "Game/game.h"
 #include "Game_Data/game_data.h"
 #include "Game_Message/game_message.h"
+#include "Game_Renderer/game_renderer.h"
 
 struct Game {
 
@@ -20,13 +21,16 @@ struct Game {
     // Collection of all game data modules.
     Game_Data* data;
 
+    // The game's renderer.
+    Game_Renderer* renderer;
+
     // Handle to the game's window.
     GLFWwindow* window;
 
     // Dimensions of the game's window.
     int window_width, window_height;
 
-    // Current controller used to update & render the game.
+    // Current game controller. Used to update & render the game.
     void* controller;
 
 };

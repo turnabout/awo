@@ -5,7 +5,6 @@
 
 Game_Editor_Controller* create_game_editor_controller(
     Game_Data* game_data,
-    Stage* stage,
     int* window_width,
     int* window_height
 )
@@ -21,21 +20,9 @@ Game_Editor_Controller* create_game_editor_controller(
     controller->stage_renderer = NULL;
     controller->extras_renderer = NULL;
 
-    // Process the given stage, if any
-    if (stage != NULL) {
+    controller->stage = generate_filled_stage(Plain, Default, 25, 25);
 
-        if (!validate_stage(stage)) {
-            free_game_editor_controller(controller);
-            return NULL;
-        }
-
-        controller->stage = stage;
-
-    } else {
-        controller->stage = generate_filled_stage(Plain, Default, 25, 25);
-    }
-
-    // Process other modules
+    // Set modules
     controller->palette = create_game_palette_texture(
         game_data->raw_palette, 
         WEATHER_DEFAULT, 
@@ -66,7 +53,7 @@ Game_Editor_Controller* create_game_editor_controller(
         return NULL;
     }
 
-    // Update grid shader's view matrix
+    // Update grid shader's matrices
     mat4 initial_projection;
     create_projection_matrix(*window_width, *window_height, initial_projection);
 

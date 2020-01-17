@@ -8,14 +8,7 @@ Game* EMX create_game(int window_width, int window_height)
     game->mode = No_Game_Mode;
     game->controller = NULL;
 
-    if (!init_game_rendering(
-        game,
-        (window_width) ? window_width : DEFAULT_WINDOW_WIDTH,
-        (window_height) ? window_height : DEFAULT_WINDOW_HEIGHT
-    )) {
-        return game;
-    }
-
+    game->renderer = create_game_renderer(window_width, window_height);
     game->data = create_game_data();
 
     // Set input handling modules

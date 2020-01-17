@@ -4,7 +4,7 @@
 #include "Game/Stage/stage.h"
 #include "Game/Data/game_data.h"
 
-typedef struct Game_Editor_Controller Game_Editor_Controller;
+typedef struct Editor_Game_Controller Editor_Game_Controller;
 
 Game_Editor_Controller* create_game_editor_controller(
     Game_Data* game_data,

@@ -45,18 +45,3 @@ typedef struct Game_Data {
     int sprite_sheet_width, sprite_sheet_height;
 
 } Game_Data;
-
-
-
-
-// TODO: move into appropriate tile module
-/*! @brief Gets the next tile variation for a neutral tile type.
- *
- *  @note Must be called continuously until it returns NULL.
- *
- *  @param[in] game The game instance.
- *  @param[in] type The type from which to get the next variation.
- *  @param[out] var Filled in with the neutral tile variation's value.
- *  @return The tile variation's string.
- */
-// Tile_Variation get_next_game_tile_var(Game* game, Tile_Type type);

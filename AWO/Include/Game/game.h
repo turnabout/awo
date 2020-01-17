@@ -25,6 +25,8 @@ typedef enum Game_State {
 } Game_State;
 
 /*! @brief Every possible mode of gameplay the game can use.
+ *  Determines which type of game controller the game is currently using.
+ *  No_Game_Mode means the game is not in Game_Prepared or Game_Running game state.
  */
 typedef enum Game_Mode {
 

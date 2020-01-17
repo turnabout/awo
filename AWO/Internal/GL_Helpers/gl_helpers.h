@@ -12,15 +12,6 @@
  */
 GLuint create_shader_program(const char* vertex_shader_path, const char* fragment_shader_path);
 
-/*! @brief Creates a GLFW window instance.
- *
- *  @param[in] width The width of the created window.
- *  @param[in] height The height of the created window.
- *  @param[in] title The title of the created window.
- *  @return The created GLFW window.
- */
-GLFWwindow* create_glfw_window(int width, int height, char* title);
-
 /*! @brief Creates a texture object from an image loaded at the given path.
  *
  *  @param[in] path The full path to the texture.
