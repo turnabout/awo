@@ -9,6 +9,7 @@
 
 int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
+    /*
     // Ignore if game was already set
     if (console->game != NULL) {
         cprinte(console, "Error: game window already set");
@@ -30,6 +31,7 @@ int init(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     }
 
     focus_console_window();
+    */
 
     return CMD_Ret_OK;
 }

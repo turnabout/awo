@@ -90,7 +90,8 @@ Console* create_console()
     // Set callback for handling messages emitted by the game
     set_game_message_callback(console_game_message_cb, (void*)console);
 
-    // Initialize the game data module, to be used later
+    // Initialize the game data module
+    console->game_data = create_game_data();
 
     return console;
 }

@@ -11,12 +11,6 @@ int update_editor_tile(Console* console, void* payload[CMD_ARG_MAX_COUNT])
         return CMD_Ret_Error;
     }
 
-    // Confirm game state
-    if (get_game_state(console->game) != Game_Running) {
-        cprinte(console, "Error: game must be running in design room mode");
-        return CMD_Ret_Error;
-    }
-
     // Unpack payload values
     int tile_type = (payload[0] != NULL) ? *((int*)payload[0]) : -1;
 

@@ -5,6 +5,7 @@
 
 int free_console_game(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
+    /*
     if (console->game == NULL) {
         cprinte(console, "Error: game must be created: run `init`");
         return CMD_Ret_Error;
@@ -21,4 +22,5 @@ int free_console_game(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     } else {
         return CMD_Ret_OK;
     }
+    */
 }

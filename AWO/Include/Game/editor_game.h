@@ -4,10 +4,6 @@
 #include "../Game_Window/game_window.h"
 #include "game.h"
 
-/*! @brief Game in editor mode. Edit a stage and export it as a string.
- */
-typedef struct Editor_Game Editor_Game;
-
 /*! @brief Every possible entity type the game editor can edit.
  */
 typedef enum Game_Editor_Entity_Type {

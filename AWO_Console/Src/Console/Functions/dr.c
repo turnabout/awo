@@ -1,5 +1,6 @@
 #include <curses.h>
 #include <stdio.h>
+#include <AWO/Include/Game/editor_game.h>
 
 #include "Utilities/utilities.h"
 #include "Console/_console.h"
@@ -8,30 +9,28 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game has already been initialized
     if (console->game != NULL) {
-        cprinte(console, "Error: Game has already been initialized");
+        cprinte(console, "Error: a Game has already been initialized");
         return CMD_Ret_Error;
     }
 
-    // Create the game & print any messages sent during creation
-    console->game = create_game(500, 500);
+    // Create the game window & game
+    console->game_window = create_game_window(0, 0);
+
+    if (console->game_window == NULL) {
+        cprinte(console, "Error during game window creation");
+        return CMD_Ret_Error;
+    }
+
+    console->game = create_editor_game(console->game_data, console->game_window);
+
+    if (console->game == NULL) {
+        cprinte(console, "Error during game creation");
+        return CMD_Ret_Error;
+    }
 
     // Tile the console and game windows
     tile_console(console);
     curs_set(0);
-
-    // Check if an error happened during creation
-    if (get_game_state(console->game) == Game_Unusable) {
-        free_game(console->game);
-        console->game = NULL;
-        return CMD_Ret_Error;
-    }
-
-    // Prepare the game for design room mode
-    /*
-    if (!prepare_game(console->game, Design_Room_Mode, NULL, NULL)) {
-        return CMD_Ret_Error;
-    }
-    */
 
     reset_console_user_command(console);
 
@@ -39,9 +38,12 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     nodelay(stdscr, TRUE);
     focus_console_window();
 
-    // Start running the game, use console update function as passed-callback so we can keep 
-    // processing user commands while the game runs.
-    run_game(console->game, update_console, (void*)console);
+    // Start running the game, use console update function as passed-callback to keep processing 
+    // user commands while the game runs.
+    run_game(console->game, console->game_window, update_console, (void*)console);
+
+    free_game_window(console->game_window);
+    free_editor_game(console->game);
 
     // Deactivate Curses nodelay mode so update_console goes back to blocking
     nodelay(stdscr, FALSE);

@@ -70,6 +70,15 @@ Game_Window* create_game_window(int window_width, int window_height)
         return NULL;
     }
 
+    // Use default dimensions if invalid values given
+    if (window_width < 1) {
+        window_width = DEFAULT_WINDOW_WIDTH;
+    }
+
+    if (window_height < 1) {
+        window_height = DEFAULT_WINDOW_HEIGHT;
+    }
+
     // Create GLFW window
     game_window->glfw_window = create_glfw_window(window_width, window_height, DEFAULT_WINDOW_TITLE);
 

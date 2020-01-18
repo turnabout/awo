@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-#include "AWO/Include/Game/game.h"
+#include <AWO/Include/Game/editor_game.h>
 
 #include "Console/console.h"
 
 int main(int argc, char** argv)
 {
-    Game* game = create_game(500, 500);
+    Game* game;
 
     /*
     Console* console = create_console();

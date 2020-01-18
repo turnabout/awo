@@ -40,5 +40,5 @@ void tile_console(Console* console)
         TRUE
     );
 
-    update_game_window_dimensions(console->game, game_win_w, game_win_h);
+    update_game_window_dimensions(console->game_window, game_win_w, game_win_h);
 }

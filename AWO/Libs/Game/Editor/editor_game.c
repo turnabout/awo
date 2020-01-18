@@ -10,11 +10,6 @@ Game* create_editor_game(Game_Data* game_data, Game_Window* game_window)
         return NULL;
     }
 
-    game->stage = NULL;
-    game->render = NULL;
-    game->update = NULL;
-    game->camera = NULL;
-    game->clock = NULL;
     game->data = game_data;
     game->palette = 0;
     // game->stage_renderer = NULL;
@@ -35,7 +30,7 @@ Game* create_editor_game(Game_Data* game_data, Game_Window* game_window)
 
     // game->stage_renderer = create_stage_renderer(game->stage, game_data);
     // game->extras_renderer = create_extras_renderer(game_data->sprite_sheet);
-    game->clock = create_game_clock(game_data->clock);
+    // game->clock = create_clock(game_data->clock);
 
     // Update renderers' matrices
     // mat4 initial_projection;
@@ -54,9 +49,9 @@ void free_editor_game(Game* game)
 
     Editor_Game* editor_game = (Editor_Game*)game;
 
-    free_game_camera(editor_game->camera);
-    free_game_clock(editor_game->clock);
     free_stage(editor_game->stage);
+    free_game_camera(editor_game->camera);
+    // free_game_clock(editor_game->clock);
     // free_stage_renderer(editor_game->stage_renderer);
     // free_extras_renderer(editor_game->extras_renderer);
 
