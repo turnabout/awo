@@ -1,6 +1,8 @@
 #pragma once
 
 #include <AWO/Include/Game/game.h>
+#include <AWO/Include/Game_Window/game_window.h>
+#include <AWO/Include/Game_Data/game_data.h>
 #include <AWO/Include/Game_Message/game_message.h>
 
 #include "Console/console.h"
@@ -56,7 +58,9 @@ struct Console {
     // Current count of displayed messages
     int message_count;
 
-    // Reference to the game
+    // AWO game references
+    Game_Window* game_window;
+    Game_Data* game_data;
     Game* game;
 
 };

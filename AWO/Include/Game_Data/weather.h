@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Utilities/utilities.h"
+#include "../macros.h"
 
 // Game weathers
 #define FOREACH_WEATHER(WEATHER) \

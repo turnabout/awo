@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Utilities/utilities.h"
+#include "../macros.h"
 
 #define FOREACH_UNIT_VAR(ARMY) \
     ARMY(OS) \

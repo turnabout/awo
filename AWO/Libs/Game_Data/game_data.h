@@ -11,7 +11,3 @@
 #include "Game_Data/Property_Data/property_data.h"
 #include "Game_Data/UI_Data/UI_data.h"
 #include "Game_Data/CO_Data/CO_data.h"
-
-Game_Data* create_game_data();
-
-void free_game_data(Game_Data* game_data);

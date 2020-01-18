@@ -1,0 +1,4 @@
+#pragma once
+
+#define GENERATE_ENUM(ENUM) ENUM,
+#define GENERATE_STRING(STRING) #STRING,

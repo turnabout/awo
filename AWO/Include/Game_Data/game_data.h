@@ -45,3 +45,7 @@ typedef struct Game_Data {
     int sprite_sheet_width, sprite_sheet_height;
 
 } Game_Data;
+
+Game_Data* create_game_data();
+
+void free_game_data(Game_Data* game_data);

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Internal\Input_State\Keyboard_State\keyboard_state.c" />
     <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c" />
+    <ClCompile Include="Libs\Game\Editor\editor_game.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data_access.c" />
     <ClCompile Include="Libs\Game_Data\Tile_Data\tile_auto_var_access.c" />
@@ -51,9 +52,6 @@
     <ClCompile Include="Internal\Linked_List\linked_list.c" />
     <ClCompile Include="Internal\Linked_List\list_entry.c" />
     <ClCompile Include="Libs\Game\game.c" />
-    <ClCompile Include="Libs\Game\prepare_design_room_game.c" />
-    <ClCompile Include="Libs\Game\run_game.c" />
-    <ClCompile Include="Libs\Game\unprepare_game.c" />
     <ClCompile Include="Libs\Input_Handlers\Keyboard_Handler\keyboard_handler.c" />
     <ClCompile Include="Libs\Input_Handlers\Mouse_Handler\mouse_handler.c" />
     <ClCompile Include="Libs\Game_Message\game_message.c" />
@@ -100,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\Entity_Texture_Reader\entity_texture_reader.h" />
-    <ClInclude Include="Include\Game\game_editor_controller.h" />
+    <ClInclude Include="Include\Game\editor_game.h" />
     <ClInclude Include="Include\Game\game.h" />
     <ClInclude Include="Include\Game_Data\army_types.h" />
     <ClInclude Include="Include\Game_Data\clock_data.h" />
@@ -114,9 +112,13 @@
     <ClInclude Include="Include\Game_Data\weather.h" />
     <ClInclude Include="Include\Game_Message\game_message.h" />
     <ClInclude Include="Include\Game_Window\game_window.h" />
+    <ClInclude Include="Include\macros.h" />
     <ClInclude Include="Internal\Config\config.h" />
     <ClInclude Include="Internal\Input_State\Keyboard_State\keyboard_state.h" />
     <ClInclude Include="Internal\Input_State\Mouse_State\mouse_state.h" />
+    <ClInclude Include="Libs\Game\Editor\editor_game.h" />
+    <ClInclude Include="Libs\Game\Editor\_editor_game.h" />
+    <ClInclude Include="Libs\Game\Headers\game_callback_types.h" />
     <ClInclude Include="Libs\Game_Data\CO_Data\Headers\CO_frame_types.h" />
     <ClInclude Include="Libs\Game_Data\Palette_Data\palette_data.h" />
     <ClInclude Include="Libs\Game_Data\Palette_Data\_palette_data.h" />
@@ -145,7 +147,6 @@
     <ClInclude Include="Internal\Palette\Headers\palette_index.h" />
     <ClInclude Include="Internal\Palette\Headers\update_palette.h" />
     <ClInclude Include="Internal\Palette\_palette.h" />
-    <ClInclude Include="Libs\Game\game.h" />
     <ClInclude Include="Libs\Game\_game.h" />
     <ClInclude Include="Include\Game_Data\unit_animations.h" />
     <ClInclude Include="Internal\Input_State\Headers\button_state.h" />

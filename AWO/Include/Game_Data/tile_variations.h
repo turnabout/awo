@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Utilities/utilities.h"
+#include "../macros.h"
 
 #define FOREACH_TILE_VAR(TILEVAR) \
     TILEVAR(Default) \

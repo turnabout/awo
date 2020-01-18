@@ -105,18 +105,6 @@
     <ClCompile Include="Internal\Palette\update_palette_property_weather.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libs\Game\game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\Game\prepare_design_room_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\Game\unprepare_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\Game\run_game.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Libs\Entity_Texture_Reader\entity_texture_reader.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -207,6 +195,12 @@
     <ClCompile Include="Libs\Input_Handlers\Mouse_Handler\mouse_handler.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libs\Game\Editor\editor_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Game\game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -282,9 +276,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Internal\Palette\Headers\update_palette.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\Game\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\Game\game.h">
@@ -443,9 +434,6 @@
     <ClInclude Include="Include\Game_Data\unit_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Game\game_editor_controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Libs\Game_Window\_game_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -474,6 +462,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Input_Handlers\Mouse_Handler\mouse_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game\editor_game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Game\Editor\editor_game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Game\Editor\_editor_game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Game\Headers\game_callback_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\macros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

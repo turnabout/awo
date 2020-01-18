@@ -90,6 +90,8 @@ Console* create_console()
     // Set callback for handling messages emitted by the game
     set_game_message_callback(console_game_message_cb, (void*)console);
 
+    // Initialize the game data module, to be used later
+
     return console;
 }
 
@@ -184,11 +186,5 @@ void free_console(Console* console)
 
     // Empty the messages list
     empty_console_messages(console);
-
-    // Free the game if it existed
-    if (console->game != NULL) {
-        free_game(console->game);
-    }
-
     free(console);
 }
