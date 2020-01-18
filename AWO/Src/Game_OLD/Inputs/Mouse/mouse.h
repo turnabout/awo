@@ -15,7 +15,7 @@ typedef enum Mouse_Button {
     MOUSE_BUTTON_RIGHT,
 } Mouse_Button;
 
-/*! @brief The full current state of the mouse.
+/*! @brief Struct holding the current state of the user's mouse.
  */
 typedef struct Mouse_State {
 

@@ -28,12 +28,3 @@ struct Game {
     void* controller;
 
 };
-
-/*! @brief Initializes game rendering-related settings.
- *
- *  @param[in] game The game object.
- *  @param[in] window_width Initial width of the window.
- *  @param[in] window_height Initial height of the window.
- *  @return TRUE if successful, FALSE if an error occurred.
- */
-Bool init_game_rendering(Game* game, int window_width, int window_height);

@@ -195,6 +195,18 @@
     <ClCompile Include="Libs\Game_Window\game_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libs\Inputs\Keyboard_Inputs\keyboard_inputs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Inputs\Mouse_Inputs\mouse_inputs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Inputs_State\Keyboard_State\keyboard_state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Inputs_State\Mouse_State\mouse_state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -441,6 +453,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\Game_Window\game_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Inputs\Keyboard_Inputs\_keyboard_inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Inputs\Keyboard_Inputs\keyboard_inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Inputs\Mouse_Inputs\_mouse_inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Inputs\Mouse_Inputs\mouse_inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Inputs_State\Keyboard_State\keyboard_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Inputs_State\Mouse_State\mouse_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Inputs_State\Headers\button_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

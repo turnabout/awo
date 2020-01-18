@@ -44,6 +44,7 @@ void update_keyboard_state()
 void init_keyboard_module(GLFWwindow* window)
 {
     window_instance = window;
+    // GLFWAPI GLFWkeyfun glfwSetKeyCallback(GLFWwindow* window, GLFWkeyfun cbfun);
 
     keys_state = (Button_State*)malloc(sizeof(Button_State) * GAME_KEYS_COUNT);
 
