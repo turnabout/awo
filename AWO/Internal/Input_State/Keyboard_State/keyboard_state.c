@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Inputs_State/Keyboard_State/keyboard_state.h"
+#include "Input_State/Keyboard_State/keyboard_state.h"
 
 Keyboard_State* create_keyboard_state()
 {
@@ -10,15 +10,8 @@ Keyboard_State* create_keyboard_state()
         return NULL;
     }
 
-    state->keys = malloc(sizeof(Key) * GAME_KEY_COUNT);
-
-    if (state->keys == NULL) {
-        free_keyboard_state(state);
-        return NULL;
-    }
-
-    for (int i = 0; i < GAME_KEY_COUNT; i++) {
-        state->keys[i] = BUTTON_UP;
+    for (Key key = KEY_FIRST; key < KEY_COUNT; key++) {
+        state->keys[key] = BUTTON_UP;
     }
 
     return state;

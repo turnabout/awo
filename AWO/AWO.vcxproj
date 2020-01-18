@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Internal\Inputs_State\Keyboard_State\keyboard_state.c" />
-    <ClCompile Include="Internal\Inputs_State\Mouse_State\mouse_state.c" />
+    <ClCompile Include="Internal\Input_State\Keyboard_State\keyboard_state.c" />
+    <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data_access.c" />
     <ClCompile Include="Libs\Game_Data\Tile_Data\tile_auto_var_access.c" />
@@ -54,8 +54,8 @@
     <ClCompile Include="Libs\Game\prepare_design_room_game.c" />
     <ClCompile Include="Libs\Game\run_game.c" />
     <ClCompile Include="Libs\Game\unprepare_game.c" />
-    <ClCompile Include="Libs\Inputs\Keyboard_Inputs\keyboard_inputs.c" />
-    <ClCompile Include="Libs\Inputs\Mouse_Inputs\mouse_inputs.c" />
+    <ClCompile Include="Libs\Input_Handlers\Keyboard_Handler\keyboard_handler.c" />
+    <ClCompile Include="Libs\Input_Handlers\Mouse_Handler\mouse_handler.c" />
     <ClCompile Include="Libs\Game_Message\game_message.c" />
     <ClCompile Include="Libs\Game_Message\game_message_simple.c" />
     <ClCompile Include="Internal\Palette\palette.c" />
@@ -115,8 +115,8 @@
     <ClInclude Include="Include\Game_Message\game_message.h" />
     <ClInclude Include="Include\Game_Window\game_window.h" />
     <ClInclude Include="Internal\Config\config.h" />
-    <ClInclude Include="Internal\Inputs_State\Keyboard_State\keyboard_state.h" />
-    <ClInclude Include="Internal\Inputs_State\Mouse_State\mouse_state.h" />
+    <ClInclude Include="Internal\Input_State\Keyboard_State\keyboard_state.h" />
+    <ClInclude Include="Internal\Input_State\Mouse_State\mouse_state.h" />
     <ClInclude Include="Libs\Game_Data\CO_Data\Headers\CO_frame_types.h" />
     <ClInclude Include="Libs\Game_Data\Palette_Data\palette_data.h" />
     <ClInclude Include="Libs\Game_Data\Palette_Data\_palette_data.h" />
@@ -148,11 +148,11 @@
     <ClInclude Include="Libs\Game\game.h" />
     <ClInclude Include="Libs\Game\_game.h" />
     <ClInclude Include="Include\Game_Data\unit_animations.h" />
-    <ClInclude Include="Internal\Inputs_State\Headers\button_state.h" />
-    <ClInclude Include="Libs\Inputs\Keyboard_Inputs\keyboard_inputs.h" />
-    <ClInclude Include="Libs\Inputs\Keyboard_Inputs\_keyboard_inputs.h" />
-    <ClInclude Include="Libs\Inputs\Mouse_Inputs\mouse_inputs.h" />
-    <ClInclude Include="Libs\Inputs\Mouse_Inputs\_mouse_inputs.h" />
+    <ClInclude Include="Internal\Input_State\Headers\button_state.h" />
+    <ClInclude Include="Libs\Input_Handlers\Keyboard_Handler\keyboard_handler.h" />
+    <ClInclude Include="Libs\Input_Handlers\Keyboard_Handler\_keyboard_handler.h" />
+    <ClInclude Include="Libs\Input_Handlers\Mouse_Handler\mouse_handler.h" />
+    <ClInclude Include="Libs\Input_Handlers\Mouse_Handler\_mouse_handler.h" />
     <ClInclude Include="Libs\Game_Message\game_message.h" />
     <ClInclude Include="Internal\Player\CO\CO.h" />
     <ClInclude Include="Internal\Player\player.h" />

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Inputs_State/Mouse_State/mouse_state.h"
+#include "Input_State/Mouse_State/mouse_state.h"
 
 Mouse_State* create_mouse_state()
 {

@@ -195,16 +195,16 @@
     <ClCompile Include="Libs\Game_Window\game_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libs\Inputs\Keyboard_Inputs\keyboard_inputs.c">
+    <ClCompile Include="Internal\Input_State\Keyboard_State\keyboard_state.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libs\Inputs\Mouse_Inputs\mouse_inputs.c">
+    <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Inputs_State\Keyboard_State\keyboard_state.c">
+    <ClCompile Include="Libs\Input_Handlers\Keyboard_Handler\keyboard_handler.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Inputs_State\Mouse_State\mouse_state.c">
+    <ClCompile Include="Libs\Input_Handlers\Mouse_Handler\mouse_handler.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -455,25 +455,25 @@
     <ClInclude Include="Include\Game_Window\game_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Inputs\Keyboard_Inputs\_keyboard_inputs.h">
+    <ClInclude Include="Internal\Input_State\Headers\button_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Inputs\Keyboard_Inputs\keyboard_inputs.h">
+    <ClInclude Include="Internal\Input_State\Keyboard_State\keyboard_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Inputs\Mouse_Inputs\_mouse_inputs.h">
+    <ClInclude Include="Internal\Input_State\Mouse_State\mouse_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Inputs\Mouse_Inputs\mouse_inputs.h">
+    <ClInclude Include="Libs\Input_Handlers\Keyboard_Handler\_keyboard_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Inputs_State\Keyboard_State\keyboard_state.h">
+    <ClInclude Include="Libs\Input_Handlers\Keyboard_Handler\keyboard_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Inputs_State\Mouse_State\mouse_state.h">
+    <ClInclude Include="Libs\Input_Handlers\Mouse_Handler\_mouse_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Inputs_State\Headers\button_state.h">
+    <ClInclude Include="Libs\Input_Handlers\Mouse_Handler\mouse_handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

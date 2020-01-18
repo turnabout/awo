@@ -1,10 +1,10 @@
 #pragma once
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 #include "Include/Game_Window/game_window.h"
 
-Game_Window* create_game_window(int width, int height);
-
-void update_game_window_dimensions(Game_Window* game_window, int width, int height);
 void get_game_window_dimensions_ptrs(Game_Window* game_window, int** width, int** height);
 
-void free_game_window(Game_Window* game_window);
+GLFWwindow* get_game_window_GLFW_window_handle(Game_Window* game_window);

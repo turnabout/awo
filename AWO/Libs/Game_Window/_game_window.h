@@ -1,8 +1,5 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
 #include "Include/types.h"
 #include "Game_Window/game_window.h"
 #include "Game_Message/game_message.h"
