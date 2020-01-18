@@ -104,6 +104,11 @@ void get_game_window_dimensions_ptrs(Game_Window* game_window, int** width, int*
     *height = &game_window->height;
 }
 
+GLFWwindow* get_game_window_GLFW_window_handle(Game_Window* game_window)
+{
+    return game_window->glfw_window;
+}
+
 void free_game_window(Game_Window* game_window)
 {
     glfwTerminate();
