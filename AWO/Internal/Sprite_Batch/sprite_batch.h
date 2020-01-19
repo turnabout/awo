@@ -2,9 +2,9 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <cglm/types.h>
+#include <cglm/cglm.h>
 
-#include "Game/Data/Animation/animation.h"
+#include "Game_Data/Animation/animation.h"
 
 typedef struct Sprite_Batch Sprite_Batch;
 

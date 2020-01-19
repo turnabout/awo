@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
-#include "GL_Helpers/gl_helpers.h"
-#include "Game/Renderer/Render_Grid/_render_grid.h"
+#include "Render_Grid/_render_grid.h"
 
 void init_render_grid_texture(Render_Grid* render_grid)
 {

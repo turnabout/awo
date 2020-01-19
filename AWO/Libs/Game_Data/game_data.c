@@ -88,6 +88,21 @@ Game_Data* create_game_data()
         cJSON_GetObjectItem(data_JSON, "palettes")
     );
 
+    // Confirm all modules were initialized successfully
+    if (
+        data->tile == NULL ||
+        data->property == NULL ||
+        data->unit == NULL ||
+        data->UI== NULL ||
+        data->CO== NULL ||
+        data->clock== NULL ||
+        data->palette == 0
+    ) {
+        free_game_data(data);
+        printe("Game data: one more more modules were not initialized successfully");
+        return NULL;
+    }
+
     // Get all default stages strings
     cJSON* stages_array_JSON = cJSON_GetObjectItem(data_JSON, "stages");
 

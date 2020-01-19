@@ -10,6 +10,8 @@ Game* create_editor_game(Game_Data* game_data, Game_Window* game_window)
         return NULL;
     }
 
+    game->update = update_editor_game;
+    game->render = render_editor_game;
     game->data = game_data;
     game->palette = 0;
     // game->stage_renderer = NULL;

@@ -39,3 +39,6 @@ struct Editor_Game {
     GLuint palette;
 
 };
+
+void update_editor_game(Editor_Game* game, float delta_time);
+void render_editor_game(Editor_Game* game);

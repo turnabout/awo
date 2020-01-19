@@ -201,6 +201,27 @@
     <ClCompile Include="Libs\Game\game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libs\Game\Editor\render_editor_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\Game\Editor\update_editor_game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Sprite_Batch\sprite_batch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Render_Grid\render_grid.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Render_Grid\get_render_grid_VAO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Render_Grid\update_render_grid.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -477,6 +498,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Sprite_Batch\sprite_batch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Render_Grid\render_grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Render_Grid\_render_grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Renderers\Extras_Renderer\extras_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

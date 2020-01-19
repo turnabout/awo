@@ -21,7 +21,14 @@
   <ItemGroup>
     <ClCompile Include="Internal\Input_State\Keyboard_State\keyboard_state.c" />
     <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c" />
+    <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c" />
+    <ClCompile Include="Internal\Render_Grid\get_render_grid_VAO.c" />
+    <ClCompile Include="Internal\Render_Grid\render_grid.c" />
+    <ClCompile Include="Internal\Render_Grid\update_render_grid.c" />
+    <ClCompile Include="Internal\Sprite_Batch\sprite_batch.c" />
     <ClCompile Include="Libs\Game\Editor\editor_game.c" />
+    <ClCompile Include="Libs\Game\Editor\render_editor_game.c" />
+    <ClCompile Include="Libs\Game\Editor\update_editor_game.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data_access.c" />
     <ClCompile Include="Libs\Game_Data\Tile_Data\tile_auto_var_access.c" />
@@ -116,6 +123,10 @@
     <ClInclude Include="Internal\Config\config.h" />
     <ClInclude Include="Internal\Input_State\Keyboard_State\keyboard_state.h" />
     <ClInclude Include="Internal\Input_State\Mouse_State\mouse_state.h" />
+    <ClInclude Include="Internal\Renderers\Extras_Renderer\extras_renderer.h" />
+    <ClInclude Include="Internal\Render_Grid\render_grid.h" />
+    <ClInclude Include="Internal\Render_Grid\_render_grid.h" />
+    <ClInclude Include="Internal\Sprite_Batch\sprite_batch.h" />
     <ClInclude Include="Libs\Game\Editor\editor_game.h" />
     <ClInclude Include="Libs\Game\Editor\_editor_game.h" />
     <ClInclude Include="Libs\Game\Headers\game_callback_types.h" />

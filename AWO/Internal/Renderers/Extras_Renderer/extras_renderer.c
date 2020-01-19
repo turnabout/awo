@@ -1,10 +1,9 @@
 #include <stdlib.h>
 
-#include "conf.h"
-#include "Utilities/macros.h"
+#include "Config/config.h"
 #include "GL_Helpers/gl_helpers.h"
-#include "Game/Renderer/Extras_Renderer/extras_renderer.h"
-#include "Game/Renderer/Sprite_Batch/sprite_batch.h"
+#include "Renderers/Extras_Renderer/extras_renderer.h"
+#include "Sprite_Batch/sprite_batch.h"
 
 // Identity matrix reference
 mat4 identity = GLM_MAT4_IDENTITY_INIT;

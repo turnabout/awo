@@ -1,4 +1,4 @@
-#include "Game/Renderer/Render_Grid/render_grid.h"
+#include "Render_Grid/_render_grid.h"
 
 GLuint get_render_grid_VAO(
     GLuint width, 

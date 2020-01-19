@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Game/Renderer/Render_Grid/render_grid.h"
+#include "GL_Helpers/gl_helpers.h"
+#include "Render_Grid/render_grid.h"
 
 struct Render_Grid {
 
