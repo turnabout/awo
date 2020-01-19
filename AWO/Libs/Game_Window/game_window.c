@@ -8,15 +8,8 @@ void glfw_error_cb(int err_int, const char* err_str)
     printe("GLFW Error: %s", err_str);
 }
 
-Bool init_glfw()
+Bool init_gl()
 {
-    if (glfwInit() == GLFW_FALSE) {
-        printe("Failed to initialize GLFW.");
-        return FALSE;
-    }
-
-    glfwSetErrorCallback(glfw_error_cb);
-
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         printe("Failed to initialize GL.");
         return FALSE;
@@ -38,12 +31,20 @@ Bool init_glfw()
 
 GLFWwindow* create_glfw_window(int width, int height, char* title)
 {
+    if (glfwInit() == GLFW_FALSE) {
+        printe("Failed to initialize GLFW.");
+        return NULL;
+    }
+
     #ifndef __EMSCRIPTEN__
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
     #endif
+
+    glfwSetErrorCallback(glfw_error_cb);
 
     GLFWwindow* window = glfwCreateWindow(width, height, title, NULL, NULL);
 
@@ -64,12 +65,6 @@ Game_Window* create_game_window(int window_width, int window_height)
         return NULL;
     }
 
-    // Init GLFW
-    if (!init_glfw()) {
-        free_game_window(game_window);
-        return NULL;
-    }
-
     // Use default dimensions if invalid values given
     if (window_width < 1) {
         window_width = DEFAULT_WINDOW_WIDTH;
@@ -82,8 +77,14 @@ Game_Window* create_game_window(int window_width, int window_height)
     // Create GLFW window
     game_window->glfw_window = create_glfw_window(window_width, window_height, DEFAULT_WINDOW_TITLE);
 
+    // Init GL
+    if (!init_gl()) {
+        free_game_window(game_window);
+        return NULL;
+    }
+
     if (game_window->glfw_window == NULL) {
-        printe("Failed to create game window.");
+        printe("Failed to create game window");
 
         free_game_window(game_window);
         return NULL;

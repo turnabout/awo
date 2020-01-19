@@ -6,7 +6,8 @@
 
 int main(int argc, char** argv)
 {
-    Game* game;
+    Game_Window* window = create_game_window(0, 0);
+    Game_Data* data = create_game_data();
 
     /*
     Console* console = create_console();

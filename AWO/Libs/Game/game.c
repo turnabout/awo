@@ -7,7 +7,7 @@ static float delta_time = 0.0f;
 static float last_frame_time = 0.0f;
 
 // GLFW window instance
-static GLFWwindow* window = NULL;
+static GLFWwindow* glfw_window = NULL;
 
 void game_loop(void* game)
 {
@@ -22,7 +22,7 @@ void game_loop(void* game)
     ((Game*)game)->update(game, delta_time);
     ((Game*)game)->render(game);
 
-    glfwSwapBuffers(window);
+    glfwSwapBuffers(glfw_window);
 }
 
 void EMX run_game(
@@ -35,7 +35,8 @@ void EMX run_game(
     // Set starting static values
     delta_time = 0.0f;
     last_frame_time = 0.0f;
-    window = get_game_window_GLFW_window_handle(game_window);
+    glfw_window = get_game_window_GLFW_window_handle(game_window);
+    glfwShowWindow(glfw_window);
 
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);
@@ -57,5 +58,5 @@ void EMX run_game(
     // Reset static values
     delta_time = 0.0f;
     last_frame_time = 0.0f;
-    window = NULL;
+    glfw_window = NULL;
 }
