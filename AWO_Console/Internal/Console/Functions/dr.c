@@ -6,18 +6,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 {
     // Ignore if game has already been initialized
     if (console->game != NULL) {
-        cprinte(console, "Error: a Game has already been initialized");
-        return CMD_Ret_Error;
-    }
-
-    // Create the game window
-    if (console->game_window == NULL) {
-    }
-
-    console->game_window = create_game_window(0, 0);
-
-    if (console->game_window == NULL) {
-        cprinte(console, "Error during game window creation");
+        cprinte(console, "Error: a game has already been initialized");
         return CMD_Ret_Error;
     }
 
@@ -25,7 +14,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     console->game = create_editor_game(console->game_data, console->game_window);
 
     if (console->game == NULL) {
-        cprinte(console, "Error during game creation");
+        cprinte(console, "Error creating editor game");
         return CMD_Ret_Error;
     }
 
@@ -36,14 +25,17 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
 
     // Activate Curses nodelay mode so update_console becomes nonblocking
     nodelay(stdscr, TRUE);
+    show_game_window(console->game_window);
     focus_console_window();
 
-    // Start running the game, use console update function as passed-callback to keep processing 
-    // user commands while the game runs.
+    // Start running the game, pass console update function callback to keep processing user
+    // commands while the game runs.
     run_game(console->game, console->game_window, update_console, (void*)console);
 
-    free_game_window(console->game_window);
+    // Clean up
+    hide_game_window(console->game_window);
     free_editor_game(console->game);
+    console->game = NULL;
 
     // Deactivate Curses nodelay mode so update_console goes back to blocking
     nodelay(stdscr, FALSE);

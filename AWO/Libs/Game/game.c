@@ -37,7 +37,6 @@ void EMX run_game(
     delta_time = 0.0f;
     last_frame_time = 0.0f;
     glfw_window = get_game_window_GLFW_window_handle(game_window);
-    glfwShowWindow(glfw_window);
 
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);

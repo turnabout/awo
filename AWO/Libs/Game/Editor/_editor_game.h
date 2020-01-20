@@ -39,6 +39,9 @@ struct Editor_Game {
     // The game palette used for this game.
     GLuint palette;
 
+    // The sprite sheet texture used for this game.
+    GLuint sprite_sheet;
+
 };
 
 void update_editor_game(Editor_Game* game, float delta_time);

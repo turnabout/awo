@@ -36,11 +36,11 @@ typedef struct Game_Data {
     // For for all all palettes.
     Palette_Data* palette;
 
-    // Default stages.
-    char* default_stages[MAX_LOADED_STAGE_COUNT];
-
     // Holds the game's sprite sheet's texture.
     Sprite_Sheet_Data* sprite_sheet;
+
+    // Default stages.
+    char* default_stages[MAX_LOADED_STAGE_COUNT];
 
 } Game_Data;
 

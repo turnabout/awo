@@ -20,6 +20,9 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 
     game->stage = generate_filled_stage(Plain, Default, 25, 25);
 
+    // Set the sprite sheet texture
+    game->sprite_sheet = get_sprite_sheet_GL_texture(game_data->sprite_sheet);
+
     // Set modules
     int* window_width, * window_height;
     get_game_window_dimensions_ptrs(game_window, &window_width, &window_height);
@@ -32,7 +35,7 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     );
 
     // game->stage_renderer = create_stage_renderer(game->stage, game_data);
-    game->extras_renderer = create_extras_renderer(game_data->sprite_sheet);
+    game->extras_renderer = create_extras_renderer(game->sprite_sheet);
     // game->clock = create_clock(game_data->clock);
 
     // Update renderers' matrices

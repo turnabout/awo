@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Include/types.h"
+#include "Include/emx.h"
 #include "Game_Window/game_window.h"
 #include "Game_Message/game_message.h"
 

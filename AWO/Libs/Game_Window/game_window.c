@@ -29,7 +29,7 @@ Bool init_gl()
     return TRUE;
 }
 
-GLFWwindow* create_glfw_window(int width, int height, char* title)
+GLFWwindow* EMX create_glfw_window(int width, int height, char* title)
 {
     if (glfwInit() == GLFW_FALSE) {
         printe("Failed to initialize GLFW.");
@@ -95,7 +95,17 @@ Game_Window* create_game_window(int window_width, int window_height)
     return game_window;
 }
 
-void update_game_window_dimensions(Game_Window* game_window, int width, int height)
+void EMX show_game_window(Game_Window* game_window)
+{
+    glfwShowWindow(game_window->glfw_window);
+}
+
+void EMX hide_game_window(Game_Window* game_window)
+{
+    glfwHideWindow(game_window->glfw_window);
+}
+
+void EMX update_game_window_dimensions(Game_Window* game_window, int width, int height)
 {
     glfwSetWindowSize(game_window->glfw_window, width, height);
     game_window->width = width;
@@ -119,7 +129,7 @@ GLFWwindow* get_game_window_GLFW_window_handle(Game_Window* game_window)
     return game_window->glfw_window;
 }
 
-void free_game_window(Game_Window* game_window)
+void EMX free_game_window(Game_Window* game_window)
 {
     glfwTerminate();
 

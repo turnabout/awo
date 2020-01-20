@@ -27,7 +27,7 @@ void initialize_curses()
     init_pair(COLOR_PAIR_WARNING, COLOR_YELLOW, COLOR_BLACK);
 }
 
-void console_game_message_cb(Console* console, Game_Message* message)
+void console_game_message_cb(Game_Message* message, Console* console)
 {
     add_console_message(console, message->label, message->str);
 }
@@ -89,8 +89,14 @@ Console* create_console()
     // Set callback for handling messages emitted by the game
     set_game_message_callback(console_game_message_cb, (void*)console);
 
-    // Initialize the game data module
+    // Initialize the essential game window/data modules
     console->game_data = create_game_data();
+    console->game_window = create_game_window(0, 0);
+
+    if (console->game_data == NULL || console->game_window == NULL) {
+        free_console(console);
+        return NULL;
+    }
 
     return console;
 }
@@ -178,13 +184,17 @@ void send_console_command(Console* console, char* user_command)
 
 void free_console(Console* console)
 {
-    endwin();
+    if (stdscr != NULL) {
+        endwin();
+    }
 
     if (console == NULL) {
         return;
     }
 
-    // Empty the messages list
     empty_console_messages(console);
+
+    free_game_data(console->game_data);
+    free_game_window(console->game_window);
     free(console);
 }

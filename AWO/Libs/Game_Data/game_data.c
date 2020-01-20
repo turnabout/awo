@@ -95,7 +95,8 @@ Game_Data* create_game_data()
         data->UI== NULL ||
         data->CO== NULL ||
         data->clock== NULL ||
-        data->palette == 0
+        data->palette == NULL ||
+        data->sprite_sheet == NULL
     ) {
         free_game_data(data);
         printe("Game data: one more more modules were not initialized successfully");
