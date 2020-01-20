@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
 #include "Config/config.h"
-#include "Game_Message/game_message.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Renderers/Extras_Renderer/extras_renderer.h"
 #include "Sprite_Batch/sprite_batch.h"

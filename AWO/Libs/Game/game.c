@@ -1,6 +1,11 @@
 #include "Game/_game.h"
 #include "Game_Window/game_window.h"
 
+/*! @brief Used to internally signify the game window was updated, and that the game's dimensions 
+ *  should be updated at the start of the next frame.
+ */
+void _update_game_dimensions(int new_width, int new_height);
+
 // Time between current frame and last frame.
 static float delta_time = 0.0f;
 
@@ -9,6 +14,10 @@ static float last_frame_time = 0.0f;
 
 // GLFW window instance
 static GLFWwindow* glfw_window = NULL;
+
+// Whether the game window dimensions were changed before last frame, along with the new dimensions
+static Bool window_dimensions_changed = FALSE;
+static int new_window_width, new_window_height;
 
 void game_loop(void* game)
 {
@@ -19,8 +28,13 @@ void game_loop(void* game)
 
     glfwPollEvents();
 
-    glClear(GL_COLOR_BUFFER_BIT);
+    if (window_dimensions_changed) {
+        ((Game*)game)->update_dimensions(game, new_window_width, new_window_height);
+        window_dimensions_changed = FALSE;
+    }
+
     ((Game*)game)->update(game, delta_time);
+    glClear(GL_COLOR_BUFFER_BIT);
     ((Game*)game)->render(game);
 
     glfwSwapBuffers(glfw_window);
@@ -37,6 +51,9 @@ void EMX run_game(
     delta_time = 0.0f;
     last_frame_time = 0.0f;
     glfw_window = get_game_window_GLFW_window_handle(game_window);
+    window_dimensions_changed = FALSE;
+
+    set_game_window_dimensions_update_callback(game_window, _update_game_dimensions);
 
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);
@@ -59,4 +76,18 @@ void EMX run_game(
     delta_time = 0.0f;
     last_frame_time = 0.0f;
     glfw_window = NULL;
+
+    set_game_window_dimensions_update_callback(game_window, NULL);
+}
+
+void EMX update_game_dimensions(Game* game, int new_width, int new_height)
+{
+    game->update_dimensions(game, new_width, new_height);
+}
+
+void _update_game_dimensions(int new_width, int new_height)
+{
+    window_dimensions_changed = TRUE;
+    new_window_width = new_width;
+    new_window_height = new_height;
 }

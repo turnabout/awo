@@ -21,3 +21,14 @@ void run_game(
     int (*callback)(void*),
     void* cb_value
 );
+
+/*! @brief Manually tell the game that the game window's dimensions were updated.
+ *
+ *  @note This should only be called along with update_game_window_dimensions when the game window 
+ *  dimensions were updated after the game was created, but before the game has started running.
+ *
+ *  @param[in] game The game.
+ *  @param[in] new_width The new width. Same that was passed to update_game_window_dimensions.
+ *  @param[in] new_height The new height. Same that was passed to update_game_window_dimensions.
+ */
+void update_game_dimensions(Game* game, int new_width, int new_height);

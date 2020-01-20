@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
 #include "Game/Editor/_editor_game.h"
-#include "GL_Helpers/gl_helpers.h"
 
 Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 {
@@ -13,10 +12,10 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 
     game->update = update_editor_game;
     game->render = render_editor_game;
+    game->update_dimensions = update_editor_game_dimensions;
     game->data = game_data;
-    game->palette = 0;
+    game->palette = 0; // TODO
     // game->stage_renderer = NULL;
-    // game->extras_renderer = NULL;
 
     game->stage = generate_filled_stage(Plain, Default, 25, 25);
 
@@ -38,11 +37,9 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     game->extras_renderer = create_extras_renderer(game->sprite_sheet);
     // game->clock = create_clock(game_data->clock);
 
-    // Update renderers' matrices
-    mat4 initial_projection;
-    create_projection_matrix(*window_width, *window_height, initial_projection);
-    // update_stage_renderer_projection(game->stage_renderer, initial_projection);
-    update_extras_renderer_projection(game->extras_renderer, initial_projection);
+    // Initially call game's dimensions update function
+    game->update_dimensions(game, *window_width, *window_height);
+
     update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
 
     return (Game*)game;

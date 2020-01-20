@@ -29,7 +29,7 @@ Bool init_gl()
     return TRUE;
 }
 
-GLFWwindow* EMX create_glfw_window(int width, int height, char* title)
+GLFWwindow* create_glfw_window(int width, int height, char* title)
 {
     if (glfwInit() == GLFW_FALSE) {
         printe("Failed to initialize GLFW.");
@@ -57,13 +57,15 @@ GLFWwindow* EMX create_glfw_window(int width, int height, char* title)
     return window;
 }
 
-Game_Window* create_game_window(int window_width, int window_height)
+Game_Window* EMX create_game_window(int window_width, int window_height)
 {
     Game_Window* game_window = malloc(sizeof(Game_Window));
 
     if (game_window == NULL) {
         return NULL;
     }
+
+    game_window->dimensions_update_callback = NULL;
 
     // Use default dimensions if invalid values given
     if (window_width < 1) {
@@ -111,6 +113,19 @@ void EMX update_game_window_dimensions(Game_Window* game_window, int width, int 
     game_window->width = width;
     game_window->height = height;
     glViewport(0, 0, game_window->width, game_window->height);
+
+    if (game_window->dimensions_update_callback != NULL) {
+        game_window->dimensions_update_callback(width, height);
+
+    }
+}
+
+void set_game_window_dimensions_update_callback(
+    Game_Window* game_window, 
+    Window_Dimensions_Update_CB cb
+)
+{
+    game_window->dimensions_update_callback = cb;
 }
 
 void get_game_window_dimensions_ptrs(Game_Window* game_window, int** width, int** height)

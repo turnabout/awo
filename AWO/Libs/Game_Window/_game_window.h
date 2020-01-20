@@ -17,4 +17,7 @@ struct Game_Window {
     // The window's dimensions.
     int width, height;
 
+    // Function called when the window's dimensions are updated.
+    Window_Dimensions_Update_CB dimensions_update_callback;
+
 };

@@ -30,6 +30,7 @@
     <ClCompile Include="Libs\Game\Editor\editor_game.c" />
     <ClCompile Include="Libs\Game\Editor\render_editor_game.c" />
     <ClCompile Include="Libs\Game\Editor\update_editor_game.c" />
+    <ClCompile Include="Libs\Game\Editor\update_editor_game_dimensions.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data_access.c" />
     <ClCompile Include="Libs\Game_Data\Sprite_Sheet_Data\sprite_sheet_data.c" />

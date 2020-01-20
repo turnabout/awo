@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Include/emx.h"
 #include "Camera/camera.h"
 #include "Clock/game_clock.h"
 #include "Game_Data/game_data.h"
@@ -7,7 +8,6 @@
 #include "Game_Window/game_window.h"
 #include "Game/_game.h"
 #include "Renderers/Extras_Renderer/extras_renderer.h"
-#include "Include/emx.h"
 // #include "Renderer/Stage_Renderer/stage_renderer.h"
 
 struct Editor_Game {
@@ -17,6 +17,10 @@ struct Editor_Game {
 
     // Function used to render the game.
     Game_Render_CB render;
+
+    // Function used to update the game's dimensions internally.
+    Game_Dimensions_Update_CB update_dimensions;
+
 
     // Collection of all game data modules.
     Game_Data* data;
@@ -46,3 +50,4 @@ struct Editor_Game {
 
 void update_editor_game(Editor_Game* game, float delta_time);
 void render_editor_game(Editor_Game* game);
+void update_editor_game_dimensions(Game* game, int window_width, int window_height);
