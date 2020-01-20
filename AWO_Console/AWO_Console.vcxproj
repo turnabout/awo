@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir)Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir)Internal;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -151,21 +151,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Console\Command\command.c" />
-    <ClCompile Include="Src\Console\Command\command_list.c" />
-    <ClCompile Include="Src\Console\console.c" />
-    <ClCompile Include="Src\Console\console_output.c" />
-    <ClCompile Include="Src\Console\Functions\cls.c" />
-    <ClCompile Include="Src\Console\Functions\dr.c" />
-    <ClCompile Include="Src\Console\Functions\free.c" />
-    <ClCompile Include="Src\Console\Functions\tile.c" />
-    <ClCompile Include="Src\Console\Message\message.c" />
-    <ClCompile Include="Src\Console\tile_console.c" />
-    <ClCompile Include="Src\Utilities\focus_console_window.c" />
-    <ClCompile Include="Src\Console\Functions\init.c" />
-    <ClCompile Include="Src\Console\process_console_command.c" />
+    <ClCompile Include="Internal\Command\command.c" />
+    <ClCompile Include="Internal\Command\command_list.c" />
+    <ClCompile Include="Internal\Console\console.c" />
+    <ClCompile Include="Internal\Console\console_output.c" />
+    <ClCompile Include="Internal\Console\Functions\cls.c" />
+    <ClCompile Include="Internal\Console\Functions\dr.c" />
+    <ClCompile Include="Internal\Console\Functions\free.c" />
+    <ClCompile Include="Internal\Console\Functions\tile.c" />
+    <ClCompile Include="Internal\Message\message.c" />
+    <ClCompile Include="Internal\Console\tile_console.c" />
+    <ClCompile Include="Internal\Utilities\focus_console_window.c" />
+    <ClCompile Include="Internal\Console\Functions\init.c" />
+    <ClCompile Include="Internal\Console\process_console_command.c" />
     <ClCompile Include="Src\main.c" />
-    <ClCompile Include="Src\Utilities\str_is_int.c" />
+    <ClCompile Include="Internal\Utilities\str_is_int.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AWO\AWO.vcxproj">
@@ -173,13 +173,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Console\Command\command.h" />
-    <ClInclude Include="Src\Console\Command\command_descriptor.h" />
-    <ClInclude Include="Src\Console\Command\command_list.h" />
-    <ClInclude Include="Src\Console\console.h" />
-    <ClInclude Include="Src\Console\Message\message.h" />
-    <ClInclude Include="Src\Console\_console.h" />
-    <ClInclude Include="Src\Utilities\utilities.h" />
+    <ClInclude Include="Internal\Command\command.h" />
+    <ClInclude Include="Internal\Command\command_descriptor.h" />
+    <ClInclude Include="Internal\Command\command_list.h" />
+    <ClInclude Include="Internal\Console\console.h" />
+    <ClInclude Include="Internal\Message\message.h" />
+    <ClInclude Include="Internal\Console\_console.h" />
+    <ClInclude Include="Internal\Utilities\utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

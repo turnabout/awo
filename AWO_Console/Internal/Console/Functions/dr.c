@@ -1,8 +1,5 @@
-#include <curses.h>
 #include <stdio.h>
-#include <AWO/Include/Game/editor_game.h>
 
-#include "Utilities/utilities.h"
 #include "Console/_console.h"
 
 int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
@@ -13,7 +10,10 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
         return CMD_Ret_Error;
     }
 
-    // Create the game window & game
+    // Create the game window
+    if (console->game_window == NULL) {
+    }
+
     console->game_window = create_game_window(0, 0);
 
     if (console->game_window == NULL) {
@@ -21,6 +21,7 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
         return CMD_Ret_Error;
     }
 
+    // Create the editor game
     console->game = create_editor_game(console->game_data, console->game_window);
 
     if (console->game == NULL) {
@@ -31,7 +32,6 @@ int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT])
     // Tile the console and game windows
     tile_console(console);
     curs_set(0);
-
     reset_console_user_command(console);
 
     // Activate Curses nodelay mode so update_console becomes nonblocking

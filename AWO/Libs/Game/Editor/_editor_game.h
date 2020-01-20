@@ -1,13 +1,14 @@
 #pragma once
 
 #include "Camera/camera.h"
-#include "Game/Editor/editor_game.h"
 #include "Clock/game_clock.h"
 #include "Game_Data/game_data.h"
+#include "Game/Editor/editor_game.h"
 #include "Game_Window/game_window.h"
 #include "Game/_game.h"
+#include "Renderers/Extras_Renderer/extras_renderer.h"
+#include "Include/emx.h"
 // #include "Renderer/Stage_Renderer/stage_renderer.h"
-// #include "Renderer/Extras_Renderer/extras_renderer.h"
 
 struct Editor_Game {
 
@@ -33,7 +34,7 @@ struct Editor_Game {
     // Stage_Renderer* stage_renderer;
 
     // Module used to render extra elements.
-    // Extras_Renderer* extras_renderer;
+    Extras_Renderer* extras_renderer;
 
     // The game palette used for this game.
     GLuint palette;

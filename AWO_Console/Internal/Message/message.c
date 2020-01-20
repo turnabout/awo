@@ -2,7 +2,7 @@
 #include <string.h>
 #include <curses.h>
 
-#include "Console/Message/message.h"
+#include "Message/message.h"
 
 struct Message {
 

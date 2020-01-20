@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Console/Command/command_descriptor.h"
-#include "Console/Command/command.h"
+#include "Command/command_descriptor.h"
+#include "Command/command.h"
 
 typedef struct Command_List Command_List;
 

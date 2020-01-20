@@ -14,5 +14,13 @@ typedef uint64_t Uint64;
 // Boolean definition.
 typedef Uint8    Bool;
 
+#ifdef TRUE
+#undef TRUE
+#endif
+
+#ifdef FALSE
+#undef FALSE
+#endif
+
 #define TRUE (Uint8)1
 #define FALSE (Uint8)0

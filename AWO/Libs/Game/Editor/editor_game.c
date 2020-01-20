@@ -1,8 +1,9 @@
 #include <stdlib.h>
 
 #include "Game/Editor/_editor_game.h"
+#include "GL_Helpers/gl_helpers.h"
 
-Game* create_editor_game(Game_Data* game_data, Game_Window* game_window)
+Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 {
     Editor_Game* game = malloc(sizeof(Editor_Game));
 
@@ -31,14 +32,15 @@ Game* create_editor_game(Game_Data* game_data, Game_Window* game_window)
     );
 
     // game->stage_renderer = create_stage_renderer(game->stage, game_data);
-    // game->extras_renderer = create_extras_renderer(game_data->sprite_sheet);
+    game->extras_renderer = create_extras_renderer(game_data->sprite_sheet);
     // game->clock = create_clock(game_data->clock);
 
     // Update renderers' matrices
-    // mat4 initial_projection;
-    // create_projection_matrix(*window_width, *window_height, initial_projection);
+    mat4 initial_projection;
+    create_projection_matrix(*window_width, *window_height, initial_projection);
     // update_stage_renderer_projection(game->stage_renderer, initial_projection);
-    // update_extras_renderer_projection(game->extras_renderer, initial_projection);
+    update_extras_renderer_projection(game->extras_renderer, initial_projection);
+    update_extras_renderer_view(game->extras_renderer, 0, 0, 16.0f);
 
     return (Game*)game;
 }

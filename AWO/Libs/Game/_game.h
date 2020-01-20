@@ -3,9 +3,7 @@
 #include "Include/emx.h"
 #include "Include/Game/game.h"
 #include "Game/Headers/game_callback_types.h"
-#include "Game_Data/game_data.h"
 #include "Game_Message/game_message.h"
-#include "Game_Window/game_window.h"
 
 struct Game {
 

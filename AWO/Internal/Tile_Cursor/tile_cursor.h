@@ -1,18 +1,18 @@
 #pragma once
 
-#include "Internal/Camera/camera.h"
-#include "Game/Data/UI/UI_data.h"
-#include "Game/Inputs/Mouse/mouse.h"
+#include "Camera/camera.h"
+#include "Game_Data/UI_Data/UI_data.h"
+#include "Renderers/Extras_Renderer/extras_renderer.h"
 #include "Game/Renderer/game_renderer.h"
 
-typedef enum Game_Cursor_Style {
-    Game_Cursor_Regular_Style,
-    Game_Cursor_X_Style,
-} Game_Cursor_Style;
+typedef enum Tile_Cursor_Style {
+    Tile_Cursor_Regular_Style,
+    Tile_Cursor_X_Style,
+} Tile_Cursor_Style;
 
 /*! @brief Tile cursor, highlighting the tile currently hovered on by the player.
  */
-typedef struct Game_Cursor {
+typedef struct Tile_Cursor {
 
     // The cursor's animation.
     Animation* active_animation;
@@ -31,10 +31,10 @@ typedef struct Game_Cursor {
     // Amount of pixels to offset the cursor position so it's centered around a tile.
     int center_offset_px;
 
-} Game_Cursor;
+} Tile_Cursor;
 
-Game_Cursor* create_game_cursor(UI_Data* ui_data);
-void update_cursor_style(Game_Cursor* cursor, Game_Cursor_Style style);
-void update_cursor(Game_Cursor* cursor, Mouse_State* mouse, Camera* camera);
-void render_game_cursor(Game_Cursor* cursor, Game_Renderer* renderer);
-void free_game_cursor(Game_Cursor* cursor);
+Tile_Cursor* create_game_cursor(UI_Data* ui_data);
+void update_cursor_style(Tile_Cursor* cursor, Tile_Cursor_Style style);
+void update_cursor(Tile_Cursor* cursor, Mouse_State* mouse, Camera* camera);
+void render_game_cursor(Tile_Cursor* cursor, Extras_Renderer* renderer);
+void free_game_cursor(Tile_Cursor* cursor);

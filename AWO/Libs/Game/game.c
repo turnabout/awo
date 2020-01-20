@@ -1,4 +1,5 @@
 #include "Game/_game.h"
+#include "Game_Window/game_window.h"
 
 // Time between current frame and last frame.
 static float delta_time = 0.0f;

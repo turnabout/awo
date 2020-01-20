@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <AWO/Include/Game/game.h>
 
-#include "Utilities/utilities.h"
 #include "Console/_console.h"
 
 #define DEFAULT_WINDOW_W 500

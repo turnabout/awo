@@ -1,10 +1,8 @@
 #include <stdlib.h>
 #include <c_hashmap.h>
 
-#include "Console/Command/command_list.h"
-#include "Console/Command/command.h"
-
-#pragma warning(disable: 6011 )
+#include "Command/command_list.h"
+#include "Command/command.h"
 
 typedef struct Command_List {
 
@@ -16,6 +14,10 @@ typedef struct Command_List {
 Command_List* create_commands_list(Command_Descriptor command_descriptors[MAX_CMD_COUNT])
 {
     Command_List* list = malloc(sizeof(Command_List));
+
+    if (list == NULL) {
+        return NULL;
+    }
 
     list->commands = hashmap_new();
 

@@ -1,13 +1,12 @@
 #pragma once
 
-#include <AWO/Include/Game/game.h>
-#include <AWO/Include/Game_Window/game_window.h>
-#include <AWO/Include/Game_Data/game_data.h>
-#include <AWO/Include/Game_Message/game_message.h>
+#include <curses.h>
+#include <AWO/Include/awo.h>
 
 #include "Console/console.h"
-#include "Console/Command/command_list.h"
-#include "Console/Message/message.h"
+#include "Command/command_list.h"
+#include "Message/message.h"
+#include "Utilities/utilities.h"
 
 // Max character length of a command
 #define COMMAND_MAX_LENGTH 32

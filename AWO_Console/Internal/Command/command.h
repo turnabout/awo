@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Console/Command/command_descriptor.h"
+#include "Command/command_descriptor.h"
 
 typedef struct Command Command;
 

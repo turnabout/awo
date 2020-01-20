@@ -104,6 +104,7 @@
     <None Include="Resources\Shaders_ES\grid.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Include\awo.h" />
     <ClInclude Include="Include\Entity_Texture_Reader\entity_texture_reader.h" />
     <ClInclude Include="Include\Game\editor_game.h" />
     <ClInclude Include="Include\Game\game.h" />

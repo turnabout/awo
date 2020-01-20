@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-#include "Utilities/utilities.h"
 #include "Console/_console.h"
 
 int free_console_game(Console* console, void* payload[CMD_ARG_MAX_COUNT])
@@ -23,4 +22,5 @@ int free_console_game(Console* console, void* payload[CMD_ARG_MAX_COUNT])
         return CMD_Ret_OK;
     }
     */
+    return CMD_Ret_OK;
 }

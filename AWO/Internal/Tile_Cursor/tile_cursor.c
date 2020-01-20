@@ -1,10 +1,11 @@
 #include <stdlib.h>
 
-#include "Game/Cursor/game_cursor.h"
+#include "Include/types.h"
+#include "Tile_Cursor/tile_cursor.h"
 
-Game_Cursor* create_game_cursor(UI_Data* ui_data)
+Tile_Cursor* create_game_cursor(UI_Data* ui_data)
 {
-    Game_Cursor* cursor = malloc(sizeof(Game_Cursor));
+    Tile_Cursor* cursor = malloc(sizeof(Tile_Cursor));
 
     if (cursor == NULL) {
         return NULL;
@@ -24,7 +25,7 @@ Game_Cursor* create_game_cursor(UI_Data* ui_data)
     return cursor;
 }
 
-void update_cursor(Game_Cursor* cursor, Mouse_State* mouse, Game_Camera* camera)
+void update_cursor(Tile_Cursor* cursor, Mouse_State* mouse, Tile_Camera* camera)
 {
     int tile_x, tile_y;
 
@@ -56,26 +57,26 @@ void update_cursor(Game_Cursor* cursor, Mouse_State* mouse, Game_Camera* camera)
     cursor->shown = TRUE;
 }
 
-void update_cursor_style(Game_Cursor* cursor, Game_Cursor_Style style)
+void update_cursor_style(Tile_Cursor* cursor, Tile_Cursor_Style style)
 {
     switch (style) {
-    case Game_Cursor_Regular_Style:
+    case Tile_Cursor_Regular_Style:
         cursor->active_animation = cursor->animation_regular;
         break;
-    case Game_Cursor_X_Style:
+    case Tile_Cursor_X_Style:
         cursor->active_animation = cursor->animation_x;
         break;
     }
 }
 
-void render_game_cursor(Game_Cursor* cursor, Game_Renderer* renderer)
+void render_game_cursor(Tile_Cursor* cursor, Extras_Renderer* renderer)
 {
     if (cursor->shown) {
         queue_extra(renderer, cursor->dst, &cursor->active_animation->frames[0]);
     }
 }
 
-void free_game_cursor(Game_Cursor* cursor)
+void free_game_cursor(Tile_Cursor* cursor)
 {
     if (cursor != NULL) {
         free(cursor);

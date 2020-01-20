@@ -2,7 +2,7 @@
 #include <string.h>
 
 #include "Utilities/utilities.h"
-#include "Console/Command/command.h"
+#include "Command/command.h"
 
 struct Command {
 
