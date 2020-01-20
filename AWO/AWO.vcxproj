@@ -26,11 +26,13 @@
     <ClCompile Include="Internal\Render_Grid\render_grid.c" />
     <ClCompile Include="Internal\Render_Grid\update_render_grid.c" />
     <ClCompile Include="Internal\Sprite_Batch\sprite_batch.c" />
+    <ClCompile Include="Internal\Utilities\stb.c" />
     <ClCompile Include="Libs\Game\Editor\editor_game.c" />
     <ClCompile Include="Libs\Game\Editor\render_editor_game.c" />
     <ClCompile Include="Libs\Game\Editor\update_editor_game.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_data_access.c" />
+    <ClCompile Include="Libs\Game_Data\Sprite_Sheet_Data\sprite_sheet_data.c" />
     <ClCompile Include="Libs\Game_Data\Tile_Data\tile_auto_var_access.c" />
     <ClCompile Include="Libs\Game_Data\Tile_Data\tile_placement_rule_access.c" />
     <ClCompile Include="Libs\Game_Data\Tile_Data\tile_variation_data_access.c" />
@@ -114,6 +116,7 @@
     <ClInclude Include="Include\Game_Data\game_data.h" />
     <ClInclude Include="Include\Game_Data\palette_data.h" />
     <ClInclude Include="Include\Game_Data\property_data.h" />
+    <ClInclude Include="Include\Game_Data\sprite_sheet_data.h" />
     <ClInclude Include="Include\Game_Data\tile_data.h" />
     <ClInclude Include="Include\Game_Data\UI_data.h" />
     <ClInclude Include="Include\Game_Data\unit_data.h" />
@@ -135,6 +138,8 @@
     <ClInclude Include="Libs\Game_Data\Palette_Data\palette_data.h" />
     <ClInclude Include="Libs\Game_Data\Palette_Data\_palette_data.h" />
     <ClInclude Include="Include\Game_Data\property_types.h" />
+    <ClInclude Include="Libs\Game_Data\Sprite_Sheet_Data\sprite_sheet_data.h" />
+    <ClInclude Include="Libs\Game_Data\Sprite_Sheet_Data\_sprite_sheet_data.h" />
     <ClInclude Include="Libs\Game_Data\Tile_Data\Headers\macros.h" />
     <ClInclude Include="Libs\Game_Data\Tile_Data\Headers\tile_auto_var_access.h" />
     <ClInclude Include="Libs\Game_Data\Tile_Data\Headers\tile_placement_rule_access.h" />

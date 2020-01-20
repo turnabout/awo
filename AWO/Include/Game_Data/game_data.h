@@ -7,6 +7,7 @@
 #include "unit_data.h"
 #include "UI_data.h"
 #include "palette_data.h"
+#include "sprite_sheet_data.h"
 #include "weather.h"
 #include "army_types.h"
 
@@ -39,10 +40,7 @@ typedef struct Game_Data {
     char* default_stages[MAX_LOADED_STAGE_COUNT];
 
     // Holds the game's sprite sheet's texture.
-    unsigned int sprite_sheet;
-
-    // The game's sprite sheet's dimensions.
-    int sprite_sheet_width, sprite_sheet_height;
+    Sprite_Sheet_Data* sprite_sheet;
 
 } Game_Data;
 

@@ -1,6 +1,5 @@
 #ifndef __EMSCRIPTEN__
-#pragma warning (disable: 26451)
-#pragma warning (disable: 6262)
+#pragma warning (disable: 26451 6262 6617 6619)
 #endif
 /* stb_image - v2.23 - public domain image loader - http://nothings.org/stb
                                   no warranty implied; use at your own risk

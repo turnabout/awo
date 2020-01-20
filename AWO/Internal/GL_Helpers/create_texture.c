@@ -1,20 +1,7 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+#include "GL_Helpers/gl_helpers.h"
 
-GLuint create_texture_object(const char* tex_path, int* width_out, int* height_out)
+GLuint create_texture_object(Uint8* buffer, int width, int height, int channels_amount)
 {
-    // Load texture image
-    GLint channels_amount;
-    int width, height;
-    unsigned char* data = stbi_load(tex_path, &width, &height, &channels_amount, 0);
-
-    if (!data) {
-        printf("Failed to load texture image at %s\n", tex_path);
-        return 0;
-    }
-
     // Create texture object
     GLuint texture;
     glGenTextures(1, &texture);
@@ -30,22 +17,8 @@ GLuint create_texture_object(const char* tex_path, int* width_out, int* height_o
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
     // Generate texture
-    GLenum format = (channels_amount == 4)
-        ? GL_RGBA
-        : GL_RGB;
-
-    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-
-    // Free the image memory
-    stbi_image_free(data);
-
-    if (width_out != NULL) {
-        *width_out = width;
-    }
-
-    if (height_out != NULL) {
-        *height_out = height;
-    }
+    GLenum format = (channels_amount == 4) ? GL_RGBA : GL_RGB;
+    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, buffer);
 
     return texture;
 }

@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
+#include "Include/types.h"
+
 /*! @brief Creates a shader program.
  *
  *  @param[in] vertex_shader_path Full path to the vertex shader used to make up the program.
@@ -12,14 +14,16 @@
  */
 GLuint create_shader_program(const char* vertex_shader_path, const char* fragment_shader_path);
 
-/*! @brief Creates a texture object from an image loaded at the given path.
+/*! @brief Creates a texture object from the given image data buffer.
  *
- *  @param[in] path The full path to the texture.
- *  @param[out] width The width of the loaded texture.
- *  @param[out] height The height of the loaded texture.
+ *  @param[in] image_buffer The image data buffer representing the image.
+ *  @param[in] width The width of the image represented by the buffer.
+ *  @param[in] height The height of the image represented by the buffer.
+ *  @param[in] channels_amount The amount of channels the image data buffer contains. Only 3/4 are
+ *  supported internally at the moment.
  *  @return The texture object ID or 0 if an error occurred.
  */
-GLuint create_texture_object(const char* path, int* width, int* height);
+GLuint create_texture_object(Uint8* image_buffer, int width, int height, int channels_amount);
 
 /*! @brief Creates an empty texture object.
  *

@@ -30,11 +30,10 @@ Game_Data* create_game_data()
     Game_Data* data = malloc(sizeof(Game_Data));
 
     // Store sprite sheet texture on game
-    data->sprite_sheet = create_texture_object(
-        SPRITE_SHEET_PATH, 
-        &data->sprite_sheet_width, 
-        &data->sprite_sheet_height
-    );
+    data->sprite_sheet = create_sprite_sheet_data();
+
+    int ss_width, ss_height;
+    get_sprite_sheet_dimensions(data->sprite_sheet, &ss_width, &ss_height);
 
     // Load cJSON data object
     cJSON* data_JSON;
@@ -47,35 +46,35 @@ Game_Data* create_game_data()
     // Gather tiles data
     data->tile = create_tile_data(
         cJSON_GetObjectItem(data_JSON, "tiles"),
-        data->sprite_sheet_width,
-        data->sprite_sheet_height
+        ss_width,
+        ss_height
     );
 
     data->property = create_property_tiles_data(
         cJSON_GetObjectItem(data_JSON, "properties"),
-        data->sprite_sheet_width,
-        data->sprite_sheet_height
+        ss_width,
+        ss_height
     );
 
     // Gather units data
     data->unit = create_unit_data(
         cJSON_GetObjectItem(data_JSON, "units"),
-        data->sprite_sheet_width,
-        data->sprite_sheet_height
+        ss_width,
+        ss_height
     );
 
     // Gather UI data
     data->UI = create_UI_data(
         cJSON_GetObjectItem(data_JSON, "ui"),
-        data->sprite_sheet_width,
-        data->sprite_sheet_height
+        ss_width,
+        ss_height
     );
 
     // Gather CO data
     data->CO = create_CO_data(
         cJSON_GetObjectItem(data_JSON, "COs"),
-        data->sprite_sheet_width,
-        data->sprite_sheet_height
+        ss_width,
+        ss_height
     );
 
     // Gather clock data

@@ -11,3 +11,4 @@
 #include "Game_Data/Property_Data/property_data.h"
 #include "Game_Data/UI_Data/UI_data.h"
 #include "Game_Data/CO_Data/CO_data.h"
+#include "Game_Data/Sprite_Sheet_Data/sprite_sheet_data.h"

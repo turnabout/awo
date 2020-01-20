@@ -222,6 +222,12 @@
     <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Libs\Game_Data\Sprite_Sheet_Data\sprite_sheet_data.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Utilities\stb.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -513,6 +519,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\awo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Game_Data\Sprite_Sheet_Data\sprite_sheet_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\Game_Data\Sprite_Sheet_Data\_sprite_sheet_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game_Data\sprite_sheet_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

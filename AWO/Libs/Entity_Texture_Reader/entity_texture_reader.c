@@ -17,6 +17,9 @@ struct Entity_Texture_Reader {
     // The texture reader used to retrieve the texture for single entities.
     Texture_Reader* texture_reader;
 
+    // Generated sprite sheet texture
+    GLuint texture;
+
 };
 
 Entity_Texture_Reader* create_entity_texture_reader(Game_Data* game_data)
@@ -27,14 +30,15 @@ Entity_Texture_Reader* create_entity_texture_reader(Game_Data* game_data)
         return NULL;
     }
 
+    reader->texture = get_sprite_sheet_GL_texture(game_data->sprite_sheet);
+
+    int ss_width, ss_height;
+    get_sprite_sheet_dimensions(game_data->sprite_sheet, &ss_width, &ss_height);
+
     reader->game_data = game_data;
     reader->texture_reader = NULL;
 
-    reader->texture_reader = create_texture_reader(
-        game_data->sprite_sheet,
-        game_data->sprite_sheet_width,
-        game_data->sprite_sheet_height
-    );
+    reader->texture_reader = create_texture_reader(reader->texture, ss_width, ss_height);
 
     if (reader->texture_reader == NULL) {
         free_entity_texture_reader(reader);
