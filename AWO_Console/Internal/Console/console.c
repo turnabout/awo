@@ -48,11 +48,6 @@ Console* create_console()
     // Initialize list of commands that can be used through the console
     console->command_list = create_commands_list((Command_Descriptor [MAX_CMD_COUNT]){
         {
-            "init", 
-            { Command_Arg_Int, Command_Arg_Int, Command_Arg_None },
-            init
-        },
-        {
             "dr", 
             { Command_Arg_None },
             dr
@@ -61,11 +56,6 @@ Console* create_console()
             "tile",
             { Command_Arg_Int },
             update_editor_tile
-        },
-        {
-            "free", 
-            { Command_Arg_None },
-            free_console_game
         },
         {
             "cls", 
