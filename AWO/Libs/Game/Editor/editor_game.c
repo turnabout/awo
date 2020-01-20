@@ -45,6 +45,7 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     // Initially call game's dimensions update function
     game->update_dimensions(game, *window_width, *window_height);
 
+    // Initially set the view matrices for renderers
     update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
 
     return (Game*)game;
@@ -62,7 +63,7 @@ void free_editor_game(Game* game)
     free_game_camera(editor_game->camera);
     // free_game_clock(editor_game->clock);
     // free_stage_renderer(editor_game->stage_renderer);
-    // free_extras_renderer(editor_game->extras_renderer);
+    free_extras_renderer(editor_game->extras_renderer);
 
     free(editor_game);
 }

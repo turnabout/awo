@@ -110,7 +110,10 @@ void render_queued_extra_renderer_extras(Extras_Renderer* renderer)
 
 void free_extras_renderer(Extras_Renderer* renderer)
 {
-    if (renderer != NULL) {
-        free(renderer);
+    if (renderer == NULL) {
+        return;
     }
+
+    free_sprite_batch(renderer->sprite_batch);
+    free(renderer);
 }
