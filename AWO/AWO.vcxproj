@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Internal\Input_State\Keyboard_State\keyboard_state.c" />
     <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c" />
+    <ClCompile Include="Internal\Palette\update_palette_tile_weather.c" />
     <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c" />
     <ClCompile Include="Internal\Render_Grid\get_render_grid_VAO.c" />
     <ClCompile Include="Internal\Render_Grid\render_grid.c" />
@@ -67,7 +68,7 @@
     <ClCompile Include="Libs\Game_Message\game_message.c" />
     <ClCompile Include="Libs\Game_Message\game_message_simple.c" />
     <ClCompile Include="Internal\Palette\palette.c" />
-    <ClCompile Include="Internal\Palette\palette_index.c" />
+    <ClCompile Include="Internal\Palette\palette_index_access.c" />
     <ClCompile Include="Internal\Palette\update_palette_property_lights.c" />
     <ClCompile Include="Internal\Palette\update_palette_property_weather.c" />
     <ClCompile Include="Libs\Game_Data\Palette_Data\palette_NDC_index.c" />

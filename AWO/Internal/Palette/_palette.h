@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cglm/cglm.h>
+
 #include "GL_Helpers/gl_helpers.h"
 #include "Palette/palette.h"
 

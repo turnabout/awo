@@ -14,13 +14,18 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     game->render = render_editor_game;
     game->update_dimensions = update_editor_game_dimensions;
     game->data = game_data;
-    game->palette = 0; // TODO
-    // game->stage_renderer = NULL;
 
     game->stage = generate_filled_stage(Plain, Default, 25, 25);
 
     // Set the sprite sheet texture
     game->sprite_sheet = get_sprite_sheet_GL_texture(game_data->sprite_sheet);
+
+    // Set the palette texture
+    game->palette = create_game_palette_texture(
+        game_data->palette,
+        Clear,
+        (Army_Type[]){ OS, BM, GE, YC }
+    );
 
     // Set modules
     int* window_width, * window_height;

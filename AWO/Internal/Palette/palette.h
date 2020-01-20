@@ -14,13 +14,14 @@
  *  @note Holds the palette for the game's tileset using the active weather, and all active armies 
  *  and properties.
  *
- *  @param[in] raw_palette_texture The texture of the raw palette.
+ *  @param[in] palette_data The palette data module.
  *  @param[in] active_weather The initial active weather of the game.
  *  @param[in] player_armies Array containing the army of each player. Non-existent armies must
  *  hold the value UNIT_VAR_NONE.
+ *  @return The created palette GL texture.
  */
 GLuint create_game_palette_texture(
-    GLuint raw_palette_texture, 
-    Weather active_weather, 
+    Palette_Data* palette_data,
+    Weather active_weather,
     Army_Type player_armies[MAX_PLAYER_COUNT]
 );

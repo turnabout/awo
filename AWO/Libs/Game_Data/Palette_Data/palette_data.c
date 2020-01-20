@@ -66,29 +66,6 @@ Palette_Data* create_palette_data(cJSON* palette_JSON)
         apply_palette_colors(palette_data->buffer[i], cJSON_GetArrayItem(palette_JSON, i));
     }
 
-    // Create the texture
-    /*
-    glGenTextures(1, &palette_data->texture);
-    glBindTexture(GL_TEXTURE_2D, palette_data->texture);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-    glTexImage2D(
-        GL_TEXTURE_2D, 
-        0, 
-        GL_RGBA, 
-        PALETTE_TEX_WIDTH, 
-        PALETTE_TEX_HEIGHT, 
-        0, 
-        GL_RGBA, 
-        GL_UNSIGNED_BYTE, 
-        palette_texture_data
-    );
-    */
-
     // Initialize the palette NDC indexes so other modules can fetch them properly later on
     init_palette_NDC_indexes();
 

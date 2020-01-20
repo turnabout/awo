@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Include/Game_Data/army_types.h"
+#include "Player/player.h"
 #include "Game_Data/Palette_Data/palette_data.h"
 
 /*!

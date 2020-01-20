@@ -93,9 +93,6 @@
     <ClCompile Include="Internal\Palette\palette.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Palette\palette_index.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Internal\Palette\update_palette.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -229,6 +226,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Libs\Game\Editor\update_editor_game_dimensions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Palette\update_palette_tile_weather.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Palette\palette_index_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

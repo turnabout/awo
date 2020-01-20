@@ -7,6 +7,7 @@
 #include "Game/Editor/editor_game.h"
 #include "Game_Window/game_window.h"
 #include "Game/_game.h"
+#include "Palette/palette.h"
 #include "Renderers/Extras_Renderer/extras_renderer.h"
 // #include "Renderer/Stage_Renderer/stage_renderer.h"
 
