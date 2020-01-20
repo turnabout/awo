@@ -43,7 +43,7 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     create_projection_matrix(*window_width, *window_height, initial_projection);
     // update_stage_renderer_projection(game->stage_renderer, initial_projection);
     update_extras_renderer_projection(game->extras_renderer, initial_projection);
-    update_extras_renderer_view(game->extras_renderer, 0, 0, 16.0f);
+    update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
 
     return (Game*)game;
 }

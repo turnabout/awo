@@ -1,6 +1,7 @@
 #include <stdlib.h>
 
 #include "Config/config.h"
+#include "Game_Message/game_message.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Renderers/Extras_Renderer/extras_renderer.h"
 #include "Sprite_Batch/sprite_batch.h"
@@ -24,6 +25,10 @@ struct Extras_Renderer {
 Extras_Renderer* create_extras_renderer(GLuint sprite_sheet)
 {
     Extras_Renderer* renderer = malloc(sizeof(Extras_Renderer));
+
+    if (renderer == NULL) {
+        return NULL;
+    }
 
     renderer->extra_queued = FALSE;
     

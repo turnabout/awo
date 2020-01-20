@@ -29,7 +29,24 @@ void initialize_curses()
 
 void console_game_message_cb(Game_Message* message, Console* console)
 {
-    add_console_message(console, message->label, message->str);
+    int message_color_pair;
+
+    switch (message->label) {
+    case Error_Msg:
+        message_color_pair = COLOR_PAIR_ERROR;
+        break;
+    case Warning_Msg:
+        message_color_pair = COLOR_PAIR_WARNING;
+        break;
+    case Info_Msg:
+        message_color_pair = COLOR_PAIR_INFO;
+        break;
+    default:
+        message_color_pair = COLOR_PAIR_NONE;
+        break;
+    }
+
+    add_console_message(console, message_color_pair, message->str);
 }
 
 Console* create_console()

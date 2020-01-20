@@ -9,7 +9,7 @@ void render_editor_game(Editor_Game* game)
 {
     if (!init) {
         init = TRUE;
-        gather_tile_data(game->data->tile, Plain, Default, NULL, &anim);
+        anim = get_UI_element_frames(game->data->UI, TileCursorX);
     }
 
     queue_extra_renderer_extra(game->extras_renderer, (vec2) {0.0f, 0.0f}, &anim->frames[0]);
