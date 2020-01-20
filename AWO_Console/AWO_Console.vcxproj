@@ -157,6 +157,7 @@
     <ClCompile Include="Internal\Console\console_output.c" />
     <ClCompile Include="Internal\Console\Functions\cls.c" />
     <ClCompile Include="Internal\Console\Functions\dr.c" />
+    <ClCompile Include="Internal\Console\Functions\size.c" />
     <ClCompile Include="Internal\Console\Functions\tile.c" />
     <ClCompile Include="Internal\Message\message.c" />
     <ClCompile Include="Internal\Console\tile_console.c" />

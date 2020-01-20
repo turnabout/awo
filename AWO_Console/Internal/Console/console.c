@@ -79,6 +79,11 @@ Console* create_console()
             { Command_Arg_None },
             cls
         },
+        {
+            "size", 
+            { Command_Arg_Int, Command_Arg_Int },
+            size
+        },
         ""
     });
 

@@ -88,25 +88,19 @@ void add_console_message(Console* console, int color_pair, char* format, ...);
  */
 int update_editor_tile(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
 
-/*! @brief Creates the game and stores its initialized instance in the console.
- *
- *  @param[in] console The console module.
- *  @param[in] window_width (Command_Arg_Int) The game's initial window width.
- *  @param[in] window_height (Command_Arg_Int) The game's initial window height.
- */
-int init(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
-
 /*! @brief Sets up and runs the game in design room mode.
  *
  *  @param[in] console The console module.
  */
 int dr(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
 
-/*! @brief Stops and frees the currently running game instance.
+/*! @brief Updates the game window's size.
  *
  *  @param[in] console The console module.
+ *  @param[in] width The new game window width.
+ *  @param[in] height The new game window height.
  */
-int free_console_game(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
+int size(Console* console, void* payload[CMD_ARG_MAX_COUNT]);
 
 /*! @brief Clears the console's list of messages.
  *
