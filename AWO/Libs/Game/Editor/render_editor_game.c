@@ -7,14 +7,11 @@ static Animation* anim = NULL;
 
 void render_editor_game(Editor_Game* game)
 {
-    /*
     if (!init) {
         init = TRUE;
         anim = get_UI_element_frames(game->data->UI, TileCursorX);
     }
 
-    queue_extra_renderer_extra(game->extras_renderer, (vec2) {0.0f, 0.0f}, &anim->frames[0]);
+    queue_extra_renderer_extra(game->extras_renderer, (vec2) {100.0f, 100.0f}, &anim->frames[0]);
     render_queued_extra_renderer_extras(game->extras_renderer);
-    */
-
 }

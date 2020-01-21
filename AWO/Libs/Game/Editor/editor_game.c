@@ -44,10 +44,10 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     game->extras_renderer = create_extras_renderer(game->sprite_sheet);
 
     // Initially call game's dimensions update function
-    // game->update_dimensions(game, *window_width, *window_height);
+    game->update_dimensions(game, *window_width, *window_height);
 
     // Initially set the view matrices for renderers
-    // update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
+    update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
 
     return (Game*)game;
 }
