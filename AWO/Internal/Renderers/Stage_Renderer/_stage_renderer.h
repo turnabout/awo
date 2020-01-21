@@ -1,9 +1,10 @@
 #pragma once
 
-#include <cglm/cglm.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
-#include "Game/Renderer/Render_Grid/render_grid.h"
-#include "Game/Renderer/Stage_Renderer/stage_renderer.h"
+#include "Render_Grid/render_grid.h"
+#include "Renderers/Stage_Renderer/stage_renderer.h"
 
 /*! @brief Grid layers of the stage renderer.
  */
@@ -18,6 +19,7 @@ typedef enum Stage_Grid_Layer {
     UNIT_HP_LAYER,
     UNIT_AMMO_FUEL_LAYER,
     UNIT_STATUS_LAYER,
+
 } Stage_Grid_Layer;
 
 #define STAGE_TILE_LAYER_COUNT 2

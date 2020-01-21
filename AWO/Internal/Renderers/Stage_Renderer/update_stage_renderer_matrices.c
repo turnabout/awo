@@ -1,4 +1,4 @@
-#include "Game/Renderer/Stage_Renderer/_stage_renderer.h"
+#include "Renderers/Stage_Renderer/_stage_renderer.h"
 
 // Identity matrix reference
 static mat4 identity = GLM_MAT4_IDENTITY_INIT;

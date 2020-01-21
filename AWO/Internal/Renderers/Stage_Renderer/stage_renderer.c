@@ -1,9 +1,8 @@
 #include <stdlib.h>
 
-#include "conf.h"
+#include "Config/config.h"
 #include "GL_Helpers/gl_helpers.h"
-#include "Game/Renderer/Stage_Renderer/_stage_renderer.h"
-#include "Game/Data/Palette/game_palette.h"
+#include "Renderers/Stage_Renderer/_stage_renderer.h"
 
 void init_stage_renderer_grid(
     Stage_Renderer* renderer, 
@@ -32,7 +31,12 @@ void init_stage_renderer_grid(
     );
 }
 
-Stage_Renderer* create_stage_renderer(Stage* stage, Game_Data* game_data)
+Stage_Renderer* create_stage_renderer(
+    Stage* stage, 
+    GLuint palette, 
+    GLuint sprite_sheet, 
+    Game_Data* game_data
+)
 {
     Stage_Renderer* renderer = malloc(sizeof(Stage_Renderer));
 
@@ -43,13 +47,8 @@ Stage_Renderer* create_stage_renderer(Stage* stage, Game_Data* game_data)
     renderer->stage = stage;
 
     // Set textures
-    renderer->sprite_sheet_texture = game_data->sprite_sheet;
-
-    renderer->palette_texture = create_game_palette_texture(
-        game_data->raw_palette,
-        WEATHER_DEFAULT,
-        stage->player_armies
-    );
+    renderer->sprite_sheet_texture = sprite_sheet;
+    renderer->palette_texture = palette;
 
     // Set shader
     renderer->shader = create_shader_program(
@@ -62,11 +61,10 @@ Stage_Renderer* create_stage_renderer(Stage* stage, Game_Data* game_data)
         return NULL;
     }
 
-    // Set empty frame used for clearing grids
-    Animation* empty_animation;
-    gather_tile_data(game_data->tiles, Empty, Default, NULL, &empty_animation);
-
-    renderer->empty_frame = &(empty_animation->frames[0]);
+    // Set empty frame
+    Animation* empty_anim;
+    gather_tile_data(game_data->tile, Empty, Default, NULL, &empty_anim);
+    renderer->empty_frame = &empty_anim->frames[0];
 
     // Set the grid layers
     // Tile grids
@@ -82,16 +80,14 @@ Stage_Renderer* create_stage_renderer(Stage* stage, Game_Data* game_data)
     glUniform1i(glGetUniformLocation(renderer->shader, "palettes_texture"), 1);
     glUniform1i(glGetUniformLocation(renderer->shader, "tiles_texture"), 2);
 
-    glUniform1f(
-        glGetUniformLocation(renderer->shader, "sprite_sheet_width"), 
-        (GLfloat)game_data->sprite_sheet_width
-    );
+    // Sprite sheet dimensions
+    int ss_width, ss_height;
+    get_sprite_sheet_dimensions(game_data->sprite_sheet, &ss_width, &ss_height);
 
-    glUniform1f(
-        glGetUniformLocation(renderer->shader, "sprite_sheet_height"), 
-        (GLfloat)game_data->sprite_sheet_height
-    );
+    glUniform1f(glGetUniformLocation(renderer->shader, "sprite_sheet_width"), (GLfloat)ss_width);
+    glUniform1f(glGetUniformLocation(renderer->shader, "sprite_sheet_height"), (GLfloat)ss_height);
 
+    // Quad dimensions
     glUniform1f(
         glGetUniformLocation(renderer->shader, "quad_width"), 
         (GLfloat)(stage->width * DEFAULT_ENTITY_SIZE)

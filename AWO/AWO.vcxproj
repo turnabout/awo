@@ -24,6 +24,8 @@
     <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c" />
     <ClCompile Include="Internal\Palette\update_palette_tile_weather.c" />
     <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c" />
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\stage_renderer.c" />
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer_matrices.c" />
     <ClCompile Include="Internal\Render_Grid\get_render_grid_VAO.c" />
     <ClCompile Include="Internal\Render_Grid\render_grid.c" />
     <ClCompile Include="Internal\Render_Grid\update_render_grid.c" />
@@ -131,6 +133,8 @@
     <ClInclude Include="Internal\Input_State\Keyboard_State\keyboard_state.h" />
     <ClInclude Include="Internal\Input_State\Mouse_State\mouse_state.h" />
     <ClInclude Include="Internal\Renderers\Extras_Renderer\extras_renderer.h" />
+    <ClInclude Include="Internal\Renderers\Stage_Renderer\stage_renderer.h" />
+    <ClInclude Include="Internal\Renderers\Stage_Renderer\_stage_renderer.h" />
     <ClInclude Include="Internal\Render_Grid\render_grid.h" />
     <ClInclude Include="Internal\Render_Grid\_render_grid.h" />
     <ClInclude Include="Internal\Sprite_Batch\sprite_batch.h" />

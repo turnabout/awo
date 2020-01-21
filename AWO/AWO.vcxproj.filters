@@ -237,6 +237,12 @@
     <ClCompile Include="Internal\GL_Helpers\delete_texture.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\stage_renderer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer_matrices.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -537,6 +543,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Include\Game_Data\sprite_sheet_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Renderers\Stage_Renderer\_stage_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Renderers\Stage_Renderer\stage_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

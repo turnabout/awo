@@ -1,14 +1,18 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include <cglm/cglm.h>
 
-#include "Game/Stage/stage.h"
-#include "Game/Data/game_data.h"
+#include "Stage/stage.h"
+#include "Game_Data/game_data.h"
 
 typedef struct Stage_Renderer Stage_Renderer;
 
-Stage_Renderer* create_stage_renderer(Stage* stage, Game_Data* game_data);
+Stage_Renderer* create_stage_renderer(
+    Stage* stage,
+    GLuint palette,
+    GLuint sprite_sheet,
+    Game_Data* game_data
+);
 
 void update_stage_renderer_view(
     Stage_Renderer* renderer,

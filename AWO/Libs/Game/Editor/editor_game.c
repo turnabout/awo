@@ -40,7 +40,13 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 
     // game->clock = create_clock(game_data->clock);
 
-    // game->stage_renderer = create_stage_renderer(game->stage, game_data);
+    game->stage_renderer = create_stage_renderer(
+        game->stage,
+        game->palette,
+        game->sprite_sheet,
+        game->data
+    );
+
     game->extras_renderer = create_extras_renderer(game->sprite_sheet);
 
     // Initially call game's dimensions update function

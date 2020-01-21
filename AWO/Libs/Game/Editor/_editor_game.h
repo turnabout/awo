@@ -9,8 +9,8 @@
 #include "Game/_game.h"
 #include "Palette/palette.h"
 #include "Renderers/Extras_Renderer/extras_renderer.h"
+#include "Renderers/Stage_Renderer/stage_renderer.h"
 #include "GL_Helpers/gl_helpers.h"
-// #include "Renderer/Stage_Renderer/stage_renderer.h"
 
 struct Editor_Game {
 
@@ -37,7 +37,7 @@ struct Editor_Game {
     Game_Clock* clock;
 
     // Module used to render the stage.
-    // Stage_Renderer* stage_renderer;
+    Stage_Renderer* stage_renderer;
 
     // Module used to render extra elements.
     Extras_Renderer* extras_renderer;
