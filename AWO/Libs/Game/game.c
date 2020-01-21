@@ -1,5 +1,6 @@
 #include "Game/_game.h"
 #include "Game_Window/game_window.h"
+#include <stdio.h>
 
 /*! @brief Used to internally signify the game window was updated, and that the game's dimensions 
  *  should be updated at the start of the next frame.
@@ -63,7 +64,7 @@ void EMX run_game(
     glfwSwapInterval(1);
     glfwSetTime(0);
 
-    while (1) {
+    while (!glfwWindowShouldClose(glfw_window)) {
         if (callback(cb_value) == -1) {
             break;
         }

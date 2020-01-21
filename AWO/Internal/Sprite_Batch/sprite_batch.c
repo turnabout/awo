@@ -17,10 +17,10 @@
 struct Sprite_Batch {
 
     // The VAO generated and used by this sprite batch.
-    GLuint VAO;
+    GLuint VAO, VBO, EBO;
 
     // Shader program used by this sprite batch.
-    GLuint shader;
+    GLuint shader_program;
 
     // The sprite sheet and palette textures.
     GLuint sprite_sheet_texture, palette_texture;
@@ -40,9 +40,8 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch)
     glBindVertexArray(sprite_batch->VAO);
 
     // VBO
-    GLuint VBO;
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glGenBuffers(1, &sprite_batch->VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, sprite_batch->VBO);
 
     // Calculate stride - how many bytes we need to use to jump from one vertex to another
     size_t stride = VERTEX_FLOAT_COUNT * sizeof(GLfloat);
@@ -56,7 +55,6 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch)
         0, 1, 2, // First triangle
         2, 1, 3, // Second triangle
     };
-
 
     size_t indices_size = (sizeof(GLuint) * 6) * sprite_batch->elements_max;
     GLuint* indices = malloc(indices_size);
@@ -72,9 +70,8 @@ void init_sprite_batch_data(Sprite_Batch* sprite_batch)
         indices[start_index + 5] = indices_base[5] + (4 * i);
     }
 
-    unsigned int EBO;
-    glGenBuffers(1, &EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glGenBuffers(1, &sprite_batch->EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, sprite_batch->EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_size, indices, GL_STATIC_DRAW);
 
     free(indices);
@@ -124,7 +121,11 @@ Sprite_Batch* create_sprite_batch(
 {
     Sprite_Batch* sprite_batch = malloc(sizeof(Sprite_Batch));
 
-    sprite_batch->shader = shader_program;
+    if (sprite_batch == NULL) {
+        return NULL;
+    }
+
+    sprite_batch->shader_program = shader_program;
     sprite_batch->sprite_sheet_texture = sprite_sheet_texture;
     sprite_batch->palette_texture = palette_texture;
     sprite_batch->elements_max = max_elements;
@@ -138,13 +139,15 @@ Sprite_Batch* create_sprite_batch(
 void begin_sprite_batch(Sprite_Batch* sprite_batch)
 {
     // Set active sprite sheet texture/shader_program program/VAO
-    glUseProgram(sprite_batch->shader);
+    glUseProgram(sprite_batch->shader_program);
 
     glActiveTexture(GL_TEXTURE0); 
     glBindTexture(GL_TEXTURE_2D, sprite_batch->sprite_sheet_texture);
 
-    glActiveTexture(GL_TEXTURE1); 
-    glBindTexture(GL_TEXTURE_2D, sprite_batch->palette_texture);
+    if (sprite_batch->palette_texture) {
+        glActiveTexture(GL_TEXTURE1); 
+        glBindTexture(GL_TEXTURE_2D, sprite_batch->palette_texture);
+    }
 
     glBindVertexArray(sprite_batch->VAO);
 
@@ -211,6 +214,17 @@ void end_sprite_batch(Sprite_Batch* sprite_batch)
 
 void free_sprite_batch(Sprite_Batch* sprite_batch)
 {
+    glUseProgram(sprite_batch->shader_program);
+    glBindVertexArray(sprite_batch->VAO);
+
+    // Free buffers & VAO
+    glDeleteBuffers(1, &sprite_batch->VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glDeleteBuffers(1, &sprite_batch->EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+    glDeleteVertexArrays(1, &sprite_batch->VAO);
+
     free(sprite_batch);
 }
 

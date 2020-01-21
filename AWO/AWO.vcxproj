@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Internal\GL_Helpers\delete_texture.c" />
     <ClCompile Include="Internal\Input_State\Keyboard_State\keyboard_state.c" />
     <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c" />
     <ClCompile Include="Internal\Palette\update_palette_tile_weather.c" />

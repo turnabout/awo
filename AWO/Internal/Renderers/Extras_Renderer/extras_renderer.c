@@ -11,7 +11,7 @@ mat4 identity = GLM_MAT4_IDENTITY_INIT;
 struct Extras_Renderer {
 
     // Shader program used to render extras.
-    GLuint shader;
+    GLuint shader_program;
 
     // Sprite batch used to render extras.
     Sprite_Batch* sprite_batch;
@@ -32,13 +32,13 @@ Extras_Renderer* create_extras_renderer(GLuint sprite_sheet)
     renderer->extra_queued = FALSE;
     
     // Create the shader program
-    renderer->shader = create_shader_program(
+    renderer->shader_program = create_shader_program(
         VERTEX_SHADER_PATH(BASIC_SHADER),
         FRAGMENT_SHADER_PATH(BASIC_SHADER)
     );
 
     renderer->sprite_batch = create_sprite_batch(
-        renderer->shader,
+        renderer->shader_program,
         sprite_sheet,
         0,
         10 // TODO: un-hardcode
@@ -68,10 +68,10 @@ void update_extras_renderer_view(Extras_Renderer* renderer, int x, int y, float 
         (vec3) { real_zoom, real_zoom, 1.0f }
     );
 
-    glUseProgram(renderer->shader);
+    glUseProgram(renderer->shader_program);
 
     glUniformMatrix4fv(
-        glGetUniformLocation(renderer->shader, "view"), 
+        glGetUniformLocation(renderer->shader_program, "view"), 
         1, 
         GL_FALSE, 
         view[0]
@@ -80,10 +80,10 @@ void update_extras_renderer_view(Extras_Renderer* renderer, int x, int y, float 
 
 void update_extras_renderer_projection(Extras_Renderer* renderer, mat4 projection)
 {
-    glUseProgram(renderer->shader);
+    glUseProgram(renderer->shader_program);
 
     glUniformMatrix4fv(
-        glGetUniformLocation(renderer->shader, "projection"), 
+        glGetUniformLocation(renderer->shader_program, "projection"), 
         1, 
         GL_FALSE, 
         projection[0]
@@ -113,6 +113,8 @@ void free_extras_renderer(Extras_Renderer* renderer)
     if (renderer == NULL) {
         return;
     }
+
+    glDeleteProgram(renderer->shader_program);
 
     free_sprite_batch(renderer->sprite_batch);
     free(renderer);

@@ -1,4 +1,4 @@
-#include "Inputs_Handlers/Mouse_Handler/_mouse_handler.h"
+#include "Input_Handlers/Mouse_Handler/_mouse_handler.h"
 
 // Currently-loaded mouse state.
 static Mouse_State* state;

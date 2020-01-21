@@ -13,8 +13,8 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     game->update = update_editor_game;
     game->render = render_editor_game;
     game->update_dimensions = update_editor_game_dimensions;
-    game->data = game_data;
 
+    game->data = game_data;
     game->stage = generate_filled_stage(Plain, Default, 25, 25);
 
     // Set the sprite sheet texture
@@ -38,15 +38,16 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
         game->stage->height
     );
 
-    // game->stage_renderer = create_stage_renderer(game->stage, game_data);
-    game->extras_renderer = create_extras_renderer(game->sprite_sheet);
     // game->clock = create_clock(game_data->clock);
 
+    // game->stage_renderer = create_stage_renderer(game->stage, game_data);
+    game->extras_renderer = create_extras_renderer(game->sprite_sheet);
+
     // Initially call game's dimensions update function
-    game->update_dimensions(game, *window_width, *window_height);
+    // game->update_dimensions(game, *window_width, *window_height);
 
     // Initially set the view matrices for renderers
-    update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
+    // update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
 
     return (Game*)game;
 }
@@ -59,11 +60,14 @@ void free_editor_game(Game* game)
 
     Editor_Game* editor_game = (Editor_Game*)game;
 
+    delete_texture(editor_game->sprite_sheet);
+    delete_texture(editor_game->palette);
+
     free_stage(editor_game->stage);
     free_game_camera(editor_game->camera);
     // free_game_clock(editor_game->clock);
-    // free_stage_renderer(editor_game->stage_renderer);
     free_extras_renderer(editor_game->extras_renderer);
+    // free_stage_renderer(editor_game->stage_renderer);
 
     free(editor_game);
 }

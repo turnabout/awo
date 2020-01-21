@@ -33,6 +33,12 @@ GLuint create_texture_object(Uint8* image_buffer, int width, int height, int cha
  */
 GLuint create_empty_texture_object(int width, int height);
 
+/*! @brief Deletes the given texture object.
+ *
+ *  @param[int] texture The texture to delete.
+ */
+void delete_texture(GLuint texture);
+
 /*! @brief Reads the data from the given texture.
  *
  *  @param[in] texture Texture to read the data from.

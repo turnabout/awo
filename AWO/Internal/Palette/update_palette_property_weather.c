@@ -23,13 +23,13 @@ void apply_property_palettes_weather_color(
 void update_properties_weather_colors(GLuint game_palette_texture)
 {
     // Load the game's palette texture data
-    Palette_Data_Row* palette_texture_data = malloc(
+    Palette_Data_Row* palette_buffer = malloc(
         sizeof(Palette_Data_Row) * PALETTE_TEX_HEIGHT
     );
 
     read_texture_data(
         game_palette_texture, 
-        palette_texture_data,
+        palette_buffer,
         PALETTE_TEX_WIDTH,
         PALETTE_TEX_HEIGHT
     );
@@ -43,31 +43,31 @@ void update_properties_weather_colors(GLuint game_palette_texture)
 
         // Apply this tile palette color  but only if it isn't an empty color 
         // (so we don't overwrite property palette's own colors)
-        if (palette_texture_data[active_tile_palette_row][i][3] != 0) {
+        if (palette_buffer[active_tile_palette_row][i][3] != 0) {
 
             GLuint color[3] = {
-                palette_texture_data[active_tile_palette_row][i][0], 
-                palette_texture_data[active_tile_palette_row][i][1], 
-                palette_texture_data[active_tile_palette_row][i][2]
+                palette_buffer[active_tile_palette_row][i][0], 
+                palette_buffer[active_tile_palette_row][i][1], 
+                palette_buffer[active_tile_palette_row][i][2]
             };
 
             // Apply the color to all player property palettes
-            apply_property_palettes_weather_color(palette_texture_data, i, color);
+            apply_property_palettes_weather_color(palette_buffer, i, color);
         }
 
         // Apply the fog color to the fog property palette
-        if (palette_texture_data[active_fog_tile_palette_row][i][3] != 0) {
+        if (palette_buffer[active_fog_tile_palette_row][i][3] != 0) {
 
             GLuint color[3] = {
-                palette_texture_data[active_fog_tile_palette_row][i][0], 
-                palette_texture_data[active_fog_tile_palette_row][i][1], 
-                palette_texture_data[active_fog_tile_palette_row][i][2]
+                palette_buffer[active_fog_tile_palette_row][i][0], 
+                palette_buffer[active_fog_tile_palette_row][i][1], 
+                palette_buffer[active_fog_tile_palette_row][i][2]
             };
 
-            palette_texture_data[fog_property_palette_row][i][0] = color[0];
-            palette_texture_data[fog_property_palette_row][i][1] = color[1];
-            palette_texture_data[fog_property_palette_row][i][2] = color[2];
-            palette_texture_data[fog_property_palette_row][i][3] = 255;
+            palette_buffer[fog_property_palette_row][i][0] = color[0];
+            palette_buffer[fog_property_palette_row][i][1] = color[1];
+            palette_buffer[fog_property_palette_row][i][2] = color[2];
+            palette_buffer[fog_property_palette_row][i][3] = 255;
         }
     }
 
@@ -81,8 +81,8 @@ void update_properties_weather_colors(GLuint game_palette_texture)
         PALETTE_TEX_HEIGHT,
         GL_RGBA,
         GL_UNSIGNED_BYTE,
-        palette_texture_data
+        palette_buffer
     );
 
-    free(palette_texture_data);
+    free(palette_buffer);
 }

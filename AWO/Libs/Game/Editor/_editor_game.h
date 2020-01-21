@@ -9,6 +9,7 @@
 #include "Game/_game.h"
 #include "Palette/palette.h"
 #include "Renderers/Extras_Renderer/extras_renderer.h"
+#include "GL_Helpers/gl_helpers.h"
 // #include "Renderer/Stage_Renderer/stage_renderer.h"
 
 struct Editor_Game {

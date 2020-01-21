@@ -3,6 +3,7 @@
 
 void update_editor_game_dimensions(Game* game, int window_width, int window_height)
 {
+    /*
     Editor_Game* editor_game = (Editor_Game*)game;
     
     // Update projection matrix used by all renderers
@@ -10,4 +11,5 @@ void update_editor_game_dimensions(Game* game, int window_width, int window_heig
     create_projection_matrix(window_width, window_height, initial_projection);
     // update_stage_renderer_projection(editor_game->stage_renderer, initial_projection);
     update_extras_renderer_projection(editor_game->extras_renderer, initial_projection);
+    */
 }

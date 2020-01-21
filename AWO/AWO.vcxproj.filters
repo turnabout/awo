@@ -234,6 +234,9 @@
     <ClCompile Include="Internal\Palette\palette_index_access.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Internal\GL_Helpers\delete_texture.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">

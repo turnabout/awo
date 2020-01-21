@@ -84,6 +84,8 @@ GLuint create_shader_program(const char* vertex_shader_path, const char* fragmen
     glLinkProgram(shader_program);
 
     // Delete now-unneeded sprite_shader objects
+    glDetachShader(shader_program, vertex_shader);
+    glDetachShader(shader_program, fragment_shader);
     glDeleteShader(vertex_shader);
     glDeleteShader(fragment_shader);
 

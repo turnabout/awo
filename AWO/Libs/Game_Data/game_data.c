@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "Include/emx.h"
 #include "Config/config.h"
 #include "Utilities/utilities.h"
 #include "Game_Data/game_data.h"
@@ -25,7 +26,7 @@ Bool get_data_JSON(cJSON **data_JSON)
     return TRUE;
 }
 
-Game_Data* create_game_data()
+Game_Data* EMX create_game_data()
 {
     Game_Data* data = malloc(sizeof(Game_Data));
 
@@ -124,7 +125,7 @@ Game_Data* create_game_data()
     return data;
 }
 
-void free_game_data(Game_Data* data)
+void EMX free_game_data(Game_Data* data)
 {
     if (data == NULL) {
         return;
