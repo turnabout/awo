@@ -131,11 +131,14 @@ void EMX free_game_data(Game_Data* data)
         return;
     }
 
+    free_sprite_sheet_data(data->sprite_sheet);
     free_tile_data(data->tile);
+    free_properties_data(data->property);
     free_units_data(data->unit);
     free_UI_data(data->UI);
     free_CO_data(data->CO);
     free_clock_data(data->clock);
+    free_palette_data(data->palette);
 
     for (int i = 0; i < MAX_LOADED_STAGE_COUNT; i++) {
         free(data->default_stages[i]);
