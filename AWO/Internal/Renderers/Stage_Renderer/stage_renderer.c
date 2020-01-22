@@ -16,7 +16,7 @@ void init_stage_renderer_grid(
         grid_width, 
         grid_height, 
         y_offset,
-        renderer->shader
+        renderer->grids_shader_program
     );
 
     // Initially fill grid with transparent pixels
@@ -51,19 +51,19 @@ Stage_Renderer* create_stage_renderer(
     renderer->palette_texture = palette;
 
     // Set shader
-    renderer->shader = create_shader_program(
+    renderer->grids_shader_program = create_shader_program(
         VERTEX_SHADER_PATH(GRID_SHADER),
         FRAGMENT_SHADER_PATH(GRID_SHADER)
     );
 
-    if (!renderer->shader) {
+    if (!renderer->grids_shader_program) {
         free_stage_renderer(renderer);
         return NULL;
     }
 
     // Set empty frame
     Animation* empty_anim;
-    gather_tile_data(game_data->tile, Empty, Default, NULL, &empty_anim);
+    gather_tile_data(game_data->tile, Plain, Default, NULL, &empty_anim);
     renderer->empty_frame = &empty_anim->frames[0];
 
     // Set the grid layers
@@ -75,26 +75,26 @@ Stage_Renderer* create_stage_renderer(
     init_stage_renderer_grid(renderer, stage->width, stage->height, UNIT_LAYER, 0);
 
     // Set shader uniforms
-    glUseProgram(renderer->shader);
-    glUniform1i(glGetUniformLocation(renderer->shader, "sprite_sheet"), 0);
-    glUniform1i(glGetUniformLocation(renderer->shader, "palettes_texture"), 1);
-    glUniform1i(glGetUniformLocation(renderer->shader, "tiles_texture"), 2);
+    glUseProgram(renderer->grids_shader_program);
+    glUniform1i(glGetUniformLocation(renderer->grids_shader_program, "sprite_sheet"), 0);
+    glUniform1i(glGetUniformLocation(renderer->grids_shader_program, "palettes_texture"), 1);
+    glUniform1i(glGetUniformLocation(renderer->grids_shader_program, "tiles_texture"), 2);
 
     // Sprite sheet dimensions
     int ss_width, ss_height;
     get_sprite_sheet_dimensions(game_data->sprite_sheet, &ss_width, &ss_height);
 
-    glUniform1f(glGetUniformLocation(renderer->shader, "sprite_sheet_width"), (GLfloat)ss_width);
-    glUniform1f(glGetUniformLocation(renderer->shader, "sprite_sheet_height"), (GLfloat)ss_height);
+    glUniform1f(glGetUniformLocation(renderer->grids_shader_program, "sprite_sheet_width"), (GLfloat)ss_width);
+    glUniform1f(glGetUniformLocation(renderer->grids_shader_program, "sprite_sheet_height"), (GLfloat)ss_height);
 
     // Quad dimensions
     glUniform1f(
-        glGetUniformLocation(renderer->shader, "quad_width"), 
+        glGetUniformLocation(renderer->grids_shader_program, "quad_width"), 
         (GLfloat)(stage->width * DEFAULT_ENTITY_SIZE)
     );
 
     glUniform1f(
-        glGetUniformLocation(renderer->shader, "quad_height"), 
+        glGetUniformLocation(renderer->grids_shader_program, "quad_height"), 
         (GLfloat)(stage->height * DEFAULT_ENTITY_SIZE)
     );
 

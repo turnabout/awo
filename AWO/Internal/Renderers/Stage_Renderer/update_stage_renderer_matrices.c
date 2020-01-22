@@ -38,10 +38,10 @@ void update_stage_renderer_view(
 
 void update_stage_renderer_projection(Stage_Renderer* renderer, mat4 projection)
 {
-    glUseProgram(renderer->shader);
+    glUseProgram(renderer->grids_shader_program);
 
     glUniformMatrix4fv(
-        glGetUniformLocation(renderer->shader, "projection"), 
+        glGetUniformLocation(renderer->grids_shader_program, "projection"), 
         1, 
         GL_FALSE, 
         projection[0]

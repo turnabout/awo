@@ -24,6 +24,7 @@
     <ClCompile Include="Internal\Input_State\Mouse_State\mouse_state.c" />
     <ClCompile Include="Internal\Palette\update_palette_tile_weather.c" />
     <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c" />
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\render_stage.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\stage_renderer.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer_matrices.c" />
     <ClCompile Include="Internal\Render_Grid\get_render_grid_VAO.c" />

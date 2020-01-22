@@ -243,6 +243,9 @@
     <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer_matrices.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\render_stage.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">

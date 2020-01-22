@@ -37,13 +37,13 @@ struct Stage_Renderer {
     // Texture containing palettes.
     GLuint palette_texture;
 
-    // Render grid tile layers shader program & view matrix.
-    GLuint shader;
+    // Shader program used to render the render-grids.
+    GLuint grids_shader_program;
 
-    // View matrix applied to tile grid layers.
+    // View matrix applied to tile render-grid layers.
     mat4 tiles_view;
 
-    // View matrix applied to unit grid layers.
+    // View matrix applied to unit render-grid layers.
     mat4 units_view;
 
     // Render grid layers, used to render the main entities of the game (tiles, units, etc).

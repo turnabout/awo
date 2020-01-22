@@ -14,6 +14,8 @@ Stage_Renderer* create_stage_renderer(
     Game_Data* game_data
 );
 
+void render_stage(Stage_Renderer* renderer);
+
 void update_stage_renderer_view(
     Stage_Renderer* renderer,
     int view_x,

@@ -62,7 +62,7 @@ void update_render_grid_pixel_low(
     vec2 value
 );
 
-/*! @brief Fill pixels' values in the render grid's texture.
+/*! @brief Fill the render grid's texture with the given RGBA value.
  *
  *  @param[in] render_grid The render grid to update.
  *  @param[in] value The value used to update with.
