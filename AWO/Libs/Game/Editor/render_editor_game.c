@@ -13,9 +13,9 @@ void render_editor_game(Editor_Game* game)
     }
 
     // Render the stage
-
+    render_stage(game->stage_renderer);
 
     // Render extras
-    queue_extra_renderer_extra(game->extras_renderer, (vec2) {100.0f, 100.0f}, &anim->frames[0]);
-    render_queued_extra_renderer_extras(game->extras_renderer);
+    // queue_extra_renderer_extra(game->extras_renderer, (vec2) {100.0f, 100.0f}, &anim->frames[0]);
+    // render_queued_extra_renderer_extras(game->extras_renderer);
 }

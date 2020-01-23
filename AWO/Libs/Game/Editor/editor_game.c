@@ -54,6 +54,7 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 
     // Initially set the view matrices for renderers
     update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
+    update_stage_renderer_view(game->stage_renderer, 0, 0, 16.0f);
 
     return (Game*)game;
 }
