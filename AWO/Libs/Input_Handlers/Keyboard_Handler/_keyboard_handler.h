@@ -5,11 +5,10 @@
 
 #include "Input_Handlers/Keyboard_Handler/keyboard_handler.h"
 #include "Input_State/Keyboard_State/keyboard_state.h"
-#include "Linked_List/linked_list.h"
 
 #define MAX_KEYBOARD_EVENTS 10
 
-typedef struct Keyboard_Event {
+typedef struct Key_Event {
 
     // The key this event acts upon.
     Key key;
@@ -17,7 +16,7 @@ typedef struct Keyboard_Event {
     // GLFW_PRESS or GLFW_RELEASE
     int action;
 
-} Keyboard_Event;
+} Key_Event;
 
 struct Keyboard_Handler {
 
@@ -25,9 +24,9 @@ struct Keyboard_Handler {
     Game_Window* game_window;
 
     // Keyboard key events queued up & ready to be processed.
-    Keyboard_Event queued_events[MAX_KEYBOARD_EVENTS];
+    Key_Event key_events[MAX_KEYBOARD_EVENTS];
 
-    // Amount of events currently queued.
-    int queued_events_count;
+    // Amount of key events currently queued.
+    int key_events_count;
 
 };

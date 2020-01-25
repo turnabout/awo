@@ -1,13 +1,49 @@
+#include <stdlib.h>
+
 #include "Input_Handlers/Mouse_Handler/_mouse_handler.h"
 
-// Currently-loaded mouse state.
-static Mouse_State* state;
+// Static reference to the mouse handler, so we can make use of the change callbacks.
+static Mouse_Handler* handler = NULL;
 
-// Reference to the game's window.
-static GLFWwindow* window_instance;
+void mouse_scroll_cb(GLFWwindow* window, double x, double y)
+{
+    if (handler->scroll_events_count >= MAX_MOUSE_EVENTS) {
+        return;
+    }
 
-// Temporary mouse scroll value.
-static float fetched_mouse_scroll_value;
+    handler->scroll_events[handler->scroll_events_count].vertical_scroll = (float)y;
+    handler->scroll_events[handler->scroll_events_count].horizontal_scroll = (float)y;
+    handler->scroll_events_count++;
+}
+
+Mouse_Handler* create_mouse_handler(Game_Window* game_window)
+{
+    if (handler != NULL) {
+        return NULL;
+    }
+
+    Mouse_Handler* mouse_handler = malloc(sizeof(Mouse_Handler));
+
+    if (mouse_handler == NULL) {
+        return NULL;
+    }
+
+    mouse_handler->move_events_count = 0;
+    mouse_handler->scroll_events_count = 0;
+    handler = mouse_handler;
+
+    return mouse_handler;
+
+}
+
+void free_mouse_handler(Mouse_Handler* handler)
+{
+    if (handler == NULL) {
+        return;
+    }
+
+    free(handler);
+}
 
 void init_mouse_handler(GLFWwindow* window)
 {
