@@ -23,13 +23,13 @@ typedef struct Mouse_Scroll_Event {
 struct Mouse_Handler {
 
     // Reference to the game window.
-    Game_Window* game_window;
+    GLFWwindow* glfw_window;
 
-    // Mouse events queued up & ready to be processed w/ amounts
+    // Mouse scroll events queued up & ready to be processed w/ amounts
     Mouse_Scroll_Event scroll_events[MAX_MOUSE_EVENTS];
     int scroll_events_count;
 
-    Mouse_Move_Event move_events[MAX_MOUSE_EVENTS];
-    int move_events_count;
+    // Mouse coordinates
+    int x, y;
 
 };
