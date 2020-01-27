@@ -11,6 +11,7 @@
 #include "Renderers/Extras_Renderer/extras_renderer.h"
 #include "Renderers/Stage_Renderer/stage_renderer.h"
 #include "GL_Helpers/gl_helpers.h"
+#include "Input_Handlers/Keyboard_Handler/keyboard_handler.h"
 
 struct Editor_Game {
 
@@ -23,6 +24,8 @@ struct Editor_Game {
     // Function used to update the game's dimensions internally.
     Game_Dimensions_Update_CB update_dimensions;
 
+    // Current state of the keyboard.
+    Keyboard_State* keyboard_state;
 
     // Collection of all game data modules.
     Game_Data* data;

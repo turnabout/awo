@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#include "Include/types.h"
 #include "Input_Handlers/Keyboard_Handler/keyboard_handler.h"
 #include "Input_State/Keyboard_State/keyboard_state.h"
 
@@ -13,8 +14,8 @@ typedef struct Key_Event {
     // The key this event acts upon.
     Key key;
 
-    // GLFW_PRESS or GLFW_RELEASE
-    int action;
+    // Whether the key's new state is pressed or released.
+    Bool pressed;
 
 } Key_Event;
 

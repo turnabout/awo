@@ -56,6 +56,10 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);
     update_stage_renderer_view(game->stage_renderer, 0, 0, 16.0f);
 
+    // Inputs
+    game->keyboard_state = create_keyboard_state();
+    create_keyboard_handler(game_window);
+
     return (Game*)game;
 }
 
@@ -75,6 +79,9 @@ void free_editor_game(Game* game)
     // free_game_clock(editor_game->clock);
     free_extras_renderer(editor_game->extras_renderer);
     // free_stage_renderer(editor_game->stage_renderer);
+
+    free_keyboard_handler();
+    free_keyboard_state(editor_game->keyboard_state);
 
     free(editor_game);
 }

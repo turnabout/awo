@@ -23,9 +23,5 @@ void free_keyboard_state(Keyboard_State* state)
         return;
     }
 
-    if (state->keys != NULL) {
-        free(state->keys);
-    }
-
     free(state);
 }
