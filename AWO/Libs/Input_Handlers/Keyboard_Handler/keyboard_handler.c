@@ -11,12 +11,13 @@ void key_change_cb(GLFWwindow* glfw_window, int key, int scancode, int action, i
         return;
     }
 
-    handler->key_events[handler->key_events_count].key = key;
-    handler->key_events[handler->key_events_count].pressed =
-        (action == GLFW_PRESS)
-            ? TRUE
-            : FALSE;
-    handler->key_events_count++;
+    Key_Event* event = malloc(sizeof(Key_Event));
+
+    event->key = key;
+    event->pressed = (action == GLFW_PRESS) ? TRUE : FALSE;
+    event->new = TRUE;
+
+    append_linked_list_item((Linked_List*)handler->key_events, (void*)event);
 }
 
 void create_keyboard_handler(Game_Window* game_window)
@@ -31,22 +32,31 @@ void create_keyboard_handler(Game_Window* game_window)
         return;
     }
 
-    handler->key_events_count = 0;
     handler->game_window = game_window;
+    handler->key_events = (Key_Events_List*)create_linked_list(NULL, 0);
 
     glfwSetKeyCallback(get_game_window_GLFW_window_handle(handler->game_window), key_change_cb);
 }
 
 void update_keyboard_state(Keyboard_State* state)
 {
-    // Loop every queued events & process, attaching new states to Keyboard_State
-    while (handler->key_events_count) {
+    // Loop every tile entry & update the render grid pixels for every tile in the list
+    List_Entry* entry = handler->key_events->head;
 
-        Key_Event event = handler->key_events[handler->key_events_count - 1];
-        Button_State old = state->keys[event.key];
+    while (entry != NULL) {
+        Key_Event* event = (Key_Event*)entry->element;
+        Button_State old = state->keys[event->key];
 
-        state->keys[event.key] = event.pressed | ((old & 1) ^ event.pressed) << 1;
-        handler->key_events_count--;
+        state->keys[event->key] = event->pressed | ((old & 1) ^ event->pressed) << 1;
+
+        entry = entry->next;
+
+        // Either flag the event as old, or delete it if it already was
+        if (event->new == TRUE) {
+            event->new = FALSE;
+        } else {
+            delete_linked_list_item((Linked_List*)handler->key_events, (void*)event, TRUE);
+        }
     }
 }
 
@@ -63,6 +73,7 @@ void free_keyboard_handler()
 
     glfwSetKeyCallback(get_game_window_GLFW_window_handle(handler->game_window), NULL);
 
+    free_linked_list((Linked_List*)handler->key_events);
     free(handler);
     handler = NULL;
 }

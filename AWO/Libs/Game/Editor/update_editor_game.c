@@ -4,4 +4,5 @@
 
 void update_editor_game(Editor_Game* game, float delta_time)
 {
+    update_keyboard_state(game->keyboard_state);
 }
