@@ -30,8 +30,8 @@ typedef struct Mouse_State {
     // State of the mouse buttons.
     Button_State* buttons;
 
-    // Scroll wheel value. Negative values are an upward scroll, positive are downward.
-    float scroll;
+    // Scroll wheel value. Negative values are an up/left scroll, positive are a down/right scroll.
+    float scroll_y, scroll_x;
 
     // Coordinates of the mouse pointer.
     int x, y;

@@ -11,7 +11,7 @@ Mouse_State* create_mouse_state()
     }
 
     state->buttons = malloc(sizeof(Button_State) * GAME_MOUSE_BUTTONS_COUNT);
-    state->scroll = 0;
+    state->scroll_y = 0;
     state->x = 0;
     state->y = 0;
 

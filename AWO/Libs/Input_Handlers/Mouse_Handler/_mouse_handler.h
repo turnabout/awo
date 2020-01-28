@@ -3,20 +3,10 @@
 
 #define MAX_MOUSE_EVENTS 10
 
-typedef struct Mouse_Move_Event {
-
-    // The mouse movement x/y
-    int x, y;
-
-} Mouse_Move_Event;
-
 typedef struct Mouse_Scroll_Event {
 
-    // The added vertical scroll value
-    float vertical_scroll;
-
-    // The added horizontal scroll value
-    float horizontal_scroll;
+    // The added horizontal and vertical scroll values.
+    float x, y;
 
 } Mouse_Scroll_Event;
 

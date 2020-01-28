@@ -17,35 +17,50 @@ void mouse_scroll_cb(GLFWwindow* window, double x, double y)
         return;
     }
 
-    handler->scroll_events[handler->scroll_events_count].vertical_scroll = (float)y;
-    handler->scroll_events[handler->scroll_events_count].horizontal_scroll = (float)x;
+    handler->scroll_events[handler->scroll_events_count].y = (float)y;
+    handler->scroll_events[handler->scroll_events_count].x = (float)x;
     handler->scroll_events_count++;
 }
 
-Mouse_Handler* create_mouse_handler(Game_Window* game_window)
+void create_mouse_handler(Game_Window* game_window)
 {
     if (handler != NULL) {
-        return NULL;
+        return;
     }
 
-    Mouse_Handler* mouse_handler = malloc(sizeof(Mouse_Handler));
+    handler = malloc(sizeof(Mouse_Handler));
 
-    if (mouse_handler == NULL) {
-        return NULL;
+    if (handler == NULL) {
+        return;
     }
 
     GLFWwindow* glfw_window = get_game_window_GLFW_window_handle(game_window);
 
-    mouse_handler->glfw_window = glfw_window;
-    mouse_handler->scroll_events_count = 0;
-    handler = mouse_handler;
+    handler->glfw_window = glfw_window;
+    handler->scroll_events_count = 0;
 
     // Set mouse callbacks
     glfwSetCursorPosCallback(glfw_window, mouse_cursor_cb);
     glfwSetScrollCallback(glfw_window, mouse_scroll_cb);
+}
 
-    return mouse_handler;
+void update_mouse_state(Mouse_State* state)
+{
 
+    // Loop & process all accumulated mouse scroll events
+    state->scroll_y = 0.0f;
+    state->scroll_x = 0.0f;
+
+    for (int i = 0; i < handler->scroll_events_count; i++) {
+        state->scroll_x += handler->scroll_events[i].x;
+        state->scroll_y += handler->scroll_events[i].y;
+    }
+
+    handler->scroll_events_count = 0;
+
+    // Set new mouse x/y 
+    state->x = handler->x;
+    state->y = handler->y;
 }
 
 void disable_default_mouse_handler_callbacks()
@@ -68,7 +83,7 @@ void update_mouse_scroll(double x, double y)
     }
 }
 
-void free_mouse_handler(Mouse_Handler* handler)
+void free_mouse_handler()
 {
     if (handler == NULL) {
         return;
