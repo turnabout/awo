@@ -9,6 +9,7 @@
 typedef struct Mouse_Handler Mouse_Handler;
 
 void create_mouse_handler(Game_Window* game_window);
+void update_mouse_state(Mouse_State* state);
 
 void disable_default_mouse_handler_callbacks();
 void update_mouse_scroll(double x, double y);
