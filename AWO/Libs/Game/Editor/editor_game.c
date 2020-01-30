@@ -58,7 +58,9 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 
     // Inputs
     game->keyboard_state = create_keyboard_state();
+    game->mouse_state = create_mouse_state();
     create_keyboard_handler(game_window);
+    create_mouse_handler(game_window);
 
     return (Game*)game;
 }
@@ -78,10 +80,12 @@ void free_editor_game(Game* game)
     free_game_camera(editor_game->camera);
     // free_game_clock(editor_game->clock);
     free_extras_renderer(editor_game->extras_renderer);
-    // free_stage_renderer(editor_game->stage_renderer);
+    free_stage_renderer(editor_game->stage_renderer);
 
-    free_keyboard_handler();
     free_keyboard_state(editor_game->keyboard_state);
+    free_mouse_state(editor_game->mouse_state);
+    free_keyboard_handler();
+    free_mouse_handler();
 
     free(editor_game);
 }

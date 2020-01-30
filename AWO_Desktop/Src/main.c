@@ -23,7 +23,7 @@ int main()
     run_game(game, window, test_cb, NULL);
     hide_game_window(window);
 
+    free_editor_game(game);
     free_game_data(data);
     free_game_window(window);
-    free_editor_game(game);
 }

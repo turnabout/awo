@@ -29,6 +29,8 @@ void init_stage_renderer_grid(
             0.0
         }
     );
+
+    // Fill the grid with the stage's tiles
 }
 
 Stage_Renderer* create_stage_renderer(

@@ -4,7 +4,7 @@
 
 Mouse_State* create_mouse_state()
 {
-    Mouse_State* state = malloc(sizeof(Mouse_State*));
+    Mouse_State* state = malloc(sizeof(Mouse_State));
 
     if (state == NULL) {
         return NULL;
@@ -34,5 +34,4 @@ void free_mouse_state(Mouse_State* state)
     }
 
     free(state);
-
 }
