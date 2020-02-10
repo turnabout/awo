@@ -15,7 +15,7 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     game->update_dimensions = update_editor_game_dimensions;
 
     game->data = game_data;
-    game->stage = generate_filled_stage(Plain, Default, 25, 25);
+    game->stage = generate_filled_stage(Sea, Middle, 25, 25);
 
     // Set the sprite sheet texture
     game->sprite_sheet = get_sprite_sheet_GL_texture(game_data->sprite_sheet);

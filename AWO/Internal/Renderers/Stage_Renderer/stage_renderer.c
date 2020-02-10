@@ -4,6 +4,34 @@
 #include "GL_Helpers/gl_helpers.h"
 #include "Renderers/Stage_Renderer/_stage_renderer.h"
 
+void add_render_grids_stage_tile_pixel_data(
+    Stage_Renderer* renderer, 
+    Stage_Tile stage_tile,
+    Uint8 x,
+    Uint8 y,
+    Tile_Data* tile_data
+)
+{
+    if (is_tile_type_neutral(stage_tile.type)) {
+
+        // Get neutral tile's frames
+        Animation* tile_anim;
+        gather_tile_data(tile_data, stage_tile.type, stage_tile.variation, NULL, &tile_anim);
+
+        // Update the render grid(s) pixel for this tile
+        update_render_grid_pixel_low(
+            renderer->grid_layers[TILE_LAYER_0],
+            x,
+            y,
+            (vec2) {
+                tile_anim->frames[0].raw_top_left[0],
+                tile_anim->frames[0].raw_top_left[1]
+            }
+        );
+    } else {
+    }
+}
+
 void init_stage_renderer_grid(
     Stage_Renderer* renderer, 
     int grid_width, 
@@ -29,8 +57,6 @@ void init_stage_renderer_grid(
             0.0
         }
     );
-
-    // Fill the grid with the stage's tiles
 }
 
 Stage_Renderer* create_stage_renderer(
@@ -65,13 +91,26 @@ Stage_Renderer* create_stage_renderer(
 
     // Set empty frame
     Animation* empty_anim;
-    gather_tile_data(game_data->tile, Plain, Default, NULL, &empty_anim);
+    gather_tile_data(game_data->tile, Empty, Default, NULL, &empty_anim);
     renderer->empty_frame = &empty_anim->frames[0];
 
     // Set the grid layers
     // Tile grids
     init_stage_renderer_grid(renderer, stage->width, stage->height, TILE_LAYER_0, 0);
     init_stage_renderer_grid(renderer, stage->width, stage->height, TILE_LAYER_1, 1);
+
+    // Fill tile grids with the stage's tiles initial data
+    for (Uint8 y = 0; y < renderer->stage->height; y++) {
+        for (Uint8 x = 0; x < renderer->stage->width; x++) {
+            add_render_grids_stage_tile_pixel_data(
+                renderer, 
+                renderer->stage->tiles_grid[y][x],
+                x,
+                y,
+                game_data->tile
+            );
+        }
+    }
 
     // Unit grids
     init_stage_renderer_grid(renderer, stage->width, stage->height, UNIT_LAYER, 0);
