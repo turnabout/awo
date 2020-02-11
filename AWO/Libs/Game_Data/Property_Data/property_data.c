@@ -74,6 +74,8 @@ Property_Data* create_property_tiles_data(
         weather++;
     }
 
+    update_tiles_data_active_property_weather_var(data, Clear);
+
     return data;
 }
 

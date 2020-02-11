@@ -119,8 +119,6 @@ Stage_Renderer* create_stage_renderer(
         return NULL;
     }
 
-    update_tiles_data_active_property_weather_var(game_data->property, Clear);
-
     renderer->stage = stage;
 
     // Set textures
