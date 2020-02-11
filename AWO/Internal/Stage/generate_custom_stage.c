@@ -65,6 +65,7 @@ Stage* generate_custom_stage()
     edit_stage_tile(stage, 7, 5, Road, Middle);
     edit_stage_tile(stage, 8, 5, Road, Horizontal);
     edit_stage_tile(stage, 9, 5, Road, Horizontal);
+    edit_stage_tile(stage, 9, 6, Mountain, Default);
 
     edit_stage_tile(stage, 7, 6, Road, Vertical);
 

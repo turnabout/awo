@@ -554,6 +554,9 @@
     <ClInclude Include="Internal\Renderers\Stage_Renderer\stage_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Libs\Game_Data\Property_Data\Headers\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Fonts\aw2-gba.ttf" />

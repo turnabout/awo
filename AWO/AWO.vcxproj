@@ -146,6 +146,7 @@
     <ClInclude Include="Libs\Game_Data\Palette_Data\palette_data.h" />
     <ClInclude Include="Libs\Game_Data\Palette_Data\_palette_data.h" />
     <ClInclude Include="Include\Game_Data\property_types.h" />
+    <ClInclude Include="Libs\Game_Data\Property_Data\Headers\macros.h" />
     <ClInclude Include="Libs\Game_Data\Sprite_Sheet_Data\sprite_sheet_data.h" />
     <ClInclude Include="Libs\Game_Data\Sprite_Sheet_Data\_sprite_sheet_data.h" />
     <ClInclude Include="Libs\Game_Data\Tile_Data\Headers\macros.h" />

@@ -9,27 +9,49 @@ void add_render_grids_stage_tile_pixel_data(
     Stage_Tile stage_tile,
     Uint8 x,
     Uint8 y,
-    Tile_Data* tile_data
+    Game_Data* game_data
 )
 {
+    Frame* frame = NULL;
+
+    // Get the frame data for this tile
     if (is_tile_type_neutral(stage_tile.type)) {
 
-        // Get neutral tile's frames
+        // Get neutral tile's frame
         Animation* tile_anim;
-        gather_tile_data(tile_data, stage_tile.type, stage_tile.variation, NULL, &tile_anim);
+        gather_tile_data(game_data->tile, stage_tile.type, stage_tile.variation, NULL, &tile_anim);
+        frame = &tile_anim->frames[0];
+    }
 
-        // Update the render grid(s) pixel for this tile
+    if (frame == NULL) {
+        return;
+    }
+
+    // Update the render grid(s) pixel for this tile's frame
+    if (frame->height == DEFAULT_ENTITY_SIZE) {
         update_render_grid_pixel_low(
             renderer->grid_layers[TILE_LAYER_0],
             x,
             y,
-            (vec2) {
-                tile_anim->frames[0].raw_top_left[0],
-                tile_anim->frames[0].raw_top_left[1]
-            }
+            (vec2) { frame->raw_top_left[0], frame->raw_top_left[1] }
         );
     } else {
+        update_render_grid_pixel_low(
+            renderer->grid_layers[TILE_LAYER_0],
+            x,
+            y,
+            (vec2) { frame->raw_top_left[0], frame->raw_top_left[1] + DEFAULT_ENTITY_SIZE }
+        );
+
+        update_render_grid_pixel_low(
+            renderer->grid_layers[TILE_LAYER_1],
+            x,
+            y,
+            (vec2) { frame->raw_top_left[0], frame->raw_top_left[1] }
+        );
+
     }
+
 }
 
 void init_stage_renderer_grid(
@@ -107,7 +129,7 @@ Stage_Renderer* create_stage_renderer(
                 renderer->stage->tiles_grid[y][x],
                 x,
                 y,
-                game_data->tile
+                game_data
             );
         }
     }
