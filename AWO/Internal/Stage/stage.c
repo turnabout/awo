@@ -77,6 +77,19 @@ void fill_stage_tiles(Stage* stage, int type, int variation)
     }
 }
 
+Army_Type get_stage_player_index_army_type(Stage* stage, Player_Index index)
+{
+    if (index == Player_Index_Neutral) {
+        return ARMY_TYPE_NEUTRAL;
+    }
+
+    if (index > (stage->player_count - 1)) {
+        return ARMY_TYPE_NONE;
+    }
+
+    return stage->player_armies[index];
+}
+
 void free_stage(Stage* stage)
 {
     if (stage == NULL) {

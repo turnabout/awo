@@ -3,6 +3,7 @@
 #include "Config/config.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Renderers/Stage_Renderer/_stage_renderer.h"
+#include "Palette/palette.h"
 
 void add_render_grids_stage_tile_pixel_data(
     Stage_Renderer* renderer, 
@@ -13,6 +14,7 @@ void add_render_grids_stage_tile_pixel_data(
 )
 {
     Frame* frame = NULL;
+    GLfloat palette_index = 0.0f;
 
     // Get the frame data for this tile
     if (is_tile_type_neutral(stage_tile.type)) {
@@ -21,6 +23,19 @@ void add_render_grids_stage_tile_pixel_data(
         Animation* tile_anim;
         gather_tile_data(game_data->tile, stage_tile.type, stage_tile.variation, NULL, &tile_anim);
         frame = &tile_anim->frames[0];
+        palette_index = get_active_tile_palette_index(GL_FALSE);
+
+    } else if (is_tile_type_property(stage_tile.type)) {
+
+        // Get property tile's frame
+        Frame** property_frame = get_property_type_frame(
+            game_data->property,
+            tile_to_property(stage_tile.type),
+            get_stage_player_index_army_type(renderer->stage, (Player_Index)stage_tile.variation)
+        );
+
+        frame = *property_frame;
+        palette_index = get_player_property_palette_index(stage_tile.variation);
     }
 
     if (frame == NULL) {
@@ -29,29 +44,39 @@ void add_render_grids_stage_tile_pixel_data(
 
     // Update the render grid(s) pixel for this tile's frame
     if (frame->height == DEFAULT_ENTITY_SIZE) {
-        update_render_grid_pixel_low(
+        update_render_grid_pixel(
             renderer->grid_layers[TILE_LAYER_0],
             x,
             y,
-            (vec2) { frame->raw_top_left[0], frame->raw_top_left[1] }
+            (vec4) { 
+                frame->raw_top_left[0], 
+                frame->raw_top_left[1],
+                palette_index
+            }
         );
     } else {
-        update_render_grid_pixel_low(
+        update_render_grid_pixel(
             renderer->grid_layers[TILE_LAYER_0],
             x,
             y,
-            (vec2) { frame->raw_top_left[0], frame->raw_top_left[1] + DEFAULT_ENTITY_SIZE }
+            (vec4) { 
+                frame->raw_top_left[0], 
+                frame->raw_top_left[1] + DEFAULT_ENTITY_SIZE,
+                palette_index
+            }
         );
 
-        update_render_grid_pixel_low(
+        update_render_grid_pixel(
             renderer->grid_layers[TILE_LAYER_1],
             x,
             y,
-            (vec2) { frame->raw_top_left[0], frame->raw_top_left[1] }
+            (vec4) { 
+                frame->raw_top_left[0], 
+                frame->raw_top_left[1],
+                palette_index
+        }
         );
-
     }
-
 }
 
 void init_stage_renderer_grid(
@@ -93,6 +118,8 @@ Stage_Renderer* create_stage_renderer(
     if (renderer == NULL) {
         return NULL;
     }
+
+    update_tiles_data_active_property_weather_var(game_data->property, Clear);
 
     renderer->stage = stage;
 

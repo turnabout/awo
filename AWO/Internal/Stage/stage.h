@@ -2,9 +2,8 @@
 
 #include "Config/config.h"
 #include "Utilities/utilities.h"
-#include "Game_Data/Unit_Data/unit_data.h"
-#include "Game_Data/Tile_Data/tile_data.h"
-#include "Game_Data/Property_Data/property_data.h"
+#include "Game_Data/game_data.h"
+#include "Player/player_index_enum.h"
 
 #define STAGE_NAME_MAX_LENGTH 32
 
@@ -97,6 +96,14 @@ Stage* generate_custom_stage();
  *  @param[in] variation The stage tile's new variation.
  */
 void edit_stage_tile(Stage* stage, int x, int y, int type, int variation);
+
+/*! @brief Gets the army type of a stage's player index.
+ *
+ *  @param[in] stage The stage.
+ *  @param[in] index The player index from which to get the army type.
+ *  @return The army type of the player of the given index.
+ */
+Army_Type get_stage_player_index_army_type(Stage* stage, Player_Index index);
 
 /*! @brief Frees data taken up by a stage descriptor.
  *
