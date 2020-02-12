@@ -1,83 +1,7 @@
 #include <stdlib.h>
 
-#include "Config/config.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "Renderers/Stage_Renderer/_stage_renderer.h"
-#include "Palette/palette.h"
-
-void add_render_grids_stage_tile_pixel_data(
-    Stage_Renderer* renderer, 
-    Stage_Tile stage_tile,
-    Uint8 x,
-    Uint8 y,
-    Game_Data* game_data
-)
-{
-    Frame* frame = NULL;
-    GLfloat palette_index = 0.0f;
-
-    // Get the frame data for this tile
-    if (is_tile_type_neutral(stage_tile.type)) {
-
-        // Get neutral tile's frame
-        Animation* tile_anim;
-        gather_tile_data(game_data->tile, stage_tile.type, stage_tile.variation, NULL, &tile_anim);
-        frame = &tile_anim->frames[0];
-        palette_index = get_active_tile_palette_index(GL_FALSE);
-
-    } else if (is_tile_type_property(stage_tile.type)) {
-
-        // Get property tile's frame
-        Frame** property_frame = get_property_type_frame(
-            game_data->property,
-            tile_to_property(stage_tile.type),
-            get_stage_player_index_army_type(renderer->stage, (Player_Index)stage_tile.variation)
-        );
-
-        frame = *property_frame;
-        palette_index = get_player_property_palette_index(stage_tile.variation);
-    }
-
-    if (frame == NULL) {
-        return;
-    }
-
-    // Update the render grid(s) pixel for this tile's frame
-    if (frame->height == DEFAULT_ENTITY_SIZE) {
-        update_render_grid_pixel(
-            renderer->grid_layers[TILE_LAYER_0],
-            x,
-            y,
-            (vec4) { 
-                frame->raw_top_left[0], 
-                frame->raw_top_left[1],
-                palette_index
-            }
-        );
-    } else {
-        update_render_grid_pixel(
-            renderer->grid_layers[TILE_LAYER_0],
-            x,
-            y,
-            (vec4) { 
-                frame->raw_top_left[0], 
-                frame->raw_top_left[1] + DEFAULT_ENTITY_SIZE,
-                palette_index
-            }
-        );
-
-        update_render_grid_pixel(
-            renderer->grid_layers[TILE_LAYER_1],
-            x,
-            y,
-            (vec4) { 
-                frame->raw_top_left[0], 
-                frame->raw_top_left[1],
-                palette_index
-        }
-        );
-    }
-}
 
 void init_stage_renderer_grid(
     Stage_Renderer* renderer, 
@@ -115,11 +39,12 @@ Stage_Renderer* create_stage_renderer(
 {
     Stage_Renderer* renderer = malloc(sizeof(Stage_Renderer));
 
-    if (renderer == NULL) {
+    if (renderer == NULL || stage == NULL || game_data == NULL) {
         return NULL;
     }
 
     renderer->stage = stage;
+    renderer->game_data = game_data;
 
     // Set textures
     renderer->sprite_sheet_texture = sprite_sheet;
@@ -149,13 +74,7 @@ Stage_Renderer* create_stage_renderer(
     // Fill tile grids with the stage's tiles initial data
     for (Uint8 y = 0; y < renderer->stage->height; y++) {
         for (Uint8 x = 0; x < renderer->stage->width; x++) {
-            add_render_grids_stage_tile_pixel_data(
-                renderer, 
-                renderer->stage->tiles_grid[y][x],
-                x,
-                y,
-                game_data
-            );
+            update_stage_renderer_tile(renderer, x, y);
         }
     }
 

@@ -26,6 +26,7 @@
     <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\render_stage.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\stage_renderer.c" />
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer_matrices.c" />
     <ClCompile Include="Internal\Render_Grid\get_render_grid_VAO.c" />
     <ClCompile Include="Internal\Render_Grid\render_grid.c" />

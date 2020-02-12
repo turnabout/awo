@@ -52,4 +52,21 @@ struct Stage_Renderer {
     // Empty tile frame, used to clear render grids.
     Frame* empty_frame;
 
+    // Reference to the game data module.
+    Game_Data* game_data;
+
 };
+
+/*! @brief Updates the stage renderer visual data for the tile at the given coordinates.
+ *
+ * @note Uses the internally stored stage that was given to the renderer through 
+ * `create_stage_renderer`.
+ *
+ * @note Sets palette data to default non-fog values. Fog palette data must be manually set after
+ * calling this.
+ *
+ *  @param[in] renderer The stage renderer module.
+ *  @param[in] x X coordinate of the tile pixel to update.
+ *  @param[in] y Y coordinate of the tile pixel to update.
+ */
+void update_stage_renderer_tile(Stage_Renderer* renderer, Uint8 x, Uint8 y);
