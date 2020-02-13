@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "Game/Clock/_game_clock.h"
+#include "Clock/_clock.h"
 
 void print_tick_events_list(Tick_Events_List* tick_events_list)
 {

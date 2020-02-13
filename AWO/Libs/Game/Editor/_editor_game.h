@@ -2,7 +2,7 @@
 
 #include "Include/emx.h"
 #include "Camera/camera.h"
-#include "Clock/game_clock.h"
+#include "Clock/clock.h"
 #include "Game_Data/game_data.h"
 #include "Game/Editor/editor_game.h"
 #include "Game_Window/game_window.h"

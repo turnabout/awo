@@ -249,6 +249,15 @@
     <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Internal\Clock\clock.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Clock\Timer\clock_timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Internal\Clock\Tick_Event\print_tick_events_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Libraries\cJSON.h">
@@ -558,6 +567,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libs\Game_Data\Property_Data\Headers\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Clock\clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Clock\_clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Clock\Timer\clock_timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Clock\Tick_Event\tick_event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
