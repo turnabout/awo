@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Internal\Clock\clock.c" />
+    <ClCompile Include="Internal\Clock\Pub_Sub\clock_pub_sub.c" />
     <ClCompile Include="Internal\Clock\Tick_Event\print_tick_events_list.c" />
     <ClCompile Include="Internal\Clock\Timer\clock_timer.c" />
     <ClCompile Include="Internal\GL_Helpers\delete_texture.c" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Include\Game_Window\game_window.h" />
     <ClInclude Include="Include\macros.h" />
     <ClInclude Include="Internal\Clock\clock.h" />
+    <ClInclude Include="Internal\Clock\Pub_Sub\clock_pub_sub.h" />
     <ClInclude Include="Internal\Clock\Tick_Event\tick_event.h" />
     <ClInclude Include="Internal\Clock\Timer\clock_timer.h" />
     <ClInclude Include="Internal\Clock\_clock.h" />

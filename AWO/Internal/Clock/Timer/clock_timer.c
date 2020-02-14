@@ -24,15 +24,15 @@ struct Clock_Timer {
     Tick_Event* event;
 
     // Reference to the game clock pub-sub service
-    // Game_Clock_Pub_Sub* pub_sub;
+    Clock_Pub_Sub* pub_sub;
 
 };
 
-Clock_Timer* create_clock_timer( Clock_Data* clock_data, Clock_Index index)
+Clock_Timer* create_clock_timer(Clock_Data* clock_data, Clock_Index index, Clock_Pub_Sub* pub_sub)
 {
     Clock_Timer* timer = malloc(sizeof(Clock_Timer));
 
-    // timer->pub_sub = pub_sub;
+    timer->pub_sub = pub_sub;
 
     // Gather data for this timer
     Uint8 value_count;
@@ -61,13 +61,11 @@ Clock_Timer* create_clock_timer( Clock_Data* clock_data, Clock_Index index)
     return timer;
 }
 
-/*
 static inline void emit_clock_tick_event(Clock_Timer* timer, Uint8 value)
 {
     timer->event->value = value;
     process_clock_pub_sub_tick_event(timer->pub_sub, timer->event);
 }
-*/
 
 static inline void reset_timer(Clock_Timer* timer, Uint8 excess_frames)
 {
@@ -80,7 +78,7 @@ static inline void reset_timer(Clock_Timer* timer, Uint8 excess_frames)
     timer->target_frame_index = 1;
 
     // Send first value
-    // emit_clock_tick_event(timer, timer->values[0]);
+    emit_clock_tick_event(timer, timer->values[0]);
 }
 
 void update_timer(Clock_Timer* timer, Uint8 passed_frames)
@@ -102,7 +100,7 @@ void update_timer(Clock_Timer* timer, Uint8 passed_frames)
             return;
         }
 
-        // emit_clock_tick_event(timer, timer->values[timer->target_frame_index++]);
+        emit_clock_tick_event(timer, timer->values[timer->target_frame_index++]);
     }
 }
 

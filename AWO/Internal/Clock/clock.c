@@ -11,14 +11,12 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
     game_clock->accum_time = 0;
 
     // Create the pub-sub module responsible for linking the game clock publisher with subscribers
-    // game_clock->pub_sub = create_clock_pub_sub();
+    game_clock->pub_sub = create_clock_pub_sub();
 
     // Create the timers array (publishers)
-    /*
     for (Clock_Index i = 0; i < ANIMATION_CLOCK_COUNT; i++) {
         game_clock->timers[i] = create_clock_timer(clock_data, i, game_clock->pub_sub);
     }
-    */
 
     return game_clock;
 }
@@ -50,5 +48,5 @@ void free_game_clock(Game_Clock* game_clock)
         free_clock_timer(game_clock->timers[i]);
     }
 
-    // free_clock_pub_sub(game_clock->pub_sub);
+    free_clock_pub_sub(game_clock->pub_sub);
 }
