@@ -2,9 +2,8 @@
 
 #include "Clock/clock.h"
 #include "Clock/Timer/clock_timer.h"
-#include "Clock/Tick_Event/tick_event.h"
 
-struct Game_Clock {
+struct Clock {
 
     // Array of all publisher timer clocks belonging to the game clock module.
     Clock_Timer* timers[ANIMATION_CLOCK_COUNT];

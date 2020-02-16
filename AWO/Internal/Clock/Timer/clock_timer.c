@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
+#include "Clock/Headers/tick_event.h"
 #include "Clock/Timer/clock_timer.h"
-#include "Clock/Tick_Event/tick_event.h"
 
 struct Clock_Timer {
 

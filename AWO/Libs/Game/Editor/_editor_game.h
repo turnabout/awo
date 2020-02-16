@@ -39,7 +39,7 @@ struct Editor_Game {
     Camera* camera;
 
     // The game clock module.
-    Game_Clock* clock;
+    Clock* clock;
 
     // Module used to render the stage.
     Stage_Renderer* stage_renderer;

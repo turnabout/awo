@@ -255,9 +255,6 @@
     <ClCompile Include="Internal\Clock\Timer\clock_timer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Internal\Clock\Tick_Event\print_tick_events_list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Internal\Clock\Pub_Sub\clock_pub_sub.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -581,10 +578,13 @@
     <ClInclude Include="Internal\Clock\Timer\clock_timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Clock\Tick_Event\tick_event.h">
+    <ClInclude Include="Internal\Clock\Pub_Sub\clock_pub_sub.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Internal\Clock\Pub_Sub\clock_pub_sub.h">
+    <ClInclude Include="Internal\Clock\Headers\clock_subscriber_event_cb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Internal\Clock\Headers\tick_event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

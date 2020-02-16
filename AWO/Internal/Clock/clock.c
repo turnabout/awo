@@ -3,9 +3,9 @@
 #include "Clock/_clock.h"
 #include "Config/config.h"
 
-Game_Clock* create_game_clock(Clock_Data* clock_data)
+Clock* create_clock(Clock_Data* clock_data)
 {
-    Game_Clock* game_clock = malloc(sizeof(Game_Clock));
+    Clock* game_clock = malloc(sizeof(Clock));
 
     game_clock->frame_count = 0;
     game_clock->accum_time = 0;
@@ -21,7 +21,7 @@ Game_Clock* create_game_clock(Clock_Data* clock_data)
     return game_clock;
 }
 
-void update_game_clock(Game_Clock* game_clock, float delta_time)
+void update_clock(Clock* game_clock, float delta_time)
 {
 
     // Reached time for a frame
@@ -38,7 +38,24 @@ void update_game_clock(Game_Clock* game_clock, float delta_time)
     }
 }
 
-void free_game_clock(Game_Clock* game_clock)
+void register_clock_subscriber(
+    Clock* clock,
+    void* subscriber_module,
+    clock_subscriber_event_cb subscriber_callback,
+    Clock_Index timers[ANIMATION_CLOCK_COUNT],
+    int timer_count
+)
+{
+    register_clocks_pub_sub_subscriber(
+        clock->pub_sub,
+        subscriber_module,
+        subscriber_callback,
+        timers,
+        timer_count
+    );
+}
+
+void free_clock(Clock* game_clock)
 {
     if (game_clock == NULL) {
         return;
