@@ -39,7 +39,7 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
         game->stage->height
     );
 
-    // game->clock = create_clock(game_data->clock);
+    game->clock = create_game_clock(game_data->clock);
 
     game->stage_renderer = create_stage_renderer(
         game->stage,
@@ -79,7 +79,7 @@ void free_editor_game(Game* game)
 
     free_stage(editor_game->stage);
     free_game_camera(editor_game->camera);
-    // free_game_clock(editor_game->clock);
+    free_game_clock(editor_game->clock);
     free_extras_renderer(editor_game->extras_renderer);
     free_stage_renderer(editor_game->stage_renderer);
 
