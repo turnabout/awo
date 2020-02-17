@@ -47,24 +47,3 @@ void register_clock_subscriber(
  *  @param[in] clock The game clock module.
  */
 void free_clock(Clock* clock);
-
-// TODO: moving to new Stage_Renderer submodule
-/*! @brief Registers the given tile with the game clock module to keep its animation updated.
- *
- *  @param[in] game_clock The game clock.
- *  @param[in] tile The tile object.
- *  @param[in] clock_index Index of the animation clock the tile should subscribe to.
- *  @param[in] sub_clock_index Index of the animation sub-clock the tile should subscribe to.
- */
-/*
-void register_game_clock_tile(
-    Clock* game_clock, 
-    Tile* tile,
-    Clock_Index clock_index
-);
-void unregister_game_clock_tile(
-    Clock* game_clock,
-    Tile* tile,
-    Clock_Index clock_index
-);
-*/

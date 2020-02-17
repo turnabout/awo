@@ -28,6 +28,7 @@
     <ClCompile Include="Internal\Palette\update_palette_tile_weather.c" />
     <ClCompile Include="Internal\Renderers\Extras_Renderer\extras_renderer.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\render_stage.c" />
+    <ClCompile Include="Internal\Renderers\Stage_Renderer\Stage_Clock_Subscriber\stage_clock_subscriber.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\stage_renderer.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer.c" />
     <ClCompile Include="Internal\Renderers\Stage_Renderer\update_stage_renderer_matrices.c" />
@@ -144,6 +145,8 @@
     <ClInclude Include="Internal\Input_State\Keyboard_State\keyboard_state.h" />
     <ClInclude Include="Internal\Input_State\Mouse_State\mouse_state.h" />
     <ClInclude Include="Internal\Renderers\Extras_Renderer\extras_renderer.h" />
+    <ClInclude Include="Internal\Renderers\Stage_Renderer\Stage_Clock_Subscriber\stage_clock_subscriber.h" />
+    <ClInclude Include="Internal\Renderers\Stage_Renderer\Stage_Clock_Subscriber\_stage_clock_subscriber.h" />
     <ClInclude Include="Internal\Renderers\Stage_Renderer\stage_renderer.h" />
     <ClInclude Include="Internal\Renderers\Stage_Renderer\_stage_renderer.h" />
     <ClInclude Include="Internal\Render_Grid\render_grid.h" />
