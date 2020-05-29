@@ -14,10 +14,7 @@ CTestTestfile.cmake
 _deps
 # CMake end
 
-
-
 # Visual Studio start
-
 # Created by https://www.gitignore.io/api/visualstudio
 # Edit at https://www.gitignore.io/?templates=visualstudio
 
@@ -371,5 +368,4 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
-
 # Visual Studio end
