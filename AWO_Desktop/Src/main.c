@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <AWO/Include/awo.h>
+// #include <AWO/Include/awo.h>
 
 int quit = 0;
 
@@ -15,6 +15,8 @@ int test_cb(void* value)
 
 int main()
 {
+    printf("Test\n");
+    /*
     Game_Data* data = create_game_data();
     Game_Window* window = create_game_window(0, 0);
     Game* game = create_editor_game(data, window);
@@ -26,4 +28,5 @@ int main()
     free_editor_game(game);
     free_game_data(data);
     free_game_window(window);
+     */
 }
