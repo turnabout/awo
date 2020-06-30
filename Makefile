@@ -1,3 +1,4 @@
+# TODO: Remove once project becomes CMake-only
 # Project directories
 AWO_DIR := AWO
 
