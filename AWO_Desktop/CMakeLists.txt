@@ -3,3 +3,9 @@ project(AWO_Desktop C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(${PROJECT_NAME} Src/main.c)
+
+# Use AWO
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC
+        AWO
+)
