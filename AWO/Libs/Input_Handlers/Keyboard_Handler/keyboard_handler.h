@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game_Window/game_window.h"
+#include "AWO/game_window.h"
 #include "Input_State/Keyboard_State/keyboard_state.h"
 
 typedef struct Keyboard_Handler Keyboard_Handler;

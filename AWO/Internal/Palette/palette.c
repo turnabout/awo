@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Game_Message/game_message.h"
+#include "AWO/game_message.h"
 #include "Palette/_palette.h"
 
 GLuint create_game_palette_texture(

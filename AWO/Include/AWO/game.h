@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Game_Window/game_window.h"
+#include "game_window.h"
 
 /*! @brief Game instance.
  */

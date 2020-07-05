@@ -4,7 +4,7 @@
 #include <cglm/types.h>
 
 #include "Game_Data/Animation/animation.h"
-#include "Include/Game_Data/game_data.h"
+#include "AWO/game_data.h"
 
 // Creates units data object from JSON.
 Unit_Data* create_unit_data(cJSON* units_data_JSON, int ss_width, int ss_height);

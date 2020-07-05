@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Game_Data/game_data.h"
+#include "AWO/game_data.h"
 #include "Player/player.h"
 
 GLfloat get_active_tile_palette_index(Bool fog);

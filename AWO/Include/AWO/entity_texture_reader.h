@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Include/types.h"
-#include "Include/Game_Data/game_data.h"
+#include "game_data.h"
 
 /*! @brief Module used to retrieve texture data for individual entities, with palettes applied.
  */

@@ -4,7 +4,7 @@
 
 #include "Utilities/utilities.h"
 #include "Headers/clock_types.h"
-#include "Include/Game_Data/game_data.h"
+#include "AWO/game_data.h"
 
 Clock_Data* create_clock_data(cJSON* clock_data_JSON);
 

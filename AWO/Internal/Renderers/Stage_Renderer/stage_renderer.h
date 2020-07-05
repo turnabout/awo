@@ -3,7 +3,7 @@
 #include <cglm/cglm.h>
 
 #include "Stage/stage.h"
-#include "Game_Data/game_data.h"
+#include "AWO/game_data.h"
 
 typedef struct Stage_Renderer Stage_Renderer;
 

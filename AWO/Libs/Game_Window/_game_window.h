@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Include/types.h"
-#include "Include/emx.h"
-#include "Game_Window/game_window.h"
+#include "AWO/types.h"
+#include "AWO/emx.h"
 #include "Game_Message/game_message.h"
+#include "Game_Window/game_window.h"
 
 /*! @brief Game window instance. Holds the game window's dimensions.
  *

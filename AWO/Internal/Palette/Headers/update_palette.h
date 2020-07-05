@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Game_Data/game_data.h"
+#include "AWO/game_data.h"
 
 /*! @brief Updates the black pixel on the palette at the given index.
  *

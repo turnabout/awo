@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Game_Message/game_message.h"
+#include "game_message.h"
 
 // Function handling game messages
 static Game_Message_CB message_callback = NULL;

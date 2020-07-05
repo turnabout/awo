@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 #include "GL_Helpers/gl_helpers.h"
-#include "Game_Data/game_data.h"
+#include "AWO/game_data.h"
 #include "Texture_Reader/texture_reader.h"
-#include "Entity_Texture_Reader/entity_texture_reader.h"
+#include "entity_texture_reader.h"
 
 // Maximum amount of palettes that can be applied to an entity texture
 #define MAX_APPLIED_PALETTE_COUNT 2

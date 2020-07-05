@@ -5,7 +5,7 @@
 
 #include "Config/config.h"
 #include "Player/player.h"
-#include "Game_Data/game_data.h"
+#include "AWO/game_data.h"
 #include "Headers/palette_index.h"
 #include "Headers/update_palette.h"
 

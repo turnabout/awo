@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Game_Data/game_data.h"
-#include "../Game_Window/game_window.h"
+#include "game_data.h"
+#include "game_window.h"
 #include "game.h"
 
 /*! @brief Every possible entity type the game editor can edit.

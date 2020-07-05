@@ -2,7 +2,7 @@
 
 #include <cJSON.h>
 
-#include "Include/Game_Data/game_data.h"
+#include "AWO/game_data.h"
 
 #include "Headers/macros.h"
 #include "Headers/tile_auto_var_access.h"

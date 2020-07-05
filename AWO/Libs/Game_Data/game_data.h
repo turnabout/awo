@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Include/Game_Data/game_data.h"
+#include "AWO/game_data.h"
 #include "Stage/stage.h"
 #include "Game_Data/Animation/animation.h"
 #include "Game_Data/Frame/frame.h"

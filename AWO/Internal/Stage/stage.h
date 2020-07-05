@@ -2,7 +2,7 @@
 
 #include "Config/config.h"
 #include "Utilities/utilities.h"
-#include "Game_Data/game_data.h"
+#include "AWO/game_data.h"
 #include "Player/player_index_enum.h"
 
 #define STAGE_NAME_MAX_LENGTH 32

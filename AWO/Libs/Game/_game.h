@@ -2,9 +2,9 @@
 
 #include "Include/types.h"
 #include "Include/emx.h"
-#include "Include/Game/game.h"
+#include "AWO/game.h"
 #include "Game/Headers/game_callback_types.h"
-#include "Game_Message/game_message.h"
+#include "AWO/game_message.h"
 
 struct Game {
 

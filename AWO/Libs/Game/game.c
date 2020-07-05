@@ -1,5 +1,5 @@
 #include "Game/_game.h"
-#include "Game_Window/game_window.h"
+#include "AWO/game_window.h"
 #include <stdio.h>
 
 /*! @brief Used to internally signify the game window was updated, and that the game's dimensions 

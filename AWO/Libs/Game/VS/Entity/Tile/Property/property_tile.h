@@ -1,6 +1,6 @@
 #pragma once
 
-#include "types.h"
+#include "AWO/types.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Animation/animation.h"
 #include "Game/Data/Tile/tiles_data.h"

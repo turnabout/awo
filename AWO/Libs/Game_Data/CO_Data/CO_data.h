@@ -3,7 +3,7 @@
 #include <cJSON.h>
 
 #include "Game_Data/CO_Data/Headers/CO_types.h"
-#include "Include/Game_Data/game_data.h"
+#include "AWO/game_data.h"
 
 /*! @brief Creates the CO data object, containing data for all COs.
  *
