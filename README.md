@@ -1,5 +1,7 @@
 # AWO
 
+![showcase](./screenshot.png)
+
 Small fangame based on Advance Wars, written in C and using OpenGL. The end goal is to create a version playable in a web browser with multiplayer capabilities (through WebAssembly).
 
 Still largely a work in progress. The completed functionalities include parts of the core engine, basic map rendering using OpenGL shaders supporting palettes, and basic editing.
