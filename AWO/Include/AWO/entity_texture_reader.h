@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Include/types.h"
+#include "types.h"
 #include "game_data.h"
 
 /*! @brief Module used to retrieve texture data for individual entities, with palettes applied.
