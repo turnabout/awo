@@ -5,8 +5,10 @@ set(CMAKE_C_STANDARD 99)
 
 # Add library with sources
 add_library(${PROJECT_NAME} STATIC
-    Internal/GL_Helpers/glad.c
-    Libs/Game_Window/game_window.c
+        Internal/GL_Helpers/glad.c
+        Internal/Linked_List/linked_list.c
+        Internal/Linked_List/list_entry.c
+        Libs/Game_Window/game_window.c
 )
 
 ## Add GLFW & GL dependencies
