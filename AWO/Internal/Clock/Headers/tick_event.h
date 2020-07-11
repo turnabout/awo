@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Include/types.h"
+#include "AWO/types.h"
 #include "Game_Data/Clock_Data/Headers/clock_types.h"
 
 // Event generated whenever an animation sub-clock ticks.

@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
-#include "Include/types.h"
+#include "AWO/types.h"
 
 /*! @brief Creates a shader program.
  *
