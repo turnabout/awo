@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 #include "Headers/macros.h"
 #include "AWO/types.h"
 

@@ -1,7 +1,8 @@
 #include <stdlib.h>
-#include <stb_image.h>
+#include <stb_image/stb_image.h>
 
 #include "Config/config.h"
+#include "Game_Message/game_message.h"
 #include "GL_Helpers/gl_helpers.h"
 #include "AWO/game_message.h"
 #include "Game_Data/Sprite_Sheet_Data/_sprite_sheet_data.h"

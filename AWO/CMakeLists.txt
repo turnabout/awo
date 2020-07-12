@@ -36,10 +36,11 @@ add_library(${PROJECT_NAME} STATIC
         Libs/Game_Data/CO_Data/CO_data_creation.c
         Libs/Game_Data/Clock_Data/clock_data.c
         Libs/Game_Data/Animation/animation.c
-)
+        External/stb_image/stb_image.c
+        External/hashmap/hashmap.c)
 
 # Add preprocessor macro definitions
-add_compile_definitions(AWO_PROJECT_DIR=${PROJECT_SOURCE_DIR})
+add_compile_definitions(AWO_PROJECT_DIR="${PROJECT_SOURCE_DIR}")
 
 ## Add GLFW & GL dependencies
 find_package(glfw3 3.3 REQUIRED)
@@ -64,6 +65,7 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${PROJECT_SOURCE_DIR}/Include
     PRIVATE
+        ${PROJECT_SOURCE_DIR}/External
         ${PROJECT_SOURCE_DIR}/Internal
         ${PROJECT_SOURCE_DIR}/Libs
 )

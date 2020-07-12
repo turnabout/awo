@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 #include <cglm/types.h>
 
 // A tile variation's visual data

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cJSON.h>
-#include <c_hashmap.h>
+#include <cjson/cJSON.h>
+#include <hashmap/hashmap.h>
 
 #include "Game_Data/Tile_Data/Tile_Variation_Data/tile_variation_data.h"
 

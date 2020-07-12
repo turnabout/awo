@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 
 #include "Headers/macros.h"
 #include "AWO/game_data.h"

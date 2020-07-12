@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <cjson/cJSON.h>
-#include <c_hashmap.h>
+#include <hashmap/hashmap.h>
 
 #include "Game_Data/Tile_Data/tile_data.h"
 

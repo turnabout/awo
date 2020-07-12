@@ -1,5 +1,5 @@
 #pragma once
-#include "AWO/game_message.h"
+#include <AWO/game_message.h>
 
 // Macro shortcuts for pushing messages with different labels
 #define printe(format, ...) push_msg(Error_Msg, format, ##__VA_ARGS__)

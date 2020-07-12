@@ -2,8 +2,8 @@
 #include <string.h>
 
 #include <AWO/emx.h>
-#include <AWO/game_message.h>
 
+#include "Game_Message/game_message.h"
 #include "Config/config.h"
 #include "Utilities/utilities.h"
 #include "game_data.h"

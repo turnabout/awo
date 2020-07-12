@@ -3,6 +3,8 @@
 // Resource paths
 #define RESOURCES_PATH AWO_PROJECT_DIR "AWO/Resources/"
 
+#define SHIT "SHIT" "bla"
+
 #define TEXTURES_PATH RESOURCES_PATH "Textures/"
 #define DATA_PATH     RESOURCES_PATH "Data/"
 #define FONTS_PATH    RESOURCES_PATH "Fonts/"
