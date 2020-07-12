@@ -1,11 +1,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Include/emx.h"
+#include <AWO/emx.h>
+#include <AWO/game_message.h>
+
 #include "Config/config.h"
 #include "Utilities/utilities.h"
 #include "game_data.h"
-#include "AWO/game_message.h"
 #include "GL_Helpers/gl_helpers.h"
 
 Bool get_data_JSON(cJSON **data_JSON)

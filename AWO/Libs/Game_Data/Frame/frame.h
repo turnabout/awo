@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cglm/types.h>
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 
 #include "Utilities/utilities.h"
 

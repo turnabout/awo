@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 #include <cglm/types.h>
 
 #include "Game_Data/Animation/animation.h"

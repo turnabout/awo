@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cglm/cglm.h>
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 
 #include "Utilities/utilities.h"
 #include "Game_Data/Frame/frame.h"
