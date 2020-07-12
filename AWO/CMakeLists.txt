@@ -47,14 +47,16 @@ find_package(OpenGL REQUIRED)
 
 # Add other dependencies
 find_package(cJSON CONFIG REQUIRED)
+find_package(cglm CONFIG REQUIRED)
 # TODO
 
 # Link dependencies
 target_link_libraries(${PROJECT_NAME}
-    glfw
-    OpenGL::GL
-    cjson
-    ${CMAKE_DL_LIBS}
+        glfw
+        OpenGL::GL
+        cjson
+        cglm
+        ${CMAKE_DL_LIBS}
 )
 
 # Set include directories

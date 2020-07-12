@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 
 #include "AWO/game_data.h"
 #include "Config/config.h"

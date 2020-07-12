@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 #include <c_hashmap.h>
 
 #include "AWO/game_data.h"
