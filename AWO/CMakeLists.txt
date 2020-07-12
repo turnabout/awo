@@ -9,6 +9,8 @@ add_library(${PROJECT_NAME} STATIC
         Internal/Linked_List/linked_list.c
         Internal/Linked_List/list_entry.c
         Libs/Game_Window/game_window.c
+        Libs/Game_Message/game_message.c
+        Libs/Game_Message/game_message_simple.c
 )
 
 ## Add GLFW & GL dependencies
@@ -16,11 +18,14 @@ find_package(glfw3 3.3 REQUIRED)
 find_package(OpenGL REQUIRED)
 
 # Add other dependencies
+find_package(cJSON CONFIG REQUIRED)
 # TODO
 
 # Link dependencies
 target_link_libraries(${PROJECT_NAME}
-    glfw OpenGL::GL
+    glfw
+    OpenGL::GL
+    cjson
     ${CMAKE_DL_LIBS}
 )
 

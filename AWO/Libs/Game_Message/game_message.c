@@ -49,7 +49,7 @@ void push_msg(Game_Message_Label label, char* format, ...)
     }
 
     // Write to the message string buffer
-    vsprintf_s(message->str, msg_len, format, a_ptr);
+    vsnprintf(message->str, msg_len, format, a_ptr);
     message->str[msg_len - 1] = '\0';
 
     va_end(a_ptr);
