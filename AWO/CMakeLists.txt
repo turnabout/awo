@@ -38,6 +38,9 @@ add_library(${PROJECT_NAME} STATIC
         Libs/Game_Data/Animation/animation.c
 )
 
+# Add preprocessor macro definitions
+add_compile_definitions(AWO_PROJECT_DIR=${PROJECT_SOURCE_DIR})
+
 ## Add GLFW & GL dependencies
 find_package(glfw3 3.3 REQUIRED)
 find_package(OpenGL REQUIRED)

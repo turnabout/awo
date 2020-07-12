@@ -1,7 +1,7 @@
 #pragma once
 
 // Resource paths
-#define RESOURCES_PATH SOLUTION_DIR "AWO/Resources/"
+#define RESOURCES_PATH AWO_PROJECT_DIR "AWO/Resources/"
 
 #define TEXTURES_PATH RESOURCES_PATH "Textures/"
 #define DATA_PATH     RESOURCES_PATH "Data/"
