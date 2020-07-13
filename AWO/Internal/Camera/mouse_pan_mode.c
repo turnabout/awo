@@ -1,7 +1,7 @@
-#include "Game/Camera/_game_camera.h"
-#include "Game/Inputs/inputs.h"
+#include "Camera/_camera.h"
+#include "Input_State/Mouse_State/mouse_state.h"
 
-void start_camera_mouse_pan_mode(Game_Camera* camera, Mouse_State* mouse_state)
+void start_camera_mouse_pan_mode(Camera* camera, Mouse_State* mouse_state)
 {
     camera->pan_x = camera->pan_y = 0;
 
@@ -12,7 +12,7 @@ void start_camera_mouse_pan_mode(Game_Camera* camera, Mouse_State* mouse_state)
     camera->pan_start_y = camera->y;
 }
 
-Bool update_camera_mouse_pan_mode(Game_Camera* camera, Mouse_State* mouse_state)
+Bool update_camera_mouse_pan_mode(Camera* camera, Mouse_State* mouse_state)
 {
     if (
         mouse_state->x < 0 || 

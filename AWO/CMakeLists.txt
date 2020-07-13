@@ -46,6 +46,11 @@ add_library(${PROJECT_NAME} STATIC
         Internal/GL_Helpers/create_shader_program.c
         Internal/GL_Helpers/create_projection_matrix.c
         Internal/GL_Helpers/glad.c
+        Internal/Camera/camera.c
+        Internal/Camera/focus.c
+        Internal/Camera/get_camera_subject_data.c
+        Internal/Camera/mouse_pan_mode.c
+        Internal/Camera/zoom.c
         External/hashmap/hashmap.c)
 
 # Add preprocessor macro definitions

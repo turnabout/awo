@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Camera/_camera.h"
+#include "_camera.h"
 
 Camera* create_game_camera(
     int* window_width, 

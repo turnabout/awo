@@ -1,9 +1,7 @@
-#include <math.h>
-
-#include "Game/Camera/_game_camera.h"
+#include "_camera.h"
 
 Bool get_subject_grid_coordinates(
-    Game_Camera* camera, 
+    Camera* camera,
     int abs_x, 
     int abs_y, 
     int* relative_x, 

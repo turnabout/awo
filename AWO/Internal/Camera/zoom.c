@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 #include "Camera/_camera.h"
 
 void zoom_game_camera(Camera* camera, float zoom_value, int target_x, int target_y)
