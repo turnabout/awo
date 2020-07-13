@@ -118,7 +118,7 @@ Game_Data* EMX create_game_data()
 
         size_t stage_str_len = strlen(stage_JSON->valuestring) + 1;
         data->default_stages[i] = malloc(stage_str_len);
-        strcpy_s(data->default_stages[i], stage_str_len, stage_JSON->valuestring);
+        strcpy(data->default_stages[i], stage_JSON->valuestring);
     }
 
     // Delete parsed cJSON data object

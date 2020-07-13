@@ -1,23 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Config/config.h"
-
 char* read_file(const char* file_path)
 {
     FILE* f_stream;
     long f_size;
 
-#ifndef __EMSCRIPTEN__
-    errno_t err;
-#endif
-
     // Open the file
-#ifdef __EMSCRIPTEN__
     if ((f_stream = fopen(file_path, "rb")) == NULL) {
-#else
-    if ((err = fopen_s(&f_stream, file_path, "rb")) != 0) {
-#endif
         printf("Error opening file %s\n", file_path);
         return NULL;
     }

@@ -1,7 +1,7 @@
 #pragma once
 
 // Resource paths
-#define RESOURCES_PATH AWO_PROJECT_DIR "AWO/Resources/"
+#define RESOURCES_PATH AWO_PROJECT_DIR "/Resources/"
 
 #define SHIT "SHIT" "bla"
 

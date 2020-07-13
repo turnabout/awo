@@ -37,6 +37,14 @@ add_library(${PROJECT_NAME} STATIC
         Libs/Game_Data/Clock_Data/clock_data.c
         Libs/Game_Data/Animation/animation.c
         External/stb_image/stb_image.c
+        Internal/Utilities/read_file.c
+        Internal/Utilities/hex_string_to_data.c
+        Internal/Utilities/round_float_to_int.c
+        Internal/GL_Helpers/create_texture.c
+        Internal/GL_Helpers/delete_texture.c
+        Internal/GL_Helpers/create_shader_program.c
+        Internal/GL_Helpers/create_projection_matrix.c
+        Internal/GL_Helpers/glad.c
         External/hashmap/hashmap.c)
 
 # Add preprocessor macro definitions

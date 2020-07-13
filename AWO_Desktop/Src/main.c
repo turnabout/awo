@@ -15,7 +15,7 @@ int test_cb(void* value)
 
 int main()
 {
-    // Game_Data* data = create_game_data();
+    Game_Data* data = create_game_data();
     // Game_Window* window = create_game_window(0, 0);
     // Game* game = create_editor_game(data, window);
 
@@ -28,4 +28,5 @@ int main()
     free_game_data(data);
     free_game_window(window);
      */
+    free_game_data(data);
 }
