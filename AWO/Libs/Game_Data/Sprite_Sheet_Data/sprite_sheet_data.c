@@ -4,7 +4,6 @@
 #include "Config/config.h"
 #include "Game_Message/game_message.h"
 #include "GL_Helpers/gl_helpers.h"
-#include "AWO/game_message.h"
 #include "Game_Data/Sprite_Sheet_Data/_sprite_sheet_data.h"
 
 Sprite_Sheet_Data* create_sprite_sheet_data()

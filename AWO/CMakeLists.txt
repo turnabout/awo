@@ -36,6 +36,7 @@ add_library(${PROJECT_NAME} STATIC
         Libs/Game_Data/CO_Data/CO_data_creation.c
         Libs/Game_Data/Clock_Data/clock_data.c
         Libs/Game_Data/Animation/animation.c
+        Libs/Entity_Texture_Reader/entity_texture_reader.c
         External/stb_image/stb_image.c
         Internal/Utilities/read_file.c
         Internal/Utilities/hex_string_to_data.c
