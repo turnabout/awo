@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Game/Clock/Tick_Event/tick_event.h"
+#include "Clock/Headers/tick_event.h"
 
 typedef struct Game_Clock_Property_Lights_Subscriber Game_Clock_Property_Lights_Subscriber; 
 

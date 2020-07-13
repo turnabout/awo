@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <cJSON.h>
+#include <cjson/cJSON.h>
 
 #include "Game_Data/Clock_Data/clock_data.h"
 #include "Headers/clock_subscriber_event_cb.h"

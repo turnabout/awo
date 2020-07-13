@@ -1,8 +1,7 @@
 #include <stdlib.h>
 
-#include "Game/Data/Palette/game_palette.h"
-#include "Game/Clock/Subscribers/Property_Lights/_property_lights_subscriber.h"
-#include "Game/Clock/Pub_Sub/pub_sub.h"
+#include "Clock/Subscribers/Property_Lights/_property_lights_subscriber.h"
+#include "Palette/palette.h"
 
 struct Game_Clock_Property_Lights_Subscriber {
 

@@ -51,6 +51,10 @@ add_library(${PROJECT_NAME} STATIC
         Internal/Camera/get_camera_subject_data.c
         Internal/Camera/mouse_pan_mode.c
         Internal/Camera/zoom.c
+        Internal/Clock/clock.c
+        Internal/Clock/Timer/clock_timer.c
+        Internal/Clock/Subscribers/Property_Lights/property_lights_subscriber.c
+        Internal/Clock/Pub_Sub/clock_pub_sub.c
         External/hashmap/hashmap.c)
 
 # Add preprocessor macro definitions
