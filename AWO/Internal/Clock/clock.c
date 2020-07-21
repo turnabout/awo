@@ -34,7 +34,7 @@ void update_clock(Clock* game_clock, float delta_time)
             update_timer(game_clock->timers[i], (int)frame_count);
         }
 
-        game_clock->accum_time -= (int)frame_count * FRAME_TIME;
+        game_clock->accum_time -= frame_count * FRAME_TIME;
     }
 }
 
