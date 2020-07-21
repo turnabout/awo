@@ -1,12 +1,12 @@
-#pragma once
-
 #include "Game/Editor/_editor_game.h"
+#include "Game_Data/UI_Data/UI_data.h"
 
 static Bool init = FALSE;
 static Animation* anim = NULL;
 
-void render_editor_game(Editor_Game* game)
+void render_editor_game(void* game_arg)
 {
+    Editor_Game* game = (Editor_Game*)game_arg;
     if (!init) {
         init = TRUE;
         anim = get_UI_element_frames(game->data->UI, TileCursorX);

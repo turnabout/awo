@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Include/emx.h"
+#include "AWO/emx.h"
 #include "Camera/camera.h"
 #include "Clock/clock.h"
 #include "AWO/game_data.h"
@@ -55,6 +55,6 @@ struct Editor_Game {
 
 };
 
-void update_editor_game(Editor_Game* game, float delta_time);
-void render_editor_game(Editor_Game* game);
+void update_editor_game(void* game, float delta_time);
+void render_editor_game(void* game);
 void update_editor_game_dimensions(Game* game, int window_width, int window_height);

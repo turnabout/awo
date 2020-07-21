@@ -1,6 +1,8 @@
 #include <stdlib.h>
 
 #include "Game/Editor/_editor_game.h"
+#include "Game_Data/Sprite_Sheet_Data/sprite_sheet_data.h"
+#include "Game_Window/game_window.h"
 
 Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 {
@@ -51,7 +53,7 @@ Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
     game->extras_renderer = create_extras_renderer(game->sprite_sheet);
 
     // Initially call game's dimensions update function
-    game->update_dimensions(game, *window_width, *window_height);
+    game->update_dimensions((Game*)game, *window_width, *window_height);
 
     // Initially set the view matrices for renderers
     update_extras_renderer_view(game->extras_renderer, 100, 100, 16.0f);

@@ -5,6 +5,7 @@
 
 #include "Render_Grid/render_grid.h"
 #include "Renderers/Stage_Renderer/stage_renderer.h"
+#include "Game_Data/game_data.h"
 
 /*! @brief Grid layers of the stage renderer.
  */

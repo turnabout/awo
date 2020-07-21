@@ -3,7 +3,7 @@
 #include "Camera/camera.h"
 #include "Game_Data/UI_Data/UI_data.h"
 #include "Renderers/Extras_Renderer/extras_renderer.h"
-#include "Game/Renderer/game_renderer.h"
+#include "Input_State/Mouse_State/mouse_state.h"
 
 typedef enum Tile_Cursor_Style {
     Tile_Cursor_Regular_Style,

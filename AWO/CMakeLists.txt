@@ -63,6 +63,30 @@ add_library(${PROJECT_NAME} STATIC
         Internal/Palette/update_palette_property_lights.c
         Internal/Palette/update_palette_property_weather.c
         Internal/Palette/update_palette_tile_weather.c
+        Internal/Player/player.c
+        Internal/Player/CO/CO.c
+        Internal/Render_Grid/get_render_grid_VAO.c
+        Internal/Render_Grid/render_grid.c
+        Internal/Render_Grid/update_render_grid.c
+        Internal/Renderers/Extras_Renderer/extras_renderer.c
+        Internal/Renderers/Stage_Renderer/render_stage.c
+        Internal/Renderers/Stage_Renderer/stage_renderer.c
+        Internal/Renderers/Stage_Renderer/update_stage_renderer.c
+        Internal/Renderers/Stage_Renderer/update_stage_renderer_matrices.c
+        Internal/Sprite_Batch/sprite_batch.c
+        Internal/Stage/generate_custom_stage.c
+        Internal/Stage/generate_filled_stage.c
+        Internal/Stage/generate_stage_from_string.c
+        Internal/Stage/stage.c
+        Internal/Stage/stringify_stage.c
+        Internal/Stage/validate_stage.c
+        Internal/Stage/validate_stage_string_data.c
+        Internal/Texture_Reader/texture_reader.c
+        Internal/Tile_Cursor/tile_cursor.c
+        Libs/Game/Editor/editor_game.c
+        Libs/Game/Editor/render_editor_game.c
+        Libs/Game/Editor/update_editor_game.c
+        Libs/Game/Editor/update_editor_game_dimensions.c
         External/hashmap/hashmap.c)
 
 # Add preprocessor macro definitions

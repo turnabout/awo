@@ -3,6 +3,7 @@
 #include "Stage/stage.h"
 #include "Player/player_index_enum.h"
 #include "Utilities/utilities.h"
+#include "Game_Data/Tile_Data/tile_data.h"
 
 #define STAGE_STRING_SEPARATOR_CHARACTER 0xFF
 #define VALID_SEPARATOR_COUNT               4

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 
 #include "AWO/types.h"
+#include "Config/config.h"
 #include "Tile_Cursor/tile_cursor.h"
 
 Tile_Cursor* create_game_cursor(UI_Data* ui_data)
@@ -25,10 +26,11 @@ Tile_Cursor* create_game_cursor(UI_Data* ui_data)
     return cursor;
 }
 
-void update_cursor(Tile_Cursor* cursor, Mouse_State* mouse, Tile_Camera* camera)
+void update_cursor(Tile_Cursor* cursor, Mouse_State* mouse, Camera* camera)
 {
     int tile_x, tile_y;
 
+    /*
     // Exit early if mouse is not hovering a grid tile
     if (!get_subject_grid_coordinates(
         camera,
@@ -55,6 +57,7 @@ void update_cursor(Tile_Cursor* cursor, Mouse_State* mouse, Tile_Camera* camera)
     cursor->dst[1] = (float)((DEFAULT_ENTITY_SIZE * tile_y) - cursor->center_offset_px);
 
     cursor->shown = TRUE;
+     */
 }
 
 void update_cursor_style(Tile_Cursor* cursor, Tile_Cursor_Style style)
@@ -71,9 +74,11 @@ void update_cursor_style(Tile_Cursor* cursor, Tile_Cursor_Style style)
 
 void render_game_cursor(Tile_Cursor* cursor, Extras_Renderer* renderer)
 {
+    /*
     if (cursor->shown) {
         queue_extra(renderer, cursor->dst, &cursor->active_animation->frames[0]);
     }
+     */
 }
 
 void free_game_cursor(Tile_Cursor* cursor)

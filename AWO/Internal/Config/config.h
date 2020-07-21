@@ -3,7 +3,11 @@
 // Resource paths
 #define RESOURCES_PATH AWO_PROJECT_DIR "/Resources/"
 
-#define SHIT "SHIT" "bla"
+#ifdef __EMSCRIPTEN__
+    #define SHADERS_DIR "Shaders_ES"
+#else
+    #define SHADERS_DIR "Shaders"
+#endif
 
 #define TEXTURES_PATH RESOURCES_PATH "Textures/"
 #define DATA_PATH     RESOURCES_PATH "Data/"

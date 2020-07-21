@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Include/types.h"
-#include "Include/emx.h"
+#include "AWO/types.h"
+#include "AWO/emx.h"
 #include "AWO/game.h"
 #include "Game/Headers/game_callback_types.h"
 #include "AWO/game_message.h"
