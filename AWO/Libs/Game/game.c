@@ -1,11 +1,10 @@
 #include "Game/_game.h"
-#include "AWO/game_window.h"
-#include <stdio.h>
+#include "Game_Window/game_window.h"
 
 /*! @brief Used to internally signify the game window was updated, and that the game's dimensions 
  *  should be updated at the start of the next frame.
  */
-void _update_game_dimensions(int new_width, int new_height);
+// void _update_game_dimensions(int new_width, int new_height);
 
 // Time between current frame and last frame.
 static float delta_time = 0.0f;
@@ -54,7 +53,7 @@ void EMX run_game(
     glfw_window = get_game_window_GLFW_window_handle(game_window);
     window_dimensions_changed = FALSE;
 
-    set_game_window_dimensions_update_callback(game_window, _update_game_dimensions);
+    // set_game_window_dimensions_update_callback(game_window, _update_game_dimensions);
 
     #ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(game_loop, (void*)game, FPS, 1);
@@ -81,6 +80,7 @@ void EMX run_game(
     set_game_window_dimensions_update_callback(game_window, NULL);
 }
 
+/*
 void EMX update_game_dimensions(Game* game, int new_width, int new_height)
 {
     game->update_dimensions(game, new_width, new_height);
@@ -92,3 +92,4 @@ void _update_game_dimensions(int new_width, int new_height)
     new_window_width = new_width;
     new_window_height = new_height;
 }
+*/

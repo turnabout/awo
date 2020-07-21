@@ -31,4 +31,4 @@ void run_game(
  *  @param[in] new_width The new width. Same that was passed to update_game_window_dimensions.
  *  @param[in] new_height The new height. Same that was passed to update_game_window_dimensions.
  */
-void update_game_dimensions(Game* game, int new_width, int new_height);
+void update_game_dimensions(void* game, int new_width, int new_height);

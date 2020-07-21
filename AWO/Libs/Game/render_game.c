@@ -1,7 +1,7 @@
 #include <cglm/cglm.h>
 
 #include "Game/_game.h"
-#include "Game/Data/Palette/game_palette.h"
+#include "Game_Data/Palette_Data/palette_data.h"
 
 void render_game(Game* game)
 {
