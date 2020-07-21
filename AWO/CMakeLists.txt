@@ -55,6 +55,14 @@ add_library(${PROJECT_NAME} STATIC
         Internal/Clock/Timer/clock_timer.c
         Internal/Clock/Subscribers/Property_Lights/property_lights_subscriber.c
         Internal/Clock/Pub_Sub/clock_pub_sub.c
+        Internal/Input_State/Keyboard_State/keyboard_state.c
+        Internal/Input_State/Mouse_State/mouse_state.c
+        Internal/Palette/palette.c
+        Internal/Palette/palette_index_access.c
+        Internal/Palette/update_palette.c
+        Internal/Palette/update_palette_property_lights.c
+        Internal/Palette/update_palette_property_weather.c
+        Internal/Palette/update_palette_tile_weather.c
         External/hashmap/hashmap.c)
 
 # Add preprocessor macro definitions

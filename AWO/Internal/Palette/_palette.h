@@ -3,6 +3,7 @@
 #include <cglm/cglm.h>
 
 #include "GL_Helpers/gl_helpers.h"
+#include "Game_Data/Palette_Data/palette_data.h"
 #include "Palette/palette.h"
 
 /*!
