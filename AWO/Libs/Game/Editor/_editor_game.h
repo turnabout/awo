@@ -1,18 +1,25 @@
 #pragma once
 
-#include "Include/emx.h"
-#include "Camera/camera.h"
-#include "Clock/clock.h"
+// Includes
+#include "emx.h"
 #include "Game_Data/game_data.h"
-#include "Game/Editor/editor_game.h"
 #include "Game_Window/game_window.h"
-#include "Game/_game.h"
-#include "Palette/palette.h"
-#include "Renderers/Extras_Renderer/extras_renderer.h"
-#include "Renderers/Stage_Renderer/stage_renderer.h"
-#include "GL_Helpers/gl_helpers.h"
-#include "Input_Handlers/Keyboard_Handler/keyboard_handler.h"
-#include "Input_Handlers/Mouse_Handler/mouse_handler.h"
+
+// Internal
+#include "../../../Internal/Camera/camera.h"
+#include "../../../Internal/Clock/clock.h"
+#include "../../../Internal/Palette/palette.h"
+#include "../../../Internal/Renderers/Extras_Renderer/extras_renderer.h"
+#include "../../../Internal/Renderers/Stage_Renderer/stage_renderer.h"
+#include "../../../Internal/GL_Helpers/gl_helpers.h"
+
+// Libs
+#include "../../../Libs/Game/_game.h"
+#include "../../../Libs/Input_Handlers/Keyboard_Handler/keyboard_handler.h"
+#include "../../../Libs/Input_Handlers/Mouse_Handler/mouse_handler.h"
+
+// Local
+#include "editor_game.h"
 
 struct Editor_Game {
 

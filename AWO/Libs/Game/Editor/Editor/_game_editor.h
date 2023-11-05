@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Game/Editor/game_editor.h"
+// Local
+#include "game_editor.h"
 
 // Selected entity type/variation set as this value when unset
 #define SELECTED_ENTITY_TYPE_NONE -1

@@ -1,5 +1,7 @@
-#include "Utilities/Message_Service/message_service.h"
-#include "Game/Editor/_game_editor.h"
+// TODO: Remove next line? Directory (Message_Service) & file did not exist
+// #include "Utilities/Message_Service/message_service.h"
+
+#include "./_game_editor.h"
 
 Bool is_editor_tile_placeable(
     Tile_Placement_Rule_Set* rule_set, 

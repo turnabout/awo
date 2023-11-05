@@ -1,56 +1,81 @@
 # Project directories
-AWO_DIR := AWO
+CC      = gcc
+SRC_DIR = AWO
+TARGET  = awo
+SOURCES = $(shell find $(SRC_DIR) -name '*.c')
+OBJECTS = $(SOURCES:.c=.o)
 
-# Project sources
-AWO_SOURCES := $(shell find $(AWO_DIR) -name '*.c')
-CGLM_SOURCES := $(shell find cglm_input -name '*.c')
-
-# Output path (environment variable)
-OUTPUTPATH := $(AWO_GAME_OUTPUT)
-
-all:
-	emcc -o $(OUTPUTPATH) $(AWO_SOURCES) $(AWO_EMX_SOURCES) \
-	\
-	-D SOLUTION_DIR='""' \
-	-D SHADERS_DIR='"Shaders_ES/"' \
-	\
+define CFLAGS
 	-Wall \
-	\
-	-I$(AWO_DIR)/Src \
-	-I$(AWO_DIR) \
+	-IAWO/Include \
 	-IExternal/Include \
-	\
-	-lopenal \
-	\
-	--preload-file $(AWO_DIR)/Resources \
-	\
-	-s ENVIRONMENT="web" \
-	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue"]' \
-	-s MODULARIZE=1 \
-	-s EXPORT_NAME="AWO_EM_MODULE" \
-	-s ALLOW_MEMORY_GROWTH=1 \
-	--no-heap-copy \
-	\
-	-s USE_WEBGL2=1 \
-	-s USE_GLFW=3 \
-	-s USE_FREETYPE=1 \
-	-LLibraries/Libs_Emscripten \
-	-lc_hashmap
-	#-print-search-dirs
+	--debug
+endef
 
-hashmap:
-	emcc -o External/Libs_Emscripten/c_hashmap.bc External/Libs_Emscripten/c_hashmap.c \
-	-I$(AWO_DIR)/Src \
-	-I$(AWO_DIR) \
-	-IExternal/Include
+# Build
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
 
-cglm:
-	emcc -o External/Libs_Emscripten/cglm.bc $(CGLM_SOURCES) \
-	-IExternal/Include
+# Compile
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
+# Clean up
+clean:
+	rm -f $(TARGET) $(OBJECTS)
 
-test:
-	emcc -o test.bc External/test.c \
-	-IExternal/Include
-	emcc -o Web/index.html test.bc External/Libs_Emscripten/c_hashmap.bc External/Libs_Emscripten/cglm.bc \
-	-IExternal/Include
+#all:
+#	emcc -o "./out/index.html" $(SOURCES) $(AWO_EMX_SOURCES) \
+#	\
+#	-D SOLUTION_DIR='""' \
+#	-D SHADERS_DIR='"Shaders_ES/"' \
+#	\
+#	-Wall \
+#	\
+#	-IAWO \
+#	-IAWO/Include \
+#	-IExternal/Include \
+#	\
+#	-lopenal \
+#	\
+#	--preload-file $(SRC_DIR)/Resources \
+#	\
+#	-s ENVIRONMENT="web" \
+#	-s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "getValue", "setValue"]' \
+#	-s MODULARIZE=1 \
+#	-s EXPORT_NAME="AWO_EM_MODULE" \
+#	-s ALLOW_MEMORY_GROWTH=1 \
+#	--no-heap-copy \
+#	\
+#	-s USE_WEBGL2=1 \
+#	-s USE_GLFW=3 \
+#	-s USE_FREETYPE=1 \
+#	-LLibraries/Libs_Emscripten \
+#	-lc_hashmap
+#
+#em-cli:
+#	docker run \
+#		-it \
+#		--rm \
+#		--name em-cli \
+#		--volume $(PWD):/src \
+#		--user $(id -u):$(id -g) \
+#		emscripten/emsdk \
+#			/bin/bash
+#
+#hashmap:
+#	emcc -o External/Libs_Emscripten/c_hashmap.bc External/Libs_Emscripten/c_hashmap.c \
+#	-I$(SRC_DIR)/Src \
+#	-I$(SRC_DIR) \
+#	-IExternal/Include
+#
+#cglm:
+#	emcc -o External/Libs_Emscripten/cglm.bc $(CGLM_SOURCES) \
+#	-IExternal/Include
+#
+#
+#test:
+#	emcc -o test.bc External/test.c \
+#	IExternal/Include
+#	emcc -o Web/index.html test.bc External/Libs_Emscripten/c_hashmap.bc External/Libs_Emscripten/cglm.bc \
+#	-IExternal/Include

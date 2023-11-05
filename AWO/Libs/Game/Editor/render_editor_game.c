@@ -1,6 +1,4 @@
-#pragma once
-
-#include "Game/Editor/_editor_game.h"
+#include "_editor_game.h"
 
 static Bool init = FALSE;
 static Animation* anim = NULL;

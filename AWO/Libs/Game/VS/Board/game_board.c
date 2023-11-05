@@ -1,6 +1,9 @@
 #include <stdlib.h>
 
-#include "Game/Board/_game_board.h"
+#include "awo.h"
+#include "Game/game.h"
+
+#include "_game_board.h"
 #include "Game/Player/player.h"
 #include "Game/Inputs/inputs.h"
 

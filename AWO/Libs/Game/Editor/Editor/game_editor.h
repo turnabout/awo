@@ -1,13 +1,20 @@
 #pragma once
 
-#include "Include/game_editor.h"
-#include "Internal/Camera/camera.h"
-#include "Game/Board/game_board.h"
-#include "Game/Clock/game_clock.h"
-#include "Game/Cursor/game_cursor.h"
-#include "Game/Data/Tile/tiles_data.h"
-#include "Game/Data/Unit/units_data.h"
-#include "Game/Inputs/Mouse/mouse.h"
+
+// Internal
+#include "../../../../Internal/Camera/camera.h"
+
+// Libs
+#include "../../../../Libs/Game/VS/Board/game_board.h"
+#include "../../../../Libs/Game_Data/Tile_Data/tile_data.h"
+#include "../../../../Libs/Game_Data/Unit_Data/unit_data.h"
+
+// Local
+#include "game_editor.h"
+
+// TODO: Doesn't exist: #include "Game/Clock/game_clock.h"
+// TODO: Doesn't exist: #include "Game/Cursor/game_cursor.h"
+// TODO: Doesn't exist: #include "Game/Inputs/Mouse/mouse.h"
 
 /*! @brief The game editor module. Edits entities in the game board in design room mode according
  *  to user input.

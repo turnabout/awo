@@ -1,4 +1,4 @@
-#include "Game/Editor/_game_editor.h"
+#include "_game_editor.h"
 
 void set_editor_property_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock)
 {

@@ -1,6 +1,6 @@
 #include <cglm/cglm.h>
 
-#include "Game/_game.h"
+#include "_game.h"
 #include "Game/Data/Palette/game_palette.h"
 
 void render_game(Game* game)
