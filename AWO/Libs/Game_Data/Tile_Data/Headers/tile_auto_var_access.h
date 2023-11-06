@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
-#include "Game_Data/Tile_Data/Tile_Variation_Data/tile_variation_data.h"
+#include "../Tile_Type_Data/tile_type_data.h"
+#include "../Tile_Variation_Data/tile_variation_data.h"
 
 /*! @brief Gets the variation a tile type should have when surrounded with given adjacent tiles.
  *

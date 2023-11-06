@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Game_Data/Tile_Data/_tile_data.h"
-#include "Game_Data/Tile_Data/Tile_Placement_Rule/tile_placement_rule.h"
+#include "../_tile_data.h"
+#include "../Tile_Placement_Rule/tile_placement_rule.h"
 
 /*! @brief Gets the tile placement rules for the given tile type.
  *

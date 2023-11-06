@@ -7,5 +7,4 @@
 type >= NEUTRAL_TILE_TYPE_FIRST && type <= NEUTRAL_TILE_TYPE_LAST
 
 // Check if a tile type is a property
-#define is_tile_type_property(type) \
-type >= PROPERTY_TILE_TYPE_FIRST && type <= PROPERTY_TILE_TYPE_LAST
+#define is_tile_type_property(type) type >= PROPERTY_TILE_TYPE_FIRST && type <= PROPERTY_TILE_TYPE_LAST

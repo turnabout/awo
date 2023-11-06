@@ -3,7 +3,7 @@
 #include <cJSON.h>
 #include <c_hashmap.h>
 
-#include "Game_Data/Tile_Data/Tile_Variation_Data/tile_variation_data.h"
+#include "../Tile_Variation_Data/tile_variation_data.h"
 
 typedef struct Auto_Var_Data Auto_Var_Data;
 
