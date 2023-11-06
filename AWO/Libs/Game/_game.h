@@ -1,10 +1,15 @@
 #pragma once
 
-#include "Include/types.h"
-#include "Include/emx.h"
-#include "Include/Game/game.h"
-#include "Game/Headers/game_callback_types.h"
-#include "Game_Message/game_message.h"
+// Includes
+#include "types.h"
+#include "emx.h"
+#include "Game/game.h"
+
+// Libs
+#include "../Game_Message/game_message.h"
+
+// Local
+#include "./Headers/game_callback_types.h"
 
 struct Game {
 

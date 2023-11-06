@@ -3,7 +3,8 @@
 #include <cglm/types.h>
 #include <cJSON.h>
 
-#include "Utilities/utilities.h"
+// Internal
+#include "../../../Internal/Utilities/utilities.h"
 
 /*! @brief Frame object.
  *

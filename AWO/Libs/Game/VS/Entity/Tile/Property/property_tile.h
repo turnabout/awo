@@ -3,9 +3,10 @@
 #include "types.h"
 #include "Game/Clock/game_clock.h"
 #include "Game/Data/Animation/animation.h"
-#include "Game/Data/Tile/tiles_data.h"
 #include "Game/Entity/entity_update_cb.h"
 #include "Game/Player/player.h"
+
+#include "../../../../../Game_Data/Tile_Data/tile_data.h"
 
 typedef struct Property_Tile {
 

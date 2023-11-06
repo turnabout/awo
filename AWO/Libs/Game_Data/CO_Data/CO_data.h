@@ -2,8 +2,11 @@
 
 #include <cJSON.h>
 
-#include "Game_Data/CO_Data/Headers/CO_types.h"
-#include "Include/Game_Data/game_data.h"
+// Includes
+#include "Game_Data/game_data.h"
+
+// Local
+#include "./Headers/CO_types.h"
 
 /*! @brief Creates the CO data object, containing data for all COs.
  *
@@ -14,7 +17,7 @@
  */
 CO_Data* create_CO_data(cJSON* CO_JSON, int ss_width, int ss_height);
 
-/*! @brief Frees the memory occupeid by the CO data object.
+/*! @brief Frees the memory occupied by the CO data object.
  *
  *  @param[in] CO_data The CO data object to free.
  */

@@ -4,9 +4,12 @@
 #include <GLFW/glfw3.h>
 #include <cJSON.h>
 
-#include "Game_Data/Clock_Data/clock_data.h"
-#include "Headers/clock_subscriber_event_cb.h"
-#include "Headers/tick_event.h"
+// Includes
+#include "Game_Data/clock_data.h"
+
+// Local
+#include "./Headers/clock_subscriber_event_cb.h"
+#include "./Headers/tick_event.h"
 
 /*! @brief Main game clock used for updating and keeping animations synchronized.
  */

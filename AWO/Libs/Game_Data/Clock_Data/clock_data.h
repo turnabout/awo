@@ -2,9 +2,14 @@
 
 #include <cJSON.h>
 
-#include "Utilities/utilities.h"
-#include "Headers/clock_types.h"
-#include "Include/Game_Data/game_data.h"
+// Includes
+#include "Game_Data/game_data.h"
+
+// Internal
+#include "../../../Internal/Utilities/utilities.h"
+
+// Local
+#include "./Headers/clock_types.h"
 
 Clock_Data* create_clock_data(cJSON* clock_data_JSON);
 

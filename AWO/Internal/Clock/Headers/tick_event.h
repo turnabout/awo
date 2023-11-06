@@ -1,7 +1,10 @@
 #pragma once
 
-#include "Include/types.h"
-#include "Game_Data/Clock_Data/Headers/clock_types.h"
+// Includes
+#include "types.h"
+
+// Libs
+#include "../../../Libs/Game_Data/Clock_Data/Headers/clock_types.h"
 
 // Event generated whenever an animation sub-clock ticks.
 typedef struct Tick_Event {

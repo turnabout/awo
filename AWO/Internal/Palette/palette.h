@@ -3,11 +3,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Config/config.h"
-#include "Player/player.h"
+// Includes
 #include "Game_Data/game_data.h"
-#include "Headers/palette_index.h"
-#include "Headers/update_palette.h"
+
+// Internal
+#include "../Config/config.h"
+#include "../Player/player.h"
+
+// Local
+#include "./Headers/palette_index.h"
+#include "./Headers/update_palette.h"
 
 /*! @brief Creates the palette texture used during a game.
  *

@@ -1,10 +1,15 @@
 #pragma once
 
+// Includes
 #include "types.h"
-#include "Game/Clock/game_clock.h"
-#include "Game/Data/Animation/animation.h"
-#include "Game/Data/Tile/tiles_data.h"
-#include "Game/Entity/entity_update_cb.h"
+
+// Internal
+#include "../../../../../../Internal/Clock/clock.h"
+
+// Libs
+#include "../../../../../Game_Data/Tile_Data/tile_data.h"
+#include "../../../../../Game_Data/Animation/animation.h"
+#include "../../../../../Game/VS/Entity/entity_update_cb.h"
 
 typedef struct Neutral_Tile {
 

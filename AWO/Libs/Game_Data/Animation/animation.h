@@ -3,8 +3,12 @@
 #include <cglm/cglm.h>
 #include <cJSON.h>
 
-#include "Utilities/utilities.h"
-#include "Game_Data/Frame/frame.h"
+// Internal
+#include "../../../Internal/Utilities/utilities.h"
+
+// Libs
+#include "../../Game_Data/Frame/frame.h"
+
 
 /*! @brief Animation object.
  *

@@ -3,8 +3,11 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Game_Data/game_data.h"
-#include "Player/player.h"
+// Internal
+#include "../../Player/player.h"
+
+// Libs
+#include "../../../Libs/Game_Data/game_data.h"
 
 GLfloat get_active_tile_palette_index(Bool fog);
 GLfloat get_player_unit_palette_index(Player_Index player_index, Bool done);

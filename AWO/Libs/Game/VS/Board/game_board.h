@@ -1,10 +1,12 @@
 #pragma once
 
-#include "Game/Clock/game_clock.h"
-#include "Game/Stage/stage.h"
-#include "Game/Clock/game_clock.h"
-#include "Game/Data/Tile/tiles_data.h"
-#include "Game/Player/player.h"
+// Internal
+#include "../../../../Internal/Player/player.h"
+#include "../../../../Internal/Stage/stage.h"
+#include "../../../../Internal/Clock/clock.h"
+
+// Libs
+#include "../../../Game_Data/Tile_Data/tile_data.h"
 
 /*! @brief Represents the game board used by players during gameplay. Contains all game entities.
  */

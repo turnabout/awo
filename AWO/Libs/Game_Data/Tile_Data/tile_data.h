@@ -2,12 +2,14 @@
 
 #include <cJSON.h>
 
-#include "Include/Game_Data/game_data.h"
+// Includes
+#include "Game_Data/game_data.h"
 
-#include "Headers/macros.h"
-#include "Headers/tile_auto_var_access.h"
-#include "Headers/tile_placement_rule_access.h"
-#include "Headers/tile_variation_data_access.h"
+// Local
+#include "./Headers/macros.h"
+#include "./Headers/tile_auto_var_access.h"
+#include "./Headers/tile_placement_rule_access.h"
+#include "./Headers/tile_variation_data_access.h"
 
 /*! @brief Creates the tile data module.
  *

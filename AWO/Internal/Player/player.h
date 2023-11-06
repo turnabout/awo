@@ -1,10 +1,13 @@
 #pragma once
 
-#include "Config/config.h"
-#include "Utilities/utilities.h"
-#include "Player/player_index_enum.h"
-#include "Player/CO/CO.h"
-#include "Game_Data/Unit_Data/unit_data.h"
+// Internal
+#include "../Config/config.h"
+#include "../Utilities/utilities.h"
+#include "../Player/player_index_enum.h"
+#include "../Player/CO/CO.h"
+
+// Libs
+#include "../../Libs/Game_Data/Unit_Data/unit_data.h"
 
 typedef struct Player {
 

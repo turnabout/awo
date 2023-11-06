@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Utilities/utilities.h"
+// Internal
+#include "../../../../Internal/Utilities/utilities.h"
 
 #define FOREACH_ANIMATION_CLOCK_INDEX(CLOCK) \
     CLOCK(Sea_Clock_0) \

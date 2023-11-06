@@ -4,8 +4,11 @@
 #include <GLFW/glfw3.h>
 #include <cJSON.h>
 
-#include "Include/Game_Data/game_data.h"
-#include "Config/config.h"
+// Includes
+#include "Game_Data/game_data.h"
+
+// Internal
+#include "../../../Internal/Config/config.h"
 
 #define PALETTE_TEX_WIDTH  256
 #define PALETTE_TEX_HEIGHT  32

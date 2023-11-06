@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Game/Editor/_editor_game.h"
+#include "_editor_game.h"
 
 Game* EMX create_editor_game(Game_Data* game_data, Game_Window* game_window)
 {

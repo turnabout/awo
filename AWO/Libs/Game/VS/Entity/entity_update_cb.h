@@ -3,7 +3,8 @@
 #include "types.h"
 #include "Game/Renderer/game_renderer.h"
 #include "Game/Clock/game_clock.h"
-#include "Game/Data/Tile/tiles_data.h"
+
+#include "../../../Game_Data/Tile_Data/tile_data.h"
 
 /*! @brief Callback function stored on and used by entities to update their render grid pixel.
  *

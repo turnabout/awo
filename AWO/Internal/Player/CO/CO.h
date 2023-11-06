@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Game_Data/Unit_Data/unit_data.h"
-#include "Game_Data/CO_Data/CO_data.h"
+// Libs
+#include "../../../Libs/Game_Data/Unit_Data/unit_data.h"
+#include "../../../Libs/Game_Data/CO_Data/CO_data.h"
 
 /*! @brief Commanding Officer.
  *

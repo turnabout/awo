@@ -1,7 +1,11 @@
 #pragma once
 
-#include "Headers/macros.h"
-#include "Include/types.h"
+
+// Includes
+#include "types.h"
+
+// Local
+#include "./Headers/macros.h"
 
 /*! @brief Reads a file and returns its contents in allocated memory.
  *

@@ -1,9 +1,12 @@
 #pragma once
 
-#include "Config/config.h"
-#include "Utilities/utilities.h"
-#include "Game_Data/game_data.h"
-#include "Player/player_index_enum.h"
+// Internal
+#include "../Config/config.h"
+#include "../Utilities//utilities.h"
+#include "../Player/player_index_enum.h"
+
+// Libs
+#include "../../Libs/Game_Data/game_data.h"
 
 #define STAGE_NAME_MAX_LENGTH 32
 
