@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Include/types.h"
+#include "types.h"
 #include "Game_Data/Sprite_Sheet_Data/sprite_sheet_data.h"
 
 struct Sprite_Sheet_Data {

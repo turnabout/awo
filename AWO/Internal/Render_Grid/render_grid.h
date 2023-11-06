@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <cglm/types.h>
 
-#include "Include/types.h"
+#include "types.h"
 
 typedef struct Render_Grid Render_Grid;
 

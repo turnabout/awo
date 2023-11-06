@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-#include "Include/types.h"
+#include "types.h"
 #include "Tile_Cursor/tile_cursor.h"
 
 Tile_Cursor* create_game_cursor(UI_Data* ui_data)

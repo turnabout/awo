@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Include/Game_Window/game_window.h"
+#include "Game_Window/game_window.h"
 
 typedef void (*Window_Dimensions_Update_CB)(int width, int height);
 

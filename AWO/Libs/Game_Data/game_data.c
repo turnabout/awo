@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Include/emx.h"
+#include "emx.h"
 #include "Config/config.h"
 #include "Utilities/utilities.h"
 #include "Game_Data/game_data.h"

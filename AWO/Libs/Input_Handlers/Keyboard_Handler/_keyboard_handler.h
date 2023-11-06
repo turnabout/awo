@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Include/types.h"
+#include "types.h"
 #include "Input_Handlers/Keyboard_Handler/keyboard_handler.h"
 #include "Input_State/Keyboard_State/keyboard_state.h"
 #include "Linked_List/linked_list.h"
