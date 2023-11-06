@@ -2,9 +2,12 @@
 
 #include <cJSON.h>
 
-#include "Game_Data/game_data.h"
-#include "Game_Data/Animation/animation.h"
-#include "Headers/UI_elements.h"
+// Libs
+#include "../game_data.h"
+#include "../Animation/animation.h"
+
+// Local
+#include "./Headers/UI_elements.h"
 
 /*! @brief Creates the UI data object, containing frame data for all UI elements.
  *

@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Game_Data/Tile_Data/Tile_Type_Data/tile_type_data.h"
-#include "Game_Data/Tile_Data/Tile_Variation_Data/tile_variation_data.h"
-#include "Game_Data/Clock_Data/clock_data.h"
-#include "Game_Data/Animation/animation.h"
+// Libs
+#include "../../Tile_Data/Tile_Type_Data/tile_type_data.h"
+#include "../../Tile_Data/Tile_Variation_Data/tile_variation_data.h"
+#include "../../Clock_Data/clock_data.h"
+#include "../../Animation/animation.h"
 
 /*! @brief Gathers data from the given tile type/variation combination.
  *

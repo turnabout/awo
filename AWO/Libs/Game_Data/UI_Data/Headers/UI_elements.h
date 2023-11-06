@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Utilities/utilities.h"
+// Internal
+#include "../../../../Internal/Utilities/utilities.h"
 
 #define FOREACH_UI_ELEMENT(ELEMENT) \
     ELEMENT(TileCursor) \

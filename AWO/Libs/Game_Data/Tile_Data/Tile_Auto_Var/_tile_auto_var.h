@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Game_Data/game_data.h"
-#include "Game_Data/Tile_Data/Tile_Auto_Var/tile_auto_var.h"
+// Libs
+#include "../../../Game_Data/game_data.h"
+#include "../../Tile_Data/Tile_Auto_Var/tile_auto_var.h"
 
 struct Auto_Var_Data {
 

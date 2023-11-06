@@ -3,7 +3,7 @@
 
 void add_game_board_unit(
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Units_Data* units_data,
     Unit_Type type,
     Player_Index owner_index,

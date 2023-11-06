@@ -2,9 +2,12 @@
 
 #include <cJSON.h>
 
-#include "Headers/macros.h"
-#include "Game_Data/game_data.h"
-#include "Game_Data/Frame/frame.h"
+// Libs
+#include "../game_data.h"
+#include "../Frame/frame.h"
+
+// Local
+#include "./Headers/macros.h"
 
 /*! @brief Creates the properties data object.
  *

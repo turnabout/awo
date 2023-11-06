@@ -1,7 +1,7 @@
 #include <cglm/cglm.h>
 
 #include "_game.h"
-#include "Game/Data/Palette/game_palette.h"
+// TODO: no input, and is it needed? #include "Game/Data/Palette/game_palette.h"
 
 void render_game(Game* game)
 {

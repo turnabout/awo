@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Game_Data/Tile_Data/Tile_Placement_Rule/tile_placement_rule.h"
+// Libs
+#include "../../Tile_Data/Tile_Placement_Rule/tile_placement_rule.h"
 
 /*! @brief Creates a tile placement rule.
  *
