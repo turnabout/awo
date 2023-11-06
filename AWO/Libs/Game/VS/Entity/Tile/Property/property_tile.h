@@ -52,7 +52,7 @@ typedef struct Property_Tile {
  *  @return The created property tile.
  */
 Property_Tile* create_property_tile(
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Type tile_type,
     Player* player,

@@ -24,7 +24,7 @@ typedef struct Game_Board Game_Board;
  *  @return The created game board object.
  */
 Game_Board* create_game_board(
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Game_Renderer* game_renderer,
     Stage* stage,
     CO_Type player_COs[MAX_PLAYER_COUNT],
@@ -44,7 +44,7 @@ Game_Board* create_game_board(
  */
 void edit_game_board_tile(
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tile_Type new_type,
     int new_variation,
     Uint8 x,
@@ -63,7 +63,7 @@ void edit_game_board_tile(
  */
 void add_game_board_unit(
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Units_Data* units_data,
     Unit_Type type,
     Player_Index owner_index,

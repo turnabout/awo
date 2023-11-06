@@ -29,7 +29,7 @@ void update_base_palette(Game_Renderer* renderer, void* tile, Bool fog);
  */
 void delete_property_tile(
     Game_Renderer* game_renderer,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     void* property,
     void* tiles_data
 );

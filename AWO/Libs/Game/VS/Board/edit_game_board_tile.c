@@ -4,7 +4,7 @@
 void edit_game_board_neutral_tile(
     Neutral_Tile* tile,
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tile_Variation new_variation
 )
 {
@@ -40,7 +40,7 @@ void edit_game_board_property_tile(
 
 void edit_game_board_tile(
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tile_Type new_type,
     int new_variation,
     Uint8 x,

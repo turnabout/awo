@@ -3,7 +3,7 @@
 
 void add_game_board_tile(
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tile_Type tile_type,
     int tile_variation,
     Uint8 x,

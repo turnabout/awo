@@ -2,7 +2,7 @@
 
 void delete_property_tile(
     Game_Renderer* game_renderer,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     void* property_arg,
     void* tiles_data
 )

@@ -29,7 +29,7 @@ void update_tall_tile_palette(Game_Renderer* renderer, void* tile, Bool fog);
  */
 void delete_neutral_tile(
     Game_Renderer* renderer, 
-    Game_Clock* game_clock, 
+    Clock* game_clock,
     void* tile, 
     void* tiles_data
 );

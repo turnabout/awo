@@ -29,7 +29,7 @@ void allocate_units_grid(Game_Board* game_board, Uint8 width, Uint8 height)
 
 void load_game_board_stage(
     Game_Board* game_board, 
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tiles_Data* tiles_data,
     Stage* stage
 )

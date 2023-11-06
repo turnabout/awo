@@ -32,7 +32,7 @@ typedef void (*update_entity_palette_cb)(Game_Renderer* renderer, void* entity, 
  */
 typedef void (*delete_entity_cb)(
     Game_Renderer* renderer, 
-    Game_Clock* game_clock, 
+    Clock* game_clock,
     void* entity, 
     void* data_module
 );

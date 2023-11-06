@@ -14,7 +14,7 @@ void update_unit_palette(Game_Renderer* renderer, void* unit, Bool done);
  */
 void delete_unit(
     Game_Renderer* game_renderer,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     void* unit,
     void* units_data
 );

@@ -12,7 +12,7 @@
 
 /*! @brief Callback used by the game editor to edit an entity.
  */
-typedef void (*Editor_Set_Cb)(Game_Editor*, Game_Board*, Game_Clock*);
+typedef void (*Editor_Set_Cb)(Game_Editor*, Game_Board*, Clock*);
 
 /*! @brief Every possible mode for the game editor.
  */
@@ -55,14 +55,14 @@ struct Game_Editor {
     // Selected_Entity* selected_entity;
 };
 
-void set_editor_unit_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock);
-void set_editor_tile_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock);
+void set_editor_unit_entity(Game_Editor* editor, Game_Board* board, Clock* clock);
+void set_editor_tile_entity(Game_Editor* editor, Game_Board* board, Clock* clock);
 
-void set_editor_property_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock);
+void set_editor_property_entity(Game_Editor* editor, Game_Board* board, Clock* clock);
 
 /*! @brief Apply auto-var to the tile entity at the given x/y coordinates.
  */
-void apply_autovar(Game_Editor* editor, Game_Board* board, Game_Clock* clock, Uint8 x, Uint8 y);
+void apply_autovar(Game_Editor* editor, Game_Board* board, Clock* clock, Uint8 x, Uint8 y);
 
 /*! @brief Checks whether the tile placement rules pass at the given game board coordinates.
  */

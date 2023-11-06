@@ -1,6 +1,6 @@
 #include "./_game_editor.h"
 
-void set_editor_tile_entity(Game_Editor* editor, Game_Board* board, Game_Clock* clock)
+void set_editor_tile_entity(Game_Editor* editor, Game_Board* board, Clock* clock)
 {
     // If a specific variation was selected, no need to apply auto-vars
     if (editor->selected_entity_var != SELECTED_ENTITY_VAR_NONE) {

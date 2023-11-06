@@ -3,7 +3,7 @@
 #include "Game/Entity/Tile/Neutral/_neutral_tile.h"
 
 Neutral_Tile* create_neutral_tile(
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Type type,
     Tile_Variation variation,
@@ -40,7 +40,7 @@ Neutral_Tile* create_neutral_tile(
 
 void edit_neutral_tile_variation(
     Neutral_Tile* tile, 
-    Game_Clock* game_clock, 
+    Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Variation new_variation
 )

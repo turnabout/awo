@@ -3,7 +3,7 @@
 #include "Game/Entity/Unit/_unit.h"
 
 Unit* create_unit(
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Units_Data* units_data,
     Unit_Type type,
     Player* player,

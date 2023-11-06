@@ -10,7 +10,7 @@
 PRAGMA( warning(disable: 6001) )
 
 Game_Board* create_game_board(
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Game_Renderer* game_renderer,
     Stage* stage,
     CO_Type player_COs[MAX_PLAYER_COUNT],

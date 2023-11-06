@@ -2,7 +2,7 @@
 
 void delete_neutral_tile(
     Game_Renderer* game_renderer,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     void* tile_arg,
     void* tiles_data
 )

@@ -1,6 +1,6 @@
 #include "_game_editor.h"
 
-void apply_autovar(Game_Editor* editor, Game_Board* board, Game_Clock* clock, Uint8 x, Uint8 y)
+void apply_autovar(Game_Editor* editor, Game_Board* board, Clock* clock, Uint8 x, Uint8 y)
 {
 
     Tile_Type middle_tile_type = get_game_board_tile_type(board, x, y);

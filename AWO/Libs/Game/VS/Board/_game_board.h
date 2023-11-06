@@ -63,7 +63,7 @@ struct Game_Board {
  */
 void load_game_board_stage(
     Game_Board* game_board, 
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tiles_Data* tiles_data,
     Stage* stage_descriptor
 );
@@ -79,7 +79,7 @@ void load_game_board_stage(
  */
 void add_game_board_tile(
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tile_Type tile_type,
     int tile_variation,
     Uint8 x,

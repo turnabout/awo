@@ -47,7 +47,7 @@ typedef struct Unit {
  *  @return The created unit.
  */
 Unit* create_unit(
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Units_Data* units_data,
     Unit_Type type,
     Player* player,

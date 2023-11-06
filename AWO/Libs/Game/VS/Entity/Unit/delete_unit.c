@@ -2,7 +2,7 @@
 
 void delete_unit(
     Game_Renderer* game_renderer,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     void* unit_arg,
     void* units_data
 )

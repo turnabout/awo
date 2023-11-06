@@ -3,7 +3,7 @@
 #include "Game/Entity/Tile/Property/_property_tile.h"
 
 Property_Tile* create_property_tile(
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Tiles_Data* tiles_data,
     Tile_Type tile_type,
     Player* player,

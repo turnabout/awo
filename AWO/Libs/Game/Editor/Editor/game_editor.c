@@ -90,7 +90,7 @@ void update_game_editor(
     Game_Editor* editor,
     Game_Renderer* game_renderer,
     Game_Board* game_board,
-    Game_Clock* game_clock,
+    Clock* game_clock,
     Game_Cursor* cursor,
     Mouse_State* mouse_state
 )
