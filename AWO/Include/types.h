@@ -12,7 +12,7 @@ typedef int64_t  Sint64;
 typedef uint64_t Uint64;
 
 // Boolean definition.
-typedef Uint8    Bool;
+typedef Uint8 Bool;
 
 #ifdef TRUE
 #undef TRUE

@@ -356,4 +356,5 @@ MigrationBackup/
 
 # Output
 /out/
+*.o
 

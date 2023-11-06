@@ -1,10 +1,17 @@
 #pragma once
 
-#include "Game/Data/Enums/weather.h"
-#include "Game/Board/game_board.h"
-#include "Game/Entity/Tile/tile.h"
-#include "Game/Entity/Unit/unit.h"
-#include "Utilities/Linked_List/linked_list.h"
+// Includes
+#include "types.h"
+#include "weather.h"
+
+// Libs
+#include "../Board/game_board.h"
+#include "../Entity/Tile/tile.h"
+#include "../Entity/Unit/unit.h"
+
+// Internal
+#include "../../../../Internal/Linked_List/linked_list.h"
+#include "../../../../Internal/Stage/stage.h"
 
 /*! @brief A row of tiles.
  */
@@ -17,7 +24,7 @@ typedef Unit** Unit_Row;
 struct Game_Board {
 
     // Reference to the game's renderer.
-    Game_Renderer* game_renderer;
+    void* game_renderer; // TODO: Was Game_Renderer* game_renderer;
 
     // Contains all tiles on the game board. tiles[board_y][board_x]
     Tile_Row* tiles_grid;
@@ -64,7 +71,7 @@ struct Game_Board {
 void load_game_board_stage(
     Game_Board* game_board, 
     Clock* game_clock,
-    Tiles_Data* tiles_data,
+    void* tiles_data, // TODO: Was Tiles_Data* tiles_data,
     Stage* stage_descriptor
 );
 
@@ -80,7 +87,7 @@ void load_game_board_stage(
 void add_game_board_tile(
     Game_Board* game_board,
     Clock* game_clock,
-    Tile_Type tile_type,
+    int tile_type, // TODO: was Tile_Type tile_type,
     int tile_variation,
     Uint8 x,
     Uint8 y
@@ -91,14 +98,14 @@ void add_game_board_tile(
  *  @param[in] game_board The game board module.
  *  @param[in] property Property to register.
  */
-void register_game_board_player_property(Game_Board* game_board, Property_Tile* property);
+void register_game_board_player_property(Game_Board* game_board, void* property); // TODO: was Property_Tile*
 
 /*! @brief Unregisters a property with a player.
  *
  *  @param[in] game_board The game board module.
  *  @param[in] property Property to unregister.
  */
-void unregister_game_board_player_property(Game_Board* game_board, Property_Tile* property);
+void unregister_game_board_player_property(Game_Board* game_board, void* property); // TODO: was Property_Tile*
 
 /*! @brief Registers a unit with a player.
  *

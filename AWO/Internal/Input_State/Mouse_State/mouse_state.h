@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Input_State/Headers/button_state.h"
+#include "../Headers/button_state.h"
 
 /*! @brief Every mouse button used by the game.
  *

@@ -4,7 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
-#include "Game_Data/Frame/frame.h"
+// Libs
+#include "../../../Libs/Game_Data/Frame/frame.h"
 
 /*! @brief Used to render extra elements in the game.
  *

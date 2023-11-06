@@ -3,7 +3,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Input_State/Headers/button_state.h"
+// Internal
+#include "../Headers/button_state.h"
 
 /*! @brief Every key used by the game.
  */
